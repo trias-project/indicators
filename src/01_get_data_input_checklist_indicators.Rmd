@@ -99,12 +99,22 @@ Description contains a column `type` with the following descriptors:
 ```{r descriptors}
 description %>% distinct(type)
 ```
+**Patch**: pathways `"introduction pathway"` and `"pathway of introduction"` should be renamed to  `pathways`. Bug documented in issue [#68](https://github.com/trias-project/unified-checklist/issues/68).
+
+```{r rename_no_standard_pathway_types} 
+description <- 
+  description %>%
+  mutate(type = if_else(type %in% c("introduction pathway",
+                                    "pathway of introduction"),
+                        "pathway",
+                        type)
+)
+```
 
 We are interested to the following types:
 
 ```{r define_types}
 types <- c(
-  "invasion stage",
   "native range",
   "degree of establishment",
   "pathway"
@@ -132,12 +142,11 @@ description <-
   ) %>%
   unnest_longer(types[1]) %>%
   unnest_longer(types[2]) %>%
-  unnest_longer(types[3]) %>%
-  unnest_longer(types[4])
+  unnest_longer(types[3])
 description %>% head(n = 20)
 ```
 
-We also clean column names by standardizing column names:
+We also clean column names by standardizing column names (snake_case):
 
 ```{r standardize_colnames}
 description <-
@@ -177,7 +186,15 @@ description <-
   ))
 ```
 
-### Add native content based on native range
+Mapping result:
+
+```{r mapping_degree_establ_result}
+description %>%
+  distinct(degree_of_establishment)
+```
+
+
+### Add native continent based on native range
 
 We use native range information to create a similar column containing native continent:
 
@@ -193,6 +210,69 @@ description <-
     grepl(pattern = "Europe", native_range, ignore.case = TRUE) ~ "Europe",
     TRUE ~ as.character(NA))
   )
+```
+
+Mapping result:
+
+```{r mapping_native_continent_result}
+description %>%
+  distinct(native_continent)
+```
+
+
+### Mapping `pathway`
+
+This section contains a series of patches to standardize pathway information.
+
+Add prefix `cbd_2014_pathway:` where missing (see [issue #69](https://github.com/trias-project/unified-checklist/issues/69)):
+
+```{r add_cbd_2014_pathway_if_missing} 
+description <-
+  description %>%
+  mutate(pathway = if_else(
+    str_starts(.data$pathway, "cbd_2014_pathway:"),
+    pathway,
+    paste0("cbd_2014_pathway:", pathway))
+)
+```
+Pathway `cbd_2014_pathway:agriculture` should be replaced by `cbd_2014_pathway:escape_agriculture` (see [issue #38](https://github.com/trias-project/ad-hoc-checklist/issues/38)):
+
+```{r improve_pathway_agriculture}
+description <- 
+  description %>%
+  mutate(pathway = if_else(pathway == "cbd_2014_pathway:agriculture",
+                           "cbd_2014_pathway:escape_agriculture",
+                           pathway)
+)
+```
+Pathway `contaminant_plant` should be replaced by `contaminant_on_plants` (see [issue #9](https://github.com/trias-project/alien-scheldt-checklist/issues/9)) 
+
+```{r improve_pathway_on_plant}
+description <- 
+  description %>%
+  mutate(pathway = if_else(pathway == "cbd_2014_pathway:contaminant_plant",
+                           "cbd_2014_pathway:contaminant_on_plants",
+                           pathway)
+)
+```
+
+Remove pathway `unintentional` as it is not a valid pathway (see [issue #3](https://github.com/trias-project/alien-fishes-checklist/issues/3)):
+
+```{r remove_unintentional}
+description <- 
+  description  %>%
+  filter(!pathway %in% c("cbd_2014_pathway:unintentional"))
+```
+
+Rename pathway `nursery` as `contaminant_nursery` (see [issue #40](https://github.com/trias-project/ad-hoc-checklist/issues/40)):
+
+```{r rename_nursery}
+description <- 
+  description  %>%
+  mutate(pathway = if_else(pathway == "cbd_2014_pathway:nursery",
+                           "cbd_2014_pathway:contaminant_nursery",
+                           pathway)
+)
 ```
 
 ## Species profile
@@ -223,11 +303,15 @@ merged_extensions <-
   full_join(speciesProfiles,
     by = "taxonKey"
   )
+```
 
+to merge them all with the taxonomic information:
+
+```{r merge_extensions_with_taxa}
 merged_info <- left_join(taxa, merged_extensions,
   by = c("key" = "taxonKey")
 )
-merged_extensions %>% head(n = 100)
+merged_info %>% head(n = 100)
 ```
 
 # Tidy data
@@ -276,6 +360,42 @@ merged_info %>%
   head(10)
 ```
 
+Some `first_observed` are greater than `last_observed`, (see [issue #41](https://github.com/trias-project/ad-hoc-checklist/issues/41)):
+
+```{r exceptions_temporal}
+wrong_temporal <- 
+  merged_info %>%
+  filter(last_observed < first_observed)
+wrong_temporal %>%
+  distinct(key, first_observed, last_observed)
+```
+
+Correct them:
+
+```{r correct_temporal_info}
+# invert first/last_observed columns 
+wrong_temporal$aux <- wrong_temporal$first_observed
+wrong_temporal$first_observed <- wrong_temporal$last_observed
+wrong_temporal$last_observed <- wrong_temporal$aux
+wrong_temporal$aux <- NULL
+wrong_temporal %>%
+  distinct(key, first_observed, last_observed)
+# replace wrong rows with the corrected ones
+merged_info <- merged_info %>%
+  anti_join(wrong_temporal, 
+            by = c("key", "nubKey", "scientificName", "datasetKey",
+                   "canonicalName", "species", "genus", "family", "order", 
+                   "class", "phylum", "kingdom", "rank", "speciesKey", 
+                   "taxonomicStatus", "locationId", "locality", "country", 
+                   "status", "establishmentMeans", "pathway", 
+                   "degree_of_establishment", "native_range", 
+                   "native_continent", "habitat", "marine", "freshwater",
+                   "terrestrial", "source")) %>%
+  bind_rows(wrong_temporal) %>%
+  arrange(key)
+```
+
+
 ## Split column `pathway`
 
 The column `pathway` contains a prefix, `cbd_2014_pathway:` and two different pathway levels divided by symbol `_` (Note: this is not valid for pathway `natural_dispersal`, which should not be divided in two levels as it is a level 2 pathway of level 1 `unaided`):
@@ -285,26 +405,6 @@ merged_info %>%
   distinct(pathway) %>%
   filter(!is.na(pathway)) %>%
   head(10)
-```
-
-Exceptions:
-
-```{r exceptions_no_cbd}
-merged_info %>%
-  filter(!str_starts(pathway, pattern = "cbd_2014_pathway:")) %>%
-  distinct(key, pathway) %>%
-  group_by(pathway) %>%
-  count()
-```
-
-We assign pathway `cbd_2014_pathway:unknown` to them:
-
-```{r exception_to_unwknon}
-merged_info <-
-  merged_info %>%
-  mutate(pathway = ifelse(!str_starts(pathway, pattern = "cbd_2014_pathway:"),
-                          "cbd_2014_pathway:unknown",
-                          pathway))
 ```
 
 We split `pathway` in `pathway_level1` and `pathway_level2` assigning value `unknown` if pathway is empty (`NA`) or a zero-length string (`""`). We also assign level 2 `natural_dispersal` to taxa with pathway level 1 `unaided`, as suggested by Tim Adriaens in [trias-project/indicators#61 (comment)](https://github.com/trias-project/indicators/issues/61#issuecomment-611704751):
@@ -365,34 +465,7 @@ merged_info %>%
   distinct(pathway_level1, pathway_level2) %>%
   arrange(pathway_level1)
 ```
-
 # Save data
-
-## Remove some taxa
-
-We remove the following species:
-
-- [Anser fabalis (Latham, 1787)](https://www.gbif.org/species/2498027)
-- [Anser anser (Linnaeus, 1758)](https://www.gbif.org/species/2498036)
-- [Branta leucopsis (Bechstein, 1803)](https://www.gbif.org/species/5232464)
-
-as discussed in [issue #32](https://github.com/trias-project/unified-checklist/issues/32).
-
-```{r taxa_to_remove}
-taxa_to_remove <- 
-  taxa %>%
-  filter(nubKey %in% c(2498027, 2498036, 5232464)) %>%
-  distinct(key, nubKey, scientificName)
-taxa_to_remove
-```
-
-Important: this step is a patch waiting for a new version of the [Global Register of Introduced and Invasive Species - Belgium](https://www.gbif.org/dataset/6d9e952f-948c-4483-9807-575348147c7e).
-
-```{r remove_taxa}
-merged_info <-
-  merged_info %>%
-  filter(!key %in% taxa_to_remove$key)
-```
 
 The data.frame `merged_info` is saved as output file:
 

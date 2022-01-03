@@ -470,8 +470,8 @@ merged_info %>%
 The data.frame `merged_info` is saved as output file:
 
 ```{r save_data_output}
-write_tsv(merged_info,
-  path = here::here(
+write_tsv(merged_info, 
+  file = here::here(
     "data",
     "interim",
     "data_input_checklist_indicators.tsv"

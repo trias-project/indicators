@@ -100,7 +100,7 @@ visualize_pathways_level1(df = data)
 Per category:
 
 ```{r pathway_level1_anaysis_per_kingdom}
-map(categories$category, function(x) {
+walk(categories$category, function(x) {
   visualize_pathways_level1(df = data,
                             category = x,
                             title = x)}
@@ -117,7 +117,7 @@ pathways_level1 <-
   distinct(pathway_level1) %>%
   filter(pathway_level1 != "unknown") %>%
   pull()
-map(pathways_level1,
+walk(pathways_level1,
     function(x) {
       visualize_pathways_level2(df = data,
                                 chosen_pathway_level1 = x,
@@ -131,7 +131,7 @@ Per category:
 
 ```{r pathway_level2_anaysis_per_kingdom}
 categories_path_lev1 <- expand_grid(categories, pathways_level1)
-map2(categories_path_lev1$category,
+walk2(categories_path_lev1$category,
      categories_path_lev1$pathways_level1,
      function(x, y) {
        visualize_pathways_level2(df = data,
@@ -143,7 +143,7 @@ map2(categories_path_lev1$category,
 
 ## Pathways level 1 evolution
 
-We show the evolution in time of the patwhays level 1. 
+We show the evolution in time of the pathways level 1. 
 
 First, considering all taxa:
 
@@ -154,13 +154,12 @@ visualize_pathways_year_level1(data)
 and now splitting them by category:
 
 ```{r visualize_pathways_year_level1_category}
-map(categories$category, function(x) {
+walk(categories$category, function(x) {
   visualize_pathways_year_level1(df = data,
                                  category = x,
                                  title = x)}
 )
 ```
-
 
 ## Pathways analysis: tables
 

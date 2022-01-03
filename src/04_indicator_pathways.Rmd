@@ -124,7 +124,6 @@ map(pathways_level1,
                                 title = x)
     }
 )
-    
 ```
 
 Per category:
@@ -143,7 +142,7 @@ map2(categories_path_lev1$category,
 
 ## Pathways level 1 evolution
 
-We show the evolution in time of the patwhays level 1. 
+We show the evolution in time of the pathways level 1. 
 
 First, considering all taxa:
 
@@ -160,7 +159,6 @@ map(categories$category, function(x) {
                                  title = x)}
 )
 ```
-
 
 ## Pathways analysis: tables
 

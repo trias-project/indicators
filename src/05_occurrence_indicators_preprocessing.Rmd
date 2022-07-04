@@ -344,7 +344,7 @@ recent_alien_species <-
   taxa_df %>%
   # lower limit on date of first introduction if present
   filter(first_observed >= year_of_introduction | is.na(first_observed)) %>%
-  # remove duplciates due to other columns as pathways
+  # remove duplicates due to other columns as pathways
   distinct(nubKey, first_observed, last_observed) %>%
 
   # get classkey info and filter out taxa without data

@@ -263,9 +263,21 @@ kingdom_class <- map_df(
 and we add them:
 
 ```{r add_kingdom_class}
+# add class
 spec_names <-
   spec_names %>%
-  left_join(kingdom_class, by = c("kingdomKey", "classKey"))
+  left_join(kingdom_class %>%
+              distinct(.data$classKey, .data$class),
+            by = "classKey"
+  )
+
+# add kingdom
+spec_names <-
+  spec_names %>%
+  left_join(kingdom_class %>%
+              distinct(.data$kingdomKey, .data$kingdom),
+            by = "kingdomKey"
+  ) 
 ```
 
 Preview:

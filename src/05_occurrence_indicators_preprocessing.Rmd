@@ -56,7 +56,7 @@ df <- read_csv(
 )
 ```
 
-Nota: these data have been also published on [Zenodo](https://zenodo.org/record/3635510).
+Nota: these data have been also published on [Zenodo](10.5281/zenodo.3632749).
 
 We remove columns we will never use:
 

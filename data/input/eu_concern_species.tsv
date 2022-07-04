@@ -19,7 +19,7 @@ Microstegium vimineum	Japanese stiltgrass	2017-08-02	Plantae	5289808	ACCEPTED
 Myriophyllum aquaticum	parrot's feather	2016-08-03	Plantae	5361785	ACCEPTED
 Myriophyllum heterophyllum	broadleaf watermilfoil	2017-08-02	Plantae	5361762	ACCEPTED
 Parthenium hysterophorus	whitetop weed	2016-08-03	Plantae	3086784	ACCEPTED
-Pennisetum setaceum	crimson fountaingrass	2017-08-02	Plantae	2706134	SYNONYM
+Pennisetum setaceum	crimson fountaingrass	2017-08-02	Plantae	2706134	HOMOTYPIC_SYNONYM
 Persicaria perfoliata	Asiatic tearthumb	2016-08-03	Plantae	4033648	ACCEPTED
 Pueraria lobata	kudzu vine	2016-08-03	Plantae	9035634	ACCEPTED
 Alopochen aegyptiacus	Egyptian goose	2017-08-02	Animalia	2498252	ACCEPTED
@@ -33,7 +33,7 @@ Myocastor coypus	coypu	2016-08-03	Animalia	4264680	ACCEPTED
 Nasua nasua	coati	2016-08-03	Animalia	2433536	ACCEPTED
 Nyctereutes procyonoides	racoon dog	2019-02-02	Animalia	2434552	ACCEPTED
 Ondatra zibethicus	muskrat	2017-08-02	Animalia	5219858	ACCEPTED
-Orconectes limosus	spiny-cheek crayfish	2016-08-03	Animalia	2227000	ACCEPTED
+Faxonius limosus	spiny-cheek crayfish	2016-08-03	Animalia	8909595 ACCEPTED
 Faxonius virilis	virile crayfish	2016-08-03	Animalia	8971201	ACCEPTED
 Oxyura jamaicensis	ruddy duck	2016-08-03	Animalia	2498305	ACCEPTED
 Pacifastacus leniusculus	signal crayfish	2016-08-03	Animalia	2226990	ACCEPTED
@@ -48,7 +48,7 @@ Tamias sibiricus	Siberian chipmunk	2016-08-03	Animalia	2437450	ACCEPTED
 Threskiornis aethiopicus	sacred ibis	2016-08-03	Animalia	2480764	ACCEPTED
 Trachemys scripta	red-eared, yellow-bellied and Cumberland sliders	2016-08-03	Animalia	2443002	ACCEPTED
 Vespa velutina nigrithorax	Asian hornet	2016-08-03	Animalia	6247411	ACCEPTED
-Humulus scandens	Japanese hop	2019-08-15	Plantae	2984537	SYNONYM
+Humulus scandens	Japanese hop	2019-08-15	Plantae	2984537	ACCEPTED
 Acridotheres tristis	common myna	2019-08-15	Animalia	2489005	ACCEPTED
 Ailanthus altissima	tree of heaven	2019-08-15	Plantae	3190653	ACCEPTED
 Andropogon virginicus	broomsedge bluestem	2019-08-15	Plantae	2706080	ACCEPTED
@@ -59,7 +59,7 @@ Acacia saligna	coojong	2019-08-15	Plantae	8790482	DOUBTFUL
 Gymnocoronis spilanthoides	spadeleaf plant	2019-08-15	Plantae	6063677	ACCEPTED
 Triadica sebifera	Chinese tallow	2019-08-15	Plantae	3054399	ACCEPTED
 Lepomis gibbosus	pumpkinseed	2019-08-15	Animalia	2394486	ACCEPTED
-Lespedeza cuneata	Chinese bushclover	2019-08-15	Plantae	8114276	SYNONYM
+Lespedeza cuneata	Chinese bushclover	2019-08-15	Plantae	8114276	ACCEPTED
 Lygodium japonicum	Japanese climbing fern	2019-08-15	Plantae	2650436	ACCEPTED
 Plotosus lineatus	striped eel catfish	2019-08-15	Animalia	7965247	ACCEPTED
 Prosopis juliflora	mesquite	2019-08-15	Plantae	5358460	ACCEPTED

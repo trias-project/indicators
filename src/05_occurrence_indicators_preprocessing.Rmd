@@ -213,7 +213,6 @@ spec_names <- map_df(
   taxon_key,
   function(k) {
     pb$tick()
-    name_usage(key = k, return = "data")
   }
 ) %>%
   select(
@@ -254,7 +253,7 @@ kingdom_class <- map_df(
   class_key,
   function(x) {
     pb$tick()
-    name_usage(key = x, return = "data")
+    name_usage(key = x)$data
   }
 ) %>%
   select(classKey, class, kingdomKey, kingdom)

@@ -59,10 +59,12 @@ path_natura2000 <- here::here(
   "Natura2000_end2019_Shapefile"
 )
 if (!file.exists(path_natura2000)) {
+  options(timeout = 60*30) # 30min max allowed for downloading
   temp <- tempfile()
   download.file(
     "https://cmshare.eea.europa.eu/s/n5L8Lrs9aYD775S/download",
-    temp
+    temp,
+    cacheOK = FALSE
   )
   unzip(temp, exdir = path_natura2000)
   unlink(temp)

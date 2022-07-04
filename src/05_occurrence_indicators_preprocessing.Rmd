@@ -213,6 +213,7 @@ spec_names <- map_df(
   taxon_key,
   function(k) {
     pb$tick()
+    name_usage(key = k)$data
   }
 ) %>%
   select(

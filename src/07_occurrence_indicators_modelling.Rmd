@@ -119,7 +119,8 @@ df_ts_compact_prot_areas <-
 
 # Modelling
 
-In this section we evaluate the emergenging status by applying a decision rule strategy or, where possible, a statical model called GAM (Generalized Additive Models).  For each evaluation year (see below) the output of both models is one of the following emerging status codes:
+In this section we evaluate the emergenging status by applying a decision rule strategy or, where possible, a statistical model called GAM (Generalized Additive Models).
+For each evaluation year (see below) the output of both models is one of the following emerging status codes:
 
 - `3`: emerging
 - `2`: potentially emerging
@@ -326,10 +327,10 @@ gam_occs_BE <- map2(
 names(gam_occs_BE) <- taxon_keys
 ```
 
-Show results for _Crassula helmsii_ and _Trachemys scripta elegans_:
+Show results for _Hydrocotyle ranunculoides_ and _Trachemys scripta elegans_:
 
 ```{r show_results_preview_occs_BE, message=FALSE}
-gam_occs_BE$`8035075`$plot
+gam_occs_BE$`7978544`$plot
 gam_occs_BE$`6157026`$plot
 ```
 
@@ -377,10 +378,10 @@ gam_occs_pa <- map2(
 names(gam_occs_pa) <- taxon_keys
 ```
 
-Show results for _Crassula helmsii_ and _Trachemys scripta elegans_:
+Show results for _Hydrocotyle ranunculoides_ and _Trachemys scripta elegans_:
 
 ```{r preview_gam_occs_PA, message=FALSE}
-gam_occs_pa$`8035075`$plot
+gam_occs_pa$`7978544`$plot
 gam_occs_pa$`6157026`$plot
 ```
 
@@ -431,10 +432,10 @@ gam_occupancy_BE <- map2(
 names(gam_occupancy_BE) <- taxon_keys
 ```
 
-Show results for _Crassula helmsii_ and _Trachemys scripta elegans_:
+Show results for _Hydrocotyle ranunculoides_ and _Trachemys scripta elegans_:
 
 ```{r preview_gam_occupancy_BE, message=FALSE}
-gam_occupancy_BE$`8035075`$plot
+gam_occupancy_BE$`7978544`$plot
 gam_occupancy_BE$`6157026`$plot
 ```
 
@@ -484,10 +485,11 @@ gam_occupancy_pa <- map2(
 names(gam_occupancy_pa) <- taxon_keys
 ```
 
-Show results for _Crassula helmsii_ (for _Trachemys scripta elegans_ GAM  could not be applied or didn't converged):
+Show results for _Hydrocotyle ranunculoides_ (for _Trachemys scripta elegans_ GAM  could not be applied or didn't converged):
 
 ```{r preview_gam_occupancy_PA, message=FALSE}
-gam_occupancy_pa$`8035075`$plot
+gam_occupancy_pa$`7978544`$plot
+gam_occupancy_pa$`6157026`$plot
 ```
 
 # Save results

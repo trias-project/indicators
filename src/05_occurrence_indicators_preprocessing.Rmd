@@ -352,13 +352,13 @@ recent_alien_species <-
 
   distinct(
     taxonKey = nubKey,
-    canonicalName,
-    first_observed,
-    last_observed,
-    class,
-    kingdom,
-    classKey,
-    kingdomKey
+    .data$canonicalName,
+    .data$first_observed,
+    .data$last_observed,
+    .data$class,
+    .data$kingdom,
+    .data$classKey,
+    .data$kingdomKey
   )
 ```
 

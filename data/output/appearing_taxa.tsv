@@ -1,24 +1,23 @@
 taxonKey	canonicalName	year	ncells_prot_areas	ncells_BE	in_prot_areas	in_BE	class	kingdom	classKey	kingdomKey
-5568442	Dysphania anthelmintica	2019	3		TRUE	FALSE	Magnoliopsida	Plantae	220	6
-3083488	Paeonia officinalis	2019	1	3	TRUE	TRUE	Magnoliopsida	Plantae	220	6
-5845390	Gracupica nigricollis	2019	1	1	TRUE	TRUE	Aves	Animalia	212	1
-7848321	Linaria triornithophora	2019	1	1	TRUE	TRUE	Magnoliopsida	Plantae	220	6
-2493697	Amandava subflava	2019	1		TRUE	FALSE	Aves	Animalia	212	1
-2926042	Nonea lutea	2019	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
-2928238	Phacelia campanularia	2019	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
-2964167	Lupinus albus	2019	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
-3025858	Cotoneaster ambiguus	2019	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
-3138192	Eutrochium purpureum	2019	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
-4005004	Lysimachia fortunei	2019	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
-5353590	Cercis siliquastrum	2019	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
-7331666	Melampyrum nemorosum	2019	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
-2176858	Philaeus chrysops	2019		3	FALSE	TRUE	Arachnida	Animalia	367	1
-3046765	Sisymbrium erysimoides	2019		2	FALSE	TRUE	Magnoliopsida	Plantae	220	6
-1419894	Euborellia annulipes	2019		1	FALSE	TRUE	Insecta	Animalia	216	1
-1423286	Ischnura senegalensis	2019		1	FALSE	TRUE	Insecta	Animalia	216	1
-2295309	Hawaiia minuscula	2019		1	FALSE	TRUE	Gastropoda	Animalia	225	1
-2747750	Crocus luteus	2019		1	FALSE	TRUE	Liliopsida	Plantae	196	6
-2928589	Ipomoea tricolor	2019		1	FALSE	TRUE	Magnoliopsida	Plantae	220	6
-3729273	Asarina procumbens	2019		1	FALSE	TRUE	Magnoliopsida	Plantae	220	6
-3896282	Teucrium hircanicum	2019		1	FALSE	TRUE	Magnoliopsida	Plantae	220	6
-3905825	Betonica macrantha	2019		1	FALSE	TRUE	Magnoliopsida	Plantae	220	6
+2153287	Zoropsis spinimana	2021	2		TRUE	FALSE	Arachnida	Animalia	367	1
+3172068	Veronica cymbalaria	2021	2		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+7437751	Urtica membranacea	2021	2		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+2480089	Psephotus haematonotus	2021	1		TRUE	FALSE	Aves	Animalia	212	1
+2486132	Pycnonotus leucotis	2021	1		TRUE	FALSE	Aves	Animalia	212	1
+2855893	Allium roseum	2021	1		TRUE	FALSE	Liliopsida	Plantae	196	6
+2927174	Mentha requienii	2021	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+2984532	Zelkova serrata	2021	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+3084839	Mesembryanthemum crystallinum	2021	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+3136929	Anaphalis triplinervis	2021	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+4487370	Tropidosteptes pacificus	2021	1		TRUE	FALSE	Insecta	Animalia	216	1
+5375012	Arabis procurrens	2021	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+5530855	Corydalis linstowiana	2021	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+7902463	Lonicera maackii	2021	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+8898408	Pseudemys concinna	2021	1		TRUE	FALSE	Reptilia	Animalia	358	1
+5296015	Sisyrinchium angustifolium	2021		2	FALSE	TRUE	Liliopsida	Plantae	196	6
+1423286	Ischnura senegalensis	2021		1	FALSE	TRUE	Insecta	Animalia	216	1
+2868796	Zantedeschia albomaculata	2021		1	FALSE	TRUE	Liliopsida	Plantae	196	6
+3036169	Hedera maroccana	2021		1	FALSE	TRUE	Magnoliopsida	Plantae	220	6
+3188735	Lythrum virgatum	2021		1	FALSE	TRUE	Magnoliopsida	Plantae	220	6
+5400552	Ageratina altissima	2021		1	FALSE	TRUE	Magnoliopsida	Plantae	220	6
+5914287	Melia azedarach	2021		1	FALSE	TRUE	Magnoliopsida	Plantae	220	6

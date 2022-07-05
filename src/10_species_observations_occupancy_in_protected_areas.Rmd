@@ -38,13 +38,13 @@ library(rgbif)
 
 ## Occurrence cube at species level
 
-Read the occurrence cubes at species level for European countries as published on Zenodo (https://zenodo.org/record/3637911). It can take a long time:
+Read the occurrence cubes at species level for European countries as published on Zenodo (https://doi.org/10.5281/zenodo.3637910). It can take a long time:
 
 ```{r read_cube_from_zenodo}
 if (!"be_species_cube.csv" %in%
   list.files(here::here("data", "interim"))) {
   download_zenodo(
-    doi = "10.5281/zenodo.3637911",
+    doi = "10.5281/zenodo.3637910",
     path = here::here("data", "interim")
   )
 }
@@ -59,8 +59,8 @@ be_species_cube <- read_csv(
 )
 be_species_info <- read_csv(
   file = here::here("data", "interim", "be_species_info.csv"),
-  na = ""
-)
+  na = "") %>%
+  select(-kingdom)
 ```
 
 Preview occurrence cube:
@@ -77,13 +77,13 @@ be_species_info %>% head(10)
 
 ## Occurrence cube of alien taxa
 
-Read the occurrence cubes of alien taxa as published on Zenodo (https://zenodo.org/record/3637911). It is based on GBIF occurrence data of taxa published in the [Global Register of Introduced and Invasive Species - Belgium](https://www.gbif.org/dataset/6d9e952f-948c-4483-9807-575348147c7e), shortly called the [unified checklist](https://github.com/trias-project/unified-checklist). Attention: It can take a long time:
+Read the occurrence cubes of alien taxa as published on Zenodo (https://doi.org/10.5281/zenodo.3632749). It is based on GBIF occurrence data of taxa published in the [Global Register of Introduced and Invasive Species - Belgium](https://www.gbif.org/dataset/6d9e952f-948c-4483-9807-575348147c7e), shortly called the [unified checklist](https://github.com/trias-project/unified-checklist). Attention: It can take a long time:
 
 ```{r read_cube_from_zenodo_alien}
 if (!"be_alientaxa_cube.csv" %in%
   list.files(here::here("data", "interim"))) {
   download_zenodo(
-    doi = "10.5281/zenodo.3635510",
+    doi = "10.5281/zenodo.3632749",
     path = here::here("data", "interim")
   )
 }
@@ -98,8 +98,8 @@ be_alientaxa_cube <- read_csv(
 )
 be_alientaxa_info <- read_csv(
   file = here::here("data", "interim", "be_alientaxa_info.csv"),
-  na = ""
-)
+  na = "") %>%
+  select(-kingdom) # as we still have to retrieve taxonomic info from GBIF
 ```
 
 Preview occurrence cube:
@@ -136,7 +136,7 @@ infraspecific_alien <-
   map_dfr(
     infraspecific_alien$taxonKey,
     function(x) {
-      name_usage(x, return = "data")
+      name_usage(x, "data")$data
     }
   )
 infraspecific_alien <-
@@ -263,7 +263,7 @@ occs_prot_areas <-
   ungroup()
 ```
 
-Preview with the 10 highest area of occupancies:
+Preview with the 10 highest areas of occupancy:
 
 ```{r preview_occs_prot_areas}
 occs_prot_areas %>%
@@ -310,7 +310,7 @@ prot_areas_species_taxon_info <-
   map_dfr(
     prot_areas_species_info$speciesKey,
     function(x) {
-      name_usage(key = x, return = "data")
+      name_usage(key = x)$data
     }
   )
 prot_areas_species_taxon_info <-
@@ -460,38 +460,6 @@ prot_areas_taxon_info <-
 
 # Save data and metadata
 
-## Remove erroneous taxa
-
-As discussed in [issue #32](https://github.com/trias-project/unified-checklist/issues/32) we remove the following species:
-
-- [Anser fabalis (Latham, 1787)](https://www.gbif.org/species/2498027)
-- [Anser anser (Linnaeus, 1758)](https://www.gbif.org/species/2498036)
-- [Branta leucopsis (Bechstein, 1803)](https://www.gbif.org/species/5232464)
-
-```{r taxa_to_remove}
-taxa_to_remove_speciesKey <- c(
-  # Anser fabalis (Latham, 1787)
-  2498027, 
-  # Anser anser (Linnaeus, 1758)
-  2498036,
-  # Branta leucopsis (Bechstein, 1803)
-  5232464
-)
-```
-
-Important: this step is a patch waiting for a new version of the [Global Register of Introduced and Invasive Species - Belgium](https://www.gbif.org/dataset/6d9e952f-948c-4483-9807-575348147c7e).
-
-```{r remove_taxa}
-# Remove from data
-occs_prot_areas <-
-  occs_prot_areas %>%
-  filter(!taxonKey %in% taxa_to_remove_speciesKey)
-# Remove from metadata
-prot_areas_taxon_info <-
-  prot_areas_taxon_info %>%
-  filter(!taxonKey %in% taxa_to_remove_speciesKey)
-```
-
 ## Save data about protected area 
 
 We finalize the data.frame containing the information about number of observations, occupancy, coverage and alien status in Belgian protected areas.
@@ -501,7 +469,7 @@ Select column of interest and set columns order:
 ```{r finalize_occs_prot_areas}
 occs_prot_areas <-
   occs_prot_areas %>%
-  select(
+  dplyr::relocate(
     SITECODE,
     SITETYPE,
     year,

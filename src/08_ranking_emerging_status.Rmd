@@ -318,34 +318,34 @@ The ranking is based on the highest emerging status. The following priority rule
 ranking <-
   em_df %>%
   arrange(
+    desc(year_2020_em_status_occupancy_pa),
+    desc(year_2020_em_status_observations_pa),
+    desc(year_2020_em_status_occupancy_BE),
+    desc(year_2020_em_status_observations_BE),
+    desc(year_2019_em_status_occupancy_pa),
+    desc(year_2019_em_status_observations_pa),
+    desc(year_2019_em_status_occupancy_BE),
+    desc(year_2019_em_status_observations_BE),
     desc(year_2018_em_status_occupancy_pa),
     desc(year_2018_em_status_observations_pa),
     desc(year_2018_em_status_occupancy_BE),
     desc(year_2018_em_status_observations_BE),
-    desc(year_2017_em_status_occupancy_pa),
-    desc(year_2017_em_status_observations_pa),
-    desc(year_2017_em_status_occupancy_BE),
-    desc(year_2017_em_status_observations_BE),
-    desc(year_2016_em_status_occupancy_pa),
-    desc(year_2016_em_status_observations_pa),
-    desc(year_2016_em_status_occupancy_BE),
-    desc(year_2016_em_status_observations_BE),
     desc(mean_growth)
   ) %>%
   select(
     taxonKey, canonicalName, kingdom, class,
+    year_2020_em_status_occupancy_pa,
+    year_2020_em_status_observations_pa,
+    year_2020_em_status_occupancy_BE,
+    year_2020_em_status_observations_BE,
+    year_2019_em_status_occupancy_pa,
+    year_2019_em_status_observations_pa,
+    year_2019_em_status_occupancy_BE,
+    year_2019_em_status_observations_BE,
     year_2018_em_status_occupancy_pa,
     year_2018_em_status_observations_pa,
     year_2018_em_status_occupancy_BE,
     year_2018_em_status_observations_BE,
-    year_2017_em_status_occupancy_pa,
-    year_2017_em_status_observations_pa,
-    year_2017_em_status_occupancy_BE,
-    year_2017_em_status_observations_BE,
-    year_2016_em_status_occupancy_pa,
-    year_2016_em_status_observations_pa,
-    year_2016_em_status_occupancy_BE,
-    year_2016_em_status_observations_BE,
     mean_growth,
     everything()
   )
@@ -354,38 +354,38 @@ ranking
 
 ## Point strategy
 
-We can also rank using a point strategy reflecting the same ranking strategy as before. We apply gain factors to all emerging status scores using the number of observations in 2016 in all Belgium as reference (gain factor  = 1). The following gain factors are applied:
+We can also rank using a point strategy reflecting the same ranking strategy as before. We apply gain factors to all emerging status scores using the number of observations in 2018 in all Belgium as reference (gain factor  = 1). The following gain factors are applied:
 
 | indicator | year | region | gain factor |
 | --- | --- | --- | --- | 
-occupancy | 2018 | protected areas | 3
-observations | 2018 | protected areas | 2.5
-occupancy | 2018 | Belgium | 2.5
-observations | 2018 | Belgium | 2
-occupancy | 2017 | protected areas | 2.5
-observations | 2017 | protected areas | 2
-occupancy | 2017 | Belgium | 2
-observations | 2017 | Belgium | 1.5
-occupancy | 2016 | protected areas | 2
-observations | 2016 | protected areas | 1.5
-occupancy | 2016 | Belgium | 1.5
-observations | 2016 | Belgium | 1
+occupancy | 2020 | protected areas | 3
+observations | 2020 | protected areas | 2.5
+occupancy | 2020 | Belgium | 2.5
+observations | 2020 | Belgium | 2
+occupancy | 2019 | protected areas | 2.5
+observations | 2019 | protected areas | 2
+occupancy | 2019 | Belgium | 2
+observations | 2019 | Belgium | 1.5
+occupancy | 2018 | protected areas | 2
+observations | 2018 | protected areas | 1.5
+occupancy | 2018 | Belgium | 1.5
+observations | 2018 | Belgium | 1
 
 ```{r rank_by_em_pts}
 ranking_pts <-
   em_df %>%
-  mutate(em_pts = year_2018_em_status_occupancy_pa * 3 +
-    year_2018_em_status_observations_pa * 2.5 +
-    year_2018_em_status_occupancy_BE * 2.5 +
-    year_2018_em_status_observations_BE * 2 +
-    year_2017_em_status_occupancy_pa * 2.5 +
-    year_2017_em_status_observations_pa * 2 +
-    year_2017_em_status_occupancy_BE * 2 +
-    year_2017_em_status_observations_BE * 1.5 +
-    year_2016_em_status_occupancy_pa * 2 +
-    year_2016_em_status_observations_pa * 1.5 +
-    year_2016_em_status_occupancy_BE * 1.5 +
-    year_2016_em_status_observations_BE) %>%
+  mutate(em_pts = year_2020_em_status_occupancy_pa * 3 +
+    year_2020_em_status_observations_pa * 2.5 +
+    year_2020_em_status_occupancy_BE * 2.5 +
+    year_2020_em_status_observations_BE * 2 +
+    year_2019_em_status_occupancy_pa * 2.5 +
+    year_2019_em_status_observations_pa * 2 +
+    year_2019_em_status_occupancy_BE * 2 +
+    year_2019_em_status_observations_BE * 1.5 +
+    year_2018_em_status_occupancy_pa * 2 +
+    year_2018_em_status_observations_pa * 1.5 +
+    year_2018_em_status_occupancy_BE * 1.5 +
+    year_2018_em_status_observations_BE) %>%
   arrange(
     desc(em_pts),
     desc(mean_growth)
@@ -393,18 +393,18 @@ ranking_pts <-
   select(
     taxonKey, canonicalName, kingdom, class,
     em_pts, mean_growth,
+    year_2020_em_status_occupancy_pa,
+    year_2020_em_status_observations_pa,
+    year_2020_em_status_occupancy_BE,
+    year_2020_em_status_observations_BE,
+    year_2019_em_status_occupancy_pa,
+    year_2019_em_status_observations_pa,
+    year_2019_em_status_occupancy_BE,
+    year_2019_em_status_observations_BE,
     year_2018_em_status_occupancy_pa,
     year_2018_em_status_observations_pa,
     year_2018_em_status_occupancy_BE,
     year_2018_em_status_observations_BE,
-    year_2017_em_status_occupancy_pa,
-    year_2017_em_status_observations_pa,
-    year_2017_em_status_occupancy_BE,
-    year_2017_em_status_observations_BE,
-    year_2016_em_status_occupancy_pa,
-    year_2016_em_status_observations_pa,
-    year_2016_em_status_occupancy_BE,
-    year_2016_em_status_observations_BE,
     everything()
   )
 ranking_pts

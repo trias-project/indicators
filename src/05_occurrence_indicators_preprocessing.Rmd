@@ -56,7 +56,7 @@ df <- read_csv(
 )
 ```
 
-Nota: these data have been also published on [Zenodo](https://zenodo.org/record/3635510).
+Nota: these data have been also published on [Zenodo](10.5281/zenodo.3632749).
 
 We remove columns we will never use:
 
@@ -131,34 +131,6 @@ taxa_df <-
 ```
 
 ## Remove some taxa
-
-We remove the following species:
-
-- [Anser fabalis (Latham, 1787)](https://www.gbif.org/species/2498027)
-- [Anser anser (Linnaeus, 1758)](https://www.gbif.org/species/2498036)
-- [Branta leucopsis (Bechstein, 1803)](https://www.gbif.org/species/5232464)
-
-as discussed in [issue #32](https://github.com/trias-project/unified-checklist/issues/32).
-
-```{r taxa_to_remove}
-taxa_to_remove_speciesKey <- c(
-  # Anser fabalis (Latham, 1787)
-  2498027, 
-  # Anser anser (Linnaeus, 1758)
-  2498036,
-  # Branta leucopsis (Bechstein, 1803)
-  5232464
-)
-```
-
-Important: this step is a patch waiting for a new version of the [Global Register of Introduced and Invasive Species - Belgium](https://www.gbif.org/dataset/6d9e952f-948c-4483-9807-575348147c7e).
-
-```{r remove_taxa}
-# Remove from occurrence data
-df <-
-  df %>%
-  filter(!taxonKey %in% taxa_to_remove_speciesKey)
-```
 
 ### Taxa in unified checklist without occurrences
 
@@ -241,7 +213,7 @@ spec_names <- map_df(
   taxon_key,
   function(k) {
     pb$tick()
-    name_usage(key = k, return = "data")
+    name_usage(key = k)$data
   }
 ) %>%
   select(
@@ -282,7 +254,7 @@ kingdom_class <- map_df(
   class_key,
   function(x) {
     pb$tick()
-    name_usage(key = x, return = "data")
+    name_usage(key = x)$data
   }
 ) %>%
   select(classKey, class, kingdomKey, kingdom)
@@ -291,9 +263,21 @@ kingdom_class <- map_df(
 and we add them:
 
 ```{r add_kingdom_class}
+# add class
 spec_names <-
   spec_names %>%
-  left_join(kingdom_class, by = c("kingdomKey", "classKey"))
+  left_join(kingdom_class %>%
+              distinct(.data$classKey, .data$class),
+            by = "classKey"
+  )
+
+# add kingdom
+spec_names <-
+  spec_names %>%
+  left_join(kingdom_class %>%
+              distinct(.data$kingdomKey, .data$kingdom),
+            by = "kingdomKey"
+  ) 
 ```
 
 Preview:
@@ -372,7 +356,7 @@ recent_alien_species <-
   taxa_df %>%
   # lower limit on date of first introduction if present
   filter(first_observed >= year_of_introduction | is.na(first_observed)) %>%
-  # remove duplciates due to other columns as pathways
+  # remove duplicates due to other columns as pathways
   distinct(nubKey, first_observed, last_observed) %>%
 
   # get classkey info and filter out taxa without data
@@ -380,13 +364,13 @@ recent_alien_species <-
 
   distinct(
     taxonKey = nubKey,
-    canonicalName,
-    first_observed,
-    last_observed,
-    class,
-    kingdom,
-    classKey,
-    kingdomKey
+    .data$canonicalName,
+    .data$first_observed,
+    .data$last_observed,
+    .data$class,
+    .data$kingdom,
+    .data$classKey,
+    .data$kingdomKey
   )
 ```
 

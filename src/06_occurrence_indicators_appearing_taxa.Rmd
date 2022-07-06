@@ -11,6 +11,7 @@ output:
     toc_depth: 3
     toc_float: true
     number_sections: true
+    code_folding: show
 ---
 
 In this document we analyze the Belgian datacube to detect possible (re)appearing taxa in the last year. Such detection is based on some basic rules instead of using GAM (Generalized Additive Models) as the number of GBIF observations decreases sensibly during the current year as effect of a puslishing delay. We also take into account the appearing/reappearing in protected areas as additional warning.
@@ -108,7 +109,7 @@ df_ts_compact <-
 
 We define the function `is_appearing` for appearing/reappearing detection (this function could be moved to TrIAS package `trias` later):
 
-```{r decision_rules_function}
+```{r decision_rules_function, class.source = 'fold-hide'}
 #' @param df data frame with time series
 #' @param eval_years vector with years used for evaluation. Warning is returned
 #' if not a sequence. Typically present year and year before.

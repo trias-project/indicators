@@ -13,20 +13,31 @@
 <meta name="author" content="Toon Van Daele" />
 <meta name="author" content="Tim Adriaens" />
 
-<meta name="date" content="2020-06-10" />
+<meta name="date" content="2022-07-04" />
 
 <title>Detect appearing and reappearing species</title>
 
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.14.2/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
@@ -34,12 +45,16 @@
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
-<style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
 <script type="text/javascript">
 if (window.hljs) {
   hljs.configure({languages: []});
@@ -52,34 +67,10 @@ if (window.hljs) {
 
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
 
-<link rel="stylesheet" href="static\css\trias.css" type="text/css" />
+
+
+<link rel="stylesheet" href="static/css/trias.css" type="text/css" />
 
 
 
@@ -88,10 +79,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -108,40 +95,16 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 45px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 50px;
-  margin-top: -50px;
-}
-.section h2 {
-  padding-top: 50px;
-  margin-top: -50px;
-}
-.section h3 {
-  padding-top: 50px;
-  margin-top: -50px;
-}
-.section h4 {
-  padding-top: 50px;
-  margin-top: -50px;
-}
-.section h5 {
-  padding-top: 50px;
-  margin-top: -50px;
-}
-.section h6 {
-  padding-top: 50px;
-  margin-top: -50px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -169,7 +132,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -181,7 +144,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -192,10 +155,23 @@ $(document).ready(function () {
   var menuAnchor = $('a[href="' + href + '"]');
 
   // mark it active
-  menuAnchor.parent().addClass('active');
+  menuAnchor.tab('show');
 
   // if it's got a parent navbar menu mark it active as well
   menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -207,7 +183,6 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -257,6 +232,9 @@ $(document).ready(function () {
 </style>
 
 <!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
 
 
 
@@ -333,7 +311,7 @@ div.tocify {
 
 
 <!-- setup 3col/9col grid for toc_float and main content  -->
-<div class="row-fluid">
+<div class="row">
 <div class="col-xs-12 col-sm-4 col-md-3">
 <div id="TOC" class="tocify">
 </div>
@@ -347,7 +325,7 @@ div.tocify {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -357,7 +335,7 @@ div.tocify {
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Checklist-based indicators
      
     <span class="caret"></span>
@@ -378,7 +356,7 @@ div.tocify {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Occurrence-based indicators
      
     <span class="caret"></span>
@@ -391,7 +369,7 @@ div.tocify {
       <a href="06_occurrence_indicators_appearing_taxa.html">Appearing-reappearing species</a>
     </li>
     <li class="dropdown-submenu">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Emerging status analysis</a>
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Emerging status analysis</a>
       <ul class="dropdown-menu" role="menu">
         <li>
           <a href="07_occurrence_indicators_modelling.html">Assessing emerging status of alien species</a>
@@ -402,7 +380,7 @@ div.tocify {
       </ul>
     </li>
     <li class="dropdown-submenu">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Protected areas analysis</a>
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Protected areas analysis</a>
       <ul class="dropdown-menu" role="menu">
         <li>
           <a href="09_define_overlay_grid_belgium_with_protected_areas.html">Belgian protected areas and EEA grid of Belgium</a>
@@ -430,21 +408,35 @@ div.tocify {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
+
+<div class="btn-group pull-right float-right">
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
 
 
 
-<h1 class="title toc-ignore">Detect appearing and reappearing species</h1>
+<h1 class="title toc-ignore">Detect appearing and reappearing
+species</h1>
 <h4 class="author">Damiano Oldoni</h4>
 <h4 class="author">Toon Van Daele</h4>
 <h4 class="author">Tim Adriaens</h4>
-<h4 class="date">2020-06-10</h4>
+<h4 class="date">2022-07-04</h4>
 
 </div>
 
 
-<p>In this document we analyze the Belgian datacube to detect possible (re)appearing taxa in the last year. Such detection is based on some basic rules instead of using GAM (Generalized Additive Models) as the number of GBIF observations decreases sensibly during the current year as effect of a puslishing delay. We also take into account the appearing/reappearing in protected areas as additional warning.</p>
-<div id="setup" class="section level1">
+<p>In this document we analyze the Belgian datacube to detect possible
+(re)appearing taxa in the last year. Such detection is based on some
+basic rules instead of using GAM (Generalized Additive Models) as the
+number of GBIF observations decreases sensibly during the current year
+as effect of a puslishing delay. We also take into account the
+appearing/reappearing in protected areas as additional warning.</p>
+<div id="setup" class="section level1" number="1">
 <h1><span class="header-section-number">1</span> Setup</h1>
 <p>Load libraries:</p>
 <pre class="r"><code>library(tidyverse) # To do data science
@@ -452,7 +444,7 @@ library(tidylog) # To provide feedback on dplyr functions
 library(here) # To find files
 library(rgbif) # To get information from GBIF</code></pre>
 </div>
-<div id="get-data" class="section level1">
+<div id="get-data" class="section level1" number="2">
 <h1><span class="header-section-number">2</span> Get data</h1>
 <p>We read the output of preprocessing pipeline.</p>
 <p>Time series:</p>
@@ -460,7 +452,9 @@ library(rgbif) # To get information from GBIF</code></pre>
   here::here(&quot;data&quot;, &quot;interim&quot;, &quot;df_timeseries.tsv&quot;),
   na = &quot;&quot;
 )</code></pre>
-<p>Columns <code>pa_obs</code> and <code>pa_native_obs</code> indicate the presence (1) or absence (0) of the specific taxon and native species at class level.</p>
+<p>Columns <code>pa_obs</code> and <code>pa_native_obs</code> indicate
+the presence (1) or absence (0) of the specific taxon and native species
+at class level.</p>
 <p>Preview:</p>
 <pre class="r"><code># Get a taxon
 taxon &lt;-
@@ -475,7 +469,7 @@ df_ts %&gt;%
   )</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["taxonKey"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["year"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["eea_cell_code"],"name":[3],"type":["chr"],"align":["left"]},{"label":["obs"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["pa_obs"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["cobs"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["pa_cobs"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["classKey"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["natura2000"],"name":[9],"type":["lgl"],"align":["right"]}],"data":[{"1":"5411453","2":"2016","3":"1kmE3924N3102","4":"1","5":"1","6":"51","7":"1","8":"220","9":"FALSE"},{"1":"5411453","2":"2017","3":"1kmE3924N3102","4":"0","5":"0","6":"0","7":"0","8":"220","9":"FALSE"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["taxonKey"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["year"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["eea_cell_code"],"name":[3],"type":["chr"],"align":["left"]},{"label":["obs"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["pa_obs"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["cobs"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["pa_cobs"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["classKey"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["natura2000"],"name":[9],"type":["lgl"],"align":["right"]}],"data":[{"1":"3040233","2":"2016","3":"1kmE3924N3102","4":"0","5":"0","6":"0","7":"0","8":"220","9":"FALSE"},{"1":"3040233","2":"2017","3":"1kmE3924N3102","4":"0","5":"0","6":"0","7":"0","8":"220","9":"FALSE"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p>Taxonomic information:</p>
@@ -487,17 +481,24 @@ df_ts %&gt;%
   )
 )</code></pre>
 </div>
-<div id="detect-appearing---reappearing-species" class="section level1">
-<h1><span class="header-section-number">3</span> Detect appearing - reappearing species</h1>
+<div id="detect-appearing---reappearing-species" class="section level1"
+number="3">
+<h1><span class="header-section-number">3</span> Detect appearing -
+reappearing species</h1>
 <p>Years to evaluate:</p>
 <pre class="r"><code>present_year &lt;- lubridate::year(Sys.Date())
 years &lt;- c(present_year) - 1 # The last full year
 years</code></pre>
-<pre><code>## [1] 2019</code></pre>
-<p>We define the minimum latency (in years) before we speak about reappearance. For example, a latency time window of 3 years means that we consider a taxon reappearing in 2019 if observations occur in 2019 and 2015 or before:</p>
+<pre><code>## [1] 2021</code></pre>
+<p>We define the minimum latency (in years) before we speak about
+reappearance. For example, a latency time window of 3 years means that
+we consider a taxon reappearing in 2019 if observations occur in 2019
+and 2015 or before:</p>
 <pre class="r"><code>years_latency &lt;- 3</code></pre>
-<div id="appearing---reappearing-species-in-belgium" class="section level2">
-<h2><span class="header-section-number">3.1</span> Appearing - reappearing species in Belgium</h2>
+<div id="appearing---reappearing-species-in-belgium"
+class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Appearing -
+reappearing species in Belgium</h2>
 <p>Lump geographic information:</p>
 <pre class="r"><code>df_ts_compact &lt;-
   df_ts %&gt;%
@@ -509,8 +510,10 @@ years</code></pre>
     c_ncells = sum(pa_cobs)
   ) %&gt;%
   ungroup()</code></pre>
-<p>We define the function <code>is_appearing</code> for appearing/reappearing detection (this function could be moved to TrIAS package <code>trias</code> later):</p>
-<pre class="r"><code>#&#39; @param df data frame with time series
+<p>We define the function <code>is_appearing</code> for
+appearing/reappearing detection (this function could be moved to TrIAS
+package <code>trias</code> later):</p>
+<pre class="r fold-hide"><code>#&#39; @param df data frame with time series
 #&#39; @param eval_years vector with years used for evaluation. Warning is returned
 #&#39; if not a sequence. Typically present year and year before.
 #&#39; @param latency years of latency (no observations). Strictly positive integer.
@@ -607,15 +610,19 @@ is_appearing &lt;- function(df,
 )</code></pre>
 <p>Number of appearing taxa:</p>
 <pre class="r"><code>nrow(appearing_reappearing_taxa$appearing_taxa)</code></pre>
-<pre><code>## [1] 13</code></pre>
+<pre><code>## [1] 7</code></pre>
 <p>Number of reappearing taxa:</p>
 <pre class="r"><code>nrow(appearing_reappearing_taxa$reappearing_taxa)</code></pre>
-<pre><code>## [1] 36</code></pre>
+<pre><code>## [1] 28</code></pre>
 </div>
-<div id="appearing---reappearing-species-in-belgian-protected-areas" class="section level2">
-<h2><span class="header-section-number">3.2</span> Appearing - reappearing species in Belgian protected areas</h2>
-<p>We repeat the workflow defined above to assess which taxa are appearing or reappearing in protected areas.</p>
-<p>First we select data referring to protected areas (Natura2000) and then we lump geographical information:</p>
+<div id="appearing---reappearing-species-in-belgian-protected-areas"
+class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Appearing -
+reappearing species in Belgian protected areas</h2>
+<p>We repeat the workflow defined above to assess which taxa are
+appearing or reappearing in protected areas.</p>
+<p>First we select data referring to protected areas (Natura2000) and
+then we lump geographical information:</p>
 <pre class="r"><code>df_ts_compact_prot_areas &lt;-
   df_ts %&gt;%
   filter(natura2000 == TRUE) %&gt;%
@@ -627,7 +634,9 @@ is_appearing &lt;- function(df,
     c_ncells = sum(pa_cobs)
   ) %&gt;%
   ungroup()</code></pre>
-<p>We apply function <code>is_appearing</code>. Notice that we use occurrences about all Belgium to assess the reappearance in protected areas:</p>
+<p>We apply function <code>is_appearing</code>. Notice that we use
+occurrences about all Belgium to assess the reappearance in protected
+areas:</p>
 <pre class="r"><code>appearing_reappearing_taxa_prot_areas &lt;- is_appearing(
   df = df_ts_compact_prot_areas,
   eval_years = years,
@@ -636,14 +645,16 @@ is_appearing &lt;- function(df,
 )</code></pre>
 <p>Number of appearing taxa:</p>
 <pre class="r"><code>nrow(appearing_reappearing_taxa_prot_areas$appearing_taxa)</code></pre>
-<pre><code>## [1] 13</code></pre>
+<pre><code>## [1] 15</code></pre>
 <p>Number of reappearing taxa:</p>
 <pre class="r"><code>nrow(appearing_reappearing_taxa_prot_areas$reappearing_taxa)</code></pre>
-<pre><code>## [1] 9</code></pre>
+<pre><code>## [1] 6</code></pre>
 </div>
-<div id="merge" class="section level2">
+<div id="merge" class="section level2" number="3.3">
 <h2><span class="header-section-number">3.3</span> Merge</h2>
-<p>We merge appearing taxa from all Belgium and from protected areas. We rank taxa by area of occupancy (number of cells) in protected areas and in all Belgium. We do the same for reappearing taxa as well:</p>
+<p>We merge appearing taxa from all Belgium and from protected areas. We
+rank taxa by area of occupancy (number of cells) in protected areas and
+in all Belgium. We do the same for reappearing taxa as well:</p>
 <pre class="r"><code>app_reapp_global &lt;-
   map2(
     appearing_reappearing_taxa_prot_areas,
@@ -673,8 +684,9 @@ is_appearing &lt;- function(df,
     }
   )</code></pre>
 </div>
-<div id="add-canonical-names" class="section level2">
-<h2><span class="header-section-number">3.4</span> Add canonical names</h2>
+<div id="add-canonical-names" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> Add canonical
+names</h2>
 <p>Add taxonomic information for better readibility.</p>
 <pre class="r"><code>app_reapp_global &lt;- map(
   app_reapp_global,
@@ -685,9 +697,11 @@ is_appearing &lt;- function(df,
 )</code></pre>
 </div>
 </div>
-<div id="table-of-appearing-and-reappearing-taxa" class="section level1">
-<h1><span class="header-section-number">4</span> Table of appearing and reappearing taxa</h1>
-<div id="appearing-taxa" class="section level2">
+<div id="table-of-appearing-and-reappearing-taxa" class="section level1"
+number="4">
+<h1><span class="header-section-number">4</span> Table of appearing and
+reappearing taxa</h1>
+<div id="appearing-taxa" class="section level2" number="4.1">
 <h2><span class="header-section-number">4.1</span> Appearing taxa</h2>
 <p>Reorder columns of data.frame containing appearring taxa:</p>
 <pre class="r"><code>app_reapp_global$appearing_taxa &lt;-
@@ -709,12 +723,16 @@ is_appearing &lt;- function(df,
 <pre class="r"><code>app_reapp_global$appearing_taxa</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["taxonKey"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["canonicalName"],"name":[2],"type":["chr"],"align":["left"]},{"label":["year"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["ncells_prot_areas"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["ncells_BE"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["in_prot_areas"],"name":[6],"type":["lgl"],"align":["right"]},{"label":["in_BE"],"name":[7],"type":["lgl"],"align":["right"]},{"label":["class"],"name":[8],"type":["chr"],"align":["left"]},{"label":["kingdom"],"name":[9],"type":["chr"],"align":["left"]},{"label":["classKey"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["kingdomKey"],"name":[11],"type":["dbl"],"align":["right"]}],"data":[{"1":"5568442","2":"Dysphania anthelmintica","3":"2019","4":"3","5":"NA","6":"TRUE","7":"FALSE","8":"Magnoliopsida","9":"Plantae","10":"220","11":"6"},{"1":"3083488","2":"Paeonia officinalis","3":"2019","4":"1","5":"3","6":"TRUE","7":"TRUE","8":"Magnoliopsida","9":"Plantae","10":"220","11":"6"},{"1":"5845390","2":"Gracupica nigricollis","3":"2019","4":"1","5":"1","6":"TRUE","7":"TRUE","8":"Aves","9":"Animalia","10":"212","11":"1"},{"1":"7848321","2":"Linaria triornithophora","3":"2019","4":"1","5":"1","6":"TRUE","7":"TRUE","8":"Magnoliopsida","9":"Plantae","10":"220","11":"6"},{"1":"2493697","2":"Amandava subflava","3":"2019","4":"1","5":"NA","6":"TRUE","7":"FALSE","8":"Aves","9":"Animalia","10":"212","11":"1"},{"1":"2926042","2":"Nonea lutea","3":"2019","4":"1","5":"NA","6":"TRUE","7":"FALSE","8":"Magnoliopsida","9":"Plantae","10":"220","11":"6"},{"1":"2928238","2":"Phacelia campanularia","3":"2019","4":"1","5":"NA","6":"TRUE","7":"FALSE","8":"Magnoliopsida","9":"Plantae","10":"220","11":"6"},{"1":"2964167","2":"Lupinus albus","3":"2019","4":"1","5":"NA","6":"TRUE","7":"FALSE","8":"Magnoliopsida","9":"Plantae","10":"220","11":"6"},{"1":"3025858","2":"Cotoneaster ambiguus","3":"2019","4":"1","5":"NA","6":"TRUE","7":"FALSE","8":"Magnoliopsida","9":"Plantae","10":"220","11":"6"},{"1":"3138192","2":"Eutrochium purpureum","3":"2019","4":"1","5":"NA","6":"TRUE","7":"FALSE","8":"Magnoliopsida","9":"Plantae","10":"220","11":"6"},{"1":"4005004","2":"Lysimachia fortunei","3":"2019","4":"1","5":"NA","6":"TRUE","7":"FALSE","8":"Magnoliopsida","9":"Plantae","10":"220","11":"6"},{"1":"5353590","2":"Cercis siliquastrum","3":"2019","4":"1","5":"NA","6":"TRUE","7":"FALSE","8":"Magnoliopsida","9":"Plantae","10":"220","11":"6"},{"1":"7331666","2":"Melampyrum nemorosum","3":"2019","4":"1","5":"NA","6":"TRUE","7":"FALSE","8":"Magnoliopsida","9":"Plantae","10":"220","11":"6"},{"1":"2176858","2":"Philaeus chrysops","3":"2019","4":"NA","5":"3","6":"FALSE","7":"TRUE","8":"Arachnida","9":"Animalia","10":"367","11":"1"},{"1":"3046765","2":"Sisymbrium erysimoides","3":"2019","4":"NA","5":"2","6":"FALSE","7":"TRUE","8":"Magnoliopsida","9":"Plantae","10":"220","11":"6"},{"1":"1419894","2":"Euborellia annulipes","3":"2019","4":"NA","5":"1","6":"FALSE","7":"TRUE","8":"Insecta","9":"Animalia","10":"216","11":"1"},{"1":"1423286","2":"Ischnura senegalensis","3":"2019","4":"NA","5":"1","6":"FALSE","7":"TRUE","8":"Insecta","9":"Animalia","10":"216","11":"1"},{"1":"2295309","2":"Hawaiia minuscula","3":"2019","4":"NA","5":"1","6":"FALSE","7":"TRUE","8":"Gastropoda","9":"Animalia","10":"225","11":"1"},{"1":"2747750","2":"Crocus luteus","3":"2019","4":"NA","5":"1","6":"FALSE","7":"TRUE","8":"Liliopsida","9":"Plantae","10":"196","11":"6"},{"1":"2928589","2":"Ipomoea tricolor","3":"2019","4":"NA","5":"1","6":"FALSE","7":"TRUE","8":"Magnoliopsida","9":"Plantae","10":"220","11":"6"},{"1":"3729273","2":"Asarina procumbens","3":"2019","4":"NA","5":"1","6":"FALSE","7":"TRUE","8":"Magnoliopsida","9":"Plantae","10":"220","11":"6"},{"1":"3896282","2":"Teucrium hircanicum","3":"2019","4":"NA","5":"1","6":"FALSE","7":"TRUE","8":"Magnoliopsida","9":"Plantae","10":"220","11":"6"},{"1":"3905825","2":"Betonica macrantha","3":"2019","4":"NA","5":"1","6":"FALSE","7":"TRUE","8":"Magnoliopsida","9":"Plantae","10":"220","11":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["taxonKey"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["canonicalName"],"name":[2],"type":["chr"],"align":["left"]},{"label":["year"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["ncells_prot_areas"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["ncells_BE"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["in_prot_areas"],"name":[6],"type":["lgl"],"align":["right"]},{"label":["in_BE"],"name":[7],"type":["lgl"],"align":["right"]},{"label":["class"],"name":[8],"type":["chr"],"align":["left"]},{"label":["kingdom"],"name":[9],"type":["chr"],"align":["left"]},{"label":["classKey"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["kingdomKey"],"name":[11],"type":["dbl"],"align":["right"]}],"data":[{"1":"2153287","2":"Zoropsis spinimana","3":"2021","4":"2","5":"NA","6":"TRUE","7":"FALSE","8":"Arachnida","9":"Animalia","10":"367","11":"1"},{"1":"3172068","2":"Veronica cymbalaria","3":"2021","4":"2","5":"NA","6":"TRUE","7":"FALSE","8":"Magnoliopsida","9":"Plantae","10":"220","11":"6"},{"1":"7437751","2":"Urtica membranacea","3":"2021","4":"2","5":"NA","6":"TRUE","7":"FALSE","8":"Magnoliopsida","9":"Plantae","10":"220","11":"6"},{"1":"2480089","2":"Psephotus haematonotus","3":"2021","4":"1","5":"NA","6":"TRUE","7":"FALSE","8":"Aves","9":"Animalia","10":"212","11":"1"},{"1":"2486132","2":"Pycnonotus leucotis","3":"2021","4":"1","5":"NA","6":"TRUE","7":"FALSE","8":"Aves","9":"Animalia","10":"212","11":"1"},{"1":"2855893","2":"Allium roseum","3":"2021","4":"1","5":"NA","6":"TRUE","7":"FALSE","8":"Liliopsida","9":"Plantae","10":"196","11":"6"},{"1":"2927174","2":"Mentha requienii","3":"2021","4":"1","5":"NA","6":"TRUE","7":"FALSE","8":"Magnoliopsida","9":"Plantae","10":"220","11":"6"},{"1":"2984532","2":"Zelkova serrata","3":"2021","4":"1","5":"NA","6":"TRUE","7":"FALSE","8":"Magnoliopsida","9":"Plantae","10":"220","11":"6"},{"1":"3084839","2":"Mesembryanthemum crystallinum","3":"2021","4":"1","5":"NA","6":"TRUE","7":"FALSE","8":"Magnoliopsida","9":"Plantae","10":"220","11":"6"},{"1":"3136929","2":"Anaphalis triplinervis","3":"2021","4":"1","5":"NA","6":"TRUE","7":"FALSE","8":"Magnoliopsida","9":"Plantae","10":"220","11":"6"},{"1":"4487370","2":"Tropidosteptes pacificus","3":"2021","4":"1","5":"NA","6":"TRUE","7":"FALSE","8":"Insecta","9":"Animalia","10":"216","11":"1"},{"1":"5375012","2":"Arabis procurrens","3":"2021","4":"1","5":"NA","6":"TRUE","7":"FALSE","8":"Magnoliopsida","9":"Plantae","10":"220","11":"6"},{"1":"5530855","2":"Corydalis linstowiana","3":"2021","4":"1","5":"NA","6":"TRUE","7":"FALSE","8":"Magnoliopsida","9":"Plantae","10":"220","11":"6"},{"1":"7902463","2":"Lonicera maackii","3":"2021","4":"1","5":"NA","6":"TRUE","7":"FALSE","8":"Magnoliopsida","9":"Plantae","10":"220","11":"6"},{"1":"8898408","2":"Pseudemys concinna","3":"2021","4":"1","5":"NA","6":"TRUE","7":"FALSE","8":"Reptilia","9":"Animalia","10":"358","11":"1"},{"1":"5296015","2":"Sisyrinchium angustifolium","3":"2021","4":"NA","5":"2","6":"FALSE","7":"TRUE","8":"Liliopsida","9":"Plantae","10":"196","11":"6"},{"1":"1423286","2":"Ischnura senegalensis","3":"2021","4":"NA","5":"1","6":"FALSE","7":"TRUE","8":"Insecta","9":"Animalia","10":"216","11":"1"},{"1":"2868796","2":"Zantedeschia albomaculata","3":"2021","4":"NA","5":"1","6":"FALSE","7":"TRUE","8":"Liliopsida","9":"Plantae","10":"196","11":"6"},{"1":"3036169","2":"Hedera maroccana","3":"2021","4":"NA","5":"1","6":"FALSE","7":"TRUE","8":"Magnoliopsida","9":"Plantae","10":"220","11":"6"},{"1":"3188735","2":"Lythrum virgatum","3":"2021","4":"NA","5":"1","6":"FALSE","7":"TRUE","8":"Magnoliopsida","9":"Plantae","10":"220","11":"6"},{"1":"5400552","2":"Ageratina altissima","3":"2021","4":"NA","5":"1","6":"FALSE","7":"TRUE","8":"Magnoliopsida","9":"Plantae","10":"220","11":"6"},{"1":"5914287","2":"Melia azedarach","3":"2021","4":"NA","5":"1","6":"FALSE","7":"TRUE","8":"Magnoliopsida","9":"Plantae","10":"220","11":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<p>Empty <code>ncells_BE</code> and <code>in_BE</code> equal to FALSE means that the taxon is appearing in protected areas but not appearing outside, i.e. the taxon is maybe reappearing at Belgian level or occurring with a more stable presence. See next section for more details about.</p>
+<p>Empty <code>ncells_BE</code> and <code>in_BE</code> equal to FALSE
+means that the taxon is appearing in protected areas but not appearing
+outside, i.e. the taxon is maybe reappearing at Belgian level or
+occurring with a more stable presence. See next section for more details
+about.</p>
 </div>
-<div id="reappearing-taxa" class="section level2">
+<div id="reappearing-taxa" class="section level2" number="4.2">
 <h2><span class="header-section-number">4.2</span> Reappearing taxa</h2>
 <p>Reorder columns of data.frame containing reappearing taxa:</p>
 <pre class="r"><code>app_reapp_global$reappearing_taxa &lt;-
@@ -737,7 +755,7 @@ is_appearing &lt;- function(df,
 <pre class="r"><code>app_reapp_global$reappearing_taxa</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["taxonKey"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["canonicalName"],"name":[2],"type":["chr"],"align":["left"]},{"label":["year"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["ncells_prot_areas"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["ncells_BE"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["in_prot_areas"],"name":[6],"type":["lgl"],"align":["right"]},{"label":["in_BE"],"name":[7],"type":["lgl"],"align":["right"]},{"label":["n_latent_years"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["class"],"name":[9],"type":["chr"],"align":["left"]},{"label":["kingdom"],"name":[10],"type":["chr"],"align":["left"]},{"label":["classKey"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["kingdomKey"],"name":[12],"type":["dbl"],"align":["right"]}],"data":[{"1":"2498145","2":"Anas rhynchotis","3":"2019","4":"2","5":"4","6":"TRUE","7":"TRUE","8":"6","9":"Aves","10":"Animalia","11":"212","12":"1"},{"1":"2494070","2":"Ploceus melanocephalus","3":"2019","4":"1","5":"2","6":"TRUE","7":"TRUE","8":"10","9":"Aves","10":"Animalia","11":"212","12":"1"},{"1":"3026040","2":"Cotoneaster suecicus","3":"2019","4":"1","5":"2","6":"TRUE","7":"TRUE","8":"4","9":"Magnoliopsida","10":"Plantae","11":"220","12":"6"},{"1":"7331666","2":"Melampyrum nemorosum","3":"2019","4":"1","5":"2","6":"TRUE","7":"TRUE","8":"4","9":"Magnoliopsida","10":"Plantae","11":"220","12":"6"},{"1":"7433196","2":"Euonymus latifolius","3":"2019","4":"1","5":"2","6":"TRUE","7":"TRUE","8":"5","9":"Magnoliopsida","10":"Plantae","11":"220","12":"6"},{"1":"2215949","2":"Melita nitida","3":"2019","4":"1","5":"1","6":"TRUE","7":"TRUE","8":"10","9":"Malacostraca","10":"Animalia","11":"229","12":"1"},{"1":"2474029","2":"Alectoris chukar","3":"2019","4":"1","5":"1","6":"TRUE","7":"TRUE","8":"4","9":"Aves","10":"Animalia","11":"212","12":"1"},{"1":"2747939","2":"Crocosmia crocosmiiflora","3":"2019","4":"1","5":"1","6":"TRUE","7":"TRUE","8":"5","9":"Liliopsida","10":"Plantae","11":"196","12":"6"},{"1":"5229128","2":"Himantopus mexicanus","3":"2019","4":"1","5":"1","6":"TRUE","7":"TRUE","8":"4","9":"Aves","10":"Animalia","11":"212","12":"1"},{"1":"5410210","2":"Campanula fenestrellata","3":"2019","4":"NA","5":"3","6":"FALSE","7":"TRUE","8":"4","9":"Magnoliopsida","10":"Plantae","11":"220","12":"6"},{"1":"5200414","2":"Diplosoma listerianum","3":"2019","4":"NA","5":"2","6":"FALSE","7":"TRUE","8":"11","9":"Ascidiacea","10":"Animalia","11":"356","12":"1"},{"1":"1702101","2":"Anacridium aegyptium","3":"2019","4":"NA","5":"1","6":"FALSE","7":"TRUE","8":"9","9":"Insecta","10":"Animalia","11":"216","12":"1"},{"1":"2149679","2":"Holocnemus pluchei","3":"2019","4":"NA","5":"1","6":"FALSE","7":"TRUE","8":"18","9":"Arachnida","10":"Animalia","11":"367","12":"1"},{"1":"2157245","2":"Steatoda grossa","3":"2019","4":"NA","5":"1","6":"FALSE","7":"TRUE","8":"18","9":"Arachnida","10":"Animalia","11":"367","12":"1"},{"1":"2362486","2":"Hypophthalmichthys nobilis","3":"2019","4":"NA","5":"1","6":"FALSE","7":"TRUE","8":"4","9":"Actinopterygii","10":"Animalia","11":"204","12":"1"},{"1":"2479955","2":"Poicephalus cryptoxanthus","3":"2019","4":"NA","5":"1","6":"FALSE","7":"TRUE","8":"18","9":"Aves","10":"Animalia","11":"212","12":"1"},{"1":"2480542","2":"Buteo jamaicensis","3":"2019","4":"NA","5":"1","6":"FALSE","7":"TRUE","8":"4","9":"Aves","10":"Animalia","11":"212","12":"1"},{"1":"2498011","2":"Tadorna variegata","3":"2019","4":"NA","5":"1","6":"FALSE","7":"TRUE","8":"5","9":"Aves","10":"Animalia","11":"212","12":"1"},{"1":"2722380","2":"Carex crawfordii","3":"2019","4":"NA","5":"1","6":"FALSE","7":"TRUE","8":"6","9":"Liliopsida","10":"Plantae","11":"196","12":"6"},{"1":"2774846","2":"Chlorophytum comosum","3":"2019","4":"NA","5":"1","6":"FALSE","7":"TRUE","8":"4","9":"Liliopsida","10":"Plantae","11":"196","12":"6"},{"1":"2873994","2":"Aristolochia macrophylla","3":"2019","4":"NA","5":"1","6":"FALSE","7":"TRUE","8":"5","9":"Magnoliopsida","10":"Plantae","11":"220","12":"6"},{"1":"3125933","2":"Santolina chamaecyparissus","3":"2019","4":"NA","5":"1","6":"FALSE","7":"TRUE","8":"4","9":"Magnoliopsida","10":"Plantae","11":"220","12":"6"},{"1":"3131367","2":"Helichrysum petiolare","3":"2019","4":"NA","5":"1","6":"FALSE","7":"TRUE","8":"5","9":"Magnoliopsida","10":"Plantae","11":"220","12":"6"},{"1":"3152268","2":"Malvastrum coromandelianum","3":"2019","4":"NA","5":"1","6":"FALSE","7":"TRUE","8":"19","9":"Magnoliopsida","10":"Plantae","11":"220","12":"6"},{"1":"5296218","2":"Sisyrinchium californicum","3":"2019","4":"NA","5":"1","6":"FALSE","7":"TRUE","8":"4","9":"Liliopsida","10":"Plantae","11":"196","12":"6"},{"1":"5359249","2":"Trifolium rubens","3":"2019","4":"NA","5":"1","6":"FALSE","7":"TRUE","8":"19","9":"Magnoliopsida","10":"Plantae","11":"220","12":"6"},{"1":"5361841","2":"Pilea microphylla","3":"2019","4":"NA","5":"1","6":"FALSE","7":"TRUE","8":"14","9":"Magnoliopsida","10":"Plantae","11":"220","12":"6"},{"1":"5384393","2":"Amaranthus palmeri","3":"2019","4":"NA","5":"1","6":"FALSE","7":"TRUE","8":"10","9":"Magnoliopsida","10":"Plantae","11":"220","12":"6"},{"1":"5414932","2":"Chelone obliqua","3":"2019","4":"NA","5":"1","6":"FALSE","7":"TRUE","8":"4","9":"Magnoliopsida","10":"Plantae","11":"220","12":"6"},{"1":"5415054","2":"Forsythia intermedia","3":"2019","4":"NA","5":"1","6":"FALSE","7":"TRUE","8":"5","9":"Magnoliopsida","10":"Plantae","11":"220","12":"6"},{"1":"5686494","2":"Decaisnea insignis","3":"2019","4":"NA","5":"1","6":"FALSE","7":"TRUE","8":"4","9":"Magnoliopsida","10":"Plantae","11":"220","12":"6"},{"1":"5959118","2":"Bubo virginianus","3":"2019","4":"NA","5":"1","6":"FALSE","7":"TRUE","8":"4","9":"Aves","10":"Animalia","11":"212","12":"1"},{"1":"8144599","2":"Papaver nudicaule","3":"2019","4":"NA","5":"1","6":"FALSE","7":"TRUE","8":"5","9":"Magnoliopsida","10":"Plantae","11":"220","12":"6"},{"1":"8773480","2":"Koenigia fennica","3":"2019","4":"NA","5":"1","6":"FALSE","7":"TRUE","8":"5","9":"Magnoliopsida","10":"Plantae","11":"220","12":"6"},{"1":"9350124","2":"Natrix helvetica","3":"2019","4":"NA","5":"1","6":"FALSE","7":"TRUE","8":"5","9":"Reptilia","10":"Animalia","11":"358","12":"1"},{"1":"9567226","2":"Oxybasis glauca salina","3":"2019","4":"NA","5":"1","6":"FALSE","7":"TRUE","8":"4","9":"Magnoliopsida","10":"Plantae","11":"220","12":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["taxonKey"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["canonicalName"],"name":[2],"type":["chr"],"align":["left"]},{"label":["year"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["ncells_prot_areas"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["ncells_BE"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["in_prot_areas"],"name":[6],"type":["lgl"],"align":["right"]},{"label":["in_BE"],"name":[7],"type":["lgl"],"align":["right"]},{"label":["n_latent_years"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["class"],"name":[9],"type":["chr"],"align":["left"]},{"label":["kingdom"],"name":[10],"type":["chr"],"align":["left"]},{"label":["classKey"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["kingdomKey"],"name":[12],"type":["dbl"],"align":["right"]}],"data":[{"1":"2480766","2":"Threskiornis spinicollis","3":"2021","4":"1","5":"4","6":"TRUE","7":"TRUE","8":"4","9":"Aves","10":"Animalia","11":"212","12":"1"},{"1":"7988337","2":"Valerianella locusta oleracea","3":"2021","4":"1","5":"3","6":"TRUE","7":"TRUE","8":"7","9":"Magnoliopsida","10":"Plantae","11":"220","12":"6"},{"1":"2493698","2":"Amandava amandava","3":"2021","4":"1","5":"1","6":"TRUE","7":"TRUE","8":"5","9":"Aves","10":"Animalia","11":"212","12":"1"},{"1":"2498007","2":"Tadorna tadornoides","3":"2021","4":"1","5":"1","6":"TRUE","7":"TRUE","8":"5","9":"Aves","10":"Animalia","11":"212","12":"1"},{"1":"2874706","2":"Tamarix parviflora","3":"2021","4":"1","5":"1","6":"TRUE","7":"TRUE","8":"4","9":"Magnoliopsida","10":"Plantae","11":"220","12":"6"},{"1":"3136929","2":"Anaphalis triplinervis","3":"2021","4":"1","5":"1","6":"TRUE","7":"TRUE","8":"4","9":"Magnoliopsida","10":"Plantae","11":"220","12":"6"},{"1":"2441454","2":"Testudo hermanni","3":"2021","4":"NA","5":"5","6":"FALSE","7":"TRUE","8":"43","9":"Reptilia","10":"Animalia","11":"358","12":"1"},{"1":"2445034","2":"Tarentola mauritanica","3":"2021","4":"NA","5":"2","6":"FALSE","7":"TRUE","8":"4","9":"Reptilia","10":"Animalia","11":"358","12":"1"},{"1":"2687948","2":"Equisetum scirpoides","3":"2021","4":"NA","5":"2","6":"FALSE","7":"TRUE","8":"12","9":"Polypodiopsida","10":"Plantae","11":"7228684","12":"6"},{"1":"2749791","2":"Gladiolus italicus","3":"2021","4":"NA","5":"2","6":"FALSE","7":"TRUE","8":"9","9":"Liliopsida","10":"Plantae","11":"196","12":"6"},{"1":"5232445","2":"Branta sandvicensis","3":"2021","4":"NA","5":"2","6":"FALSE","7":"TRUE","8":"16","9":"Aves","10":"Animalia","11":"212","12":"1"},{"1":"7294681","2":"Pulmonaria longifolia","3":"2021","4":"NA","5":"2","6":"FALSE","7":"TRUE","8":"4","9":"Magnoliopsida","10":"Plantae","11":"220","12":"6"},{"1":"1313740","2":"Camponotus vagus","3":"2021","4":"NA","5":"1","6":"FALSE","7":"TRUE","8":"22","9":"Insecta","10":"Animalia","11":"216","12":"1"},{"1":"2362473","2":"Hypophthalmichthys molitrix","3":"2021","4":"NA","5":"1","6":"FALSE","7":"TRUE","8":"8","9":"Actinopterygii","10":"Animalia","11":"204","12":"1"},{"1":"2437232","2":"Cynomys ludovicianus","3":"2021","4":"NA","5":"1","6":"FALSE","7":"TRUE","8":"18","9":"Mammalia","10":"Animalia","11":"359","12":"1"},{"1":"2474944","2":"Grus japonensis","3":"2021","4":"NA","5":"1","6":"FALSE","7":"TRUE","8":"11","9":"Aves","10":"Animalia","11":"212","12":"1"},{"1":"2489005","2":"Acridotheres tristis","3":"2021","4":"NA","5":"1","6":"FALSE","7":"TRUE","8":"4","9":"Aves","10":"Animalia","11":"212","12":"1"},{"1":"2493598","2":"Lonchura punctulata","3":"2021","4":"NA","5":"1","6":"FALSE","7":"TRUE","8":"4","9":"Aves","10":"Animalia","11":"212","12":"1"},{"1":"2703346","2":"Anthoxanthum nitens","3":"2021","4":"NA","5":"1","6":"FALSE","7":"TRUE","8":"4","9":"Liliopsida","10":"Plantae","11":"196","12":"6"},{"1":"2762737","2":"Musa basjoo","3":"2021","4":"NA","5":"1","6":"FALSE","7":"TRUE","8":"5","9":"Liliopsida","10":"Plantae","11":"196","12":"6"},{"1":"2858963","2":"Narcissus tazetta","3":"2021","4":"NA","5":"1","6":"FALSE","7":"TRUE","8":"8","9":"Liliopsida","10":"Plantae","11":"196","12":"6"},{"1":"2989222","2":"Rubus tricolor","3":"2021","4":"NA","5":"1","6":"FALSE","7":"TRUE","8":"7","9":"Magnoliopsida","10":"Plantae","11":"220","12":"6"},{"1":"3026004","2":"Cotoneaster watereri","3":"2021","4":"NA","5":"1","6":"FALSE","7":"TRUE","8":"7","9":"Magnoliopsida","10":"Plantae","11":"220","12":"6"},{"1":"3119219","2":"Helianthus salicifolius","3":"2021","4":"NA","5":"1","6":"FALSE","7":"TRUE","8":"69","9":"Magnoliopsida","10":"Plantae","11":"220","12":"6"},{"1":"5229044","2":"Psittacula cyanocephala","3":"2021","4":"NA","5":"1","6":"FALSE","7":"TRUE","8":"7","9":"Aves","10":"Animalia","11":"212","12":"1"},{"1":"5341540","2":"Gilia achilleifolia","3":"2021","4":"NA","5":"1","6":"FALSE","7":"TRUE","8":"5","9":"Magnoliopsida","10":"Plantae","11":"220","12":"6"},{"1":"6391417","2":"Rumex thyrsiflorus","3":"2021","4":"NA","5":"1","6":"FALSE","7":"TRUE","8":"4","9":"Magnoliopsida","10":"Plantae","11":"220","12":"6"},{"1":"9185677","2":"Podarcis siculus","3":"2021","4":"NA","5":"1","6":"FALSE","7":"TRUE","8":"4","9":"Reptilia","10":"Animalia","11":"358","12":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p>Taxa appearing in protected areas and reappearing outside:</p>
@@ -747,30 +765,31 @@ is_appearing &lt;- function(df,
   select(taxonKey, canonicalName)</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["taxonKey"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["canonicalName"],"name":[2],"type":["chr"],"align":["left"]}],"data":[{"1":"7331666","2":"Melampyrum nemorosum"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["taxonKey"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["canonicalName"],"name":[2],"type":["chr"],"align":["left"]}],"data":[{"1":"3136929","2":"Anaphalis triplinervis"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<p>Taxa appearing in protected areas and with a stable presence outside:</p>
+<p>Taxa appearing in protected areas and with a stable presence
+outside:</p>
 <pre class="r"><code>app_reapp_global$appearing_taxa %&gt;%
   filter(in_BE == FALSE) %&gt;%
   filter(!taxonKey %in% app_reapp_global$reappearing_taxa$taxonKey) %&gt;%
   select(taxonKey, canonicalName, class, kingdom, classKey, kingdomKey)</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["taxonKey"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["canonicalName"],"name":[2],"type":["chr"],"align":["left"]},{"label":["class"],"name":[3],"type":["chr"],"align":["left"]},{"label":["kingdom"],"name":[4],"type":["chr"],"align":["left"]},{"label":["classKey"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["kingdomKey"],"name":[6],"type":["dbl"],"align":["right"]}],"data":[{"1":"5568442","2":"Dysphania anthelmintica","3":"Magnoliopsida","4":"Plantae","5":"220","6":"6"},{"1":"2493697","2":"Amandava subflava","3":"Aves","4":"Animalia","5":"212","6":"1"},{"1":"2926042","2":"Nonea lutea","3":"Magnoliopsida","4":"Plantae","5":"220","6":"6"},{"1":"2928238","2":"Phacelia campanularia","3":"Magnoliopsida","4":"Plantae","5":"220","6":"6"},{"1":"2964167","2":"Lupinus albus","3":"Magnoliopsida","4":"Plantae","5":"220","6":"6"},{"1":"3025858","2":"Cotoneaster ambiguus","3":"Magnoliopsida","4":"Plantae","5":"220","6":"6"},{"1":"3138192","2":"Eutrochium purpureum","3":"Magnoliopsida","4":"Plantae","5":"220","6":"6"},{"1":"4005004","2":"Lysimachia fortunei","3":"Magnoliopsida","4":"Plantae","5":"220","6":"6"},{"1":"5353590","2":"Cercis siliquastrum","3":"Magnoliopsida","4":"Plantae","5":"220","6":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["taxonKey"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["canonicalName"],"name":[2],"type":["chr"],"align":["left"]},{"label":["class"],"name":[3],"type":["chr"],"align":["left"]},{"label":["kingdom"],"name":[4],"type":["chr"],"align":["left"]},{"label":["classKey"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["kingdomKey"],"name":[6],"type":["dbl"],"align":["right"]}],"data":[{"1":"2153287","2":"Zoropsis spinimana","3":"Arachnida","4":"Animalia","5":"367","6":"1"},{"1":"3172068","2":"Veronica cymbalaria","3":"Magnoliopsida","4":"Plantae","5":"220","6":"6"},{"1":"7437751","2":"Urtica membranacea","3":"Magnoliopsida","4":"Plantae","5":"220","6":"6"},{"1":"2480089","2":"Psephotus haematonotus","3":"Aves","4":"Animalia","5":"212","6":"1"},{"1":"2486132","2":"Pycnonotus leucotis","3":"Aves","4":"Animalia","5":"212","6":"1"},{"1":"2855893","2":"Allium roseum","3":"Liliopsida","4":"Plantae","5":"196","6":"6"},{"1":"2927174","2":"Mentha requienii","3":"Magnoliopsida","4":"Plantae","5":"220","6":"6"},{"1":"2984532","2":"Zelkova serrata","3":"Magnoliopsida","4":"Plantae","5":"220","6":"6"},{"1":"3084839","2":"Mesembryanthemum crystallinum","3":"Magnoliopsida","4":"Plantae","5":"220","6":"6"},{"1":"4487370","2":"Tropidosteptes pacificus","3":"Insecta","4":"Animalia","5":"216","6":"1"},{"1":"5375012","2":"Arabis procurrens","3":"Magnoliopsida","4":"Plantae","5":"220","6":"6"},{"1":"5530855","2":"Corydalis linstowiana","3":"Magnoliopsida","4":"Plantae","5":"220","6":"6"},{"1":"7902463","2":"Lonicera maackii","3":"Magnoliopsida","4":"Plantae","5":"220","6":"6"},{"1":"8898408","2":"Pseudemys concinna","3":"Reptilia","4":"Animalia","5":"358","6":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p>Two examples:</p>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["taxonKey"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["canonicalName"],"name":[2],"type":["chr"],"align":["left"]},{"label":["year"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["classKey"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["obs"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["cobs.x"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["ncells"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["c_ncells.x"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["prot_areas_obs"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["cobs.y"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["prot_areas_ncells"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["c_ncells.y"],"name":[12],"type":["dbl"],"align":["right"]}],"data":[{"1":"5568442","2":"Dysphania anthelmintica","3":"2016","4":"220","5":"1","6":"21","7":"1","8":"1","9":"0","10":"0","11":"0","12":"0"},{"1":"5568442","2":"Dysphania anthelmintica","3":"2017","4":"220","5":"0","6":"0","7":"0","8":"0","9":"0","10":"0","11":"0","12":"0"},{"1":"5568442","2":"Dysphania anthelmintica","3":"2018","4":"220","5":"0","6":"0","7":"0","8":"0","9":"0","10":"0","11":"0","12":"0"},{"1":"5568442","2":"Dysphania anthelmintica","3":"2019","4":"220","5":"8","6":"195","7":"6","8":"6","9":"3","10":"116","11":"3","12":"3"},{"1":"5568442","2":"Dysphania anthelmintica","3":"2020","4":"220","5":"0","6":"0","7":"0","8":"0","9":"0","10":"0","11":"0","12":"0"},{"1":"2493697","2":"Amandava subflava","3":"1999","4":"212","5":"1","6":"5","7":"1","8":"1","9":"0","10":"0","11":"0","12":"0"},{"1":"2493697","2":"Amandava subflava","3":"2000","4":"212","5":"0","6":"0","7":"0","8":"0","9":"0","10":"0","11":"0","12":"0"},{"1":"2493697","2":"Amandava subflava","3":"2001","4":"212","5":"0","6":"0","7":"0","8":"0","9":"0","10":"0","11":"0","12":"0"},{"1":"2493697","2":"Amandava subflava","3":"2002","4":"212","5":"0","6":"0","7":"0","8":"0","9":"0","10":"0","11":"0","12":"0"},{"1":"2493697","2":"Amandava subflava","3":"2003","4":"212","5":"0","6":"0","7":"0","8":"0","9":"0","10":"0","11":"0","12":"0"},{"1":"2493697","2":"Amandava subflava","3":"2004","4":"212","5":"0","6":"0","7":"0","8":"0","9":"0","10":"0","11":"0","12":"0"},{"1":"2493697","2":"Amandava subflava","3":"2005","4":"212","5":"0","6":"0","7":"0","8":"0","9":"0","10":"0","11":"0","12":"0"},{"1":"2493697","2":"Amandava subflava","3":"2006","4":"212","5":"0","6":"0","7":"0","8":"0","9":"0","10":"0","11":"0","12":"0"},{"1":"2493697","2":"Amandava subflava","3":"2007","4":"212","5":"0","6":"0","7":"0","8":"0","9":"0","10":"0","11":"0","12":"0"},{"1":"2493697","2":"Amandava subflava","3":"2008","4":"212","5":"0","6":"0","7":"0","8":"0","9":"0","10":"0","11":"0","12":"0"},{"1":"2493697","2":"Amandava subflava","3":"2009","4":"212","5":"0","6":"0","7":"0","8":"0","9":"0","10":"0","11":"0","12":"0"},{"1":"2493697","2":"Amandava subflava","3":"2010","4":"212","5":"0","6":"0","7":"0","8":"0","9":"0","10":"0","11":"0","12":"0"},{"1":"2493697","2":"Amandava subflava","3":"2011","4":"212","5":"0","6":"0","7":"0","8":"0","9":"0","10":"0","11":"0","12":"0"},{"1":"2493697","2":"Amandava subflava","3":"2012","4":"212","5":"0","6":"0","7":"0","8":"0","9":"0","10":"0","11":"0","12":"0"},{"1":"2493697","2":"Amandava subflava","3":"2013","4":"212","5":"0","6":"0","7":"0","8":"0","9":"0","10":"0","11":"0","12":"0"},{"1":"2493697","2":"Amandava subflava","3":"2014","4":"212","5":"0","6":"0","7":"0","8":"0","9":"0","10":"0","11":"0","12":"0"},{"1":"2493697","2":"Amandava subflava","3":"2015","4":"212","5":"0","6":"0","7":"0","8":"0","9":"0","10":"0","11":"0","12":"0"},{"1":"2493697","2":"Amandava subflava","3":"2016","4":"212","5":"0","6":"0","7":"0","8":"0","9":"0","10":"0","11":"0","12":"0"},{"1":"2493697","2":"Amandava subflava","3":"2017","4":"212","5":"0","6":"0","7":"0","8":"0","9":"0","10":"0","11":"0","12":"0"},{"1":"2493697","2":"Amandava subflava","3":"2018","4":"212","5":"1","6":"5","7":"1","8":"1","9":"0","10":"0","11":"0","12":"0"},{"1":"2493697","2":"Amandava subflava","3":"2019","4":"212","5":"1","6":"34","7":"1","8":"1","9":"1","10":"34","11":"1","12":"1"},{"1":"2493697","2":"Amandava subflava","3":"2020","4":"212","5":"0","6":"0","7":"0","8":"0","9":"0","10":"0","11":"0","12":"0"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["taxonKey"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["canonicalName"],"name":[2],"type":["chr"],"align":["left"]},{"label":["year"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["classKey"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["obs"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["cobs.x"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["ncells"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["c_ncells.x"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["prot_areas_obs"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["cobs.y"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["prot_areas_ncells"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["c_ncells.y"],"name":[12],"type":["dbl"],"align":["right"]}],"data":[{"1":"2153287","2":"Zoropsis spinimana","3":"2007","4":"367","5":"2","6":"0","7":"1","8":"0","9":"0","10":"0","11":"0","12":"0"},{"1":"2153287","2":"Zoropsis spinimana","3":"2008","4":"367","5":"0","6":"0","7":"0","8":"0","9":"0","10":"0","11":"0","12":"0"},{"1":"2153287","2":"Zoropsis spinimana","3":"2009","4":"367","5":"3","6":"0","7":"1","8":"0","9":"0","10":"0","11":"0","12":"0"},{"1":"2153287","2":"Zoropsis spinimana","3":"2010","4":"367","5":"0","6":"0","7":"0","8":"0","9":"0","10":"0","11":"0","12":"0"},{"1":"2153287","2":"Zoropsis spinimana","3":"2011","4":"367","5":"1","6":"0","7":"1","8":"0","9":"0","10":"0","11":"0","12":"0"},{"1":"2153287","2":"Zoropsis spinimana","3":"2012","4":"367","5":"1","6":"0","7":"1","8":"0","9":"0","10":"0","11":"0","12":"0"},{"1":"2153287","2":"Zoropsis spinimana","3":"2013","4":"367","5":"5","6":"0","7":"3","8":"0","9":"0","10":"0","11":"0","12":"0"},{"1":"2153287","2":"Zoropsis spinimana","3":"2014","4":"367","5":"5","6":"6","7":"2","8":"1","9":"0","10":"0","11":"0","12":"0"},{"1":"2153287","2":"Zoropsis spinimana","3":"2015","4":"367","5":"12","6":"0","7":"5","8":"0","9":"0","10":"0","11":"0","12":"0"},{"1":"2153287","2":"Zoropsis spinimana","3":"2016","4":"367","5":"11","6":"4","7":"5","8":"2","9":"0","10":"0","11":"0","12":"0"},{"1":"2153287","2":"Zoropsis spinimana","3":"2017","4":"367","5":"16","6":"0","7":"6","8":"0","9":"0","10":"0","11":"0","12":"0"},{"1":"2153287","2":"Zoropsis spinimana","3":"2018","4":"367","5":"29","6":"1","7":"15","8":"1","9":"2","10":"0","11":"0","12":"0"},{"1":"2153287","2":"Zoropsis spinimana","3":"2019","4":"367","5":"31","6":"19","7":"22","8":"5","9":"5","10":"0","11":"0","12":"0"},{"1":"2153287","2":"Zoropsis spinimana","3":"2020","4":"367","5":"104","6":"18","7":"73","8":"10","9":"11","10":"0","11":"0","12":"0"},{"1":"2153287","2":"Zoropsis spinimana","3":"2021","4":"367","5":"189","6":"57","7":"123","8":"14","9":"27","10":"3","11":"2","12":"2"},{"1":"2153287","2":"Zoropsis spinimana","3":"2022","4":"367","5":"0","6":"0","7":"0","8":"0","9":"0","10":"0","11":"0","12":"0"},{"1":"3172068","2":"Veronica cymbalaria","3":"2016","4":"220","5":"1","6":"44","7":"1","8":"1","9":"0","10":"0","11":"0","12":"0"},{"1":"3172068","2":"Veronica cymbalaria","3":"2017","4":"220","5":"11","6":"376","7":"7","8":"7","9":"0","10":"0","11":"0","12":"0"},{"1":"3172068","2":"Veronica cymbalaria","3":"2018","4":"220","5":"3","6":"54","7":"2","8":"2","9":"0","10":"0","11":"0","12":"0"},{"1":"3172068","2":"Veronica cymbalaria","3":"2019","4":"220","5":"3","6":"78","7":"3","8":"3","9":"0","10":"0","11":"0","12":"0"},{"1":"3172068","2":"Veronica cymbalaria","3":"2020","4":"220","5":"9","6":"672","7":"7","8":"7","9":"0","10":"0","11":"0","12":"0"},{"1":"3172068","2":"Veronica cymbalaria","3":"2021","4":"220","5":"23","6":"397","7":"12","8":"12","9":"2","10":"33","11":"2","12":"2"},{"1":"3172068","2":"Veronica cymbalaria","3":"2022","4":"220","5":"0","6":"0","7":"0","8":"0","9":"0","10":"0","11":"0","12":"0"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
 </div>
-<div id="save-data" class="section level1">
+<div id="save-data" class="section level1" number="5">
 <h1><span class="header-section-number">5</span> Save data</h1>
-<div id="appearing-taxa-1" class="section level2">
+<div id="appearing-taxa-1" class="section level2" number="5.1">
 <h2><span class="header-section-number">5.1</span> Appearing taxa</h2>
 <p>Save appearing taxa:</p>
 <pre class="r"><code>write_tsv(app_reapp_global$appearing_taxa,
@@ -778,7 +797,7 @@ is_appearing &lt;- function(df,
   na = &quot;&quot;
 )</code></pre>
 </div>
-<div id="reappearing-taxa-1" class="section level2">
+<div id="reappearing-taxa-1" class="section level2" number="5.2">
 <h2><span class="header-section-number">5.2</span> Reappearing taxa</h2>
 <p>Save reappearing taxa:</p>
 <pre class="r"><code>write_tsv(app_reapp_global$reappearing_taxa,
@@ -799,7 +818,7 @@ is_appearing &lt;- function(df,
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
@@ -817,15 +836,23 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>
 
 <!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("show" === "show");
+});
+</script>
 
 <script>
 $(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
 
     // move toc-ignore selectors from section div to header
     $('div.section.toc-ignore')
@@ -838,7 +865,7 @@ $(document).ready(function ()  {
       theme: "bootstrap3",
       context: '.toc-content',
       hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
       },
       ignoreSelector: ".toc-ignore",
       scrollTo: 0

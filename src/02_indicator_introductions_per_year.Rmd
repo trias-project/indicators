@@ -25,8 +25,9 @@ knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 
 Load libraries:
 
-```{r load_libraries}
+```{r load_libraries, warning=FALSE}
 library(tidyverse) # To do datascience
+library(magrittr) # To use extract2 function
 library(tidylog) # To provide feedback on dplyr functions
 library(rlang) # To use Standard Evaluation in dplyr (!!sym())
 library(here) # To find files
@@ -80,7 +81,8 @@ data %>%
     x_major_scale_stepsize = 10,
     x_minor_scale_stepsize = 2.5,
     facet_column = facet_column
-  )
+  ) %>%
+  extract2("plot")
 ```
 
 ## Grouping by species profile
@@ -101,7 +103,8 @@ data %>%
     x_major_scale_stepsize = 10,
     x_minor_scale_stepsize = 2.5,
     facet_column = facet_column
-  )
+  ) %>%
+  extract2("plot")
 ```
 
 # Checklist indicators for Living Planet Index
@@ -129,7 +132,8 @@ data %>%
     x_major_scale_stepsize = 10,
     x_minor_scale_stepsize = 2.5,
     facet_column = facet_column
-  )
+  ) %>%
+  extract2("plot")
 ```
 
 ## Grouping by species profile
@@ -155,5 +159,6 @@ data %>%
     x_major_scale_stepsize = 10,
     x_minor_scale_stepsize = 2.5,
     facet_column = facet_column
-  )
+  ) %>%
+  extract2("plot")
 ```

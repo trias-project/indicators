@@ -13,11 +13,11 @@
 <meta name="author" content="Stijn Van Hoey" />
 <meta name="author" content="Tim Adriaens" />
 
-<meta name="date" content="2022-01-03" />
+<meta name="date" content="2022-07-06" />
 
 <title>Indicator: Pathways associated with alien species introductions</title>
 
-<script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
@@ -70,6 +70,7 @@ if (window.hljs) {
 
 
 
+
 <link rel="stylesheet" href="static/css/trias.css" type="text/css" />
 
 
@@ -94,6 +95,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -319,7 +323,7 @@ div.tocify {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -329,7 +333,7 @@ div.tocify {
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Checklist-based indicators
      
     <span class="caret"></span>
@@ -350,7 +354,7 @@ div.tocify {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Occurrence-based indicators
      
     <span class="caret"></span>
@@ -363,7 +367,7 @@ div.tocify {
       <a href="06_occurrence_indicators_appearing_taxa.html">Appearing-reappearing species</a>
     </li>
     <li class="dropdown-submenu">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Emerging status analysis</a>
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Emerging status analysis</a>
       <ul class="dropdown-menu" role="menu">
         <li>
           <a href="07_occurrence_indicators_modelling.html">Assessing emerging status of alien species</a>
@@ -374,7 +378,7 @@ div.tocify {
       </ul>
     </li>
     <li class="dropdown-submenu">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Protected areas analysis</a>
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Protected areas analysis</a>
       <ul class="dropdown-menu" role="menu">
         <li>
           <a href="09_define_overlay_grid_belgium_with_protected_areas.html">Belgian protected areas and EEA grid of Belgium</a>
@@ -406,20 +410,24 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Indicator: Pathways associated with alien species introductions</h1>
+<h1 class="title toc-ignore">Indicator: Pathways associated with alien
+species introductions</h1>
 <h4 class="author">Damiano Oldoni</h4>
 <h4 class="author">Stijn Van Hoey</h4>
 <h4 class="author">Tim Adriaens</h4>
-<h4 class="date">2022-01-03</h4>
+<h4 class="date">2022-07-06</h4>
 
 </div>
 
 
-<p>This document describes how to build indicators based on checklist data. In particular, this document focuses on pathways of introduction.</p>
+<p>This document describes how to build indicators based on checklist
+data. In particular, this document focuses on pathways of
+introduction.</p>
 <div id="setup" class="section level1" number="1">
 <h1><span class="header-section-number">1</span> Setup</h1>
 <p>Load libraries:</p>
 <pre class="r"><code>library(tidyverse) # To do datascience
+library(magrittr) # To use extract2 function
 library(tidylog) # To provide feedback on dplyr functions
 library(here) # To find files
 library(trias) # To use functions developed for TrIAS
@@ -442,7 +450,11 @@ data &lt;- read_tsv(data_file,
 <h1><span class="header-section-number">3</span> Pathway indicators</h1>
 <div id="find-categories" class="section level2" number="3.1">
 <h2><span class="header-section-number">3.1</span> Find categories</h2>
-<p>We divide the species in categories. Each kingdom, except <em>Animalia</em>, is a category. If animal species are present, they are separated in two categories: vertebrates (phylum <code>Chordata</code>) and invertebrates (phylum other than <code>Chordata</code>, defined as <code>Not Chordata</code>).</p>
+<p>We divide the species in categories. Each kingdom, except
+<em>Animalia</em>, is a category. If animal species are present, they
+are separated in two categories: vertebrates (phylum
+<code>Chordata</code>) and invertebrates (phylum other than
+<code>Chordata</code>, defined as <code>Not Chordata</code>).</p>
 <p>Categories present in our checklist data:</p>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
@@ -451,20 +463,26 @@ data &lt;- read_tsv(data_file,
 </div>
 </div>
 <div id="pathway-analysis-level-1" class="section level2" number="3.2">
-<h2><span class="header-section-number">3.2</span> Pathway analysis level 1</h2>
+<h2><span class="header-section-number">3.2</span> Pathway analysis
+level 1</h2>
 <p>Total number of taxa introduced for each pathway level 1:</p>
-<pre class="r"><code>visualize_pathways_level1(df = data)</code></pre>
+<pre class="r"><code>data %&gt;% 
+  visualize_pathways_level1() %&gt;% 
+  extract2(&quot;plot&quot;)</code></pre>
 <p><img src="04_indicator_pathways_files/figure-html/pathway_level1_anaysis-1.png" width="672" /></p>
 <p>Per category:</p>
 <pre class="r"><code>map(categories$category, function(x) {
-  visualize_pathways_level1(df = data,
-                            category = x,
-                            title = x)}
-)</code></pre>
+  data %&gt;% 
+    visualize_pathways_level1(
+      category = x,
+      title = x) %&gt;%
+  extract2(&quot;plot&quot;)
+})</code></pre>
 <p><img src="04_indicator_pathways_files/figure-html/pathway_level1_anaysis_per_kingdom-1.png" width="672" /><img src="04_indicator_pathways_files/figure-html/pathway_level1_anaysis_per_kingdom-2.png" width="672" /><img src="04_indicator_pathways_files/figure-html/pathway_level1_anaysis_per_kingdom-3.png" width="672" /><img src="04_indicator_pathways_files/figure-html/pathway_level1_anaysis_per_kingdom-4.png" width="672" /><img src="04_indicator_pathways_files/figure-html/pathway_level1_anaysis_per_kingdom-5.png" width="672" /><img src="04_indicator_pathways_files/figure-html/pathway_level1_anaysis_per_kingdom-6.png" width="672" /></p>
 </div>
 <div id="pathways-analysis-level-2" class="section level2" number="3.3">
-<h2><span class="header-section-number">3.3</span> Pathways analysis level 2</h2>
+<h2><span class="header-section-number">3.3</span> Pathways analysis
+level 2</h2>
 <p>Total number of taxa introduced for pathways level 2:</p>
 <pre class="r"><code>pathways_level1 &lt;- 
   data %&gt;%
@@ -473,9 +491,10 @@ data &lt;- read_tsv(data_file,
   pull()
 map(pathways_level1,
     function(x) {
-      visualize_pathways_level2(df = data,
-                                chosen_pathway_level1 = x,
-                                title = x)
+      data %&gt;%
+        visualize_pathways_level2(chosen_pathway_level1 = x,
+                                  title = x) %&gt;% 
+        extract2(&quot;plot&quot;)
     }
 )</code></pre>
 <p><img src="04_indicator_pathways_files/figure-html/pathway_level2_anaysis-1.png" width="672" /><img src="04_indicator_pathways_files/figure-html/pathway_level2_anaysis-2.png" width="672" /><img src="04_indicator_pathways_files/figure-html/pathway_level2_anaysis-3.png" width="672" /><img src="04_indicator_pathways_files/figure-html/pathway_level2_anaysis-4.png" width="672" /><img src="04_indicator_pathways_files/figure-html/pathway_level2_anaysis-5.png" width="672" /><img src="04_indicator_pathways_files/figure-html/pathway_level2_anaysis-6.png" width="672" /></p>
@@ -484,30 +503,38 @@ map(pathways_level1,
 map2(categories_path_lev1$category,
      categories_path_lev1$pathways_level1,
      function(x, y) {
-       visualize_pathways_level2(df = data,
-                                 chosen_pathway_level1 = y,
-                                 category = x,
-                                 title = paste(x, y, collapse = &quot;: &quot;))}
+       data %&gt;%
+         visualize_pathways_level2(chosen_pathway_level1 = y,
+                                   category = x,
+                                   title = paste(x, y, collapse = &quot;: &quot;)) %&gt;% 
+         extract2(&quot;plot&quot;)}
 )</code></pre>
 <p><img src="04_indicator_pathways_files/figure-html/pathway_level2_anaysis_per_kingdom-1.png" width="672" /><img src="04_indicator_pathways_files/figure-html/pathway_level2_anaysis_per_kingdom-2.png" width="672" /><img src="04_indicator_pathways_files/figure-html/pathway_level2_anaysis_per_kingdom-3.png" width="672" /><img src="04_indicator_pathways_files/figure-html/pathway_level2_anaysis_per_kingdom-4.png" width="672" /><img src="04_indicator_pathways_files/figure-html/pathway_level2_anaysis_per_kingdom-5.png" width="672" /><img src="04_indicator_pathways_files/figure-html/pathway_level2_anaysis_per_kingdom-6.png" width="672" /><img src="04_indicator_pathways_files/figure-html/pathway_level2_anaysis_per_kingdom-7.png" width="672" /><img src="04_indicator_pathways_files/figure-html/pathway_level2_anaysis_per_kingdom-8.png" width="672" /><img src="04_indicator_pathways_files/figure-html/pathway_level2_anaysis_per_kingdom-9.png" width="672" /><img src="04_indicator_pathways_files/figure-html/pathway_level2_anaysis_per_kingdom-10.png" width="672" /><img src="04_indicator_pathways_files/figure-html/pathway_level2_anaysis_per_kingdom-11.png" width="672" /><img src="04_indicator_pathways_files/figure-html/pathway_level2_anaysis_per_kingdom-12.png" width="672" /><img src="04_indicator_pathways_files/figure-html/pathway_level2_anaysis_per_kingdom-13.png" width="672" /><img src="04_indicator_pathways_files/figure-html/pathway_level2_anaysis_per_kingdom-14.png" width="672" /><img src="04_indicator_pathways_files/figure-html/pathway_level2_anaysis_per_kingdom-15.png" width="672" /><img src="04_indicator_pathways_files/figure-html/pathway_level2_anaysis_per_kingdom-16.png" width="672" /><img src="04_indicator_pathways_files/figure-html/pathway_level2_anaysis_per_kingdom-17.png" width="672" /><img src="04_indicator_pathways_files/figure-html/pathway_level2_anaysis_per_kingdom-18.png" width="672" /><img src="04_indicator_pathways_files/figure-html/pathway_level2_anaysis_per_kingdom-19.png" width="672" /><img src="04_indicator_pathways_files/figure-html/pathway_level2_anaysis_per_kingdom-20.png" width="672" /><img src="04_indicator_pathways_files/figure-html/pathway_level2_anaysis_per_kingdom-21.png" width="672" /></p>
 </div>
-<div id="pathways-level-1-evolution" class="section level2" number="3.4">
-<h2><span class="header-section-number">3.4</span> Pathways level 1 evolution</h2>
+<div id="pathways-level-1-evolution" class="section level2"
+number="3.4">
+<h2><span class="header-section-number">3.4</span> Pathways level 1
+evolution</h2>
 <p>We show the evolution in time of the pathways level 1.</p>
 <p>First, considering all taxa:</p>
-<pre class="r"><code>visualize_pathways_year_level1(data)</code></pre>
+<pre class="r"><code>data %&gt;%
+  visualize_pathways_year_level1() %&gt;%
+  extract2(&quot;plot&quot;)</code></pre>
 <p><img src="04_indicator_pathways_files/figure-html/visualize_pathways_year_level1_all-1.png" width="672" /></p>
 <p>and now splitting them by category:</p>
 <pre class="r"><code>map(categories$category, function(x) {
-  visualize_pathways_year_level1(df = data,
-                                 category = x,
-                                 title = x)}
+  data %&gt;%
+    visualize_pathways_year_level1(category = x, title = x) %&gt;%
+    extract2(&quot;plot&quot;)}
 )</code></pre>
 <p><img src="04_indicator_pathways_files/figure-html/visualize_pathways_year_level1_category-1.png" width="672" /><img src="04_indicator_pathways_files/figure-html/visualize_pathways_year_level1_category-2.png" width="672" /><img src="04_indicator_pathways_files/figure-html/visualize_pathways_year_level1_category-3.png" width="672" /><img src="04_indicator_pathways_files/figure-html/visualize_pathways_year_level1_category-4.png" width="672" /><img src="04_indicator_pathways_files/figure-html/visualize_pathways_year_level1_category-5.png" width="672" /><img src="04_indicator_pathways_files/figure-html/visualize_pathways_year_level1_category-6.png" width="672" /></p>
 </div>
 <div id="pathways-analysis-tables" class="section level2" number="3.5">
-<h2><span class="header-section-number">3.5</span> Pathways analysis: tables</h2>
-<p>We also summarize pathway information in one table per category. Number of species for each pathway level 2 and some species as example are provided.</p>
+<h2><span class="header-section-number">3.5</span> Pathways analysis:
+tables</h2>
+<p>We also summarize pathway information in one table per category.
+Number of species for each pathway level 2 and some species as example
+are provided.</p>
 <p>Number of species returned in table as examples of the group:</p>
 <pre class="r"><code>n_species &lt;- 5</code></pre>
 <p>We limit to pathways of taxa introduced from 2000.</p>
@@ -521,12 +548,16 @@ get_table_pathways(data,
 ))
 names(tables) &lt;- categories$category</code></pre>
 <div id="pathways-per-category" class="section level3" number="3.5.1">
-<h3><span class="header-section-number">3.5.1</span> Pathways per category</h3>
-<p>Intentionality of introduction is mapped by cell color background: white for intentional introduction (pathway value: <code>release</code>), light orange for unintentional introduction.</p>
+<h3><span class="header-section-number">3.5.1</span> Pathways per
+category</h3>
+<p>Intentionality of introduction is mapped by cell color background:
+white for intentional introduction (pathway value:
+<code>release</code>), light orange for unintentional introduction.</p>
 <div id="plantae" class="section level4" number="3.5.1.1">
 <h4><span class="header-section-number">3.5.1.1</span> Plantae</h4>
 <p>Pathways associated to plants (category <code>Plantae</code>):</p>
-<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:10cm; overflow-x: scroll; width:100%; ">
+<div
+style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:10cm; overflow-x: scroll; width:100%; ">
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -556,7 +587,8 @@ habitat_material
 19
 </td>
 <td style="text-align:left;background-color: #faf0e6 !important;">
-Moricandia arvensis, Potentilla intermedia, Oenothera cambrica, Erigeron floribundus, Arabidopsis arenosa arenosa
+Silene italica, Oenothera casimiri, Odontites jaubertianus, Moricandia
+arvensis, Epilobium brachycarpum
 </td>
 </tr>
 <tr>
@@ -570,7 +602,8 @@ nursery
 5
 </td>
 <td style="text-align:left;background-color: #faf0e6 !important;">
-Wolffia columbiana, Phyllanthus tenellus, Acalypha indica, Cardamine graeca, Cardamine corymbosa
+Cardamine graeca, Wolffia columbiana, Acalypha indica, Cardamine
+corymbosa, Phyllanthus tenellus
 </td>
 </tr>
 <tr>
@@ -584,7 +617,8 @@ on_animals
 4
 </td>
 <td style="text-align:left;background-color: #faf0e6 !important;">
-Bolboschoenus yagara, Lemna turionifera, Eleocharis engelmannii, Nicotiana glauca
+Bolboschoenus yagara, Lemna turionifera, Eleocharis engelmannii,
+Nicotiana glauca
 </td>
 </tr>
 <tr>
@@ -598,7 +632,8 @@ seed
 60
 </td>
 <td style="text-align:left;background-color: #faf0e6 !important;">
-Eriochloa villosa, Cuscuta epilinum, Salvia hispanica, Conringia planisiliqua, Heracleum sphondylium sibiricum
+Cichorium calvum, Vicia cuspidata, Oryza sativa, Echinochloa oryzoides,
+Ranunculus pensylvanicus
 </td>
 </tr>
 <tr>
@@ -612,7 +647,8 @@ timber
 4
 </td>
 <td style="text-align:left;background-color: #faf0e6 !important;">
-Carex loliacea, Melampyrum nemorosum, Symphyotrichum lateriflorum, Euphorbia vermiculata
+Melampyrum nemorosum, Carex loliacea, Euphorbia vermiculata,
+Symphyotrichum lateriflorum
 </td>
 </tr>
 <tr>
@@ -640,7 +676,8 @@ unknown
 4
 </td>
 <td style="text-align:left;background-color: #faf0e6 !important;">
-Eichhornia crassipes, Campylopus introflexus, Akebia quinata, Cortaderia selloana
+Akebia quinata, Cortaderia selloana, Campylopus introflexus, Eichhornia
+crassipes
 </td>
 </tr>
 <tr>
@@ -654,7 +691,7 @@ agriculture
 2
 </td>
 <td style="text-align:left;background-color: #faf0e6 !important;">
-Valerianella locusta oleracea, Allium cepa
+Allium cepa, Valerianella locusta oleracea
 </td>
 </tr>
 <tr>
@@ -668,7 +705,8 @@ food_bait
 8
 </td>
 <td style="text-align:left;background-color: #faf0e6 !important;">
-Thladiantha dubia, Actinidia deliciosa, Pastinaca sativa sativa, Cucurbita maxima, Jaltomata procumbens
+Allium ramosum, Pastinaca sativa sativa, Persea americana, Cucurbita
+moschata, Thladiantha dubia
 </td>
 </tr>
 <tr>
@@ -682,7 +720,8 @@ horticulture
 463
 </td>
 <td style="text-align:left;background-color: #faf0e6 !important;">
-Phyllostachys viridiglaucescens, Melampodium montanum, Myosotis alpestris, Hypericum hidcoteense, Carex grayi
+Agastache rugosa, Ligustrum sinense, Cotoneaster nanshan, Ophiopogon
+jaburan, Myosotis alpestris
 </td>
 </tr>
 <tr>
@@ -710,7 +749,8 @@ unknown
 4
 </td>
 <td style="text-align:left;background-color: white !important;">
-Eichhornia crassipes, Lysichiton americanus, Akebia quinata, Cortaderia selloana
+Cortaderia selloana, Lysichiton americanus, Eichhornia crassipes, Akebia
+quinata
 </td>
 </tr>
 <tr>
@@ -724,7 +764,8 @@ people_luggage
 7
 </td>
 <td style="text-align:left;background-color: #faf0e6 !important;">
-Filago congesta, Parentucellia latifolia, Trifolium suffocatum, Trifolium nigrescens, Paronychia argentea
+Paronychia argentea, Trifolium nigrescens, Spergularia bocconei, Filago
+congesta, Poa infirma
 </td>
 </tr>
 <tr>
@@ -738,7 +779,8 @@ unknown
 4
 </td>
 <td style="text-align:left;background-color: #faf0e6 !important;">
-Urtica membranacea, Euphorbia prostrata, Campylopus introflexus, Chondrilla juncea
+Chondrilla juncea, Euphorbia prostrata, Urtica membranacea, Campylopus
+introflexus
 </td>
 </tr>
 <tr>
@@ -752,7 +794,8 @@ natural_dispersal
 4
 </td>
 <td style="text-align:left;background-color: #faf0e6 !important;">
-Akebia quinata, Campylopus introflexus, Eichhornia crassipes, Cortaderia selloana
+Eichhornia crassipes, Akebia quinata, Cortaderia selloana, Campylopus
+introflexus
 </td>
 </tr>
 <tr>
@@ -766,7 +809,8 @@ unknown
 66
 </td>
 <td style="text-align:left;background-color: #faf0e6 !important;">
-Mazus pumilus, Rumex kerneri, Paspalum saurae, Bidens radiata, Trifolium pannonicum
+Erigeron huelsenii, Lamium confertum, Oenothera royfraseri, Carex
+secalina, Rumex kerneri
 </td>
 </tr>
 </tbody>
@@ -775,8 +819,10 @@ Mazus pumilus, Rumex kerneri, Paspalum saurae, Bidens radiata, Trifolium pannoni
 </div>
 <div id="vertebrates" class="section level4" number="3.5.1.2">
 <h4><span class="header-section-number">3.5.1.2</span> Vertebrates</h4>
-<p>Pathways associated to vertebrates (category <code>Chordata</code>):</p>
-<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:10cm; overflow-x: scroll; width:100%; ">
+<p>Pathways associated to vertebrates (category
+<code>Chordata</code>):</p>
+<div
+style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:10cm; overflow-x: scroll; width:100%; ">
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -820,7 +866,7 @@ timber
 2
 </td>
 <td style="text-align:left;background-color: #faf0e6 !important;">
-Naja melanoleuca, Natrix maura
+Natrix maura, Naja melanoleuca
 </td>
 </tr>
 <tr>
@@ -834,7 +880,8 @@ unknown
 4
 </td>
 <td style="text-align:left;background-color: #faf0e6 !important;">
-Proterorhinus semilunaris, Rattus norvegicus, Ambystoma macrodactylum, Neogobius melanostomus
+Proterorhinus semilunaris, Rattus norvegicus, Ambystoma macrodactylum,
+Neogobius melanostomus
 </td>
 </tr>
 <tr>
@@ -848,7 +895,8 @@ unknown
 5
 </td>
 <td style="text-align:left;background-color: #faf0e6 !important;">
-Neogobius melanostomus, Nyctereutes procyonoides, Proterorhinus semilunaris, Ondatra zibethicus, Oxyura jamaicensis
+Oxyura jamaicensis, Ondatra zibethicus, Proterorhinus semilunaris,
+Neogobius melanostomus, Nyctereutes procyonoides
 </td>
 </tr>
 <tr>
@@ -862,7 +910,8 @@ water
 4
 </td>
 <td style="text-align:left;background-color: #faf0e6 !important;">
-Neogobius melanostomus, Neogobius fluviatilis, Ponticola kessleri, Proterorhinus semilunaris
+Ponticola kessleri, Neogobius melanostomus, Neogobius fluviatilis,
+Proterorhinus semilunaris
 </td>
 </tr>
 <tr>
@@ -876,7 +925,7 @@ aquaculture
 3
 </td>
 <td style="text-align:left;background-color: #faf0e6 !important;">
-Acipenser baerii, Acipenser ruthenus, Acipenser gueldenstaedtii
+Acipenser ruthenus, Acipenser gueldenstaedtii, Acipenser baerii
 </td>
 </tr>
 <tr>
@@ -918,7 +967,7 @@ ornamental
 3
 </td>
 <td style="text-align:left;background-color: #faf0e6 !important;">
-Acipenser ruthenus, Acipenser baerii, Acipenser gueldenstaedtii
+Acipenser baerii, Acipenser ruthenus, Acipenser gueldenstaedtii
 </td>
 </tr>
 <tr>
@@ -932,7 +981,8 @@ pet
 112
 </td>
 <td style="text-align:left;background-color: #faf0e6 !important;">
-Bombina orientalis, Tamias sibiricus, Agama agama, Anas undulata, Chrysemys picta
+Boa, Triturus marmoratus, Eublepharis macularius, Phasianus versicolor,
+Amazonetta brasiliensis
 </td>
 </tr>
 <tr>
@@ -960,7 +1010,8 @@ unknown
 55
 </td>
 <td style="text-align:left;background-color: #faf0e6 !important;">
-Lamprotornis splendidus, Bucorvus leadbeateri, Ara macao, Chloris spinoides, Quiscalus quiscula
+Trichoglossus haematodus, Euodice malabarica, Agapornis personatus,
+Chloris spinoides, Bucorvus leadbeateri
 </td>
 </tr>
 <tr>
@@ -974,7 +1025,8 @@ zoo
 5
 </td>
 <td style="text-align:left;background-color: #faf0e6 !important;">
-Callosciurus erythraeus, Himantopus mexicanus, Tamias sibiricus, Oxyura jamaicensis, Pelecanus conspicillatus
+Oxyura jamaicensis, Pelecanus conspicillatus, Callosciurus erythraeus,
+Himantopus mexicanus, Tamias sibiricus
 </td>
 </tr>
 <tr>
@@ -1002,7 +1054,7 @@ landscape_improvement
 2
 </td>
 <td style="text-align:left;background-color: white !important;">
-Pleurodeles waltl, Triturus marmoratus
+Triturus marmoratus, Pleurodeles waltl
 </td>
 </tr>
 <tr>
@@ -1016,7 +1068,8 @@ other
 69
 </td>
 <td style="text-align:left;background-color: white !important;">
-Python, Physignathus cocincinus, Trachemys scripta, Pseudemys nelsoni, Iguana iguana
+Pogona, Lacerta viridis, Pseudemys rubriventris, Graptemys
+pseudogeographica, Graptemys geographica
 </td>
 </tr>
 <tr>
@@ -1030,7 +1083,8 @@ unknown
 7
 </td>
 <td style="text-align:left;background-color: white !important;">
-Tamias sibiricus, Myocastor coypus, Ondatra zibethicus, Rattus norvegicus, Dichotomyctere fluviatilis
+Tamias sibiricus, Nyctereutes procyonoides, Ondatra zibethicus, Rattus
+norvegicus, Oxyura jamaicensis
 </td>
 </tr>
 <tr>
@@ -1044,7 +1098,8 @@ ballast_water
 4
 </td>
 <td style="text-align:left;background-color: #faf0e6 !important;">
-Ponticola kessleri, Neogobius melanostomus, Neogobius fluviatilis, Gobiosoma bosc
+Gobiosoma bosc, Neogobius fluviatilis, Ponticola kessleri, Neogobius
+melanostomus
 </td>
 </tr>
 <tr>
@@ -1058,7 +1113,8 @@ container
 6
 </td>
 <td style="text-align:left;background-color: #faf0e6 !important;">
-Boaedon, Calotes, Echis carinatus, Chrysopelea ornata, Zamenis longissimus
+Chrysopelea ornata, Calotes, Rhinella marina, Zamenis longissimus,
+Boaedon
 </td>
 </tr>
 <tr>
@@ -1072,7 +1128,8 @@ other
 7
 </td>
 <td style="text-align:left;background-color: #faf0e6 !important;">
-Siren intermedia, Podarcis muralis, Vipera aspis, Podarcis siculus, Natrix tessellata
+Natrix tessellata, Podarcis muralis, Pelophylax ridibundus, Tarentola
+mauritanica, Siren intermedia
 </td>
 </tr>
 <tr>
@@ -1086,7 +1143,7 @@ unknown
 3
 </td>
 <td style="text-align:left;background-color: #faf0e6 !important;">
-Neogobius melanostomus, Proterorhinus semilunaris, Rattus norvegicus
+Neogobius melanostomus, Rattus norvegicus, Proterorhinus semilunaris
 </td>
 </tr>
 <tr>
@@ -1100,7 +1157,8 @@ natural_dispersal
 5
 </td>
 <td style="text-align:left;background-color: #faf0e6 !important;">
-Proterorhinus semilunaris, Ondatra zibethicus, Nyctereutes procyonoides, Neogobius melanostomus, Oxyura jamaicensis
+Neogobius melanostomus, Proterorhinus semilunaris, Oxyura jamaicensis,
+Ondatra zibethicus, Nyctereutes procyonoides
 </td>
 </tr>
 <tr>
@@ -1114,7 +1172,8 @@ unknown
 19
 </td>
 <td style="text-align:left;background-color: #faf0e6 !important;">
-Anolis sagrei, Chalcides ocellatus, Procyon cancrivorus, Botrylloides violaceus, Lacerta agilis
+Hydrochoerus hydrochaeris, Dama dama, Botrylloides violaceus,
+Hemidactylus, Elaphe quatuorlineata
 </td>
 </tr>
 </tbody>
@@ -1122,9 +1181,12 @@ Anolis sagrei, Chalcides ocellatus, Procyon cancrivorus, Botrylloides violaceus,
 </div>
 </div>
 <div id="invertebrates" class="section level4" number="3.5.1.3">
-<h4><span class="header-section-number">3.5.1.3</span> Invertebrates</h4>
-<p>Pathways associated to invertebrates (category <code>Not Chordata</code>):</p>
-<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:10cm; overflow-x: scroll; width:100%; ">
+<h4><span class="header-section-number">3.5.1.3</span>
+Invertebrates</h4>
+<p>Pathways associated to invertebrates (category
+<code>Not Chordata</code>):</p>
+<div
+style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:10cm; overflow-x: scroll; width:100%; ">
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -1154,7 +1216,8 @@ animal_parasite
 4
 </td>
 <td style="text-align:left;background-color: #faf0e6 !important;">
-Enderleinellus kumadai, Mastophorus, Gyrodactylus proterorhini, Hoplopleura erismata
+Enderleinellus kumadai, Mastophorus, Gyrodactylus proterorhini,
+Hoplopleura erismata
 </td>
 </tr>
 <tr>
@@ -1182,7 +1245,8 @@ habitat_material
 10
 </td>
 <td style="text-align:left;background-color: #faf0e6 !important;">
-Eumodicogryllus bordigalensis, Striosubulina striatella, Arion vulgaris, Hawaiia minuscula, Caenoplana bicolor
+Arion vulgaris, Hygromia cinctella, Hawaiia minuscula, Eumodicogryllus
+bordigalensis, Allopeas clavulinum
 </td>
 </tr>
 <tr>
@@ -1196,7 +1260,8 @@ nursery
 4
 </td>
 <td style="text-align:left;background-color: #faf0e6 !important;">
-Caenoplana coerulea, Dolichoplana striata, Obama nungara, Kontikia ventrolineata
+Kontikia ventrolineata, Obama nungara, Caenoplana coerulea, Dolichoplana
+striata
 </td>
 </tr>
 <tr>
@@ -1210,7 +1275,8 @@ on_plants
 26
 </td>
 <td style="text-align:left;background-color: #faf0e6 !important;">
-Arion vulgaris, Allopeas clavulinum, Otiorhynchus indefinitus, Cameraria gaultheriella, Anoplophora chinensis
+Anoplophora chinensis, Otiorhynchus meridionalis, Zonitoides arboreus,
+Striosubulina striatella, Cacyreus marshalli
 </td>
 </tr>
 <tr>
@@ -1238,7 +1304,7 @@ unknown
 4
 </td>
 <td style="text-align:left;background-color: #faf0e6 !important;">
-Rangia cuneata, Drosophila suzukii, Arion vulgaris, Dreissena bugensis
+Drosophila suzukii, Arion vulgaris, Rangia cuneata, Dreissena bugensis
 </td>
 </tr>
 <tr>
@@ -1266,7 +1332,8 @@ water
 9
 </td>
 <td style="text-align:left;background-color: #faf0e6 !important;">
-Potamothrix moldaviensis, Jaera istri, Limnomysis benedeni, Psammoryctides moravicus, Dendrocoelum romanodanubiale
+Dreissena bugensis, Jaera istri, Potamothrix moldaviensis,
+Echinogammarus trichiatus, Dendrocoelum romanodanubiale
 </td>
 </tr>
 <tr>
@@ -1280,7 +1347,8 @@ aquaculture
 7
 </td>
 <td style="text-align:left;background-color: #faf0e6 !important;">
-Neomysis americana, Girardia tigrina, Hemigrapsus takanoi, Sinelobus vanhaareni, Procambarus clarkii
+Procambarus clarkii, Girardia tigrina, Hemigrapsus takanoi, Neomysis
+americana, Sinelobus vanhaareni
 </td>
 </tr>
 <tr>
@@ -1294,7 +1362,8 @@ pet
 6
 </td>
 <td style="text-align:left;background-color: #faf0e6 !important;">
-Procambarus clarkii, Massylaea vermiculata, Cipangopaludina chinensis, Branchiodrilus hortensis, Lampropeltis
+Achatina fulica, Cipangopaludina chinensis, Lampropeltis, Branchiodrilus
+hortensis, Procambarus clarkii
 </td>
 </tr>
 <tr>
@@ -1322,7 +1391,8 @@ biological_control
 4
 </td>
 <td style="text-align:left;background-color: white !important;">
-Hippodamia convergens, Cryptolaemus montrouzieri, Harmonia axyridis, Rhyzobius forestieri
+Harmonia axyridis, Rhyzobius forestieri, Cryptolaemus montrouzieri,
+Hippodamia convergens
 </td>
 </tr>
 <tr>
@@ -1336,7 +1406,7 @@ fishery
 2
 </td>
 <td style="text-align:left;background-color: white !important;">
-Hemigrapsus sanguineus, Hemigrapsus takanoi
+Hemigrapsus takanoi, Hemigrapsus sanguineus
 </td>
 </tr>
 <tr>
@@ -1364,7 +1434,8 @@ ballast_water
 17
 </td>
 <td style="text-align:left;background-color: #faf0e6 !important;">
-Limnodrilus cervix, Potamothrix vejdovskyi, Monopylephorus limosus, Laonome calida, Hemigrapsus takanoi
+Psammoryctides moravicus, Laonome calida, Sinelobus vanhaareni,
+Tasserkidrilus americanus, Potamothrix vejdovskyi
 </td>
 </tr>
 <tr>
@@ -1378,7 +1449,8 @@ container
 11
 </td>
 <td style="text-align:left;background-color: #faf0e6 !important;">
-Phidippus, Nesticodes rufipes, Plexippus paykulli, Callobius nomeus, Micropholcus fauroti
+Massylaea vermiculata, Plexippus paykulli, Grammostola rosea,
+Crossopriza lyoni, Latrodectus geometricus
 </td>
 </tr>
 <tr>
@@ -1392,7 +1464,7 @@ hull_fouling
 2
 </td>
 <td style="text-align:left;background-color: #faf0e6 !important;">
-Sinelobus vanhaareni, Hypania invalida
+Hypania invalida, Sinelobus vanhaareni
 </td>
 </tr>
 <tr>
@@ -1420,7 +1492,8 @@ other
 7
 </td>
 <td style="text-align:left;background-color: #faf0e6 !important;">
-Girardia tigrina, Anacridium aegyptium, Aedes japonicus, Anopheles pharoensis, Aedes koreicus
+Aedes koreicus, Anacridium aegyptium, Girardia tigrina, Acheta
+domesticus, Aedes japonicus
 </td>
 </tr>
 <tr>
@@ -1448,7 +1521,8 @@ ship
 4
 </td>
 <td style="text-align:left;background-color: #faf0e6 !important;">
-Marenzelleria neglecta, Massylaea vermiculata, Telmatogeton japonicus, Laonome xeprovala
+Marenzelleria neglecta, Telmatogeton japonicus, Massylaea vermiculata,
+Laonome xeprovala
 </td>
 </tr>
 <tr>
@@ -1462,7 +1536,8 @@ unknown
 11
 </td>
 <td style="text-align:left;background-color: #faf0e6 !important;">
-Arion vulgaris, Hygromia cinctella, Halyomorpha halys, Limnodrilus maumeensis, Penaeus aztecus
+Monopylephorus limosus, Limnodrilus cervix, Limnodrilus maumeensis,
+Arion vulgaris, Hygromia cinctella
 </td>
 </tr>
 <tr>
@@ -1476,7 +1551,8 @@ vehicles
 4
 </td>
 <td style="text-align:left;background-color: #faf0e6 !important;">
-Eupholidoptera chabrieri, Eumodicogryllus bordigalensis, Meconema meridionale, Cernuella aginnica
+Cernuella aginnica, Eumodicogryllus bordigalensis, Meconema meridionale,
+Eupholidoptera chabrieri
 </td>
 </tr>
 <tr>
@@ -1490,7 +1566,8 @@ natural_dispersal
 5
 </td>
 <td style="text-align:left;background-color: #faf0e6 !important;">
-Vespa velutina, Hygromia cinctella, Dreissena bugensis, Arion vulgaris, Leptoglossus occidentalis
+Hygromia cinctella, Arion vulgaris, Leptoglossus occidentalis, Dreissena
+bugensis, Vespa velutina
 </td>
 </tr>
 <tr>
@@ -1504,7 +1581,8 @@ unknown
 100
 </td>
 <td style="text-align:left;background-color: #faf0e6 !important;">
-Hercinothrips femoralis, Ctenolepisma lineata, Parthenothrips dracaenae, Boccardiella hamata, Dorypteryx longipennis
+Hercinothrips femoralis, Ectopsocus briggsi, Cydalima perspectalis,
+Dorypteryx pallida, Thermobia domestica
 </td>
 </tr>
 </tbody>
@@ -1514,7 +1592,8 @@ Hercinothrips femoralis, Ctenolepisma lineata, Parthenothrips dracaenae, Boccard
 <div id="fungi" class="section level4" number="3.5.1.4">
 <h4><span class="header-section-number">3.5.1.4</span> Fungi</h4>
 <p>Pathways associated to fungi (category <code>Fungi</code>):</p>
-<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:10cm; overflow-x: scroll; width:100%; ">
+<div
+style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:10cm; overflow-x: scroll; width:100%; ">
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -1544,7 +1623,7 @@ animal_parasite
 2
 </td>
 <td style="text-align:left;background-color: #faf0e6 !important;">
-Batrachochytrium dendrobatidis, Batrachochytrium salamandrivorans
+Batrachochytrium salamandrivorans, Batrachochytrium dendrobatidis
 </td>
 </tr>
 <tr>
@@ -1600,7 +1679,8 @@ unknown
 8
 </td>
 <td style="text-align:left;background-color: #faf0e6 !important;">
-Thecaphora oxalidis, Tranzschelia discolor, Puccinia komarovii, Stropholoma aurantiacum, Saproamanita inopinata
+Lentinula edodes, Saproamanita inopinata, Melampsoridium betulinum,
+Thecaphora oxalidis, Tranzschelia discolor
 </td>
 </tr>
 </tbody>
@@ -1610,13 +1690,19 @@ Thecaphora oxalidis, Tranzschelia discolor, Puccinia komarovii, Stropholoma aura
 </div>
 </div>
 </div>
-<div id="table-of-pathways-related-to-eu-policy-relevant-species" class="section level2" number="3.6">
-<h2><span class="header-section-number">3.6</span> Table of pathways related to EU policy relevant species</h2>
-<p>It is important to focus our attention also to a intercategory group of species which is of particular policy importance: the <em>List of Invasive Alien Species of Union concern</em> (see more info about <a href="http://ec.europa.eu/environment/nature/invasivealien/list/index_en.htm">here</a>).</p>
+<div id="table-of-pathways-related-to-eu-policy-relevant-species"
+class="section level2" number="3.6">
+<h2><span class="header-section-number">3.6</span> Table of pathways
+related to EU policy relevant species</h2>
+<p>It is important to focus our attention also to a intercategory group
+of species which is of particular policy importance: the <em>List of
+Invasive Alien Species of Union concern</em> (see more info about <a
+href="http://ec.europa.eu/environment/nature/invasivealien/list/index_en.htm">here</a>).</p>
 <p>We import this list of species:</p>
 <pre class="r"><code>eu_concern_file &lt;- here::here(&quot;data&quot;, &quot;input&quot;, &quot;eu_concern_species.tsv&quot;)
 eu_concern_species &lt;- read_tsv(eu_concern_file)</code></pre>
-<p>Check which species from this subgroup are not present in <code>data</code>:</p>
+<p>Check which species from this subgroup are not present in
+<code>data</code>:</p>
 <pre class="r"><code>eu_concern_species %&gt;%
   filter(!backbone_taxonKey %in% data$nubKey)</code></pre>
 <p>Categories present in this subgroup:</p>
@@ -1625,7 +1711,8 @@ eu_concern_species &lt;- read_tsv(eu_concern_file)</code></pre>
 {"columns":[{"label":["category"],"name":[1],"type":["chr"],"align":["left"]}],"data":[{"1":"Plantae"},{"1":"Chordata"},{"1":"Not Chordata"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<p>As done before, we limit to pathways of taxa introduced from 2000.</p>
+<p>As done before, we limit to pathways of taxa introduced from
+2000.</p>
 <p>Create tables:</p>
 <pre class="r"><code>tables_eu_concern &lt;- map(categories_eu_concern$category, ~
 get_table_pathways(data %&gt;%
@@ -1638,7 +1725,8 @@ names(tables_eu_concern) &lt;- categories_eu_concern$category</code></pre>
 <div id="plantae-1" class="section level3" number="3.6.1">
 <h3><span class="header-section-number">3.6.1</span> Plantae</h3>
 <p>Pathways associated to plants (category <code>Plantae</code>):</p>
-<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:10cm; overflow-x: scroll; width:100%; ">
+<div
+style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:10cm; overflow-x: scroll; width:100%; ">
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -1679,10 +1767,10 @@ escape
 horticulture
 </td>
 <td style="text-align:right;background-color: #faf0e6 !important;">
-1
+3
 </td>
 <td style="text-align:left;background-color: #faf0e6 !important;">
-Eichhornia crassipes
+Eichhornia crassipes, Pistia stratiotes, Celastrus orbiculatus
 </td>
 </tr>
 <tr>
@@ -1733,8 +1821,10 @@ Eichhornia crassipes
 </div>
 <div id="chordata" class="section level3" number="3.6.2">
 <h3><span class="header-section-number">3.6.2</span> Chordata</h3>
-<p>Pathways associated to vertebrates (category <code>Chordata</code>):</p>
-<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:10cm; overflow-x: scroll; width:100%; ">
+<p>Pathways associated to vertebrates (category
+<code>Chordata</code>):</p>
+<div
+style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:10cm; overflow-x: scroll; width:100%; ">
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -1764,7 +1854,7 @@ unknown
 3
 </td>
 <td style="text-align:left;background-color: #faf0e6 !important;">
-Nyctereutes procyonoides, Oxyura jamaicensis, Ondatra zibethicus
+Oxyura jamaicensis, Ondatra zibethicus, Nyctereutes procyonoides
 </td>
 </tr>
 <tr>
@@ -1778,7 +1868,8 @@ pet
 8
 </td>
 <td style="text-align:left;background-color: #faf0e6 !important;">
-Tamias sibiricus, Nasua nasua, Callosciurus erythraeus, Sciurus carolinensis, Sciurus niger
+Callosciurus erythraeus, Sciurus carolinensis, Nasua nasua, Trachemys
+scripta, Tamias sibiricus
 </td>
 </tr>
 <tr>
@@ -1786,13 +1877,13 @@ Tamias sibiricus, Nasua nasua, Callosciurus erythraeus, Sciurus carolinensis, Sc
 escape
 </td>
 <td style="text-align:left;background-color: #faf0e6 !important;">
-unknown
+research
 </td>
 <td style="text-align:right;background-color: #faf0e6 !important;">
-6
+1
 </td>
 <td style="text-align:left;background-color: #faf0e6 !important;">
-Tamias sibiricus, Callosciurus erythraeus, Nyctereutes procyonoides, Oxyura jamaicensis, Myocastor coypus
+Xenopus laevis
 </td>
 </tr>
 <tr>
@@ -1800,13 +1891,28 @@ Tamias sibiricus, Callosciurus erythraeus, Nyctereutes procyonoides, Oxyura jama
 escape
 </td>
 <td style="text-align:left;background-color: white !important;background-color: #faf0e6 !important;">
-zoo
+unknown
 </td>
 <td style="text-align:right;background-color: white !important;background-color: #faf0e6 !important;">
-3
+6
 </td>
 <td style="text-align:left;background-color: white !important;background-color: #faf0e6 !important;">
-Callosciurus erythraeus, Tamias sibiricus, Oxyura jamaicensis
+Ondatra zibethicus, Nyctereutes procyonoides, Callosciurus erythraeus,
+Tamias sibiricus, Oxyura jamaicensis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: #faf0e6 !important;">
+escape
+</td>
+<td style="text-align:left;background-color: #faf0e6 !important;">
+zoo
+</td>
+<td style="text-align:right;background-color: #faf0e6 !important;">
+3
+</td>
+<td style="text-align:left;background-color: #faf0e6 !important;">
+Tamias sibiricus, Callosciurus erythraeus, Oxyura jamaicensis
 </td>
 </tr>
 <tr>
@@ -1848,7 +1954,8 @@ unknown
 5
 </td>
 <td style="text-align:left;">
-Oxyura jamaicensis, Nyctereutes procyonoides, Ondatra zibethicus, Tamias sibiricus, Myocastor coypus
+Nyctereutes procyonoides, Myocastor coypus, Tamias sibiricus, Oxyura
+jamaicensis, Ondatra zibethicus
 </td>
 </tr>
 <tr>
@@ -1862,7 +1969,7 @@ natural_dispersal
 3
 </td>
 <td style="text-align:left;background-color: #faf0e6 !important;">
-Oxyura jamaicensis, Ondatra zibethicus, Nyctereutes procyonoides
+Nyctereutes procyonoides, Oxyura jamaicensis, Ondatra zibethicus
 </td>
 </tr>
 </tbody>
@@ -1871,8 +1978,10 @@ Oxyura jamaicensis, Ondatra zibethicus, Nyctereutes procyonoides
 </div>
 <div id="not-chordata" class="section level3" number="3.6.3">
 <h3><span class="header-section-number">3.6.3</span> Not Chordata</h3>
-<p>Pathways associated to invertebrates (category <code>Not Chordata</code>):</p>
-<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:10cm; overflow-x: scroll; width:100%; ">
+<p>Pathways associated to invertebrates (category
+<code>Not Chordata</code>):</p>
+<div
+style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:10cm; overflow-x: scroll; width:100%; ">
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>

@@ -24,8 +24,9 @@ knitr::opts_chunk$set(echo = TRUE, warning = TRUE, message = FALSE)
 
 Load libraries:
 
-```{r load_libraries}
+```{r load_libraries, warning=FALSE}
 library(tidyverse) # To do datascience
+library(magrittr) # To use extract2 function
 library(tidylog) # To provide feedback on dplyr functions
 library(here) # To find files
 library(trias) # To use functions developed for TrIAS
@@ -69,11 +70,12 @@ facet_column <- "kingdom"
 ```
 
 ```{r cumulative_graph_grouping_kingdom, fig.width=10, fig.height=5, results = "hide", echo=FALSE, warning=FALSE}
-data %>%
+data %>% 
   indicator_total_year(
     start_year_plot = 1920,
     x_major_scale_stepsize = 25,
     x_minor_scale_stepsize = 12.5,
     facet_column = facet_column
-  )
+  ) %>%
+  extract2("plot")
 ```

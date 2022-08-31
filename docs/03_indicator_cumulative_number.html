@@ -14,11 +14,11 @@
 <meta name="author" content="Stijn Van Hoey" />
 <meta name="author" content="Tim Adriaens" />
 
-<meta name="date" content="2022-01-03" />
+<meta name="date" content="2022-07-08" />
 
 <title>Indicator: Cumulative number of alien species</title>
 
-<script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
@@ -69,6 +69,7 @@ if (window.hljs) {
 
 
 
+
 <link rel="stylesheet" href="static/css/trias.css" type="text/css" />
 
 
@@ -93,6 +94,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -318,7 +322,7 @@ div.tocify {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -328,7 +332,7 @@ div.tocify {
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Checklist-based indicators
      
     <span class="caret"></span>
@@ -349,7 +353,7 @@ div.tocify {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Occurrence-based indicators
      
     <span class="caret"></span>
@@ -362,7 +366,7 @@ div.tocify {
       <a href="06_occurrence_indicators_appearing_taxa.html">Appearing-reappearing species</a>
     </li>
     <li class="dropdown-submenu">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Emerging status analysis</a>
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Emerging status analysis</a>
       <ul class="dropdown-menu" role="menu">
         <li>
           <a href="07_occurrence_indicators_modelling.html">Assessing emerging status of alien species</a>
@@ -373,7 +377,7 @@ div.tocify {
       </ul>
     </li>
     <li class="dropdown-submenu">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Protected areas analysis</a>
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Protected areas analysis</a>
       <ul class="dropdown-menu" role="menu">
         <li>
           <a href="09_define_overlay_grid_belgium_with_protected_areas.html">Belgian protected areas and EEA grid of Belgium</a>
@@ -405,28 +409,28 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Indicator: Cumulative number of alien species</h1>
+<h1 class="title toc-ignore">Indicator: Cumulative number of alien
+species</h1>
 <h4 class="author">Damiano Oldoni</h4>
 <h4 class="author">Sander Devisscher</h4>
 <h4 class="author">Stijn Van Hoey</h4>
 <h4 class="author">Tim Adriaens</h4>
-<h4 class="date">2022-01-03</h4>
+<h4 class="date">2022-07-08</h4>
 
 </div>
 
 
-<p>This document describes how to get the cumulative number of taxa identified as alien in Belgium.</p>
+<p>This document describes how to get the cumulative number of taxa
+identified as alien in Belgium.</p>
 <div id="setup" class="section level1" number="1">
 <h1><span class="header-section-number">1</span> Setup</h1>
 <p>Load libraries:</p>
-<pre class="r"><code>library(tidyverse) # To do datascience</code></pre>
-<pre><code>## Warning: package &#39;tibble&#39; was built under R version 4.1.2</code></pre>
-<pre><code>## Warning: package &#39;readr&#39; was built under R version 4.1.2</code></pre>
-<pre class="r"><code>library(tidylog) # To provide feedback on dplyr functions
+<pre class="r"><code>library(tidyverse) # To do datascience
+library(magrittr) # To use extract2 function
+library(tidylog) # To provide feedback on dplyr functions
 library(here) # To find files
 library(trias) # To use functions developed for TrIAS
 library(INBOtheme) # To use INBO theme for graphs</code></pre>
-<pre><code>## Warning: package &#39;INBOtheme&#39; was built under R version 4.1.2</code></pre>
 </div>
 <div id="get-data" class="section level1" number="2">
 <h1><span class="header-section-number">2</span> Get data</h1>
@@ -440,18 +444,24 @@ data &lt;- read_tsv(data_file,
   guess_max = 5000
 )</code></pre>
 </div>
-<div id="cumulative-number-of-introductions-of-alien-species" class="section level1" number="3">
-<h1><span class="header-section-number">3</span> Cumulative number of introductions of alien species</h1>
-<p>We use function <code>indicator_total_year</code> from <code>trias</code> library.</p>
-<div id="select-taxa-at-belgian-level" class="section level2" number="3.1">
-<h2><span class="header-section-number">3.1</span> Select taxa at Belgian level</h2>
+<div id="cumulative-number-of-introductions-of-alien-species"
+class="section level1" number="3">
+<h1><span class="header-section-number">3</span> Cumulative number of
+introductions of alien species</h1>
+<p>We use function <code>indicator_total_year</code> from
+<code>trias</code> library.</p>
+<div id="select-taxa-at-belgian-level" class="section level2"
+number="3.1">
+<h2><span class="header-section-number">3.1</span> Select taxa at
+Belgian level</h2>
 <p>We select data at national level (no regional distributions):</p>
 <pre class="r"><code>data &lt;-
   data %&gt;%
   filter(locationId == &quot;ISO_3166:BE&quot;)</code></pre>
 </div>
 <div id="grouping-by-kingdom" class="section level2" number="3.2">
-<h2><span class="header-section-number">3.2</span> Grouping by kingdom</h2>
+<h2><span class="header-section-number">3.2</span> Grouping by
+kingdom</h2>
 <p>We group data by kingdom:</p>
 <pre class="r"><code>facet_column &lt;- &quot;kingdom&quot;</code></pre>
 <p><img src="03_indicator_cumulative_number_files/figure-html/cumulative_graph_grouping_kingdom-1.png" width="960" /></p>

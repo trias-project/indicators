@@ -28,8 +28,9 @@ knitr::opts_chunk$set(echo = TRUE,
 
 Load libraries:
 
-```{r load_libraries}
+```{r load_libraries, warning=FALSE}
 library(tidyverse) # To do datascience
+library(magrittr) # To use extract2 function
 library(tidylog) # To provide feedback on dplyr functions
 library(here) # To find files
 library(trias) # To use functions developed for TrIAS
@@ -94,17 +95,21 @@ categories
 Total number of taxa introduced for each pathway level 1:
 
 ```{r pathway_level1_anaysis}
-visualize_pathways_level1(df = data)
+data %>% 
+  visualize_pathways_level1() %>% 
+  extract2("plot")
 ```
 
 Per category:
 
 ```{r pathway_level1_anaysis_per_kingdom}
 map(categories$category, function(x) {
-  visualize_pathways_level1(df = data,
-                            category = x,
-                            title = x)}
-)
+  data %>% 
+    visualize_pathways_level1(
+      category = x,
+      title = x) %>%
+  extract2("plot")
+})
 ```
 
 ## Pathways analysis level 2
@@ -119,9 +124,10 @@ pathways_level1 <-
   pull()
 map(pathways_level1,
     function(x) {
-      visualize_pathways_level2(df = data,
-                                chosen_pathway_level1 = x,
-                                title = x)
+      data %>%
+        visualize_pathways_level2(chosen_pathway_level1 = x,
+                                  title = x) %>% 
+        extract2("plot")
     }
 )
 ```
@@ -133,10 +139,11 @@ categories_path_lev1 <- expand_grid(categories, pathways_level1)
 map2(categories_path_lev1$category,
      categories_path_lev1$pathways_level1,
      function(x, y) {
-       visualize_pathways_level2(df = data,
-                                 chosen_pathway_level1 = y,
-                                 category = x,
-                                 title = paste(x, y, collapse = ": "))}
+       data %>%
+         visualize_pathways_level2(chosen_pathway_level1 = y,
+                                   category = x,
+                                   title = paste(x, y, collapse = ": ")) %>% 
+         extract2("plot")}
 )
 ```
 
@@ -147,16 +154,18 @@ We show the evolution in time of the pathways level 1.
 First, considering all taxa:
 
 ```{r visualize_pathways_year_level1_all}
-visualize_pathways_year_level1(data)
+data %>%
+  visualize_pathways_year_level1() %>%
+  extract2("plot")
 ```
 
 and now splitting them by category:
 
 ```{r visualize_pathways_year_level1_category}
 map(categories$category, function(x) {
-  visualize_pathways_year_level1(df = data,
-                                 category = x,
-                                 title = x)}
+  data %>%
+    visualize_pathways_year_level1(category = x, title = x) %>%
+    extract2("plot")}
 )
 ```
 

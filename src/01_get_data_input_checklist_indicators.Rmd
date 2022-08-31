@@ -53,8 +53,9 @@ checklist_info <- c(
   "key", "nubKey", "scientificName", "datasetKey",
   "canonicalName", "species", "genus", "family",
   "order", "class", "phylum", "kingdom",
-  "rank", "speciesKey", "taxonomicStatus",
-  "acceptedKey", "accepted"
+  "rank", "speciesKey", "genusKey", "familyKey",
+  "orderKey", "classKey", "phylumKey", "kingdomKey", 
+  "taxonomicStatus", "acceptedKey", "accepted"
 )
 taxa <-
   taxa %>%

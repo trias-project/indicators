@@ -59,10 +59,12 @@ path_natura2000 <- here::here(
   "Natura2000_end2019_Shapefile"
 )
 if (!file.exists(path_natura2000)) {
+  options(timeout = 60*30) # 30min max allowed for downloading
   temp <- tempfile()
   download.file(
     "https://cmshare.eea.europa.eu/s/n5L8Lrs9aYD775S/download",
-    temp
+    temp,
+    cacheOK = FALSE
   )
   unzip(temp, exdir = path_natura2000)
   unlink(temp)
@@ -509,7 +511,7 @@ names(grid_intersects_areas) <- prot_areas_sitecode
 # Add 1x1km grid cellcode as new column
 grid_intersects_areas <-
   grid_intersects_areas %>%
-  mutate(CELLCODE = as.character(droplevels(be_grid$CELLCODE))) %>%
+  mutate(CELLCODE = be_grid$CELLCODE) %>%
   select(CELLCODE, everything())
 ```
 
@@ -541,10 +543,8 @@ cells_of_prot_areas <-
         # avoid long logs by using dplyr functions instead of tidylog
         dplyr::select(CELLCODE, !!sym(pa_cell_code)) %>%
         dplyr::filter(!!sym(pa_cell_code) == TRUE) %>%
-        dplyr::mutate(
-          SITECODE = pa_cell_code,
-          SITETYPE = as.character(droplevels(site_type))
-        ) %>%
+        dplyr::mutate(SITECODE = pa_cell_code,
+                      SITETYPE = site_type) %>%
         dplyr::select(SITECODE, SITETYPE, CELLCODE)
     }
   )

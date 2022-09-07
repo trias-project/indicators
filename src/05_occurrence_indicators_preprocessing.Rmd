@@ -56,7 +56,7 @@ df <- read_csv(
 )
 ```
 
-Nota: these data have been also published on [Zenodo](10.5281/zenodo.3632749).
+Nota: these data have been also published on [Zenodo](https://doi.org/10.5281/zenodo.3632749).
 
 We remove columns we will never use:
 
@@ -92,7 +92,7 @@ df_bl <- read_csv(
 )
 ```
 
-Nota: these data have been also published on [Zenodo](https://zenodo.org/record/3635510).
+Nota: these data have been also published on [Zenodo](https://doi.org/10.5281/zenodo.3632749).
 
 We remove columns we will never use:
 
@@ -629,7 +629,7 @@ Save `df_ts` as it will be used as start point of modelling pipelines:
 
 ```{r save_data_as_tsv}
 write_tsv(df_ts, 
-          path = here::here("data", "interim", "df_timeseries.tsv"), 
+          file = here::here("data", "interim", "df_timeseries.tsv"), 
           na = ""
 )
 ```

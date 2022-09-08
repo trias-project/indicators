@@ -127,6 +127,8 @@ For each evaluation year (see below) the output of both models is one of the fol
 - `1`: unclear
 - `0`: not emerging
 
+See documentation of [`trias::apply_decision_rules`](https://trias-project.github.io/trias/reference/apply_decision_rules.html) and [`trias::apply_gam()`](https://trias-project.github.io/trias/reference/apply_gam.html) for more information.
+
 ## Define evaluation period 
 
 We define the time window (in years) we want to assess the emerging status:

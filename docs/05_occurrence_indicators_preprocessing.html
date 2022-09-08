@@ -333,7 +333,7 @@ div.tocify {
         <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Checklist-based indicators
-     
+
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
@@ -354,7 +354,7 @@ div.tocify {
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Occurrence-based indicators
-     
+
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
@@ -396,7 +396,7 @@ div.tocify {
         <li>
   <a href="https://github.com/trias-project/pipeline">
     <span class="fa fa-github fa-lg"></span>
-     
+
   </a>
 </li>
       </ul>
@@ -868,20 +868,20 @@ protected areas.</p>
 <h2><span class="header-section-number">3.5</span> Create time
 series</h2>
 <p>For each species, define cells with at least one observation:</p>
-<pre class="r"><code>df_cc &lt;- 
+<pre class="r"><code>df_cc &lt;-
   df %&gt;%
   group_by(taxonKey) %&gt;%
   distinct(eea_cell_code) %&gt;%
   ungroup()</code></pre>
 <p>For each species, identify the first year with at least one
 observation:</p>
-<pre class="r"><code>df_begin_year &lt;- 
+<pre class="r"><code>df_begin_year &lt;-
   df %&gt;%
   group_by(taxonKey) %&gt;%
   summarize(begin_year = min(year))</code></pre>
 <p>For each species, combine <code>begin_year</code> and unique
 <code>eea_cell_code</code> as found above:</p>
-<pre class="r"><code>df_cc &lt;- 
+<pre class="r"><code>df_cc &lt;-
   df_cc %&gt;%
   left_join(df_begin_year, by = &quot;taxonKey&quot;) %&gt;%
   select(taxonKey, begin_year, eea_cell_code)</code></pre>
@@ -902,29 +902,29 @@ observation:</p>
 }
 
 # create timeseries slots
-df_ts &lt;- pmap_dfr(df_cc, 
-                  .f = make_time_series, 
+df_ts &lt;- pmap_dfr(df_cc,
+                  .f = make_time_series,
                   last_year = year(Sys.Date())
 )
 
 ## Add data
 
 # add occurrence data
-df_ts &lt;- 
+df_ts &lt;-
   df_ts %&gt;%
-  left_join(df %&gt;% select(taxonKey, year, eea_cell_code, obs), 
+  left_join(df %&gt;% select(taxonKey, year, eea_cell_code, obs),
             by = c(&quot;taxonKey&quot;, &quot;year&quot;, &quot;eea_cell_code&quot;))
 
 # add membership to protected areas
-df_ts &lt;- 
+df_ts &lt;-
   df_ts %&gt;%
   left_join(df_prot_areas %&gt;% select(CELLCODE, natura2000),
             by = c(&quot;eea_cell_code&quot; = &quot;CELLCODE&quot;))
 # add classKey
-df_ts &lt;- 
+df_ts &lt;-
   df_ts %&gt;%
-  left_join(spec_names %&gt;% 
-              select(taxonKey, classKey), 
+  left_join(spec_names %&gt;%
+              select(taxonKey, classKey),
             by = &quot;taxonKey&quot;)</code></pre>
 </div>
 <div id="research-effort-correction" class="section level2"
@@ -935,7 +935,7 @@ correction</h2>
 calculate the number of observations at class level excluding the
 observations of the alien species itself:</p>
 <pre class="r"><code># add baseline data (at class level) diminished by obs of specific alien taxon
-df_ts &lt;- 
+df_ts &lt;-
   df_ts %&gt;%
   left_join(df_bl %&gt;%
               select(year, eea_cell_code, classKey, cobs),
@@ -954,19 +954,19 @@ df_ts &lt;-
   </script>
 </div>
 <p>Add column for presence (1) or absence (0)</p>
-<pre class="r"><code>df_ts &lt;- 
+<pre class="r"><code>df_ts &lt;-
   df_ts %&gt;%
   mutate(pa_cobs = if_else(cobs &gt; 0, 1, 0),
          pa_obs = if_else(obs &gt; 0, 1, 0))</code></pre>
 <p>Arrange order columns:</p>
 <pre class="r"><code>df_ts &lt;-
   df_ts %&gt;%
-  select(taxonKey, 
-         year, 
-         eea_cell_code, 
-         obs, 
-         pa_obs, 
-         cobs, 
+  select(taxonKey,
+         year,
+         eea_cell_code,
+         obs,
+         pa_obs,
+         cobs,
          pa_cobs,
          classKey,
          natura2000)</code></pre>
@@ -980,8 +980,8 @@ number="4.1">
 taxonomic metadata</h2>
 <p>Save <code>df_ts</code> as it will be used as start point of
 modelling pipelines:</p>
-<pre class="r"><code>write_tsv(df_ts, 
-          path = here::here(&quot;data&quot;, &quot;interim&quot;, &quot;df_timeseries.tsv&quot;), 
+<pre class="r"><code>write_tsv(df_ts,
+          path = here::here(&quot;data&quot;, &quot;interim&quot;, &quot;df_timeseries.tsv&quot;),
           na = &quot;&quot;
 )</code></pre>
 <pre><code>## Warning: The `path` argument of `write_tsv()` is deprecated as of readr 1.4.0.
@@ -990,8 +990,8 @@ modelling pipelines:</p>
 ## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.</code></pre>
 <p>We save also the taxonomic information:</p>
 <pre class="r"><code>write_tsv(spec_names,
-          path = here::here(&quot;data&quot;, 
-                            &quot;interim&quot;, 
+          path = here::here(&quot;data&quot;,
+                            &quot;interim&quot;,
                             &quot;timeseries_taxonomic_info.tsv&quot;),
           na = &quot;&quot;
 )</code></pre>

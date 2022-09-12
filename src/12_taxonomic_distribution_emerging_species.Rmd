@@ -49,7 +49,7 @@ Preview:
 head(em_df)
 ```
 
-# Get number of emerging species per class, year, location and variable
+# Number of emerging species per class, year, location and variable
 
 First, reshape the data:
 
@@ -206,9 +206,11 @@ ggsave(emerging_plot_kingdom_relative,
 )
 ```
 
-## Occupancy
+## Taxonomic distribution at class level
 
-### Belgium
+### Occupancy: Belgium
+
+Table:
 
 ```{r emerging_df_BE_occupancy}
 emerging_df_BE_occupancy <-
@@ -216,6 +218,8 @@ emerging_df_BE_occupancy <-
   filter(.data$area == "Belgium" & .data$variable == "occupancy")
 emerging_df_BE_occupancy
 ```
+
+Graphs:
 
 ```{r plot_emerging_df_BE_occupancy}
 emerging_plots_BE_occupancy <- map(kingdoms$kingdom, function(x) {
@@ -261,7 +265,9 @@ walk2(
 })
 ```
 
-### Natura2000
+### Occupancy: Natura2000
+
+Table:
 
 ```{r emerging_df_Natura2000_occupancy}
 emerging_df_Natura2000_occupancy <-
@@ -269,6 +275,8 @@ emerging_df_Natura2000_occupancy <-
   filter(.data$area == "Natura2000" & .data$variable == "occupancy")
 emerging_df_Natura2000_occupancy
 ```
+
+Graphs:
 
 ```{r plot_emerging_df_Natura2000_occupancy}
 emerging_plots_Natura2000_occupancy <- map(
@@ -288,7 +296,7 @@ emerging_plots_Natura2000_occupancy <- map(
 emerging_plots_Natura2000_occupancy
 ```
 
-Save both table and graph:
+Save both table and graphs:
 
 ```{r save_emerging_Natura2000_occupancy}
 write_tsv(
@@ -316,9 +324,9 @@ walk2(
 ```
 
 
-## Number of observations
+### Number of observations: Belgium
 
-### Belgium
+Table:
 
 ```{r emerging_df_BE_obs}
 emerging_df_BE_obs <-
@@ -326,6 +334,8 @@ emerging_df_BE_obs <-
   filter(.data$area == "Belgium" & .data$variable == "observations")
 emerging_df_BE_obs
 ```
+
+Graphs:
 
 ```{r emerging_plots_BE_obs}
 emerging_plots_BE_obs <- map(kingdoms$kingdom, function(x) {
@@ -344,7 +354,7 @@ emerging_plots_BE_obs <- map(kingdoms$kingdom, function(x) {
 emerging_plots_BE_obs
 ```
 
-Save both table and graph:
+Save both table and graphs:
 
 ```{r save_emerging_BE_obs}
 write_tsv(
@@ -372,7 +382,9 @@ walk2(
 ```
 
 
-### Natura2000
+### Number of observations: Natura2000
+
+Table:
 
 ```{r emerging_df_Natura2000_obs}
 emerging_df_Natura2000_obs <-
@@ -380,6 +392,8 @@ emerging_df_Natura2000_obs <-
   filter(.data$area == "Natura2000" & .data$variable == "observations")
 emerging_df_Natura2000_obs
 ```
+
+Graphs:
 
 ```{r plot_emerging_df_Natura2000_obs}
 emerging_plots_Natura2000_obs <- map(kingdoms$kingdom, function(x) {
@@ -398,7 +412,7 @@ emerging_plots_Natura2000_obs <- map(kingdoms$kingdom, function(x) {
 emerging_plots_Natura2000_obs
 ```
 
-Save both table and graph:
+Save both table and graphs:
 
 ```{r save_emerging_Natura2000_obs}
 write_tsv(

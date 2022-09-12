@@ -285,7 +285,7 @@ em_df <-
   left_join(taxa_names, by = "taxonKey")
 ```
 
-To rank taxa equally placed, we use the average of the minimal guaranteed growth of number of observations in all Belgium over all the evaluation years. A preview of these values follows:
+To rank taxa equally placed, we use the average of the minimal guaranteed growth of number of observations in all Belgium over all the evaluation years.
 
 ```{r add_mean_growth_occs_BE}
 # add mean growth to em_df
@@ -293,13 +293,19 @@ em_df <-
   em_df %>%
   left_join(em_gam_list$gam_observations_be %>%
     group_by(taxonKey) %>%
-    summarize(mean_growth = mean(growth, na.rm = TRUE)))
+    summarize(mean_growth = mean(growth, na.rm = TRUE))) %>%
+  relocate(.data$mean_growth, .before = .data$canonicalName)
+```
+
+A preview:
+
+```{r}
 # show preview
 em_df %>%
   filter(!is.na(mean_growth)) %>%
-  head(n = 10) %>%
-  select(taxonKey, canonicalName, mean_growth)
+  head(n = 10)
 ```
+
 
 # Ranking by emerging status
 
@@ -412,14 +418,29 @@ ranking_pts
 
 # Save results
 
-We save both rankings.
+## Final emerging status
+
+We save the final emerging status, `em_df`:
+
+```{r save_em_df}
+write_tsv(em_df, 
+          file = here::here("data", "output", "emerging_status.tsv"),
+          na = ""
+)
+```
+
+## Rankings
+
+We save both the rankings.
 
 Ranking based on hierarchical strategy is saved in `data/output/ranking_emerging_status_hierarchical_strategy.tsv`:
 
 ```{r save_ranking_basic}
 write_tsv(ranking,
-  here::here("data", "output", "ranking_emerging_status_hierarchical_strategy.tsv"),
-  na = ""
+          here::here("data",
+                     "output",
+                     "ranking_emerging_status_hierarchical_strategy.tsv"),
+          na = ""
 )
 ```
 

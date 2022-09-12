@@ -1,97 +1,97 @@
-class	kingdom	variable	year	area	n_emerging
-Magnoliopsida	Plantae	observations	2018	Natura2000	260
-Aves	Animalia	observations	2018	Natura2000	70
-Liliopsida	Plantae	observations	2018	Natura2000	63
-Insecta	Animalia	observations	2018	Natura2000	39
-Reptilia	Animalia	observations	2018	Natura2000	10
-Arachnida	Animalia	observations	2018	Natura2000	9
-Mammalia	Animalia	observations	2018	Natura2000	9
-Pinopsida	Plantae	observations	2018	Natura2000	7
-Amphibia	Animalia	observations	2018	Natura2000	6
-Malacostraca	Animalia	observations	2018	Natura2000	4
-Polypodiopsida	Plantae	observations	2018	Natura2000	4
-Actinopterygii	Animalia	observations	2018	Natura2000	3
-Bivalvia	Animalia	observations	2018	Natura2000	3
-Gastropoda	Animalia	observations	2018	Natura2000	3
-Pucciniomycetes	Fungi	observations	2018	Natura2000	3
-Ascidiacea	Animalia	observations	2018	Natura2000	2
-	Animalia	observations	2018	Natura2000	2
-Bryopsida	Plantae	observations	2018	Natura2000	1
-Clitellata	Animalia	observations	2018	Natura2000	1
-Ginkgoopsida	Plantae	observations	2018	Natura2000	1
-Hydrozoa	Animalia	observations	2018	Natura2000	1
-Jungermanniopsida	Plantae	observations	2018	Natura2000	1
-Monogenea	Animalia	observations	2018	Natura2000	1
-Polychaeta	Animalia	observations	2018	Natura2000	1
-Agaricomycetes	Fungi	observations	2018	Natura2000	0
-Anthozoa	Animalia	observations	2018	Natura2000	0
-Demospongiae	Animalia	observations	2018	Natura2000	0
-Gymnolaemata	Animalia	observations	2018	Natura2000	0
-Hexanauplia	Animalia	observations	2018	Natura2000	0
-Maxillopoda	Animalia	observations	2018	Natura2000	0
-Tentaculata	Animalia	observations	2018	Natura2000	0
-Ustilaginomycetes	Fungi	observations	2018	Natura2000	0
-Magnoliopsida	Plantae	observations	2019	Natura2000	245
-Liliopsida	Plantae	observations	2019	Natura2000	64
-Aves	Animalia	observations	2019	Natura2000	59
-Insecta	Animalia	observations	2019	Natura2000	32
-Arachnida	Animalia	observations	2019	Natura2000	10
-Reptilia	Animalia	observations	2019	Natura2000	8
-Pinopsida	Plantae	observations	2019	Natura2000	7
-Amphibia	Animalia	observations	2019	Natura2000	6
-Mammalia	Animalia	observations	2019	Natura2000	6
-Gastropoda	Animalia	observations	2019	Natura2000	5
-Actinopterygii	Animalia	observations	2019	Natura2000	4
-Pucciniomycetes	Fungi	observations	2019	Natura2000	3
-Ascidiacea	Animalia	observations	2019	Natura2000	2
-Bivalvia	Animalia	observations	2019	Natura2000	2
-Malacostraca	Animalia	observations	2019	Natura2000	2
-Polypodiopsida	Plantae	observations	2019	Natura2000	2
-	Animalia	observations	2019	Natura2000	2
-Bryopsida	Plantae	observations	2019	Natura2000	1
-Clitellata	Animalia	observations	2019	Natura2000	1
-Ginkgoopsida	Plantae	observations	2019	Natura2000	1
-Jungermanniopsida	Plantae	observations	2019	Natura2000	1
-Monogenea	Animalia	observations	2019	Natura2000	1
-Polychaeta	Animalia	observations	2019	Natura2000	1
-Agaricomycetes	Fungi	observations	2019	Natura2000	0
-Anthozoa	Animalia	observations	2019	Natura2000	0
-Demospongiae	Animalia	observations	2019	Natura2000	0
-Gymnolaemata	Animalia	observations	2019	Natura2000	0
-Hexanauplia	Animalia	observations	2019	Natura2000	0
-Hydrozoa	Animalia	observations	2019	Natura2000	0
-Maxillopoda	Animalia	observations	2019	Natura2000	0
-Tentaculata	Animalia	observations	2019	Natura2000	0
-Ustilaginomycetes	Fungi	observations	2019	Natura2000	0
-Magnoliopsida	Plantae	observations	2020	Natura2000	253
-Liliopsida	Plantae	observations	2020	Natura2000	66
-Aves	Animalia	observations	2020	Natura2000	64
-Insecta	Animalia	observations	2020	Natura2000	33
-Reptilia	Animalia	observations	2020	Natura2000	11
-Arachnida	Animalia	observations	2020	Natura2000	8
-Amphibia	Animalia	observations	2020	Natura2000	6
-Mammalia	Animalia	observations	2020	Natura2000	6
-Pinopsida	Plantae	observations	2020	Natura2000	5
-Actinopterygii	Animalia	observations	2020	Natura2000	4
-Malacostraca	Animalia	observations	2020	Natura2000	4
-Polypodiopsida	Plantae	observations	2020	Natura2000	4
-Gastropoda	Animalia	observations	2020	Natura2000	3
-Pucciniomycetes	Fungi	observations	2020	Natura2000	3
-Ascidiacea	Animalia	observations	2020	Natura2000	2
-Bivalvia	Animalia	observations	2020	Natura2000	2
-	Animalia	observations	2020	Natura2000	2
-Bryopsida	Plantae	observations	2020	Natura2000	1
-Clitellata	Animalia	observations	2020	Natura2000	1
-Ginkgoopsida	Plantae	observations	2020	Natura2000	1
-Jungermanniopsida	Plantae	observations	2020	Natura2000	1
-Monogenea	Animalia	observations	2020	Natura2000	1
-Ustilaginomycetes	Fungi	observations	2020	Natura2000	1
-Agaricomycetes	Fungi	observations	2020	Natura2000	0
-Anthozoa	Animalia	observations	2020	Natura2000	0
-Demospongiae	Animalia	observations	2020	Natura2000	0
-Gymnolaemata	Animalia	observations	2020	Natura2000	0
-Hexanauplia	Animalia	observations	2020	Natura2000	0
-Hydrozoa	Animalia	observations	2020	Natura2000	0
-Maxillopoda	Animalia	observations	2020	Natura2000	0
-Polychaeta	Animalia	observations	2020	Natura2000	0
-Tentaculata	Animalia	observations	2020	Natura2000	0
+class	kingdom	variable	year	area	n_emerging	n_total
+Magnoliopsida	Plantae	observations	2018	Natura2000	260	605
+Aves	Animalia	observations	2018	Natura2000	70	197
+Liliopsida	Plantae	observations	2018	Natura2000	63	142
+Insecta	Animalia	observations	2018	Natura2000	39	61
+Reptilia	Animalia	observations	2018	Natura2000	10	29
+Arachnida	Animalia	observations	2018	Natura2000	9	13
+Mammalia	Animalia	observations	2018	Natura2000	9	25
+Pinopsida	Plantae	observations	2018	Natura2000	7	27
+Amphibia	Animalia	observations	2018	Natura2000	6	11
+Malacostraca	Animalia	observations	2018	Natura2000	4	22
+Polypodiopsida	Plantae	observations	2018	Natura2000	4	15
+Actinopterygii	Animalia	observations	2018	Natura2000	3	16
+Bivalvia	Animalia	observations	2018	Natura2000	3	7
+Gastropoda	Animalia	observations	2018	Natura2000	3	9
+Pucciniomycetes	Fungi	observations	2018	Natura2000	3	4
+Ascidiacea	Animalia	observations	2018	Natura2000	2	3
+	Animalia	observations	2018	Natura2000	2	4
+Bryopsida	Plantae	observations	2018	Natura2000	1	1
+Clitellata	Animalia	observations	2018	Natura2000	1	3
+Ginkgoopsida	Plantae	observations	2018	Natura2000	1	1
+Hydrozoa	Animalia	observations	2018	Natura2000	1	1
+Jungermanniopsida	Plantae	observations	2018	Natura2000	1	1
+Monogenea	Animalia	observations	2018	Natura2000	1	1
+Polychaeta	Animalia	observations	2018	Natura2000	1	4
+Agaricomycetes	Fungi	observations	2018	Natura2000	0	1
+Anthozoa	Animalia	observations	2018	Natura2000	0	1
+Demospongiae	Animalia	observations	2018	Natura2000	0	1
+Gymnolaemata	Animalia	observations	2018	Natura2000	0	2
+Hexanauplia	Animalia	observations	2018	Natura2000	0	1
+Maxillopoda	Animalia	observations	2018	Natura2000	0	1
+Tentaculata	Animalia	observations	2018	Natura2000	0	1
+Ustilaginomycetes	Fungi	observations	2018	Natura2000	0	1
+Magnoliopsida	Plantae	observations	2019	Natura2000	245	605
+Liliopsida	Plantae	observations	2019	Natura2000	64	142
+Aves	Animalia	observations	2019	Natura2000	59	197
+Insecta	Animalia	observations	2019	Natura2000	32	61
+Arachnida	Animalia	observations	2019	Natura2000	10	13
+Reptilia	Animalia	observations	2019	Natura2000	8	29
+Pinopsida	Plantae	observations	2019	Natura2000	7	27
+Amphibia	Animalia	observations	2019	Natura2000	6	11
+Mammalia	Animalia	observations	2019	Natura2000	6	25
+Gastropoda	Animalia	observations	2019	Natura2000	5	9
+Actinopterygii	Animalia	observations	2019	Natura2000	4	16
+Pucciniomycetes	Fungi	observations	2019	Natura2000	3	4
+Ascidiacea	Animalia	observations	2019	Natura2000	2	3
+Bivalvia	Animalia	observations	2019	Natura2000	2	7
+Malacostraca	Animalia	observations	2019	Natura2000	2	22
+Polypodiopsida	Plantae	observations	2019	Natura2000	2	15
+	Animalia	observations	2019	Natura2000	2	4
+Bryopsida	Plantae	observations	2019	Natura2000	1	1
+Clitellata	Animalia	observations	2019	Natura2000	1	3
+Ginkgoopsida	Plantae	observations	2019	Natura2000	1	1
+Jungermanniopsida	Plantae	observations	2019	Natura2000	1	1
+Monogenea	Animalia	observations	2019	Natura2000	1	1
+Polychaeta	Animalia	observations	2019	Natura2000	1	4
+Agaricomycetes	Fungi	observations	2019	Natura2000	0	1
+Anthozoa	Animalia	observations	2019	Natura2000	0	1
+Demospongiae	Animalia	observations	2019	Natura2000	0	1
+Gymnolaemata	Animalia	observations	2019	Natura2000	0	2
+Hexanauplia	Animalia	observations	2019	Natura2000	0	1
+Hydrozoa	Animalia	observations	2019	Natura2000	0	1
+Maxillopoda	Animalia	observations	2019	Natura2000	0	1
+Tentaculata	Animalia	observations	2019	Natura2000	0	1
+Ustilaginomycetes	Fungi	observations	2019	Natura2000	0	1
+Magnoliopsida	Plantae	observations	2020	Natura2000	253	605
+Liliopsida	Plantae	observations	2020	Natura2000	66	142
+Aves	Animalia	observations	2020	Natura2000	64	197
+Insecta	Animalia	observations	2020	Natura2000	33	61
+Reptilia	Animalia	observations	2020	Natura2000	11	29
+Arachnida	Animalia	observations	2020	Natura2000	8	13
+Amphibia	Animalia	observations	2020	Natura2000	6	11
+Mammalia	Animalia	observations	2020	Natura2000	6	25
+Pinopsida	Plantae	observations	2020	Natura2000	5	27
+Actinopterygii	Animalia	observations	2020	Natura2000	4	16
+Malacostraca	Animalia	observations	2020	Natura2000	4	22
+Polypodiopsida	Plantae	observations	2020	Natura2000	4	15
+Gastropoda	Animalia	observations	2020	Natura2000	3	9
+Pucciniomycetes	Fungi	observations	2020	Natura2000	3	4
+Ascidiacea	Animalia	observations	2020	Natura2000	2	3
+Bivalvia	Animalia	observations	2020	Natura2000	2	7
+	Animalia	observations	2020	Natura2000	2	4
+Bryopsida	Plantae	observations	2020	Natura2000	1	1
+Clitellata	Animalia	observations	2020	Natura2000	1	3
+Ginkgoopsida	Plantae	observations	2020	Natura2000	1	1
+Jungermanniopsida	Plantae	observations	2020	Natura2000	1	1
+Monogenea	Animalia	observations	2020	Natura2000	1	1
+Ustilaginomycetes	Fungi	observations	2020	Natura2000	1	1
+Agaricomycetes	Fungi	observations	2020	Natura2000	0	1
+Anthozoa	Animalia	observations	2020	Natura2000	0	1
+Demospongiae	Animalia	observations	2020	Natura2000	0	1
+Gymnolaemata	Animalia	observations	2020	Natura2000	0	2
+Hexanauplia	Animalia	observations	2020	Natura2000	0	1
+Hydrozoa	Animalia	observations	2020	Natura2000	0	1
+Maxillopoda	Animalia	observations	2020	Natura2000	0	1
+Polychaeta	Animalia	observations	2020	Natura2000	0	4
+Tentaculata	Animalia	observations	2020	Natura2000	0	1

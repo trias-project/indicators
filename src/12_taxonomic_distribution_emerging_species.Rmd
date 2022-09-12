@@ -80,7 +80,8 @@ emerging_df <-
   group_by(.data$class, 
            .data$kingdom,
            .data$variable) %>%
-  summarise(n_emerging = length(.data$emerging_status[.data$emerging_status == 3]))
+  summarise(n_emerging = length(.data$emerging_status[.data$emerging_status == 3]),
+            n_total = length(.data$emerging_status))
 ```
 
 Add year, variable and area of interest as columns:
@@ -94,7 +95,7 @@ emerging_df <-
     variable = str_extract(.data$variable,
                            pattern = "occupancy|observations")) %>%
   mutate(area = recode(.data$area, BE = "Belgium", pa = "Natura2000")) %>%
-  relocate(n_emerging , .after = last_col()) %>%
+  relocate(n_emerging, n_total, .after = last_col()) %>%
   ungroup() %>%
   arrange(.data$year, desc(.data$n_emerging))
 ```
@@ -104,7 +105,7 @@ Preview:
 ```{r preview_emergence_df}
 head(emerging_df, 20)
 ```
-Save this output file:
+Save this table as output file:
 
 ```{r save_emerging_df}
 write_tsv(
@@ -116,7 +117,6 @@ write_tsv(
   na = ""
 )
 ```
-
 
 # Summaries and graphs
 
@@ -140,6 +140,70 @@ classes %>%
   group_by(.data$kingdom) %>%
   count() %>%
   arrange(desc(.data$n))
+```
+
+## Taxonomic distribution at kingdom level
+
+Number of emerging species at kingdom level:
+
+```{r distr_at_kingdom_level}
+emerging_df_kingdom <- 
+  emerging_df %>%
+  group_by(.data$kingdom, .data$variable, .data$year, .data$area) %>%
+  summarise(n_emerging = sum(.data$n_emerging),
+            n_total = sum(.data$n_total)) %>%
+  ungroup() %>%
+  mutate(frac_emerging = .data$n_emerging/.data$n_total) %>%
+  arrange(.data$variable, .data$area, .data$year, .data$kingdom)
+emerging_df_kingdom
+```
+
+Show the absolute distribution at kingdom level for each variable/area/year:
+
+```{r plot_kingdom_level_distr}
+emerging_plot_kingdom <- 
+  ggplot(emerging_df_kingdom) +
+  geom_col(aes(x = kingdom, y = n_emerging, fill = year),
+           position = "dodge") +
+  facet_grid(rows = vars(variable), cols = vars(area))
+emerging_plot_kingdom
+```
+
+Show the relative distribution, i.e. the fraction number of emerging species / total number of alien species:
+
+```{r relative_distr_kingdom_level}
+emerging_plot_kingdom_relative <- 
+  ggplot(emerging_df_kingdom) +
+  geom_col(aes(x = kingdom, y = frac_emerging, fill = year),
+           position = "dodge") +
+  facet_grid(rows = vars(variable), cols = vars(area))
+emerging_plot_kingdom_relative
+```
+
+Save both the table `emerging_df_kingdom` and the graphs with the absolute and relative distribution of emerging species at kingdom level:
+
+```{r save_emerging_df_kingdom}
+write_tsv(x = emerging_df_kingdom,
+          file = here::here("data",
+                            "output",
+                            "taxonomic_distribution_emerging_species",
+                            "number_of_emerging_taxa_per_kingdom.tsv"),
+  na = ""
+)
+
+ggsave(emerging_plot_kingdom,
+       filename = here::here("data",
+                            "output",
+                            "taxonomic_distribution_emerging_species",
+                            "n_emerging_taxa_per_kingdom.png")
+)
+
+ggsave(emerging_plot_kingdom_relative,
+       filename = here::here("data",
+                            "output",
+                            "taxonomic_distribution_emerging_species",
+                            "n_emerging_taxa_per_kingdom_relative.png")
+)
 ```
 
 ## Occupancy
@@ -171,7 +235,7 @@ emerging_plots_BE_occupancy <- map(kingdoms$kingdom, function(x) {
 emerging_plots_BE_occupancy
 ```
 
-Save both table and graph:
+Save both table and graphs:
 
 ```{r save_emerging_BE_occupancy}
 write_tsv(

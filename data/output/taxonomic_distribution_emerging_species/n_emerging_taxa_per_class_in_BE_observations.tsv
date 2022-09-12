@@ -1,97 +1,97 @@
-class	kingdom	variable	year	area	n_emerging
-Magnoliopsida	Plantae	observations	2018	Belgium	100
-Aves	Animalia	observations	2018	Belgium	32
-Liliopsida	Plantae	observations	2018	Belgium	24
-Insecta	Animalia	observations	2018	Belgium	21
-Pinopsida	Plantae	observations	2018	Belgium	8
-Polypodiopsida	Plantae	observations	2018	Belgium	6
-Malacostraca	Animalia	observations	2018	Belgium	5
-Reptilia	Animalia	observations	2018	Belgium	5
-Mammalia	Animalia	observations	2018	Belgium	4
-Amphibia	Animalia	observations	2018	Belgium	2
-Arachnida	Animalia	observations	2018	Belgium	2
-Bivalvia	Animalia	observations	2018	Belgium	2
-Gastropoda	Animalia	observations	2018	Belgium	2
-Bryopsida	Plantae	observations	2018	Belgium	1
-Hydrozoa	Animalia	observations	2018	Belgium	1
-Jungermanniopsida	Plantae	observations	2018	Belgium	1
-Polychaeta	Animalia	observations	2018	Belgium	1
-	Animalia	observations	2018	Belgium	1
-Actinopterygii	Animalia	observations	2018	Belgium	0
-Agaricomycetes	Fungi	observations	2018	Belgium	0
-Anthozoa	Animalia	observations	2018	Belgium	0
-Ascidiacea	Animalia	observations	2018	Belgium	0
-Clitellata	Animalia	observations	2018	Belgium	0
-Demospongiae	Animalia	observations	2018	Belgium	0
-Ginkgoopsida	Plantae	observations	2018	Belgium	0
-Gymnolaemata	Animalia	observations	2018	Belgium	0
-Hexanauplia	Animalia	observations	2018	Belgium	0
-Maxillopoda	Animalia	observations	2018	Belgium	0
-Monogenea	Animalia	observations	2018	Belgium	0
-Pucciniomycetes	Fungi	observations	2018	Belgium	0
-Tentaculata	Animalia	observations	2018	Belgium	0
-Ustilaginomycetes	Fungi	observations	2018	Belgium	0
-Magnoliopsida	Plantae	observations	2019	Belgium	120
-Liliopsida	Plantae	observations	2019	Belgium	37
-Aves	Animalia	observations	2019	Belgium	28
-Insecta	Animalia	observations	2019	Belgium	14
-Pinopsida	Plantae	observations	2019	Belgium	7
-Gastropoda	Animalia	observations	2019	Belgium	5
-Reptilia	Animalia	observations	2019	Belgium	5
-Arachnida	Animalia	observations	2019	Belgium	4
-Malacostraca	Animalia	observations	2019	Belgium	4
-Mammalia	Animalia	observations	2019	Belgium	4
-Polypodiopsida	Plantae	observations	2019	Belgium	4
-Bivalvia	Animalia	observations	2019	Belgium	2
-Actinopterygii	Animalia	observations	2019	Belgium	1
-Amphibia	Animalia	observations	2019	Belgium	1
-Bryopsida	Plantae	observations	2019	Belgium	1
-Hydrozoa	Animalia	observations	2019	Belgium	1
-Jungermanniopsida	Plantae	observations	2019	Belgium	1
-Polychaeta	Animalia	observations	2019	Belgium	1
-	Animalia	observations	2019	Belgium	1
-Agaricomycetes	Fungi	observations	2019	Belgium	0
-Anthozoa	Animalia	observations	2019	Belgium	0
-Ascidiacea	Animalia	observations	2019	Belgium	0
-Clitellata	Animalia	observations	2019	Belgium	0
-Demospongiae	Animalia	observations	2019	Belgium	0
-Ginkgoopsida	Plantae	observations	2019	Belgium	0
-Gymnolaemata	Animalia	observations	2019	Belgium	0
-Hexanauplia	Animalia	observations	2019	Belgium	0
-Maxillopoda	Animalia	observations	2019	Belgium	0
-Monogenea	Animalia	observations	2019	Belgium	0
-Pucciniomycetes	Fungi	observations	2019	Belgium	0
-Tentaculata	Animalia	observations	2019	Belgium	0
-Ustilaginomycetes	Fungi	observations	2019	Belgium	0
-Magnoliopsida	Plantae	observations	2020	Belgium	150
-Liliopsida	Plantae	observations	2020	Belgium	37
-Aves	Animalia	observations	2020	Belgium	33
-Insecta	Animalia	observations	2020	Belgium	17
-Reptilia	Animalia	observations	2020	Belgium	9
-Polypodiopsida	Plantae	observations	2020	Belgium	7
-Malacostraca	Animalia	observations	2020	Belgium	6
-Mammalia	Animalia	observations	2020	Belgium	5
-Pinopsida	Plantae	observations	2020	Belgium	5
-Arachnida	Animalia	observations	2020	Belgium	4
-Bivalvia	Animalia	observations	2020	Belgium	3
-Gastropoda	Animalia	observations	2020	Belgium	2
-Actinopterygii	Animalia	observations	2020	Belgium	1
-Agaricomycetes	Fungi	observations	2020	Belgium	1
-Amphibia	Animalia	observations	2020	Belgium	1
-Bryopsida	Plantae	observations	2020	Belgium	1
-Ginkgoopsida	Plantae	observations	2020	Belgium	1
-Jungermanniopsida	Plantae	observations	2020	Belgium	1
-Pucciniomycetes	Fungi	observations	2020	Belgium	1
-Ustilaginomycetes	Fungi	observations	2020	Belgium	1
-	Animalia	observations	2020	Belgium	1
-Anthozoa	Animalia	observations	2020	Belgium	0
-Ascidiacea	Animalia	observations	2020	Belgium	0
-Clitellata	Animalia	observations	2020	Belgium	0
-Demospongiae	Animalia	observations	2020	Belgium	0
-Gymnolaemata	Animalia	observations	2020	Belgium	0
-Hexanauplia	Animalia	observations	2020	Belgium	0
-Hydrozoa	Animalia	observations	2020	Belgium	0
-Maxillopoda	Animalia	observations	2020	Belgium	0
-Monogenea	Animalia	observations	2020	Belgium	0
-Polychaeta	Animalia	observations	2020	Belgium	0
-Tentaculata	Animalia	observations	2020	Belgium	0
+class	kingdom	variable	year	area	n_emerging	n_total
+Magnoliopsida	Plantae	observations	2018	Belgium	100	605
+Aves	Animalia	observations	2018	Belgium	32	197
+Liliopsida	Plantae	observations	2018	Belgium	24	142
+Insecta	Animalia	observations	2018	Belgium	21	61
+Pinopsida	Plantae	observations	2018	Belgium	8	27
+Polypodiopsida	Plantae	observations	2018	Belgium	6	15
+Malacostraca	Animalia	observations	2018	Belgium	5	22
+Reptilia	Animalia	observations	2018	Belgium	5	29
+Mammalia	Animalia	observations	2018	Belgium	4	25
+Amphibia	Animalia	observations	2018	Belgium	2	11
+Arachnida	Animalia	observations	2018	Belgium	2	13
+Bivalvia	Animalia	observations	2018	Belgium	2	7
+Gastropoda	Animalia	observations	2018	Belgium	2	9
+Bryopsida	Plantae	observations	2018	Belgium	1	1
+Hydrozoa	Animalia	observations	2018	Belgium	1	1
+Jungermanniopsida	Plantae	observations	2018	Belgium	1	1
+Polychaeta	Animalia	observations	2018	Belgium	1	4
+	Animalia	observations	2018	Belgium	1	4
+Actinopterygii	Animalia	observations	2018	Belgium	0	16
+Agaricomycetes	Fungi	observations	2018	Belgium	0	1
+Anthozoa	Animalia	observations	2018	Belgium	0	1
+Ascidiacea	Animalia	observations	2018	Belgium	0	3
+Clitellata	Animalia	observations	2018	Belgium	0	3
+Demospongiae	Animalia	observations	2018	Belgium	0	1
+Ginkgoopsida	Plantae	observations	2018	Belgium	0	1
+Gymnolaemata	Animalia	observations	2018	Belgium	0	2
+Hexanauplia	Animalia	observations	2018	Belgium	0	1
+Maxillopoda	Animalia	observations	2018	Belgium	0	1
+Monogenea	Animalia	observations	2018	Belgium	0	1
+Pucciniomycetes	Fungi	observations	2018	Belgium	0	4
+Tentaculata	Animalia	observations	2018	Belgium	0	1
+Ustilaginomycetes	Fungi	observations	2018	Belgium	0	1
+Magnoliopsida	Plantae	observations	2019	Belgium	120	605
+Liliopsida	Plantae	observations	2019	Belgium	37	142
+Aves	Animalia	observations	2019	Belgium	28	197
+Insecta	Animalia	observations	2019	Belgium	14	61
+Pinopsida	Plantae	observations	2019	Belgium	7	27
+Gastropoda	Animalia	observations	2019	Belgium	5	9
+Reptilia	Animalia	observations	2019	Belgium	5	29
+Arachnida	Animalia	observations	2019	Belgium	4	13
+Malacostraca	Animalia	observations	2019	Belgium	4	22
+Mammalia	Animalia	observations	2019	Belgium	4	25
+Polypodiopsida	Plantae	observations	2019	Belgium	4	15
+Bivalvia	Animalia	observations	2019	Belgium	2	7
+Actinopterygii	Animalia	observations	2019	Belgium	1	16
+Amphibia	Animalia	observations	2019	Belgium	1	11
+Bryopsida	Plantae	observations	2019	Belgium	1	1
+Hydrozoa	Animalia	observations	2019	Belgium	1	1
+Jungermanniopsida	Plantae	observations	2019	Belgium	1	1
+Polychaeta	Animalia	observations	2019	Belgium	1	4
+	Animalia	observations	2019	Belgium	1	4
+Agaricomycetes	Fungi	observations	2019	Belgium	0	1
+Anthozoa	Animalia	observations	2019	Belgium	0	1
+Ascidiacea	Animalia	observations	2019	Belgium	0	3
+Clitellata	Animalia	observations	2019	Belgium	0	3
+Demospongiae	Animalia	observations	2019	Belgium	0	1
+Ginkgoopsida	Plantae	observations	2019	Belgium	0	1
+Gymnolaemata	Animalia	observations	2019	Belgium	0	2
+Hexanauplia	Animalia	observations	2019	Belgium	0	1
+Maxillopoda	Animalia	observations	2019	Belgium	0	1
+Monogenea	Animalia	observations	2019	Belgium	0	1
+Pucciniomycetes	Fungi	observations	2019	Belgium	0	4
+Tentaculata	Animalia	observations	2019	Belgium	0	1
+Ustilaginomycetes	Fungi	observations	2019	Belgium	0	1
+Magnoliopsida	Plantae	observations	2020	Belgium	150	605
+Liliopsida	Plantae	observations	2020	Belgium	37	142
+Aves	Animalia	observations	2020	Belgium	33	197
+Insecta	Animalia	observations	2020	Belgium	17	61
+Reptilia	Animalia	observations	2020	Belgium	9	29
+Polypodiopsida	Plantae	observations	2020	Belgium	7	15
+Malacostraca	Animalia	observations	2020	Belgium	6	22
+Mammalia	Animalia	observations	2020	Belgium	5	25
+Pinopsida	Plantae	observations	2020	Belgium	5	27
+Arachnida	Animalia	observations	2020	Belgium	4	13
+Bivalvia	Animalia	observations	2020	Belgium	3	7
+Gastropoda	Animalia	observations	2020	Belgium	2	9
+Actinopterygii	Animalia	observations	2020	Belgium	1	16
+Agaricomycetes	Fungi	observations	2020	Belgium	1	1
+Amphibia	Animalia	observations	2020	Belgium	1	11
+Bryopsida	Plantae	observations	2020	Belgium	1	1
+Ginkgoopsida	Plantae	observations	2020	Belgium	1	1
+Jungermanniopsida	Plantae	observations	2020	Belgium	1	1
+Pucciniomycetes	Fungi	observations	2020	Belgium	1	4
+Ustilaginomycetes	Fungi	observations	2020	Belgium	1	1
+	Animalia	observations	2020	Belgium	1	4
+Anthozoa	Animalia	observations	2020	Belgium	0	1
+Ascidiacea	Animalia	observations	2020	Belgium	0	3
+Clitellata	Animalia	observations	2020	Belgium	0	3
+Demospongiae	Animalia	observations	2020	Belgium	0	1
+Gymnolaemata	Animalia	observations	2020	Belgium	0	2
+Hexanauplia	Animalia	observations	2020	Belgium	0	1
+Hydrozoa	Animalia	observations	2020	Belgium	0	1
+Maxillopoda	Animalia	observations	2020	Belgium	0	1
+Monogenea	Animalia	observations	2020	Belgium	0	1
+Polychaeta	Animalia	observations	2020	Belgium	0	4
+Tentaculata	Animalia	observations	2020	Belgium	0	1

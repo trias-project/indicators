@@ -1,97 +1,97 @@
-class	kingdom	variable	year	area	n_emerging
-Magnoliopsida	Plantae	occupancy	2018	Natura2000	245
-Liliopsida	Plantae	occupancy	2018	Natura2000	65
-Aves	Animalia	occupancy	2018	Natura2000	55
-Insecta	Animalia	occupancy	2018	Natura2000	32
-Reptilia	Animalia	occupancy	2018	Natura2000	19
-Arachnida	Animalia	occupancy	2018	Natura2000	11
-Amphibia	Animalia	occupancy	2018	Natura2000	9
-Mammalia	Animalia	occupancy	2018	Natura2000	9
-Actinopterygii	Animalia	occupancy	2018	Natura2000	6
-Malacostraca	Animalia	occupancy	2018	Natura2000	5
-Pinopsida	Plantae	occupancy	2018	Natura2000	4
-Pucciniomycetes	Fungi	occupancy	2018	Natura2000	4
-Bivalvia	Animalia	occupancy	2018	Natura2000	3
-Polypodiopsida	Plantae	occupancy	2018	Natura2000	3
-Ascidiacea	Animalia	occupancy	2018	Natura2000	2
-Gymnolaemata	Animalia	occupancy	2018	Natura2000	2
-Agaricomycetes	Fungi	occupancy	2018	Natura2000	1
-Anthozoa	Animalia	occupancy	2018	Natura2000	1
-Clitellata	Animalia	occupancy	2018	Natura2000	1
-Gastropoda	Animalia	occupancy	2018	Natura2000	1
-Ginkgoopsida	Plantae	occupancy	2018	Natura2000	1
-Hydrozoa	Animalia	occupancy	2018	Natura2000	1
-Maxillopoda	Animalia	occupancy	2018	Natura2000	1
-Monogenea	Animalia	occupancy	2018	Natura2000	1
-Polychaeta	Animalia	occupancy	2018	Natura2000	1
-Ustilaginomycetes	Fungi	occupancy	2018	Natura2000	1
-	Animalia	occupancy	2018	Natura2000	1
-Bryopsida	Plantae	occupancy	2018	Natura2000	0
-Demospongiae	Animalia	occupancy	2018	Natura2000	0
-Hexanauplia	Animalia	occupancy	2018	Natura2000	0
-Jungermanniopsida	Plantae	occupancy	2018	Natura2000	0
-Tentaculata	Animalia	occupancy	2018	Natura2000	0
-Magnoliopsida	Plantae	occupancy	2019	Natura2000	246
-Liliopsida	Plantae	occupancy	2019	Natura2000	59
-Aves	Animalia	occupancy	2019	Natura2000	51
-Insecta	Animalia	occupancy	2019	Natura2000	28
-Reptilia	Animalia	occupancy	2019	Natura2000	17
-Arachnida	Animalia	occupancy	2019	Natura2000	11
-Amphibia	Animalia	occupancy	2019	Natura2000	9
-Mammalia	Animalia	occupancy	2019	Natura2000	9
-Gastropoda	Animalia	occupancy	2019	Natura2000	5
-Pinopsida	Plantae	occupancy	2019	Natura2000	5
-Pucciniomycetes	Fungi	occupancy	2019	Natura2000	4
-Bivalvia	Animalia	occupancy	2019	Natura2000	3
-Malacostraca	Animalia	occupancy	2019	Natura2000	3
-Polypodiopsida	Plantae	occupancy	2019	Natura2000	3
-Actinopterygii	Animalia	occupancy	2019	Natura2000	2
-Ascidiacea	Animalia	occupancy	2019	Natura2000	2
-Gymnolaemata	Animalia	occupancy	2019	Natura2000	2
-	Animalia	occupancy	2019	Natura2000	2
-Agaricomycetes	Fungi	occupancy	2019	Natura2000	1
-Anthozoa	Animalia	occupancy	2019	Natura2000	1
-Clitellata	Animalia	occupancy	2019	Natura2000	1
-Ginkgoopsida	Plantae	occupancy	2019	Natura2000	1
-Hydrozoa	Animalia	occupancy	2019	Natura2000	1
-Maxillopoda	Animalia	occupancy	2019	Natura2000	1
-Monogenea	Animalia	occupancy	2019	Natura2000	1
-Polychaeta	Animalia	occupancy	2019	Natura2000	1
-Ustilaginomycetes	Fungi	occupancy	2019	Natura2000	1
-Bryopsida	Plantae	occupancy	2019	Natura2000	0
-Demospongiae	Animalia	occupancy	2019	Natura2000	0
-Hexanauplia	Animalia	occupancy	2019	Natura2000	0
-Jungermanniopsida	Plantae	occupancy	2019	Natura2000	0
-Tentaculata	Animalia	occupancy	2019	Natura2000	0
-Magnoliopsida	Plantae	occupancy	2020	Natura2000	256
-Liliopsida	Plantae	occupancy	2020	Natura2000	66
-Aves	Animalia	occupancy	2020	Natura2000	54
-Insecta	Animalia	occupancy	2020	Natura2000	30
-Reptilia	Animalia	occupancy	2020	Natura2000	18
-Arachnida	Animalia	occupancy	2020	Natura2000	11
-Mammalia	Animalia	occupancy	2020	Natura2000	10
-Amphibia	Animalia	occupancy	2020	Natura2000	8
-Malacostraca	Animalia	occupancy	2020	Natura2000	5
-Polypodiopsida	Plantae	occupancy	2020	Natura2000	5
-Pucciniomycetes	Fungi	occupancy	2020	Natura2000	4
-Bivalvia	Animalia	occupancy	2020	Natura2000	3
-Actinopterygii	Animalia	occupancy	2020	Natura2000	2
-Ascidiacea	Animalia	occupancy	2020	Natura2000	2
-Gastropoda	Animalia	occupancy	2020	Natura2000	2
-Gymnolaemata	Animalia	occupancy	2020	Natura2000	2
-Pinopsida	Plantae	occupancy	2020	Natura2000	2
-Agaricomycetes	Fungi	occupancy	2020	Natura2000	1
-Anthozoa	Animalia	occupancy	2020	Natura2000	1
-Clitellata	Animalia	occupancy	2020	Natura2000	1
-Ginkgoopsida	Plantae	occupancy	2020	Natura2000	1
-Hydrozoa	Animalia	occupancy	2020	Natura2000	1
-Jungermanniopsida	Plantae	occupancy	2020	Natura2000	1
-Maxillopoda	Animalia	occupancy	2020	Natura2000	1
-Monogenea	Animalia	occupancy	2020	Natura2000	1
-Polychaeta	Animalia	occupancy	2020	Natura2000	1
-Ustilaginomycetes	Fungi	occupancy	2020	Natura2000	1
-	Animalia	occupancy	2020	Natura2000	1
-Bryopsida	Plantae	occupancy	2020	Natura2000	0
-Demospongiae	Animalia	occupancy	2020	Natura2000	0
-Hexanauplia	Animalia	occupancy	2020	Natura2000	0
-Tentaculata	Animalia	occupancy	2020	Natura2000	0
+class	kingdom	variable	year	area	n_emerging	n_total
+Magnoliopsida	Plantae	occupancy	2018	Natura2000	245	605
+Liliopsida	Plantae	occupancy	2018	Natura2000	65	142
+Aves	Animalia	occupancy	2018	Natura2000	55	197
+Insecta	Animalia	occupancy	2018	Natura2000	32	61
+Reptilia	Animalia	occupancy	2018	Natura2000	19	29
+Arachnida	Animalia	occupancy	2018	Natura2000	11	13
+Amphibia	Animalia	occupancy	2018	Natura2000	9	11
+Mammalia	Animalia	occupancy	2018	Natura2000	9	25
+Actinopterygii	Animalia	occupancy	2018	Natura2000	6	16
+Malacostraca	Animalia	occupancy	2018	Natura2000	5	22
+Pinopsida	Plantae	occupancy	2018	Natura2000	4	27
+Pucciniomycetes	Fungi	occupancy	2018	Natura2000	4	4
+Bivalvia	Animalia	occupancy	2018	Natura2000	3	7
+Polypodiopsida	Plantae	occupancy	2018	Natura2000	3	15
+Ascidiacea	Animalia	occupancy	2018	Natura2000	2	3
+Gymnolaemata	Animalia	occupancy	2018	Natura2000	2	2
+Agaricomycetes	Fungi	occupancy	2018	Natura2000	1	1
+Anthozoa	Animalia	occupancy	2018	Natura2000	1	1
+Clitellata	Animalia	occupancy	2018	Natura2000	1	3
+Gastropoda	Animalia	occupancy	2018	Natura2000	1	9
+Ginkgoopsida	Plantae	occupancy	2018	Natura2000	1	1
+Hydrozoa	Animalia	occupancy	2018	Natura2000	1	1
+Maxillopoda	Animalia	occupancy	2018	Natura2000	1	1
+Monogenea	Animalia	occupancy	2018	Natura2000	1	1
+Polychaeta	Animalia	occupancy	2018	Natura2000	1	4
+Ustilaginomycetes	Fungi	occupancy	2018	Natura2000	1	1
+	Animalia	occupancy	2018	Natura2000	1	4
+Bryopsida	Plantae	occupancy	2018	Natura2000	0	1
+Demospongiae	Animalia	occupancy	2018	Natura2000	0	1
+Hexanauplia	Animalia	occupancy	2018	Natura2000	0	1
+Jungermanniopsida	Plantae	occupancy	2018	Natura2000	0	1
+Tentaculata	Animalia	occupancy	2018	Natura2000	0	1
+Magnoliopsida	Plantae	occupancy	2019	Natura2000	246	605
+Liliopsida	Plantae	occupancy	2019	Natura2000	59	142
+Aves	Animalia	occupancy	2019	Natura2000	51	197
+Insecta	Animalia	occupancy	2019	Natura2000	28	61
+Reptilia	Animalia	occupancy	2019	Natura2000	17	29
+Arachnida	Animalia	occupancy	2019	Natura2000	11	13
+Amphibia	Animalia	occupancy	2019	Natura2000	9	11
+Mammalia	Animalia	occupancy	2019	Natura2000	9	25
+Gastropoda	Animalia	occupancy	2019	Natura2000	5	9
+Pinopsida	Plantae	occupancy	2019	Natura2000	5	27
+Pucciniomycetes	Fungi	occupancy	2019	Natura2000	4	4
+Bivalvia	Animalia	occupancy	2019	Natura2000	3	7
+Malacostraca	Animalia	occupancy	2019	Natura2000	3	22
+Polypodiopsida	Plantae	occupancy	2019	Natura2000	3	15
+Actinopterygii	Animalia	occupancy	2019	Natura2000	2	16
+Ascidiacea	Animalia	occupancy	2019	Natura2000	2	3
+Gymnolaemata	Animalia	occupancy	2019	Natura2000	2	2
+	Animalia	occupancy	2019	Natura2000	2	4
+Agaricomycetes	Fungi	occupancy	2019	Natura2000	1	1
+Anthozoa	Animalia	occupancy	2019	Natura2000	1	1
+Clitellata	Animalia	occupancy	2019	Natura2000	1	3
+Ginkgoopsida	Plantae	occupancy	2019	Natura2000	1	1
+Hydrozoa	Animalia	occupancy	2019	Natura2000	1	1
+Maxillopoda	Animalia	occupancy	2019	Natura2000	1	1
+Monogenea	Animalia	occupancy	2019	Natura2000	1	1
+Polychaeta	Animalia	occupancy	2019	Natura2000	1	4
+Ustilaginomycetes	Fungi	occupancy	2019	Natura2000	1	1
+Bryopsida	Plantae	occupancy	2019	Natura2000	0	1
+Demospongiae	Animalia	occupancy	2019	Natura2000	0	1
+Hexanauplia	Animalia	occupancy	2019	Natura2000	0	1
+Jungermanniopsida	Plantae	occupancy	2019	Natura2000	0	1
+Tentaculata	Animalia	occupancy	2019	Natura2000	0	1
+Magnoliopsida	Plantae	occupancy	2020	Natura2000	256	605
+Liliopsida	Plantae	occupancy	2020	Natura2000	66	142
+Aves	Animalia	occupancy	2020	Natura2000	54	197
+Insecta	Animalia	occupancy	2020	Natura2000	30	61
+Reptilia	Animalia	occupancy	2020	Natura2000	18	29
+Arachnida	Animalia	occupancy	2020	Natura2000	11	13
+Mammalia	Animalia	occupancy	2020	Natura2000	10	25
+Amphibia	Animalia	occupancy	2020	Natura2000	8	11
+Malacostraca	Animalia	occupancy	2020	Natura2000	5	22
+Polypodiopsida	Plantae	occupancy	2020	Natura2000	5	15
+Pucciniomycetes	Fungi	occupancy	2020	Natura2000	4	4
+Bivalvia	Animalia	occupancy	2020	Natura2000	3	7
+Actinopterygii	Animalia	occupancy	2020	Natura2000	2	16
+Ascidiacea	Animalia	occupancy	2020	Natura2000	2	3
+Gastropoda	Animalia	occupancy	2020	Natura2000	2	9
+Gymnolaemata	Animalia	occupancy	2020	Natura2000	2	2
+Pinopsida	Plantae	occupancy	2020	Natura2000	2	27
+Agaricomycetes	Fungi	occupancy	2020	Natura2000	1	1
+Anthozoa	Animalia	occupancy	2020	Natura2000	1	1
+Clitellata	Animalia	occupancy	2020	Natura2000	1	3
+Ginkgoopsida	Plantae	occupancy	2020	Natura2000	1	1
+Hydrozoa	Animalia	occupancy	2020	Natura2000	1	1
+Jungermanniopsida	Plantae	occupancy	2020	Natura2000	1	1
+Maxillopoda	Animalia	occupancy	2020	Natura2000	1	1
+Monogenea	Animalia	occupancy	2020	Natura2000	1	1
+Polychaeta	Animalia	occupancy	2020	Natura2000	1	4
+Ustilaginomycetes	Fungi	occupancy	2020	Natura2000	1	1
+	Animalia	occupancy	2020	Natura2000	1	4
+Bryopsida	Plantae	occupancy	2020	Natura2000	0	1
+Demospongiae	Animalia	occupancy	2020	Natura2000	0	1
+Hexanauplia	Animalia	occupancy	2020	Natura2000	0	1
+Tentaculata	Animalia	occupancy	2020	Natura2000	0	1

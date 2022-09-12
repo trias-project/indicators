@@ -13,7 +13,7 @@
 <meta name="author" content="Toon Van Daele" />
 <meta name="author" content="Tim Adriaens" />
 
-<meta name="date" content="2022-09-08" />
+<meta name="date" content="2022-09-09" />
 
 <title>Ranking species by emerging status</title>
 
@@ -428,7 +428,7 @@ div.tocify {
 <h4 class="author">Damiano Oldoni</h4>
 <h4 class="author">Toon Van Daele</h4>
 <h4 class="author">Tim Adriaens</h4>
-<h4 class="date">2022-09-08</h4>
+<h4 class="date">2022-09-09</h4>
 
 </div>
 
@@ -691,21 +691,22 @@ em_df &lt;-
   left_join(taxa_names, by = &quot;taxonKey&quot;)</code></pre>
 <p>To rank taxa equally placed, we use the average of the minimal
 guaranteed growth of number of observations in all Belgium over all the
-evaluation years. A preview of these values follows:</p>
+evaluation years.</p>
 <pre class="r"><code># add mean growth to em_df
 em_df &lt;-
   em_df %&gt;%
   left_join(em_gam_list$gam_observations_be %&gt;%
     group_by(taxonKey) %&gt;%
-    summarize(mean_growth = mean(growth, na.rm = TRUE)))
-# show preview
+    summarize(mean_growth = mean(growth, na.rm = TRUE))) %&gt;%
+  relocate(.data$mean_growth, .before = .data$canonicalName)</code></pre>
+<p>A preview:</p>
+<pre class="r"><code># show preview
 em_df %&gt;%
   filter(!is.na(mean_growth)) %&gt;%
-  head(n = 10) %&gt;%
-  select(taxonKey, canonicalName, mean_growth)</code></pre>
+  head(n = 10)</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["taxonKey"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["canonicalName"],"name":[2],"type":["chr"],"align":["left"]},{"label":["mean_growth"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"1047536","2":"Leptinotarsa decemlineata","3":"1.3851508"},{"1":"1421091","2":"Lepisma saccharinum","3":"1.3127309"},{"1":"1690429","2":"Meconema meridionale","3":"0.8730686"},{"1":"1718308","2":"Acheta domesticus","3":"0.9414660"},{"1":"1749449","2":"Cameraria ohridella","3":"1.0477520"},{"1":"2041682","2":"Graphocephala fennahi","3":"1.9016347"},{"1":"2115769","2":"Austrominius modestus","3":"1.1624830"},{"1":"2157245","2":"Steatoda grossa","3":"2.2976959"},{"1":"2217982","2":"Crangonyx pseudogracilis","3":"1.0104818"},{"1":"2219863","2":"Gammarus tigrinus","3":"0.8295193"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["taxonKey"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["year_2018_em_status_observations_BE"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["year_2018_em_status_observations_pa"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["year_2018_em_status_occupancy_BE"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["year_2018_em_status_occupancy_pa"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["year_2019_em_status_observations_BE"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["year_2019_em_status_observations_pa"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["year_2019_em_status_occupancy_BE"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["year_2019_em_status_occupancy_pa"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["year_2020_em_status_observations_BE"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["year_2020_em_status_observations_pa"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["year_2020_em_status_occupancy_BE"],"name":[12],"type":["dbl"],"align":["right"]},{"label":["year_2020_em_status_occupancy_pa"],"name":[13],"type":["dbl"],"align":["right"]},{"label":["mean_growth"],"name":[14],"type":["dbl"],"align":["right"]},{"label":["canonicalName"],"name":[15],"type":["chr"],"align":["left"]},{"label":["kingdomKey"],"name":[16],"type":["dbl"],"align":["right"]},{"label":["classKey"],"name":[17],"type":["dbl"],"align":["right"]},{"label":["class"],"name":[18],"type":["chr"],"align":["left"]},{"label":["kingdom"],"name":[19],"type":["chr"],"align":["left"]}],"data":[{"1":"1047536","2":"3","3":"3","4":"2","5":"0","6":"3","7":"3","8":"0","9":"0","10":"3","11":"3","12":"0","13":"0","14":"1.3851508","15":"Leptinotarsa decemlineata","16":"1","17":"216","18":"Insecta","19":"Animalia"},{"1":"1421091","2":"3","3":"3","4":"0","5":"3","6":"3","7":"3","8":"0","9":"2","10":"3","11":"3","12":"0","13":"3","14":"1.3127309","15":"Lepisma saccharinum","16":"1","17":"216","18":"Insecta","19":"Animalia"},{"1":"1690429","2":"0","3":"0","4":"1","5":"1","6":"0","7":"0","8":"1","9":"1","10":"0","11":"0","12":"1","13":"1","14":"0.8730686","15":"Meconema meridionale","16":"1","17":"216","18":"Insecta","19":"Animalia"},{"1":"1718308","2":"1","3":"0","4":"1","5":"2","6":"1","7":"0","8":"1","9":"2","10":"1","11":"0","12":"1","13":"3","14":"0.9414660","15":"Acheta domesticus","16":"1","17":"216","18":"Insecta","19":"Animalia"},{"1":"1749449","2":"3","3":"1","4":"2","5":"1","6":"3","7":"2","8":"2","9":"3","10":"3","11":"3","12":"2","13":"3","14":"1.0477520","15":"Cameraria ohridella","16":"1","17":"216","18":"Insecta","19":"Animalia"},{"1":"2041682","2":"3","3":"3","4":"1","5":"0","6":"3","7":"3","8":"1","9":"0","10":"3","11":"3","12":"1","13":"0","14":"1.9016347","15":"Graphocephala fennahi","16":"1","17":"216","18":"Insecta","19":"Animalia"},{"1":"2115769","2":"3","3":"3","4":"3","5":"2","6":"3","7":"3","8":"3","9":"3","10":"3","11":"3","12":"3","13":"2","14":"1.1624830","15":"Austrominius modestus","16":"1","17":"NA","18":"NA","19":"Animalia"},{"1":"2157245","2":"3","3":"0","4":"0","5":"0","6":"3","7":"0","8":"2","9":"0","10":"3","11":"2","12":"2","13":"0","14":"2.2976959","15":"Steatoda grossa","16":"1","17":"367","18":"Arachnida","19":"Animalia"},{"1":"2217982","2":"2","3":"1","4":"0","5":"1","6":"3","7":"1","8":"0","9":"1","10":"3","11":"1","12":"0","13":"1","14":"1.0104818","15":"Crangonyx pseudogracilis","16":"1","17":"229","18":"Malacostraca","19":"Animalia"},{"1":"2219863","2":"1","3":"0","4":"0","5":"0","6":"1","7":"0","8":"0","9":"0","10":"1","11":"0","12":"0","13":"0","14":"0.8295193","15":"Gammarus tigrinus","16":"1","17":"229","18":"Malacostraca","19":"Animalia"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
@@ -904,12 +905,25 @@ ranking_pts</code></pre>
 </div>
 <div id="save-results" class="section level1" number="5">
 <h1><span class="header-section-number">5</span> Save results</h1>
-<p>We save both rankings.</p>
+<div id="final-emerging-status" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> Final emerging
+status</h2>
+<p>We save the final emerging status, <code>em_df</code>:</p>
+<pre class="r"><code>write_tsv(em_df, 
+          file = here::here(&quot;data&quot;, &quot;output&quot;, &quot;emerging_status.tsv&quot;),
+          na = &quot;&quot;
+)</code></pre>
+</div>
+<div id="rankings" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> Rankings</h2>
+<p>We save both the rankings.</p>
 <p>Ranking based on hierarchical strategy is saved in
 <code>data/output/ranking_emerging_status_hierarchical_strategy.tsv</code>:</p>
 <pre class="r"><code>write_tsv(ranking,
-  here::here(&quot;data&quot;, &quot;output&quot;, &quot;ranking_emerging_status_hierarchical_strategy.tsv&quot;),
-  na = &quot;&quot;
+          here::here(&quot;data&quot;,
+                     &quot;output&quot;,
+                     &quot;ranking_emerging_status_hierarchical_strategy.tsv&quot;),
+          na = &quot;&quot;
 )</code></pre>
 <p>Ranking based on points strategy is saved in
 <code>data/output/ranking_emerging_status_points_strategy.tsv</code>:</p>
@@ -917,6 +931,7 @@ ranking_pts</code></pre>
   here::here(&quot;data&quot;, &quot;output&quot;, &quot;ranking_emerging_status_points_strategy.tsv&quot;),
   na = &quot;&quot;
 )</code></pre>
+</div>
 </div>
 
 

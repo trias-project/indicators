@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Damiano Oldoni" />
+<meta name="author" content="Tim Adriaens" />
+
+<meta name="date" content="2022-09-12" />
+
+<title>Taxonomic distribution emerging species</title>
+
+<script src="site_libs/header-attrs-2.16/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="static/css/trias.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">TrIAS indicators</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Checklist-based indicators
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="01_get_data_input_checklist_indicators.html">Preprocessing for checklist-based indicators</a>
+    </li>
+    <li>
+      <a href="02_indicator_introductions_per_year.html">New species introductions</a>
+    </li>
+    <li>
+      <a href="03_indicator_cumulative_number.html">Cumulative number of species</a>
+    </li>
+    <li>
+      <a href="04_indicator_pathways.html">Introduction pathways</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Occurrence-based indicators
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="05_occurrence_indicators_preprocessing.html">Preprocessing for occurrence-based indicators</a>
+    </li>
+    <li>
+      <a href="06_occurrence_indicators_appearing_taxa.html">Appearing-reappearing species</a>
+    </li>
+    <li class="dropdown-submenu">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Emerging status analysis</a>
+      <ul class="dropdown-menu" role="menu">
+        <li>
+          <a href="07_occurrence_indicators_modelling.html">Assessing emerging status of alien species</a>
+        </li>
+        <li>
+          <a href="08_ranking_emerging_status.html">Ranking species by emerging status</a>
+        </li>
+      </ul>
+    </li>
+    <li class="dropdown-submenu">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Protected areas analysis</a>
+      <ul class="dropdown-menu" role="menu">
+        <li>
+          <a href="09_define_overlay_grid_belgium_with_protected_areas.html">Belgian protected areas and EEA grid of Belgium</a>
+        </li>
+        <li>
+          <a href="10_species_observations_occupancy_in_protected_areas.html">Belgian protected areas: observations and occupancy</a>
+        </li>
+        <li>
+          <a href="11_status_alien_species_in_protected_areas.html">Status of invasion of Belgian protected areas</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/trias-project/pipeline">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Taxonomic distribution emerging
+species</h1>
+<h4 class="author">Damiano Oldoni</h4>
+<h4 class="author">Tim Adriaens</h4>
+<h4 class="date">2022-09-12</h4>
+
+</div>
+
+
+<p>This document follows the <a
+href="https://trias-project.github.io/indicators/07_occurrence_indicators_modelling.html">ranking
+pipeline</a> to produce summary tables and graphs about the taxonomic
+distribution of the species defined as emerging (emerging status =
+3).</p>
+<div id="setup" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Setup</h1>
+<p>Load libraries:</p>
+<pre class="r"><code>library(tidyverse) # To do data science
+library(tidylog) # To provide feedback on dplyr functions
+library(here) # To find files</code></pre>
+</div>
+<div id="get-data" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> Get data</h1>
+<p>Read the tab separated files containing the emerging status
+output:</p>
+<pre class="r"><code>em_df &lt;- read_tsv(here::here(
+  &quot;data&quot;,
+  &quot;output&quot;, 
+  &quot;ranking_emerging_status_hierarchical_strategy.tsv&quot;),
+  na = &quot;&quot;
+)</code></pre>
+<p>Preview:</p>
+<pre class="r"><code>head(em_df)</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["taxonKey"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["canonicalName"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kingdom"],"name":[3],"type":["chr"],"align":["left"]},{"label":["class"],"name":[4],"type":["chr"],"align":["left"]},{"label":["year_2020_em_status_occupancy_pa"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["year_2020_em_status_observations_pa"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["year_2020_em_status_occupancy_BE"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["year_2020_em_status_observations_BE"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["year_2019_em_status_occupancy_pa"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["year_2019_em_status_observations_pa"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["year_2019_em_status_occupancy_BE"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["year_2019_em_status_observations_BE"],"name":[12],"type":["dbl"],"align":["right"]},{"label":["year_2018_em_status_occupancy_pa"],"name":[13],"type":["dbl"],"align":["right"]},{"label":["year_2018_em_status_observations_pa"],"name":[14],"type":["dbl"],"align":["right"]},{"label":["year_2018_em_status_occupancy_BE"],"name":[15],"type":["dbl"],"align":["right"]},{"label":["year_2018_em_status_observations_BE"],"name":[16],"type":["dbl"],"align":["right"]},{"label":["mean_growth"],"name":[17],"type":["dbl"],"align":["right"]},{"label":["kingdomKey"],"name":[18],"type":["dbl"],"align":["right"]},{"label":["classKey"],"name":[19],"type":["dbl"],"align":["right"]}],"data":[{"1":"3133887","2":"Coreopsis verticillata","3":"Plantae","4":"Magnoliopsida","5":"3","6":"3","7":"3","8":"3","9":"3","10":"3","11":"3","12":"3","13":"3","14":"3","15":"3","16":"3","17":"1.329780","18":"6","19":"220"},{"1":"3098912","2":"Cosmos bipinnatus","3":"Plantae","4":"Magnoliopsida","5":"3","6":"3","7":"3","8":"3","9":"3","10":"3","11":"3","12":"3","13":"3","14":"3","15":"3","16":"3","17":"1.282687","18":"6","19":"220"},{"1":"5232437","2":"Branta canadensis","3":"Animalia","4":"Aves","5":"3","6":"3","7":"3","8":"3","9":"3","10":"3","11":"3","12":"3","13":"3","14":"3","15":"3","16":"3","17":"1.211830","18":"1","19":"212"},{"1":"3067353","2":"Euphorbia characias","3":"Plantae","4":"Magnoliopsida","5":"3","6":"3","7":"3","8":"3","9":"3","10":"3","11":"3","12":"3","13":"3","14":"3","15":"3","16":"3","17":"1.108921","18":"6","19":"220"},{"1":"7681436","2":"Cytisus multiflorus","3":"Plantae","4":"Magnoliopsida","5":"3","6":"3","7":"3","8":"3","9":"3","10":"3","11":"3","12":"3","13":"3","14":"3","15":"3","16":"3","17":"NA","18":"6","19":"220"},{"1":"2925816","2":"Cynoglossum amabile","3":"Plantae","4":"Magnoliopsida","5":"3","6":"3","7":"3","8":"3","9":"3","10":"3","11":"3","12":"3","13":"3","14":"2","15":"3","16":"3","17":"NA","18":"6","19":"220"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<div
+id="get-number-of-emerging-species-per-class-year-location-and-variable"
+class="section level1" number="3">
+<h1><span class="header-section-number">3</span> Get number of emerging
+species per class, year, location and variable</h1>
+<p>First, reshape the data:</p>
+<pre class="r"><code>emerging_df &lt;-
+  em_df %&gt;%
+  pivot_longer(starts_with(&quot;year_&quot;), 
+               names_to = &quot;variable&quot;,
+               values_to = &quot;emerging_status&quot;)</code></pre>
+<p>Preview:</p>
+<pre class="r"><code>head(emerging_df)</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["taxonKey"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["canonicalName"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kingdom"],"name":[3],"type":["chr"],"align":["left"]},{"label":["class"],"name":[4],"type":["chr"],"align":["left"]},{"label":["mean_growth"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["kingdomKey"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["classKey"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["variable"],"name":[8],"type":["chr"],"align":["left"]},{"label":["emerging_status"],"name":[9],"type":["dbl"],"align":["right"]}],"data":[{"1":"3133887","2":"Coreopsis verticillata","3":"Plantae","4":"Magnoliopsida","5":"1.32978","6":"6","7":"220","8":"year_2020_em_status_occupancy_pa","9":"3"},{"1":"3133887","2":"Coreopsis verticillata","3":"Plantae","4":"Magnoliopsida","5":"1.32978","6":"6","7":"220","8":"year_2020_em_status_observations_pa","9":"3"},{"1":"3133887","2":"Coreopsis verticillata","3":"Plantae","4":"Magnoliopsida","5":"1.32978","6":"6","7":"220","8":"year_2020_em_status_occupancy_BE","9":"3"},{"1":"3133887","2":"Coreopsis verticillata","3":"Plantae","4":"Magnoliopsida","5":"1.32978","6":"6","7":"220","8":"year_2020_em_status_observations_BE","9":"3"},{"1":"3133887","2":"Coreopsis verticillata","3":"Plantae","4":"Magnoliopsida","5":"1.32978","6":"6","7":"220","8":"year_2019_em_status_occupancy_pa","9":"3"},{"1":"3133887","2":"Coreopsis verticillata","3":"Plantae","4":"Magnoliopsida","5":"1.32978","6":"6","7":"220","8":"year_2019_em_status_observations_pa","9":"3"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>We calculate the number of emerging species
+(<code>emerging_status</code> = 3) at class level for each combination
+of:</p>
+<ul>
+<li>year</li>
+<li>variable: occupancy or number of observations</li>
+<li>area of interest: Belgium or protectred areas</li>
+</ul>
+<pre class="r"><code>emerging_df &lt;- 
+  emerging_df %&gt;%
+  group_by(.data$class, 
+           .data$kingdom,
+           .data$variable) %&gt;%
+  summarise(n_emerging = length(.data$emerging_status[.data$emerging_status == 3]))</code></pre>
+<p>Add year, variable and area of interest as columns:</p>
+<pre class="r"><code>emerging_df &lt;- 
+  emerging_df %&gt;%
+  mutate(
+    year = str_extract(.data$variable, pattern = &quot;\\d+&quot;),
+    area = str_extract(.data$variable, pattern = &quot;BE$|pa$&quot;),
+    variable = str_extract(.data$variable,
+                           pattern = &quot;occupancy|observations&quot;)) %&gt;%
+  mutate(area = recode(.data$area, BE = &quot;Belgium&quot;, pa = &quot;Natura2000&quot;)) %&gt;%
+  relocate(n_emerging , .after = last_col()) %&gt;%
+  ungroup() %&gt;%
+  arrange(.data$year, desc(.data$n_emerging))</code></pre>
+<p>Preview:</p>
+<pre class="r"><code>head(emerging_df, 20)</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["class"],"name":[1],"type":["chr"],"align":["left"]},{"label":["kingdom"],"name":[2],"type":["chr"],"align":["left"]},{"label":["variable"],"name":[3],"type":["chr"],"align":["left"]},{"label":["year"],"name":[4],"type":["chr"],"align":["left"]},{"label":["area"],"name":[5],"type":["chr"],"align":["left"]},{"label":["n_emerging"],"name":[6],"type":["int"],"align":["right"]}],"data":[{"1":"Magnoliopsida","2":"Plantae","3":"observations","4":"2018","5":"Natura2000","6":"260"},{"1":"Magnoliopsida","2":"Plantae","3":"occupancy","4":"2018","5":"Natura2000","6":"245"},{"1":"Magnoliopsida","2":"Plantae","3":"observations","4":"2018","5":"Belgium","6":"100"},{"1":"Magnoliopsida","2":"Plantae","3":"occupancy","4":"2018","5":"Belgium","6":"99"},{"1":"Aves","2":"Animalia","3":"observations","4":"2018","5":"Natura2000","6":"70"},{"1":"Liliopsida","2":"Plantae","3":"occupancy","4":"2018","5":"Natura2000","6":"65"},{"1":"Liliopsida","2":"Plantae","3":"observations","4":"2018","5":"Natura2000","6":"63"},{"1":"Aves","2":"Animalia","3":"occupancy","4":"2018","5":"Natura2000","6":"55"},{"1":"Insecta","2":"Animalia","3":"observations","4":"2018","5":"Natura2000","6":"39"},{"1":"Aves","2":"Animalia","3":"observations","4":"2018","5":"Belgium","6":"32"},{"1":"Insecta","2":"Animalia","3":"occupancy","4":"2018","5":"Natura2000","6":"32"},{"1":"Liliopsida","2":"Plantae","3":"observations","4":"2018","5":"Belgium","6":"24"},{"1":"Insecta","2":"Animalia","3":"observations","4":"2018","5":"Belgium","6":"21"},{"1":"Reptilia","2":"Animalia","3":"occupancy","4":"2018","5":"Natura2000","6":"19"},{"1":"Aves","2":"Animalia","3":"occupancy","4":"2018","5":"Belgium","6":"17"},{"1":"Insecta","2":"Animalia","3":"occupancy","4":"2018","5":"Belgium","6":"17"},{"1":"Liliopsida","2":"Plantae","3":"occupancy","4":"2018","5":"Belgium","6":"16"},{"1":"Arachnida","2":"Animalia","3":"occupancy","4":"2018","5":"Natura2000","6":"11"},{"1":"Reptilia","2":"Animalia","3":"observations","4":"2018","5":"Natura2000","6":"10"},{"1":"Amphibia","2":"Animalia","3":"occupancy","4":"2018","5":"Natura2000","6":"9"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>Save this output file:</p>
+<pre class="r"><code>write_tsv(
+  emerging_df,
+  here::here(
+  &quot;data&quot;,
+  &quot;output&quot;, 
+  &quot;number_of_emerging_taxa_per_class.tsv&quot;),
+  na = &quot;&quot;
+)</code></pre>
+</div>
+<div id="summaries-and-graphs" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> Summaries and
+graphs</h1>
+<p>Kingdoms with emerging species:</p>
+<pre class="r"><code>kingdoms &lt;- emerging_df %&gt;% distinct(.data$kingdom)
+kingdoms</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["kingdom"],"name":[1],"type":["chr"],"align":["left"]}],"data":[{"1":"Plantae"},{"1":"Animalia"},{"1":"Fungi"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>Classes with emerging species:</p>
+<pre class="r"><code>classes &lt;- emerging_df %&gt;% distinct(.data$class, .data$kingdom)
+classes</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["class"],"name":[1],"type":["chr"],"align":["left"]},{"label":["kingdom"],"name":[2],"type":["chr"],"align":["left"]}],"data":[{"1":"Magnoliopsida","2":"Plantae"},{"1":"Aves","2":"Animalia"},{"1":"Liliopsida","2":"Plantae"},{"1":"Insecta","2":"Animalia"},{"1":"Reptilia","2":"Animalia"},{"1":"Arachnida","2":"Animalia"},{"1":"Amphibia","2":"Animalia"},{"1":"Mammalia","2":"Animalia"},{"1":"Pinopsida","2":"Plantae"},{"1":"Actinopterygii","2":"Animalia"},{"1":"Polypodiopsida","2":"Plantae"},{"1":"Malacostraca","2":"Animalia"},{"1":"Pucciniomycetes","2":"Fungi"},{"1":"Bivalvia","2":"Animalia"},{"1":"Gastropoda","2":"Animalia"},{"1":"Ascidiacea","2":"Animalia"},{"1":"Gymnolaemata","2":"Animalia"},{"1":"NA","2":"Animalia"},{"1":"Agaricomycetes","2":"Fungi"},{"1":"Anthozoa","2":"Animalia"},{"1":"Bryopsida","2":"Plantae"},{"1":"Clitellata","2":"Animalia"},{"1":"Ginkgoopsida","2":"Plantae"},{"1":"Hydrozoa","2":"Animalia"},{"1":"Jungermanniopsida","2":"Plantae"},{"1":"Maxillopoda","2":"Animalia"},{"1":"Monogenea","2":"Animalia"},{"1":"Polychaeta","2":"Animalia"},{"1":"Ustilaginomycetes","2":"Fungi"},{"1":"Demospongiae","2":"Animalia"},{"1":"Hexanauplia","2":"Animalia"},{"1":"Tentaculata","2":"Animalia"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>Distribution of classes at kingdom levels:</p>
+<pre class="r"><code>classes %&gt;%
+  group_by(.data$kingdom) %&gt;%
+  count() %&gt;%
+  arrange(desc(.data$n))</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["kingdom"],"name":[1],"type":["chr"],"align":["left"]},{"label":["n"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"Animalia","2":"22"},{"1":"Plantae","2":"7"},{"1":"Fungi","2":"3"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<div id="occupancy" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Occupancy</h2>
+<div id="belgium" class="section level3" number="4.1.1">
+<h3><span class="header-section-number">4.1.1</span> Belgium</h3>
+<pre class="r"><code>emerging_df_BE_occupancy &lt;-
+  emerging_df %&gt;%
+  filter(.data$area == &quot;Belgium&quot; &amp; .data$variable == &quot;occupancy&quot;)
+emerging_df_BE_occupancy</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["class"],"name":[1],"type":["chr"],"align":["left"]},{"label":["kingdom"],"name":[2],"type":["chr"],"align":["left"]},{"label":["variable"],"name":[3],"type":["chr"],"align":["left"]},{"label":["year"],"name":[4],"type":["chr"],"align":["left"]},{"label":["area"],"name":[5],"type":["chr"],"align":["left"]},{"label":["n_emerging"],"name":[6],"type":["int"],"align":["right"]}],"data":[{"1":"Magnoliopsida","2":"Plantae","3":"occupancy","4":"2018","5":"Belgium","6":"99"},{"1":"Aves","2":"Animalia","3":"occupancy","4":"2018","5":"Belgium","6":"17"},{"1":"Insecta","2":"Animalia","3":"occupancy","4":"2018","5":"Belgium","6":"17"},{"1":"Liliopsida","2":"Plantae","3":"occupancy","4":"2018","5":"Belgium","6":"16"},{"1":"Pinopsida","2":"Plantae","3":"occupancy","4":"2018","5":"Belgium","6":"9"},{"1":"Polypodiopsida","2":"Plantae","3":"occupancy","4":"2018","5":"Belgium","6":"5"},{"1":"Actinopterygii","2":"Animalia","3":"occupancy","4":"2018","5":"Belgium","6":"4"},{"1":"Mammalia","2":"Animalia","3":"occupancy","4":"2018","5":"Belgium","6":"4"},{"1":"Reptilia","2":"Animalia","3":"occupancy","4":"2018","5":"Belgium","6":"4"},{"1":"Bivalvia","2":"Animalia","3":"occupancy","4":"2018","5":"Belgium","6":"3"},{"1":"Gastropoda","2":"Animalia","3":"occupancy","4":"2018","5":"Belgium","6":"3"},{"1":"Arachnida","2":"Animalia","3":"occupancy","4":"2018","5":"Belgium","6":"2"},{"1":"Malacostraca","2":"Animalia","3":"occupancy","4":"2018","5":"Belgium","6":"2"},{"1":"Amphibia","2":"Animalia","3":"occupancy","4":"2018","5":"Belgium","6":"1"},{"1":"Bryopsida","2":"Plantae","3":"occupancy","4":"2018","5":"Belgium","6":"1"},{"1":"Hydrozoa","2":"Animalia","3":"occupancy","4":"2018","5":"Belgium","6":"1"},{"1":"Jungermanniopsida","2":"Plantae","3":"occupancy","4":"2018","5":"Belgium","6":"1"},{"1":"Polychaeta","2":"Animalia","3":"occupancy","4":"2018","5":"Belgium","6":"1"},{"1":"NA","2":"Animalia","3":"occupancy","4":"2018","5":"Belgium","6":"1"},{"1":"Agaricomycetes","2":"Fungi","3":"occupancy","4":"2018","5":"Belgium","6":"0"},{"1":"Anthozoa","2":"Animalia","3":"occupancy","4":"2018","5":"Belgium","6":"0"},{"1":"Ascidiacea","2":"Animalia","3":"occupancy","4":"2018","5":"Belgium","6":"0"},{"1":"Clitellata","2":"Animalia","3":"occupancy","4":"2018","5":"Belgium","6":"0"},{"1":"Demospongiae","2":"Animalia","3":"occupancy","4":"2018","5":"Belgium","6":"0"},{"1":"Ginkgoopsida","2":"Plantae","3":"occupancy","4":"2018","5":"Belgium","6":"0"},{"1":"Gymnolaemata","2":"Animalia","3":"occupancy","4":"2018","5":"Belgium","6":"0"},{"1":"Hexanauplia","2":"Animalia","3":"occupancy","4":"2018","5":"Belgium","6":"0"},{"1":"Maxillopoda","2":"Animalia","3":"occupancy","4":"2018","5":"Belgium","6":"0"},{"1":"Monogenea","2":"Animalia","3":"occupancy","4":"2018","5":"Belgium","6":"0"},{"1":"Pucciniomycetes","2":"Fungi","3":"occupancy","4":"2018","5":"Belgium","6":"0"},{"1":"Tentaculata","2":"Animalia","3":"occupancy","4":"2018","5":"Belgium","6":"0"},{"1":"Ustilaginomycetes","2":"Fungi","3":"occupancy","4":"2018","5":"Belgium","6":"0"},{"1":"Magnoliopsida","2":"Plantae","3":"occupancy","4":"2019","5":"Belgium","6":"118"},{"1":"Liliopsida","2":"Plantae","3":"occupancy","4":"2019","5":"Belgium","6":"27"},{"1":"Aves","2":"Animalia","3":"occupancy","4":"2019","5":"Belgium","6":"19"},{"1":"Insecta","2":"Animalia","3":"occupancy","4":"2019","5":"Belgium","6":"13"},{"1":"Pinopsida","2":"Plantae","3":"occupancy","4":"2019","5":"Belgium","6":"8"},{"1":"Gastropoda","2":"Animalia","3":"occupancy","4":"2019","5":"Belgium","6":"4"},{"1":"Arachnida","2":"Animalia","3":"occupancy","4":"2019","5":"Belgium","6":"3"},{"1":"Bivalvia","2":"Animalia","3":"occupancy","4":"2019","5":"Belgium","6":"3"},{"1":"Mammalia","2":"Animalia","3":"occupancy","4":"2019","5":"Belgium","6":"3"},{"1":"Reptilia","2":"Animalia","3":"occupancy","4":"2019","5":"Belgium","6":"3"},{"1":"Actinopterygii","2":"Animalia","3":"occupancy","4":"2019","5":"Belgium","6":"2"},{"1":"Polypodiopsida","2":"Plantae","3":"occupancy","4":"2019","5":"Belgium","6":"2"},{"1":"Amphibia","2":"Animalia","3":"occupancy","4":"2019","5":"Belgium","6":"1"},{"1":"Bryopsida","2":"Plantae","3":"occupancy","4":"2019","5":"Belgium","6":"1"},{"1":"Hydrozoa","2":"Animalia","3":"occupancy","4":"2019","5":"Belgium","6":"1"},{"1":"Malacostraca","2":"Animalia","3":"occupancy","4":"2019","5":"Belgium","6":"1"},{"1":"Polychaeta","2":"Animalia","3":"occupancy","4":"2019","5":"Belgium","6":"1"},{"1":"NA","2":"Animalia","3":"occupancy","4":"2019","5":"Belgium","6":"1"},{"1":"Agaricomycetes","2":"Fungi","3":"occupancy","4":"2019","5":"Belgium","6":"0"},{"1":"Anthozoa","2":"Animalia","3":"occupancy","4":"2019","5":"Belgium","6":"0"},{"1":"Ascidiacea","2":"Animalia","3":"occupancy","4":"2019","5":"Belgium","6":"0"},{"1":"Clitellata","2":"Animalia","3":"occupancy","4":"2019","5":"Belgium","6":"0"},{"1":"Demospongiae","2":"Animalia","3":"occupancy","4":"2019","5":"Belgium","6":"0"},{"1":"Ginkgoopsida","2":"Plantae","3":"occupancy","4":"2019","5":"Belgium","6":"0"},{"1":"Gymnolaemata","2":"Animalia","3":"occupancy","4":"2019","5":"Belgium","6":"0"},{"1":"Hexanauplia","2":"Animalia","3":"occupancy","4":"2019","5":"Belgium","6":"0"},{"1":"Jungermanniopsida","2":"Plantae","3":"occupancy","4":"2019","5":"Belgium","6":"0"},{"1":"Maxillopoda","2":"Animalia","3":"occupancy","4":"2019","5":"Belgium","6":"0"},{"1":"Monogenea","2":"Animalia","3":"occupancy","4":"2019","5":"Belgium","6":"0"},{"1":"Pucciniomycetes","2":"Fungi","3":"occupancy","4":"2019","5":"Belgium","6":"0"},{"1":"Tentaculata","2":"Animalia","3":"occupancy","4":"2019","5":"Belgium","6":"0"},{"1":"Ustilaginomycetes","2":"Fungi","3":"occupancy","4":"2019","5":"Belgium","6":"0"},{"1":"Magnoliopsida","2":"Plantae","3":"occupancy","4":"2020","5":"Belgium","6":"169"},{"1":"Liliopsida","2":"Plantae","3":"occupancy","4":"2020","5":"Belgium","6":"38"},{"1":"Aves","2":"Animalia","3":"occupancy","4":"2020","5":"Belgium","6":"24"},{"1":"Insecta","2":"Animalia","3":"occupancy","4":"2020","5":"Belgium","6":"11"},{"1":"Reptilia","2":"Animalia","3":"occupancy","4":"2020","5":"Belgium","6":"7"},{"1":"Mammalia","2":"Animalia","3":"occupancy","4":"2020","5":"Belgium","6":"6"},{"1":"Pinopsida","2":"Plantae","3":"occupancy","4":"2020","5":"Belgium","6":"6"},{"1":"Polypodiopsida","2":"Plantae","3":"occupancy","4":"2020","5":"Belgium","6":"6"},{"1":"Gastropoda","2":"Animalia","3":"occupancy","4":"2020","5":"Belgium","6":"4"},{"1":"Arachnida","2":"Animalia","3":"occupancy","4":"2020","5":"Belgium","6":"3"},{"1":"Malacostraca","2":"Animalia","3":"occupancy","4":"2020","5":"Belgium","6":"3"},{"1":"Amphibia","2":"Animalia","3":"occupancy","4":"2020","5":"Belgium","6":"2"},{"1":"Bivalvia","2":"Animalia","3":"occupancy","4":"2020","5":"Belgium","6":"2"},{"1":"Actinopterygii","2":"Animalia","3":"occupancy","4":"2020","5":"Belgium","6":"1"},{"1":"Agaricomycetes","2":"Fungi","3":"occupancy","4":"2020","5":"Belgium","6":"1"},{"1":"Ascidiacea","2":"Animalia","3":"occupancy","4":"2020","5":"Belgium","6":"1"},{"1":"Bryopsida","2":"Plantae","3":"occupancy","4":"2020","5":"Belgium","6":"1"},{"1":"Ginkgoopsida","2":"Plantae","3":"occupancy","4":"2020","5":"Belgium","6":"1"},{"1":"Jungermanniopsida","2":"Plantae","3":"occupancy","4":"2020","5":"Belgium","6":"1"},{"1":"Pucciniomycetes","2":"Fungi","3":"occupancy","4":"2020","5":"Belgium","6":"1"},{"1":"Ustilaginomycetes","2":"Fungi","3":"occupancy","4":"2020","5":"Belgium","6":"1"},{"1":"NA","2":"Animalia","3":"occupancy","4":"2020","5":"Belgium","6":"1"},{"1":"Anthozoa","2":"Animalia","3":"occupancy","4":"2020","5":"Belgium","6":"0"},{"1":"Clitellata","2":"Animalia","3":"occupancy","4":"2020","5":"Belgium","6":"0"},{"1":"Demospongiae","2":"Animalia","3":"occupancy","4":"2020","5":"Belgium","6":"0"},{"1":"Gymnolaemata","2":"Animalia","3":"occupancy","4":"2020","5":"Belgium","6":"0"},{"1":"Hexanauplia","2":"Animalia","3":"occupancy","4":"2020","5":"Belgium","6":"0"},{"1":"Hydrozoa","2":"Animalia","3":"occupancy","4":"2020","5":"Belgium","6":"0"},{"1":"Maxillopoda","2":"Animalia","3":"occupancy","4":"2020","5":"Belgium","6":"0"},{"1":"Monogenea","2":"Animalia","3":"occupancy","4":"2020","5":"Belgium","6":"0"},{"1":"Polychaeta","2":"Animalia","3":"occupancy","4":"2020","5":"Belgium","6":"0"},{"1":"Tentaculata","2":"Animalia","3":"occupancy","4":"2020","5":"Belgium","6":"0"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<pre class="r"><code>emerging_plots_BE_occupancy &lt;- map(kingdoms$kingdom, function(x) {
+  data &lt;- 
+    emerging_df_BE_occupancy %&gt;%
+    filter(.data$kingdom == x &amp; .data$n_emerging &gt; 0)
+  ggplot(data) +
+    geom_col(aes(x = class, y = n_emerging, fill = year), position = &quot;dodge&quot;) +
+    theme(
+    axis.text.x = element_text(
+      angle = 315,
+      hjust = 0,
+      vjust = 1
+      )
+    )
+})
+emerging_plots_BE_occupancy</code></pre>
+<pre><code>## [[1]]</code></pre>
+<p><img src="12_taxonomic_distribution_emerging_species_files/figure-html/plot_emerging_df_BE_occupancy-1.png" width="672" /></p>
+<pre><code>## 
+## [[2]]</code></pre>
+<p><img src="12_taxonomic_distribution_emerging_species_files/figure-html/plot_emerging_df_BE_occupancy-2.png" width="672" /></p>
+<pre><code>## 
+## [[3]]</code></pre>
+<p><img src="12_taxonomic_distribution_emerging_species_files/figure-html/plot_emerging_df_BE_occupancy-3.png" width="672" /></p>
+<p>Save both table and graph:</p>
+<pre class="r"><code>write_tsv(
+  emerging_df_BE_occupancy,
+  here::here(
+  &quot;data&quot;,
+  &quot;output&quot;,
+  &quot;taxonomic_distribution_emerging_species&quot;,
+  &quot;n_emerging_taxa_per_class_in_BE_occupancy.tsv&quot;),
+  na = &quot;&quot;
+)
+walk2(
+  emerging_plots_BE_occupancy,
+  kingdoms$kingdom, 
+  function(x, y) {
+    ggsave(here::here(&quot;data&quot;,
+                      &quot;output&quot;,
+                      &quot;taxonomic_distribution_emerging_species&quot;,
+                      paste0(&quot;n_emerging_taxa_per_class_in_BE_occupancy_&quot;,
+                             y,
+                             &quot;.png&quot;)),
+           x)
+})</code></pre>
+</div>
+<div id="natura2000" class="section level3" number="4.1.2">
+<h3><span class="header-section-number">4.1.2</span> Natura2000</h3>
+<pre class="r"><code>emerging_df_Natura2000_occupancy &lt;-
+  emerging_df %&gt;%
+  filter(.data$area == &quot;Natura2000&quot; &amp; .data$variable == &quot;occupancy&quot;)
+emerging_df_Natura2000_occupancy</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["class"],"name":[1],"type":["chr"],"align":["left"]},{"label":["kingdom"],"name":[2],"type":["chr"],"align":["left"]},{"label":["variable"],"name":[3],"type":["chr"],"align":["left"]},{"label":["year"],"name":[4],"type":["chr"],"align":["left"]},{"label":["area"],"name":[5],"type":["chr"],"align":["left"]},{"label":["n_emerging"],"name":[6],"type":["int"],"align":["right"]}],"data":[{"1":"Magnoliopsida","2":"Plantae","3":"occupancy","4":"2018","5":"Natura2000","6":"245"},{"1":"Liliopsida","2":"Plantae","3":"occupancy","4":"2018","5":"Natura2000","6":"65"},{"1":"Aves","2":"Animalia","3":"occupancy","4":"2018","5":"Natura2000","6":"55"},{"1":"Insecta","2":"Animalia","3":"occupancy","4":"2018","5":"Natura2000","6":"32"},{"1":"Reptilia","2":"Animalia","3":"occupancy","4":"2018","5":"Natura2000","6":"19"},{"1":"Arachnida","2":"Animalia","3":"occupancy","4":"2018","5":"Natura2000","6":"11"},{"1":"Amphibia","2":"Animalia","3":"occupancy","4":"2018","5":"Natura2000","6":"9"},{"1":"Mammalia","2":"Animalia","3":"occupancy","4":"2018","5":"Natura2000","6":"9"},{"1":"Actinopterygii","2":"Animalia","3":"occupancy","4":"2018","5":"Natura2000","6":"6"},{"1":"Malacostraca","2":"Animalia","3":"occupancy","4":"2018","5":"Natura2000","6":"5"},{"1":"Pinopsida","2":"Plantae","3":"occupancy","4":"2018","5":"Natura2000","6":"4"},{"1":"Pucciniomycetes","2":"Fungi","3":"occupancy","4":"2018","5":"Natura2000","6":"4"},{"1":"Bivalvia","2":"Animalia","3":"occupancy","4":"2018","5":"Natura2000","6":"3"},{"1":"Polypodiopsida","2":"Plantae","3":"occupancy","4":"2018","5":"Natura2000","6":"3"},{"1":"Ascidiacea","2":"Animalia","3":"occupancy","4":"2018","5":"Natura2000","6":"2"},{"1":"Gymnolaemata","2":"Animalia","3":"occupancy","4":"2018","5":"Natura2000","6":"2"},{"1":"Agaricomycetes","2":"Fungi","3":"occupancy","4":"2018","5":"Natura2000","6":"1"},{"1":"Anthozoa","2":"Animalia","3":"occupancy","4":"2018","5":"Natura2000","6":"1"},{"1":"Clitellata","2":"Animalia","3":"occupancy","4":"2018","5":"Natura2000","6":"1"},{"1":"Gastropoda","2":"Animalia","3":"occupancy","4":"2018","5":"Natura2000","6":"1"},{"1":"Ginkgoopsida","2":"Plantae","3":"occupancy","4":"2018","5":"Natura2000","6":"1"},{"1":"Hydrozoa","2":"Animalia","3":"occupancy","4":"2018","5":"Natura2000","6":"1"},{"1":"Maxillopoda","2":"Animalia","3":"occupancy","4":"2018","5":"Natura2000","6":"1"},{"1":"Monogenea","2":"Animalia","3":"occupancy","4":"2018","5":"Natura2000","6":"1"},{"1":"Polychaeta","2":"Animalia","3":"occupancy","4":"2018","5":"Natura2000","6":"1"},{"1":"Ustilaginomycetes","2":"Fungi","3":"occupancy","4":"2018","5":"Natura2000","6":"1"},{"1":"NA","2":"Animalia","3":"occupancy","4":"2018","5":"Natura2000","6":"1"},{"1":"Bryopsida","2":"Plantae","3":"occupancy","4":"2018","5":"Natura2000","6":"0"},{"1":"Demospongiae","2":"Animalia","3":"occupancy","4":"2018","5":"Natura2000","6":"0"},{"1":"Hexanauplia","2":"Animalia","3":"occupancy","4":"2018","5":"Natura2000","6":"0"},{"1":"Jungermanniopsida","2":"Plantae","3":"occupancy","4":"2018","5":"Natura2000","6":"0"},{"1":"Tentaculata","2":"Animalia","3":"occupancy","4":"2018","5":"Natura2000","6":"0"},{"1":"Magnoliopsida","2":"Plantae","3":"occupancy","4":"2019","5":"Natura2000","6":"246"},{"1":"Liliopsida","2":"Plantae","3":"occupancy","4":"2019","5":"Natura2000","6":"59"},{"1":"Aves","2":"Animalia","3":"occupancy","4":"2019","5":"Natura2000","6":"51"},{"1":"Insecta","2":"Animalia","3":"occupancy","4":"2019","5":"Natura2000","6":"28"},{"1":"Reptilia","2":"Animalia","3":"occupancy","4":"2019","5":"Natura2000","6":"17"},{"1":"Arachnida","2":"Animalia","3":"occupancy","4":"2019","5":"Natura2000","6":"11"},{"1":"Amphibia","2":"Animalia","3":"occupancy","4":"2019","5":"Natura2000","6":"9"},{"1":"Mammalia","2":"Animalia","3":"occupancy","4":"2019","5":"Natura2000","6":"9"},{"1":"Gastropoda","2":"Animalia","3":"occupancy","4":"2019","5":"Natura2000","6":"5"},{"1":"Pinopsida","2":"Plantae","3":"occupancy","4":"2019","5":"Natura2000","6":"5"},{"1":"Pucciniomycetes","2":"Fungi","3":"occupancy","4":"2019","5":"Natura2000","6":"4"},{"1":"Bivalvia","2":"Animalia","3":"occupancy","4":"2019","5":"Natura2000","6":"3"},{"1":"Malacostraca","2":"Animalia","3":"occupancy","4":"2019","5":"Natura2000","6":"3"},{"1":"Polypodiopsida","2":"Plantae","3":"occupancy","4":"2019","5":"Natura2000","6":"3"},{"1":"Actinopterygii","2":"Animalia","3":"occupancy","4":"2019","5":"Natura2000","6":"2"},{"1":"Ascidiacea","2":"Animalia","3":"occupancy","4":"2019","5":"Natura2000","6":"2"},{"1":"Gymnolaemata","2":"Animalia","3":"occupancy","4":"2019","5":"Natura2000","6":"2"},{"1":"NA","2":"Animalia","3":"occupancy","4":"2019","5":"Natura2000","6":"2"},{"1":"Agaricomycetes","2":"Fungi","3":"occupancy","4":"2019","5":"Natura2000","6":"1"},{"1":"Anthozoa","2":"Animalia","3":"occupancy","4":"2019","5":"Natura2000","6":"1"},{"1":"Clitellata","2":"Animalia","3":"occupancy","4":"2019","5":"Natura2000","6":"1"},{"1":"Ginkgoopsida","2":"Plantae","3":"occupancy","4":"2019","5":"Natura2000","6":"1"},{"1":"Hydrozoa","2":"Animalia","3":"occupancy","4":"2019","5":"Natura2000","6":"1"},{"1":"Maxillopoda","2":"Animalia","3":"occupancy","4":"2019","5":"Natura2000","6":"1"},{"1":"Monogenea","2":"Animalia","3":"occupancy","4":"2019","5":"Natura2000","6":"1"},{"1":"Polychaeta","2":"Animalia","3":"occupancy","4":"2019","5":"Natura2000","6":"1"},{"1":"Ustilaginomycetes","2":"Fungi","3":"occupancy","4":"2019","5":"Natura2000","6":"1"},{"1":"Bryopsida","2":"Plantae","3":"occupancy","4":"2019","5":"Natura2000","6":"0"},{"1":"Demospongiae","2":"Animalia","3":"occupancy","4":"2019","5":"Natura2000","6":"0"},{"1":"Hexanauplia","2":"Animalia","3":"occupancy","4":"2019","5":"Natura2000","6":"0"},{"1":"Jungermanniopsida","2":"Plantae","3":"occupancy","4":"2019","5":"Natura2000","6":"0"},{"1":"Tentaculata","2":"Animalia","3":"occupancy","4":"2019","5":"Natura2000","6":"0"},{"1":"Magnoliopsida","2":"Plantae","3":"occupancy","4":"2020","5":"Natura2000","6":"256"},{"1":"Liliopsida","2":"Plantae","3":"occupancy","4":"2020","5":"Natura2000","6":"66"},{"1":"Aves","2":"Animalia","3":"occupancy","4":"2020","5":"Natura2000","6":"54"},{"1":"Insecta","2":"Animalia","3":"occupancy","4":"2020","5":"Natura2000","6":"30"},{"1":"Reptilia","2":"Animalia","3":"occupancy","4":"2020","5":"Natura2000","6":"18"},{"1":"Arachnida","2":"Animalia","3":"occupancy","4":"2020","5":"Natura2000","6":"11"},{"1":"Mammalia","2":"Animalia","3":"occupancy","4":"2020","5":"Natura2000","6":"10"},{"1":"Amphibia","2":"Animalia","3":"occupancy","4":"2020","5":"Natura2000","6":"8"},{"1":"Malacostraca","2":"Animalia","3":"occupancy","4":"2020","5":"Natura2000","6":"5"},{"1":"Polypodiopsida","2":"Plantae","3":"occupancy","4":"2020","5":"Natura2000","6":"5"},{"1":"Pucciniomycetes","2":"Fungi","3":"occupancy","4":"2020","5":"Natura2000","6":"4"},{"1":"Bivalvia","2":"Animalia","3":"occupancy","4":"2020","5":"Natura2000","6":"3"},{"1":"Actinopterygii","2":"Animalia","3":"occupancy","4":"2020","5":"Natura2000","6":"2"},{"1":"Ascidiacea","2":"Animalia","3":"occupancy","4":"2020","5":"Natura2000","6":"2"},{"1":"Gastropoda","2":"Animalia","3":"occupancy","4":"2020","5":"Natura2000","6":"2"},{"1":"Gymnolaemata","2":"Animalia","3":"occupancy","4":"2020","5":"Natura2000","6":"2"},{"1":"Pinopsida","2":"Plantae","3":"occupancy","4":"2020","5":"Natura2000","6":"2"},{"1":"Agaricomycetes","2":"Fungi","3":"occupancy","4":"2020","5":"Natura2000","6":"1"},{"1":"Anthozoa","2":"Animalia","3":"occupancy","4":"2020","5":"Natura2000","6":"1"},{"1":"Clitellata","2":"Animalia","3":"occupancy","4":"2020","5":"Natura2000","6":"1"},{"1":"Ginkgoopsida","2":"Plantae","3":"occupancy","4":"2020","5":"Natura2000","6":"1"},{"1":"Hydrozoa","2":"Animalia","3":"occupancy","4":"2020","5":"Natura2000","6":"1"},{"1":"Jungermanniopsida","2":"Plantae","3":"occupancy","4":"2020","5":"Natura2000","6":"1"},{"1":"Maxillopoda","2":"Animalia","3":"occupancy","4":"2020","5":"Natura2000","6":"1"},{"1":"Monogenea","2":"Animalia","3":"occupancy","4":"2020","5":"Natura2000","6":"1"},{"1":"Polychaeta","2":"Animalia","3":"occupancy","4":"2020","5":"Natura2000","6":"1"},{"1":"Ustilaginomycetes","2":"Fungi","3":"occupancy","4":"2020","5":"Natura2000","6":"1"},{"1":"NA","2":"Animalia","3":"occupancy","4":"2020","5":"Natura2000","6":"1"},{"1":"Bryopsida","2":"Plantae","3":"occupancy","4":"2020","5":"Natura2000","6":"0"},{"1":"Demospongiae","2":"Animalia","3":"occupancy","4":"2020","5":"Natura2000","6":"0"},{"1":"Hexanauplia","2":"Animalia","3":"occupancy","4":"2020","5":"Natura2000","6":"0"},{"1":"Tentaculata","2":"Animalia","3":"occupancy","4":"2020","5":"Natura2000","6":"0"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<pre class="r"><code>emerging_plots_Natura2000_occupancy &lt;- map(
+  kingdoms$kingdom, function(x) {
+    data &lt;- emerging_df_Natura2000_occupancy %&gt;%
+      filter(.data$kingdom == x &amp; .data$n_emerging &gt; 0)
+    ggplot(data) +
+      geom_col(aes(x = class, y = n_emerging, fill = year), position = &quot;dodge&quot;) +
+      theme(
+        axis.text.x = element_text(
+          angle = 315,
+          hjust = 0,
+          vjust = 1
+        )
+      )
+  })
+emerging_plots_Natura2000_occupancy</code></pre>
+<pre><code>## [[1]]</code></pre>
+<p><img src="12_taxonomic_distribution_emerging_species_files/figure-html/plot_emerging_df_Natura2000_occupancy-1.png" width="672" /></p>
+<pre><code>## 
+## [[2]]</code></pre>
+<p><img src="12_taxonomic_distribution_emerging_species_files/figure-html/plot_emerging_df_Natura2000_occupancy-2.png" width="672" /></p>
+<pre><code>## 
+## [[3]]</code></pre>
+<p><img src="12_taxonomic_distribution_emerging_species_files/figure-html/plot_emerging_df_Natura2000_occupancy-3.png" width="672" /></p>
+<p>Save both table and graph:</p>
+<pre class="r"><code>write_tsv(
+  emerging_df_Natura2000_occupancy,
+  here::here(
+  &quot;data&quot;,
+  &quot;output&quot;,
+  &quot;taxonomic_distribution_emerging_species&quot;,
+  &quot;n_emerging_taxa_per_class_in_Natura2000_occupancy.tsv&quot;),
+  na = &quot;&quot;
+)
+walk2(
+  emerging_plots_Natura2000_occupancy,
+  kingdoms$kingdom, 
+  function(x, y) {
+    ggsave(here::here(
+      &quot;data&quot;,
+      &quot;output&quot;,
+      &quot;taxonomic_distribution_emerging_species&quot;,
+      paste0(&quot;n_emerging_taxa_per_class_in_Natura2000_occupancy_&quot;,
+             y,&quot;.png&quot;)
+      ),
+      x)
+})</code></pre>
+</div>
+</div>
+<div id="number-of-observations" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Number of
+observations</h2>
+<div id="belgium-1" class="section level3" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> Belgium</h3>
+<pre class="r"><code>emerging_df_BE_obs &lt;-
+  emerging_df %&gt;%
+  filter(.data$area == &quot;Belgium&quot; &amp; .data$variable == &quot;observations&quot;)
+emerging_df_BE_obs</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["class"],"name":[1],"type":["chr"],"align":["left"]},{"label":["kingdom"],"name":[2],"type":["chr"],"align":["left"]},{"label":["variable"],"name":[3],"type":["chr"],"align":["left"]},{"label":["year"],"name":[4],"type":["chr"],"align":["left"]},{"label":["area"],"name":[5],"type":["chr"],"align":["left"]},{"label":["n_emerging"],"name":[6],"type":["int"],"align":["right"]}],"data":[{"1":"Magnoliopsida","2":"Plantae","3":"observations","4":"2018","5":"Belgium","6":"100"},{"1":"Aves","2":"Animalia","3":"observations","4":"2018","5":"Belgium","6":"32"},{"1":"Liliopsida","2":"Plantae","3":"observations","4":"2018","5":"Belgium","6":"24"},{"1":"Insecta","2":"Animalia","3":"observations","4":"2018","5":"Belgium","6":"21"},{"1":"Pinopsida","2":"Plantae","3":"observations","4":"2018","5":"Belgium","6":"8"},{"1":"Polypodiopsida","2":"Plantae","3":"observations","4":"2018","5":"Belgium","6":"6"},{"1":"Malacostraca","2":"Animalia","3":"observations","4":"2018","5":"Belgium","6":"5"},{"1":"Reptilia","2":"Animalia","3":"observations","4":"2018","5":"Belgium","6":"5"},{"1":"Mammalia","2":"Animalia","3":"observations","4":"2018","5":"Belgium","6":"4"},{"1":"Amphibia","2":"Animalia","3":"observations","4":"2018","5":"Belgium","6":"2"},{"1":"Arachnida","2":"Animalia","3":"observations","4":"2018","5":"Belgium","6":"2"},{"1":"Bivalvia","2":"Animalia","3":"observations","4":"2018","5":"Belgium","6":"2"},{"1":"Gastropoda","2":"Animalia","3":"observations","4":"2018","5":"Belgium","6":"2"},{"1":"Bryopsida","2":"Plantae","3":"observations","4":"2018","5":"Belgium","6":"1"},{"1":"Hydrozoa","2":"Animalia","3":"observations","4":"2018","5":"Belgium","6":"1"},{"1":"Jungermanniopsida","2":"Plantae","3":"observations","4":"2018","5":"Belgium","6":"1"},{"1":"Polychaeta","2":"Animalia","3":"observations","4":"2018","5":"Belgium","6":"1"},{"1":"NA","2":"Animalia","3":"observations","4":"2018","5":"Belgium","6":"1"},{"1":"Actinopterygii","2":"Animalia","3":"observations","4":"2018","5":"Belgium","6":"0"},{"1":"Agaricomycetes","2":"Fungi","3":"observations","4":"2018","5":"Belgium","6":"0"},{"1":"Anthozoa","2":"Animalia","3":"observations","4":"2018","5":"Belgium","6":"0"},{"1":"Ascidiacea","2":"Animalia","3":"observations","4":"2018","5":"Belgium","6":"0"},{"1":"Clitellata","2":"Animalia","3":"observations","4":"2018","5":"Belgium","6":"0"},{"1":"Demospongiae","2":"Animalia","3":"observations","4":"2018","5":"Belgium","6":"0"},{"1":"Ginkgoopsida","2":"Plantae","3":"observations","4":"2018","5":"Belgium","6":"0"},{"1":"Gymnolaemata","2":"Animalia","3":"observations","4":"2018","5":"Belgium","6":"0"},{"1":"Hexanauplia","2":"Animalia","3":"observations","4":"2018","5":"Belgium","6":"0"},{"1":"Maxillopoda","2":"Animalia","3":"observations","4":"2018","5":"Belgium","6":"0"},{"1":"Monogenea","2":"Animalia","3":"observations","4":"2018","5":"Belgium","6":"0"},{"1":"Pucciniomycetes","2":"Fungi","3":"observations","4":"2018","5":"Belgium","6":"0"},{"1":"Tentaculata","2":"Animalia","3":"observations","4":"2018","5":"Belgium","6":"0"},{"1":"Ustilaginomycetes","2":"Fungi","3":"observations","4":"2018","5":"Belgium","6":"0"},{"1":"Magnoliopsida","2":"Plantae","3":"observations","4":"2019","5":"Belgium","6":"120"},{"1":"Liliopsida","2":"Plantae","3":"observations","4":"2019","5":"Belgium","6":"37"},{"1":"Aves","2":"Animalia","3":"observations","4":"2019","5":"Belgium","6":"28"},{"1":"Insecta","2":"Animalia","3":"observations","4":"2019","5":"Belgium","6":"14"},{"1":"Pinopsida","2":"Plantae","3":"observations","4":"2019","5":"Belgium","6":"7"},{"1":"Gastropoda","2":"Animalia","3":"observations","4":"2019","5":"Belgium","6":"5"},{"1":"Reptilia","2":"Animalia","3":"observations","4":"2019","5":"Belgium","6":"5"},{"1":"Arachnida","2":"Animalia","3":"observations","4":"2019","5":"Belgium","6":"4"},{"1":"Malacostraca","2":"Animalia","3":"observations","4":"2019","5":"Belgium","6":"4"},{"1":"Mammalia","2":"Animalia","3":"observations","4":"2019","5":"Belgium","6":"4"},{"1":"Polypodiopsida","2":"Plantae","3":"observations","4":"2019","5":"Belgium","6":"4"},{"1":"Bivalvia","2":"Animalia","3":"observations","4":"2019","5":"Belgium","6":"2"},{"1":"Actinopterygii","2":"Animalia","3":"observations","4":"2019","5":"Belgium","6":"1"},{"1":"Amphibia","2":"Animalia","3":"observations","4":"2019","5":"Belgium","6":"1"},{"1":"Bryopsida","2":"Plantae","3":"observations","4":"2019","5":"Belgium","6":"1"},{"1":"Hydrozoa","2":"Animalia","3":"observations","4":"2019","5":"Belgium","6":"1"},{"1":"Jungermanniopsida","2":"Plantae","3":"observations","4":"2019","5":"Belgium","6":"1"},{"1":"Polychaeta","2":"Animalia","3":"observations","4":"2019","5":"Belgium","6":"1"},{"1":"NA","2":"Animalia","3":"observations","4":"2019","5":"Belgium","6":"1"},{"1":"Agaricomycetes","2":"Fungi","3":"observations","4":"2019","5":"Belgium","6":"0"},{"1":"Anthozoa","2":"Animalia","3":"observations","4":"2019","5":"Belgium","6":"0"},{"1":"Ascidiacea","2":"Animalia","3":"observations","4":"2019","5":"Belgium","6":"0"},{"1":"Clitellata","2":"Animalia","3":"observations","4":"2019","5":"Belgium","6":"0"},{"1":"Demospongiae","2":"Animalia","3":"observations","4":"2019","5":"Belgium","6":"0"},{"1":"Ginkgoopsida","2":"Plantae","3":"observations","4":"2019","5":"Belgium","6":"0"},{"1":"Gymnolaemata","2":"Animalia","3":"observations","4":"2019","5":"Belgium","6":"0"},{"1":"Hexanauplia","2":"Animalia","3":"observations","4":"2019","5":"Belgium","6":"0"},{"1":"Maxillopoda","2":"Animalia","3":"observations","4":"2019","5":"Belgium","6":"0"},{"1":"Monogenea","2":"Animalia","3":"observations","4":"2019","5":"Belgium","6":"0"},{"1":"Pucciniomycetes","2":"Fungi","3":"observations","4":"2019","5":"Belgium","6":"0"},{"1":"Tentaculata","2":"Animalia","3":"observations","4":"2019","5":"Belgium","6":"0"},{"1":"Ustilaginomycetes","2":"Fungi","3":"observations","4":"2019","5":"Belgium","6":"0"},{"1":"Magnoliopsida","2":"Plantae","3":"observations","4":"2020","5":"Belgium","6":"150"},{"1":"Liliopsida","2":"Plantae","3":"observations","4":"2020","5":"Belgium","6":"37"},{"1":"Aves","2":"Animalia","3":"observations","4":"2020","5":"Belgium","6":"33"},{"1":"Insecta","2":"Animalia","3":"observations","4":"2020","5":"Belgium","6":"17"},{"1":"Reptilia","2":"Animalia","3":"observations","4":"2020","5":"Belgium","6":"9"},{"1":"Polypodiopsida","2":"Plantae","3":"observations","4":"2020","5":"Belgium","6":"7"},{"1":"Malacostraca","2":"Animalia","3":"observations","4":"2020","5":"Belgium","6":"6"},{"1":"Mammalia","2":"Animalia","3":"observations","4":"2020","5":"Belgium","6":"5"},{"1":"Pinopsida","2":"Plantae","3":"observations","4":"2020","5":"Belgium","6":"5"},{"1":"Arachnida","2":"Animalia","3":"observations","4":"2020","5":"Belgium","6":"4"},{"1":"Bivalvia","2":"Animalia","3":"observations","4":"2020","5":"Belgium","6":"3"},{"1":"Gastropoda","2":"Animalia","3":"observations","4":"2020","5":"Belgium","6":"2"},{"1":"Actinopterygii","2":"Animalia","3":"observations","4":"2020","5":"Belgium","6":"1"},{"1":"Agaricomycetes","2":"Fungi","3":"observations","4":"2020","5":"Belgium","6":"1"},{"1":"Amphibia","2":"Animalia","3":"observations","4":"2020","5":"Belgium","6":"1"},{"1":"Bryopsida","2":"Plantae","3":"observations","4":"2020","5":"Belgium","6":"1"},{"1":"Ginkgoopsida","2":"Plantae","3":"observations","4":"2020","5":"Belgium","6":"1"},{"1":"Jungermanniopsida","2":"Plantae","3":"observations","4":"2020","5":"Belgium","6":"1"},{"1":"Pucciniomycetes","2":"Fungi","3":"observations","4":"2020","5":"Belgium","6":"1"},{"1":"Ustilaginomycetes","2":"Fungi","3":"observations","4":"2020","5":"Belgium","6":"1"},{"1":"NA","2":"Animalia","3":"observations","4":"2020","5":"Belgium","6":"1"},{"1":"Anthozoa","2":"Animalia","3":"observations","4":"2020","5":"Belgium","6":"0"},{"1":"Ascidiacea","2":"Animalia","3":"observations","4":"2020","5":"Belgium","6":"0"},{"1":"Clitellata","2":"Animalia","3":"observations","4":"2020","5":"Belgium","6":"0"},{"1":"Demospongiae","2":"Animalia","3":"observations","4":"2020","5":"Belgium","6":"0"},{"1":"Gymnolaemata","2":"Animalia","3":"observations","4":"2020","5":"Belgium","6":"0"},{"1":"Hexanauplia","2":"Animalia","3":"observations","4":"2020","5":"Belgium","6":"0"},{"1":"Hydrozoa","2":"Animalia","3":"observations","4":"2020","5":"Belgium","6":"0"},{"1":"Maxillopoda","2":"Animalia","3":"observations","4":"2020","5":"Belgium","6":"0"},{"1":"Monogenea","2":"Animalia","3":"observations","4":"2020","5":"Belgium","6":"0"},{"1":"Polychaeta","2":"Animalia","3":"observations","4":"2020","5":"Belgium","6":"0"},{"1":"Tentaculata","2":"Animalia","3":"observations","4":"2020","5":"Belgium","6":"0"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<pre class="r"><code>emerging_plots_BE_obs &lt;- map(kingdoms$kingdom, function(x) {
+  data &lt;- emerging_df_BE_obs %&gt;%
+    filter(.data$kingdom == x &amp; .data$n_emerging &gt; 0)
+  ggplot(data) +
+    geom_col(aes(x = class, y = n_emerging, fill = year), position = &quot;dodge&quot;) +
+    theme(
+    axis.text.x = element_text(
+      angle = 315,
+      hjust = 0,
+      vjust = 1
+      )
+    )
+})
+emerging_plots_BE_obs</code></pre>
+<pre><code>## [[1]]</code></pre>
+<p><img src="12_taxonomic_distribution_emerging_species_files/figure-html/emerging_plots_BE_obs-1.png" width="672" /></p>
+<pre><code>## 
+## [[2]]</code></pre>
+<p><img src="12_taxonomic_distribution_emerging_species_files/figure-html/emerging_plots_BE_obs-2.png" width="672" /></p>
+<pre><code>## 
+## [[3]]</code></pre>
+<p><img src="12_taxonomic_distribution_emerging_species_files/figure-html/emerging_plots_BE_obs-3.png" width="672" /></p>
+<p>Save both table and graph:</p>
+<pre class="r"><code>write_tsv(
+  emerging_df_BE_obs,
+  here::here(
+  &quot;data&quot;,
+  &quot;output&quot;,
+  &quot;taxonomic_distribution_emerging_species&quot;,
+  &quot;n_emerging_taxa_per_class_in_BE_observations.tsv&quot;),
+  na = &quot;&quot;
+)
+walk2(
+  emerging_plots_BE_obs,
+  kingdoms$kingdom, 
+  function(x, y) {
+    ggsave(here::here(
+      &quot;data&quot;,
+      &quot;output&quot;,
+      &quot;taxonomic_distribution_emerging_species&quot;,
+      paste0(&quot;n_emerging_taxa_per_class_in_BE_observations_&quot;,
+             y,&quot;.png&quot;)
+      ),
+      x)
+})</code></pre>
+</div>
+<div id="natura2000-1" class="section level3" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> Natura2000</h3>
+<pre class="r"><code>emerging_df_Natura2000_obs &lt;-
+  emerging_df %&gt;%
+  filter(.data$area == &quot;Natura2000&quot; &amp; .data$variable == &quot;observations&quot;)
+emerging_df_Natura2000_obs</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["class"],"name":[1],"type":["chr"],"align":["left"]},{"label":["kingdom"],"name":[2],"type":["chr"],"align":["left"]},{"label":["variable"],"name":[3],"type":["chr"],"align":["left"]},{"label":["year"],"name":[4],"type":["chr"],"align":["left"]},{"label":["area"],"name":[5],"type":["chr"],"align":["left"]},{"label":["n_emerging"],"name":[6],"type":["int"],"align":["right"]}],"data":[{"1":"Magnoliopsida","2":"Plantae","3":"observations","4":"2018","5":"Natura2000","6":"260"},{"1":"Aves","2":"Animalia","3":"observations","4":"2018","5":"Natura2000","6":"70"},{"1":"Liliopsida","2":"Plantae","3":"observations","4":"2018","5":"Natura2000","6":"63"},{"1":"Insecta","2":"Animalia","3":"observations","4":"2018","5":"Natura2000","6":"39"},{"1":"Reptilia","2":"Animalia","3":"observations","4":"2018","5":"Natura2000","6":"10"},{"1":"Arachnida","2":"Animalia","3":"observations","4":"2018","5":"Natura2000","6":"9"},{"1":"Mammalia","2":"Animalia","3":"observations","4":"2018","5":"Natura2000","6":"9"},{"1":"Pinopsida","2":"Plantae","3":"observations","4":"2018","5":"Natura2000","6":"7"},{"1":"Amphibia","2":"Animalia","3":"observations","4":"2018","5":"Natura2000","6":"6"},{"1":"Malacostraca","2":"Animalia","3":"observations","4":"2018","5":"Natura2000","6":"4"},{"1":"Polypodiopsida","2":"Plantae","3":"observations","4":"2018","5":"Natura2000","6":"4"},{"1":"Actinopterygii","2":"Animalia","3":"observations","4":"2018","5":"Natura2000","6":"3"},{"1":"Bivalvia","2":"Animalia","3":"observations","4":"2018","5":"Natura2000","6":"3"},{"1":"Gastropoda","2":"Animalia","3":"observations","4":"2018","5":"Natura2000","6":"3"},{"1":"Pucciniomycetes","2":"Fungi","3":"observations","4":"2018","5":"Natura2000","6":"3"},{"1":"Ascidiacea","2":"Animalia","3":"observations","4":"2018","5":"Natura2000","6":"2"},{"1":"NA","2":"Animalia","3":"observations","4":"2018","5":"Natura2000","6":"2"},{"1":"Bryopsida","2":"Plantae","3":"observations","4":"2018","5":"Natura2000","6":"1"},{"1":"Clitellata","2":"Animalia","3":"observations","4":"2018","5":"Natura2000","6":"1"},{"1":"Ginkgoopsida","2":"Plantae","3":"observations","4":"2018","5":"Natura2000","6":"1"},{"1":"Hydrozoa","2":"Animalia","3":"observations","4":"2018","5":"Natura2000","6":"1"},{"1":"Jungermanniopsida","2":"Plantae","3":"observations","4":"2018","5":"Natura2000","6":"1"},{"1":"Monogenea","2":"Animalia","3":"observations","4":"2018","5":"Natura2000","6":"1"},{"1":"Polychaeta","2":"Animalia","3":"observations","4":"2018","5":"Natura2000","6":"1"},{"1":"Agaricomycetes","2":"Fungi","3":"observations","4":"2018","5":"Natura2000","6":"0"},{"1":"Anthozoa","2":"Animalia","3":"observations","4":"2018","5":"Natura2000","6":"0"},{"1":"Demospongiae","2":"Animalia","3":"observations","4":"2018","5":"Natura2000","6":"0"},{"1":"Gymnolaemata","2":"Animalia","3":"observations","4":"2018","5":"Natura2000","6":"0"},{"1":"Hexanauplia","2":"Animalia","3":"observations","4":"2018","5":"Natura2000","6":"0"},{"1":"Maxillopoda","2":"Animalia","3":"observations","4":"2018","5":"Natura2000","6":"0"},{"1":"Tentaculata","2":"Animalia","3":"observations","4":"2018","5":"Natura2000","6":"0"},{"1":"Ustilaginomycetes","2":"Fungi","3":"observations","4":"2018","5":"Natura2000","6":"0"},{"1":"Magnoliopsida","2":"Plantae","3":"observations","4":"2019","5":"Natura2000","6":"245"},{"1":"Liliopsida","2":"Plantae","3":"observations","4":"2019","5":"Natura2000","6":"64"},{"1":"Aves","2":"Animalia","3":"observations","4":"2019","5":"Natura2000","6":"59"},{"1":"Insecta","2":"Animalia","3":"observations","4":"2019","5":"Natura2000","6":"32"},{"1":"Arachnida","2":"Animalia","3":"observations","4":"2019","5":"Natura2000","6":"10"},{"1":"Reptilia","2":"Animalia","3":"observations","4":"2019","5":"Natura2000","6":"8"},{"1":"Pinopsida","2":"Plantae","3":"observations","4":"2019","5":"Natura2000","6":"7"},{"1":"Amphibia","2":"Animalia","3":"observations","4":"2019","5":"Natura2000","6":"6"},{"1":"Mammalia","2":"Animalia","3":"observations","4":"2019","5":"Natura2000","6":"6"},{"1":"Gastropoda","2":"Animalia","3":"observations","4":"2019","5":"Natura2000","6":"5"},{"1":"Actinopterygii","2":"Animalia","3":"observations","4":"2019","5":"Natura2000","6":"4"},{"1":"Pucciniomycetes","2":"Fungi","3":"observations","4":"2019","5":"Natura2000","6":"3"},{"1":"Ascidiacea","2":"Animalia","3":"observations","4":"2019","5":"Natura2000","6":"2"},{"1":"Bivalvia","2":"Animalia","3":"observations","4":"2019","5":"Natura2000","6":"2"},{"1":"Malacostraca","2":"Animalia","3":"observations","4":"2019","5":"Natura2000","6":"2"},{"1":"Polypodiopsida","2":"Plantae","3":"observations","4":"2019","5":"Natura2000","6":"2"},{"1":"NA","2":"Animalia","3":"observations","4":"2019","5":"Natura2000","6":"2"},{"1":"Bryopsida","2":"Plantae","3":"observations","4":"2019","5":"Natura2000","6":"1"},{"1":"Clitellata","2":"Animalia","3":"observations","4":"2019","5":"Natura2000","6":"1"},{"1":"Ginkgoopsida","2":"Plantae","3":"observations","4":"2019","5":"Natura2000","6":"1"},{"1":"Jungermanniopsida","2":"Plantae","3":"observations","4":"2019","5":"Natura2000","6":"1"},{"1":"Monogenea","2":"Animalia","3":"observations","4":"2019","5":"Natura2000","6":"1"},{"1":"Polychaeta","2":"Animalia","3":"observations","4":"2019","5":"Natura2000","6":"1"},{"1":"Agaricomycetes","2":"Fungi","3":"observations","4":"2019","5":"Natura2000","6":"0"},{"1":"Anthozoa","2":"Animalia","3":"observations","4":"2019","5":"Natura2000","6":"0"},{"1":"Demospongiae","2":"Animalia","3":"observations","4":"2019","5":"Natura2000","6":"0"},{"1":"Gymnolaemata","2":"Animalia","3":"observations","4":"2019","5":"Natura2000","6":"0"},{"1":"Hexanauplia","2":"Animalia","3":"observations","4":"2019","5":"Natura2000","6":"0"},{"1":"Hydrozoa","2":"Animalia","3":"observations","4":"2019","5":"Natura2000","6":"0"},{"1":"Maxillopoda","2":"Animalia","3":"observations","4":"2019","5":"Natura2000","6":"0"},{"1":"Tentaculata","2":"Animalia","3":"observations","4":"2019","5":"Natura2000","6":"0"},{"1":"Ustilaginomycetes","2":"Fungi","3":"observations","4":"2019","5":"Natura2000","6":"0"},{"1":"Magnoliopsida","2":"Plantae","3":"observations","4":"2020","5":"Natura2000","6":"253"},{"1":"Liliopsida","2":"Plantae","3":"observations","4":"2020","5":"Natura2000","6":"66"},{"1":"Aves","2":"Animalia","3":"observations","4":"2020","5":"Natura2000","6":"64"},{"1":"Insecta","2":"Animalia","3":"observations","4":"2020","5":"Natura2000","6":"33"},{"1":"Reptilia","2":"Animalia","3":"observations","4":"2020","5":"Natura2000","6":"11"},{"1":"Arachnida","2":"Animalia","3":"observations","4":"2020","5":"Natura2000","6":"8"},{"1":"Amphibia","2":"Animalia","3":"observations","4":"2020","5":"Natura2000","6":"6"},{"1":"Mammalia","2":"Animalia","3":"observations","4":"2020","5":"Natura2000","6":"6"},{"1":"Pinopsida","2":"Plantae","3":"observations","4":"2020","5":"Natura2000","6":"5"},{"1":"Actinopterygii","2":"Animalia","3":"observations","4":"2020","5":"Natura2000","6":"4"},{"1":"Malacostraca","2":"Animalia","3":"observations","4":"2020","5":"Natura2000","6":"4"},{"1":"Polypodiopsida","2":"Plantae","3":"observations","4":"2020","5":"Natura2000","6":"4"},{"1":"Gastropoda","2":"Animalia","3":"observations","4":"2020","5":"Natura2000","6":"3"},{"1":"Pucciniomycetes","2":"Fungi","3":"observations","4":"2020","5":"Natura2000","6":"3"},{"1":"Ascidiacea","2":"Animalia","3":"observations","4":"2020","5":"Natura2000","6":"2"},{"1":"Bivalvia","2":"Animalia","3":"observations","4":"2020","5":"Natura2000","6":"2"},{"1":"NA","2":"Animalia","3":"observations","4":"2020","5":"Natura2000","6":"2"},{"1":"Bryopsida","2":"Plantae","3":"observations","4":"2020","5":"Natura2000","6":"1"},{"1":"Clitellata","2":"Animalia","3":"observations","4":"2020","5":"Natura2000","6":"1"},{"1":"Ginkgoopsida","2":"Plantae","3":"observations","4":"2020","5":"Natura2000","6":"1"},{"1":"Jungermanniopsida","2":"Plantae","3":"observations","4":"2020","5":"Natura2000","6":"1"},{"1":"Monogenea","2":"Animalia","3":"observations","4":"2020","5":"Natura2000","6":"1"},{"1":"Ustilaginomycetes","2":"Fungi","3":"observations","4":"2020","5":"Natura2000","6":"1"},{"1":"Agaricomycetes","2":"Fungi","3":"observations","4":"2020","5":"Natura2000","6":"0"},{"1":"Anthozoa","2":"Animalia","3":"observations","4":"2020","5":"Natura2000","6":"0"},{"1":"Demospongiae","2":"Animalia","3":"observations","4":"2020","5":"Natura2000","6":"0"},{"1":"Gymnolaemata","2":"Animalia","3":"observations","4":"2020","5":"Natura2000","6":"0"},{"1":"Hexanauplia","2":"Animalia","3":"observations","4":"2020","5":"Natura2000","6":"0"},{"1":"Hydrozoa","2":"Animalia","3":"observations","4":"2020","5":"Natura2000","6":"0"},{"1":"Maxillopoda","2":"Animalia","3":"observations","4":"2020","5":"Natura2000","6":"0"},{"1":"Polychaeta","2":"Animalia","3":"observations","4":"2020","5":"Natura2000","6":"0"},{"1":"Tentaculata","2":"Animalia","3":"observations","4":"2020","5":"Natura2000","6":"0"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<pre class="r"><code>emerging_plots_Natura2000_obs &lt;- map(kingdoms$kingdom, function(x) {
+  data &lt;- emerging_df_Natura2000_obs %&gt;%
+    filter(.data$kingdom == x &amp; .data$n_emerging &gt; 0)
+  ggplot(data) +
+    geom_col(aes(x = class, y = n_emerging, fill = year), position = &quot;dodge&quot;) +
+    theme(
+    axis.text.x = element_text(
+      angle = 315,
+      hjust = 0,
+      vjust = 1
+      )
+    )
+})
+emerging_plots_Natura2000_obs</code></pre>
+<pre><code>## [[1]]</code></pre>
+<p><img src="12_taxonomic_distribution_emerging_species_files/figure-html/plot_emerging_df_Natura2000_obs-1.png" width="672" /></p>
+<pre><code>## 
+## [[2]]</code></pre>
+<p><img src="12_taxonomic_distribution_emerging_species_files/figure-html/plot_emerging_df_Natura2000_obs-2.png" width="672" /></p>
+<pre><code>## 
+## [[3]]</code></pre>
+<p><img src="12_taxonomic_distribution_emerging_species_files/figure-html/plot_emerging_df_Natura2000_obs-3.png" width="672" /></p>
+<p>Save both table and graph:</p>
+<pre class="r"><code>write_tsv(
+  emerging_df_Natura2000_obs,
+  here::here(
+  &quot;data&quot;,
+  &quot;output&quot;,
+  &quot;taxonomic_distribution_emerging_species&quot;,
+  &quot;n_emerging_taxa_per_class_in_Natura2000_observations.tsv&quot;),
+  na = &quot;&quot;
+)
+walk2(
+  emerging_plots_Natura2000_obs,
+  kingdoms$kingdom, 
+  function(x, y) {
+    ggsave(here::here(
+      &quot;data&quot;,
+      &quot;output&quot;,
+      &quot;taxonomic_distribution_emerging_species&quot;,
+      paste0(&quot;n_emerging_taxa_per_class_in_Natura2000_observations_&quot;,
+             y,&quot;.png&quot;)
+      ),
+      x)
+})</code></pre>
+</div>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

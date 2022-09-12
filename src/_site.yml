@@ -38,6 +38,8 @@ navbar:
           href: 10_species_observations_occupancy_in_protected_areas.html
         - text: "Status of invasion of Belgian protected areas"
           href: 11_status_alien_species_in_protected_areas.html
+      - text: "Taxonomic distribution of emerging species"
+        href: 12_taxonomic_distribution_emerging_species.html
   right:
   - icon: fa-github fa-lg
     href: https://github.com/trias-project/pipeline

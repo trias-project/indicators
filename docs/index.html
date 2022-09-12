@@ -13,12 +13,22 @@
 
 <title>TrIAS indicators</title>
 
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.16/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -27,12 +37,16 @@
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
-<style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
 <script type="text/javascript">
 if (window.hljs) {
   hljs.configure({languages: []});
@@ -45,34 +59,10 @@ if (window.hljs) {
 
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
 
-<link rel="stylesheet" href="static\css\trias.css" type="text/css" />
+
+
+<link rel="stylesheet" href="static/css/trias.css" type="text/css" />
 
 
 
@@ -81,10 +71,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -101,40 +87,16 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 45px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 50px;
-  margin-top: -50px;
-}
-.section h2 {
-  padding-top: 50px;
-  margin-top: -50px;
-}
-.section h3 {
-  padding-top: 50px;
-  margin-top: -50px;
-}
-.section h4 {
-  padding-top: 50px;
-  margin-top: -50px;
-}
-.section h5 {
-  padding-top: 50px;
-  margin-top: -50px;
-}
-.section h6 {
-  padding-top: 50px;
-  margin-top: -50px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -162,7 +124,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -174,7 +136,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -184,11 +146,28 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.parent().addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -200,7 +179,6 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -267,7 +245,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -277,7 +255,7 @@ $(document).ready(function () {
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Checklist-based indicators
      
     <span class="caret"></span>
@@ -298,7 +276,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Occurrence-based indicators
      
     <span class="caret"></span>
@@ -311,7 +289,7 @@ $(document).ready(function () {
       <a href="06_occurrence_indicators_appearing_taxa.html">Appearing-reappearing species</a>
     </li>
     <li class="dropdown-submenu">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Emerging status analysis</a>
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Emerging status analysis</a>
       <ul class="dropdown-menu" role="menu">
         <li>
           <a href="07_occurrence_indicators_modelling.html">Assessing emerging status of alien species</a>
@@ -319,10 +297,13 @@ $(document).ready(function () {
         <li>
           <a href="08_ranking_emerging_status.html">Ranking species by emerging status</a>
         </li>
+        <li>
+          <a href="12_taxonomic_distribution_emerging_species.html">Taxonomic distribution of emerging species</a>
+        </li>
       </ul>
     </li>
     <li class="dropdown-submenu">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Protected areas analysis</a>
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Protected areas analysis</a>
       <ul class="dropdown-menu" role="menu">
         <li>
           <a href="09_define_overlay_grid_belgium_with_protected_areas.html">Belgian protected areas and EEA grid of Belgium</a>
@@ -350,7 +331,7 @@ $(document).ready(function () {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -361,35 +342,64 @@ $(document).ready(function () {
 
 <div id="indicators" class="section level1">
 <h1>Indicators</h1>
-<p>This repository contains pipelines to generate alien species <em>indicators</em>, i.e. graphs or tables analyzing specific aspects of their <em>stage of invasion</em>. Indicators can be divided in two groups:</p>
+<p>This repository contains pipelines to generate alien species
+<em>indicators</em>, i.e. graphs or tables analyzing specific aspects of
+their <em>stage of invasion</em>. Indicators can be divided in two
+groups:</p>
 <ol style="list-style-type: decimal">
 <li>checklist-based indicators</li>
 <li>occurrence-based indicators</li>
 </ol>
 <div id="checklist-based-indicators" class="section level2">
 <h2>Checklist-based indicators</h2>
-<p>Checklist based indicators developed within the TrIAS project are:</p>
+<p>Checklist based indicators developed within the TrIAS project
+are:</p>
 <ol style="list-style-type: decimal">
-<li><a href="https://trias-project.github.io/indicators/02_indicator_introductions_per_year.html">number of introduced species present in Belgium as function of time</a> shown as graphs</li>
-<li><a href="https://trias-project.github.io/indicators/03_indicator_cumulative_number.html">cumulative number of introduced species present in Belgium as function of time</a> shown as graphs</li>
-<li><a href="https://trias-project.github.io/indicators/04_indicator_pathways.html">pathways of introduction</a> shown as graphs and tables</li>
+<li><a
+href="https://trias-project.github.io/indicators/02_indicator_introductions_per_year.html">number
+of introduced species present in Belgium as function of time</a> shown
+as graphs</li>
+<li><a
+href="https://trias-project.github.io/indicators/03_indicator_cumulative_number.html">cumulative
+number of introduced species present in Belgium as function of time</a>
+shown as graphs</li>
+<li><a
+href="https://trias-project.github.io/indicators/04_indicator_pathways.html">pathways
+of introduction</a> shown as graphs and tables</li>
 </ol>
-<p>The indicators are built upon the taxa published in the <a href="https://doi.org/10.15468/xoidmd">Global Register of Introduced and Invasive Species - Belgium</a>.</p>
+<p>The indicators are built upon the taxa published in the <a
+href="https://doi.org/10.15468/xoidmd">Global Register of Introduced and
+Invasive Species - Belgium</a>.</p>
 </div>
 <div id="occurrence-based-indicators" class="section level2">
 <h2>Occurrence-based indicators</h2>
 <p>Occurrence-based indicators can be divided in three groups:</p>
 <ol style="list-style-type: decimal">
-<li>assessment of appearing and reappearing alien taxa during the last year</li>
+<li>assessment of appearing and reappearing alien taxa during the last
+year</li>
 <li>ranking of alien taxa based on an emerging status assessment</li>
 <li>state of invasion of protected areas</li>
 </ol>
-<p>All of them start from data as preprocessed in pipeline <a href="https://trias-project.github.io/indicators/05_occurrence_indicators_preprocessing.html">Preprocessing for occurrence-based indicators</a>. The starting point are the <em>occurrence cube at species level</em> as produced in TrIAS repository <a href="https://github.com/trias-project/occ-cube">occ-cube</a> and published on <a href="https://zenodo.org/record/3637911">Zenodo</a> and the <em>occurrence cube of alien taxa</em> as produced in TrIAS repository <a href="https://github.com/trias-project/occ-cube-alien">occ-cube-alien</a> and published on <a href="https://zenodo.org/record/3635510">Zenodo</a>.</p>
+<p>All of them start from data as preprocessed in pipeline <a
+href="https://trias-project.github.io/indicators/05_occurrence_indicators_preprocessing.html">Preprocessing
+for occurrence-based indicators</a>. The starting point are the
+<em>occurrence cube at species level</em> as produced in TrIAS
+repository <a
+href="https://github.com/trias-project/occ-cube">occ-cube</a> and
+published on <a href="https://zenodo.org/record/3637911">Zenodo</a> and
+the <em>occurrence cube of alien taxa</em> as produced in TrIAS
+repository <a
+href="https://github.com/trias-project/occ-cube-alien">occ-cube-alien</a>
+and published on <a
+href="https://zenodo.org/record/3635510">Zenodo</a>.</p>
 <div id="appearing-and-reappearing-alien-taxa" class="section level3">
 <h3>Appearing and reappearing alien taxa</h3>
-<p>This analysis is performed in pipeline <a href="https://trias-project.github.io/indicators/06_occurrence_indicators_appearing_taxa.html">Appearing-reappearing species</a>.</p>
+<p>This analysis is performed in pipeline <a
+href="https://trias-project.github.io/indicators/06_occurrence_indicators_appearing_taxa.html">Appearing-reappearing
+species</a>.</p>
 </div>
-<div id="ranking-of-alien-taxa-based-on-an-emerging-status-assessment" class="section level3">
+<div id="ranking-of-alien-taxa-based-on-an-emerging-status-assessment"
+class="section level3">
 <h3>Ranking of alien taxa based on an emerging status assessment</h3>
 <p>In order to calculate an emergency index, we take into account:</p>
 <ol style="list-style-type: decimal">
@@ -397,22 +407,41 @@ $(document).ready(function () {
 <li>area of occupancy (AOO), or simply <em>occupancy</em></li>
 </ol>
 <p>The workflow is divided in two steps:</p>
-<p>1 <a href="https://trias-project.github.io/indicators/07_occurrence_indicators_modelling.html">Assessing emerging status of alien species</a> 2. <a href="https://trias-project.github.io/indicators/08_ranking_emerging_status.html">Ranking species by emerging status</a></p>
-<p>We work with GAM (Generalized Additive Models) and decision rules to assess the emerging status of a species.</p>
+<p>1 <a
+href="https://trias-project.github.io/indicators/07_occurrence_indicators_modelling.html">Assessing
+emerging status of alien species</a> 2. <a
+href="https://trias-project.github.io/indicators/08_ranking_emerging_status.html">Ranking
+species by emerging status</a></p>
+<p>We work with GAM (Generalized Additive Models) and decision rules to
+assess the emerging status of a species.</p>
 </div>
 <div id="protected-areas-analysis" class="section level3">
 <h3>Protected areas analysis</h3>
 <p>This analysis is divided in three steps:</p>
 <ol style="list-style-type: decimal">
-<li><a href="https://trias-project.github.io/indicators/09_define_overlay_grid_belgium_with_protected_areas.html">Belgian protected areas and EEA grid of Belgium</a> to preprocess geospatial data, visualize the Natura2000 protected areas and overlay the EEA 1kmx1km reference grid to protected areas</li>
-<li><a href="https://trias-project.github.io/indicators/10_species_observations_occupancy_in_protected_areas.html">Belgian protected areas: observations and occupancy</a> to assess the number of observations, the area of occupancy and the coverage of Belgian protected areas for all species and year</li>
-<li><a href="https://trias-project.github.io/indicators/11_status_alien_species_in_protected_areas.html">Status of invasion of Belgian protected areas</a></li>
+<li><a
+href="https://trias-project.github.io/indicators/09_define_overlay_grid_belgium_with_protected_areas.html">Belgian
+protected areas and EEA grid of Belgium</a> to preprocess geospatial
+data, visualize the Natura2000 protected areas and overlay the EEA
+1kmx1km reference grid to protected areas</li>
+<li><a
+href="https://trias-project.github.io/indicators/10_species_observations_occupancy_in_protected_areas.html">Belgian
+protected areas: observations and occupancy</a> to assess the number of
+observations, the area of occupancy and the coverage of Belgian
+protected areas for all species and year</li>
+<li><a
+href="https://trias-project.github.io/indicators/11_status_alien_species_in_protected_areas.html">Status
+of invasion of Belgian protected areas</a></li>
 </ol>
 </div>
 </div>
 <div id="repo-structure" class="section level2">
 <h2>Repo structure</h2>
-<p>The repository structure is based on <a href="http://drivendata.github.io/cookiecutter-data-science/">Cookiecutter Data Science</a>. Files indicated with <code>GENERATED</code> should not be edited manually. This list can be not complete as the content of this repository is still in progress.</p>
+<p>The repository structure is based on <a
+href="http://drivendata.github.io/cookiecutter-data-science/">Cookiecutter
+Data Science</a>. Files indicated with <code>GENERATED</code> should not
+be edited manually. This list can be not complete as the content of this
+repository is still in progress.</p>
 <pre><code>├── README.md              : Description of this repository
 ├── LICENSE                : Repository license
 ├── indicators.Rproj       : RStudio project file
@@ -452,7 +481,9 @@ $(document).ready(function () {
 </div>
 <div id="contributors" class="section level2">
 <h2>Contributors</h2>
-<p><a href="https://github.com/trias-project/indicators/contributors">List of contributors</a></p>
+<p><a
+href="https://github.com/trias-project/indicators/contributors">List of
+contributors</a></p>
 </div>
 <div id="license" class="section level2">
 <h2>License</h2>
@@ -469,7 +500,7 @@ $(document).ready(function () {
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
@@ -487,7 +518,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>

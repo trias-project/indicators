@@ -1,0 +1,132 @@
+---
+title: "Add region information to EEA grids"
+author:
+- Damiano Oldoni
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    toc_depth: 3
+    toc_float: true
+    number_sections: true
+---
+
+This document describes how to add region information to the EEA grid cells of Belgium.
+
+# Setup
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+```
+
+Load libraries:
+
+```{r load_libraries}
+# geospatial packages
+library(sf)
+# tidyverse packages
+library(dplyr)
+library(tidyr)
+library(purrr)
+# path packages
+library(here)
+# visualization packages
+library(mapview)
+```
+
+# Read geospatial data
+
+## EEA grids
+
+We read the EEA grids of Belgium at 1x1, 10x10 and 100x100 km2 resolution:
+
+```{r read_shapefiles_eea_grids}
+paths <- list(utm1_bel = here::here("data", "external", "utm1_bel"),
+              utm10_bel = here::here("data", "external", "utm10_bel"),
+              utm100_bel = here::here("data", "external", "utm100_bel"))
+eea_grids <- purrr::map(paths, ~ sf::read_sf(.))
+```
+
+Preview for the grid at 10x10 km2 resolution:
+
+```{r preview_grid}
+eea_grids$utm10_bel %>% head()
+```
+
+## Read Belgian regions
+
+We read the spatial data containing information about Belgian administrative regions:
+
+```{r read_taxa_file}
+exdir <- here::here("data", "external", "Regions_Belgium")
+temp <- unzip(zipfile = here::here("data", "external", "Regions_Belgium.zip"), exdir = exdir)
+regions_be <- sf::read_sf(exdir)
+unlink(exdir, recursive = TRUE)
+```
+
+Preview:
+
+```{r preview taxa}
+regions_be
+```
+
+Transform the Belgian regions to the Coordinate Reference System (CRS) of the grids:
+
+```{r convert_crs}
+regions_be <- regions_be %>% 
+  sf::st_transform(crs = sf::st_crs(eea_grids$utm1_bel))
+```
+
+# Add regional information to cell grids
+
+Do a cell grid belongs to Flanders and/or Wallonia and/or Brussels? We intersect the cell grids with EEA grids and create three new columns, `isFlanders`, `isWallonia` and `isBrussels` with boolean values (`TRUE`, `FALSE`). We create first a function, `add_region_info()`, to allow us to not repeat ourselves (DRY principle) as we need it for the grids at the three resolutions (1x1, 10x10 and 100x100 km2):
+
+```{r add_cols}
+add_region_info <- function(grid) {
+  sf::st_intersection(regions_be, grid, sparse = FALSE) %>%
+    as_tibble() %>% 
+    select(CELLCODE, GEWEST) %>%
+    tidyr::pivot_wider(names_from = GEWEST, values_from = GEWEST) %>%
+    rename(isFlanders = Vlaams,
+           isWallonia = Waals,
+           isBrussels = Brussels) %>%
+    mutate(across(starts_with("is"), ~ if_else(!is.na(.x), TRUE, FALSE))) %>%
+    dplyr::right_join(grid, join_by(CELLCODE)) %>%
+    sf::st_as_sf()
+}
+```
+
+We apply the function to the three grids:
+
+```{r add_regions_to_grids}
+eea_grids <- purrr::map(eea_grids, ~ add_region_info(.))
+```
+
+Summary for each of the grid:
+
+```{r summary}
+purrr::map(eea_grids, function(x) {
+  x %>% 
+    dplyr::as_tibble() %>%
+    dplyr::group_by(isFlanders, isWallonia, isBrussels) %>% 
+    dplyr::count()
+  }
+)
+```
+
+Visualize the grid at 10x10 km2 resolution. Click on a grid cell to visualize a.o. the region(s) it belongs to:
+
+```{r visualize}
+mapview(eea_grids$utm10_bel)
+```
+
+Save the grid as a GeoPackage:
+
+```{r save_as_GeoPackage}
+paths <- list(
+  utm1_bel = here::here("data", "output", "utm1_bel_with_regions.gpkg"),
+  utm10_bel = here::here("data", "output", "utm10_bel_with_regions.gpkg"),
+  utm100_bel = here::here("data", "output", "utm100_bel_with_regions.gpkg")
+)
+purrr::walk2(eea_grids, paths, ~ st_write(.x, .y))
+```

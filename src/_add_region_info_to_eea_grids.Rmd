@@ -53,11 +53,11 @@ Preview for the grid at 10x10 km2 resolution:
 eea_grids$utm10_bel %>% head()
 ```
 
-## Read Belgian regions
+## Read Belgian regions and country
 
-We read the spatial data containing information about Belgian administrative regions:
+We read the spatial data containing information about the Belgian administrative regions:
 
-```{r read_taxa_file}
+```{r read_regions_polygons}
 exdir <- here::here("data", "external", "Regions_Belgium")
 temp <- unzip(zipfile = here::here("data", "external", "Regions_Belgium.zip"), exdir = exdir)
 regions_be <- sf::read_sf(exdir)
@@ -70,7 +70,36 @@ Preview:
 regions_be
 ```
 
-Transform the Belgian regions to the Coordinate Reference System (CRS) of the grids:
+We merge the regions to create a polygon of Belgium:
+
+```{r create_country}
+country_be <- sf::st_union(regions_be) %>%
+  st_as_sf() %>%
+  mutate(OBJECTID = 4,
+         Naam = "Belgium",
+         GEWEST = "Belgium") %>%
+  rename(geometry = x)
+```
+
+Preview:
+
+```{r preview_BE}
+country_be
+```
+
+Add country information to Belgian region spatial data.frame:
+
+```{r add_BE_to_regions}
+regions_be <- bind_rows(regions_be, country_be)
+```
+
+Show merged data.frame:
+
+```{r preview_regions_country}
+regions_be
+```
+
+Transform the Belgian regions and the country to the Coordinate Reference System (CRS) of the grids:
 
 ```{r convert_crs}
 regions_be <- regions_be %>% 
@@ -79,7 +108,7 @@ regions_be <- regions_be %>%
 
 # Add regional information to cell grids
 
-Do a cell grid belongs to Flanders and/or Wallonia and/or Brussels? We intersect the cell grids with EEA grids and create three new columns, `isFlanders`, `isWallonia` and `isBrussels` with boolean values (`TRUE`, `FALSE`). We create first a function, `add_region_info()`, to allow us to not repeat ourselves (DRY principle) as we need it for the grids at the three resolutions (1x1, 10x10 and 100x100 km2):
+Do a cell grid belongs to Belgium? DO a cell grid belongs to Flanders and/or Wallonia and/or Brussels? We intersect the cell grids with EEA grids and create four new columns, `isBelgium`, `isFlanders`, `isWallonia` and `isBrussels` with boolean values (`TRUE`, `FALSE`). We create first a function, `add_region_info()`, to allow us to not repeat ourselves (DRY principle) as we need it for the grids at the three resolutions, 1x1, 10x10 and 100x100 km2:
 
 ```{r add_cols}
 add_region_info <- function(grid) {
@@ -87,7 +116,8 @@ add_region_info <- function(grid) {
     as_tibble() %>% 
     select(CELLCODE, GEWEST) %>%
     tidyr::pivot_wider(names_from = GEWEST, values_from = GEWEST) %>%
-    rename(isFlanders = Vlaams,
+    rename(isBelgium = BELGIUM,
+           isFlanders = Vlaams,
            isWallonia = Waals,
            isBrussels = Brussels) %>%
     dplyr::right_join(grid, join_by(CELLCODE)) %>%
@@ -108,7 +138,7 @@ Summary for each of the grid:
 purrr::map(eea_grids, function(x) {
   x %>% 
     dplyr::as_tibble() %>%
-    dplyr::group_by(isFlanders, isWallonia, isBrussels) %>% 
+    dplyr::group_by(isBelgium, isFlanders, isWallonia, isBrussels) %>% 
     dplyr::count()
   }
 )

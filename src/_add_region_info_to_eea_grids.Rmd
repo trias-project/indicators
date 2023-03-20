@@ -116,7 +116,7 @@ add_region_info <- function(grid) {
     as_tibble() %>% 
     select(CELLCODE, GEWEST) %>%
     tidyr::pivot_wider(names_from = GEWEST, values_from = GEWEST) %>%
-    rename(isBelgium = BELGIUM,
+    rename(isBelgium = Belgium,
            isFlanders = Vlaams,
            isWallonia = Waals,
            isBrussels = Brussels) %>%

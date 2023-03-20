@@ -90,8 +90,8 @@ add_region_info <- function(grid) {
     rename(isFlanders = Vlaams,
            isWallonia = Waals,
            isBrussels = Brussels) %>%
-    mutate(across(starts_with("is"), ~ if_else(!is.na(.x), TRUE, FALSE))) %>%
     dplyr::right_join(grid, join_by(CELLCODE)) %>%
+    mutate(across(starts_with("is"), ~ if_else(!is.na(.x), TRUE, FALSE))) %>%
     sf::st_as_sf()
 }
 ```

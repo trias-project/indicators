@@ -144,7 +144,7 @@ purrr::map(eea_grids, function(x) {
 )
 ```
 
-Visualize the grid at 10x10 km2 resolution. Click on a grid cell to visualize a.o. the region(s) it belongs to:
+Visualize the grid at 10x10 km2 resolution. Click on a grid cell to visualize a.o. region(s) it belongs to:
 
 ```{r visualize}
 mapview(eea_grids$utm10_bel)

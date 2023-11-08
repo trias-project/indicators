@@ -60,7 +60,7 @@ We select data at national level (no regional distributions):
 ```{r select_data_at_Belgian_level}
 data <-
   data %>%
-  filter(locationId == "ISO_3166:BE")
+  tidylog::filter(locationId == "ISO_3166:BE")
 ```
 
 ## Grouping by kingdom
@@ -73,8 +73,8 @@ facet_column <- "kingdom"
 
 ```{r graph_grouping_kingdom, fig.width=10, fig.height=10, results="hide", echo=FALSE}
 data %>%
-  select(key, facet_column, first_observed) %>%
-  distinct() %>%
+  tidylog::select(key, facet_column, first_observed) %>%
+  tidylog::distinct() %>%
   indicator_introduction_year(
     start_year_plot = 1920,
     smooth_span = .85,
@@ -95,8 +95,8 @@ facet_column <- "habitat"
 
 ```{r graph_grouping_habitat, fig.width=10, fig.height=10, results="hide", echo=FALSE}
 data %>%
-  select(key, facet_column, first_observed) %>%
-  distinct() %>%
+  tidylog::select(key, facet_column, first_observed) %>%
+  tidylog::distinct() %>%
   indicator_introduction_year(
     start_year_plot = 1920,
     smooth_span = .85,
@@ -123,9 +123,9 @@ We don't take into account Fungi and Chromista due to a lack of comprehensive da
 
 ```{r graph_grouping_kingdom_LPI, fig.width=10, fig.height=10, results="hide", echo=FALSE}
 data %>%
-  select(key, facet_column, first_observed) %>%
-  distinct() %>%
-  filter(!(!!sym(facet_column)) %in% c("Chromista", "Fungi")) %>%
+  tidylog::select(key, facet_column, first_observed) %>%
+  tidylog::distinct() %>%
+  tidylog::filter(!(!!sym(facet_column)) %in% c("Chromista", "Fungi")) %>%
   indicator_introduction_year(
     start_year_plot = 1920,
     smooth_span = .85,
@@ -146,9 +146,9 @@ We don't take into account combined habitats `freshwater|terrestrial` and `marin
 
 ```{r graph_grouping_habitat_LPI, fig.width=10, fig.height=10, results="hide", echo=FALSE}
 data %>%
-  select(key, facet_column, first_observed) %>%
-  distinct() %>%
-  filter(!(!!sym(facet_column)) %in% c(
+  tidylog::select(key, facet_column, first_observed) %>%
+  tidylog::distinct() %>%
+  tidylog::filter(!(!!sym(facet_column)) %in% c(
     "freshwater|terrestrial",
     "marine|freshwater",
     NA_character_

@@ -55,7 +55,7 @@ taxon <-
 
 # Preview
 df_ts %>%
-  filter(
+  tidylog::filter(
     taxonKey == taxon,
     year %in% c(2016, 2017),
     eea_cell_code == "1kmE3924N3102"
@@ -97,14 +97,14 @@ Lump geographic information:
 ```{r df_ts_compact}
 df_ts_compact <-
   df_ts %>%
-  group_by(taxonKey, year, classKey) %>%
-  summarise(
+  tidylog::group_by(taxonKey, year, classKey) %>%
+  tidylog::summarise(
     obs = sum(obs),
     cobs = sum(cobs),
     ncells = sum(pa_obs),
     c_ncells = sum(pa_cobs)
   ) %>%
-  ungroup()
+  tidylog::ungroup()
 ```
 
 We define the function `is_appearing` for appearing/reappearing detection (this function could be moved to TrIAS package `trias` later):
@@ -125,26 +125,26 @@ is_appearing <- function(df,
                          year_col = "year") {
   df <-
     df %>%
-    select(id_col, year_col, data_col) %>%
-    rename(
+    tidylog::select(id_col, year_col, data_col) %>%
+    tidylog::rename(
       "taxonKey" = id_col,
       "year" = year_col,
       "occ" = data_col
     ) %>%
-    filter(occ > 0) %>%
-    group_by(taxonKey)
+    tidylog::filter(occ > 0) %>%
+    tidylog::group_by(taxonKey)
 
   if (!is.null(df_reference)) {
     df_reference <-
       df_reference %>%
-      select(id_col, year_col, data_col) %>%
-      rename(
+      tidylog::select(id_col, year_col, data_col) %>%
+      tidylog::rename(
         "taxonKey" = id_col,
         "year" = year_col,
         "occ" = data_col
       ) %>%
-      filter(occ > 0) %>%
-      group_by(taxonKey)
+      tidylog::filter(occ > 0) %>%
+      tidylog::group_by(taxonKey)
   } else {
     df_reference <- df
   }
@@ -153,45 +153,45 @@ is_appearing <- function(df,
 
   taxa_eval_years_df <-
     df %>%
-    filter(year %in% eval_years) %>%
-    filter(year == min(year))
+    tidylog::filter(year %in% eval_years) %>%
+    tidylog::filter(year == min(year))
 
   taxa_eval_years <-
     taxa_eval_years_df %>%
-    distinct(taxonKey) %>%
-    pull()
+    tidylog::distinct(taxonKey) %>%
+    dplyr::pull()
 
   # appearing taxa
   appearing_taxa <-
     df %>%
-    filter(taxonKey %in% taxa_eval_years) %>%
-    filter(min(year) %in% eval_years) %>%
-    filter(year == min(year)) %>%
-    ungroup()
+    tidylog::filter(taxonKey %in% taxa_eval_years) %>%
+    tidylog::filter(min(year) %in% eval_years) %>%
+    tidylog::filter(year == min(year)) %>%
+    tidylog::ungroup()
 
   appearing_taxa <-
     appearing_taxa %>%
-    rename(!!sym(data_col) := "occ")
+    tidylog::rename(!!sym(data_col) := "occ")
 
   # reappearing taxa
   reappearing_taxa <-
     df_reference %>%
-    filter(taxonKey %in% taxa_eval_years) %>%
-    filter(year < min(eval_years)) %>%
-    filter(year == max(year)) %>%
-    ungroup() %>%
-    rename(last_year_before_reappearing = year) %>%
-    left_join(taxa_eval_years_df, by = "taxonKey") %>%
-    group_by(taxonKey) %>%
-    summarize(n_latent_years = year - last_year_before_reappearing) %>%
-    filter(n_latent_years > latency) %>%
-    left_join(taxa_eval_years_df %>% select(taxonKey, occ, year),
+    tidylog::filter(taxonKey %in% taxa_eval_years) %>%
+    tidylog::filter(year < min(eval_years)) %>%
+    tidylog::filter(year == max(year)) %>%
+    tidylog::ungroup() %>%
+    tidylog::rename(last_year_before_reappearing = year) %>%
+    tidylog::left_join(taxa_eval_years_df, by = "taxonKey") %>%
+    tidylog::group_by(taxonKey) %>%
+    tidylog::summarise(n_latent_years = year - last_year_before_reappearing) %>%
+    tidylog::filter(n_latent_years > latency) %>%
+    tidylog::left_join(taxa_eval_years_df %>% tidylog::select(taxonKey, occ, year),
       by = "taxonKey"
     )
 
   reappearing_taxa <-
     reappearing_taxa %>%
-    rename(!!sym(data_col) := "occ")
+    tidylog::rename(!!sym(data_col) := "occ")
 
   return(list(
     appearing_taxa = appearing_taxa,
@@ -227,20 +227,20 @@ nrow(appearing_reappearing_taxa$reappearing_taxa)
 
 We repeat the workflow defined above to assess which taxa are appearing or reappearing in protected areas.
 
-First we select data referring to protected areas (Natura2000) and then we lump geographical information:
+First we select( data referring to protected areas (Natura2000) and then we lump geographical information:
 
 ```{r df_ts_compact_protected_areas}
 df_ts_compact_prot_areas <-
   df_ts %>%
-  filter(natura2000 == TRUE) %>%
-  group_by(taxonKey, year) %>%
-  summarise(
+  tidylog::filter(natura2000 == TRUE) %>%
+  tidylog::group_by(taxonKey, year) %>%
+  tidylog::summarise(
     obs = sum(obs),
     cobs = sum(cobs),
     ncells = sum(pa_cobs),
     c_ncells = sum(pa_cobs)
   ) %>%
-  ungroup()
+  tidylog::ungroup()
 ```
 
 We apply function `is_appearing`. Notice that we use occurrences about all Belgium to assess the reappearance in protected areas:
@@ -272,18 +272,18 @@ We merge appearing taxa from all Belgium and from protected areas. We rank taxa 
 
 ```{r merge_ranking_by_presence_in protected_area}
 app_reapp_global <-
-  map2(
+  purrr::map2(
     appearing_reappearing_taxa_prot_areas,
     appearing_reappearing_taxa,
     function(x, y) {
       x <-
         x %>%
-        rename(ncells_prot_areas = ncells)
+        tidylog::rename(ncells_prot_areas = ncells)
       y <-
         y %>%
-        rename(ncells_BE = ncells)
-      full_join(x, y) %>%
-        mutate(
+        tidylog::rename(ncells_BE = ncells)
+      tidylog::full_join(x, y) %>%
+        tidylog::mutate(
           in_prot_areas = ifelse(!is.na(ncells_prot_areas),
             TRUE,
             FALSE
@@ -306,11 +306,11 @@ app_reapp_global <-
 Add taxonomic information for better readibility.
 
 ```{r add_taxonomic_info}
-app_reapp_global <- map(
+app_reapp_global <- purrr::map(
   app_reapp_global,
   function(x) {
     x %>%
-      left_join(spec_names, by = "taxonKey")
+      tidylog::left_join(spec_names, by = "taxonKey")
   }
 )
 ```
@@ -324,7 +324,7 @@ Reorder columns of data.frame containing appearring taxa:
 ```{r reorder_cols_appearing}
 app_reapp_global$appearing_taxa <-
   app_reapp_global$appearing_taxa %>%
-  select(
+  tidylog::select(
     taxonKey,
     canonicalName,
     year,
@@ -354,7 +354,7 @@ Reorder columns of data.frame containing reappearing taxa:
 ```{r reorder_cols_reappearing}
 app_reapp_global$reappearing_taxa <-
   app_reapp_global$reappearing_taxa %>%
-  select(
+  tidylog::select(
     taxonKey,
     canonicalName,
     year,
@@ -380,36 +380,36 @@ Taxa appearing in protected areas and reappearing outside:
 
 ```{r appearing_in_pa_reappearing_outside}
 app_reapp_global$appearing_taxa %>%
-  filter(in_BE == FALSE) %>%
-  filter(taxonKey %in% app_reapp_global$reappearing_taxa$taxonKey) %>%
-  select(taxonKey, canonicalName)
+  tidylog::filter(in_BE == FALSE) %>%
+  tidylog::filter(taxonKey %in% app_reapp_global$reappearing_taxa$taxonKey) %>%
+  tidylog::select(taxonKey, canonicalName)
 ```
 
 Taxa appearing in protected areas and with a stable presence outside:
 
 ```{r appearing_in_pa_stable_outside}
 app_reapp_global$appearing_taxa %>%
-  filter(in_BE == FALSE) %>%
-  filter(!taxonKey %in% app_reapp_global$reappearing_taxa$taxonKey) %>%
-  select(taxonKey, canonicalName, class, kingdom, classKey, kingdomKey)
+  tidylog::filter(in_BE == FALSE) %>%
+  tidylog::filter(!taxonKey %in% app_reapp_global$reappearing_taxa$taxonKey) %>%
+  tidylog::select(taxonKey, canonicalName, class, kingdom, classKey, kingdomKey)
 ```
 
 Two examples:
 
 ```{r taxa_examples, echo=FALSE}
 taxa_examples <- app_reapp_global$appearing_taxa %>%
-  filter(in_BE == FALSE) %>%
-  filter(!taxonKey %in% app_reapp_global$reappearing_taxa$taxonKey) %>%
-  distinct(taxonKey, canonicalName) %>%
-  head(n = 2)
+  tidylog::filter(in_BE == FALSE) %>%
+  tidylog::filter(!taxonKey %in% app_reapp_global$reappearing_taxa$taxonKey) %>%
+  tidylog::distinct(taxonKey, canonicalName) %>%
+  tidylog::slice_head(n = 2)
 taxa_examples %>%
-  left_join(df_ts_compact %>%
-    select(-starts_with("native")),
+  tidylog::left_join(df_ts_compact %>%
+    tidylog::select(-starts_with("native")),
   by = "taxonKey"
   ) %>%
-  left_join(df_ts_compact_prot_areas %>%
-    select(-starts_with("native")) %>%
-    rename(
+  tidylog::left_join(df_ts_compact_prot_areas %>%
+    tidylog::select(-starts_with("native")) %>%
+    tidylog::rename(
       prot_areas_ncells = ncells,
       prot_areas_obs = obs
     ),
@@ -425,7 +425,7 @@ Save appearing taxa:
 
 ```{r save_appearing_taxa}
 write_tsv(app_reapp_global$appearing_taxa,
-  path = here::here("data", "output", "appearing_taxa.tsv"),
+  file = here::here("data", "output", "appearing_taxa.tsv"),
   na = ""
 )
 ```
@@ -436,7 +436,7 @@ Save reappearing taxa:
 
 ```{r save_reappearing_taxa}
 write_tsv(app_reapp_global$reappearing_taxa,
-  path = here::here("data", "output", "reappearing_taxa.tsv"),
+  file = here::here("data", "output", "reappearing_taxa.tsv"),
   na = ""
 )
 ```

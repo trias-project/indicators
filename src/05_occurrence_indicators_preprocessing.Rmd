@@ -236,7 +236,7 @@ taxon_key <-
   df %>%
   tidylog::distinct(taxonKey) %>%
   pull()
-spec_names <- map_df(
+spec_names <- purrr::map_df(
   taxon_key,
   function(k) {
     name_usage(key = k)$data

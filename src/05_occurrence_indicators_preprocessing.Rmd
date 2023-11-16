@@ -18,7 +18,7 @@ This document describes the pre-processing of occurrence data of alien species. 
 # Setup
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, message = FALSE)
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, tidy='styler')
 ```
 
 Load libraries:

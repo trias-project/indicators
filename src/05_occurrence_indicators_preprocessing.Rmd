@@ -129,7 +129,7 @@ df_bl <-
 
 ## Checklist data
 
-We read input data based on [Global Register of Introduced and Invasive Species - Belgium](https://www.gbif.org/dataset/6d9e952f-948c-4483-9807-575348147c7e), typically referred to as the _unified checklist_. These data contain taxonomic information as well distribution, description and species profiles. We limit to taxa introduced in Belgium (`locationId` : `ISO_3166:BE`)
+We read input data based on [Global Register of Introduced and Invasive Species - Belgium](https://www.gbif.org/dataset/6d9e952f-948c-4483-9807-575348147c7e), typically referred to as the _unified checklist_. These data contain taxonomic information as well distribution, description and species profiles. We limit to taxa introduced in Belgium (`locationId` : `ISO_3166:BE`).
 
 ```{r unified_checklist_tidy_df}
 data_file <- here::here(

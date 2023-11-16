@@ -125,6 +125,7 @@ and rename column `n` to `cobs`:
 df_bl <-
   df_bl %>%
   tidylog::rename(cobs = n)
+```
 
 We remove data not assigned to any cell code:
 
@@ -133,6 +134,13 @@ df_bl <-
   df_bl %>%
   tidylog::filter(!is.na(eea_cell_code))
 ```
+
+We remove also data with `classKey` equal to `NA`. These data are related to IAS species not linked to any class:
+
+```{r remove_data_no_class}
+df_bl <- 
+  df_bl %>%
+  tidylog::filter(!is.na(classKey))
 ```
 
 ## Checklist data

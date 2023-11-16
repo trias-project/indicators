@@ -19,7 +19,7 @@ In this document we analyze the Belgian datacube to detect possible (re)appearin
 # Setup
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, tidy='styler')
 ```
 
 Load libraries:

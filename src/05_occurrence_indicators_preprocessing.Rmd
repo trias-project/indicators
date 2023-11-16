@@ -129,7 +129,7 @@ df_bl <-
 
 We remove data not assigned to any cell code:
 
-```{r remove_na_cell_code}
+```{r remove_na_cell_code_bl}
 df_bl <- 
   df_bl %>%
   tidylog::filter(!is.na(eea_cell_code))

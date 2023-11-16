@@ -26,7 +26,6 @@ Load libraries:
 ```{r load_libraries, message = FALSE}
 library(tidyverse) # To do data science
 library(tidylog) # To provide feedback on dplyr functions
-library(progress) # To add progress bars
 library(here) # To find files
 library(lubridate) # To work with dates
 library(rgbif) # To get taxa from publisehd unified checklist
@@ -267,11 +266,9 @@ class_key <-
   distinct(classKey) %>%
   filter(!is.na(classKey)) %>%
   pull()
-pb <- progress_bar$new(total = length(class_key))
 kingdom_class <- map_df(
   class_key,
   function(x) {
-    pb$tick()
     name_usage(key = x)$data
   }
 ) %>%

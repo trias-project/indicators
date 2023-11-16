@@ -236,7 +236,6 @@ taxon_key <-
   df %>%
   tidylog::distinct(taxonKey) %>%
   pull()
-pb <- progress_bar$new(total = length(taxon_key))
 spec_names <- map_df(
   taxon_key,
   function(k) {

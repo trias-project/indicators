@@ -118,6 +118,14 @@ and rename column `n` to `cobs`:
 df_bl <-
   df_bl %>%
   rename(cobs = n)
+
+We remove data not assigned to any cell code:
+
+```{r remove_na_cell_code}
+df_bl <- 
+  df_bl %>%
+  tidylog::filter(!is.na(eea_cell_code))
+```
 ```
 
 ## Checklist data

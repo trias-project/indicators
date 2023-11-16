@@ -83,6 +83,14 @@ df <-
   tidylog::rename(obs = n)
 ```
 
+We also remove data not assigned to any cell code:
+
+```{r remove_na_cell_code}
+df <- 
+  df %>%
+  tidylog::filter(!is.na(eea_cell_code))
+```
+
 ### Baseline
 
 We read occurrence related data at class level used for correcting the research bias effort:

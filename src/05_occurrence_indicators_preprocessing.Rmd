@@ -319,10 +319,10 @@ df_xy <-
   bind_cols(
     tibble(
       x = unlist(str_extract_all(unique(df$eea_cell_code),
-        pattern = "(?<=E)\\d+"
+        pattern = "(?<=E)[0-9\\-]+"
       )),
       y = unlist(str_extract_all(unique(df$eea_cell_code),
-        pattern = "(?<=N)\\d+"
+        pattern = "(?<=N)[0-9\\-]+"
       ))
     ) %>%
       mutate_all(as.integer)
@@ -344,10 +344,10 @@ df_bl_xy <-
   bind_cols(
     tibble(
       x = unlist(str_extract_all(unique(df_bl$eea_cell_code),
-        pattern = "(?<=E)\\d+"
+        pattern = "(?<=E)[0-9\\-]+"
       )),
       y = unlist(str_extract_all(unique(df_bl$eea_cell_code),
-        pattern = "(?<=N)\\d+"
+        pattern = "(?<=N)[0-9\\-]+"
       ))
     ) %>%
       mutate_all(as.integer)

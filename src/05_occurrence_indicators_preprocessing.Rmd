@@ -30,21 +30,31 @@ library(progress) # To add progress bars
 library(here) # To find files
 library(lubridate) # To work with dates
 library(rgbif) # To get taxa from publisehd unified checklist
+library(inborutils) # To download data from zenodo
 ```
 
 # Get data
 
-We get occurrence data as obtained in `trias-project/occ-processing` repository. 
-
 ## Occurrence data
+
+### Download
+
+We download occurrence data as obtained in `trias-project/occ-cube` repository. However, as some files are too big to be stored on GitHub, we download them from Zenodo: 
+
+```{r download_from_zenodo}
+download_zenodo(doi = "10.5281/zenodo.10058400",
+                parallel = TRUE,
+                path = here::here("data", "input")
+)
+```
 
 ### Alien species
 
-We load occurrence data related to alien species in Belgium:
+We read occurrence data related to alien species in Belgium:
 
 ```{r read_data_cube, message = FALSE, warning = FALSE}
 df <- read_csv(
-  file = "https://raw.githubusercontent.com/trias-project/occ-cube-alien/master/data/processed/be_alientaxa_cube.csv",
+  file = here::here("data", "input", "be_alientaxa_cube.csv"),
   col_types = cols(
     year = col_double(),
     eea_cell_code = col_character(),
@@ -76,11 +86,11 @@ df <-
 
 ### Baseline
 
-We get occurrence data of non alien species grouped at class level, which will be used for correcting the research bias effort:
+We read occurrence related data at class level used for correcting the research bias effort:
 
 ```{r get_data_baseline}
 df_bl <- read_csv(
-  file = "https://raw.githubusercontent.com/trias-project/occ-cube-alien/master/data/processed/be_classes_cube.csv",
+  file = here::here("data", "input", "be_classes_cube.csv"),
   col_types = cols(
     year = col_double(),
     eea_cell_code = col_character(),

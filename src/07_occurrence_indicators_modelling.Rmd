@@ -41,7 +41,7 @@ We read the time series data, output of preprocessing pipeline:
 
 ```{r read_preprocessed_data, message=FALSE}
 df_ts <- read_tsv(
-  here::here("data", "interim", "df_timeseries.tsv"),
+  file = here::here("data", "interim", "df_timeseries.tsv"),
   na = ""
 )
 ```
@@ -57,7 +57,7 @@ taxon <-
 
 # Preview
 df_ts %>%
-  filter(
+  tidylog::filter(
     taxonKey == taxon,
     year %in% c(2016, 2017),
     eea_cell_code == "1kmE3924N3102"
@@ -71,8 +71,8 @@ spec_names <- read_tsv(
   file = here::here("data", "interim", "timeseries_taxonomic_info.tsv"),
   na = ""
 ) %>%
-  select(taxonKey, canonicalName) %>%
-  filter(taxonKey %in% df_ts$taxonKey)
+  tidylog::select(taxonKey, canonicalName) %>%
+  tidylog::filter(taxonKey %in% df_ts$taxonKey)
 ```
 
 Lump geographic information:
@@ -80,14 +80,14 @@ Lump geographic information:
 ```{r df_ts_compact}
 df_ts_compact <-
   df_ts %>%
-  group_by(taxonKey, year, classKey) %>%
-  summarise(
+  tidylog::group_by(taxonKey, year, classKey) %>%
+  tidylog::summarise(
     obs = sum(obs),
     cobs = sum(cobs),
     ncells = sum(pa_obs),
     c_ncells = sum(pa_cobs)
   ) %>%
-  ungroup()
+  tidylog::ungroup()
 ```
 
 We create a similar data.frame specific to protected areas (Natura2000):
@@ -95,15 +95,15 @@ We create a similar data.frame specific to protected areas (Natura2000):
 ```{r df_ts_compact_protected_areas}
 df_ts_compact_prot_areas <-
   df_ts %>%
-  filter(natura2000 == TRUE) %>%
-  group_by(taxonKey, year, classKey) %>%
-  summarise(
+  tidylog::filter(natura2000 == TRUE) %>%
+  tidylog::group_by(taxonKey, year, classKey) %>%
+  tidylog::summarise(
     obs = sum(obs),
     cobs = sum(cobs),
     ncells = sum(pa_cobs),
     c_ncells = sum(pa_cobs)
   ) %>%
-  ungroup()
+  tidylog::ungroup()
 ```
 
 Add canonical names:
@@ -111,10 +111,10 @@ Add canonical names:
 ```{r add_canonicalName}
 df_ts_compact <-
   df_ts_compact %>%
-  left_join(spec_names, by = "taxonKey")
+  tidylog::left_join(spec_names, by = "taxonKey")
 df_ts_compact_prot_areas <-
   df_ts_compact_prot_areas %>%
-  left_join(spec_names, by = "taxonKey")
+  tidylog::left_join(spec_names, by = "taxonKey")
 ```
 
 # Modelling
@@ -135,7 +135,7 @@ We define the time window (in years) we want to assess the emerging status:
 
 ```{r eval_years}
 # Last evaluation year
-last_year <- lubridate::year(Sys.Date()) - 2
+last_year <- lubridate::year(Sys.Date()) - 1
 
 # First evalution year
 first_year <- last_year - 2
@@ -150,10 +150,10 @@ We remove recent data due to publishing delay. Underestimation of the number of 
 ```{r remove_actual_year}
 df_ts_compact <-
   df_ts_compact %>%
-  filter(year <= last_year)
+  tidylog::filter(year <= last_year)
 df_ts_compact_prot_areas <-
   df_ts_compact_prot_areas %>%
-  filter(year <= last_year)
+  tidylog::filter(year <= last_year)
 ```
 
 ## Remove appearing taxa
@@ -163,22 +163,22 @@ Taxa appearing after the very first evalution year should be removed as no trend
 ```{r remove_appearing_taxa}
 appearing_taxa_to_remove <-
   df_ts_compact %>%
-  group_by(taxonKey) %>%
-  summarize(begin_year = min(year)) %>%
-  filter(begin_year > min(evaluation_years)) %>%
-  pull(taxonKey)
+  tidylog::group_by(taxonKey) %>%
+  tidylog::summarize(begin_year = min(year)) %>%
+  tidylog::filter(begin_year > min(evaluation_years)) %>%
+  dplyr::pull(taxonKey)
 
 df_ts_compact <-
   df_ts_compact %>%
-  filter(!taxonKey %in% appearing_taxa_to_remove)
+  tidylog::filter(!taxonKey %in% appearing_taxa_to_remove)
 
 df_ts_compact_prot_areas <-
   df_ts_compact_prot_areas %>%
-  filter(!taxonKey %in% appearing_taxa_to_remove)
+  tidylog::filter(!taxonKey %in% appearing_taxa_to_remove)
 
 spec_names <-
   spec_names %>%
-  filter(!taxonKey %in% appearing_taxa_to_remove)
+  tidylog::filter(!taxonKey %in% appearing_taxa_to_remove)
 ```
 
 ## Decision rules
@@ -192,7 +192,7 @@ We define and apply some decision rules for occupancy and observations in all Be
 We apply function `apply_decision_rules()` to observations for all Belgium:
 
 ```{r apply_decision_rules_occs_be, message=FALSE}
-em_decision_rules_occs_BE <- map_dfr(
+em_decision_rules_occs_BE <- purrr::map_dfr(
   evaluation_years,
   ~ apply_decision_rules(
     df = df_ts_compact,
@@ -205,7 +205,7 @@ em_decision_rules_occs_BE <- map_dfr(
 Examples:
 
 ```{r example_dec_rules_occs_BE}
-em_decision_rules_occs_BE %>% head()
+em_decision_rules_occs_BE %>% tidylog::slice_head(n = 10)
 ```
 
 #### Protected areas
@@ -213,7 +213,7 @@ em_decision_rules_occs_BE %>% head()
 We apply function `apply_decision_rules()` to observations for protected areas:
 
 ```{r apply_decision_rules_occs_pa, message=FALSE}
-em_decision_rules_occs_pa <- map_dfr(
+em_decision_rules_occs_pa <- purrr::map_dfr(
   evaluation_years,
   ~ apply_decision_rules(
     df = df_ts_compact_prot_areas,
@@ -226,19 +226,19 @@ em_decision_rules_occs_pa <- map_dfr(
 Examples:
 
 ```{r example_dec_rules_occs_pa}
-em_decision_rules_occs_pa %>% head()
+em_decision_rules_occs_pa %>% tidylog::slice_head(n = 10)
 ```
 
 ### Occupancy
 
 #### Belgium
 
-We apply function `apply_decision_rules()` to occupancy for all Belgium:
+We apply function `trias::apply_decision_rules()` to occupancy for all Belgium:
 
 ```{r apply_decision_rules_occupancy_BE, message=FALSE}
-em_decision_rules_occupancy_BE <- map_dfr(
+em_decision_rules_occupancy_BE <- purrr::map_dfr(
   evaluation_years,
-  ~ apply_decision_rules(
+  ~ trias::apply_decision_rules(
     df = df_ts_compact,
     y_var = "ncells",
     eval_year = .
@@ -249,17 +249,17 @@ em_decision_rules_occupancy_BE <- map_dfr(
 Examples:
 
 ```{r example_decision_rules}
-em_decision_rules_occupancy_BE %>% head()
+em_decision_rules_occupancy_BE %>% tidylog::slice_head(n = 10)
 ```
 
 #### Protected areas
 
-We apply function `apply_decision_rules()` to occupancy in protected areas:
+We apply function `trias::apply_decision_rules()` to occupancy in protected areas:
 
 ```{r apply_dec_rules_occupancy_pa, message=FALSE}
-em_decision_rules_occupancy_pa <- map_dfr(
+em_decision_rules_occupancy_pa <- purrr::map_dfr(
   evaluation_years,
-  ~ apply_decision_rules(
+  ~ trias::apply_decision_rules(
     df = df_ts_compact_prot_areas,
     y_var = "ncells",
     eval_year = .
@@ -270,12 +270,12 @@ em_decision_rules_occupancy_pa <- map_dfr(
 Examples:
 
 ```{r example_dr_occupancy_pa}
-em_decision_rules_occupancy_pa %>% head()
+em_decision_rules_occupancy_pa %>% tidylog::slice_head(n = 10)
 ```
 
 ## Generalized additive model (GAM)
 
-We apply GAM to observations and occupancy in all Belgium and in protected areas using function `apply_gam()` from project package `trias`.
+We apply GAM to observations and occupancy in all Belgium and in protected areas using function `trias::apply_gam()` from project package `trias`.
 
 Plots are saved in `./data/output/GAM_outputs`:
 
@@ -296,10 +296,10 @@ gam_occs_BE <- map2(
   taxon_keys, taxon_names,
   function(t, n) {
     df_key <- df_ts_compact %>%
-      filter(taxonKey == t)
+      dplyr::filter(taxonKey == t)
     class_key <- unique(df_key[["classKey"]])
     if (!is.na(class_key)) {
-      results_gam <- apply_gam(
+      results_gam <- trias::apply_gam(
         df = df_key,
         y_var = "obs",
         taxonKey = "taxonKey",
@@ -312,7 +312,7 @@ gam_occs_BE <- map2(
         saveplot = TRUE
       )
     } else {
-      results_gam <- apply_gam(
+      results_gam <- trias::apply_gam(
         df = df_key,
         y_var = "obs",
         eval_years = evaluation_years,
@@ -350,7 +350,7 @@ gam_occs_pa <- map2(
       dplyr::filter(taxonKey == t)
     class_key <- unique(df_key[["classKey"]])
     if (!is.na(class_key)) {
-      apply_gam(
+      trias::apply_gam(
         df = df_key,
         y_var = "obs",
         eval_years = evaluation_years,
@@ -363,7 +363,7 @@ gam_occs_pa <- map2(
         saveplot = TRUE
       )
     } else {
-      apply_gam(
+      trias::apply_gam(
         df = df_key,
         y_var = "obs",
         eval_years = evaluation_years,
@@ -400,11 +400,11 @@ gam_occupancy_BE <- map2(
   taxon_keys, taxon_names,
   function(t, n) {
     df_key <- df_ts_compact %>%
-      filter(taxonKey == t) %>%
-      filter(year <= max(evaluation_years))
+      dplyr::filter(taxonKey == t) %>%
+      dplyr::filter(year <= max(evaluation_years))
     class_key <- unique(df_key[["classKey"]])
     if (!is.na(class_key)) {
-      apply_gam(
+      trias::apply_gam(
         df = df_key,
         y_var = "ncells",
         eval_years = evaluation_years,
@@ -417,7 +417,7 @@ gam_occupancy_BE <- map2(
         y_label = "occupancy (km2)"
       )
     } else {
-      apply_gam(
+      trias::apply_gam(
         df = df_key,
         y_var = "ncells",
         eval_years = evaluation_years,
@@ -455,7 +455,7 @@ gam_occupancy_pa <- map2(
       dplyr::filter(taxonKey == t)
     class_key <- unique(df_key[["classKey"]])
     if (!is.na(class_key)) {
-      apply_gam(
+      trias::apply_gam(
         df = df_key,
         y_var = "ncells",
         eval_years = evaluation_years,
@@ -469,7 +469,7 @@ gam_occupancy_pa <- map2(
         y_label = "occupancy (km2)"
       )
     } else {
-      apply_gam(
+      trias::apply_gam(
         df = df_key,
         y_var = "ncells",
         eval_years = evaluation_years,
@@ -502,7 +502,7 @@ Save emerging status based on decision rules:
 
 ```{r save_decisionrules_results}
 write_tsv(em_decision_rules_occs_BE,
-  path = here::here(
+  file = here::here(
     "data", "output",
     "decision_rules_outputs",
     "output_decision_rules_occs_belgium.tsv"
@@ -510,7 +510,7 @@ write_tsv(em_decision_rules_occs_BE,
   na = ""
 )
 write_tsv(em_decision_rules_occs_pa,
-  path = here::here(
+  file = here::here(
     "data", "output",
     "decision_rules_outputs",
     "output_decision_rules_occs_pa.tsv"
@@ -518,7 +518,7 @@ write_tsv(em_decision_rules_occs_pa,
   na = ""
 )
 write_tsv(em_decision_rules_occupancy_BE,
-  path = here::here(
+  file = here::here(
     "data", "output",
     "decision_rules_outputs",
     "output_decision_rules_occupancy_belgium.tsv"
@@ -526,7 +526,7 @@ write_tsv(em_decision_rules_occupancy_BE,
   na = ""
 )
 write_tsv(em_decision_rules_occupancy_pa,
-  path = here::here(
+  file = here::here(
     "data", "output",
     "decision_rules_outputs",
     "output_decision_rules_occupancy_pa.tsv"
@@ -542,11 +542,11 @@ Save complete outputs:
 
 ```{r  save_outputs}
 method_em <- gam_occs_BE[[1]]$em_summary$method[1]
-write_tsv(map_dfr(gam_occs_BE, function(x) {
+write_tsv(purrr::map_dfr(gam_occs_BE, function(x) {
   x$output
 }),
 na = "",
-path = here::here(
+file = here::here(
   "data",
   "output",
   "GAM_outputs",
@@ -558,11 +558,11 @@ path = here::here(
 )
 
 method_em <- gam_occs_pa[[1]]$em_summary$method[1]
-write_tsv(map_dfr(gam_occs_pa, function(x) {
+write_tsv(purrr::map_dfr(gam_occs_pa, function(x) {
   x$output
 }),
 na = "",
-path = here::here(
+file = here::here(
   "data",
   "output",
   "GAM_outputs",
@@ -574,11 +574,11 @@ path = here::here(
 )
 
 method_em <- gam_occupancy_BE[[1]]$em_summary$method[1]
-write_tsv(map_dfr(gam_occupancy_BE, function(x) {
+write_tsv(purrr::map_dfr(gam_occupancy_BE, function(x) {
   x$output
 }),
 na = "",
-path = here::here(
+file = here::here(
   "data",
   "output",
   "GAM_outputs",
@@ -590,11 +590,11 @@ path = here::here(
 )
 
 method_em <- gam_occupancy_pa[[1]]$em_summary$method[1]
-write_tsv(map_dfr(gam_occupancy_pa, function(x) {
+write_tsv(purrr::map_dfr(gam_occupancy_pa, function(x) {
   x$output
 }),
 na = "",
-path = here::here(
+file = here::here(
   "data",
   "output",
   "GAM_outputs",
@@ -610,11 +610,11 @@ Save summary of results limited to the years included in evaluation:
 
 ```{r save_em_summary}
 method_em <- gam_occs_BE[[1]]$em_summary$method[1]
-write_tsv(map_dfr(gam_occs_BE, function(x) {
+write_tsv(purrr::map_dfr(gam_occs_BE, function(x) {
   x$em_summary
 }),
 na = "",
-path = here::here(
+file = here::here(
   "data",
   "output",
   "GAM_outputs",
@@ -626,11 +626,11 @@ path = here::here(
 )
 
 method_em <- gam_occs_pa[[1]]$em_summary$method[1]
-write_tsv(map_dfr(gam_occs_pa, function(x) {
+write_tsv(purrr::map_dfr(gam_occs_pa, function(x) {
   x$em_summary
 }),
 na = "",
-path = here::here(
+file = here::here(
   "data",
   "output",
   "GAM_outputs",
@@ -642,11 +642,11 @@ path = here::here(
 )
 
 method_em <- gam_occupancy_BE[[1]]$em_summary$method[1]
-write_tsv(map_dfr(gam_occupancy_BE, function(x) {
+write_tsv(purrr::map_dfr(gam_occupancy_BE, function(x) {
   x$em_summary
 }),
 na = "",
-path = here::here(
+file = here::here(
   "data",
   "output",
   "GAM_outputs",
@@ -658,11 +658,11 @@ path = here::here(
 )
 
 method_em <- gam_occupancy_pa[[1]]$em_summary$method[1]
-write_tsv(map_dfr(gam_occupancy_pa, function(x) {
+write_tsv(purrr::map_dfr(gam_occupancy_pa, function(x) {
   x$em_summary
 }),
 na = "",
-path = here::here(
+file = here::here(
   "data",
   "output",
   "GAM_outputs",

@@ -19,7 +19,7 @@ This document describes the modelling to assess the emerging status of alien spe
 # Setup
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, message = FALSE, result = FALSE)
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, result = FALSE, tidy='styler')
 ```
 
 Load libraries:

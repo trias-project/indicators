@@ -21,7 +21,9 @@ This document follows the [modelling pipeline](https://trias-project.github.io/i
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE,
                       message = FALSE,
-                      warning = FALSE)
+                      warning = FALSE,
+                      tidy='styler'
+)
 ```
 
 Load libraries:

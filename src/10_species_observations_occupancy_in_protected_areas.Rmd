@@ -168,7 +168,7 @@ infraspecific_alien
 
 ## Assessment alien species with alien infraspecific taxa
 
-The unified checklist contains some infraspecific alien taxa belonging to alien species as well. The assessment whether the species is alien or not is at the moment based on a reference file maintained by TrIAS experts. We read it:
+The unified checklist contains some infraspecific alien taxa belonging to alien species as well. The assessment whether the species is alien or not is at the moment based on a reference file maintained by TrIAS experts. This file should be revised each time the unified checklist is updated. We read it:
 
 ```{r infraspecific_alien_status_species}
 infraspecific_alien_status_species <-
@@ -395,7 +395,7 @@ occs_prot_areas %>%
   tidylog::distinct(speciesKey, is_alien, remarks)
 ```
 
-Finally we add a column, `taxonKey` containing the key of all taxa in GBIF Backbone. It is by definition equal to `speciesKey`.
+Finally we add a column, `taxonKey`, containing the key of all taxa in GBIF Backbone. It is by definition equal to `speciesKey`.
 
 ```{r add_species_key}
 occs_prot_areas <-
@@ -504,7 +504,7 @@ occs_prot_areas %>%
   )
 ```
 
-## Finalize en save metadata
+## Save metadata
 
 ### Taxonomic metadata
 

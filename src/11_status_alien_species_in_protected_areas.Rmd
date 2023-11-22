@@ -252,7 +252,7 @@ n_species_obs_per_area_concern <-
 n_species_obs_per_area_concern
 ```
 
-Map of the protected areas with number of species included in the concern list:
+Map of the protected areas with number of species included in the list of Union concern:
 
 ```{r leaflet_n_species_in_prot_aras_union_list, echo = FALSE}
 # Transform to wgs84

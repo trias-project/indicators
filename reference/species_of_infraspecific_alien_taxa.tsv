@@ -5,20 +5,15 @@ key	nubKey	speciesKey	scientificName	species	kingdom	source_checklist	species_is
 152543140	6157026	2443002	Trachemys scripta elegans (Wied, 1838)	Trachemys scripta	Animalia	Ad hoc checklist of alien species in Belgium	TRUE	
 152543141	7062200	2443002	Trachemys scripta scripta	Trachemys scripta	Animalia	Ad hoc checklist of alien species in Belgium	TRUE	
 152543370	4925890	3189843	Acer tataricum subsp. ginnala (Maxim.) Wesmael	Acer tataricum	Plantae	Manual of the Alien Plants of Belgium	TRUE	
-152543418	5544928	5420968	Clarkia purpurea subsp. quadrivulnera (Douglas) F.H.Lewis & M.E.Lewis	Clarkia purpurea	Plantae	Manual of the Alien Plants of Belgium		
+152543418	5544928	5420968	Clarkia purpurea subsp. quadrivulnera (Douglas) F.H.Lewis & M.E.Lewis	Clarkia purpurea	Plantae	Manual of the Alien Plants of Belgium		outdated
 152543427	5545159	5420991	Ludwigia peploides subsp. montevidensis (Spreng.) P.H.Raven	Ludwigia peploides	Plantae	Manual of the Alien Plants of Belgium	TRUE	
-152543456	3666449	7884360	Oenothera fruticosa subsp. glauca (Michx.) Straley	Oenothera fruticosa	Plantae	Manual of the Alien Plants of Belgium		
-152543660	7066596	3111797	Zinnia angustifolia var. angustifolia	Zinnia angustifolia	Plantae	Manual of the Alien Plants of Belgium		
+152543660	7066596	3111797	Zinnia angustifolia var. angustifolia	Zinnia angustifolia	Plantae	Manual of the Alien Plants of Belgium		outdated
 152543683	8323119	5391928	Bidens triplinervia var. macrantha Sherff	Bidens triplinervia	Plantae	Manual of the Alien Plants of Belgium		
-152543836	6304873	3140450	Cicerbita macrophylla subsp. macrophylla	Cicerbita macrophylla	Plantae	Manual of the Alien Plants of Belgium	TRUE	
-152543838	4227439	3140450	Cicerbita macrophylla subsp. uralensis (Rouy) P.D.Sell	Cicerbita macrophylla	Plantae	Manual of the Alien Plants of Belgium	TRUE	
-152543853	5831068	8035432	Crepis sancta subsp. nemausensis (P.Fourn.) Babc.	Crepis sancta	Plantae	Manual of the Alien Plants of Belgium		
-152543856	5831060	5403470	Crepis foetida subsp. rhoeadifolia (M.Bieb.) Celak.	Crepis foetida	Plantae	Manual of the Alien Plants of Belgium		
-152543954	6076312	3128888	Centaurea solstitialis subsp. adamii (Willd.) Nym.	Centaurea solstitialis	Plantae	Manual of the Alien Plants of Belgium		
+182134919	4211590	3140436	Lactuca macrophylla subsp. uralensis (Rouy) N.Kilian & Greuter	Lactuca macrophylla	Plantae	Manual of the Alien Plants of Belgium	TRUE	
+213215071	7223177	5403605	Crepis sancta subsp. sancta (L.) Bornm.	Crepis sancta	Plantae	Manual of the Alien Plants of Belgium		
+152543856	5831060	5403470	Crepis foetida subsp. rhoeadifolia (M.Bieb.) Celak.	Crepis foetida	Plantae	Manual of the Alien Plants of Belgium				
 152543956	7223276	3128888	Centaurea solstitialis subsp. solstitialis	Centaurea solstitialis	Plantae	Manual of the Alien Plants of Belgium		
-152544024	6077549	3121461	Artemisia campestris subsp. maritima (DC.) Arcang.	Artemisia campestris	Plantae	Manual of the Alien Plants of Belgium	FALSE	subsp. campestris is native
 152544039	7222196	3120376	Achillea salicifolia subsp. salicifolia	Achillea salicifolia	Plantae	Manual of the Alien Plants of Belgium		
-152544100	8005391	3089150	Xanthium spinosum var. ambrosioides (Hook & Arn.) Löve & Dans.	Xanthium spinosum	Plantae	Manual of the Alien Plants of Belgium		
 152544195	9448191	8185959	Carduus nutans subsp. leiophyllus (Petrovic) Arènes	Carduus nutans	Plantae	Manual of the Alien Plants of Belgium		
 152544504	7466434	8262702	Pastinaca sativa subsp. urens (Req. ex Godr.) Celak.	Pastinaca sativa	Plantae	Manual of the Alien Plants of Belgium		
 152544506	7224157	8262702	Pastinaca sativa subsp. sativa	Pastinaca sativa	Plantae	Manual of the Alien Plants of Belgium		
@@ -32,46 +27,31 @@ key	nubKey	speciesKey	scientificName	species	kingdom	source_checklist	species_is
 152544898	6369140	7931731	Prunus domestica subsp. domestica	Prunus domestica	Plantae	Manual of the Alien Plants of Belgium		
 152544934	8421432	3082234	Cornus sanguinea subsp. hungarica (Kárpáti) Soó	Cornus sanguinea	Plantae	Manual of the Alien Plants of Belgium		
 152544935	3663237	3082234	Cornus sanguinea subsp. australis (C.A.Mey.) Jáv.	Cornus sanguinea	Plantae	Manual of the Alien Plants of Belgium		
-152544982	9288303	2931237	Solanum triflorum var. triflorum	Solanum triflorum	Plantae	Manual of the Alien Plants of Belgium		
-152544983	6290046	2929505	Solanum villosum subsp. miniatum (Bernh. ex Willd.) J.M.Edmonds	Solanum villosum	Plantae	Manual of the Alien Plants of Belgium		
 152544984	3802956	2929505	Solanum villosum subsp. villosum	Solanum villosum	Plantae	Manual of the Alien Plants of Belgium		
-152544993	2932146	2932144	Solanum physalifolium var. nitidibaccatum (Bitter) J.M.Edmonds	Solanum physalifolium	Plantae	Manual of the Alien Plants of Belgium		
 152545002	7427650	7162908	Convolvulus tricolor subsp. cupanianus (Tod.) Cavara & Grande	Convolvulus tricolor	Plantae	Manual of the Alien Plants of Belgium		
 152545003	7323906	7162908	Convolvulus tricolor subsp. tricolor	Convolvulus tricolor	Plantae	Manual of the Alien Plants of Belgium		
-152545007	7324046	2928538	Ipomoea hederacea var. hederacea	Ipomoea hederacea	Plantae	Manual of the Alien Plants of Belgium		
 152545052	7224427	6109535	Trifolium hybridum subsp. hybridum	Trifolium hybridum	Plantae	Manual of the Alien Plants of Belgium		
 152545072	5359402	6109535	Trifolium hybridum subsp. elegans (Savi) Asch. & Graebn.	Trifolium hybridum	Plantae	Manual of the Alien Plants of Belgium		
-152545090	7393432	5347845	Pisum sativum var. arvense (L.) Poir.	Pisum sativum	Plantae	Manual of the Alien Plants of Belgium		
 152545091	5347854	5347845	Pisum sativum var. sativum	Pisum sativum	Plantae	Manual of the Alien Plants of Belgium		
 152545105	5352372	5352367	Anthyllis vulneraria subsp. polyphylla (DC.) Nyman	Anthyllis vulneraria	Plantae	Manual of the Alien Plants of Belgium	FALSE	
 152545106	5352425	5352367	Anthyllis vulneraria subsp. carpatica (Pant.) Nyman	Anthyllis vulneraria	Plantae	Manual of the Alien Plants of Belgium	FALSE	
-152545162	8326007	2974811	Vicia pannonica subsp. striata (M.Bieb.) Nyman	Vicia pannonica	Plantae	Manual of the Alien Plants of Belgium		
 152545163	7068379	2975014	Vicia sativa subsp. sativa	Vicia sativa	Plantae	Manual of the Alien Plants of Belgium		
-152545164	7225470	2974811	Vicia pannonica subsp. pannonica	Vicia pannonica	Plantae	Manual of the Alien Plants of Belgium		
-152545165	7225471	9182154	Vicia villosa subsp. villosa	Vicia villosa	Plantae	Manual of the Alien Plants of Belgium	TRUE	
-152545174	2974936	9182154	Vicia villosa subsp. eriocarpa (Hausskn.) P.W.Ball	Vicia villosa	Plantae	Manual of the Alien Plants of Belgium	TRUE	
 152545179	2974921	9182154	Vicia villosa subsp. varia (Host) Corb.	Vicia villosa	Plantae	Manual of the Alien Plants of Belgium	TRUE	
-152545219	2965254	2965250	Medicago tornata subsp. helix (Willd.) Ooststr. & Reichg.	Medicago tornata	Plantae	Manual of the Alien Plants of Belgium		
-152545223	2965406	2965405	Medicago intertexta subsp. intertexta	Medicago intertexta	Plantae	Manual of the Alien Plants of Belgium		
-152545224	2965409	2965405	Medicago intertexta subsp. ciliaris (L.) Ponert	Medicago intertexta	Plantae	Manual of the Alien Plants of Belgium		
-152545262	8925248	2913169	Galium parisiense var. parisiense	Galium parisiense	Plantae	Manual of the Alien Plants of Belgium		
+213215259	8925248	2913169	Galium parisiense var. parisiense	Galium parisiense	Plantae	Manual of the Alien Plants of Belgium		
 152545264	2914404	9063248	Galium verum subsp. wirtgenii (F.W.Schultz) Oborny	Galium verum	Plantae	Manual of the Alien Plants of Belgium	FALSE	only subsp. Verum is native
-152545321	8510990	5373475	Crambe hispanica subsp. abyssinica (Hochst. ex R.E.Fr.) A.Prina	Crambe hispanica	Plantae	Manual of the Alien Plants of Belgium		
+213214560	5373483	5373475	Crambe hispanica subsp. abyssinica (Hochst. ex R.E.Fr.) A.Prina	Crambe hispanica	Plantae	Manual of the Alien Plants of Belgium		
 152545323	7225621	9040863	Neslia paniculata subsp. paniculata	Neslia paniculata	Plantae	Manual of the Alien Plants of Belgium		
-152545376	5375925	5375920	Eruca vesicaria subsp. sativa (Mill.) Thell.	Eruca vesicaria	Plantae	Manual of the Alien Plants of Belgium		
 152545393	3042889	3042888	Brassica elongata subsp. integrifolia (Boiss.) Breistr.	Brassica elongata	Plantae	Manual of the Alien Plants of Belgium		
 152545400	3040999	3040983	Raphanus raphanistrum subsp. landra (Moretti ex DC.) Bonnier & Layens	Raphanus raphanistrum	Plantae	Manual of the Alien Plants of Belgium		
-152545421	3046925	3046913	Sisymbrium austriacum subsp. chrysanthum (Jord.) Rouy & Foucaud	Sisymbrium austriacum	Plantae	Manual of the Alien Plants of Belgium		
 152545448	7068732	3052509	Arabidopsis arenosa subsp. arenosa	Arabidopsis arenosa	Plantae	Manual of the Alien Plants of Belgium		
 152545466	3047633	3047621	Sinapis alba subsp. dissecta (Lag.) Simonk.	Sinapis alba	Plantae	Manual of the Alien Plants of Belgium		
 152545471	7853188	3040252	Reseda lutea subsp. vivantii (P.Monts.) Rovira	Reseda lutea	Plantae	Manual of the Alien Plants of Belgium	FALSE	
 152545485	7536406	2928026	Nemophila menziesii var. integrifolia Brand	Nemophila menziesii	Plantae	Manual of the Alien Plants of Belgium		
-152545486	6420901	2928026	Nemophila menziesii var. menziesii	Nemophila menziesii	Plantae	Manual of the Alien Plants of Belgium		
+213214066	6420901	2928026	Nemophila menziesii var. menziesii Hook. & Arn.	Nemophila menziesii	Plantae	Manual of the Alien Plants of Belgium		
 152545493	7295374	5341201	Anchusa officinalis subsp. officinalis	Anchusa officinalis	Plantae	Manual of the Alien Plants of Belgium		
 152545580	6432925	7325877	Fraxinus angustifolia subsp. oxycarpa (Willd.) Franco & Rocha Afonso	Fraxinus angustifolia	Plantae	Manual of the Alien Plants of Belgium		
-152545633	7482178	3170819	Kickxia elatine subsp. crinita (Mabille) W.Greuter	Kickxia elatine	Plantae	Manual of the Alien Plants of Belgium		
+213215546	8006893	3170819	Kickxia elatine subsp. sieberi (Rchb.) Hayek	Kickxia elatine	Plantae	Manual of the Alien Plants of Belgium		
 152545641	7331861	8200663	Cymbalaria muralis subsp. muralis	Cymbalaria muralis	Plantae	Manual of the Alien Plants of Belgium	TRUE	
-152545642	5559841	8200663	Cymbalaria muralis subsp. pubescens (J.Presl & C.Presl) D.A.Webb	Cymbalaria muralis	Plantae	Manual of the Alien Plants of Belgium	TRUE	
 152545691	9508942	2926612	Origanum vulgare subsp. hirtum (Link) A.Terracc.	Origanum vulgare	Plantae	Manual of the Alien Plants of Belgium	FALSE	
 152545696	6409536	2926894	Ballota nigra subsp. nigra	Ballota nigra	Plantae	Manual of the Alien Plants of Belgium		
 152545727	7096205	8916040	Clinopodium nepeta subsp. nepeta	Clinopodium nepeta	Plantae	Manual of the Alien Plants of Belgium		
@@ -81,7 +61,7 @@ key	nubKey	speciesKey	scientificName	species	kingdom	source_checklist	species_is
 152545828	7223680	5341548	Gilia capitata subsp. capitata	Gilia capitata	Plantae	Manual of the Alien Plants of Belgium		
 152545829	5659657	5341548	Gilia capitata subsp. mediomontana V.E.Grant	Gilia capitata	Plantae	Manual of the Alien Plants of Belgium		
 152545891	4090836	8930531	Armeria maritima subsp. elongata (Hoffm.) Bonnier	Armeria maritima	Plantae	Manual of the Alien Plants of Belgium	FALSE	
-152545898	9567226	8290282	Oxybasis glauca var. salina (Standl.) Verloove	Oxybasis glauca	Plantae	Manual of the Alien Plants of Belgium		
+213214961	9567226		Oxybasis glauca var. salina (Standl.) Verloove	Oxybasis glauca	Plantae	Manual of the Alien Plants of Belgium		
 152545923	7068845	8971274	Beta vulgaris subsp. vulgaris	Beta vulgaris	Plantae	Manual of the Alien Plants of Belgium		
 152545937	7323834	7323833	Amaranthus macrocarpus var. macrocarpus	Amaranthus macrocarpus	Plantae	Manual of the Alien Plants of Belgium		
 152545940	7323341	7323340	Amaranthus capensis subsp. capensis	Amaranthus capensis	Plantae	Manual of the Alien Plants of Belgium		
@@ -91,12 +71,11 @@ key	nubKey	speciesKey	scientificName	species	kingdom	source_checklist	species_is
 152546110	5652131	7821030	Polygonum aviculare subsp. rurivagum (Jord. ex Boreau) Berher	Polygonum aviculare	Plantae	Manual of the Alien Plants of Belgium		
 152546136	7415922	2888978	Rumex pulcher subsp. woodsii (De Not.) Arcangeli	Rumex pulcher	Plantae	Manual of the Alien Plants of Belgium		
 152546138	7901010	2889011	Rumex obtusifolius subsp. sylvestris (Lam.) Celak.	Rumex obtusifolius	Plantae	Manual of the Alien Plants of Belgium		
-152546142	4035024	8195144	Rumex crispus subsp. robustus (Rech.) Pestova	Rumex crispus	Plantae	Manual of the Alien Plants of Belgium		
+213214862	7624620	8195144	Rumex crispus var. robustus Rech.	Rumex crispus	Plantae	Manual of the Alien Plants of Belgium		
 152546143	4036957	2888978	Rumex pulcher subsp. pulcher	Rumex pulcher	Plantae	Manual of the Alien Plants of Belgium		
-152546303	7988337	2888778	Valerianella locusta var. oleracea (Schltdl.) Breistr.	Valerianella locusta	Plantae	Manual of the Alien Plants of Belgium		
+213215403	9771172	2888778	Valerianella locusta subsp. locusta	Valerianella locusta	Plantae	Manual of the Alien Plants of Belgium		
 152546322	3922770		Aconitum napellus var. giganteum (Dumort. ex Thielens) J.Duvigneaud		Plantae	Manual of the Alien Plants of Belgium		
 152546402	3602069	2888439	Papaver somniferum subsp. somniferum	Papaver somniferum	Plantae	Manual of the Alien Plants of Belgium		
-152546435	3064269	8203538	Euphorbia esula subsp. tommasiniana (Bertol.) Kuzmanov	Euphorbia esula	Plantae	Manual of the Alien Plants of Belgium		
 152546440	3065244	3065239	Euphorbia amygdaloides subsp. robbiae (Turrill) Stace	Euphorbia amygdaloides	Plantae	Manual of the Alien Plants of Belgium	FALSE	
 152546478	7293222	2873877	Linum austriacum subsp. austriacum	Linum austriacum	Plantae	Manual of the Alien Plants of Belgium		
 152546507	5825913	5284809	Pinus nigra subsp. laricio (Poir.) Maire	Pinus nigra	Plantae	Manual of the Alien Plants of Belgium	TRUE	
@@ -116,9 +95,14 @@ key	nubKey	speciesKey	scientificName	species	kingdom	source_checklist	species_is
 152547042	7226804	2705286	Avena sterilis subsp. sterilis	Avena sterilis	Plantae	Manual of the Alien Plants of Belgium		
 152547092	6449041	2705090	Panicum miliaceum subsp. miliaceum	Panicum miliaceum	Plantae	Manual of the Alien Plants of Belgium		
 152547124	2706403	7795888	Triticum aestivum subsp. spelta (L.) Thell.	Triticum aestivum	Plantae	Manual of the Alien Plants of Belgium		
-152547184	6387033	2687927	Equisetum hyemale subsp. affine (Engelm.) Calder & Roy L.Taylor	Equisetum hyemale	Plantae	Manual of the Alien Plants of Belgium	FALSE	
 159747332	2717402	2717400	Eleocharis mamillata subsp. austriaca (Hayek) Strandh.	Eleocharis mamillata	Plantae	Manual of the Alien Plants of Belgium		
-159747611	5679819	9393876	Spartina townsendii var. anglica C.E.Hubbard	Sporobolus townsendii	Plantae	WRiMS: World Register of Introduced Marine Species	TRUE	
-159748038	8309092	5421039	Ludwigia grandiflora var. hexapetala (Hook. & Arn.) D.B.Ward	Ludwigia grandiflora	Plantae	Manual of the Alien Plants of Belgium	TRUE	
-159748460	7068263	8274912	Astragalus pelecinus subsp. pelecinus	Astragalus pelecinus	Plantae	Manual of the Alien Plants of Belgium		
-159748543	8167990	5341197	Lycopsis arvensis subsp. orientalis (L.) Kuzn.	Lycopsis arvensis	Plantae	Manual of the Alien Plants of Belgium		
+213214077	9405645	5341197	Lycopsis arvensis subsp. orientalis (L.) Kuzn.	Lycopsis arvensis	Plantae	Manual of the Alien Plants of Belgium	
+213212823	2705287	2705286	Avena sterilis subsp. ludoviciana (Durieu) Nyman	Avena sterilis	Plantae	Manual of the Alien Plants of Belgium	
+213215716	3023671	7931731	Prunus domestica subsp. syriaca (Borkh.) Janch.	Prunus domestica	Plantae	Manual of the Alien Plants of Belgium	
+182134719	3596131	8237223	Halimium lasianthum subsp. alyssoides (Lam.) Greuter	Halimium lasianthum	Plantae	Halimium lasianthum	Waarnemingen.be / observations.be - List of species observed in Belgium;Manual of the Alien Plants of Belgium	
+213213452	3666059	3188894	Oenothera glazioviana f. rubricalyx (R.R.Gates) Lambinon	Oenothera glazioviana	Plantae	Waarnemingen.be / observations.be - List of species observed in Belgium;Manual of the Alien Plants of Belgium	
+213212901	4115425	7886346	Hordeum murinum subsp. glaucum (Steud.) Tzvelev	Hordeum murinum	Plantae	Manual of the Alien Plants of Belgium	
+213212768	4123394	4123395	Festuca guestfalica subsp. hirtula (Hack. ex Travis) Dengler	Festuca guestfalica	Plantae	Manual of the Alien Plants of Belgium	
+213213619	4194303	2986111	Ribes aureum var. villosum DC.	Ribes aureum	Plantae	Manual of the Alien Plants of Belgium	
+182134921	4219118	9689880	Hieracium glaucinum subsp. recensitum (Jord. ex Boreau) Gottschl.	Hieracium glaucinum	Plantae	Manual of the Alien Plants of Belgium	
+213215134	4250676	3105782	Sonchus asper subsp. glaucescens (Jord.) Ballota	Sonchus asper	Plantae	Manual of the Alien Plants of Belgium	

@@ -17,7 +17,8 @@ library(knitr)
 opts_chunk$set(echo = TRUE,
                warning = FALSE,
                message = FALSE,
-               results = TRUE)
+               results = TRUE,
+               tidy = 'styler')
 ```
 
 # Goal
@@ -30,22 +31,23 @@ In this document we calculate the area of occupancy (AOO), the coverage and the 
 library(tidyverse)  # To do datascience
 library(tidylog)  # To provide feedback on dplyr functions
 library(here) # To find files
-library(inborutils)
-library(rgbif)
+library(inborutils) # To download data from zenodo
+library(rgbif) # To interface with GBIF
 ```
 
 # Read input data
 
 ## Occurrence cube at species level
 
-Read the occurrence cubes at species level for European countries as published on Zenodo (https://doi.org/10.5281/zenodo.3637910). It can take a long time:
+Read the occurrence cubes at species level for European countries as published on Zenodo (https://doi.org/10.5281/zenodo.10074895). It can take a long time:
 
 ```{r read_cube_from_zenodo}
 if (!"be_species_cube.csv" %in%
-  list.files(here::here("data", "interim"))) {
-  download_zenodo(
-    doi = "10.5281/zenodo.3637910",
-    path = here::here("data", "interim")
+  list.files(here::here("data", "input"))) {
+  inborutils::download_zenodo(
+    doi = "10.5281/zenodo.10074895",
+    path = here::here("data", "input"),
+    parallel = TRUE
   )
 }
 ```
@@ -54,37 +56,37 @@ We are interested in the Belgian cube (`be_species_cube.csv`) and its metadata (
 
 ```{r read_be_species_cube}
 be_species_cube <- read_csv(
-  file = here::here("data", "interim", "be_species_cube.csv"),
+  file = here::here("data", "input", "be_species_cube.csv"),
   na = ""
 )
 be_species_info <- read_csv(
-  file = here::here("data", "interim", "be_species_info.csv"),
+  file = here::here("data", "input", "be_species_info.csv"),
   na = "") %>%
-  select(-kingdom)
+  tidylog::select(-kingdom)
 ```
 
 Preview occurrence cube:
 
 ```{r preview_cube}
-be_species_cube %>% head(10)
+be_species_cube %>% tidylog::slice_head(n = 10)
 ```
 
 Preview taxonomic metadata of occurrence cube:
 
 ```{r preview_cube_metadata}
-be_species_info %>% head(10)
+be_species_info %>% tidylog::slice_head(n = 10)
 ```
 
 ## Occurrence cube of alien taxa
 
-Read the occurrence cubes of alien taxa as published on Zenodo (https://doi.org/10.5281/zenodo.3632749). It is based on GBIF occurrence data of taxa published in the [Global Register of Introduced and Invasive Species - Belgium](https://www.gbif.org/dataset/6d9e952f-948c-4483-9807-575348147c7e), shortly called the [unified checklist](https://github.com/trias-project/unified-checklist). Attention: It can take a long time:
+Read the occurrence cubes of alien taxa as published on Zenodo (https://doi.org/10.5281/zenodo.10058400). It is based on GBIF occurrence data of taxa published in the [Global Register of Introduced and Invasive Species - Belgium](https://www.gbif.org/dataset/6d9e952f-948c-4483-9807-575348147c7e), shortly called the [unified checklist](https://github.com/trias-project/unified-checklist). It can take a long time:
 
 ```{r read_cube_from_zenodo_alien}
 if (!"be_alientaxa_cube.csv" %in%
-  list.files(here::here("data", "interim"))) {
-  download_zenodo(
-    doi = "10.5281/zenodo.3632749",
-    path = here::here("data", "interim")
+  list.files(here::here("data", "input"))) {
+  inborutils::download_zenodo(
+    doi = "10.5281/zenodo.10058400",
+    path = here::here("data", "input"), 
   )
 }
 ```
@@ -93,34 +95,34 @@ We are interested in the alien taxa cube (`be_alientaxa_cube.csv`) and its metad
 
 ```{r read_be_species_cube_alien}
 be_alientaxa_cube <- read_csv(
-  file = here::here("data", "interim", "be_alientaxa_cube.csv"),
+  file = here::here("data", "input", "be_alientaxa_cube.csv"),
   na = ""
 )
 be_alientaxa_info <- read_csv(
-  file = here::here("data", "interim", "be_alientaxa_info.csv"),
+  file = here::here("data", "input", "be_alientaxa_info.csv"),
   na = "") %>%
-  select(-kingdom) # as we still have to retrieve taxonomic info from GBIF
+  tidylog::select(-kingdom) # as we still have to retrieve taxonomic info from GBIF
 ```
 
 Preview occurrence cube:
 
 ```{r preview_cube_alien}
-be_alientaxa_cube %>% head(10)
+be_alientaxa_cube %>% tidylog::slice_head(n = 10)
 ```
 
 Preview taxonomic metadata of occurrence cube with alien taxa:
 
 ```{r preview_cube_metadata_alien}
-be_alientaxa_info %>% head(10)
+be_alientaxa_info %>% tidylog::slice_head(n = 10)
 ```
 
 Number of taxa per rank:
 
 ```{r rank_alien}
 be_alientaxa_info %>%
-  distinct(rank, taxonKey) %>%
-  group_by(rank) %>%
-  count()
+  tidylog::distinct(rank, taxonKey) %>%
+  tidylog::group_by(rank) %>%
+  tidylog::count()
 ```
 
 Infraspecific alien taxa:
@@ -128,51 +130,50 @@ Infraspecific alien taxa:
 ```{r species_with_alien_infraspecific_taxa, cache = TRUE}
 infraspecific_alien <-
   be_alientaxa_info %>%
-  distinct(rank, taxonKey) %>%
-  filter(rank %in% c("SUBSPECIES",
-                     "VARIETY",
-                     "FORM"))
+  tidylog::distinct(rank, taxonKey) %>%
+  tidylog::filter(rank %in% c("SUBSPECIES",
+                              "VARIETY",
+                              "FORM"))
 infraspecific_alien <-
-  map_dfr(
+  purrr::map_dfr(
     infraspecific_alien$taxonKey,
     function(x) {
-      name_usage(x, "data")$data
+      rgbif::name_usage(x, "data")$data
     }
   )
 infraspecific_alien <-
   infraspecific_alien %>%
-  mutate(
-    species = if_else(is.na(species),
-      parent,
-      species
+  tidylog::mutate(
+    species = dplyr::if_else(is.na(species),
+                             parent,
+                             species
     ),
-    speciesKey = if_else(is.na(speciesKey),
-      parentKey,
-      speciesKey)) %>%
-  select(taxonKey = key,
-         kingdom,
-         phylum,
-         order,
-         class,
-         family,
-         genusKey,
-         genus,
-         speciesKey,
-         species)
+    speciesKey = dplyr::if_else(is.na(speciesKey),
+                                parentKey,
+                                speciesKey)) %>%
+  tidylog::select(taxonKey = key,
+                  kingdom,
+                  phylum,
+                  order,
+                  class,
+                  family,
+                  genusKey,
+                  genus,
+                  speciesKey,
+                  species)
 infraspecific_alien <-
   infraspecific_alien %>%
-  left_join(be_alientaxa_info,
-            by = c("taxonKey"))
+  tidylog::left_join(be_alientaxa_info, by = c("taxonKey"))
 infraspecific_alien
 ```
 
 ## Assessment alien species with alien infraspecific taxa
 
-The unified checklist contains some infraspecific alien taxa belonging to alien species as well. The assessment whether the species is alien or not is at the moment based on a reference file maintained by TrIAS experts. We read it:
+The unified checklist contains some infraspecific alien taxa belonging to alien species as well. The assessment whether the species is alien or not is at the moment based on a reference file maintained by TrIAS experts. This file should be revised each time the unified checklist is updated. We read it:
 
 ```{r infraspecific_alien_status_species}
 infraspecific_alien_status_species <-
-  read_tsv(here::here("reference",
+  readr::read_tsv(here::here("reference",
                       "species_of_infraspecific_alien_taxa.tsv"),
            na = "")
 infraspecific_alien_status_species
@@ -185,7 +186,7 @@ where `key` is the key of the taxon as published in the unified checklist,  `nub
 We read also the file containing the intersection of protected areas and the EEA grid as produced in :
 
 ```{r read_cells_of_prot_areas}
-cells_of_prot_areas <- read_tsv(
+cells_of_prot_areas <- readr::read_tsv(
   file = here::here(
     "data",
     "interim",
@@ -198,7 +199,7 @@ cells_of_prot_areas <- read_tsv(
 Preview:
 
 ```{r preview_cells_of_prot_areas}
-cells_of_prot_areas %>% head(10)
+cells_of_prot_areas %>% tidylog::slice_head(n = 10)
 ```
 
 Number of cells per protected area:
@@ -206,14 +207,14 @@ Number of cells per protected area:
 ```{r n_cells_per_prot_areas}
 n_cells_prot_areas <-
   cells_of_prot_areas %>%
-  group_by(SITECODE) %>%
+  tidylog::group_by(SITECODE) %>%
   summarize(n_cells = n())
 ```
 
 Preview:
 
 ```{r preview_n_cells_prot_areas}
-n_cells_prot_areas %>% head(10)
+n_cells_prot_areas %>% tidylog::slice_head(n = 10)
 ```
 
 ## Protected areas metadata
@@ -221,7 +222,7 @@ n_cells_prot_areas %>% head(10)
 Metadata about all Belgian Natura2000 protected areas have been already saved in [other pipeline](define_overlay_grid_belgium_with_protected_areas.html). We read them:
 
 ```{r protected_areas_metadata}
-protected_areas_metadata <- read_tsv(
+protected_areas_metadata <- readr::read_tsv(
   here::here(
     "data",
     "interim",
@@ -246,7 +247,7 @@ be_prot_areas_cube <-
 Preview:
 
 ```{r preview_be_prot_areas_cube}
-be_prot_areas_cube %>% head(10)
+be_prot_areas_cube %>% tidylog::slice_head(n = 10)
 ```
 
 For each taxon, year and protected area, calculate the number of observations, the area of occupancy and the minimum coordinate uncertainty:
@@ -254,7 +255,7 @@ For each taxon, year and protected area, calculate the number of observations, t
 ```{r occs_prot_areas}
 occs_prot_areas <-
   be_prot_areas_cube %>%
-  group_by(SITECODE, SITETYPE, year, speciesKey) %>%
+  tidylog::group_by(SITECODE, SITETYPE, year, speciesKey) %>%
   summarize(
     aoo = n(),
     n = sum(n),
@@ -268,7 +269,7 @@ Preview with the 10 highest areas of occupancy:
 ```{r preview_occs_prot_areas}
 occs_prot_areas %>%
   arrange(desc(aoo)) %>%
-  head(10)
+  tidylog::slice_head(n = 10)
 ```
 
 ## Add coverage of protected areas
@@ -278,11 +279,11 @@ To add the coverage of each protected area, we divide AOO by the area of each pr
 ```{r add_coverage}
 occs_prot_areas <-
   occs_prot_areas %>%
-  left_join(n_cells_prot_areas,
+  tidylog::left_join(n_cells_prot_areas,
     by = c("SITECODE")
   ) %>%
-  mutate(coverage = aoo / n_cells) %>%
-  select(-n_cells)
+  tidylog::mutate(coverage = aoo / n_cells) %>%
+  tidylog::select(-n_cells)
 ```
 
 The coverage is a number between 0 (species not present) and 1 (species present in the entire protected area). Species/year/area with highest coverage value (1):
@@ -290,7 +291,7 @@ The coverage is a number between 0 (species not present) and 1 (species present 
 ```{r preview_coverage}
 occs_prot_areas %>%
   arrange(desc(coverage)) %>%
-  filter(coverage == max(coverage))
+  tidylog::filter(coverage == max(coverage))
 ```
 
 ## Retrieve taxonomic metadata from GBIF
@@ -300,22 +301,22 @@ Not all taxa in Belgian occurrence cube are present in protected areas. We remov
 ```{r reduce_be_species_info}
 prot_areas_species_info <-
   be_species_info %>%
-  filter(speciesKey %in% occs_prot_areas$speciesKey)
+  tidylog::filter(speciesKey %in% occs_prot_areas$speciesKey)
 ```
 
 We retrieve taxonomic tree from GBIF:
 
 ```{r taxonomic_info_species_cube, cache = TRUE}
 prot_areas_species_taxon_info <-
-  map_dfr(
+  purrr::map_dfr(
     prot_areas_species_info$speciesKey,
     function(x) {
-      name_usage(key = x)$data
+      rgbif::name_usage(key = x)$data
     }
   )
 prot_areas_species_taxon_info <-
   prot_areas_species_taxon_info %>%
-  select(
+  tidylog::select(
     speciesKey,
     kingdom,
     phylum,
@@ -328,7 +329,7 @@ prot_areas_species_taxon_info <-
   )
 prot_areas_species_info <-
   prot_areas_species_info %>%
-  left_join(prot_areas_species_taxon_info,
+  tidylog::left_join(prot_areas_species_taxon_info,
     by = "speciesKey"
   )
 ```
@@ -336,7 +337,7 @@ prot_areas_species_info <-
 Preview:
 
 ```{r preview_prot_areas_species_taxon_info_after_gbif}
-prot_areas_species_taxon_info %>% head(10)
+prot_areas_species_taxon_info %>% tidylog::slice_head(n = 10)
 ```
 
 ## Add alien status
@@ -347,15 +348,15 @@ We would also like to indicate whether the species is alien. We add a boolean co
 # alien species based on alien infraspecific taxa in unified
 infraspecific_alien_and_species <- 
   infraspecific_alien_status_species %>%
-  filter(species_is_alien == TRUE)
+  tidylog::filter(species_is_alien == TRUE)
 
 infraspecific_alien_species_unknown <-
   infraspecific_alien_status_species %>%
-  filter(is.na(species_is_alien))
+  tidylog::filter(is.na(species_is_alien))
 
 occs_prot_areas <-
   occs_prot_areas %>%
-  mutate(is_alien = case_when(
+  tidylog::mutate(is_alien = case_when(
     speciesKey %in% be_alientaxa_info$taxonKey |
       speciesKey %in% infraspecific_alien_and_species$speciesKey ~ TRUE,
     speciesKey %in% 
@@ -369,21 +370,21 @@ As the Belgian list of alien taxa contains infraspecific taxa, we add a remark f
 ```{r add_remarks}
 species_infraspecific_alien <-
   infraspecific_alien %>%
-  select(speciesKey, scientificName, taxonKey) %>%
-  filter(speciesKey %in% occs_prot_areas$speciesKey) %>%
-  group_by(speciesKey) %>%
-  summarize(remarks = paste0(
+  tidylog::select(speciesKey, scientificName, taxonKey) %>%
+  tidylog::filter(speciesKey %in% occs_prot_areas$speciesKey) %>%
+  tidylog::group_by(speciesKey) %>%
+  tidylog::summarize(remarks = paste0(
     "Infraspecific alien taxa present. ",
     paste(taxonKey,
-      scientificName,
-      sep = ":",
-      collapse = ","
+          scientificName,
+          sep = ":",
+          collapse = ","
     )
   ))
 occs_prot_areas <-
   occs_prot_areas %>%
-  left_join(species_infraspecific_alien,
-    by = "speciesKey"
+  tidylog::left_join(species_infraspecific_alien,
+                     by = "speciesKey"
   )
 ```
 
@@ -391,19 +392,19 @@ Species with alien infraspecific taxa. Notice they can be considered alien as we
 
 ```{r example_alien_infraspecific}
 occs_prot_areas %>%
-  filter(!is.na(remarks)) %>%
-  distinct(speciesKey, is_alien, remarks)
+  tidylog::filter(!is.na(remarks)) %>%
+  tidylog::distinct(speciesKey, is_alien, remarks)
 ```
 
-Finally we add a column, `taxonKey` containing the key of all taxa in GBIF Backbone. It is by definition equal to `speciesKey`.
+Finally we add a column, `taxonKey`, containing the key of all taxa in GBIF Backbone. It is by definition equal to `speciesKey`.
 
 ```{r add_species_key}
 occs_prot_areas <-
   occs_prot_areas %>%
-  mutate(taxonKey = speciesKey)
+  tidylog::mutate(taxonKey = speciesKey)
 prot_areas_species_info <-
   prot_areas_species_info %>%
-  mutate(taxonKey = speciesKey)
+  tidylog::mutate(taxonKey = speciesKey)
 ```
 
 ## Include infraspecific alien taxa
@@ -414,48 +415,48 @@ To better study the spread of alien taxa we also add information about infraspec
 # Select cells with occurrences of infraspecific alien taxa
 be_prot_areas_cube_infraspecific <-
   cells_of_prot_areas %>%
-  inner_join(
+  tidylog::inner_join(
     be_alientaxa_cube %>%
-      filter(taxonKey %in% infraspecific_alien$taxonKey),
+      tidylog::filter(taxonKey %in% infraspecific_alien$taxonKey),
     by = c("CELLCODE" = "eea_cell_code")
   )
 # Calculate n observations, aoo, min_coord_uncertainty
 occs_prot_areas_infraspecific <-
   be_prot_areas_cube_infraspecific %>%
-  group_by(SITECODE, SITETYPE, year, taxonKey) %>%
-  summarize(
+  tidylog::group_by(SITECODE, SITETYPE, year, taxonKey) %>%
+  tidylog::summarize(
     aoo = n(),
     n = sum(n),
     min_coord_uncertainty = min(min_coord_uncertainty)
   ) %>%
-  ungroup()
+  tidylog::ungroup()
 # Add coverage and is_alien
 occs_prot_areas_infraspecific <-
   occs_prot_areas_infraspecific %>%
-  left_join(n_cells_prot_areas,
-    by = c("SITECODE")
+  tidylog::left_join(n_cells_prot_areas,
+                     by = c("SITECODE")
   ) %>%
-  mutate(coverage = aoo / n_cells,
+  tidylog::mutate(coverage = aoo / n_cells,
          is_alien = TRUE) %>%
-  select(-n_cells)
+  tidylog::select(-n_cells)
 # Remove taxa which are not present in protected areas
 prot_areas_infraspecific_taxon_info <-
   infraspecific_alien %>%
-  filter(taxonKey %in% occs_prot_areas_infraspecific$taxonKey)
+  tidylog::filter(taxonKey %in% occs_prot_areas_infraspecific$taxonKey)
 # Add speciesKey
 occs_prot_areas_infraspecific <-
   occs_prot_areas_infraspecific %>%
-  left_join(infraspecific_alien %>%
-              select(taxonKey, speciesKey),
-            by = "taxonKey")
+  tidylog::left_join(infraspecific_alien %>%
+                       tidylog::select(taxonKey, speciesKey),
+                     by = "taxonKey")
 # Merge data
 occs_prot_areas <-
   occs_prot_areas %>%
-  bind_rows(occs_prot_areas_infraspecific)
+  dplyr::bind_rows(occs_prot_areas_infraspecific)
 # Merge metadata
 prot_areas_taxon_info <-
   prot_areas_species_info %>%
-  bind_rows(prot_areas_infraspecific_taxon_info)
+  dplyr::bind_rows(prot_areas_infraspecific_taxon_info)
 ```
 
 # Save data and metadata
@@ -487,14 +488,14 @@ occs_prot_areas <-
 Preview:
 
 ```{r preview_occs_prot_areas_before_saving}
-occs_prot_areas %>% head(10)
+occs_prot_areas %>% tidylog::slice_head(n = 10)
 ```
 
 Save data:
 
 ```{r save_occs_prot_areas}
 occs_prot_areas %>%
-  write_csv(
+  readr::write_csv(
     path = here::here(
       "data",
       "output",
@@ -504,7 +505,7 @@ occs_prot_areas %>%
   )
 ```
 
-## Finalize en save metadata
+## Save metadata
 
 ### Taxonomic metadata
 
@@ -513,7 +514,7 @@ Select taxonomic metadata we are interested to:
 ```{r selection_taxon_metadata}
 taxonomic_metadata <-
   prot_areas_taxon_info %>%
-  select(
+  tidylog::select(
     taxonKey,
     speciesKey,
     scientificName,
@@ -532,14 +533,14 @@ taxonomic_metadata <-
 Preview:
 
 ```{r preview_taxonomic_metadata_before_saving}
-taxonomic_metadata %>% head(10)
+taxonomic_metadata %>% tidylog::slice_head(n = 10)
 ```
 
 Save taxonomic metadata:
 
 ```{r save_taxonomic_metadata}
 taxonomic_metadata %>%
-  write_csv(here::here(
+  readr::write_csv(here::here(
     "data",
     "output",
     "protected_areas_species_info.csv"
@@ -555,21 +556,21 @@ We remove metadata of areas without observations, if any:
 ```{r filter_protected_areas_metadata}
 protected_areas_metadata <-
   protected_areas_metadata %>%
-  filter(SITECODE %in% occs_prot_areas$SITECODE)
+  tidylog::filter(SITECODE %in% occs_prot_areas$SITECODE)
 ```
 
 Preview:
 
 ```{r preview_protected_areas_metadata_before_saving}
-protected_areas_metadata %>% head(10)
+protected_areas_metadata %>% tidylog::slice_head(n = 10)
 ```
 
 We save the metadata as output:
 
 ```{r save_final_protected_areas_metadata}
 protected_areas_metadata %>%
-  write_csv(
-    path = here::here(
+  readr::write_csv(
+    file = here::here(
       "data",
       "output",
       "protected_areas_metadata.csv"

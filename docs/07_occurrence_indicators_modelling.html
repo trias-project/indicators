@@ -13,11 +13,11 @@
 <meta name="author" content="Toon Van Daele" />
 <meta name="author" content="Tim Adriaens" />
 
-<meta name="date" content="2022-07-04" />
+<meta name="date" content="2023-11-20" />
 
 <title>Emerging status: modelling</title>
 
-<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.25/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
@@ -33,7 +33,7 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
-<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
@@ -42,8 +42,8 @@
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
 <script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
-<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -154,11 +154,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -187,8 +191,8 @@ $(document).ready(function () {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -196,16 +200,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -377,6 +374,9 @@ div.tocify {
         <li>
           <a href="08_ranking_emerging_status.html">Ranking species by emerging status</a>
         </li>
+        <li>
+          <a href="12_taxonomic_distribution_emerging_species.html">Taxonomic distribution of emerging species</a>
+        </li>
       </ul>
     </li>
     <li class="dropdown-submenu">
@@ -424,7 +424,7 @@ div.tocify {
 <h4 class="author">Damiano Oldoni</h4>
 <h4 class="author">Toon Van Daele</h4>
 <h4 class="author">Tim Adriaens</h4>
-<h4 class="date">2022-07-04</h4>
+<h4 class="date">2023-11-20</h4>
 
 </div>
 
@@ -435,32 +435,23 @@ of alien species.</p>
 <h1><span class="header-section-number">1</span> Setup</h1>
 <p>Load libraries:</p>
 <pre class="r"><code>library(tidyverse) # To do data science</code></pre>
-<pre><code>## Warning: package &#39;tidyverse&#39; was built under R version 4.2.1</code></pre>
-<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 4.2.1</code></pre>
-<pre><code>## Warning: package &#39;tibble&#39; was built under R version 4.2.1</code></pre>
-<pre><code>## Warning: package &#39;tidyr&#39; was built under R version 4.2.1</code></pre>
-<pre><code>## Warning: package &#39;readr&#39; was built under R version 4.2.1</code></pre>
-<pre><code>## Warning: package &#39;purrr&#39; was built under R version 4.2.1</code></pre>
-<pre><code>## Warning: package &#39;dplyr&#39; was built under R version 4.2.1</code></pre>
-<pre><code>## Warning: package &#39;stringr&#39; was built under R version 4.2.1</code></pre>
-<pre><code>## Warning: package &#39;forcats&#39; was built under R version 4.2.1</code></pre>
-<pre class="r"><code>library(tidyselect) # To help tidyverse functions</code></pre>
-<pre><code>## Warning: package &#39;tidyselect&#39; was built under R version 4.2.1</code></pre>
-<pre class="r"><code>library(tidylog) # To provide feedback on dplyr functions</code></pre>
-<pre><code>## Warning: package &#39;tidylog&#39; was built under R version 4.2.1</code></pre>
-<pre class="r"><code>library(rgbif) # To get information from GBIF</code></pre>
-<pre><code>## Warning: package &#39;rgbif&#39; was built under R version 4.2.1</code></pre>
+<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 4.3.2</code></pre>
+<pre><code>## Warning: package &#39;purrr&#39; was built under R version 4.3.1</code></pre>
+<pre><code>## Warning: package &#39;lubridate&#39; was built under R version 4.3.2</code></pre>
+<pre class="r"><code>library(tidyselect) # To help tidyverse functions
+library(tidylog) # To provide feedback on dplyr functions
+library(rgbif) # To get information from GBIF</code></pre>
+<pre><code>## Warning: package &#39;rgbif&#39; was built under R version 4.3.1</code></pre>
 <pre class="r"><code>library(lubridate) # To work with dates
-library(here) # To find files</code></pre>
-<pre><code>## Warning: package &#39;here&#39; was built under R version 4.2.1</code></pre>
-<pre class="r"><code>library(trias)
+library(here) # To find files
+library(trias)
 library(INBOtheme) # To load graphic INBO theme</code></pre>
 </div>
 <div id="get-data" class="section level1" number="2">
 <h1><span class="header-section-number">2</span> Get data</h1>
 <p>We read the time series data, output of preprocessing pipeline:</p>
 <pre class="r"><code>df_ts &lt;- read_tsv(
-  here::here(&quot;data&quot;, &quot;interim&quot;, &quot;df_timeseries.tsv&quot;),
+  file = here::here(&quot;data&quot;, &quot;interim&quot;, &quot;df_timeseries.tsv&quot;),
   na = &quot;&quot;
 )</code></pre>
 <p>Columns <code>pa_obs</code> and <code>pa_cobs</code> indicate the
@@ -473,14 +464,14 @@ taxon &lt;-
 
 # Preview
 df_ts %&gt;%
-  filter(
+  tidylog::filter(
     taxonKey == taxon,
     year %in% c(2016, 2017),
     eea_cell_code == &quot;1kmE3924N3102&quot;
   )</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["taxonKey"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["year"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["eea_cell_code"],"name":[3],"type":["chr"],"align":["left"]},{"label":["obs"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["pa_obs"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["cobs"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["pa_cobs"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["classKey"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["natura2000"],"name":[9],"type":["lgl"],"align":["right"]}],"data":[{"1":"3040233","2":"2016","3":"1kmE3924N3102","4":"0","5":"0","6":"0","7":"0","8":"220","9":"FALSE"},{"1":"3040233","2":"2017","3":"1kmE3924N3102","4":"0","5":"0","6":"0","7":"0","8":"220","9":"FALSE"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["taxonKey"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["year"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["eea_cell_code"],"name":[3],"type":["chr"],"align":["left"]},{"label":["obs"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["pa_obs"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["cobs"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["pa_cobs"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["classKey"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["natura2000"],"name":[9],"type":["lgl"],"align":["right"]}],"data":[],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p>Retrieve scientific names which will be useful to better discuss the
@@ -489,39 +480,39 @@ results.</p>
   file = here::here(&quot;data&quot;, &quot;interim&quot;, &quot;timeseries_taxonomic_info.tsv&quot;),
   na = &quot;&quot;
 ) %&gt;%
-  select(taxonKey, canonicalName) %&gt;%
-  filter(taxonKey %in% df_ts$taxonKey)</code></pre>
+  tidylog::select(taxonKey, canonicalName) %&gt;%
+  tidylog::filter(taxonKey %in% df_ts$taxonKey)</code></pre>
 <p>Lump geographic information:</p>
 <pre class="r"><code>df_ts_compact &lt;-
   df_ts %&gt;%
-  group_by(taxonKey, year, classKey) %&gt;%
-  summarise(
+  tidylog::group_by(taxonKey, year, classKey) %&gt;%
+  tidylog::summarise(
     obs = sum(obs),
     cobs = sum(cobs),
     ncells = sum(pa_obs),
     c_ncells = sum(pa_cobs)
   ) %&gt;%
-  ungroup()</code></pre>
+  tidylog::ungroup()</code></pre>
 <p>We create a similar data.frame specific to protected areas
 (Natura2000):</p>
 <pre class="r"><code>df_ts_compact_prot_areas &lt;-
   df_ts %&gt;%
-  filter(natura2000 == TRUE) %&gt;%
-  group_by(taxonKey, year, classKey) %&gt;%
-  summarise(
+  tidylog::filter(natura2000 == TRUE) %&gt;%
+  tidylog::group_by(taxonKey, year, classKey) %&gt;%
+  tidylog::summarise(
     obs = sum(obs),
     cobs = sum(cobs),
     ncells = sum(pa_cobs),
     c_ncells = sum(pa_cobs)
   ) %&gt;%
-  ungroup()</code></pre>
+  tidylog::ungroup()</code></pre>
 <p>Add canonical names:</p>
 <pre class="r"><code>df_ts_compact &lt;-
   df_ts_compact %&gt;%
-  left_join(spec_names, by = &quot;taxonKey&quot;)
+  tidylog::left_join(spec_names, by = &quot;taxonKey&quot;)
 df_ts_compact_prot_areas &lt;-
   df_ts_compact_prot_areas %&gt;%
-  left_join(spec_names, by = &quot;taxonKey&quot;)</code></pre>
+  tidylog::left_join(spec_names, by = &quot;taxonKey&quot;)</code></pre>
 </div>
 <div id="modelling" class="section level1" number="3">
 <h1><span class="header-section-number">3</span> Modelling</h1>
@@ -536,13 +527,18 @@ codes:</p>
 <li><code>1</code>: unclear</li>
 <li><code>0</code>: not emerging</li>
 </ul>
+<p>See documentation of <a
+href="https://trias-project.github.io/trias/reference/apply_decision_rules.html"><code>trias::apply_decision_rules</code></a>
+and <a
+href="https://trias-project.github.io/trias/reference/apply_gam.html"><code>trias::apply_gam()</code></a>
+for more information.</p>
 <div id="define-evaluation-period" class="section level2" number="3.1">
 <h2><span class="header-section-number">3.1</span> Define evaluation
 period</h2>
 <p>We define the time window (in years) we want to assess the emerging
 status:</p>
 <pre class="r"><code># Last evaluation year
-last_year &lt;- lubridate::year(Sys.Date()) - 2
+last_year &lt;- lubridate::year(Sys.Date()) - 1
 
 # First evalution year
 first_year &lt;- last_year - 2
@@ -550,15 +546,15 @@ first_year &lt;- last_year - 2
 # Evaluation years
 evaluation_years &lt;- seq(first_year, last_year)
 evaluation_years</code></pre>
-<pre><code>## [1] 2018 2019 2020</code></pre>
+<pre><code>## [1] 2020 2021 2022</code></pre>
 <p>We remove recent data due to publishing delay. Underestimation of the
 number of observations would sensibly affect the GAM output.</p>
 <pre class="r"><code>df_ts_compact &lt;-
   df_ts_compact %&gt;%
-  filter(year &lt;= last_year)
+  tidylog::filter(year &lt;= last_year)
 df_ts_compact_prot_areas &lt;-
   df_ts_compact_prot_areas %&gt;%
-  filter(year &lt;= last_year)</code></pre>
+  tidylog::filter(year &lt;= last_year)</code></pre>
 </div>
 <div id="remove-appearing-taxa" class="section level2" number="3.2">
 <h2><span class="header-section-number">3.2</span> Remove appearing
@@ -569,22 +565,22 @@ href="https://trias-project.github.io/indicators/06_occurrence_indicators_appear
 of appearing and reappearing taxa</a>.</p>
 <pre class="r"><code>appearing_taxa_to_remove &lt;-
   df_ts_compact %&gt;%
-  group_by(taxonKey) %&gt;%
-  summarize(begin_year = min(year)) %&gt;%
-  filter(begin_year &gt; min(evaluation_years)) %&gt;%
-  pull(taxonKey)
+  tidylog::group_by(taxonKey) %&gt;%
+  tidylog::summarize(begin_year = min(year)) %&gt;%
+  tidylog::filter(begin_year &gt; min(evaluation_years)) %&gt;%
+  dplyr::pull(taxonKey)
 
 df_ts_compact &lt;-
   df_ts_compact %&gt;%
-  filter(!taxonKey %in% appearing_taxa_to_remove)
+  tidylog::filter(!taxonKey %in% appearing_taxa_to_remove)
 
 df_ts_compact_prot_areas &lt;-
   df_ts_compact_prot_areas %&gt;%
-  filter(!taxonKey %in% appearing_taxa_to_remove)
+  tidylog::filter(!taxonKey %in% appearing_taxa_to_remove)
 
 spec_names &lt;-
   spec_names %&gt;%
-  filter(!taxonKey %in% appearing_taxa_to_remove)</code></pre>
+  tidylog::filter(!taxonKey %in% appearing_taxa_to_remove)</code></pre>
 </div>
 <div id="decision-rules" class="section level2" number="3.3">
 <h2><span class="header-section-number">3.3</span> Decision rules</h2>
@@ -598,7 +594,7 @@ observations in all Belgium and in protected areas using function
 <h4><span class="header-section-number">3.3.1.1</span> Belgium</h4>
 <p>We apply function <code>apply_decision_rules()</code> to observations
 for all Belgium:</p>
-<pre class="r"><code>em_decision_rules_occs_BE &lt;- map_dfr(
+<pre class="r"><code>em_decision_rules_occs_BE &lt;- purrr::map_dfr(
   evaluation_years,
   ~ apply_decision_rules(
     df = df_ts_compact,
@@ -607,10 +603,10 @@ for all Belgium:</p>
   )
 )</code></pre>
 <p>Examples:</p>
-<pre class="r"><code>em_decision_rules_occs_BE %&gt;% head()</code></pre>
+<pre class="r"><code>em_decision_rules_occs_BE %&gt;% tidylog::slice_head(n = 10)</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["taxonKey"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["year"],"name":[2],"type":["int"],"align":["right"]},{"label":["em_status"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["dr_1"],"name":[4],"type":["lgl"],"align":["right"]},{"label":["dr_2"],"name":[5],"type":["lgl"],"align":["right"]},{"label":["dr_3"],"name":[6],"type":["lgl"],"align":["right"]},{"label":["dr_4"],"name":[7],"type":["lgl"],"align":["right"]}],"data":[{"1":"1008955","2":"2018","3":"0","4":"FALSE","5":"FALSE","6":"TRUE","7":"FALSE"},{"1":"1031394","2":"2018","3":"3","4":"FALSE","5":"TRUE","6":"FALSE","7":"TRUE"},{"1":"1031400","2":"2018","3":"2","4":"FALSE","5":"TRUE","6":"FALSE","7":"FALSE"},{"1":"1031684","2":"2018","3":"3","4":"FALSE","5":"TRUE","6":"FALSE","7":"TRUE"},{"1":"1031737","2":"2018","3":"1","4":"TRUE","5":"FALSE","6":"FALSE","7":"TRUE"},{"1":"1031742","2":"2018","3":"1","4":"FALSE","5":"FALSE","6":"FALSE","7":"FALSE"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["taxonKey"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["year"],"name":[2],"type":["int"],"align":["right"]},{"label":["em_status"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["dr_1"],"name":[4],"type":["lgl"],"align":["right"]},{"label":["dr_2"],"name":[5],"type":["lgl"],"align":["right"]},{"label":["dr_3"],"name":[6],"type":["lgl"],"align":["right"]},{"label":["dr_4"],"name":[7],"type":["lgl"],"align":["right"]}],"data":[{"1":"1003567","2":"2020","3":"1","4":"FALSE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1008955","2":"2020","3":"0","4":"FALSE","5":"FALSE","6":"TRUE","7":"FALSE"},{"1":"1014565","2":"2020","3":"1","4":"FALSE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1016841","2":"2020","3":"1","4":"TRUE","5":"FALSE","6":"FALSE","7":"TRUE"},{"1":"1017419","2":"2020","3":"3","4":"FALSE","5":"TRUE","6":"FALSE","7":"TRUE"},{"1":"1031394","2":"2020","3":"1","4":"FALSE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1031400","2":"2020","3":"1","4":"FALSE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1031684","2":"2020","3":"3","4":"FALSE","5":"TRUE","6":"FALSE","7":"TRUE"},{"1":"1031737","2":"2020","3":"1","4":"TRUE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1031742","2":"2020","3":"1","4":"FALSE","5":"FALSE","6":"FALSE","7":"FALSE"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
@@ -619,7 +615,7 @@ for all Belgium:</p>
 areas</h4>
 <p>We apply function <code>apply_decision_rules()</code> to observations
 for protected areas:</p>
-<pre class="r"><code>em_decision_rules_occs_pa &lt;- map_dfr(
+<pre class="r"><code>em_decision_rules_occs_pa &lt;- purrr::map_dfr(
   evaluation_years,
   ~ apply_decision_rules(
     df = df_ts_compact_prot_areas,
@@ -628,10 +624,10 @@ for protected areas:</p>
   )
 )</code></pre>
 <p>Examples:</p>
-<pre class="r"><code>em_decision_rules_occs_pa %&gt;% head()</code></pre>
+<pre class="r"><code>em_decision_rules_occs_pa %&gt;% tidylog::slice_head(n = 10)</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["taxonKey"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["year"],"name":[2],"type":["int"],"align":["right"]},{"label":["em_status"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["dr_1"],"name":[4],"type":["lgl"],"align":["right"]},{"label":["dr_2"],"name":[5],"type":["lgl"],"align":["right"]},{"label":["dr_3"],"name":[6],"type":["lgl"],"align":["right"]},{"label":["dr_4"],"name":[7],"type":["lgl"],"align":["right"]}],"data":[{"1":"1008955","2":"2018","3":"0","4":"FALSE","5":"FALSE","6":"TRUE","7":"FALSE"},{"1":"1031394","2":"2018","3":"3","4":"FALSE","5":"TRUE","6":"FALSE","7":"TRUE"},{"1":"1031400","2":"2018","3":"2","4":"FALSE","5":"TRUE","6":"FALSE","7":"FALSE"},{"1":"1031684","2":"2018","3":"1","4":"TRUE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1031737","2":"2018","3":"1","4":"TRUE","5":"FALSE","6":"FALSE","7":"TRUE"},{"1":"1047536","2":"2018","3":"2","4":"FALSE","5":"TRUE","6":"FALSE","7":"FALSE"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["taxonKey"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["year"],"name":[2],"type":["int"],"align":["right"]},{"label":["em_status"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["dr_1"],"name":[4],"type":["lgl"],"align":["right"]},{"label":["dr_2"],"name":[5],"type":["lgl"],"align":["right"]},{"label":["dr_3"],"name":[6],"type":["lgl"],"align":["right"]},{"label":["dr_4"],"name":[7],"type":["lgl"],"align":["right"]}],"data":[{"1":"1003567","2":"2020","3":"1","4":"FALSE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1008955","2":"2020","3":"0","4":"FALSE","5":"FALSE","6":"TRUE","7":"FALSE"},{"1":"1014565","2":"2020","3":"1","4":"TRUE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1017419","2":"2020","3":"3","4":"FALSE","5":"TRUE","6":"FALSE","7":"TRUE"},{"1":"1031394","2":"2020","3":"1","4":"FALSE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1031400","2":"2020","3":"1","4":"FALSE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1031684","2":"2020","3":"2","4":"FALSE","5":"TRUE","6":"FALSE","7":"FALSE"},{"1":"1031742","2":"2020","3":"1","4":"FALSE","5":"FALSE","6":"FALSE","7":"TRUE"},{"1":"1043717","2":"2020","3":"0","4":"TRUE","5":"FALSE","6":"TRUE","7":"FALSE"},{"1":"1045323","2":"2020","3":"0","4":"TRUE","5":"FALSE","6":"TRUE","7":"FALSE"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
@@ -640,42 +636,42 @@ for protected areas:</p>
 <h3><span class="header-section-number">3.3.2</span> Occupancy</h3>
 <div id="belgium-1" class="section level4" number="3.3.2.1">
 <h4><span class="header-section-number">3.3.2.1</span> Belgium</h4>
-<p>We apply function <code>apply_decision_rules()</code> to occupancy
-for all Belgium:</p>
-<pre class="r"><code>em_decision_rules_occupancy_BE &lt;- map_dfr(
+<p>We apply function <code>trias::apply_decision_rules()</code> to
+occupancy for all Belgium:</p>
+<pre class="r"><code>em_decision_rules_occupancy_BE &lt;- purrr::map_dfr(
   evaluation_years,
-  ~ apply_decision_rules(
+  ~ trias::apply_decision_rules(
     df = df_ts_compact,
     y_var = &quot;ncells&quot;,
     eval_year = .
   )
 )</code></pre>
 <p>Examples:</p>
-<pre class="r"><code>em_decision_rules_occupancy_BE %&gt;% head()</code></pre>
+<pre class="r"><code>em_decision_rules_occupancy_BE %&gt;% tidylog::slice_head(n = 10)</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["taxonKey"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["year"],"name":[2],"type":["int"],"align":["right"]},{"label":["em_status"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["dr_1"],"name":[4],"type":["lgl"],"align":["right"]},{"label":["dr_2"],"name":[5],"type":["lgl"],"align":["right"]},{"label":["dr_3"],"name":[6],"type":["lgl"],"align":["right"]},{"label":["dr_4"],"name":[7],"type":["lgl"],"align":["right"]}],"data":[{"1":"1008955","2":"2018","3":"0","4":"FALSE","5":"FALSE","6":"TRUE","7":"FALSE"},{"1":"1031394","2":"2018","3":"3","4":"FALSE","5":"TRUE","6":"FALSE","7":"TRUE"},{"1":"1031400","2":"2018","3":"2","4":"FALSE","5":"TRUE","6":"FALSE","7":"FALSE"},{"1":"1031684","2":"2018","3":"3","4":"FALSE","5":"TRUE","6":"FALSE","7":"TRUE"},{"1":"1031737","2":"2018","3":"1","4":"TRUE","5":"FALSE","6":"FALSE","7":"TRUE"},{"1":"1031742","2":"2018","3":"1","4":"FALSE","5":"FALSE","6":"FALSE","7":"FALSE"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["taxonKey"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["year"],"name":[2],"type":["int"],"align":["right"]},{"label":["em_status"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["dr_1"],"name":[4],"type":["lgl"],"align":["right"]},{"label":["dr_2"],"name":[5],"type":["lgl"],"align":["right"]},{"label":["dr_3"],"name":[6],"type":["lgl"],"align":["right"]},{"label":["dr_4"],"name":[7],"type":["lgl"],"align":["right"]}],"data":[{"1":"1003567","2":"2020","3":"1","4":"FALSE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1008955","2":"2020","3":"0","4":"FALSE","5":"FALSE","6":"TRUE","7":"FALSE"},{"1":"1014565","2":"2020","3":"1","4":"FALSE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1016841","2":"2020","3":"1","4":"TRUE","5":"FALSE","6":"FALSE","7":"TRUE"},{"1":"1017419","2":"2020","3":"3","4":"FALSE","5":"TRUE","6":"FALSE","7":"TRUE"},{"1":"1031394","2":"2020","3":"1","4":"FALSE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1031400","2":"2020","3":"1","4":"FALSE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1031684","2":"2020","3":"3","4":"FALSE","5":"TRUE","6":"FALSE","7":"TRUE"},{"1":"1031737","2":"2020","3":"1","4":"TRUE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1031742","2":"2020","3":"1","4":"FALSE","5":"FALSE","6":"FALSE","7":"FALSE"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
 <div id="protected-areas-1" class="section level4" number="3.3.2.2">
 <h4><span class="header-section-number">3.3.2.2</span> Protected
 areas</h4>
-<p>We apply function <code>apply_decision_rules()</code> to occupancy in
-protected areas:</p>
-<pre class="r"><code>em_decision_rules_occupancy_pa &lt;- map_dfr(
+<p>We apply function <code>trias::apply_decision_rules()</code> to
+occupancy in protected areas:</p>
+<pre class="r"><code>em_decision_rules_occupancy_pa &lt;- purrr::map_dfr(
   evaluation_years,
-  ~ apply_decision_rules(
+  ~ trias::apply_decision_rules(
     df = df_ts_compact_prot_areas,
     y_var = &quot;ncells&quot;,
     eval_year = .
   )
 )</code></pre>
 <p>Examples:</p>
-<pre class="r"><code>em_decision_rules_occupancy_pa %&gt;% head()</code></pre>
+<pre class="r"><code>em_decision_rules_occupancy_pa %&gt;% tidylog::slice_head(n = 10)</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["taxonKey"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["year"],"name":[2],"type":["int"],"align":["right"]},{"label":["em_status"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["dr_1"],"name":[4],"type":["lgl"],"align":["right"]},{"label":["dr_2"],"name":[5],"type":["lgl"],"align":["right"]},{"label":["dr_3"],"name":[6],"type":["lgl"],"align":["right"]},{"label":["dr_4"],"name":[7],"type":["lgl"],"align":["right"]}],"data":[{"1":"1031394","2":"2018","3":"3","4":"FALSE","5":"TRUE","6":"FALSE","7":"TRUE"},{"1":"1031400","2":"2018","3":"2","4":"FALSE","5":"TRUE","6":"FALSE","7":"FALSE"},{"1":"1031684","2":"2018","3":"1","4":"TRUE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1031737","2":"2018","3":"1","4":"TRUE","5":"FALSE","6":"FALSE","7":"TRUE"},{"1":"1047536","2":"2018","3":"2","4":"FALSE","5":"TRUE","6":"FALSE","7":"FALSE"},{"1":"1152186","2":"2018","3":"1","4":"FALSE","5":"FALSE","6":"FALSE","7":"FALSE"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["taxonKey"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["year"],"name":[2],"type":["int"],"align":["right"]},{"label":["em_status"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["dr_1"],"name":[4],"type":["lgl"],"align":["right"]},{"label":["dr_2"],"name":[5],"type":["lgl"],"align":["right"]},{"label":["dr_3"],"name":[6],"type":["lgl"],"align":["right"]},{"label":["dr_4"],"name":[7],"type":["lgl"],"align":["right"]}],"data":[{"1":"1031394","2":"2020","3":"1","4":"FALSE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1031400","2":"2020","3":"1","4":"FALSE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1031684","2":"2020","3":"2","4":"FALSE","5":"TRUE","6":"FALSE","7":"FALSE"},{"1":"1031742","2":"2020","3":"1","4":"FALSE","5":"FALSE","6":"FALSE","7":"TRUE"},{"1":"1045323","2":"2020","3":"0","4":"TRUE","5":"FALSE","6":"TRUE","7":"FALSE"},{"1":"1047536","2":"2020","3":"3","4":"FALSE","5":"TRUE","6":"FALSE","7":"TRUE"},{"1":"1095946","2":"2020","3":"1","4":"TRUE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1119292","2":"2020","3":"1","4":"TRUE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1133603","2":"2020","3":"0","4":"TRUE","5":"FALSE","6":"TRUE","7":"FALSE"},{"1":"1152186","2":"2020","3":"3","4":"FALSE","5":"TRUE","6":"FALSE","7":"TRUE"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
@@ -686,8 +682,8 @@ number="3.4">
 <h2><span class="header-section-number">3.4</span> Generalized additive
 model (GAM)</h2>
 <p>We apply GAM to observations and occupancy in all Belgium and in
-protected areas using function <code>apply_gam()</code> from project
-package <code>trias</code>.</p>
+protected areas using function <code>trias::apply_gam()</code> from
+project package <code>trias</code>.</p>
 <p>Plots are saved in <code>./data/output/GAM_outputs</code>:</p>
 <pre class="r"><code>dir_name &lt;- here::here(&quot;data&quot;, &quot;output&quot;, &quot;GAM_outputs&quot;)</code></pre>
 <div id="observations-1" class="section level3" number="3.4.1">
@@ -701,10 +697,10 @@ gam_occs_BE &lt;- map2(
   taxon_keys, taxon_names,
   function(t, n) {
     df_key &lt;- df_ts_compact %&gt;%
-      filter(taxonKey == t)
+      dplyr::filter(taxonKey == t)
     class_key &lt;- unique(df_key[[&quot;classKey&quot;]])
     if (!is.na(class_key)) {
-      results_gam &lt;- apply_gam(
+      results_gam &lt;- trias::apply_gam(
         df = df_key,
         y_var = &quot;obs&quot;,
         taxonKey = &quot;taxonKey&quot;,
@@ -717,7 +713,7 @@ gam_occs_BE &lt;- map2(
         saveplot = TRUE
       )
     } else {
-      results_gam &lt;- apply_gam(
+      results_gam &lt;- trias::apply_gam(
         df = df_key,
         y_var = &quot;obs&quot;,
         eval_years = evaluation_years,
@@ -752,7 +748,7 @@ gam_occs_pa &lt;- map2(
       dplyr::filter(taxonKey == t)
     class_key &lt;- unique(df_key[[&quot;classKey&quot;]])
     if (!is.na(class_key)) {
-      apply_gam(
+      trias::apply_gam(
         df = df_key,
         y_var = &quot;obs&quot;,
         eval_years = evaluation_years,
@@ -765,7 +761,7 @@ gam_occs_pa &lt;- map2(
         saveplot = TRUE
       )
     } else {
-      apply_gam(
+      trias::apply_gam(
         df = df_key,
         y_var = &quot;obs&quot;,
         eval_years = evaluation_years,
@@ -800,11 +796,11 @@ gam_occupancy_BE &lt;- map2(
   taxon_keys, taxon_names,
   function(t, n) {
     df_key &lt;- df_ts_compact %&gt;%
-      filter(taxonKey == t) %&gt;%
-      filter(year &lt;= max(evaluation_years))
+      dplyr::filter(taxonKey == t) %&gt;%
+      dplyr::filter(year &lt;= max(evaluation_years))
     class_key &lt;- unique(df_key[[&quot;classKey&quot;]])
     if (!is.na(class_key)) {
-      apply_gam(
+      trias::apply_gam(
         df = df_key,
         y_var = &quot;ncells&quot;,
         eval_years = evaluation_years,
@@ -817,7 +813,7 @@ gam_occupancy_BE &lt;- map2(
         y_label = &quot;occupancy (km2)&quot;
       )
     } else {
-      apply_gam(
+      trias::apply_gam(
         df = df_key,
         y_var = &quot;ncells&quot;,
         eval_years = evaluation_years,
@@ -852,7 +848,7 @@ gam_occupancy_pa &lt;- map2(
       dplyr::filter(taxonKey == t)
     class_key &lt;- unique(df_key[[&quot;classKey&quot;]])
     if (!is.na(class_key)) {
-      apply_gam(
+      trias::apply_gam(
         df = df_key,
         y_var = &quot;ncells&quot;,
         eval_years = evaluation_years,
@@ -866,7 +862,7 @@ gam_occupancy_pa &lt;- map2(
         y_label = &quot;occupancy (km2)&quot;
       )
     } else {
-      apply_gam(
+      trias::apply_gam(
         df = df_key,
         y_var = &quot;ncells&quot;,
         eval_years = evaluation_years,
@@ -888,7 +884,7 @@ converged):</p>
 <pre class="r"><code>gam_occupancy_pa$`7978544`$plot</code></pre>
 <p><img src="07_occurrence_indicators_modelling_files/figure-html/preview_gam_occupancy_PA-1.png" width="672" /></p>
 <pre class="r"><code>gam_occupancy_pa$`6157026`$plot</code></pre>
-<pre><code>## NULL</code></pre>
+<p><img src="07_occurrence_indicators_modelling_files/figure-html/preview_gam_occupancy_PA-2.png" width="672" /></p>
 </div>
 </div>
 </div>
@@ -899,19 +895,15 @@ converged):</p>
 <h2><span class="header-section-number">4.1</span> Decision rules</h2>
 <p>Save emerging status based on decision rules:</p>
 <pre class="r"><code>write_tsv(em_decision_rules_occs_BE,
-  path = here::here(
+  file = here::here(
     &quot;data&quot;, &quot;output&quot;,
     &quot;decision_rules_outputs&quot;,
     &quot;output_decision_rules_occs_belgium.tsv&quot;
   ),
   na = &quot;&quot;
-)</code></pre>
-<pre><code>## Warning: The `path` argument of `write_tsv()` is deprecated as of readr 1.4.0.
-## Please use the `file` argument instead.
-## This warning is displayed once every 8 hours.
-## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.</code></pre>
-<pre class="r"><code>write_tsv(em_decision_rules_occs_pa,
-  path = here::here(
+)
+write_tsv(em_decision_rules_occs_pa,
+  file = here::here(
     &quot;data&quot;, &quot;output&quot;,
     &quot;decision_rules_outputs&quot;,
     &quot;output_decision_rules_occs_pa.tsv&quot;
@@ -919,7 +911,7 @@ converged):</p>
   na = &quot;&quot;
 )
 write_tsv(em_decision_rules_occupancy_BE,
-  path = here::here(
+  file = here::here(
     &quot;data&quot;, &quot;output&quot;,
     &quot;decision_rules_outputs&quot;,
     &quot;output_decision_rules_occupancy_belgium.tsv&quot;
@@ -927,7 +919,7 @@ write_tsv(em_decision_rules_occupancy_BE,
   na = &quot;&quot;
 )
 write_tsv(em_decision_rules_occupancy_pa,
-  path = here::here(
+  file = here::here(
     &quot;data&quot;, &quot;output&quot;,
     &quot;decision_rules_outputs&quot;,
     &quot;output_decision_rules_occupancy_pa.tsv&quot;
@@ -939,132 +931,140 @@ write_tsv(em_decision_rules_occupancy_pa,
 <h2><span class="header-section-number">4.2</span> GAM models</h2>
 <p>Save complete outputs:</p>
 <pre class="r"><code>method_em &lt;- gam_occs_BE[[1]]$em_summary$method[1]
-write_tsv(map_dfr(gam_occs_BE, function(x) {
-  x$output
-}),
-na = &quot;&quot;,
-path = here::here(
-  &quot;data&quot;,
-  &quot;output&quot;,
-  &quot;GAM_outputs&quot;,
-  paste0(
-    &quot;output_GAM_observations_belgium_&quot;,
-    method_em, &quot;.tsv&quot;
+write_tsv(
+  purrr::map_dfr(gam_occs_BE, function(x) {
+    x$output
+  }),
+  na = &quot;&quot;,
+  file = here::here(
+    &quot;data&quot;,
+    &quot;output&quot;,
+    &quot;GAM_outputs&quot;,
+    paste0(
+      &quot;output_GAM_observations_belgium_&quot;,
+      method_em, &quot;.tsv&quot;
+    )
   )
-)
 )
 
 method_em &lt;- gam_occs_pa[[1]]$em_summary$method[1]
-write_tsv(map_dfr(gam_occs_pa, function(x) {
-  x$output
-}),
-na = &quot;&quot;,
-path = here::here(
-  &quot;data&quot;,
-  &quot;output&quot;,
-  &quot;GAM_outputs&quot;,
-  paste0(
-    &quot;output_GAM_observations_pa_&quot;,
-    method_em, &quot;.tsv&quot;
+write_tsv(
+  purrr::map_dfr(gam_occs_pa, function(x) {
+    x$output
+  }),
+  na = &quot;&quot;,
+  file = here::here(
+    &quot;data&quot;,
+    &quot;output&quot;,
+    &quot;GAM_outputs&quot;,
+    paste0(
+      &quot;output_GAM_observations_pa_&quot;,
+      method_em, &quot;.tsv&quot;
+    )
   )
-)
 )
 
 method_em &lt;- gam_occupancy_BE[[1]]$em_summary$method[1]
-write_tsv(map_dfr(gam_occupancy_BE, function(x) {
-  x$output
-}),
-na = &quot;&quot;,
-path = here::here(
-  &quot;data&quot;,
-  &quot;output&quot;,
-  &quot;GAM_outputs&quot;,
-  paste0(
-    &quot;output_GAM_occupancy_belgium_&quot;,
-    method_em, &quot;.tsv&quot;
+write_tsv(
+  purrr::map_dfr(gam_occupancy_BE, function(x) {
+    x$output
+  }),
+  na = &quot;&quot;,
+  file = here::here(
+    &quot;data&quot;,
+    &quot;output&quot;,
+    &quot;GAM_outputs&quot;,
+    paste0(
+      &quot;output_GAM_occupancy_belgium_&quot;,
+      method_em, &quot;.tsv&quot;
+    )
   )
-)
 )
 
 method_em &lt;- gam_occupancy_pa[[1]]$em_summary$method[1]
-write_tsv(map_dfr(gam_occupancy_pa, function(x) {
-  x$output
-}),
-na = &quot;&quot;,
-path = here::here(
-  &quot;data&quot;,
-  &quot;output&quot;,
-  &quot;GAM_outputs&quot;,
-  paste0(
-    &quot;output_GAM_occupancy_pa_&quot;,
-    method_em, &quot;.tsv&quot;
+write_tsv(
+  purrr::map_dfr(gam_occupancy_pa, function(x) {
+    x$output
+  }),
+  na = &quot;&quot;,
+  file = here::here(
+    &quot;data&quot;,
+    &quot;output&quot;,
+    &quot;GAM_outputs&quot;,
+    paste0(
+      &quot;output_GAM_occupancy_pa_&quot;,
+      method_em, &quot;.tsv&quot;
+    )
   )
-)
 )</code></pre>
 <p>Save summary of results limited to the years included in
 evaluation:</p>
 <pre class="r"><code>method_em &lt;- gam_occs_BE[[1]]$em_summary$method[1]
-write_tsv(map_dfr(gam_occs_BE, function(x) {
-  x$em_summary
-}),
-na = &quot;&quot;,
-path = here::here(
-  &quot;data&quot;,
-  &quot;output&quot;,
-  &quot;GAM_outputs&quot;,
-  paste0(
-    &quot;output_GAM_observations_belgium_&quot;,
-    method_em, &quot;.tsv&quot;
+write_tsv(
+  purrr::map_dfr(gam_occs_BE, function(x) {
+    x$em_summary
+  }),
+  na = &quot;&quot;,
+  file = here::here(
+    &quot;data&quot;,
+    &quot;output&quot;,
+    &quot;GAM_outputs&quot;,
+    paste0(
+      &quot;output_GAM_observations_belgium_&quot;,
+      method_em, &quot;.tsv&quot;
+    )
   )
-)
 )
 
 method_em &lt;- gam_occs_pa[[1]]$em_summary$method[1]
-write_tsv(map_dfr(gam_occs_pa, function(x) {
-  x$em_summary
-}),
-na = &quot;&quot;,
-path = here::here(
-  &quot;data&quot;,
-  &quot;output&quot;,
-  &quot;GAM_outputs&quot;,
-  paste0(
-    &quot;output_GAM_observations_pa_&quot;,
-    method_em, &quot;.tsv&quot;
+write_tsv(
+  purrr::map_dfr(gam_occs_pa, function(x) {
+    x$em_summary
+  }),
+  na = &quot;&quot;,
+  file = here::here(
+    &quot;data&quot;,
+    &quot;output&quot;,
+    &quot;GAM_outputs&quot;,
+    paste0(
+      &quot;output_GAM_observations_pa_&quot;,
+      method_em, &quot;.tsv&quot;
+    )
   )
-)
 )
 
 method_em &lt;- gam_occupancy_BE[[1]]$em_summary$method[1]
-write_tsv(map_dfr(gam_occupancy_BE, function(x) {
-  x$em_summary
-}),
-na = &quot;&quot;,
-path = here::here(
-  &quot;data&quot;,
-  &quot;output&quot;,
-  &quot;GAM_outputs&quot;,
-  paste0(
-    &quot;output_GAM_occupancy_belgium_&quot;,
-    method_em, &quot;.tsv&quot;
+write_tsv(
+  purrr::map_dfr(gam_occupancy_BE, function(x) {
+    x$em_summary
+  }),
+  na = &quot;&quot;,
+  file = here::here(
+    &quot;data&quot;,
+    &quot;output&quot;,
+    &quot;GAM_outputs&quot;,
+    paste0(
+      &quot;output_GAM_occupancy_belgium_&quot;,
+      method_em, &quot;.tsv&quot;
+    )
   )
-)
 )
 
 method_em &lt;- gam_occupancy_pa[[1]]$em_summary$method[1]
-write_tsv(map_dfr(gam_occupancy_pa, function(x) {
-  x$em_summary
-}),
-na = &quot;&quot;,
-path = here::here(
-  &quot;data&quot;,
-  &quot;output&quot;,
-  &quot;GAM_outputs&quot;,
-  paste0(
-    &quot;output_GAM_occupancy_pa_&quot;,
-    method_em, &quot;.tsv&quot;
+write_tsv(
+  purrr::map_dfr(gam_occupancy_pa, function(x) {
+    x$em_summary
+  }),
+  na = &quot;&quot;,
+  file = here::here(
+    &quot;data&quot;,
+    &quot;output&quot;,
+    &quot;GAM_outputs&quot;,
+    paste0(
+      &quot;output_GAM_occupancy_pa_&quot;,
+      method_em, &quot;.tsv&quot;
+    )
   )
-)
 )</code></pre>
 </div>
 </div>

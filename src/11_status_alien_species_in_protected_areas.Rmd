@@ -10,6 +10,7 @@ output:
     toc_depth: 3
     toc_float: true
     number_sections: true
+    code_folding: hide
 ---
 
 ```{r setup, include=FALSE}
@@ -17,7 +18,8 @@ library(knitr)
 opts_chunk$set(echo = TRUE,
                warning = FALSE,
                message = FALSE,
-               results = TRUE)
+               results = TRUE,
+               tidy = 'styler')
 ```
 
 # Goal
@@ -42,7 +44,7 @@ Read data related to species distribution in protected areas:
 
 ```{r read_occs_prot_areas}
 occs_prot_areas <-
-  read_csv(here::here(
+  readr::read_csv(here::here(
     "data",
     "output",
     "protected_areas_species_occurrence.csv"
@@ -54,7 +56,7 @@ Related taxonomic metadata:
 
 ```{r read_taxonomic_metadata}
 taxonomic_metadata <-
-  read_csv(here::here("data",
+  readr::read_csv(here::here("data",
                       "output",
                       "protected_areas_species_info.csv"),
   na = "",
@@ -68,7 +70,7 @@ and protected areas metadata:
 
 ```{r read_protected_areas_metadata}
 protected_areas_metadata <-
-  read_csv(
+  readr::read_csv(
     here::here(
       "data",
       "output",
@@ -82,7 +84,7 @@ Read the geospatial package containig the Belgian protected areas:
 
 ```{r read_protected_areas}
 protected_areas <-
-  st_read(here::here("data",
+  sf::st_read(here::here("data",
                      "output",
                      "Belgian_Natura2000_protected_areas.gpkg")
 )
@@ -92,7 +94,7 @@ Read the list of invasive alien species of Union concern:
 
 ```{r eu_list}
 eu_concern_species <- 
-  read_tsv(
+  readr::read_tsv(
     here::here(
       "data",
       "input",
@@ -122,13 +124,13 @@ Number of alien taxa and total number of observations of alien taxa in each prot
 ```{r n_taxa_obs_per_area}
 n_taxa_obs_per_area <-
   occs_prot_areas %>%
-    left_join(protected_areas_metadata %>% 
-                select(-SITETYPE),
+    tidylog::left_join(protected_areas_metadata %>% 
+                tidylog::select(-SITETYPE),
               by = "SITECODE") %>%
-  filter(is_alien == TRUE) %>%
-  filter(year >= begin_year) %>%
-  rename(n_obs = n) %>%
-  group_by(speciesKey,
+  tidylog::filter(is_alien == TRUE) %>%
+  tidylog::filter(year >= begin_year) %>%
+  tidylog::rename(n_obs = n) %>%
+  tidylog::group_by(speciesKey,
            year,
            SITECODE,
            SITENAME,
@@ -136,27 +138,27 @@ n_taxa_obs_per_area <-
            flanders,
            wallonia,
            brussels) %>%
-  add_tally() %>%
+  tidylog::add_tally() %>%
   # avoid to count alien species when infraspecific alien taxa are present
-  filter(n == 1 | taxonKey != speciesKey) %>%
-  ungroup() %>%
-  select(-n) %>%
-  group_by(SITECODE,
+  tidylog::filter(n == 1 | taxonKey != speciesKey) %>%
+  tidylog::ungroup() %>%
+  tidylog::select(-n) %>%
+  tidylog::group_by(SITECODE,
            SITENAME,
            SITETYPE,
            flanders,
            wallonia,
            brussels) %>%
-  summarize(n_taxa =  length(unique(taxonKey)),
+  tidylog::summarize(n_taxa =  length(unique(taxonKey)),
             n_obs = sum(n_obs)) %>%
-  ungroup() %>%
-  arrange(desc(n_taxa), desc(n_obs)) %>%
-  select(SITECODE,
+  tidylog::ungroup() %>%
+  dplyr::arrange(desc(n_taxa), desc(n_obs)) %>%
+  tidylog::select(SITECODE,
          SITENAME,
          SITETYPE,
          n_taxa,
          n_obs,
-         everything())
+         dplyr::everything())
 n_taxa_obs_per_area
 ```
 
@@ -166,56 +168,56 @@ Map with number of alien taxa per protected area:
 # Transform to wgs84
 protected_areas_wgs84 <- 
   protected_areas %>%
-          st_transform(crs = 4326)
+  sf::st_transform(crs = 4326)
 
 protected_areas_wgs84 <-
   protected_areas_wgs84 %>%
   merge(n_taxa_obs_per_area %>%
-              select(SITECODE, n_taxa, n_obs),
+          tidylog::select(SITECODE, n_taxa, n_obs),
         all = TRUE)
 
 # bins <- c(0, 10, 20, 50, 100, 200, 500, 1000, Inf)
 prot_area_palette <- colorBin("YlOrRd", domain = protected_areas_wgs84$n_taxa)
 
-leaflet() %>%
-  addTiles() %>%
-  addPolygons(data = protected_areas_wgs84 %>%
-                filter(SITETYPE == "A"),
-              fillColor = ~prot_area_palette(n_taxa),
-              fillOpacity = 0.7,
-              color = "black",
-              weight = 0.5,
-              opacity = 1,
-              label = ~n_taxa,
-              popup = ~paste(SITECODE, SITENAME, sep = ": "),
-              group = "type A") %>%
-  addPolygons(data = protected_areas_wgs84 %>%
-                filter(SITETYPE == "B"),
-              fillColor = ~prot_area_palette(n_taxa),
-              fillOpacity = 0.7,
-              color = "black",
-              weight = 0.5,
-              opacity = 1,
-              label = ~n_taxa,
-              popup = ~paste(SITECODE, SITENAME, sep = ": "),
-              group = "type B") %>%
-  addPolygons(data = protected_areas_wgs84 %>%
-                filter(SITETYPE == "C"),
-              fillColor = ~prot_area_palette(n_taxa),
-              fillOpacity = 0.7,
-              color = "black",
-              weight = 0.5,
-              opacity = 1,
-              label = ~n_taxa,
-              popup = ~paste(SITECODE, SITENAME, sep = ": "),
-              group = "type C") %>%
-  addLegend(data = protected_areas_wgs84,
-            pal = prot_area_palette,
-            values = ~n_taxa,
-            opacity = 0.7,
-            title = "Number of alien taxa",
-            position = "bottomleft") %>%
-  addLayersControl(
+leaflet::leaflet() %>%
+  leaflet::addTiles() %>%
+  leaflet::addPolygons(data = protected_areas_wgs84 %>%
+                         tidylog::filter(SITETYPE == "A"),
+                       fillColor = ~prot_area_palette(n_taxa),
+                       fillOpacity = 0.7,
+                       color = "black",
+                       weight = 0.5,
+                       opacity = 1,
+                       label = ~n_taxa,
+                       popup = ~paste(SITECODE, SITENAME, sep = ": "),
+                       group = "type A") %>%
+  leaflet::addPolygons(data = protected_areas_wgs84 %>%
+                         tidylog::filter(SITETYPE == "B"),
+                       fillColor = ~prot_area_palette(n_taxa),
+                       fillOpacity = 0.7,
+                       color = "black",
+                       weight = 0.5,
+                       opacity = 1,
+                       label = ~n_taxa,
+                       popup = ~paste(SITECODE, SITENAME, sep = ": "),
+                       group = "type B") %>%
+  leaflet::addPolygons(data = protected_areas_wgs84 %>%
+                         tidylog::filter(SITETYPE == "C"),
+                       fillColor = ~prot_area_palette(n_taxa),
+                       fillOpacity = 0.7,
+                       color = "black",
+                       weight = 0.5,
+                       opacity = 1,
+                       label = ~n_taxa,
+                       popup = ~paste(SITECODE, SITENAME, sep = ": "),
+                       group = "type C") %>%
+  leaflet::addLegend(data = protected_areas_wgs84,
+                     pal = prot_area_palette,
+                     values = ~n_taxa,
+                     opacity = 0.7,
+                     title = "Number of alien taxa",
+                     position = "bottomleft") %>%
+  leaflet::addLayersControl(
     overlayGroups = c("type A", "type B", "type C"),
     options = layersControlOptions(collapsed = FALSE))
 ```
@@ -225,43 +227,43 @@ Limited to species included in the list of invasive alien species of Union conce
 ```{r n_species_obs_per_area_concern}
 n_species_obs_per_area_concern <-
   occs_prot_areas %>%
-  filter(taxonKey %in% eu_concern_species$backbone_taxonKey) %>%
-    left_join(protected_areas_metadata,
-              by = c("SITECODE", "SITETYPE")) %>%
-  filter(is_alien == TRUE) %>%
-  filter(year >= begin_year) %>%
-  rename(n_obs = n) %>%
-  group_by(SITECODE,
-           SITENAME,
-           SITETYPE,
-           flanders,
-           wallonia,
-           brussels) %>%
-  summarize(n_species =  length(unique(speciesKey)),
-            n_obs = sum(n_obs)) %>%
-  ungroup() %>%
-  arrange(desc(n_species), desc(n_obs)) %>%
-  select(SITECODE,
-         SITENAME,
-         SITETYPE,
-         n_species,
-         n_obs,
-         everything())
+  tidylog::filter(taxonKey %in% eu_concern_species$backbone_taxonKey) %>%
+  tidylog::left_join(protected_areas_metadata,
+                     by = c("SITECODE", "SITETYPE")) %>%
+  tidylog::filter(is_alien == TRUE) %>%
+  tidylog::filter(year >= begin_year) %>%
+  tidylog::rename(n_obs = n) %>%
+  tidylog::group_by(SITECODE,
+                    SITENAME,
+                    SITETYPE,
+                    flanders,
+                    wallonia,
+                    brussels) %>%
+  tidylog::summarize(n_species =  length(unique(speciesKey)),
+                     n_obs = sum(n_obs)) %>%
+  tidylog::ungroup() %>%
+  dplyr::arrange(desc(n_species), desc(n_obs)) %>%
+  tidylog::select(SITECODE,
+                  SITENAME,
+                  SITETYPE,
+                  n_species,
+                  n_obs,
+                  everything())
 n_species_obs_per_area_concern
 ```
 
-Map of the protected areas with number of species included in the concern list:
+Map of the protected areas with number of species included in the list of Union concern:
 
 ```{r leaflet_n_species_in_prot_aras_union_list, echo = FALSE}
 # Transform to wgs84
 protected_areas_wgs84_concern <- 
   protected_areas %>%
-          st_transform(crs = 4326)
+          sf::st_transform(crs = 4326)
 
 protected_areas_wgs84_concern <-
   protected_areas_wgs84_concern %>%
   merge(n_species_obs_per_area_concern %>%
-              select(SITECODE, n_species, n_obs),
+              tidylog::select(SITECODE, n_species, n_obs),
         all = TRUE)
 
 # bins <- c(0, 10, 20, 50, 100, 200, 500, 1000, Inf)
@@ -270,10 +272,10 @@ prot_area_palette_concern <- colorBin(
   domain = protected_areas_wgs84_concern$n_species
 )
 
-leaflet() %>%
-  addTiles() %>%
-  addPolygons(data = protected_areas_wgs84_concern %>%
-                filter(SITETYPE == "A"),
+leaflet::leaflet() %>%
+  leaflet::addTiles() %>%
+  leaflet::addPolygons(data = protected_areas_wgs84_concern %>%
+                tidylog::filter(SITETYPE == "A"),
               fillColor = ~prot_area_palette_concern(n_species),
               fillOpacity = 0.7,
               color = "black",
@@ -282,8 +284,8 @@ leaflet() %>%
               label = ~n_species,
               popup = ~paste(SITECODE, SITENAME, sep = ": "),
               group = "type A") %>%
-  addPolygons(data = protected_areas_wgs84_concern %>%
-                filter(SITETYPE == "B"),
+  leaflet::addPolygons(data = protected_areas_wgs84_concern %>%
+                tidylog::filter(SITETYPE == "B"),
               fillColor = ~prot_area_palette_concern(n_species),
               fillOpacity = 0.7,
               color = "black",
@@ -292,8 +294,8 @@ leaflet() %>%
               label = ~n_species,
               popup = ~paste(SITECODE, SITENAME, sep = ": "),
               group = "type B") %>%
-  addPolygons(data = protected_areas_wgs84_concern %>%
-                filter(SITETYPE == "C"),
+  leaflet::addPolygons(data = protected_areas_wgs84_concern %>%
+                tidylog::filter(SITETYPE == "C"),
               fillColor = ~prot_area_palette_concern(n_species),
               fillOpacity = 0.7,
               color = "black",
@@ -302,13 +304,13 @@ leaflet() %>%
               label = ~n_species,
               popup = ~paste(SITECODE, SITENAME, sep = ": "),
               group = "type C") %>%
-  addLegend(data = protected_areas_wgs84_concern,
+  leaflet::addLegend(data = protected_areas_wgs84_concern,
             pal = prot_area_palette_concern,
             values = ~n_species,
             opacity = 0.7,
             title = "Number of Union list alien species",
             position = "bottomleft") %>%
-  addLayersControl(
+  leaflet::addLayersControl(
     overlayGroups = c("type A", "type B", "type C"),
     options = layersControlOptions(collapsed = FALSE))
 ```
@@ -320,7 +322,7 @@ Number of alien taxa and number of observations of alien taxa in each Flemish pr
 ```{r n_taxa_obs_per_area_flanders}
 n_taxa_obs_per_area_flanders <- 
   n_taxa_obs_per_area %>%
-  filter(flanders == TRUE)
+  tidylog::filter(flanders == TRUE)
 n_taxa_obs_per_area_flanders
 ```
 
@@ -329,7 +331,7 @@ Limited to species included in the list of invasive alien species of Union conce
 ```{r n_species_obs_per_area_concern_flanders}
 n_species_obs_per_area_concern_flanders <-
   n_species_obs_per_area_concern %>%
-  filter(flanders == TRUE)
+  tidylog::filter(flanders == TRUE)
 n_species_obs_per_area_concern_flanders
 ```
 
@@ -340,7 +342,7 @@ Number of alien taxa and number of observations of alien taxa in each protected 
 ```{r n_taxa_obs_per_area_wallonia}
 n_taxa_obs_per_area_wallonia <-
   n_taxa_obs_per_area %>%
-  filter(wallonia == TRUE)
+  tidylog::filter(wallonia == TRUE)
 n_taxa_obs_per_area_wallonia
 ```
 
@@ -349,7 +351,7 @@ Limited to species included in the list of invasive alien species of Union conce
 ```{r n_species_obs_per_area_concern_wallonia}
 n_species_obs_per_area_concern_wallonia <- 
   n_species_obs_per_area_concern %>%
-  filter(wallonia == TRUE)
+  tidylog::filter(wallonia == TRUE)
 n_species_obs_per_area_concern_wallonia
 ```
 
@@ -360,7 +362,7 @@ Number of alien taxa and number of observations of alien taxa in each protected 
 ```{r n_taxa_obs_per_area_brussels}
 n_taxa_obs_per_area_brussels <-
   n_taxa_obs_per_area %>%
-  filter(brussels == TRUE)
+  tidylog::filter(brussels == TRUE)
 n_taxa_obs_per_area_brussels
 ```
 
@@ -369,7 +371,7 @@ Limited to species included in the list of invasive alien species of Union conce
 ```{r n_species_obs_per_area_concern_brussels}
 n_species_obs_per_area_concern_brussels <- 
   n_species_obs_per_area_concern %>%
-  filter(brussels == TRUE)
+  tidylog::filter(brussels == TRUE)
 n_species_obs_per_area_concern_brussels
 ```
 
@@ -384,7 +386,7 @@ Number of alien taxa and number of observations of alien taxa in each SPA area f
 ```{r n_taxa_obs_per_area_bird}
 n_taxa_obs_per_area_bird <-
   n_taxa_obs_per_area %>%
-  filter(SITETYPE %in% c("A", "C"))
+  tidylog::filter(SITETYPE %in% c("A", "C"))
 n_taxa_obs_per_area_bird
 ```
 
@@ -393,7 +395,7 @@ Limited to species from the list of Union concern:
 ```{r n_species_obs_per_area_concern_bird}
 n_species_obs_per_area_concern_bird <-
   n_species_obs_per_area_concern %>%
-  filter(SITETYPE %in% c("A", "C"))
+  tidylog::filter(SITETYPE %in% c("A", "C"))
 n_species_obs_per_area_concern_bird
 ```
 
@@ -406,7 +408,7 @@ Number of alien taxa and number of observations of alien taxa in each Flemish SP
 ```{r n_taxa_obs_per_area_flanders_bird}
 n_taxa_obs_per_area_flanders_bird <-
   n_taxa_obs_per_area_flanders %>%
-  filter(SITETYPE %in% c("A","C"))
+  tidylog::filter(SITETYPE %in% c("A","C"))
 n_taxa_obs_per_area_flanders_bird
 ```
 
@@ -415,7 +417,7 @@ Limited to species from the list of Union concern:
 ```{r n_species_obs_per_area_concern_flanders_bird}
 n_species_obs_per_area_concern_flanders_bird <-
   n_species_obs_per_area_concern_flanders %>%
-  filter(SITETYPE %in% c("A","C"))
+  tidylog::filter(SITETYPE %in% c("A","C"))
 n_species_obs_per_area_concern_flanders_bird
 ```
 
@@ -426,7 +428,7 @@ Number of alien taxa and number of observations of alien taxa in each SPA area o
 ```{r n_taxa_obs_per_area_wallonia_bird}
 n_taxa_obs_per_area_wallonia_bird <-
   n_taxa_obs_per_area_wallonia %>%
-  filter(SITETYPE %in% c("A","C"))
+  tidylog::filter(SITETYPE %in% c("A","C"))
 n_taxa_obs_per_area_wallonia_bird
 ```
 
@@ -435,7 +437,7 @@ Limited to species from the list of Union concern:
 ```{r n_species_obs_per_area_concern_wallonia_bird}
 n_species_obs_per_area_concern_wallonia_bird <-
   n_species_obs_per_area_concern_wallonia %>%
-  filter(SITETYPE %in% c("A","C"))
+  tidylog::filter(SITETYPE %in% c("A","C"))
 n_species_obs_per_area_concern_wallonia_bird
 ```
 
@@ -446,7 +448,7 @@ Number of alien taxa and number of observations of alien taxa in each SPA area o
 ```{r n_taxa_obs_per_area_brussels_bird}
 n_taxa_obs_per_area_brussels_bird <-
   n_taxa_obs_per_area_brussels %>%
-  filter(SITETYPE %in% c("A","C"))
+  tidylog::filter(SITETYPE %in% c("A","C"))
 n_taxa_obs_per_area_brussels_bird
 ```
 
@@ -455,7 +457,7 @@ Limited to species from the list of Union concern:
 ```{r n_species_obs_per_area_concern_brussels_bird}
 n_species_obs_per_area_concern_brussels_bird <-
   n_species_obs_per_area_concern_brussels %>%
-  filter(SITETYPE %in% c("A","C"))
+  tidylog::filter(SITETYPE %in% c("A","C"))
 n_species_obs_per_area_concern_brussels_bird
 ```
 
@@ -470,7 +472,7 @@ Number of alien taxa and number of observations of alien taxa in each SAC area f
 ```{r n_taxa_obs_per_area_habitat}
 n_taxa_obs_per_area_habitat <-
   n_taxa_obs_per_area %>%
-  filter(SITETYPE %in% c("B", "C"))
+  tidylog::filter(SITETYPE %in% c("B", "C"))
 n_taxa_obs_per_area_habitat
 ```
 
@@ -479,7 +481,7 @@ Limited to species from the list of Union concern:
 ```{r n_species_obs_per_area_concern_habitat}
 n_species_obs_per_area_concern_habitat <-
   n_species_obs_per_area_concern %>%
-  filter(SITETYPE %in% c("B","C"))
+  tidylog::filter(SITETYPE %in% c("B","C"))
 n_species_obs_per_area_concern_habitat
 ```
 We repeat the same analysis for each of the three Belgian regions.
@@ -491,7 +493,7 @@ Number of alien taxa and number of observations of alien taxa in each Flemish SA
 ```{r n_taxa_obs_per_area_flanders_habitat}
 n_taxa_obs_per_area_flanders_habitat <-
   n_taxa_obs_per_area_flanders %>%
-  filter(SITETYPE %in% c("B","C"))
+  tidylog::filter(SITETYPE %in% c("B","C"))
 n_taxa_obs_per_area_flanders_habitat
 ```
 
@@ -500,7 +502,7 @@ Limited to species from the list of Union concern:
 ```{r n_species_obs_per_area_concern_flanders_habitat}
 n_species_obs_per_area_concern_flanders_habitat <-
   n_species_obs_per_area_concern_flanders %>%
-  filter(SITETYPE %in% c("B","C"))
+  tidylog::filter(SITETYPE %in% c("B","C"))
 n_species_obs_per_area_concern_flanders_habitat
 ```
 
@@ -511,7 +513,7 @@ Number of alien taxa and number of observations of alien taxa in each SAC area o
 ```{r n_taxa_obs_per_area_wallonia_habitat}
 n_taxa_obs_per_area_wallonia_habitat <-
   n_taxa_obs_per_area_wallonia %>%
-  filter(SITETYPE %in% c("B","C"))
+  tidylog::filter(SITETYPE %in% c("B","C"))
 n_taxa_obs_per_area_wallonia_habitat
 ```
 
@@ -520,7 +522,7 @@ Limited to species from the list of Union concern:
 ```{r n_species_obs_per_area_concern_wallonia_habitat}
 n_species_obs_per_area_concern_wallonia_habitat <-
   n_species_obs_per_area_concern_wallonia %>%
-  filter(SITETYPE %in% c("B","C"))
+  tidylog::filter(SITETYPE %in% c("B","C"))
 n_species_obs_per_area_concern_wallonia_habitat
 ```
 
@@ -531,7 +533,7 @@ Number of alien taxa and number of observations of alien taxa in each SAC area o
 ```{r n_taxa_obs_per_area_brussels_habitat}
 n_taxa_obs_per_area_brussels_habitat <-
   n_taxa_obs_per_area_brussels %>%
-  filter(SITETYPE %in% c("B","C"))
+  tidylog::filter(SITETYPE %in% c("B","C"))
 n_taxa_obs_per_area_brussels_habitat
 ```
 
@@ -540,7 +542,7 @@ Limited to species from the list of Union concern:
 ```{r n_species_obs_per_area_concern_brussels_habitat}
 n_species_obs_per_area_concern_brussels_habitat <-
   n_species_obs_per_area_concern_brussels %>%
-  filter(SITETYPE %in% c("B","C"))
+  tidylog::filter(SITETYPE %in% c("B","C"))
 n_species_obs_per_area_concern_brussels_habitat
 ```
 
@@ -568,26 +570,26 @@ We define first a help function:
 n_areas_mean_coverage <- function(df) {
   df <- 
     df %>%
-    group_by(taxonKey)
+    tidylog::group_by(taxonKey)
   df <- 
     df %>%
-    summarize(n_prot_areas = length(unique(SITECODE)),
-              mean_coverage = if_else(length(unique(SITECODE)) >= 10,
-                                      mean(coverage, na.rm = TRUE),
-                                      NA_real_)) %>%
-    ungroup()
+    tidylog::summarize(n_prot_areas = length(unique(SITECODE)),
+                       mean_coverage = dplyr::if_else(length(unique(SITECODE)) >= 10,
+                                                      mean(coverage, na.rm = TRUE),
+                                                      NA_real_)) %>%
+    tidylog::ungroup()
   
   df <- 
     df %>%
-    left_join(taxonomic_metadata, by = "taxonKey")  %>%
-    arrange(desc(n_prot_areas),
-            desc(mean_coverage),
-            scientificName) %>%
-    select(scientificName,
-           n_prot_areas,
-           mean_coverage,
-           taxonKey,
-           everything())
+    tidylog::left_join(taxonomic_metadata, by = "taxonKey")  %>%
+    dplyr::arrange(desc(n_prot_areas),
+                   desc(mean_coverage),
+                   scientificName) %>%
+    tidylog::select(scientificName,
+                    n_prot_areas,
+                    mean_coverage,
+                    taxonKey,
+                    everything())
   return(df)
 }
 ```
@@ -603,9 +605,9 @@ Number of protected areas and their mean coverage for each alien species:
 ```{r n_prot_areas_per_taxon}
 n_prot_areas_per_taxon <-
   occs_prot_areas %>%
-  left_join(protected_areas_metadata,
+  tidylog::left_join(protected_areas_metadata,
             by = c("SITECODE", "SITETYPE")) %>%
-  filter(is_alien == TRUE,
+  tidylog::filter(is_alien == TRUE,
          year >= begin_year,
          year <= last_year) %>%
   n_areas_mean_coverage()
@@ -617,7 +619,7 @@ Limited to species included in the list of invasive alien species of Union conce
 ```{r n_prot_areas_per_species_concern}
 n_prot_areas_per_species_concern <-
   n_prot_areas_per_taxon %>%
-  filter(taxonKey %in% eu_concern_species$backbone_taxonKey)
+  tidylog::filter(taxonKey %in% eu_concern_species$backbone_taxonKey)
 n_prot_areas_per_species_concern
 ```
 
@@ -630,9 +632,9 @@ Number of Flemish protected areas and their mean coverage for each alien taxon:
 ```{r n_prot_areas_per_taxon_flanders}
 n_prot_areas_per_taxon_flanders <-
   occs_prot_areas %>%
-  left_join(protected_areas_metadata,
+  tidylog::left_join(protected_areas_metadata,
             by = c("SITECODE", "SITETYPE")) %>%
-  filter(is_alien == TRUE,
+  tidylog::filter(is_alien == TRUE,
          year >= begin_year,
          year <= last_year,
          flanders == TRUE) %>%
@@ -645,7 +647,7 @@ Limited to species included in the list of invasive alien species of Union conce
 ```{r n_prot_areas_per_species_flanders_concern}
 n_prot_areas_per_species_flanders_concern <-
   n_prot_areas_per_taxon_flanders %>%
-  filter(taxonKey %in% eu_concern_species$backbone_taxonKey)
+  tidylog::filter(taxonKey %in% eu_concern_species$backbone_taxonKey)
 n_prot_areas_per_species_flanders_concern
 ```
 
@@ -656,9 +658,9 @@ Number of protected areas in Wallonia and their mean coverage for each alien spe
 ```{r n_prot_areas_per_taxon_wallonia}
 n_prot_areas_per_taxon_wallonia <-
   occs_prot_areas %>%
-  left_join(protected_areas_metadata,
+  tidylog::left_join(protected_areas_metadata,
             by = c("SITECODE", "SITETYPE")) %>%
-  filter(is_alien == TRUE,
+  tidylog::filter(is_alien == TRUE,
          year >= begin_year,
          year <= last_year,
          wallonia == TRUE) %>%
@@ -671,7 +673,7 @@ Limited to species included in the list of invasive alien species of Union conce
 ```{r n_prot_areas_per_species_wallonia_concern}
 n_prot_areas_per_species_wallonia_concern <-
   n_prot_areas_per_taxon_wallonia %>%
-  filter(taxonKey %in% eu_concern_species$backbone_taxonKey)
+  tidylog::filter(taxonKey %in% eu_concern_species$backbone_taxonKey)
 n_prot_areas_per_species_wallonia_concern
 ```
 
@@ -682,9 +684,9 @@ Number of protected areas of Brussels and their mean coverage for each alien tax
 ```{r n_prot_areas_per_taxon_brussels}
 n_prot_areas_per_taxon_brussels <-
   occs_prot_areas %>%
-  left_join(protected_areas_metadata,
+  tidylog::left_join(protected_areas_metadata,
             by = c("SITECODE", "SITETYPE")) %>%
-  filter(is_alien == TRUE,
+  tidylog::filter(is_alien == TRUE,
          year >= begin_year,
          year <= last_year,
          brussels == TRUE) %>%
@@ -697,7 +699,7 @@ Limited to species included in the list of invasive alien species of Union conce
 ```{r n_prot_areas_per_species_brussels_concern}
 n_prot_areas_per_species_brussels_concern <-
   n_prot_areas_per_taxon_brussels %>%
-  filter(taxonKey %in% eu_concern_species$backbone_taxonKey)
+  tidylog::filter(taxonKey %in% eu_concern_species$backbone_taxonKey)
 n_prot_areas_per_species_brussels_concern
 ```
 
@@ -712,9 +714,9 @@ Number of SPA protected areas and their mean coverage for each alien taxon:
 ```{r n_prot_areas_per_taxon_bird}
 n_prot_areas_per_taxon_bird <-
   occs_prot_areas %>%
-  left_join(protected_areas_metadata,
+  tidylog::left_join(protected_areas_metadata,
             by = c("SITECODE", "SITETYPE")) %>%
-  filter(is_alien == TRUE,
+  tidylog::filter(is_alien == TRUE,
          year >= begin_year,
          year <= last_year,
          SITETYPE %in% c("A", "C")) %>%
@@ -727,7 +729,7 @@ Limited to species included in the list of invasive alien species of Union conce
 ```{r n_prot_areas_per_species_concern_bird}
 n_prot_areas_per_species_concern_bird <-
   n_prot_areas_per_taxon_bird %>%
-  filter(taxonKey %in% eu_concern_species$backbone_taxonKey)
+  tidylog::filter(taxonKey %in% eu_concern_species$backbone_taxonKey)
 n_prot_areas_per_species_concern_bird
 ```
 
@@ -740,9 +742,9 @@ Number of Flemish SPA protected areas and their mean coverage for each alien spe
 ```{r n_prot_areas_per_taxon_flanders_bird}
 n_prot_areas_per_taxon_flanders_bird <-
   occs_prot_areas %>%
-  left_join(protected_areas_metadata,
+  tidylog::left_join(protected_areas_metadata,
             by = c("SITECODE", "SITETYPE")) %>%
-  filter(is_alien == TRUE,
+  tidylog::filter(is_alien == TRUE,
          year >= begin_year,
          year <= last_year,
          SITETYPE %in% c("A", "C"),
@@ -756,7 +758,7 @@ Limited to species included in the list of invasive alien species of Union conce
 ```{r n_prot_areas_per_species_concern_flanders_bird}
 n_prot_areas_per_species_concern_flanders_bird <-
   n_prot_areas_per_taxon_flanders_bird %>%
-  filter(taxonKey %in% eu_concern_species$backbone_taxonKey)
+  tidylog::filter(taxonKey %in% eu_concern_species$backbone_taxonKey)
 n_prot_areas_per_species_concern_flanders_bird
 ```
 
@@ -767,9 +769,9 @@ Number of SPA protected areas in Wallonia and their mean coverage for each alien
 ```{r n_prot_areas_per_taxon_wallonia_bird}
 n_prot_areas_per_taxon_wallonia_bird <-
   occs_prot_areas %>%
-  left_join(protected_areas_metadata,
+  tidylog::left_join(protected_areas_metadata,
             by = c("SITECODE", "SITETYPE")) %>%
-  filter(is_alien == TRUE,
+  tidylog::filter(is_alien == TRUE,
          year >= begin_year,
          year <= last_year,
          SITETYPE %in% c("A", "C"),
@@ -783,7 +785,7 @@ Limited to species included in the list of invasive alien species of Union conce
 ```{r n_prot_areas_per_species_concern_wallonia_bird}
 n_prot_areas_per_species_concern_wallonia_bird <-
   n_prot_areas_per_taxon_wallonia_bird %>%
-  filter(taxonKey %in% eu_concern_species$backbone_taxonKey)
+  tidylog::filter(taxonKey %in% eu_concern_species$backbone_taxonKey)
 n_prot_areas_per_species_concern_wallonia_bird
 ```
 
@@ -794,9 +796,9 @@ Number of SPA protected areas in Brussels and their mean coverage for each alien
 ```{r n_prot_areas_per_taxon_Brussels_bird}
 n_prot_areas_per_taxon_brussels_bird <-
   occs_prot_areas %>%
-  left_join(protected_areas_metadata,
+  tidylog::left_join(protected_areas_metadata,
             by = c("SITECODE", "SITETYPE")) %>%
-  filter(is_alien == TRUE,
+  tidylog::filter(is_alien == TRUE,
          year >= begin_year,
          year <= last_year,
          SITETYPE %in% c("A", "C"),
@@ -810,7 +812,7 @@ Limited to species included in the list of invasive alien species of Union conce
 ```{r n_prot_areas_per_species_concern_brussels_bird}
 n_prot_areas_per_species_concern_brussels_bird <-
   n_prot_areas_per_taxon_brussels_bird %>%
-  filter(taxonKey %in% eu_concern_species$backbone_taxonKey)
+  tidylog::filter(taxonKey %in% eu_concern_species$backbone_taxonKey)
 n_prot_areas_per_species_concern_brussels_bird
 ```
 
@@ -825,9 +827,9 @@ Number of SAC protected areas and their mean coverage for each alien taxon:
 ```{r n_prot_areas_per_taxon_habitat}
 n_prot_areas_per_taxon_habitat <-
   occs_prot_areas %>%
-  left_join(protected_areas_metadata,
+  tidylog::left_join(protected_areas_metadata,
             by = c("SITECODE", "SITETYPE")) %>%
-  filter(is_alien == TRUE,
+  tidylog::filter(is_alien == TRUE,
          year >= begin_year,
          year <= last_year,
          SITETYPE %in% c("B", "C")) %>%
@@ -840,7 +842,7 @@ Limited to species included in the list of invasive alien species of Union conce
 ```{r n_prot_areas_per_species_concern_habitat}
 n_prot_areas_per_species_concern_habitat <-
   n_prot_areas_per_taxon_habitat %>%
-  filter(taxonKey %in% eu_concern_species$backbone_taxonKey)
+  tidylog::filter(taxonKey %in% eu_concern_species$backbone_taxonKey)
 n_prot_areas_per_species_concern_habitat
 ```
 
@@ -853,9 +855,9 @@ Number of Flemish SAC protected areas and their mean coverage for each alien spe
 ```{r n_prot_areas_per_taxon_flanders_habitat}
 n_prot_areas_per_taxon_flanders_habitat <-
   occs_prot_areas %>%
-  left_join(protected_areas_metadata,
+  tidylog::left_join(protected_areas_metadata,
             by = c("SITECODE", "SITETYPE")) %>%
-  filter(is_alien == TRUE,
+  tidylog::filter(is_alien == TRUE,
          year >= begin_year,
          year <= last_year,
          SITETYPE %in% c("B", "C"),
@@ -869,7 +871,7 @@ Limited to species included in the list of invasive alien species of Union conce
 ```{r n_prot_areas_per_species_concern_flanders_habitat}
 n_prot_areas_per_species_concern_flanders_habitat <-
   n_prot_areas_per_taxon_flanders_habitat %>%
-  filter(taxonKey %in% eu_concern_species$backbone_taxonKey)
+  tidylog::filter(taxonKey %in% eu_concern_species$backbone_taxonKey)
 n_prot_areas_per_species_concern_flanders_habitat
 ```
 
@@ -880,9 +882,9 @@ Number of SAC protected areas in Wallonia and their mean coverage for each alien
 ```{r n_prot_areas_per_taxon_wallonia_habitat}
 n_prot_areas_per_taxon_wallonia_habitat <-
   occs_prot_areas %>%
-  left_join(protected_areas_metadata,
+  tidylog::left_join(protected_areas_metadata,
             by = c("SITECODE", "SITETYPE")) %>%
-  filter(is_alien == TRUE,
+  tidylog::filter(is_alien == TRUE,
          year >= begin_year,
          year <= last_year,
          SITETYPE %in% c("B", "C"),
@@ -896,7 +898,7 @@ Limited to species included in the list of invasive alien species of Union conce
 ```{r n_prot_areas_per_species_concern_wallonia_habitat}
 n_prot_areas_per_species_concern_wallonia_habitat <-
   n_prot_areas_per_taxon_wallonia_habitat %>%
-  filter(taxonKey %in% eu_concern_species$backbone_taxonKey)
+  tidylog::filter(taxonKey %in% eu_concern_species$backbone_taxonKey)
 n_prot_areas_per_species_concern_wallonia_habitat
 ```
 
@@ -907,9 +909,9 @@ Number of SAC protected areas in Brussels and their mean coverage for each alien
 ```{r n_prot_areas_per_taxon_Brussels_habitat}
 n_prot_areas_per_taxon_brussels_habitat <-
   occs_prot_areas %>%
-  left_join(protected_areas_metadata,
+  tidylog::left_join(protected_areas_metadata,
             by = c("SITECODE", "SITETYPE")) %>%
-  filter(is_alien == TRUE,
+  tidylog::filter(is_alien == TRUE,
          year >= begin_year,
          year <= last_year,
          SITETYPE %in% c("B", "C"),
@@ -923,7 +925,7 @@ Limited to species included in the list of invasive alien species of Union conce
 ```{r n_prot_areas_per_species_concern_brussels_habitat}
 n_prot_areas_per_species_concern_brussels_habitat <-
   n_prot_areas_per_taxon_brussels_habitat %>%
-  filter(taxonKey %in% eu_concern_species$backbone_taxonKey)
+  tidylog::filter(taxonKey %in% eu_concern_species$backbone_taxonKey)
 n_prot_areas_per_species_concern_brussels_habitat
 ```
 
@@ -974,16 +976,16 @@ n_taxa_obs_per_area_dfs <- list(
   n_species_obs_per_area_concern_brussels_habitat = 
     n_species_obs_per_area_concern_brussels_habitat
 )
-map2(n_taxa_obs_per_area_dfs,
-     names(n_taxa_obs_per_area_dfs),
-     function(df, filename) {
-       write_csv(df,
-                 here::here("data",
-                            "output",
-                            "protected_areas_analysis",
-                            paste0(filename, ".csv")),
-                 na = "")
-     })
+purrr::walk2(n_taxa_obs_per_area_dfs,
+            names(n_taxa_obs_per_area_dfs),
+            function(df, filename) {
+              write_csv(df,
+                        here::here("data",
+                                   "output",
+                                   "protected_areas_analysis",
+                                   paste0(filename, ".csv")),
+                        na = "")
+            })
 ```
 
 ## Save spreading data
@@ -1040,14 +1042,14 @@ n_prot_areas_per_species_dfs <-
       n_prot_areas_per_species_concern_brussels_habitat
   )
 # Save data
-map2(n_prot_areas_per_species_dfs,
-     names(n_prot_areas_per_species_dfs),
-     function(df, filename) {
-       write_csv(df,
-                 here::here("data",
-                            "output",
-                            "protected_areas_analysis",
-                            paste0(filename, ".csv")),
-                 na = "")
-     })
+purrr::walk2(n_prot_areas_per_species_dfs,
+            names(n_prot_areas_per_species_dfs),
+            function(df, filename) {
+              write_csv(df,
+                        here::here("data",
+                                   "output",
+                                   "protected_areas_analysis",
+                                   paste0(filename, ".csv")),
+                        na = "")
+            })
 ```

@@ -1,23 +1,36 @@
 taxonKey	canonicalName	year	ncells_prot_areas	ncells_BE	in_prot_areas	in_BE	class	kingdom	classKey	kingdomKey
-2153287	Zoropsis spinimana	2021	2		TRUE	FALSE	Arachnida	Animalia	367	1
-3172068	Veronica cymbalaria	2021	2		TRUE	FALSE	Magnoliopsida	Plantae	220	6
-7437751	Urtica membranacea	2021	2		TRUE	FALSE	Magnoliopsida	Plantae	220	6
-2480089	Psephotus haematonotus	2021	1		TRUE	FALSE	Aves	Animalia	212	1
-2486132	Pycnonotus leucotis	2021	1		TRUE	FALSE	Aves	Animalia	212	1
-2855893	Allium roseum	2021	1		TRUE	FALSE	Liliopsida	Plantae	196	6
-2927174	Mentha requienii	2021	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
-2984532	Zelkova serrata	2021	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
-3084839	Mesembryanthemum crystallinum	2021	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
-3136929	Anaphalis triplinervis	2021	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
-4487370	Tropidosteptes pacificus	2021	1		TRUE	FALSE	Insecta	Animalia	216	1
-5375012	Arabis procurrens	2021	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
-5530855	Corydalis linstowiana	2021	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
-7902463	Lonicera maackii	2021	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
-8898408	Pseudemys concinna	2021	1		TRUE	FALSE	Reptilia	Animalia	358	1
-5296015	Sisyrinchium angustifolium	2021		2	FALSE	TRUE	Liliopsida	Plantae	196	6
-1423286	Ischnura senegalensis	2021		1	FALSE	TRUE	Insecta	Animalia	216	1
-2868796	Zantedeschia albomaculata	2021		1	FALSE	TRUE	Liliopsida	Plantae	196	6
-3036169	Hedera maroccana	2021		1	FALSE	TRUE	Magnoliopsida	Plantae	220	6
-3188735	Lythrum virgatum	2021		1	FALSE	TRUE	Magnoliopsida	Plantae	220	6
-5400552	Ageratina altissima	2021		1	FALSE	TRUE	Magnoliopsida	Plantae	220	6
-5914287	Melia azedarach	2021		1	FALSE	TRUE	Magnoliopsida	Plantae	220	6
+2684120	Sequoiadendron giganteum	2022	5		TRUE	FALSE	Pinopsida	Plantae	194	6
+5359109	Trifolium squarrosum	2022	2	2	TRUE	TRUE	Magnoliopsida	Plantae	220	6
+3054366	Juglans ailantifolia	2022	2		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+3119206	Helianthus maximiliani	2022	2		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+3172206	Veronicastrum virginicum	2022	2		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+3586046	Gladiolus hortulanus	2022	2		TRUE	FALSE	Liliopsida	Plantae	196	6
+4033335	Bistorta affinis	2022	2		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+5370829	Acaena caesiiglauca	2022	2		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+8059430	Heleobia charruana	2022	2		TRUE	FALSE	Gastropoda	Animalia	225	1
+7497356	Tagetes tenuifolia	2022	1	2	TRUE	TRUE	Magnoliopsida	Plantae	220	6
+1683815	Rhacocleis annulata	2022	1	1	TRUE	TRUE	Insecta	Animalia	216	1
+2479308	Platycercus adscitus	2022	1	1	TRUE	TRUE	Aves	Animalia	212	1
+2495691	Streptopelia tranquebarica	2022	1	1	TRUE	TRUE	Aves	Animalia	212	1
+1411953	Carausius morosus	2022	1		TRUE	FALSE	Insecta	Animalia	216	1
+1910629	Hypolimnas bolina	2022	1		TRUE	FALSE	Insecta	Animalia	216	1
+2176858	Philaeus chrysops	2022	1		TRUE	FALSE	Arachnida	Animalia	367	1
+2431781	Salamandra atra	2022	1		TRUE	FALSE	Amphibia	Animalia	131	1
+2440196	Macropus rufogriseus	2022	1		TRUE	FALSE	Mammalia	Animalia	359	1
+2481915	Ciconia abdimii	2022	1		TRUE	FALSE	Aves	Animalia	212	1
+2489005	Acridotheres tristis	2022	1		TRUE	FALSE	Aves	Animalia	212	1
+2855823	Allium nigrum	2022	1		TRUE	FALSE	Liliopsida	Plantae	196	6
+2879411	Quercus suber	2022	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+2971024	Melilotus officinalis (L.) Pallas	2022	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+3048397	Erysimum bicolor	2022	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+5217334	Xenopus laevis	2022	1		TRUE	FALSE	Amphibia	Animalia	131	1
+5229044	Psittacula cyanocephala	2022	1		TRUE	FALSE	Aves	Animalia	212	1
+5285635	Pinus rigida	2022	1		TRUE	FALSE	Pinopsida	Plantae	194	6
+7100404	Acer buergerianum	2022	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+7420038	Prunella grandiflora	2022	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+7753992	Helix lucorum	2022	1		TRUE	FALSE	Gastropoda	Animalia	225	1
+10852031	Oncosiphon pilulifer	2022	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+5208832	Gobiosoma bosc	2022		3	FALSE	TRUE		Animalia		1
+2285504	Yoldia limatula	2022		1	FALSE	TRUE	Bivalvia	Animalia	137	1
+4486432	Dieuches armatipes	2022		1	FALSE	TRUE	Insecta	Animalia	216	1
+5166760	Ammothea hilgendorfi	2022		1	FALSE	TRUE	Pycnogonida	Animalia	354	1

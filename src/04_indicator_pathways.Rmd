@@ -62,8 +62,8 @@ Categories present in our checklist data:
 
 ```{r find_categories_in_data, echo=FALSE, results=TRUE}
 categories <- data %>%
-  distinct(kingdom) %>%
-  rename(category = kingdom)
+  tidylog::distinct(kingdom) %>%
+  tidylog::rename(category = kingdom)
 if ("Animalia" %in% categories$category) {
   if ("Chordata" %in% data$phylum) {
     categories <- categories %>%
@@ -73,9 +73,9 @@ if ("Animalia" %in% categories$category) {
       ))
   }
   if (data %>%
-    filter(kingdom == "Animalia") %>%
-    filter(!phylum == "Chordata") %>%
-    distinct(phylum) %>% nrow() > 0) {
+    tidylog::filter(kingdom == "Animalia") %>%
+    tidylog::filter(!phylum == "Chordata") %>%
+    tidylog::distinct(phylum) %>% nrow() > 0) {
     categories <- categories %>%
       bind_rows(data.frame(
         category = "Not Chordata",
@@ -84,7 +84,7 @@ if ("Animalia" %in% categories$category) {
   }
   if (any(c("Chordata", "Not Chordata") %in% categories$category)) {
     categories <- categories %>%
-      filter(category != "Animalia")
+      tidylog::filter(category != "Animalia")
   }
 }
 categories
@@ -119,8 +119,8 @@ Total number of taxa introduced for pathways level 2:
 ```{r pathway_level2_anaysis}
 pathways_level1 <- 
   data %>%
-  distinct(pathway_level1) %>%
-  filter(pathway_level1 != "unknown") %>%
+  tidylog::distinct(pathway_level1) %>%
+  tidylog::filter(pathway_level1 != "unknown") %>%
   pull()
 map(pathways_level1,
     function(x) {
@@ -290,16 +290,16 @@ Check which species from this subgroup are not present in `data`:
 
 ```{r check_presence_eu_species}
 eu_concern_species %>%
-  filter(!backbone_taxonKey %in% data$nubKey)
+  tidylog::filter(!backbone_taxonKey %in% data$nubKey)
 ```
 
 Categories present in this subgroup:
 
 ```{r categories_eu_concern, echo = FALSE, results = TRUE}
 categories_eu_concern <- data %>%
-  filter(nubKey %in% eu_concern_species$backbone_taxonKey) %>%
-  distinct(kingdom) %>%
-  rename(category = kingdom)
+  tidylog::filter(nubKey %in% eu_concern_species$backbone_taxonKey) %>%
+  tidylog::distinct(kingdom) %>%
+  tidylog::rename(category = kingdom)
 if ("Animalia" %in% categories_eu_concern$category) {
   if ("Chordata" %in% data$phylum) {
     categories_eu_concern <- categories_eu_concern %>%
@@ -309,9 +309,9 @@ if ("Animalia" %in% categories_eu_concern$category) {
       ))
   }
   if (data %>%
-    filter(kingdom == "Animalia") %>%
-    filter(!phylum == "Chordata") %>%
-    distinct(phylum) %>% nrow() > 0) {
+    tidylog::filter(kingdom == "Animalia") %>%
+    tidylog::filter(!phylum == "Chordata") %>%
+    tidylog::distinct(phylum) %>% nrow() > 0) {
     categories_eu_concern <- categories_eu_concern %>%
       bind_rows(data.frame(
         category = "Not Chordata",
@@ -320,7 +320,7 @@ if ("Animalia" %in% categories_eu_concern$category) {
   }
   if (any(c("Chordata", "Not Chordata") %in% categories_eu_concern$category)) {
     categories_eu_concern <- categories_eu_concern %>%
-      filter(category != "Animalia")
+      tidylog::filter(category != "Animalia")
   }
 }
 categories_eu_concern
@@ -333,7 +333,7 @@ Create tables:
 ```{r make_tables_eu_concern, results = "hide"}
 tables_eu_concern <- map(categories_eu_concern$category, ~
 get_table_pathways(data %>%
-  filter(nubKey %in% eu_concern_species$backbone_taxonKey),
+  tidylog::filter(nubKey %in% eu_concern_species$backbone_taxonKey),
 category = .,
 from = start_year,
 n_species = n_species

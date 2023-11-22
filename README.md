@@ -36,10 +36,11 @@ In order to calculate an emergency index, we take into account:
 1. number of occurrences per year, or simply _occurrences_
 2. area of occupancy (AOO), or simply _occupancy_
 
-The workflow is divided in two steps:
+The workflow is divided in three steps:
 
-1 [Assessing emerging status of alien species](https://trias-project.github.io/indicators/07_occurrence_indicators_modelling.html)
+1. [Assessing emerging status of alien species](https://trias-project.github.io/indicators/07_occurrence_indicators_modelling.html)
 2. [Ranking species by emerging status](https://trias-project.github.io/indicators/08_ranking_emerging_status.html)
+3. [Assess the taxonomic distribution of emerging species](https://trias-project.github.io/indicators/12_taxonomic_distribution_emerging_species.html)
 
 We work with GAM (Generalized Additive Models) and decision rules to assess the emerging status of a species.
 
@@ -77,21 +78,22 @@ The repository structure is based on [Cookiecutter Data Science](http://drivenda
 │   |   ├── utm_1_bel       : Belgian reference grid of European Environmental Agency (EEA) at 1km<sup>2</sup> resolution
 │   |   ├── utm_10_bel      : Belgian reference grid of European Environmental Agency (EEA) at 10km<sup>2</sup> resolution
 │   |   ├── utm_100_bel     : Belgian reference grid of European Environmental Agency (EEA) at 100km<sup>2</sup> resolution
-│   |   └── utm_5_bel     : Belgian reference grid at 5km<sup>2</sup> resolution created by INBO
+│   |   └── utm_5_bel       : Belgian reference grid at 5km<sup>2</sup> resolution created by INBO
 │
 └── src
 │   ├── gbif_download.Rmd         : Script to trigger and verify a GBIF occurrence download
 │   ├── 01_get_data_input_checklist_indicators.Rmd : Script to manipulate taxonomic data from the Global Register of Introduced and Invasive Species - Belgium
 │   ├── 02_indicator_introductions_per_year.Rmd : Script to generate graphs with number of new introduced species per year
-│   ├── 03_indicator_cumulative_number.Rmd: Script to generate graphs with cumulative number of introduced species per year
-│   ├── 04_indicator_pathways.Rmd    : Script to generate tables with pathways of introduction
-│   ├── 05_occurrence_indicators_preprocessing.Rmd    : Script to produce time series from the occurrence cube
-│   ├── 06_occurrence_indicators_appearing_taxa.Rmd    : Find appearing and reappearing taxa in the last years
-│   ├── 07_occurrence_indicators_modelling.Rmd    : Apply GAM and decision rules models to assess partial emerging scores
-│   ├── 08_ranking_emerging_status.Rmd    : Rank alien taxa based on their emerging status derived by the emerging scores
-│   ├── 09_define_overlay_grid_belgium_with_protected_areas.Rmd  : Visualize Belgian protected areas, superimpose the EEA reference grid and the protected areas
-│   ├── 10_occurrence_species_protected_areas_level.Rmd    : Assess number of observations, area of occupancy, coverage of Belgian protected areas for all species and year
-│   └── 11_status_alien_species_in_protected_areas.Rmd : to find number of alien taxa and observations in protected areas and number of protected areas each alien taxon is present
+│   ├── 03_indicator_cumulative_number.Rmd : Script to generate graphs with cumulative number of introduced species per year
+│   ├── 04_indicator_pathways.Rmd : Script to generate tables with pathways of introduction
+│   ├── 05_occurrence_indicators_preprocessing.Rmd : Script to produce time series from the occurrence cube
+│   ├── 06_occurrence_indicators_appearing_taxa.Rmd : Script to find appearing and reappearing taxa in the last years
+│   ├── 07_occurrence_indicators_modelling.Rmd : Script to apply GAM and decision rules models to assess partial emerging scores
+│   ├── 08_ranking_emerging_status.Rmd : Script to rank alien taxa based on their emerging status derived by the emerging scores
+│   ├── 09_define_overlay_grid_belgium_with_protected_areas.Rmd : Script to visualize Belgian protected areas, superimpose the EEA reference grid and the protected areas
+│   ├── 10_occurrence_species_protected_areas_level.Rmd : Sript to assess number of observations, area of occupancy, coverage of Belgian protected areas for all species and year
+│   ├── 11_status_alien_species_in_protected_areas.Rmd : Script to find number of alien taxa and observations in protected areas and number of protected areas each alien taxon is present
+│   └── 12_taxonomic_distribution_emerging_species.Rmd :  Script to produce summary tables and graphs about the taxonomic distribution of the species labelled as emerging in 07_occurrence_indicators_modelling.Rmd
 ```
 
 ## Contributors

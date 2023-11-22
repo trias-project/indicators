@@ -30,8 +30,8 @@ In this document we calculate the area of occupancy (AOO), the coverage and the 
 library(tidyverse)  # To do datascience
 library(tidylog)  # To provide feedback on dplyr functions
 library(here) # To find files
-library(inborutils)
-library(rgbif)
+library(inborutils) # To download data from zenodo
+library(rgbif) # To interface with GBIF
 ```
 
 # Read input data

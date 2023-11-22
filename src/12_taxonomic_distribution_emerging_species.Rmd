@@ -19,7 +19,8 @@ This document follows the [ranking pipeline](https://trias-project.github.io/ind
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE,
                       message = FALSE,
-                      warning = FALSE)
+                      warning = FALSE,
+                      tidy = 'styler')
 ```
 
 Load libraries:

@@ -38,14 +38,15 @@ library(rgbif) # To interface with GBIF
 
 ## Occurrence cube at species level
 
-Read the occurrence cubes at species level for European countries as published on Zenodo (https://doi.org/10.5281/zenodo.3637910). It can take a long time:
+Read the occurrence cubes at species level for European countries as published on Zenodo (https://doi.org/10.5281/zenodo.10074895). It can take a long time:
 
 ```{r read_cube_from_zenodo}
 if (!"be_species_cube.csv" %in%
   list.files(here::here("data", "interim"))) {
-  download_zenodo(
-    doi = "10.5281/zenodo.3637910",
-    path = here::here("data", "interim")
+  inborutils::download_zenodo(
+    doi = "10.5281/zenodo.10074895",
+    path = here::here("data", "interim"),
+    parallel = TRUE
   )
 }
 ```
@@ -77,14 +78,14 @@ be_species_info %>% head(10)
 
 ## Occurrence cube of alien taxa
 
-Read the occurrence cubes of alien taxa as published on Zenodo (https://doi.org/10.5281/zenodo.3632749). It is based on GBIF occurrence data of taxa published in the [Global Register of Introduced and Invasive Species - Belgium](https://www.gbif.org/dataset/6d9e952f-948c-4483-9807-575348147c7e), shortly called the [unified checklist](https://github.com/trias-project/unified-checklist). Attention: It can take a long time:
+Read the occurrence cubes of alien taxa as published on Zenodo (https://doi.org/10.5281/zenodo.10058400). It is based on GBIF occurrence data of taxa published in the [Global Register of Introduced and Invasive Species - Belgium](https://www.gbif.org/dataset/6d9e952f-948c-4483-9807-575348147c7e), shortly called the [unified checklist](https://github.com/trias-project/unified-checklist). It can take a long time:
 
 ```{r read_cube_from_zenodo_alien}
 if (!"be_alientaxa_cube.csv" %in%
   list.files(here::here("data", "interim"))) {
-  download_zenodo(
-    doi = "10.5281/zenodo.3632749",
-    path = here::here("data", "interim")
+  inborutils::download_zenodo(
+    doi = "10.5281/zenodo.10058400",
+    path = here::here("data", "interim"), 
   )
 }
 ```

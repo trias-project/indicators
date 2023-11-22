@@ -61,19 +61,19 @@ be_species_cube <- read_csv(
 be_species_info <- read_csv(
   file = here::here("data", "interim", "be_species_info.csv"),
   na = "") %>%
-  select(-kingdom)
+  tidylog::select(-kingdom)
 ```
 
 Preview occurrence cube:
 
 ```{r preview_cube}
-be_species_cube %>% head(10)
+be_species_cube %>% tidylog::slice_head(n = 10)
 ```
 
 Preview taxonomic metadata of occurrence cube:
 
 ```{r preview_cube_metadata}
-be_species_info %>% head(10)
+be_species_info %>% tidylog::slice_head(n = 10)
 ```
 
 ## Occurrence cube of alien taxa
@@ -100,19 +100,19 @@ be_alientaxa_cube <- read_csv(
 be_alientaxa_info <- read_csv(
   file = here::here("data", "interim", "be_alientaxa_info.csv"),
   na = "") %>%
-  select(-kingdom) # as we still have to retrieve taxonomic info from GBIF
+  tidylog::select(-kingdom) # as we still have to retrieve taxonomic info from GBIF
 ```
 
 Preview occurrence cube:
 
 ```{r preview_cube_alien}
-be_alientaxa_cube %>% head(10)
+be_alientaxa_cube %>% tidylog::slice_head(n = 10)
 ```
 
 Preview taxonomic metadata of occurrence cube with alien taxa:
 
 ```{r preview_cube_metadata_alien}
-be_alientaxa_info %>% head(10)
+be_alientaxa_info %>% tidylog::slice_head(n = 10)
 ```
 
 Number of taxa per rank:
@@ -328,7 +328,7 @@ prot_areas_species_taxon_info <-
   )
 prot_areas_species_info <-
   prot_areas_species_info %>%
-  left_join(prot_areas_species_taxon_info,
+  tidylog::left_join(prot_areas_species_taxon_info,
     by = "speciesKey"
   )
 ```

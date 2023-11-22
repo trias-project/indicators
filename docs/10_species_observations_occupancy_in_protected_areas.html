@@ -425,8 +425,8 @@ x 1km as we use the EEA reference grid for Belgium.</p>
 </div>
 <div id="setup" class="section level1" number="2">
 <h1><span class="header-section-number">2</span> Setup</h1>
-<pre class="r"><code>library(tidyverse)  # To do datascience
-library(tidylog)  # To provide feedback on dplyr functions
+<pre class="r"><code>library(tidyverse) # To do datascience
+library(tidylog) # To provide feedback on dplyr functions
 library(here) # To find files
 library(inborutils) # To download data from zenodo
 library(rgbif) # To interface with GBIF</code></pre>
@@ -442,10 +442,10 @@ published on Zenodo (<a href="https://doi.org/10.5281/zenodo.10074895"
 class="uri">https://doi.org/10.5281/zenodo.10074895</a>). It can take a
 long time:</p>
 <pre class="r"><code>if (!&quot;be_species_cube.csv&quot; %in%
-  list.files(here::here(&quot;data&quot;, &quot;interim&quot;))) {
+  list.files(here::here(&quot;data&quot;, &quot;input&quot;))) {
   inborutils::download_zenodo(
     doi = &quot;10.5281/zenodo.10074895&quot;,
-    path = here::here(&quot;data&quot;, &quot;interim&quot;),
+    path = here::here(&quot;data&quot;, &quot;input&quot;),
     parallel = TRUE
   )
 }</code></pre>
@@ -453,12 +453,13 @@ long time:</p>
 (<code>be_species_cube.csv</code>) and its metadata
 (<code>be_species_info.csv</code>):</p>
 <pre class="r"><code>be_species_cube &lt;- read_csv(
-  file = here::here(&quot;data&quot;, &quot;interim&quot;, &quot;be_species_cube.csv&quot;),
+  file = here::here(&quot;data&quot;, &quot;input&quot;, &quot;be_species_cube.csv&quot;),
   na = &quot;&quot;
 )
 be_species_info &lt;- read_csv(
-  file = here::here(&quot;data&quot;, &quot;interim&quot;, &quot;be_species_info.csv&quot;),
-  na = &quot;&quot;) %&gt;%
+  file = here::here(&quot;data&quot;, &quot;input&quot;, &quot;be_species_info.csv&quot;),
+  na = &quot;&quot;
+) %&gt;%
   tidylog::select(-kingdom)</code></pre>
 <p>Preview occurrence cube:</p>
 <pre class="r"><code>be_species_cube %&gt;% tidylog::slice_head(n = 10)</code></pre>
@@ -489,22 +490,23 @@ called the <a
 href="https://github.com/trias-project/unified-checklist">unified
 checklist</a>. It can take a long time:</p>
 <pre class="r"><code>if (!&quot;be_alientaxa_cube.csv&quot; %in%
-  list.files(here::here(&quot;data&quot;, &quot;interim&quot;))) {
+  list.files(here::here(&quot;data&quot;, &quot;input&quot;))) {
   inborutils::download_zenodo(
     doi = &quot;10.5281/zenodo.10058400&quot;,
-    path = here::here(&quot;data&quot;, &quot;interim&quot;), 
+    path = here::here(&quot;data&quot;, &quot;input&quot;),
   )
 }</code></pre>
 <p>We are interested in the alien taxa cube
 (<code>be_alientaxa_cube.csv</code>) and its metadata
 (<code>be_alientaxa_info.csv</code>):</p>
 <pre class="r"><code>be_alientaxa_cube &lt;- read_csv(
-  file = here::here(&quot;data&quot;, &quot;interim&quot;, &quot;be_alientaxa_cube.csv&quot;),
+  file = here::here(&quot;data&quot;, &quot;input&quot;, &quot;be_alientaxa_cube.csv&quot;),
   na = &quot;&quot;
 )
 be_alientaxa_info &lt;- read_csv(
-  file = here::here(&quot;data&quot;, &quot;interim&quot;, &quot;be_alientaxa_info.csv&quot;),
-  na = &quot;&quot;) %&gt;%
+  file = here::here(&quot;data&quot;, &quot;input&quot;, &quot;be_alientaxa_info.csv&quot;),
+  na = &quot;&quot;
+) %&gt;%
   tidylog::select(-kingdom) # as we still have to retrieve taxonomic info from GBIF</code></pre>
 <p>Preview occurrence cube:</p>
 <pre class="r"><code>be_alientaxa_cube %&gt;% tidylog::slice_head(n = 10)</code></pre>
@@ -534,9 +536,11 @@ be_alientaxa_info &lt;- read_csv(
 <pre class="r"><code>infraspecific_alien &lt;-
   be_alientaxa_info %&gt;%
   tidylog::distinct(rank, taxonKey) %&gt;%
-  tidylog::filter(rank %in% c(&quot;SUBSPECIES&quot;,
-                              &quot;VARIETY&quot;,
-                              &quot;FORM&quot;))
+  tidylog::filter(rank %in% c(
+    &quot;SUBSPECIES&quot;,
+    &quot;VARIETY&quot;,
+    &quot;FORM&quot;
+  ))
 infraspecific_alien &lt;-
   purrr::map_dfr(
     infraspecific_alien$taxonKey,
@@ -548,22 +552,26 @@ infraspecific_alien &lt;-
   infraspecific_alien %&gt;%
   tidylog::mutate(
     species = dplyr::if_else(is.na(species),
-                             parent,
-                             species
+      parent,
+      species
     ),
     speciesKey = dplyr::if_else(is.na(speciesKey),
-                                parentKey,
-                                speciesKey)) %&gt;%
-  tidylog::select(taxonKey = key,
-                  kingdom,
-                  phylum,
-                  order,
-                  class,
-                  family,
-                  genusKey,
-                  genus,
-                  speciesKey,
-                  species)
+      parentKey,
+      speciesKey
+    )
+  ) %&gt;%
+  tidylog::select(
+    taxonKey = key,
+    kingdom,
+    phylum,
+    order,
+    class,
+    family,
+    genusKey,
+    genus,
+    speciesKey,
+    species
+  )
 infraspecific_alien &lt;-
   infraspecific_alien %&gt;%
   tidylog::left_join(be_alientaxa_info, by = c(&quot;taxonKey&quot;))
@@ -584,9 +592,13 @@ is alien or not is at the moment based on a reference file maintained by
 TrIAS experts. This file should be revised each time the unified
 checklist is updated. We read it:</p>
 <pre class="r"><code>infraspecific_alien_status_species &lt;-
-  readr::read_tsv(here::here(&quot;reference&quot;,
-                      &quot;species_of_infraspecific_alien_taxa.tsv&quot;),
-           na = &quot;&quot;)
+  readr::read_tsv(
+    here::here(
+      &quot;reference&quot;,
+      &quot;species_of_infraspecific_alien_taxa.tsv&quot;
+    ),
+    na = &quot;&quot;
+  )
 infraspecific_alien_status_species</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
@@ -767,7 +779,7 @@ prot_areas_species_info &lt;-
 boolean column indicating whether the species is alien or not based on
 the unified checklist:</p>
 <pre class="r"><code># alien species based on alien infraspecific taxa in unified
-infraspecific_alien_and_species &lt;- 
+infraspecific_alien_and_species &lt;-
   infraspecific_alien_status_species %&gt;%
   tidylog::filter(species_is_alien == TRUE)
 
@@ -780,7 +792,7 @@ occs_prot_areas &lt;-
   tidylog::mutate(is_alien = case_when(
     speciesKey %in% be_alientaxa_info$taxonKey |
       speciesKey %in% infraspecific_alien_and_species$speciesKey ~ TRUE,
-    speciesKey %in% 
+    speciesKey %in%
       infraspecific_alien_species_unknown$speciesKey ~ NA,
     TRUE ~ FALSE
   ))</code></pre>
@@ -794,15 +806,15 @@ a remark for the corresponding species:</p>
   tidylog::summarize(remarks = paste0(
     &quot;Infraspecific alien taxa present. &quot;,
     paste(taxonKey,
-          scientificName,
-          sep = &quot;:&quot;,
-          collapse = &quot;,&quot;
+      scientificName,
+      sep = &quot;:&quot;,
+      collapse = &quot;,&quot;
     )
   ))
 occs_prot_areas &lt;-
   occs_prot_areas %&gt;%
   tidylog::left_join(species_infraspecific_alien,
-                     by = &quot;speciesKey&quot;
+    by = &quot;speciesKey&quot;
   )</code></pre>
 <p>Species with alien infraspecific taxa. Notice they can be considered
 alien as well:</p>
@@ -852,10 +864,12 @@ occs_prot_areas_infraspecific &lt;-
 occs_prot_areas_infraspecific &lt;-
   occs_prot_areas_infraspecific %&gt;%
   tidylog::left_join(n_cells_prot_areas,
-                     by = c(&quot;SITECODE&quot;)
+    by = c(&quot;SITECODE&quot;)
   ) %&gt;%
-  tidylog::mutate(coverage = aoo / n_cells,
-         is_alien = TRUE) %&gt;%
+  tidylog::mutate(
+    coverage = aoo / n_cells,
+    is_alien = TRUE
+  ) %&gt;%
   tidylog::select(-n_cells)
 # Remove taxa which are not present in protected areas
 prot_areas_infraspecific_taxon_info &lt;-
@@ -864,9 +878,11 @@ prot_areas_infraspecific_taxon_info &lt;-
 # Add speciesKey
 occs_prot_areas_infraspecific &lt;-
   occs_prot_areas_infraspecific %&gt;%
-  tidylog::left_join(infraspecific_alien %&gt;%
-                       tidylog::select(taxonKey, speciesKey),
-                     by = &quot;taxonKey&quot;)
+  tidylog::left_join(
+    infraspecific_alien %&gt;%
+      tidylog::select(taxonKey, speciesKey),
+    by = &quot;taxonKey&quot;
+  )
 # Merge data
 occs_prot_areas &lt;-
   occs_prot_areas %&gt;%
@@ -952,12 +968,13 @@ metadata</h3>
 </div>
 <p>Save taxonomic metadata:</p>
 <pre class="r"><code>taxonomic_metadata %&gt;%
-  readr::write_csv(here::here(
-    &quot;data&quot;,
-    &quot;output&quot;,
-    &quot;protected_areas_species_info.csv&quot;
-  ),
-  na = &quot;&quot;
+  readr::write_csv(
+    here::here(
+      &quot;data&quot;,
+      &quot;output&quot;,
+      &quot;protected_areas_species_info.csv&quot;
+    ),
+    na = &quot;&quot;
   )</code></pre>
 </div>
 <div id="protected-areas-metadata-1" class="section level3"

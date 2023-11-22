@@ -36,7 +36,7 @@ library(here) # To find files
 Read the tab separated files containing the emerging status output:
 
 ```{r read_ranking_emerging_status_hierarchical_strategy}
-em_df <- read_tsv(here::here(
+em_df <- readr::read_tsv(here::here(
   "data",
   "output", 
   "ranking_emerging_status_hierarchical_strategy.tsv"),
@@ -47,7 +47,7 @@ em_df <- read_tsv(here::here(
 Preview:
 
 ```{r preview_em_df}
-head(em_df)
+tidylog::slice_head(em_df, n = 10)
 ```
 
 # Number of emerging species per class, year, location and variable
@@ -57,7 +57,7 @@ First, reshape the data:
 ```{r select_only_emerging_species}
 emerging_df <-
   em_df %>%
-  pivot_longer(starts_with("year_"), 
+  tidylog::pivot_longer(starts_with("year_"), 
                names_to = "variable",
                values_to = "emerging_status")
 ```
@@ -65,7 +65,7 @@ emerging_df <-
 Preview:
 
 ```{r preview_emerging_df}
-head(emerging_df)
+tidylog::slice_head(emerging_df, n = 10)
 ```
 
 We calculate the number of emerging species (`emerging_status` = 3) 
@@ -78,10 +78,10 @@ at class level for each combination of:
 ```{r n_emerging}
 emerging_df <- 
   emerging_df %>%
-  group_by(.data$class, 
+  tidylog::group_by(.data$class, 
            .data$kingdom,
            .data$variable) %>%
-  summarise(n_emerging = length(.data$emerging_status[.data$emerging_status == 3]),
+  tidylog::summarise(n_emerging = length(.data$emerging_status[.data$emerging_status == 3]),
             n_total = length(.data$emerging_status))
 ```
 
@@ -90,15 +90,15 @@ Add year, variable and area of interest as columns:
 ```{r add_vars}
 emerging_df <- 
   emerging_df %>%
-  mutate(
-    year = str_extract(.data$variable, pattern = "\\d+"),
-    area = str_extract(.data$variable, pattern = "BE$|pa$"),
-    variable = str_extract(.data$variable,
-                           pattern = "occupancy|observations")) %>%
-  mutate(area = recode(.data$area, BE = "Belgium", pa = "Natura2000")) %>%
-  relocate(n_emerging, n_total, .after = last_col()) %>%
-  ungroup() %>%
-  arrange(.data$year, desc(.data$n_emerging))
+  tidylog::mutate(
+    year = stringr::str_extract(.data$variable, pattern = "\\d+"),
+    area = stringr::str_extract(.data$variable, pattern = "BE$|pa$"),
+    variable = stringr::str_extract(.data$variable,
+                                    pattern = "occupancy|observations")) %>%
+  tidylog::mutate(area = recode(.data$area, BE = "Belgium", pa = "Natura2000")) %>%
+  tidylog::relocate(n_emerging, n_total, .after = last_col()) %>%
+  tidylog::ungroup() %>%
+  dplyr::arrange(.data$year, desc(.data$n_emerging))
 ```
 
 Preview:
@@ -109,7 +109,7 @@ head(emerging_df, 20)
 Save this table as output file:
 
 ```{r save_emerging_df}
-write_tsv(
+readr::write_tsv(
   emerging_df,
   here::here(
   "data",
@@ -124,23 +124,23 @@ write_tsv(
 Kingdoms with emerging species:
 
 ```{r kingdoms}
-kingdoms <- emerging_df %>% distinct(.data$kingdom)
+kingdoms <- emerging_df %>% tidylog::distinct(.data$kingdom)
 kingdoms
 ```
 
 Classes with emerging species:
 
 ```{r classes}
-classes <- emerging_df %>% distinct(.data$class, .data$kingdom)
+classes <- emerging_df %>% tidylog::distinct(.data$class, .data$kingdom)
 classes
 ```
 Distribution of classes at kingdom levels:
 
 ```{r classes_per_kingdom}
 classes %>%
-  group_by(.data$kingdom) %>%
-  count() %>%
-  arrange(desc(.data$n))
+  tidylog::group_by(.data$kingdom) %>%
+  tidylog::count() %>%
+  dplyr::arrange(desc(.data$n))
 ```
 
 ## Taxonomic distribution at kingdom level
@@ -150,12 +150,12 @@ Number of emerging species at kingdom level:
 ```{r distr_at_kingdom_level}
 emerging_df_kingdom <- 
   emerging_df %>%
-  group_by(.data$kingdom, .data$variable, .data$year, .data$area) %>%
-  summarise(n_emerging = sum(.data$n_emerging),
+  tidylog::group_by(.data$kingdom, .data$variable, .data$year, .data$area) %>%
+  tidylog::summarise(n_emerging = sum(.data$n_emerging),
             n_total = sum(.data$n_total)) %>%
-  ungroup() %>%
-  mutate(frac_emerging = .data$n_emerging/.data$n_total) %>%
-  arrange(.data$variable, .data$area, .data$year, .data$kingdom)
+  tidylog::ungroup() %>%
+  tidylog::mutate(frac_emerging = .data$n_emerging/.data$n_total) %>%
+  dplyr::arrange(.data$variable, .data$area, .data$year, .data$kingdom)
 emerging_df_kingdom
 ```
 
@@ -163,10 +163,10 @@ Show the absolute distribution at kingdom level for each variable/area/year:
 
 ```{r plot_kingdom_level_distr}
 emerging_plot_kingdom <- 
-  ggplot(emerging_df_kingdom) +
-  geom_col(aes(x = kingdom, y = n_emerging, fill = year),
+  ggplot2::ggplot(emerging_df_kingdom) +
+  ggplot2::geom_col(aes(x = kingdom, y = n_emerging, fill = year),
            position = "dodge") +
-  facet_grid(rows = vars(variable), cols = vars(area))
+  ggplot2::facet_grid(rows = vars(variable), cols = vars(area))
 emerging_plot_kingdom
 ```
 
@@ -174,36 +174,40 @@ Show the relative distribution, i.e. the fraction number of emerging species / t
 
 ```{r relative_distr_kingdom_level}
 emerging_plot_kingdom_relative <- 
-  ggplot(emerging_df_kingdom) +
-  geom_col(aes(x = kingdom, y = frac_emerging, fill = year),
+  ggplot2::ggplot(emerging_df_kingdom) +
+  ggplot2::geom_col(aes(x = kingdom, y = frac_emerging, fill = year),
            position = "dodge") +
-  facet_grid(rows = vars(variable), cols = vars(area))
+  ggplot2::facet_grid(rows = vars(variable), cols = vars(area))
 emerging_plot_kingdom_relative
 ```
 
 Save both the table `emerging_df_kingdom` and the graphs with the absolute and relative distribution of emerging species at kingdom level:
 
 ```{r save_emerging_df_kingdom}
-write_tsv(x = emerging_df_kingdom,
-          file = here::here("data",
-                            "output",
-                            "taxonomic_distribution_emerging_species",
-                            "number_of_emerging_taxa_per_kingdom.tsv"),
-  na = ""
+# save data.frame
+readr::write_tsv(x = emerging_df_kingdom,
+                 file = here::here("data",
+                                   "output",
+                                   "taxonomic_distribution_emerging_species",
+                                   "number_of_emerging_taxa_per_kingdom.tsv"
+                                   ),
+                 na = ""
 )
-
-ggsave(emerging_plot_kingdom,
-       filename = here::here("data",
-                            "output",
-                            "taxonomic_distribution_emerging_species",
-                            "n_emerging_taxa_per_kingdom.png")
+# save plots with absolute distribution
+ggplot2::ggsave(emerging_plot_kingdom,
+                filename = here::here("data",
+                                      "output",
+                                      "taxonomic_distribution_emerging_species",
+                                      "n_emerging_taxa_per_kingdom.png"
+                                      )
 )
-
-ggsave(emerging_plot_kingdom_relative,
-       filename = here::here("data",
-                            "output",
-                            "taxonomic_distribution_emerging_species",
-                            "n_emerging_taxa_per_kingdom_relative.png")
+# save plots with relative distribution
+ggplot2::ggsave(emerging_plot_kingdom_relative,
+                filename = here::here("data",
+                                      "output",
+                                      "taxonomic_distribution_emerging_species",
+                                      "n_emerging_taxa_per_kingdom_relative.png"
+                                      )
 )
 ```
 
@@ -216,24 +220,25 @@ Table:
 ```{r emerging_df_BE_occupancy}
 emerging_df_BE_occupancy <-
   emerging_df %>%
-  filter(.data$area == "Belgium" & .data$variable == "occupancy")
+  tidylog::filter(.data$area == "Belgium" & .data$variable == "occupancy")
 emerging_df_BE_occupancy
 ```
 
 Graphs:
 
 ```{r plot_emerging_df_BE_occupancy}
-emerging_plots_BE_occupancy <- map(kingdoms$kingdom, function(x) {
+emerging_plots_BE_occupancy <- purrr::map(kingdoms$kingdom, function(x) {
   data <- 
     emerging_df_BE_occupancy %>%
-    filter(.data$kingdom == x & .data$n_emerging > 0)
-  ggplot(data) +
-    geom_col(aes(x = class, y = n_emerging, fill = year), position = "dodge") +
-    theme(
-    axis.text.x = element_text(
-      angle = 315,
-      hjust = 0,
-      vjust = 1
+    tidylog::filter(.data$kingdom == x & .data$n_emerging > 0)
+  ggplot2::ggplot(data) +
+    ggplot2::geom_col(aes(x = class, y = n_emerging, fill = year), 
+                      position = "dodge") +
+    ggplot2::theme(
+      axis.text.x = ggplot2::element_text(
+        angle = 315,
+        hjust = 0,
+        vjust = 1
       )
     )
 })
@@ -243,7 +248,7 @@ emerging_plots_BE_occupancy
 Save both table and graphs:
 
 ```{r save_emerging_BE_occupancy}
-write_tsv(
+readr::write_tsv(
   emerging_df_BE_occupancy,
   here::here(
   "data",
@@ -252,11 +257,11 @@ write_tsv(
   "n_emerging_taxa_per_class_in_BE_occupancy.tsv"),
   na = ""
 )
-walk2(
+purrr::walk2(
   emerging_plots_BE_occupancy,
   kingdoms$kingdom, 
   function(x, y) {
-    ggsave(here::here("data",
+    ggplot2::ggsave(here::here("data",
                       "output",
                       "taxonomic_distribution_emerging_species",
                       paste0("n_emerging_taxa_per_class_in_BE_occupancy_",
@@ -273,21 +278,22 @@ Table:
 ```{r emerging_df_Natura2000_occupancy}
 emerging_df_Natura2000_occupancy <-
   emerging_df %>%
-  filter(.data$area == "Natura2000" & .data$variable == "occupancy")
+  tidylog::filter(.data$area == "Natura2000" & .data$variable == "occupancy")
 emerging_df_Natura2000_occupancy
 ```
 
 Graphs:
 
 ```{r plot_emerging_df_Natura2000_occupancy}
-emerging_plots_Natura2000_occupancy <- map(
+emerging_plots_Natura2000_occupancy <- purrr::map(
   kingdoms$kingdom, function(x) {
     data <- emerging_df_Natura2000_occupancy %>%
-      filter(.data$kingdom == x & .data$n_emerging > 0)
-    ggplot(data) +
-      geom_col(aes(x = class, y = n_emerging, fill = year), position = "dodge") +
-      theme(
-        axis.text.x = element_text(
+      tidylog::filter(.data$kingdom == x & .data$n_emerging > 0)
+    ggplot2::ggplot(data) +
+      ggplot2::geom_col(aes(x = class, y = n_emerging, fill = year), 
+                        position = "dodge") +
+      ggplot2::theme(
+        axis.text.x = ggplot2::element_text(
           angle = 315,
           hjust = 0,
           vjust = 1
@@ -300,7 +306,7 @@ emerging_plots_Natura2000_occupancy
 Save both table and graphs:
 
 ```{r save_emerging_Natura2000_occupancy}
-write_tsv(
+readr::write_tsv(
   emerging_df_Natura2000_occupancy,
   here::here(
   "data",
@@ -309,18 +315,19 @@ write_tsv(
   "n_emerging_taxa_per_class_in_Natura2000_occupancy.tsv"),
   na = ""
 )
-walk2(
+purrr::walk2(
   emerging_plots_Natura2000_occupancy,
   kingdoms$kingdom, 
   function(x, y) {
-    ggsave(here::here(
+    ggplot2::ggsave(here::here(
       "data",
       "output",
       "taxonomic_distribution_emerging_species",
       paste0("n_emerging_taxa_per_class_in_Natura2000_occupancy_",
              y,".png")
       ),
-      x)
+      x
+    )
 })
 ```
 
@@ -332,20 +339,21 @@ Table:
 ```{r emerging_df_BE_obs}
 emerging_df_BE_obs <-
   emerging_df %>%
-  filter(.data$area == "Belgium" & .data$variable == "observations")
+  tidylog::filter(.data$area == "Belgium" & .data$variable == "observations")
 emerging_df_BE_obs
 ```
 
 Graphs:
 
 ```{r emerging_plots_BE_obs}
-emerging_plots_BE_obs <- map(kingdoms$kingdom, function(x) {
+emerging_plots_BE_obs <- purrr::map(kingdoms$kingdom, function(x) {
   data <- emerging_df_BE_obs %>%
-    filter(.data$kingdom == x & .data$n_emerging > 0)
-  ggplot(data) +
-    geom_col(aes(x = class, y = n_emerging, fill = year), position = "dodge") +
-    theme(
-    axis.text.x = element_text(
+    tidylog::filter(.data$kingdom == x & .data$n_emerging > 0)
+  ggplot2::ggplot(data) +
+    ggplot2::geom_col(aes(x = class, y = n_emerging, fill = year), 
+                      position = "dodge") +
+    ggplot2::theme(
+    axis.text.x = ggplot2::element_text(
       angle = 315,
       hjust = 0,
       vjust = 1
@@ -358,7 +366,7 @@ emerging_plots_BE_obs
 Save both table and graphs:
 
 ```{r save_emerging_BE_obs}
-write_tsv(
+readr::write_tsv(
   emerging_df_BE_obs,
   here::here(
   "data",
@@ -367,18 +375,19 @@ write_tsv(
   "n_emerging_taxa_per_class_in_BE_observations.tsv"),
   na = ""
 )
-walk2(
+purrr::walk2(
   emerging_plots_BE_obs,
   kingdoms$kingdom, 
   function(x, y) {
-    ggsave(here::here(
+    ggplot2::ggsave(here::here(
       "data",
       "output",
       "taxonomic_distribution_emerging_species",
       paste0("n_emerging_taxa_per_class_in_BE_observations_",
              y,".png")
       ),
-      x)
+      x
+    )
 })
 ```
 
@@ -390,20 +399,21 @@ Table:
 ```{r emerging_df_Natura2000_obs}
 emerging_df_Natura2000_obs <-
   emerging_df %>%
-  filter(.data$area == "Natura2000" & .data$variable == "observations")
+  tidylog::filter(.data$area == "Natura2000" & .data$variable == "observations")
 emerging_df_Natura2000_obs
 ```
 
 Graphs:
 
 ```{r plot_emerging_df_Natura2000_obs}
-emerging_plots_Natura2000_obs <- map(kingdoms$kingdom, function(x) {
+emerging_plots_Natura2000_obs <- purrr::map(kingdoms$kingdom, function(x) {
   data <- emerging_df_Natura2000_obs %>%
-    filter(.data$kingdom == x & .data$n_emerging > 0)
-  ggplot(data) +
-    geom_col(aes(x = class, y = n_emerging, fill = year), position = "dodge") +
-    theme(
-    axis.text.x = element_text(
+    tidylog::filter(.data$kingdom == x & .data$n_emerging > 0)
+  ggplot2::ggplot(data) +
+    ggplot2::geom_col(aes(x = class, y = n_emerging, fill = year), 
+                      position = "dodge") +
+    ggplot2::theme(
+    axis.text.x = ggplot2::element_text(
       angle = 315,
       hjust = 0,
       vjust = 1
@@ -416,7 +426,7 @@ emerging_plots_Natura2000_obs
 Save both table and graphs:
 
 ```{r save_emerging_Natura2000_obs}
-write_tsv(
+readr::write_tsv(
   emerging_df_Natura2000_obs,
   here::here(
   "data",
@@ -425,17 +435,18 @@ write_tsv(
   "n_emerging_taxa_per_class_in_Natura2000_observations.tsv"),
   na = ""
 )
-walk2(
+purrr::walk2(
   emerging_plots_Natura2000_obs,
   kingdoms$kingdom, 
   function(x, y) {
-    ggsave(here::here(
+    ggplot2::ggsave(here::here(
       "data",
       "output",
       "taxonomic_distribution_emerging_species",
       paste0("n_emerging_taxa_per_class_in_Natura2000_observations_",
              y,".png")
       ),
-      x)
+      x
+    )
 })
 ```

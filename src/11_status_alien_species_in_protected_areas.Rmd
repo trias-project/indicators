@@ -976,7 +976,7 @@ n_taxa_obs_per_area_dfs <- list(
   n_species_obs_per_area_concern_brussels_habitat = 
     n_species_obs_per_area_concern_brussels_habitat
 )
-purrr::map2(n_taxa_obs_per_area_dfs,
+purrr::walk2(n_taxa_obs_per_area_dfs,
             names(n_taxa_obs_per_area_dfs),
             function(df, filename) {
               write_csv(df,
@@ -1042,7 +1042,7 @@ n_prot_areas_per_species_dfs <-
       n_prot_areas_per_species_concern_brussels_habitat
   )
 # Save data
-purrr::map2(n_prot_areas_per_species_dfs,
+purrr::walk2(n_prot_areas_per_species_dfs,
             names(n_prot_areas_per_species_dfs),
             function(df, filename) {
               write_csv(df,

@@ -568,8 +568,8 @@ We save the metadata as output:
 
 ```{r save_final_protected_areas_metadata}
 protected_areas_metadata %>%
-    path = here::here(
   readr::write_csv(
+    file = here::here(
       "data",
       "output",
       "protected_areas_metadata.csv"

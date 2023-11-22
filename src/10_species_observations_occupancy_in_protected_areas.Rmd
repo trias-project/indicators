@@ -43,10 +43,10 @@ Read the occurrence cubes at species level for European countries as published o
 
 ```{r read_cube_from_zenodo}
 if (!"be_species_cube.csv" %in%
-  list.files(here::here("data", "interim"))) {
+  list.files(here::here("data", "input"))) {
   inborutils::download_zenodo(
     doi = "10.5281/zenodo.10074895",
-    path = here::here("data", "interim"),
+    path = here::here("data", "input"),
     parallel = TRUE
   )
 }
@@ -56,11 +56,11 @@ We are interested in the Belgian cube (`be_species_cube.csv`) and its metadata (
 
 ```{r read_be_species_cube}
 be_species_cube <- read_csv(
-  file = here::here("data", "interim", "be_species_cube.csv"),
+  file = here::here("data", "input", "be_species_cube.csv"),
   na = ""
 )
 be_species_info <- read_csv(
-  file = here::here("data", "interim", "be_species_info.csv"),
+  file = here::here("data", "input", "be_species_info.csv"),
   na = "") %>%
   tidylog::select(-kingdom)
 ```
@@ -83,10 +83,10 @@ Read the occurrence cubes of alien taxa as published on Zenodo (https://doi.org/
 
 ```{r read_cube_from_zenodo_alien}
 if (!"be_alientaxa_cube.csv" %in%
-  list.files(here::here("data", "interim"))) {
+  list.files(here::here("data", "input"))) {
   inborutils::download_zenodo(
     doi = "10.5281/zenodo.10058400",
-    path = here::here("data", "interim"), 
+    path = here::here("data", "input"), 
   )
 }
 ```
@@ -95,11 +95,11 @@ We are interested in the alien taxa cube (`be_alientaxa_cube.csv`) and its metad
 
 ```{r read_be_species_cube_alien}
 be_alientaxa_cube <- read_csv(
-  file = here::here("data", "interim", "be_alientaxa_cube.csv"),
+  file = here::here("data", "input", "be_alientaxa_cube.csv"),
   na = ""
 )
 be_alientaxa_info <- read_csv(
-  file = here::here("data", "interim", "be_alientaxa_info.csv"),
+  file = here::here("data", "input", "be_alientaxa_info.csv"),
   na = "") %>%
   tidylog::select(-kingdom) # as we still have to retrieve taxonomic info from GBIF
 ```

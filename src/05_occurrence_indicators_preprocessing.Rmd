@@ -29,7 +29,6 @@ library(tidylog) # To provide feedback on dplyr functions
 library(here) # To find files
 library(lubridate) # To work with dates
 library(rgbif) # To get taxa from publisehd unified checklist
-library(inborutils) # To download data from zenodo
 ```
 
 # Get data
@@ -38,14 +37,7 @@ library(inborutils) # To download data from zenodo
 
 ### Download
 
-We download occurrence data as obtained in `trias-project/occ-cube` repository. However, as some files are too big to be stored on GitHub, we download them from Zenodo: 
-
-```{r download_from_zenodo}
-download_zenodo(doi = "10.5281/zenodo.10058400",
-                parallel = TRUE,
-                path = here::here("data", "input")
-)
-```
+We download occurrence cubes from Zenodo deposit: https://zenodo.org/records/10527772. 
 
 ### Alien species
 
@@ -53,7 +45,7 @@ We read occurrence data related to alien species in Belgium:
 
 ```{r read_data_cube, message = FALSE, warning = FALSE}
 df <- read_csv(
-  file = here::here("data", "input", "be_alientaxa_cube.csv"),
+  file = "https://zenodo.org/records/10527772/files/be_alientaxa_cube.csv?download=1",
   col_types = cols(
     year = col_double(),
     eea_cell_code = col_character(),
@@ -64,8 +56,6 @@ df <- read_csv(
   na = ""
 )
 ```
-
-Nota: these data have been also published on [Zenodo](https://doi.org/10.5281/zenodo.3632749).
 
 We remove columns we will never use:
 
@@ -97,7 +87,7 @@ We read occurrence related data at class level used for correcting the research 
 
 ```{r get_data_baseline}
 df_bl <- read_csv(
-  file = here::here("data", "input", "be_classes_cube.csv"),
+  file = "https://zenodo.org/records/10527772/files/be_classes_cube.csv?download=1",
   col_types = cols(
     year = col_double(),
     eea_cell_code = col_character(),
@@ -108,8 +98,6 @@ df_bl <- read_csv(
   na = ""
 )
 ```
-
-Nota: these data have been also published on [Zenodo](https://doi.org/10.5281/zenodo.3632749).
 
 We remove columns we will never use:
 

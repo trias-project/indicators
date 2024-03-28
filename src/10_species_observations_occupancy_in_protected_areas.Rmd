@@ -39,28 +39,15 @@ library(rgbif) # To interface with GBIF
 
 ## Occurrence cube at species level
 
-Read the occurrence cubes at species level for European countries as published on Zenodo (https://doi.org/10.5281/zenodo.10074895). It can take a long time:
+Read the occurrence cubes at species level for Belgium as published on Zenodo (https://zenodo.org/records/10528506):
 
 ```{r read_cube_from_zenodo}
-if (!"be_species_cube.csv" %in%
-  list.files(here::here("data", "input"))) {
-  inborutils::download_zenodo(
-    doi = "10.5281/zenodo.10074895",
-    path = here::here("data", "input"),
-    parallel = TRUE
-  )
-}
-```
-
-We are interested in the Belgian cube (`be_species_cube.csv`) and its metadata (`be_species_info.csv`):
-
-```{r read_be_species_cube}
 be_species_cube <- read_csv(
-  file = here::here("data", "input", "be_species_cube.csv"),
+  file = "https://zenodo.org/records/10528506/files/be_species_cube.csv?download=1",
   na = ""
 )
 be_species_info <- read_csv(
-  file = here::here("data", "input", "be_species_info.csv"),
+  file = "https://zenodo.org/records/10528506/files/be_species_info.csv?download=1",
   na = "") %>%
   tidylog::select(-kingdom)
 ```

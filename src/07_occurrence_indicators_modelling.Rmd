@@ -683,9 +683,9 @@ folder_path <- here::here("data", "output", "GAM_outputs")
 zip(zipfile = here::here("data", "output", "GAM_outputs", "plots.zip"),
     files = list.files(
       folder_path, 
-      recursive = TRUE
     )
       full.names = FALSE,
+      recursive = FALSE
 )
 ```
 

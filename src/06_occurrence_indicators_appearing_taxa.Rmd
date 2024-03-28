@@ -75,9 +75,14 @@ spec_names <- read_csv(
 Years to evaluate:
 
 ```{r eval_years}
-present_year <- lubridate::year(Sys.Date())
-years <- c(present_year) - 1 # The last full year
-years
+# Last evaluation year
+last_year <- lubridate::year(Sys.Date()) - 2
+
+# First evalution year
+first_year <- last_year - 2
+
+# Evaluation years
+eval_years <- seq(first_year, last_year)
 ```
 
 We define the minimum latency (in years) before we speak about reappearance. For example, a latency time window of 3 years means that we consider a taxon reappearing in 2019 if observations occur in 2019 and 2015 or before:

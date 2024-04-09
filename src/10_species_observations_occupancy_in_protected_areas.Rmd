@@ -66,7 +66,7 @@ be_species_info %>% tidylog::slice_head(n = 10)
 
 ## Occurrence cube of alien taxa
 
-Read the occurrence cubes of alien taxa as published on Zenodo (https://doi.org/10.5281/zenodo.10058400). It is based on GBIF occurrence data of taxa published in the [Global Register of Introduced and Invasive Species - Belgium](https://www.gbif.org/dataset/6d9e952f-948c-4483-9807-575348147c7e), shortly called the [unified checklist](https://github.com/trias-project/unified-checklist):
+Read the occurrence cubes of alien taxa as published on Zenodo (https://zenodo.org/records/10527772). It is based on GBIF occurrence data of taxa published in the [Global Register of Introduced and Invasive Species - Belgium](https://www.gbif.org/dataset/6d9e952f-948c-4483-9807-575348147c7e), shortly called the [unified checklist](https://github.com/trias-project/unified-checklist):
 
 ```{r read_be_species_cube_alien}
 be_alientaxa_cube <- read_csv(
@@ -75,8 +75,9 @@ be_alientaxa_cube <- read_csv(
 )
 
 be_alientaxa_info <- read_csv(
-  file = here::here("data", "input", "be_alientaxa_info.csv"),
-  na = "") %>%
+  file="https://zenodo.org/records/10527772/files/be_alientaxa_info.csv?download=1",
+  na=""
+  )%>%
   tidylog::select(-kingdom) # as we still have to retrieve taxonomic info from GBIF
 
 

@@ -73,7 +73,7 @@ at class level for each combination of:
 
 - year
 - variable: occupancy or number of observations
-- area of interest: Belgium or protectred areas
+- area of interest: Belgium or protected areas
 
 ```{r n_emerging}
 emerging_df <- 

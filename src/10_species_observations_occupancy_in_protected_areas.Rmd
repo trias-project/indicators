@@ -73,10 +73,13 @@ be_alientaxa_cube <- read_csv(
   file = "https://zenodo.org/records/10527772/files/be_alientaxa_cube.csv?download=1",
   na = ""
 )
+
 be_alientaxa_info <- read_csv(
   file = here::here("data", "input", "be_alientaxa_info.csv"),
   na = "") %>%
   tidylog::select(-kingdom) # as we still have to retrieve taxonomic info from GBIF
+
+
 ```
 
 Preview occurrence cube:
@@ -149,8 +152,8 @@ The unified checklist contains some infraspecific alien taxa belonging to alien 
 ```{r infraspecific_alien_status_species}
 infraspecific_alien_status_species <-
   readr::read_tsv(here::here("reference",
-                      "species_of_infraspecific_alien_taxa.tsv"),
-           na = "")
+                             "species_of_infraspecific_alien_taxa.tsv"),
+                  na = "")
 infraspecific_alien_status_species
 ```
 
@@ -305,7 +308,7 @@ prot_areas_species_taxon_info <-
 prot_areas_species_info <-
   prot_areas_species_info %>%
   tidylog::left_join(prot_areas_species_taxon_info,
-    by = "speciesKey"
+                     by = "speciesKey"
   )
 ```
 
@@ -412,7 +415,7 @@ occs_prot_areas_infraspecific <-
                      by = c("SITECODE")
   ) %>%
   tidylog::mutate(coverage = aoo / n_cells,
-         is_alien = TRUE) %>%
+                  is_alien = TRUE) %>%
   tidylog::select(-n_cells)
 # Remove taxa which are not present in protected areas
 prot_areas_infraspecific_taxon_info <-

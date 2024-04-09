@@ -119,7 +119,7 @@ df_ts_compact_prot_areas <-
 
 # Modelling
 
-In this section we evaluate the emergenging status by applying a decision rule strategy or, where possible, a statistical model called GAM (Generalized Additive Models).
+In this section we evaluate the emerging status by applying a decision rule strategy or, where possible, a statistical model called GAM (Generalized Additive Models).
 For each evaluation year (see below) the output of both models is one of the following emerging status codes:
 
 - `3`: emerging

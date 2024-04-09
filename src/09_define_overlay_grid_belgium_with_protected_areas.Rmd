@@ -112,13 +112,13 @@ data(BE_ADMIN_REGION)
 BE_ADMIN_REGION <- st_as_sf(BE_ADMIN_REGION)
 ```
 
-## Add regional information to Belgian proteted areas
+## Add regional information to Belgian protected areas
 
-In this section we add three columns to know whether a protected area belong to one or more Belgian regions.
+In this section we add three columns to know whether a protected area belongs to one or more Belgian regions.
 
 ### Flemish protected areas
 
-Add column `flanders` to indicate whether the protected area is a Flemish protected areas (`TRUE`/`FALSE`):
+Add column `flanders` to indicate whether the protected area is a Flemish protected area (`TRUE`/`FALSE`):
 
 ```{r flemis_areas_sitecode}
 protected_areas_flanders <- tibble(
@@ -573,7 +573,7 @@ cells_of_prot_areas %>%
 
 ## Natura2000
 
-We can now define whether a cell of the reference grid interesects a protected area as defined by Natura2000. We add this information in column `natura2000`:
+We can now define whether a cell of the reference grid intersects a protected area as defined by Natura2000. We add this information in column `natura2000`:
 
 ```{r cells_natura2000}
 cellcode_protected_natura2000 <-

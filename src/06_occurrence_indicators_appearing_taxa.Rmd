@@ -62,11 +62,15 @@ df_ts %>%
   )
 ```
 
-Taxonomic information as published on Zenodo deposit https://zenodo.org/records/10527772:
+Taxonomic information:
 
 ```{r spec_names}
-spec_names <- read_csv(
-  file = "https://zenodo.org/records/10527772/files/be_alientaxa_info.csv?download=1"
+spec_names <- read_tsv(
+  file = here::here(
+    "data",
+    "interim",
+    "timeseries_taxonomic_info.tsv"
+  )
 )
 ```
 

@@ -91,7 +91,7 @@ We are interested in protected areas in Belgium:
 ```{r select_by_country_Belgium}
 protected_areas <-
   protected_areas %>%
-  filter(MS == "BE")
+  tidylog::filter(MS == "BE")
 ```
 
 Summary by site type:
@@ -99,8 +99,8 @@ Summary by site type:
 ```{r n_areas_per_siteype}
 protected_areas %>%
   as_tibble() %>%
-  group_by(SITETYPE) %>%
-  count()
+  tidylog::group_by(SITETYPE) %>%
+  tidylog::count()
 ```
 
 ## Read Belgian regions
@@ -186,7 +186,7 @@ protected_areas_flanders <- tibble(
     "BE2501033",
     "BE2221314"
   )) %>%
-  mutate(flanders = TRUE,
+  tidylog::mutate(flanders = TRUE,
          wallonia = FALSE,
          brussels = FALSE)
 ```
@@ -200,7 +200,7 @@ protected_areas_brussels <- tibble(
   SITECODE = c("BE1000001",
                "BE1000002",
                "BE1000003")) %>%
-  mutate(flanders = FALSE,
+  tidylog::mutate(flanders = FALSE,
          wallonia = FALSE,
          brussels = TRUE)
   
@@ -217,7 +217,7 @@ protected_areas_federal <- tibble(
                "BEMNZ0003",
                "BEMNZ0004",
                "BEMNZ0005")) %>%
-  mutate(flanders = FALSE,
+  tidylog::mutate(flanders = FALSE,
          wallonia = FALSE,
          brussels = FALSE)
 ```
@@ -233,7 +233,7 @@ protected_areas_wallonia <- tibble(
                                      protected_areas_brussels$SITECODE,
                                      protected_areas_federal$SITECODE)
   ])) %>%
-  mutate(flanders = FALSE,
+  tidylog::mutate(flanders = FALSE,
          wallonia = TRUE,
          brussels = FALSE)
 ```
@@ -248,7 +248,7 @@ protected_areas_regional_info <-
             protected_areas_wallonia,
             protected_areas_brussels,
             protected_areas_federal) %>%
-  mutate(SITECODE = as.factor(SITECODE))
+  tidylog::mutate(SITECODE = as.factor(SITECODE))
 ```
 
 to add it to `protected_areas`:
@@ -256,7 +256,7 @@ to add it to `protected_areas`:
 ```{r add_regional_membership}
 protected_areas <- 
   protected_areas %>%
-  left_join(protected_areas_regional_info,
+  tidylog::left_join(protected_areas_regional_info,
             by = "SITECODE")
 ```
 
@@ -265,7 +265,7 @@ Preview:
 ```{r preview_regions}
 protected_areas %>%
   as_tibble() %>%
-  select(SITECODE, SITENAME, SITETYPE, flanders, wallonia, brussels) %>%
+  tidylog::select(SITECODE, SITENAME, SITETYPE, flanders, wallonia, brussels) %>%
   head()
 ```
 
@@ -276,18 +276,18 @@ Number of protected areas per type:
 ```{r n_prot_area_per_type}
 protected_areas %>%
   st_drop_geometry() %>%
-  group_by(SITETYPE) %>%
-  count()
+  tidylog::group_by(SITETYPE) %>%
+  tidylog::count()
 ```
 
 In Flanders:
 
 ```{r n_prot_area_per_type_flanders}
 protected_areas %>%
-  filter(flanders == TRUE) %>%
+  tidylog::filter(flanders == TRUE) %>%
   st_drop_geometry() %>%
-  group_by(SITETYPE) %>%
-  count()
+  tidylog::group_by(SITETYPE) %>%
+  tidylog::count()
 ```
 
 ```{r leaflet_prot_areas_flanders, cache = TRUE}
@@ -298,7 +298,7 @@ protected_areas_wgs84 <-
 # Flemish protected areas
 protected_areas_wgs84_flanders <- 
   protected_areas_wgs84 %>%
-  filter(flanders == TRUE)
+  tidylog::filter(flanders == TRUE)
 
 prot_area_fl_palette <- colorFactor(
   topo.colors(nrow(protected_areas_flanders)),
@@ -306,7 +306,7 @@ prot_area_fl_palette <- colorFactor(
 leaflet() %>%
   addTiles() %>%
   addPolygons(data = protected_areas_wgs84_flanders %>%
-                filter(SITETYPE == "A"),
+                tidylog::filter(SITETYPE == "A"),
               fillColor = ~prot_area_fl_palette(SITECODE),
               fillOpacity = 0.7,
               color = "black",
@@ -316,7 +316,7 @@ leaflet() %>%
               popup = ~SITECODE,
               group = "type A") %>%
   addPolygons(data = protected_areas_wgs84_flanders %>%
-                filter(SITETYPE == "B"),
+                tidylog::filter(SITETYPE == "B"),
               fillColor = ~prot_area_fl_palette(SITECODE),
               fillOpacity = 0.7,
               color = "black",
@@ -334,16 +334,16 @@ In Wallonia:
 
 ```{r n_prot_area_per_type_wallonia}
 protected_areas %>%
-  filter(wallonia == TRUE) %>%
+  tidylog::filter(wallonia == TRUE) %>%
   st_drop_geometry() %>%
-  group_by(SITETYPE) %>%
-  count()
+  tidylog::group_by(SITETYPE) %>%
+  tidylog::count()
 ```
 
 ```{r leaflet_prot_areas_wa, cache = TRUE}
 protected_areas_wgs84_wallonia <- 
   protected_areas_wgs84 %>%
-  filter(wallonia == TRUE)
+  tidylog::filter(wallonia == TRUE)
 
 prot_area_wallonia_palette <- colorFactor(
   topo.colors(nrow(protected_areas_wallonia)),
@@ -351,7 +351,7 @@ prot_area_wallonia_palette <- colorFactor(
 leaflet() %>%
   addTiles() %>%
   addPolygons(data = protected_areas_wgs84_wallonia %>%
-                filter(SITETYPE == "A"),
+                tidylog::filter(SITETYPE == "A"),
               fillColor = ~prot_area_wallonia_palette(SITECODE),
               fillOpacity = 0.7,
               color = "black",
@@ -361,7 +361,7 @@ leaflet() %>%
               popup = ~SITECODE,
               group = "type A") %>%
   addPolygons(data = protected_areas_wgs84_wallonia %>%
-                filter(SITETYPE == "B"),
+                tidylog::filter(SITETYPE == "B"),
               fillColor = ~prot_area_wallonia_palette(SITECODE),
               fillOpacity = 0.7,
               color = "black",
@@ -371,7 +371,7 @@ leaflet() %>%
               popup = ~SITECODE,
               group = "type B") %>%
   addPolygons(data = protected_areas_wgs84_wallonia %>%
-                filter(SITETYPE == "C"),
+                tidylog::filter(SITETYPE == "C"),
               fillColor = ~prot_area_wallonia_palette(SITECODE),
               fillOpacity = 0.7,
               color = "black",
@@ -389,16 +389,16 @@ In Brussels:
 
 ```{r n_prot_area_per_type_brussels}
 protected_areas %>%
-  filter(brussels == TRUE) %>%
+  tidylog::filter(brussels == TRUE) %>%
   st_drop_geometry() %>%
-  group_by(SITETYPE) %>%
-  count()
+  tidylog::group_by(SITETYPE) %>%
+  tidylog::count()
 ```
 
 ```{r leaflet_prot_areas_br, cache = TRUE}
 protected_areas_wgs84_brussels <- 
   protected_areas_wgs84 %>%
-  filter(brussels == TRUE)
+  tidylog::filter(brussels == TRUE)
 
 prot_area_brussels_palette <- colorFactor(
   topo.colors(nrow(protected_areas_brussels)),
@@ -406,7 +406,7 @@ prot_area_brussels_palette <- colorFactor(
 leaflet() %>%
   addTiles() %>%
   addPolygons(data = protected_areas_wgs84_brussels %>%
-                filter(SITETYPE == "B"),
+                tidylog::filter(SITETYPE == "B"),
               fillColor = ~prot_area_brussels_palette(SITECODE),
               fillOpacity = 0.7,
               color = "black",
@@ -424,19 +424,19 @@ Areas under federal administration
 
 ```{r n_prot_area_per_type_fed}
 protected_areas %>%
-  filter(flanders == FALSE,
+  tidylog::filter(flanders == FALSE,
          wallonia == FALSE,
          brussels == FALSE) %>%
   st_drop_geometry() %>%
-  group_by(SITETYPE) %>%
-  count()
+  tidylog::group_by(SITETYPE) %>%
+  tidylog::count()
 ```
 
 ```{r leaflet_prot_areas_fed_admin, hide = TRUE, cache = TRUE}
 # Protected areas under federal administration
 protected_areas_wgs84_federal <- 
   protected_areas_wgs84 %>%
-  filter(flanders == FALSE,
+  tidylog::filter(flanders == FALSE,
          wallonia == FALSE,
          brussels == FALSE)
 
@@ -446,7 +446,7 @@ prot_area_palette_federal <- colorFactor(
 leaflet() %>%
   addTiles() %>%
   addPolygons(data = protected_areas_wgs84_federal %>%
-                filter(SITETYPE == "A"),
+                tidylog::filter(SITETYPE == "A"),
               fillColor = ~prot_area_palette_federal(SITECODE),
               fillOpacity = 0.7,
               color = "black",
@@ -456,7 +456,7 @@ leaflet() %>%
               popup = ~SITECODE,
               group = "type A") %>%
   addPolygons(data = protected_areas_wgs84_federal %>%
-                filter(SITETYPE == "B"),
+                tidylog::filter(SITETYPE == "B"),
               fillColor = ~prot_area_palette_federal(SITECODE),
               fillOpacity = 0.7,
               color = "black",
@@ -479,7 +479,7 @@ Bird directive areas (SPA areas) are defined as the areas with `SITETYPE`: A and
 ```{r bird_directive_areas}
 protected_areas_bird <-
   protected_areas %>%
-  filter(SITETYPE %in% c("A", "C"))
+  tidylog::filter(SITETYPE %in% c("A", "C"))
 ```
 
 ## Habitat directive areas
@@ -489,7 +489,7 @@ Habitat directive areas (SAC areas) are defined as the protected areas with `SIT
 ```{r habitat_directive_areas}
 protected_areas_habitat <-
   protected_areas %>%
-  filter(SITETYPE %in% c("B", "C"))
+  tidylog::filter(SITETYPE %in% c("B", "C"))
 ```
 
 # Intersect grid of Belgium with protected areas
@@ -511,8 +511,8 @@ names(grid_intersects_areas) <- prot_areas_sitecode
 # Add 1x1km grid cellcode as new column
 grid_intersects_areas <-
   grid_intersects_areas %>%
-  mutate(CELLCODE = be_grid$CELLCODE) %>%
-  select(CELLCODE, everything())
+ tidylog::mutate(CELLCODE = be_grid$CELLCODE) %>%
+  tidylog::select(CELLCODE, everything())
 ```
 
 ## Natura2000 protected areas
@@ -522,7 +522,7 @@ Select cells which intersect any of the protected areas:
 ```{r cells_with_protected_areas}
 cells_protected <-
   grid_intersects_areas %>%
-  filter_at(vars(starts_with("BE")), any_vars(. == TRUE))
+  tidylog::filter_at(vars(starts_with("BE")), any_vars(. == TRUE))
 ```
 
 ## Get grid cells for each protected area
@@ -554,15 +554,15 @@ For example, grid cells intersecting protected area `BE1000003`:
 
 ```{r example_BE31001C0}
 cells_of_prot_areas %>%
-  filter(SITECODE == "BE1000003")
+  tidylog::filter(SITECODE == "BE1000003")
 ```
 
 Distribution of the number of cells covering the protected areas:
 
 ```{r distribution_n_cells_protected_areas}
 cells_of_prot_areas %>%
-  group_by(SITECODE) %>%
-  count() %>%
+  tidylog::group_by(SITECODE) %>%
+  tidylog::count() %>%
   arrange(desc(n)) %>%
   ggplot() +
   geom_histogram(aes(x = n), bins = 30) +
@@ -583,7 +583,7 @@ cellcode_protected_natura2000 <-
 
 be_grid_membership_protected_areas <-
   be_grid %>%
-  mutate(natura2000 = ifelse(CELLCODE %in% cellcode_protected_natura2000,
+  tidylog::mutate(natura2000 = ifelse(CELLCODE %in% cellcode_protected_natura2000,
     TRUE,
     FALSE
   ))
@@ -596,17 +596,17 @@ We add also a column, `spa`, assessing whether the cell intersects a SPA area:
 ```{r be_grid_add_spa}
 cells_protected_spa <-
   cells_protected %>%
-  select(
+  tidylog::select(
     CELLCODE,
     one_of(as.character(protected_areas_bird$SITECODE))
   ) %>%
-  filter_at(vars(starts_with("BE")), any_vars(. == TRUE)) %>%
+  tidylog::filter_at(vars(starts_with("BE")), any_vars(. == TRUE)) %>%
   as_tibble() %>%
   pull(CELLCODE)
 
 be_grid_membership_protected_areas <-
   be_grid_membership_protected_areas %>%
-  mutate(spa = ifelse(CELLCODE %in% cells_protected_spa,
+  tidylog::mutate(spa = ifelse(CELLCODE %in% cells_protected_spa,
     TRUE,
     FALSE
   ))
@@ -619,17 +619,17 @@ We add also a column, `habitat`, assessing whether the cell intersects a habitat
 ```{r be_grid_add_directive}
 cells_protected_hab <-
   cells_protected %>%
-  select(
+  tidylog::select(
     CELLCODE,
     one_of(as.character(protected_areas_habitat$SITECODE))
   ) %>%
-  filter_at(vars(starts_with("BE")), any_vars(. == TRUE)) %>%
+  tidylog::filter_at(vars(starts_with("BE")), any_vars(. == TRUE)) %>%
   as_tibble() %>%
   pull(CELLCODE)
 
 be_grid_membership_protected_areas <-
   be_grid_membership_protected_areas %>%
-  mutate(habitat = ifelse(CELLCODE %in% cells_protected_hab,
+  tidylog::mutate(habitat = ifelse(CELLCODE %in% cells_protected_hab,
     TRUE,
     FALSE
   ))
@@ -644,24 +644,24 @@ be_grid_membership_protected_areas <-
   be_grid_membership_protected_areas %>%
   as_tibble()
 be_grid_membership_protected_areas %>%
-  group_by(natura2000) %>%
-  count()
+  tidylog::group_by(natura2000) %>%
+  tidylog::count()
 ```
 
 How many cells contain/intersect SPA areas?
 
 ```{r summary_spa_areas}
 be_grid_membership_protected_areas %>%
-  group_by(spa) %>%
-  count()
+  tidylog::group_by(spa) %>%
+  tidylog::count()
 ```
 
 How many cells contain/intersect habitat directive areas?
 
 ```{r summary_spa_habitat}
 be_grid_membership_protected_areas %>%
-  group_by(habitat) %>%
-  count()
+  tidylog::group_by(habitat) %>%
+  tidylog::count()
 ```
 
 ## Save data
@@ -710,7 +710,7 @@ We are also interested in saving basic information about protected areas:
 protected_areas_metadata <-
   protected_areas %>%
   st_drop_geometry() %>%
-  select(SITECODE,
+  tidylog::select(SITECODE,
          SITENAME,
          SITETYPE,
          flanders,

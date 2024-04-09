@@ -186,7 +186,7 @@ Number of cells per protected area:
 n_cells_prot_areas <-
   cells_of_prot_areas %>%
   tidylog::group_by(SITECODE) %>%
-  summarize(n_cells = n())
+  tidylog::summarize(n_cells = n())
 ```
 
 Preview:
@@ -217,8 +217,8 @@ Get values from occurrence cube related to cells covering the protected areas:
 ```{r join_cell_prot_areas_with_be_cube}
 be_prot_areas_cube <-
   cells_of_prot_areas %>%
-  inner_join(be_species_cube,
-    by = c("CELLCODE" = "eea_cell_code")
+  tidylog::inner_join(be_species_cube,
+             by = c("CELLCODE" = "eea_cell_code")
   )
 ```
 
@@ -234,12 +234,12 @@ For each taxon, year and protected area, calculate the number of observations, t
 occs_prot_areas <-
   be_prot_areas_cube %>%
   tidylog::group_by(SITECODE, SITETYPE, year, speciesKey) %>%
-  summarize(
+  tidylog::summarize(
     aoo = n(),
     n = sum(n),
     min_coord_uncertainty = min(min_coord_uncertainty)
   ) %>%
-  ungroup()
+  tidylog::ungroup()
 ```
 
 Preview with the 10 highest areas of occupancy:
@@ -258,7 +258,7 @@ To add the coverage of each protected area, we divide AOO by the area of each pr
 occs_prot_areas <-
   occs_prot_areas %>%
   tidylog::left_join(n_cells_prot_areas,
-    by = c("SITECODE")
+                     by = c("SITECODE")
   ) %>%
   tidylog::mutate(coverage = aoo / n_cells) %>%
   tidylog::select(-n_cells)

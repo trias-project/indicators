@@ -166,7 +166,13 @@ emerging_plot_kingdom <-
   ggplot2::ggplot(emerging_df_kingdom) +
   ggplot2::geom_col(aes(x = kingdom, y = n_emerging, fill = year),
            position = "dodge") +
-  ggplot2::facet_grid(rows = vars(variable), cols = vars(area))
+  ggplot2::facet_grid(rows = vars(variable), cols = vars(area))+
+   ggplot2::theme(
+           axis.text.x = ggplot2::element_text(
+              angle = 315,
+              hjust = 0,
+              vjust = 1
+      ))
 emerging_plot_kingdom
 ```
 
@@ -177,7 +183,13 @@ emerging_plot_kingdom_relative <-
   ggplot2::ggplot(emerging_df_kingdom) +
   ggplot2::geom_col(aes(x = kingdom, y = frac_emerging, fill = year),
            position = "dodge") +
-  ggplot2::facet_grid(rows = vars(variable), cols = vars(area))
+  ggplot2::facet_grid(rows = vars(variable), cols = vars(area))+
+  ggplot2::theme(
+           axis.text.x = ggplot2::element_text(
+              angle = 315,
+              hjust = 0,
+              vjust = 1
+      ))
 emerging_plot_kingdom_relative
 ```
 

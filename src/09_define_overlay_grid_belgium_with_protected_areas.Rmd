@@ -56,18 +56,24 @@ GIS data of protected areas as defined in Natura2000 can be found on related web
 path_natura2000 <- here::here(
   "data",
   "external",
-  "Natura2000_end2019_Shapefile"
+  "Natura2000_end2019_Shapefile",
+  "Natura2000_end2021_rev1.gpkg"
 )
+
 if (!file.exists(path_natura2000)) {
-  options(timeout = 60*30) # 30min max allowed for downloading
-  temp <- tempfile()
-  download.file(
-    "https://cmshare.eea.europa.eu/s/n5L8Lrs9aYD775S/download",
-    temp,
-    cacheOK = FALSE
-  )
-  unzip(temp, exdir = path_natura2000)
-  unlink(temp)
+  file.create(path_natura2000, recursive = TRUE)
+  natura2000_file <- file(path_natura2000, "wb")
+  response <- 
+    httr2::request("https://sdi.eea.europa.eu/datashare/s/fAL7bpzZGHjiFL4/download") %>% 
+    httr2::req_url_query(
+      path = "/GPKG",
+      files = "Natura2000_end2021_rev1.gpkg"
+    ) %>% 
+    httr2::req_perform()
+  # write to disk
+  httr2::resp_body_raw(response) %>% 
+    writeBin(con = natura2000_file)
+  close(natura2000_file)
 }
 ```
 

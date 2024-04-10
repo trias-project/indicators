@@ -82,12 +82,13 @@ We read the shapefile:
 ```{r protected_areas}
 protected_areas <- st_read(path_natura2000)
 protected_areas_crs <- st_crs(protected_areas)
+protected_areas_crs
 ```
 
-Check whether grid and protected areas have same CRS:
+Convert CRS of protected areas:
 
 ```{r crs_comparison}
-be_grid_crs == protected_areas_crs
+protected_areas <- st_transform(protected_areas, crs = be_grid_crs)
 ```
 
 ### Select Belgian protected areas

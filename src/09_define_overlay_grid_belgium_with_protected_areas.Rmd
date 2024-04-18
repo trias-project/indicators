@@ -53,6 +53,14 @@ be_grid_crs
 GIS data of protected areas as defined in Natura2000 can be found on related webpage of [European Environment Agency](https://www.eea.europa.eu/data-and-maps/data/natura-11#tab-gis-data). We downloaded the GIS data as shapefile in folder `data/external/Natura2000_end2019_Shapefile`:
 
 ```{r download_data}
+folder_path <- here::here(
+  "data",
+  "external",
+  "Natura2000_end2019_Shapefile")
+
+dir.create(folder_path)
+
+
 path_natura2000 <- here::here(
   "data",
   "external",

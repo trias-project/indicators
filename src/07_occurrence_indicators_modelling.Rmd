@@ -681,11 +681,10 @@ We create a zip file with all generated plots:
 ```{r create-zip-file}
 folder_path <- here::here("data", "output", "GAM_outputs")
 zip(zipfile = here::here("data", "output", "GAM_outputs", "plots.zip"),
-    files = list.files(
-      folder_path,
-      pattern = "png$",
-      full.names = FALSE,
-      recursive = FALSE
+    files = list.files(folder_path,
+                       pattern = "png$",
+                       full.names = TRUE,
+                       recursive = FALSE)
 )
 ```
 

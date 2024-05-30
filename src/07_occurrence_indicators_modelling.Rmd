@@ -119,7 +119,7 @@ df_ts_compact_prot_areas <-
 
 # Modelling
 
-In this section we evaluate the emergenging status by applying a decision rule strategy or, where possible, a statistical model called GAM (Generalized Additive Models).
+In this section we evaluate the emerging status by applying a decision rule strategy or, where possible, a statistical model called GAM (Generalized Additive Models).
 For each evaluation year (see below) the output of both models is one of the following emerging status codes:
 
 - `3`: emerging
@@ -135,9 +135,9 @@ We define the time window (in years) we want to assess the emerging status:
 
 ```{r eval_years}
 # Last evaluation year
-last_year <- lubridate::year(Sys.Date()) - 1
+last_year <- lubridate::year(Sys.Date()) - 2
 
-# First evalution year
+# First evaluation year
 first_year <- last_year - 2
 
 # Evaluation years

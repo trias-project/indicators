@@ -1,36 +1,237 @@
 taxonKey	canonicalName	year	ncells_prot_areas	ncells_BE	in_prot_areas	in_BE	class	kingdom	classKey	kingdomKey
-2684120	Sequoiadendron giganteum	2022	5		TRUE	FALSE	Pinopsida	Plantae	194	6
-5359109	Trifolium squarrosum	2022	2	2	TRUE	TRUE	Magnoliopsida	Plantae	220	6
-3054366	Juglans ailantifolia	2022	2		TRUE	FALSE	Magnoliopsida	Plantae	220	6
-3119206	Helianthus maximiliani	2022	2		TRUE	FALSE	Magnoliopsida	Plantae	220	6
-3172206	Veronicastrum virginicum	2022	2		TRUE	FALSE	Magnoliopsida	Plantae	220	6
-3586046	Gladiolus hortulanus	2022	2		TRUE	FALSE	Liliopsida	Plantae	196	6
-4033335	Bistorta affinis	2022	2		TRUE	FALSE	Magnoliopsida	Plantae	220	6
-5370829	Acaena caesiiglauca	2022	2		TRUE	FALSE	Magnoliopsida	Plantae	220	6
-8059430	Heleobia charruana	2022	2		TRUE	FALSE	Gastropoda	Animalia	225	1
+11794300	Xanthium orientale saccharatum	2020	4	6	TRUE	TRUE	Magnoliopsida	Plantae	220	6
+1622658	Rhagoletis completa	2020	4		TRUE	FALSE	Insecta	Animalia	216	1
+2153287	Zoropsis spinimana	2021	4		TRUE	FALSE	Arachnida	Animalia	367	1
+3935079	Malva arborea	2021	4		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+2481066	Milvago chimachima	2020	3	3	TRUE	TRUE	Aves	Animalia	212	1
+2480786	Theristicus melanopis	2020	3		TRUE	FALSE	Aves	Animalia	212	1
+2747718	Crocus speciosus	2020	3		TRUE	FALSE	Liliopsida	Plantae	196	6
+2855893	Allium roseum	2021	3		TRUE	FALSE	Liliopsida	Plantae	196	6
+2984306	Gunnera tinctoria	2020	3		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+3172068	Veronica cymbalaria	2021	3		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+4485843	Halyomorpha halys	2020	3		TRUE	FALSE	Insecta	Animalia	216	1
+5331238	Viola sororia	2020	3		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+5373160	Malcolmia flexuosa	2020	3		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+8011733	Weigela floribunda	2021	3		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+11104870	Cicada orni	2022	3		TRUE	FALSE	Insecta	Animalia	216	1
+7291643	Persicaria filiformis	2021	2	4	TRUE	TRUE	Magnoliopsida	Plantae	220	6
+2479720	Barnardius zonarius	2021	2	3	TRUE	TRUE	Aves	Animalia	212	1
+2701879	Juncus striatus	2020	2	2	TRUE	TRUE	Liliopsida	Plantae	196	6
+3103158	Gamochaeta americana	2021	2	2	TRUE	TRUE	Magnoliopsida	Plantae	220	6
+1626096	Ceratitis capitata	2021	2		TRUE	FALSE	Insecta	Animalia	216	1
+2095283	Pseudococcus longispinus	2021	2		TRUE	FALSE	Insecta	Animalia	216	1
+2174528	Saitis barbipes	2021	2		TRUE	FALSE	Arachnida	Animalia	367	1
+2227289	Procambarus acutus	2021	2		TRUE	FALSE	Malacostraca	Animalia	229	1
+2684120	Sequoiadendron giganteum	2021	2		TRUE	FALSE	Pinopsida	Plantae	194	6
+2856457	Allium triquetrum	2021	2		TRUE	FALSE	Liliopsida	Plantae	196	6
+2857449	Allium ramosum	2020	2		TRUE	FALSE	Liliopsida	Plantae	196	6
+2868827	Zantedeschia aethiopica	2020	2		TRUE	FALSE	Liliopsida	Plantae	196	6
+2890739	Geranium versicolor	2020	2		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+3638793	Bupleurum fruticosum	2021	2		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+4484009	Tremulicerus distinguendus	2021	2		TRUE	FALSE	Insecta	Animalia	216	1
+5377395	Matthiola longipetala	2020	2		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+5712981	Coccus hesperidum	2020	2		TRUE	FALSE	Insecta	Animalia	216	1
+5806954	Tarsostenus carus	2020	2		TRUE	FALSE	Insecta	Animalia	216	1
+5855746	Meretrix lyrata	2022	2		TRUE	FALSE	Bivalvia	Animalia	137	1
+7100404	Acer buergerianum	2022	2		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+7298987	Centranthus calcitrapae	2022	2		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+7437751	Urtica membranacea	2021	2		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+9078997	Saissetia oleae	2020	2		TRUE	FALSE	Insecta	Animalia	216	1
+10801424	Salvia yangii	2020	2		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+1998083	Ectobius vittiventris	2021	1	3	TRUE	TRUE	Insecta	Animalia	216	1
+2211599	Ianiropsis serricaudis	2020	1	3	TRUE	TRUE	Malacostraca	Animalia	229	1
+5041422	Sceliphron curvatum	2021	1	3	TRUE	TRUE	Insecta	Animalia	216	1
+2064632	Acanalonia conica	2021	1	2	TRUE	TRUE	Insecta	Animalia	216	1
+5229136	Vanellus armatus	2020	1	2	TRUE	TRUE	Aves	Animalia	212	1
+5296015	Sisyrinchium angustifolium	2021	1	2	TRUE	TRUE	Liliopsida	Plantae	196	6
+5329038	Sagittaria graminea	2021	1	2	TRUE	TRUE	Liliopsida	Plantae	196	6
+5361977	Sedum mexicanum	2020	1	2	TRUE	TRUE	Magnoliopsida	Plantae	220	6
+7309012	Callicarpa bodinieri	2020	1	2	TRUE	TRUE	Magnoliopsida	Plantae	220	6
 7497356	Tagetes tenuifolia	2022	1	2	TRUE	TRUE	Magnoliopsida	Plantae	220	6
-1683815	Rhacocleis annulata	2022	1	1	TRUE	TRUE	Insecta	Animalia	216	1
-2479308	Platycercus adscitus	2022	1	1	TRUE	TRUE	Aves	Animalia	212	1
-2495691	Streptopelia tranquebarica	2022	1	1	TRUE	TRUE	Aves	Animalia	212	1
+1795068	Thysanoplusia orichalcea	2021	1	1	TRUE	TRUE	Insecta	Animalia	216	1
+1891245	Sufetula diminutalis	2020	1	1	TRUE	TRUE	Insecta	Animalia	216	1
+2285504	Yoldia limatula	2022	1	1	TRUE	TRUE	Bivalvia	Animalia	137	1
+2479925	Alisterus scapularis	2020	1	1	TRUE	TRUE	Aves	Animalia	212	1
+2856681	Allium sativum	2020	1	1	TRUE	TRUE	Liliopsida	Plantae	196	6
+2874512	Cucurbita ficifolia	2020	1	1	TRUE	TRUE	Magnoliopsida	Plantae	220	6
+2890957	Geranium renardii	2021	1	1	TRUE	TRUE	Magnoliopsida	Plantae	220	6
+2925303	Lantana camara	2020	1	1	TRUE	TRUE	Magnoliopsida	Plantae	220	6
+3054366	Juglans ailantifolia	2021	1	1	TRUE	TRUE	Magnoliopsida	Plantae	220	6
+3639337	Sanicula epipactis	2021	1	1	TRUE	TRUE	Magnoliopsida	Plantae	220	6
+4368880	Columbella rustica	2021	1	1	TRUE	TRUE	Gastropoda	Animalia	225	1
+4486432	Dieuches armatipes	2022	1	1	TRUE	TRUE	Insecta	Animalia	216	1
+4530608	Clepsis peritana	2021	1	1	TRUE	TRUE	Insecta	Animalia	216	1
+5297966	Iris xiphium	2020	1	1	TRUE	TRUE	Liliopsida	Plantae	196	6
+5724924	Charonia lampas	2021	1	1	TRUE	TRUE	Gastropoda	Animalia	225	1
+6100941	Sturnia pagodarum	2020	1	1	TRUE	TRUE	Aves	Animalia	212	1
+7278040	Thalictrum delavayi	2020	1	1	TRUE	TRUE	Magnoliopsida	Plantae	220	6
+7341745	Spinus magellanicus	2020	1	1	TRUE	TRUE	Aves	Animalia	212	1
+8864505	Macomopsis melo	2021	1	1	TRUE	TRUE	Bivalvia	Animalia	137	1
+9139578	Aulacaspis rosae	2020	1	1	TRUE	TRUE	Insecta	Animalia	216	1
+1095946	Reesa vespulae	2022	1		TRUE	FALSE	Insecta	Animalia	216	1
 1411953	Carausius morosus	2022	1		TRUE	FALSE	Insecta	Animalia	216	1
-1910629	Hypolimnas bolina	2022	1		TRUE	FALSE	Insecta	Animalia	216	1
-2176858	Philaeus chrysops	2022	1		TRUE	FALSE	Arachnida	Animalia	367	1
-2431781	Salamandra atra	2022	1		TRUE	FALSE	Amphibia	Animalia	131	1
-2440196	Macropus rufogriseus	2022	1		TRUE	FALSE	Mammalia	Animalia	359	1
-2481915	Ciconia abdimii	2022	1		TRUE	FALSE	Aves	Animalia	212	1
-2489005	Acridotheres tristis	2022	1		TRUE	FALSE	Aves	Animalia	212	1
+1421095	Ctenolepisma lineata	2020	1		TRUE	FALSE	Insecta	Animalia	216	1
+1702101	Anacridium aegyptium	2022	1		TRUE	FALSE	Insecta	Animalia	216	1
+1852831	Blastobasis adustella	2020	1		TRUE	FALSE	Insecta	Animalia	216	1
+1873051	Cryptoblabes gnidiella	2021	1		TRUE	FALSE	Insecta	Animalia	216	1
+1941864	Paysandisia archon	2020	1		TRUE	FALSE	Insecta	Animalia	216	1
+2128502	Aceria erinea	2020	1		TRUE	FALSE	Arachnida	Animalia	367	1
+2157203	Steatoda nobilis	2022	1		TRUE	FALSE	Arachnida	Animalia	367	1
+2440196	Macropus rufogriseus	2021	1		TRUE	FALSE	Mammalia	Animalia	359	1
+2486132	Pycnonotus leucotis	2021	1		TRUE	FALSE	Aves	Animalia	212	1
+2490384	Cardinalis cardinalis	2022	1		TRUE	FALSE	Aves	Animalia	212	1
+2495165	Rhea americana	2021	1		TRUE	FALSE	Aves	Animalia	212	1
+2684984	Araucaria araucana	2020	1		TRUE	FALSE	Pinopsida	Plantae	194	6
+2703231	Zizania latifolia	2021	1		TRUE	FALSE	Liliopsida	Plantae	196	6
+2769069	Camassia leichtlinii	2021	1		TRUE	FALSE	Liliopsida	Plantae	196	6
 2855823	Allium nigrum	2022	1		TRUE	FALSE	Liliopsida	Plantae	196	6
-2879411	Quercus suber	2022	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
-2971024	Melilotus officinalis (L.) Pallas	2022	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+2858909	Narcissus jonquilla	2021	1		TRUE	FALSE	Liliopsida	Plantae	196	6
+2868796	Zantedeschia albomaculata	2022	1		TRUE	FALSE	Liliopsida	Plantae	196	6
+2926681	Lamium confertum	2022	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+2927174	Mentha requienii	2021	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+2928538	Ipomoea hederacea	2022	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+2932905	Salpiglossis sinuata	2022	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+2971024	Melilotus officinalis (L.) Pallas	2020	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+2984492	Celtis australis	2021	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+2984532	Zelkova serrata	2020	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+3033888	Mahonia bealei	2021	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+3034782	Smyrnium olusatrum	2020	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
 3048397	Erysimum bicolor	2022	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
-5217334	Xenopus laevis	2022	1		TRUE	FALSE	Amphibia	Animalia	131	1
-5229044	Psittacula cyanocephala	2022	1		TRUE	FALSE	Aves	Animalia	212	1
-5285635	Pinus rigida	2022	1		TRUE	FALSE	Pinopsida	Plantae	194	6
-7100404	Acer buergerianum	2022	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
-7420038	Prunella grandiflora	2022	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
-7753992	Helix lucorum	2022	1		TRUE	FALSE	Gastropoda	Animalia	225	1
-10852031	Oncosiphon pilulifer	2022	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
-5208832	Gobiosoma bosc	2022		3	FALSE	TRUE		Animalia		1
-2285504	Yoldia limatula	2022		1	FALSE	TRUE	Bivalvia	Animalia	137	1
-4486432	Dieuches armatipes	2022		1	FALSE	TRUE	Insecta	Animalia	216	1
+3065244	Euphorbia amygdaloides robbiae	2020	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+3083486	Paeonia lactiflora	2020	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+3084839	Mesembryanthemum crystallinum	2021	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+3088623	Guizotia scabra	2022	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+3100375	Acanthospermum hispidum	2022	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+3121562	Artemisia sieversiana	2021	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+3133446	Ammobium alatum	2021	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+3151434	Symphyotrichum dumosum	2020	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+3172276	Osmanthus heterophyllus	2022	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+3189836	Acer pensylvanicum	2020	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+3646556	Pterostyrax hispidus	2020	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+3856436	Viburnum davidi	2020	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+3896282	Teucrium hircanicum	2020	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+4086523	Verbena incompta	2021	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+4201709	Sempervivum arachnoideum	2020	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+4362883	Cerithium vulgatum	2020	1		TRUE	FALSE	Gastropoda	Animalia	225	1
+4427283	Anthrenocerus australis	2020	1		TRUE	FALSE	Insecta	Animalia	216	1
+4487370	Tropidosteptes pacificus	2021	1		TRUE	FALSE	Insecta	Animalia	216	1
+4487598	Closterotomus trivialis	2022	1		TRUE	FALSE	Insecta	Animalia	216	1
+4985072	Tricellaria inopinata	2022	1		TRUE	FALSE	Gymnolaemata	Animalia	252	1
+4990175	Rhyzobius lophanthae	2020	1		TRUE	FALSE	Insecta	Animalia	216	1
+5220170	Rupicapra rupicapra	2022	1		TRUE	FALSE	Mammalia	Animalia	359	1
+5229110	Cyanoramphus novaezelandiae	2021	1		TRUE	FALSE	Aves	Animalia	212	1
+5284698	Cedrus deodara	2021	1		TRUE	FALSE	Pinopsida	Plantae	194	6
+5289739	Cenchrus echinatus	2020	1		TRUE	FALSE	Liliopsida	Plantae	196	6
+5324959	Himantoglossum robertianum	2020	1		TRUE	FALSE	Liliopsida	Plantae	196	6
+5332305	Ostrya carpinifolia	2022	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+5360429	Trigonella caelesyriaca	2022	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+5371610	Tiarella cordifolia	2020	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+5373475	Crambe hispanica	2020	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+5373483	Crambe hispanica abyssinica	2020	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+5375012	Arabis procurrens	2021	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+5403541	Crepis bursifolia	2020	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+5414932	Chelone obliqua	2020	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+5530855	Corydalis linstowiana	2021	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+5660450	Pulmonaria rubra	2022	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+6363863	Arenaria montana	2021	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+7331874	Veronica repens	2022	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+7393329	Cucurbita moschata	2022	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+7636833	Syringa josikaea	2020	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+7902463	Lonicera maackii	2021	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+8052025	Dicyphus escalerae	2020	1		TRUE	FALSE	Insecta	Animalia	216	1
+8207952	Matthiola incana (L.) R.Br.	2021	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+8400045	Daboecia cantabrica	2021	1		TRUE	FALSE	Magnoliopsida	Plantae	220	6
+8898408	Pseudemys concinna	2021	1		TRUE	FALSE	Testudines	Animalia	11418114	1
+8909809	Emys orbicularis	2021	1		TRUE	FALSE	Testudines	Animalia	11418114	1
+9592414	Sporobolus michauxianus	2022	1		TRUE	FALSE	Liliopsida	Plantae	196	6
+6363863	Arenaria montana	2020		4	FALSE	TRUE	Magnoliopsida	Plantae	220	6
+2479509	Neophema pulchella	2021		3	FALSE	TRUE	Aves	Animalia	212	1
+3172276	Osmanthus heterophyllus	2021		3	FALSE	TRUE	Magnoliopsida	Plantae	220	6
+1411953	Carausius morosus	2020		2	FALSE	TRUE	Insecta	Animalia	216	1
+2012132	Trialeurodes vaporariorum	2021		2	FALSE	TRUE	Insecta	Animalia	216	1
+2481125	Larosterna inca	2020		2	FALSE	TRUE	Aves	Animalia	212	1
+2497341	Megascops kennicottii	2020		2	FALSE	TRUE	Aves	Animalia	212	1
+2868796	Zantedeschia albomaculata	2021		2	FALSE	TRUE	Liliopsida	Plantae	196	6
+3033888	Mahonia bealei	2020		2	FALSE	TRUE	Magnoliopsida	Plantae	220	6
+4088624	Limonium platyphyllum	2020		2	FALSE	TRUE	Magnoliopsida	Plantae	220	6
+4401285	Dorypteryx longipennis	2020		2	FALSE	TRUE	Insecta	Animalia	216	1
+5220435	Pelodiscus sinensis	2020		2	FALSE	TRUE	Testudines	Animalia	11418114	1
+5661914	Anchusa thessala	2021		2	FALSE	TRUE	Magnoliopsida	Plantae	220	6
+8740315	Marionfyfea adventor	2021		2	FALSE	TRUE		Animalia		1
+1016841	Orthomorpha coarctata	2020		1	FALSE	TRUE	Diplopoda	Animalia	361	1
+1111797	Chlorophorus annularis	2020		1	FALSE	TRUE	Insecta	Animalia	216	1
+1371011	Megastigmus spermotrophus	2020		1	FALSE	TRUE	Insecta	Animalia	216	1
+1423286	Ischnura senegalensis	2021		1	FALSE	TRUE	Insecta	Animalia	216	1
+1683815	Rhacocleis annulata	2022		1	FALSE	TRUE	Insecta	Animalia	216	1
+1722140	Eumodicogryllus bordigalensis	2020		1	FALSE	TRUE	Insecta	Animalia	216	1
+1873903	Cadra figulilella	2020		1	FALSE	TRUE	Insecta	Animalia	216	1
+1995681	Blaptica dubia	2020		1	FALSE	TRUE	Insecta	Animalia	216	1
+1998599	Cariblatta lutea	2020		1	FALSE	TRUE	Insecta	Animalia	216	1
+2172103	Heliophanus kochii	2020		1	FALSE	TRUE	Arachnida	Animalia	367	1
+2242011	Mycale micracanthoxea	2020		1	FALSE	TRUE	Demospongiae	Animalia	199	1
+2434126	Suricata suricatta	2021		1	FALSE	TRUE	Mammalia	Animalia	359	1
+2457522	Thamnophis sirtalis	2021		1	FALSE	TRUE	Squamata	Animalia	11592253	1
+2474045	Alectoris barbara	2021		1	FALSE	TRUE	Aves	Animalia	212	1
+2475235	Tauraco leucotis	2021		1	FALSE	TRUE	Aves	Animalia	212	1
+2479027	Lybius dubius	2020		1	FALSE	TRUE	Aves	Animalia	212	1
+2479308	Platycercus adscitus	2022		1	FALSE	TRUE	Aves	Animalia	212	1
+2479804	Pyrrhura molinae	2021		1	FALSE	TRUE	Aves	Animalia	212	1
+2481915	Ciconia abdimii	2020		1	FALSE	TRUE	Aves	Animalia	212	1
+2493618	Lonchura striata	2020		1	FALSE	TRUE	Aves	Animalia	212	1
+2495691	Streptopelia tranquebarica	2022		1	FALSE	TRUE	Aves	Animalia	212	1
+2495869	Columbina passerina	2021		1	FALSE	TRUE	Aves	Animalia	212	1
+2498177	Netta erythrophthalma	2021		1	FALSE	TRUE	Aves	Animalia	212	1
+2515351	Puccinia oxalidis	2020		1	FALSE	TRUE	Pucciniomycetes	Fungi	270	5
+2598552	Seifertia azaleae	2021		1	FALSE	TRUE	Dothideomycetes	Fungi	183	5
+2701564	Juncus pallidus	2021		1	FALSE	TRUE	Liliopsida	Plantae	196	6
+2768763	Asparagus aethiopicus	2020		1	FALSE	TRUE	Liliopsida	Plantae	196	6
+2772206	Muscari aucheri	2021		1	FALSE	TRUE	Liliopsida	Plantae	196	6
+2805420	Spiranthes cernua	2021		1	FALSE	TRUE	Liliopsida	Plantae	196	6
+2856891	Allium karataviense	2020		1	FALSE	TRUE	Liliopsida	Plantae	196	6
+2866850	Arisaema dracontium	2021		1	FALSE	TRUE	Liliopsida	Plantae	196	6
+2889358	Oxyria digyna	2020		1	FALSE	TRUE	Magnoliopsida	Plantae	220	6
+2926613	Origanum onites	2020		1	FALSE	TRUE	Magnoliopsida	Plantae	220	6
+2932905	Salpiglossis sinuata	2020		1	FALSE	TRUE	Magnoliopsida	Plantae	220	6
+2976091	Baptisia australis	2020		1	FALSE	TRUE	Magnoliopsida	Plantae	220	6
+3026402	Spiraea thunbergii	2020		1	FALSE	TRUE	Magnoliopsida	Plantae	220	6
+3033839	Podophyllum peltatum	2020		1	FALSE	TRUE	Magnoliopsida	Plantae	220	6
+3048397	Erysimum bicolor	2021		1	FALSE	TRUE	Magnoliopsida	Plantae	220	6
+3056384	Acalypha rhomboidea	2021		1	FALSE	TRUE	Magnoliopsida	Plantae	220	6
+3082270	Cornus canadensis	2020		1	FALSE	TRUE	Magnoliopsida	Plantae	220	6
+3082297	Limonium sinuatum	2020		1	FALSE	TRUE	Magnoliopsida	Plantae	220	6
+3125893	Sigesbeckia jorullensis	2020		1	FALSE	TRUE	Magnoliopsida	Plantae	220	6
+3170260	Asclepias speciosa	2021		1	FALSE	TRUE	Magnoliopsida	Plantae	220	6
+3188735	Lythrum virgatum	2021		1	FALSE	TRUE	Magnoliopsida	Plantae	220	6
+3882686	Salvia uliginosa	2021		1	FALSE	TRUE	Magnoliopsida	Plantae	220	6
+3981814	Berberis wilsoniae	2020		1	FALSE	TRUE	Magnoliopsida	Plantae	220	6
+4059971	Glandora diffusa	2020		1	FALSE	TRUE	Magnoliopsida	Plantae	220	6
+4067112	Symphytum orientale	2020		1	FALSE	TRUE	Magnoliopsida	Plantae	220	6
+4068166	Echium pininana	2020		1	FALSE	TRUE	Magnoliopsida	Plantae	220	6
+4103351	Lomelosia caucasica	2020		1	FALSE	TRUE	Magnoliopsida	Plantae	220	6
+4487598	Closterotomus trivialis	2020		1	FALSE	TRUE	Insecta	Animalia	216	1
+4544517	Aceria tristriata	2020		1	FALSE	TRUE	Arachnida	Animalia	367	1
+4984851	Bugula neritina	2020		1	FALSE	TRUE	Gymnolaemata	Animalia	252	1
+5041471	Sceliphron destillatorium	2020		1	FALSE	TRUE	Insecta	Animalia	216	1
+5159101	Myzocallis walshii	2021		1	FALSE	TRUE	Insecta	Animalia	216	1
 5166760	Ammothea hilgendorfi	2022		1	FALSE	TRUE	Pycnogonida	Animalia	354	1
+5208832	Gobiosoma bosc	2022		1	FALSE	TRUE		Animalia		1
+5221283	Eublepharis macularius	2021		1	FALSE	TRUE	Squamata	Animalia	11592253	1
+5221528	Hemidactylus turcicus	2021		1	FALSE	TRUE	Squamata	Animalia	11592253	1
+5227747	Lophophorus impejanus	2020		1	FALSE	TRUE	Aves	Animalia	212	1
+5290192	Cenchrus longisetus	2020		1	FALSE	TRUE	Liliopsida	Plantae	196	6
+5353770	Arachis hypogaea	2020		1	FALSE	TRUE	Magnoliopsida	Plantae	220	6
+5359037	Trifolium stellatum	2021		1	FALSE	TRUE	Magnoliopsida	Plantae	220	6
+5359109	Trifolium squarrosum	2022		1	FALSE	TRUE	Magnoliopsida	Plantae	220	6
+5400552	Ageratina altissima	2021		1	FALSE	TRUE	Magnoliopsida	Plantae	220	6
+6101224	Spilopelia chinensis	2020		1	FALSE	TRUE	Aves	Animalia	212	1
+6132234	Rhynchophorus ferrugineus	2020		1	FALSE	TRUE	Insecta	Animalia	216	1
+7100404	Acer buergerianum	2020		1	FALSE	TRUE	Magnoliopsida	Plantae	220	6
+7296375	Viola hederacea	2020		1	FALSE	TRUE	Magnoliopsida	Plantae	220	6
+7331874	Veronica repens	2020		1	FALSE	TRUE	Magnoliopsida	Plantae	220	6
+7753992	Helix lucorum	2021		1	FALSE	TRUE	Gastropoda	Animalia	225	1
+7882289	Zophobas atratus	2021		1	FALSE	TRUE	Insecta	Animalia	216	1
+9340142	Iris hollandica	2020		1	FALSE	TRUE	Liliopsida	Plantae	196	6
+10937982	Phonipara canora	2020		1	FALSE	TRUE	Aves	Animalia	212	1
+11107889	Graptostethus servus	2021		1	FALSE	TRUE	Insecta	Animalia	216	1
+12218002	Hedera maroccana	2021		1	FALSE	TRUE	Magnoliopsida	Plantae	220	6
+12254070	Cynanchica aristata	2020		1	FALSE	TRUE	Magnoliopsida	Plantae	220	6

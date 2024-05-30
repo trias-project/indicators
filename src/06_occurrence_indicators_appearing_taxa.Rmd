@@ -14,7 +14,7 @@ output:
     code_folding: show
 ---
 
-In this document we analyze the Belgian datacube to detect possible (re)appearing taxa in the last year. Such detection is based on some basic rules instead of using GAM (Generalized Additive Models) as the number of GBIF observations decreases sensibly during the current year as effect of a puslishing delay. We also take into account the appearing/reappearing in protected areas as additional warning.
+In this document we analyze the Belgian datacube to detect possible (re)appearing taxa in the last year. Such detection is based on some basic rules instead of using GAM (Generalized Additive Models) as the number of GBIF observations decreases sensibly during the current year as effect of a publishing delay. We also take into account the appearing/reappearing in protected areas as additional warning.
 
 # Setup
 
@@ -79,9 +79,14 @@ spec_names <- read_tsv(
 Years to evaluate:
 
 ```{r eval_years}
-present_year <- lubridate::year(Sys.Date())
-years <- c(present_year) - 1 # The last full year
-years
+# Last evaluation year
+last_year <- lubridate::year(Sys.Date()) - 2
+
+# First evalution year
+first_year <- last_year - 2
+
+# Evaluation years
+years <- seq(first_year, last_year)
 ```
 
 We define the minimum latency (in years) before we speak about reappearance. For example, a latency time window of 3 years means that we consider a taxon reappearing in 2019 if observations occur in 2019 and 2015 or before:
@@ -303,7 +308,7 @@ app_reapp_global <-
 
 ## Add canonical names
 
-Add taxonomic information for better readibility.
+Add taxonomic information for better readability.
 
 ```{r add_taxonomic_info}
 app_reapp_global <- purrr::map(
@@ -319,7 +324,7 @@ app_reapp_global <- purrr::map(
 
 ## Appearing taxa
 
-Reorder columns of data.frame containing appearring taxa:
+Reorder columns of data.frame containing appearing taxa:
 
 ```{r reorder_cols_appearing}
 app_reapp_global$appearing_taxa <-

@@ -13,11 +13,11 @@
 <meta name="author" content="Toon Van Daele" />
 <meta name="author" content="Tim Adriaens" />
 
-<meta name="date" content="2023-11-16" />
+<meta name="date" content="2024-04-18" />
 
 <title>Occurrence indicators: pre-processing</title>
 
-<script src="site_libs/header-attrs-2.25/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.26/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
@@ -412,7 +412,7 @@ div.tocify {
 <h4 class="author">Damiano Oldoni</h4>
 <h4 class="author">Toon Van Daele</h4>
 <h4 class="author">Tim Adriaens</h4>
-<h4 class="date">2023-11-16</h4>
+<h4 class="date">2024-04-18</h4>
 
 </div>
 
@@ -424,16 +424,23 @@ modelling.</p>
 <h1><span class="header-section-number">1</span> Setup</h1>
 <p>Load libraries:</p>
 <pre class="r"><code>library(tidyverse) # To do data science</code></pre>
-<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 4.3.2</code></pre>
-<pre><code>## Warning: package &#39;purrr&#39; was built under R version 4.3.1</code></pre>
-<pre><code>## Warning: package &#39;lubridate&#39; was built under R version 4.3.2</code></pre>
-<pre class="r"><code>library(tidylog) # To provide feedback on dplyr functions
-library(here) # To find files
-library(lubridate) # To work with dates
+<pre><code>## Warning: package &#39;tidyverse&#39; was built under R version 4.3.3</code></pre>
+<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 4.3.3</code></pre>
+<pre><code>## Warning: package &#39;tibble&#39; was built under R version 4.3.3</code></pre>
+<pre><code>## Warning: package &#39;tidyr&#39; was built under R version 4.3.3</code></pre>
+<pre><code>## Warning: package &#39;readr&#39; was built under R version 4.3.3</code></pre>
+<pre><code>## Warning: package &#39;purrr&#39; was built under R version 4.3.3</code></pre>
+<pre><code>## Warning: package &#39;dplyr&#39; was built under R version 4.3.3</code></pre>
+<pre><code>## Warning: package &#39;stringr&#39; was built under R version 4.3.3</code></pre>
+<pre><code>## Warning: package &#39;forcats&#39; was built under R version 4.3.3</code></pre>
+<pre><code>## Warning: package &#39;lubridate&#39; was built under R version 4.3.3</code></pre>
+<pre class="r"><code>library(tidylog) # To provide feedback on dplyr functions</code></pre>
+<pre><code>## Warning: package &#39;tidylog&#39; was built under R version 4.3.3</code></pre>
+<pre class="r"><code>library(here) # To find files</code></pre>
+<pre><code>## Warning: package &#39;here&#39; was built under R version 4.3.3</code></pre>
+<pre class="r"><code>library(lubridate) # To work with dates
 library(rgbif) # To get taxa from publisehd unified checklist</code></pre>
-<pre><code>## Warning: package &#39;rgbif&#39; was built under R version 4.3.1</code></pre>
-<pre class="r"><code>library(inborutils) # To download data from zenodo</code></pre>
-<pre><code>## Warning: package &#39;inborutils&#39; was built under R version 4.3.2</code></pre>
+<pre><code>## Warning: package &#39;rgbif&#39; was built under R version 4.3.3</code></pre>
 </div>
 <div id="get-data" class="section level1" number="2">
 <h1><span class="header-section-number">2</span> Get data</h1>
@@ -441,20 +448,15 @@ library(rgbif) # To get taxa from publisehd unified checklist</code></pre>
 <h2><span class="header-section-number">2.1</span> Occurrence data</h2>
 <div id="download" class="section level3" number="2.1.1">
 <h3><span class="header-section-number">2.1.1</span> Download</h3>
-<p>We download occurrence data as obtained in
-<code>trias-project/occ-cube</code> repository. However, as some files
-are too big to be stored on GitHub, we download them from Zenodo:</p>
-<pre class="r"><code>download_zenodo(
-  doi = &quot;10.5281/zenodo.10058400&quot;,
-  parallel = TRUE,
-  path = here::here(&quot;data&quot;, &quot;input&quot;)
-)</code></pre>
+<p>We download occurrence cubes from Zenodo deposit: <a
+href="https://zenodo.org/records/10527772"
+class="uri">https://zenodo.org/records/10527772</a>.</p>
 </div>
 <div id="alien-species" class="section level3" number="2.1.2">
 <h3><span class="header-section-number">2.1.2</span> Alien species</h3>
 <p>We read occurrence data related to alien species in Belgium:</p>
 <pre class="r"><code>df &lt;- read_csv(
-  file = here::here(&quot;data&quot;, &quot;input&quot;, &quot;be_alientaxa_cube.csv&quot;),
+  file = &quot;https://zenodo.org/records/10527772/files/be_alientaxa_cube.csv?download=1&quot;,
   col_types = cols(
     year = col_double(),
     eea_cell_code = col_character(),
@@ -464,8 +466,6 @@ are too big to be stored on GitHub, we download them from Zenodo:</p>
   ),
   na = &quot;&quot;
 )</code></pre>
-<p>Nota: these data have been also published on <a
-href="https://doi.org/10.5281/zenodo.3632749">Zenodo</a>.</p>
 <p>We remove columns we will never use:</p>
 <pre class="r"><code>df &lt;-
   df %&gt;%
@@ -475,7 +475,7 @@ href="https://doi.org/10.5281/zenodo.3632749">Zenodo</a>.</p>
   df %&gt;%
   tidylog::rename(obs = n)</code></pre>
 <p>We also remove data not assigned to any cell code:</p>
-<pre class="r"><code>df &lt;-
+<pre class="r"><code>df &lt;- 
   df %&gt;%
   tidylog::filter(!is.na(eea_cell_code))</code></pre>
 </div>
@@ -484,7 +484,7 @@ href="https://doi.org/10.5281/zenodo.3632749">Zenodo</a>.</p>
 <p>We read occurrence related data at class level used for correcting
 the research bias effort:</p>
 <pre class="r"><code>df_bl &lt;- read_csv(
-  file = here::here(&quot;data&quot;, &quot;input&quot;, &quot;be_classes_cube.csv&quot;),
+  file = &quot;https://zenodo.org/records/10527772/files/be_classes_cube.csv?download=1&quot;,
   col_types = cols(
     year = col_double(),
     eea_cell_code = col_character(),
@@ -494,8 +494,6 @@ the research bias effort:</p>
   ),
   na = &quot;&quot;
 )</code></pre>
-<p>Nota: these data have been also published on <a
-href="https://doi.org/10.5281/zenodo.3632749">Zenodo</a>.</p>
 <p>We remove columns we will never use:</p>
 <pre class="r"><code>df_bl &lt;-
   df_bl %&gt;%
@@ -505,13 +503,13 @@ href="https://doi.org/10.5281/zenodo.3632749">Zenodo</a>.</p>
   df_bl %&gt;%
   tidylog::rename(cobs = n)</code></pre>
 <p>We remove data not assigned to any cell code:</p>
-<pre class="r"><code>df_bl &lt;-
+<pre class="r"><code>df_bl &lt;- 
   df_bl %&gt;%
   tidylog::filter(!is.na(eea_cell_code))</code></pre>
 <p>We remove also data with <code>classKey</code> equal to
 <code>NA</code>. These data are related to IAS species not linked to any
 class:</p>
-<pre class="r"><code>df_bl &lt;-
+<pre class="r"><code>df_bl &lt;- 
   df_bl %&gt;%
   tidylog::filter(!is.na(classKey))</code></pre>
 </div>
@@ -522,7 +520,7 @@ class:</p>
 href="https://www.gbif.org/dataset/6d9e952f-948c-4483-9807-575348147c7e">Global
 Register of Introduced and Invasive Species - Belgium</a>, typically
 referred to as the <em>unified checklist</em>. These data contain
-taxonomic information as well distribution, description and species
+taxonomic information as well as distribution, description and species
 profiles. We limit to taxa introduced in Belgium
 (<code>locationId</code> : <code>ISO_3166:BE</code>).</p>
 <pre class="r"><code>taxa_df &lt;-
@@ -599,8 +597,8 @@ protected areas by reading file
 {"columns":[{"label":["CELLCODE"],"name":[1],"type":["chr"],"align":["left"]},{"label":["EOFORIGIN"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["NOFORIGIN"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["geometry"],"name":[4],"type":["chr"],"align":["left"]},{"label":["natura2000"],"name":[5],"type":["lgl"],"align":["right"]},{"label":["spa"],"name":[6],"type":["lgl"],"align":["right"]},{"label":["habitat"],"name":[7],"type":["lgl"],"align":["right"]}],"data":[{"1":"1kmE3768N3188","2":"3768000","3":"3188000","4":"list(c(3768000, 3768000, 3769000, 3769000, 3768000, 3188000, 3189000, 3189000, 3188000, 3188000))","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1kmE3768N3189","2":"3768000","3":"3189000","4":"list(c(3768000, 3768000, 3769000, 3769000, 3768000, 3189000, 3190000, 3190000, 3189000, 3189000))","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1kmE3768N3190","2":"3768000","3":"3190000","4":"list(c(3768000, 3768000, 3769000, 3769000, 3768000, 3190000, 3191000, 3191000, 3190000, 3190000))","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1kmE3769N3182","2":"3769000","3":"3182000","4":"list(c(3769000, 3769000, 3770000, 3770000, 3769000, 3182000, 3183000, 3183000, 3182000, 3182000))","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1kmE3769N3183","2":"3769000","3":"3183000","4":"list(c(3769000, 3769000, 3770000, 3770000, 3769000, 3183000, 3184000, 3184000, 3183000, 3183000))","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1kmE3769N3184","2":"3769000","3":"3184000","4":"list(c(3769000, 3769000, 3770000, 3770000, 3769000, 3184000, 3185000, 3185000, 3184000, 3184000))","5":"FALSE","6":"FALSE","7":"FALSE"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<p>We are interested to areas included in Natura2000. We remove columns
-we are not interested to:</p>
+<p>We are interested in areas included in Natura2000. We remove columns
+we are not interested in:</p>
 <pre class="r"><code>df_prot_areas &lt;-
   df_prot_areas %&gt;%
   tidylog::select(
@@ -645,9 +643,8 @@ authorship is added:</p>
   tidylog::add_tally() %&gt;%
   tidylog::ungroup() %&gt;%
   tidylog::mutate(canonicalName = if_else(n &gt; 1,
-    scientificName,
-    canonicalName
-  )) %&gt;%
+                                          scientificName,
+                                          canonicalName)) %&gt;%
   tidylog::select(-c(n, scientificName))</code></pre>
 <p>We also retrieve kingdom and class:</p>
 <pre class="r"><code>class_key &lt;-
@@ -666,25 +663,23 @@ kingdom_class &lt;- map_df(
 <pre class="r"><code># add class
 spec_names &lt;-
   spec_names %&gt;%
-  tidylog::left_join(
-    kingdom_class %&gt;%
-      tidylog::distinct(.data$classKey, .data$class),
-    by = &quot;classKey&quot;
+  tidylog::left_join(kingdom_class %&gt;%
+              tidylog::distinct(.data$classKey, .data$class),
+            by = &quot;classKey&quot;
   )
 
 # add kingdom
 spec_names &lt;-
   spec_names %&gt;%
-  tidylog::left_join(
-    kingdom_class %&gt;%
-      tidylog::distinct(.data$kingdomKey, .data$kingdom),
-    by = &quot;kingdomKey&quot;
-  )</code></pre>
+  tidylog::left_join(kingdom_class %&gt;%
+              tidylog::distinct(.data$kingdomKey, .data$kingdom),
+            by = &quot;kingdomKey&quot;
+  ) </code></pre>
 <p>Preview:</p>
 <pre class="r"><code>spec_names %&gt;% head(10)</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["taxonKey"],"name":[1],"type":["int"],"align":["right"]},{"label":["canonicalName"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kingdomKey"],"name":[3],"type":["int"],"align":["right"]},{"label":["classKey"],"name":[4],"type":["int"],"align":["right"]},{"label":["class"],"name":[5],"type":["chr"],"align":["left"]},{"label":["kingdom"],"name":[6],"type":["chr"],"align":["left"]}],"data":[{"1":"2769766","2":"Ruscus aculeatus","3":"6","4":"196","5":"Liliopsida","6":"Plantae"},{"1":"3728894","2":"Phelipanche ramosa","3":"6","4":"220","5":"Magnoliopsida","6":"Plantae"},{"1":"1718308","2":"Acheta domesticus","3":"1","4":"216","5":"Insecta","6":"Animalia"},{"1":"3042439","2":"Camelina rumelica","3":"6","4":"220","5":"Magnoliopsida","6":"Plantae"},{"1":"5375547","2":"Erucastrum gallicum","3":"6","4":"220","5":"Magnoliopsida","6":"Plantae"},{"1":"5371709","2":"Adonis annua","3":"6","4":"220","5":"Magnoliopsida","6":"Plantae"},{"1":"5384848","2":"Silene gallica","3":"6","4":"220","5":"Magnoliopsida","6":"Plantae"},{"1":"2975257","2":"Vicia hybrida","3":"6","4":"220","5":"Magnoliopsida","6":"Plantae"},{"1":"5384373","2":"Amaranthus graecizans","3":"6","4":"220","5":"Magnoliopsida","6":"Plantae"},{"1":"2927530","2":"Cuscuta epilinum","3":"6","4":"220","5":"Magnoliopsida","6":"Plantae"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["taxonKey"],"name":[1],"type":["int"],"align":["right"]},{"label":["canonicalName"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kingdomKey"],"name":[3],"type":["int"],"align":["right"]},{"label":["classKey"],"name":[4],"type":["int"],"align":["right"]},{"label":["class"],"name":[5],"type":["chr"],"align":["left"]},{"label":["kingdom"],"name":[6],"type":["chr"],"align":["left"]}],"data":[{"1":"2769766","2":"Ruscus aculeatus","3":"6","4":"196","5":"Liliopsida","6":"Plantae"},{"1":"3728894","2":"Phelipanche ramosa","3":"6","4":"220","5":"Magnoliopsida","6":"Plantae"},{"1":"5371889","2":"Oenanthe pimpinelloides","3":"6","4":"220","5":"Magnoliopsida","6":"Plantae"},{"1":"5375547","2":"Erucastrum gallicum","3":"6","4":"220","5":"Magnoliopsida","6":"Plantae"},{"1":"3172104","2":"Veronica peregrina","3":"6","4":"220","5":"Magnoliopsida","6":"Plantae"},{"1":"1718308","2":"Acheta domesticus","3":"1","4":"216","5":"Insecta","6":"Animalia"},{"1":"8243150","2":"Spirobassia hirsuta","3":"6","4":"220","5":"Magnoliopsida","6":"Plantae"},{"1":"1713034","2":"Gryllus bimaculatus","3":"1","4":"216","5":"Insecta","6":"Animalia"},{"1":"5384848","2":"Silene gallica","3":"6","4":"220","5":"Magnoliopsida","6":"Plantae"},{"1":"5374672","2":"Barbarea verna","3":"6","4":"220","5":"Magnoliopsida","6":"Plantae"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p>Taxa not assigned to any class:</p>
@@ -692,7 +687,7 @@ spec_names &lt;-
   tidylog::filter(is.na(classKey))</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["taxonKey"],"name":[1],"type":["int"],"align":["right"]},{"label":["canonicalName"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kingdomKey"],"name":[3],"type":["int"],"align":["right"]},{"label":["classKey"],"name":[4],"type":["int"],"align":["right"]},{"label":["class"],"name":[5],"type":["chr"],"align":["left"]},{"label":["kingdom"],"name":[6],"type":["chr"],"align":["left"]}],"data":[{"1":"4286942","2":"Carassius auratus","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"2351271","2":"Salvelinus fontinalis","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"2340989","2":"Ameiurus nebulosus","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"2394486","2":"Lepomis gibbosus","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"2115769","2":"Austrominius modestus","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"5203111","2":"Umbra pygmaea","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"4286975","2":"Cyprinus carpio","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"2382155","2":"Sander lucioperca","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"2362473","2":"Hypophthalmichthys molitrix","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"2362030","2":"Ctenopharyngodon idella","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"2366634","2":"Carassius gibelio","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"5204019","2":"Oncorhynchus mykiss","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"4409643","2":"Leuciscus idus","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"2362881","2":"Leucaspius delineatus","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"2362868","2":"Pseudorasbora parva","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"2367742","2":"Pimephales promelas","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"5892120","2":"Girardia tigrina","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"2337607","2":"Silurus glanis","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"5851603","2":"Leuciscus aspius","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"4287131","2":"Acipenser baerii","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"2399874","2":"Micropogonias undulatus","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"2340977","2":"Ameiurus melas","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"4344674","2":"Dendrocoelum romanodanubiale","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"2402129","2":"Acipenser gueldenstaedtii","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"2367919","2":"Misgurnus anguillicaudatus","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"5202793","2":"Clarias gariepinus","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"2379245","2":"Proterorhinus semilunaris","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"2379089","2":"Neogobius melanostomus","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"4285968","2":"Ponticola kessleri","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"2379105","2":"Neogobius fluviatilis","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"2402168","2":"Acipenser ruthenus","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"8701771","2":"Obama nungara","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"2502810","2":"Caenoplana coerulea","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"2362486","2":"Hypophthalmichthys nobilis","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"6476704","2":"Parakontikia ventrolineata","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"8740315","2":"Marionfyfea adventor","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"5208832","2":"Gobiosoma bosc","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"2502938","2":"Bipalium kewense","3":"1","4":"NA","5":"NA","6":"Animalia"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["taxonKey"],"name":[1],"type":["int"],"align":["right"]},{"label":["canonicalName"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kingdomKey"],"name":[3],"type":["int"],"align":["right"]},{"label":["classKey"],"name":[4],"type":["int"],"align":["right"]},{"label":["class"],"name":[5],"type":["chr"],"align":["left"]},{"label":["kingdom"],"name":[6],"type":["chr"],"align":["left"]}],"data":[{"1":"4286942","2":"Carassius auratus","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"2351271","2":"Salvelinus fontinalis","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"2340989","2":"Ameiurus nebulosus","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"2394486","2":"Lepomis gibbosus","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"2115769","2":"Austrominius modestus","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"5203111","2":"Umbra pygmaea","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"4286975","2":"Cyprinus carpio","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"2382155","2":"Sander lucioperca","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"2362473","2":"Hypophthalmichthys molitrix","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"2362030","2":"Ctenopharyngodon idella","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"2366634","2":"Carassius gibelio","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"5204019","2":"Oncorhynchus mykiss","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"4409643","2":"Leuciscus idus","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"2362881","2":"Leucaspius delineatus","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"2362868","2":"Pseudorasbora parva","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"2367742","2":"Pimephales promelas","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"5892120","2":"Girardia tigrina","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"2337607","2":"Silurus glanis","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"5851603","2":"Leuciscus aspius","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"4287131","2":"Acipenser baerii","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"2399874","2":"Micropogonias undulatus","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"2340977","2":"Ameiurus melas","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"4344674","2":"Dendrocoelum romanodanubiale","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"2402129","2":"Acipenser gueldenstaedtii","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"2367919","2":"Misgurnus anguillicaudatus","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"5202793","2":"Clarias gariepinus","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"2379089","2":"Neogobius melanostomus","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"2379245","2":"Proterorhinus semilunaris","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"4285968","2":"Ponticola kessleri","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"2379105","2":"Neogobius fluviatilis","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"2402168","2":"Acipenser ruthenus","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"8701771","2":"Obama nungara","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"2362486","2":"Hypophthalmichthys nobilis","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"6476704","2":"Parakontikia ventrolineata","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"2502810","2":"Caenoplana coerulea","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"8740315","2":"Marionfyfea adventor","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"2502938","2":"Bipalium kewense","3":"1","4":"NA","5":"NA","6":"Animalia"},{"1":"5208832","2":"Gobiosoma bosc","3":"1","4":"NA","5":"NA","6":"Animalia"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
@@ -721,7 +716,7 @@ example, the coordinates of cellcode <code>1kmE3895N3116</code> are
 <pre class="r"><code>df_xy %&gt;% head()</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["eea_cell_code"],"name":[1],"type":["chr"],"align":["left"]},{"label":["x"],"name":[2],"type":["int"],"align":["right"]},{"label":["y"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"1kmE3945N3128","2":"3945","3":"3128"},{"1":"1kmE4004N3081","2":"4004","3":"3081"},{"1":"1kmE3800N3130","2":"3800","3":"3130"},{"1":"1kmE3801N3135","2":"3801","3":"3135"},{"1":"1kmE3805N3107","2":"3805","3":"3107"},{"1":"1kmE3807N3112","2":"3807","3":"3112"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["eea_cell_code"],"name":[1],"type":["chr"],"align":["left"]},{"label":["x"],"name":[2],"type":["int"],"align":["right"]},{"label":["y"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"1kmE3868N3136","2":"3868","3":"3136"},{"1":"1kmE3899N3119","2":"3899","3":"3119"},{"1":"1kmE3821N3147","2":"3821","3":"3147"},{"1":"1kmE3824N3147","2":"3824","3":"3147"},{"1":"1kmE3878N3112","2":"3878","3":"3112"},{"1":"1kmE3880N3125","2":"3880","3":"3125"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p>Do the same for baseline data:</p>
@@ -743,7 +738,7 @@ example, the coordinates of cellcode <code>1kmE3895N3116</code> are
 <pre class="r"><code>df_bl_xy %&gt;% head()</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["eea_cell_code"],"name":[1],"type":["chr"],"align":["left"]},{"label":["x"],"name":[2],"type":["int"],"align":["right"]},{"label":["y"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"1kmE3955N3083","2":"3955","3":"3083"},{"1":"1kmE3955N3084","2":"3955","3":"3084"},{"1":"1kmE3945N3123","2":"3945","3":"3123"},{"1":"1kmE3953N3082","2":"3953","3":"3082"},{"1":"1kmE3970N3112","2":"3970","3":"3112"},{"1":"1kmE4021N3108","2":"4021","3":"3108"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["eea_cell_code"],"name":[1],"type":["chr"],"align":["left"]},{"label":["x"],"name":[2],"type":["int"],"align":["right"]},{"label":["y"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"1kmE3880N3121","2":"3880","3":"3121"},{"1":"1kmE3896N3125","2":"3896","3":"3125"},{"1":"1kmE3934N3152","2":"3934","3":"3152"},{"1":"1kmE3982N3132","2":"3982","3":"3132"},{"1":"1kmE4009N3100","2":"4009","3":"3100"},{"1":"1kmE4009N3104","2":"4009","3":"3104"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
@@ -762,8 +757,10 @@ recent_alien_species &lt;-
   tidylog::filter(first_observed &gt;= year_of_introduction | is.na(first_observed)) %&gt;%
   # remove duplicates due to other columns as pathways
   tidylog::distinct(nubKey, first_observed, last_observed) %&gt;%
+
   # get classkey info and filter out taxa without data
   tidylog::inner_join(spec_names, by = c(&quot;nubKey&quot; = &quot;taxonKey&quot;)) %&gt;%
+
   tidylog::distinct(
     taxonKey = nubKey,
     .data$canonicalName,
@@ -783,10 +780,9 @@ than 1950:</p>
 <pre class="r"><code>old_introductions_taxa &lt;-
   taxa_df %&gt;%
   tidylog::filter(first_observed &lt; year_of_introduction) %&gt;%
-  tidylog::anti_join(
-    recent_alien_species %&gt;%
-      tidylog::select(taxonKey),
-    by = c(&quot;nubKey&quot; = &quot;taxonKey&quot;)
+  tidylog::anti_join(recent_alien_species %&gt;%
+    tidylog::select(taxonKey),
+  by = c(&quot;nubKey&quot; = &quot;taxonKey&quot;)
   ) %&gt;%
   tidylog::distinct(
     nubKey,
@@ -868,7 +864,7 @@ protected areas.</p>
 <pre class="r"><code>df %&gt;% head()</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["eea_cell_code"],"name":[2],"type":["chr"],"align":["left"]},{"label":["taxonKey"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["obs"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["x"],"name":[5],"type":["int"],"align":["right"]},{"label":["y"],"name":[6],"type":["int"],"align":["right"]},{"label":["natura2000"],"name":[7],"type":["lgl"],"align":["right"]}],"data":[{"1":"1951","2":"1kmE3799N3172","3":"5786666","4":"1","5":"3799","6":"3172","7":"TRUE"},{"1":"1951","2":"1kmE3803N3136","3":"5341201","4":"1","5":"3803","6":"3136","7":"TRUE"},{"1":"1951","2":"1kmE3803N3171","3":"2705090","4":"1","5":"3803","6":"3171","7":"TRUE"},{"1":"1951","2":"1kmE3804N3135","3":"8200663","4":"1","5":"3804","6":"3135","7":"TRUE"},{"1":"1951","2":"1kmE3804N3137","3":"8200663","4":"1","5":"3804","6":"3137","7":"TRUE"},{"1":"1951","2":"1kmE3807N3136","3":"5362573","4":"1","5":"3807","6":"3136","7":"TRUE"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["eea_cell_code"],"name":[2],"type":["chr"],"align":["left"]},{"label":["taxonKey"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["obs"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["x"],"name":[5],"type":["int"],"align":["right"]},{"label":["y"],"name":[6],"type":["int"],"align":["right"]},{"label":["natura2000"],"name":[7],"type":["lgl"],"align":["right"]}],"data":[{"1":"1951","2":"1kmE3800N3131","3":"5341201","4":"1","5":"3800","6":"3131","7":"TRUE"},{"1":"1951","2":"1kmE3800N3132","3":"5341201","4":"1","5":"3800","6":"3132","7":"TRUE"},{"1":"1951","2":"1kmE3802N3131","3":"5341201","4":"1","5":"3802","6":"3131","7":"FALSE"},{"1":"1951","2":"1kmE3802N3132","3":"5341201","4":"1","5":"3802","6":"3132","7":"TRUE"},{"1":"1951","2":"1kmE3803N3136","3":"5341201","4":"1","5":"3803","6":"3136","7":"TRUE"},{"1":"1951","2":"1kmE3807N3111","3":"2882482","4":"1","5":"3807","6":"3111","7":"TRUE"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p>We do the same for baseline data:</p>
@@ -881,7 +877,7 @@ protected areas.</p>
 <pre class="r"><code>df_bl %&gt;% head()</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["eea_cell_code"],"name":[2],"type":["chr"],"align":["left"]},{"label":["classKey"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["cobs"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["x"],"name":[5],"type":["int"],"align":["right"]},{"label":["y"],"name":[6],"type":["int"],"align":["right"]},{"label":["natura2000"],"name":[7],"type":["lgl"],"align":["right"]}],"data":[{"1":"1951","2":"1kmE3786N3116","3":"229","4":"1","5":"3786","6":"3116","7":"FALSE"},{"1":"1951","2":"1kmE3786N3193","3":"212","4":"1","5":"3786","6":"3193","7":"FALSE"},{"1":"1951","2":"1kmE3790N3188","3":"359","4":"1","5":"3790","6":"3188","7":"FALSE"},{"1":"1951","2":"1kmE3792N3139","3":"220","4":"1","5":"3792","6":"3139","7":"FALSE"},{"1":"1951","2":"1kmE3792N3155","3":"212","4":"1","5":"3792","6":"3155","7":"TRUE"},{"1":"1951","2":"1kmE3792N3175","3":"359","4":"1","5":"3792","6":"3175","7":"TRUE"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["eea_cell_code"],"name":[2],"type":["chr"],"align":["left"]},{"label":["classKey"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["cobs"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["x"],"name":[5],"type":["int"],"align":["right"]},{"label":["y"],"name":[6],"type":["int"],"align":["right"]},{"label":["natura2000"],"name":[7],"type":["lgl"],"align":["right"]}],"data":[{"1":"1951","2":"1kmE3786N3116","3":"229","4":"1","5":"3786","6":"3116","7":"FALSE"},{"1":"1951","2":"1kmE3796N3136","3":"196","4":"1","5":"3796","6":"3136","7":"FALSE"},{"1":"1951","2":"1kmE3797N3136","3":"220","4":"1","5":"3797","6":"3136","7":"FALSE"},{"1":"1951","2":"1kmE3798N3134","3":"220","4":"1","5":"3798","6":"3134","7":"FALSE"},{"1":"1951","2":"1kmE3798N3137","3":"220","4":"1","5":"3798","6":"3137","7":"TRUE"},{"1":"1951","2":"1kmE3799N3127","3":"220","4":"1","5":"3799","6":"3127","7":"FALSE"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
@@ -889,20 +885,20 @@ protected areas.</p>
 <h2><span class="header-section-number">3.5</span> Create time
 series</h2>
 <p>For each species, define cells with at least one observation:</p>
-<pre class="r"><code>df_cc &lt;-
+<pre class="r"><code>df_cc &lt;- 
   df %&gt;%
   tidylog::group_by(taxonKey) %&gt;%
   tidylog::distinct(eea_cell_code) %&gt;%
   tidylog::ungroup()</code></pre>
 <p>For each species, identify the first year with at least one
 observation:</p>
-<pre class="r"><code>df_begin_year &lt;-
+<pre class="r"><code>df_begin_year &lt;- 
   df %&gt;%
   tidylog::group_by(taxonKey) %&gt;%
   tidylog::summarize(begin_year = min(year))</code></pre>
 <p>For each species, combine <code>begin_year</code> and unique
 <code>eea_cell_code</code> as found above:</p>
-<pre class="r"><code>df_cc &lt;-
+<pre class="r"><code>df_cc &lt;- 
   df_cc %&gt;%
   tidylog::left_join(df_begin_year, by = &quot;taxonKey&quot;) %&gt;%
   tidylog::select(taxonKey, begin_year, eea_cell_code)</code></pre>
@@ -910,46 +906,42 @@ observation:</p>
 <pre class="r"><code>df_cc %&gt;% head()</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["taxonKey"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["begin_year"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["eea_cell_code"],"name":[3],"type":["chr"],"align":["left"]}],"data":[{"1":"5786666","2":"1951","3":"1kmE3799N3172"},{"1":"5341201","2":"1951","3":"1kmE3803N3136"},{"1":"2705090","2":"1951","3":"1kmE3803N3171"},{"1":"8200663","2":"1951","3":"1kmE3804N3135"},{"1":"8200663","2":"1951","3":"1kmE3804N3137"},{"1":"5362573","2":"1951","3":"1kmE3807N3136"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["taxonKey"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["begin_year"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["eea_cell_code"],"name":[3],"type":["chr"],"align":["left"]}],"data":[{"1":"5341201","2":"1951","3":"1kmE3800N3131"},{"1":"5341201","2":"1951","3":"1kmE3800N3132"},{"1":"5341201","2":"1951","3":"1kmE3802N3131"},{"1":"5341201","2":"1951","3":"1kmE3802N3132"},{"1":"5341201","2":"1951","3":"1kmE3803N3136"},{"1":"2882482","2":"1951","3":"1kmE3807N3111"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p>For each cell (<code>eea_cell_code</code>) and species
 (<code>taxonKey</code>) we can now create a time series:</p>
-<pre class="r"><code>make_time_series &lt;- function(eea_cell_code, taxonKey, begin_year, last_year) {
-  expand_grid(
-    eea_cell_code = eea_cell_code,
-    taxonKey = taxonKey,
-    year = seq(from = begin_year, to = last_year)
-  )
+<pre class="r"><code>make_time_series &lt;- function(eea_cell_code, taxonKey, begin_year, last_year ) {
+  expand_grid(eea_cell_code = eea_cell_code,
+              taxonKey = taxonKey,
+              year = seq(from = begin_year, to = last_year))
+
 }
 
 # create timeseries slots
-df_ts &lt;- pmap_dfr(df_cc,
-  .f = make_time_series,
-  last_year = year(Sys.Date())
+df_ts &lt;- pmap_dfr(df_cc, 
+                  .f = make_time_series, 
+                  last_year = year(Sys.Date())
 )
 
 ## Add data
 
 # add occurrence data
-df_ts &lt;-
+df_ts &lt;- 
   df_ts %&gt;%
-  tidylog::left_join(df %&gt;% tidylog::select(taxonKey, year, eea_cell_code, obs),
-    by = c(&quot;taxonKey&quot;, &quot;year&quot;, &quot;eea_cell_code&quot;)
-  )
+  tidylog::left_join(df %&gt;% tidylog::select(taxonKey, year, eea_cell_code, obs), 
+                     by = c(&quot;taxonKey&quot;, &quot;year&quot;, &quot;eea_cell_code&quot;))
 
 # add membership to protected areas
-df_ts &lt;-
+df_ts &lt;- 
   df_ts %&gt;%
   tidylog::left_join(df_prot_areas %&gt;% tidylog::select(CELLCODE, natura2000),
-    by = c(&quot;eea_cell_code&quot; = &quot;CELLCODE&quot;)
-  )
+                     by = c(&quot;eea_cell_code&quot; = &quot;CELLCODE&quot;))
 # add classKey
-df_ts &lt;-
+df_ts &lt;- 
   df_ts %&gt;%
-  tidylog::left_join(spec_names %&gt;% tidylog::select(taxonKey, classKey),
-    by = &quot;taxonKey&quot;
-  )</code></pre>
+  tidylog::left_join(spec_names %&gt;% tidylog::select(taxonKey, classKey), 
+                     by = &quot;taxonKey&quot;)</code></pre>
 </div>
 <div id="research-effort-correction" class="section level2"
 number="3.6">
@@ -959,13 +951,11 @@ correction</h2>
 calculate the number of observations at class level excluding the
 observations of the alien species itself:</p>
 <pre class="r"><code># add baseline data (at class level) diminished by obs of specific alien taxon
-df_ts &lt;-
+df_ts &lt;- 
   df_ts %&gt;%
-  tidylog::left_join(
-    df_bl %&gt;%
-      tidylog::select(year, eea_cell_code, classKey, cobs),
-    by = c(&quot;year&quot;, &quot;eea_cell_code&quot;, &quot;classKey&quot;)
-  ) %&gt;%
+  tidylog::left_join(df_bl %&gt;% 
+                       tidylog::select(year, eea_cell_code, classKey, cobs),
+                     by = c(&quot;year&quot;, &quot;eea_cell_code&quot;, &quot;classKey&quot;)) %&gt;%
   tidylog::mutate(cobs = cobs - obs)
 
 # replace NAs with 0
@@ -976,30 +966,26 @@ df_ts &lt;-
 <pre class="r"><code>df_ts %&gt;% head(n = 30)</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["eea_cell_code"],"name":[1],"type":["chr"],"align":["left"]},{"label":["taxonKey"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["year"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["obs"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["natura2000"],"name":[5],"type":["lgl"],"align":["right"]},{"label":["classKey"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["cobs"],"name":[7],"type":["dbl"],"align":["right"]}],"data":[{"1":"1kmE3799N3172","2":"5786666","3":"1951","4":"1","5":"TRUE","6":"359","7":"0"},{"1":"1kmE3799N3172","2":"5786666","3":"1952","4":"0","5":"TRUE","6":"359","7":"0"},{"1":"1kmE3799N3172","2":"5786666","3":"1953","4":"0","5":"TRUE","6":"359","7":"0"},{"1":"1kmE3799N3172","2":"5786666","3":"1954","4":"0","5":"TRUE","6":"359","7":"0"},{"1":"1kmE3799N3172","2":"5786666","3":"1955","4":"0","5":"TRUE","6":"359","7":"0"},{"1":"1kmE3799N3172","2":"5786666","3":"1956","4":"0","5":"TRUE","6":"359","7":"0"},{"1":"1kmE3799N3172","2":"5786666","3":"1957","4":"0","5":"TRUE","6":"359","7":"0"},{"1":"1kmE3799N3172","2":"5786666","3":"1958","4":"0","5":"TRUE","6":"359","7":"0"},{"1":"1kmE3799N3172","2":"5786666","3":"1959","4":"0","5":"TRUE","6":"359","7":"0"},{"1":"1kmE3799N3172","2":"5786666","3":"1960","4":"0","5":"TRUE","6":"359","7":"0"},{"1":"1kmE3799N3172","2":"5786666","3":"1961","4":"0","5":"TRUE","6":"359","7":"0"},{"1":"1kmE3799N3172","2":"5786666","3":"1962","4":"0","5":"TRUE","6":"359","7":"0"},{"1":"1kmE3799N3172","2":"5786666","3":"1963","4":"0","5":"TRUE","6":"359","7":"0"},{"1":"1kmE3799N3172","2":"5786666","3":"1964","4":"0","5":"TRUE","6":"359","7":"0"},{"1":"1kmE3799N3172","2":"5786666","3":"1965","4":"0","5":"TRUE","6":"359","7":"0"},{"1":"1kmE3799N3172","2":"5786666","3":"1966","4":"0","5":"TRUE","6":"359","7":"0"},{"1":"1kmE3799N3172","2":"5786666","3":"1967","4":"0","5":"TRUE","6":"359","7":"0"},{"1":"1kmE3799N3172","2":"5786666","3":"1968","4":"0","5":"TRUE","6":"359","7":"0"},{"1":"1kmE3799N3172","2":"5786666","3":"1969","4":"0","5":"TRUE","6":"359","7":"0"},{"1":"1kmE3799N3172","2":"5786666","3":"1970","4":"0","5":"TRUE","6":"359","7":"0"},{"1":"1kmE3799N3172","2":"5786666","3":"1971","4":"0","5":"TRUE","6":"359","7":"0"},{"1":"1kmE3799N3172","2":"5786666","3":"1972","4":"0","5":"TRUE","6":"359","7":"0"},{"1":"1kmE3799N3172","2":"5786666","3":"1973","4":"0","5":"TRUE","6":"359","7":"0"},{"1":"1kmE3799N3172","2":"5786666","3":"1974","4":"0","5":"TRUE","6":"359","7":"0"},{"1":"1kmE3799N3172","2":"5786666","3":"1975","4":"0","5":"TRUE","6":"359","7":"0"},{"1":"1kmE3799N3172","2":"5786666","3":"1976","4":"0","5":"TRUE","6":"359","7":"0"},{"1":"1kmE3799N3172","2":"5786666","3":"1977","4":"0","5":"TRUE","6":"359","7":"0"},{"1":"1kmE3799N3172","2":"5786666","3":"1978","4":"0","5":"TRUE","6":"359","7":"0"},{"1":"1kmE3799N3172","2":"5786666","3":"1979","4":"0","5":"TRUE","6":"359","7":"0"},{"1":"1kmE3799N3172","2":"5786666","3":"1980","4":"0","5":"TRUE","6":"359","7":"0"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["eea_cell_code"],"name":[1],"type":["chr"],"align":["left"]},{"label":["taxonKey"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["year"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["obs"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["natura2000"],"name":[5],"type":["lgl"],"align":["right"]},{"label":["classKey"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["cobs"],"name":[7],"type":["dbl"],"align":["right"]}],"data":[{"1":"1kmE3800N3131","2":"5341201","3":"1951","4":"1","5":"TRUE","6":"220","7":"24"},{"1":"1kmE3800N3131","2":"5341201","3":"1952","4":"0","5":"TRUE","6":"220","7":"0"},{"1":"1kmE3800N3131","2":"5341201","3":"1953","4":"0","5":"TRUE","6":"220","7":"0"},{"1":"1kmE3800N3131","2":"5341201","3":"1954","4":"0","5":"TRUE","6":"220","7":"0"},{"1":"1kmE3800N3131","2":"5341201","3":"1955","4":"0","5":"TRUE","6":"220","7":"0"},{"1":"1kmE3800N3131","2":"5341201","3":"1956","4":"0","5":"TRUE","6":"220","7":"0"},{"1":"1kmE3800N3131","2":"5341201","3":"1957","4":"0","5":"TRUE","6":"220","7":"0"},{"1":"1kmE3800N3131","2":"5341201","3":"1958","4":"0","5":"TRUE","6":"220","7":"0"},{"1":"1kmE3800N3131","2":"5341201","3":"1959","4":"0","5":"TRUE","6":"220","7":"0"},{"1":"1kmE3800N3131","2":"5341201","3":"1960","4":"0","5":"TRUE","6":"220","7":"0"},{"1":"1kmE3800N3131","2":"5341201","3":"1961","4":"0","5":"TRUE","6":"220","7":"0"},{"1":"1kmE3800N3131","2":"5341201","3":"1962","4":"0","5":"TRUE","6":"220","7":"0"},{"1":"1kmE3800N3131","2":"5341201","3":"1963","4":"0","5":"TRUE","6":"220","7":"0"},{"1":"1kmE3800N3131","2":"5341201","3":"1964","4":"0","5":"TRUE","6":"220","7":"0"},{"1":"1kmE3800N3131","2":"5341201","3":"1965","4":"0","5":"TRUE","6":"220","7":"0"},{"1":"1kmE3800N3131","2":"5341201","3":"1966","4":"0","5":"TRUE","6":"220","7":"0"},{"1":"1kmE3800N3131","2":"5341201","3":"1967","4":"0","5":"TRUE","6":"220","7":"0"},{"1":"1kmE3800N3131","2":"5341201","3":"1968","4":"0","5":"TRUE","6":"220","7":"0"},{"1":"1kmE3800N3131","2":"5341201","3":"1969","4":"0","5":"TRUE","6":"220","7":"0"},{"1":"1kmE3800N3131","2":"5341201","3":"1970","4":"0","5":"TRUE","6":"220","7":"0"},{"1":"1kmE3800N3131","2":"5341201","3":"1971","4":"0","5":"TRUE","6":"220","7":"0"},{"1":"1kmE3800N3131","2":"5341201","3":"1972","4":"0","5":"TRUE","6":"220","7":"0"},{"1":"1kmE3800N3131","2":"5341201","3":"1973","4":"0","5":"TRUE","6":"220","7":"0"},{"1":"1kmE3800N3131","2":"5341201","3":"1974","4":"0","5":"TRUE","6":"220","7":"0"},{"1":"1kmE3800N3131","2":"5341201","3":"1975","4":"0","5":"TRUE","6":"220","7":"0"},{"1":"1kmE3800N3131","2":"5341201","3":"1976","4":"0","5":"TRUE","6":"220","7":"0"},{"1":"1kmE3800N3131","2":"5341201","3":"1977","4":"0","5":"TRUE","6":"220","7":"0"},{"1":"1kmE3800N3131","2":"5341201","3":"1978","4":"0","5":"TRUE","6":"220","7":"0"},{"1":"1kmE3800N3131","2":"5341201","3":"1979","4":"0","5":"TRUE","6":"220","7":"0"},{"1":"1kmE3800N3131","2":"5341201","3":"1980","4":"0","5":"TRUE","6":"220","7":"0"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p>Add column for presence (1) or absence (0)</p>
-<pre class="r"><code>df_ts &lt;-
+<pre class="r"><code>df_ts &lt;- 
   df_ts %&gt;%
-  tidylog::mutate(
-    pa_cobs = if_else(cobs &gt; 0, 1, 0),
-    pa_obs = if_else(obs &gt; 0, 1, 0)
-  )</code></pre>
+  tidylog::mutate(pa_cobs = if_else(cobs &gt; 0, 1, 0),
+                  pa_obs = if_else(obs &gt; 0, 1, 0))</code></pre>
 <p>Arrange order columns:</p>
 <pre class="r"><code>df_ts &lt;-
   df_ts %&gt;%
-  tidylog::select(
-    taxonKey,
-    year,
-    eea_cell_code,
-    obs,
-    pa_obs,
-    cobs,
-    pa_cobs,
-    classKey,
-    natura2000
-  )</code></pre>
+  tidylog::select(taxonKey, 
+                  year, 
+                  eea_cell_code, 
+                  obs, 
+                  pa_obs, 
+                  cobs, 
+                  pa_cobs,
+                  classKey,
+                  natura2000)</code></pre>
 </div>
 </div>
 <div id="save-data" class="section level1" number="4">
@@ -1010,18 +996,16 @@ number="4.1">
 taxonomic metadata</h2>
 <p>Save <code>df_ts</code> as it will be used as start point of
 modelling pipelines:</p>
-<pre class="r"><code>write_tsv(df_ts,
-  file = here::here(&quot;data&quot;, &quot;interim&quot;, &quot;df_timeseries.tsv&quot;),
-  na = &quot;&quot;
+<pre class="r"><code>write_tsv(df_ts, 
+          file = here::here(&quot;data&quot;, &quot;interim&quot;, &quot;df_timeseries.tsv&quot;), 
+          na = &quot;&quot;
 )</code></pre>
 <p>We save also the taxonomic information:</p>
 <pre class="r"><code>write_tsv(spec_names,
-  file = here::here(
-    &quot;data&quot;,
-    &quot;interim&quot;,
-    &quot;timeseries_taxonomic_info.tsv&quot;
-  ),
-  na = &quot;&quot;
+          file = here::here(&quot;data&quot;, 
+                            &quot;interim&quot;, 
+                            &quot;timeseries_taxonomic_info.tsv&quot;),
+          na = &quot;&quot;
 )</code></pre>
 </div>
 </div>

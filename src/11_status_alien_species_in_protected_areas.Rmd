@@ -80,7 +80,7 @@ protected_areas_metadata <-
 )
 ```
 
-Read the geospatial package containig the Belgian protected areas:
+Read the geospatial package containing the Belgian protected areas:
 
 ```{r read_protected_areas}
 protected_areas <-

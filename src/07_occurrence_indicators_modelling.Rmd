@@ -619,7 +619,7 @@ file = here::here(
   "output",
   "GAM_outputs",
   paste0(
-    "output_GAM_observations_belgium_",
+    "summary_GAM_observations_belgium_",
     method_em, ".tsv"
   )
 )
@@ -635,7 +635,7 @@ file = here::here(
   "output",
   "GAM_outputs",
   paste0(
-    "output_GAM_observations_pa_",
+    "summary_GAM_observations_pa_",
     method_em, ".tsv"
   )
 )
@@ -651,7 +651,7 @@ file = here::here(
   "output",
   "GAM_outputs",
   paste0(
-    "output_GAM_occupancy_belgium_",
+    "summary_GAM_occupancy_belgium_",
     method_em, ".tsv"
   )
 )
@@ -667,7 +667,7 @@ file = here::here(
   "output",
   "GAM_outputs",
   paste0(
-    "output_GAM_occupancy_pa_",
+    "summary_GAM_occupancy_pa_",
     method_em, ".tsv"
   )
 )

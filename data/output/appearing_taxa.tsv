@@ -77,6 +77,7 @@ taxonKey	canonicalName	year	ncells_prot_areas	ncells_BE	in_prot_areas	in_BE	clas
 1941864	Paysandisia archon	2020	1		TRUE	FALSE	Insecta	Animalia	216	1
 2128502	Aceria erinea	2020	1		TRUE	FALSE	Arachnida	Animalia	367	1
 2157203	Steatoda nobilis	2022	1		TRUE	FALSE	Arachnida	Animalia	367	1
+2294275	Eobania vermiculata	2022	1		TRUE	FALSE	Gastropoda	Animalia	225	1
 2440196	Macropus rufogriseus	2021	1		TRUE	FALSE	Mammalia	Animalia	359	1
 2486132	Pycnonotus leucotis	2021	1		TRUE	FALSE	Aves	Animalia	212	1
 2490384	Cardinalis cardinalis	2022	1		TRUE	FALSE	Aves	Animalia	212	1

@@ -148,6 +148,60 @@ taxa_df <-
 
 ## Remove some taxa
 
+### Cells in occurrence cubes not in EEA Belgian grid
+
+The occurrence cubes were created based on GBIF occurrences filtered using country = `BE`. The cell codes were then created by manipulating the coordinates as strings, i.e. no spatial filter with the EEA grid was applied. So, it can happen that (few) cells in the cube are not linked with occurrences in Belgian territory as `country = BE` is in rare cases not enough. We remove them by using the geopackage containing the regional information of the EEA grid cells as shown in the following step. The regional information will be added at a later stage.
+
+Read the EEA grid with regional information from `utm1_bel_with_regions.gpkg` in `data/output`:
+
+```{r read_regions_info}
+gpkg_path <- here::here("data", "output", "utm1_bel_with_regions.gpkg")
+eea_grid_regions <- sf::st_read(gpkg_path)
+```
+
+Preview:
+
+```{r preview_regions_info}
+eea_grid_regions %>% head()
+```
+
+Notice that the column `isBelgium` is the union of the columns `isFlanders`, `isWallonia` and `isBrussels`. The 15km buffer zone and the maritime federal zones are not covered. At the moment we will not use the column `isBelgium` as occurrences on the maritime federal zones or in proximity of the coast would be otherwise excluded. Still, notice that these areas cover almost 40% of the EEA grid:
+
+```{r count-n-cells-in-out-terestrial-BE}
+eea_grid_regions %>%
+  # Transform to data.frame
+  as.data.frame() %>%
+  # Count the number of cells in Belgium
+  count(isBelgium) %>%
+  # Add percentage as a column
+  mutate(percentage = n / sum(n) * 100)
+```
+
+We identify the rows to remove in alien species occurrence cube, `df`, and  baseline, `df_bl`, by doing an `anti_join`:
+
+```{r show-cells-out-of-belgium}
+df %>%
+  tidylog::filter(!eea_cell_code %in% eea_grid_regions$CELLCODE)
+```
+
+```{r show-cells-out-of-belgium-baseline}
+df_bl %>%
+  tidylog::filter(!eea_cell_code %in% eea_grid_regions$CELLCODE)
+```
+
+We remove them:
+
+```{r remove-cells-out-of-be}
+df <- df %>%
+  tidylog::filter(eea_cell_code %in% eea_grid_regions$CELLCODE)
+```
+
+```{r remove-cells-out-of-be-baseline}
+df_bl <- df_bl %>%
+  tidylog::inner_join(eea_grid_regions %>% as.data.frame(),
+                      by = c("eea_cell_code" = "CELLCODE"))
+```
+
 ### Taxa in unified checklist without occurrences
 
 There is a group of taxa defined in the unified checklist which are not present in the occurrence data, i.e. the presence of these taxa, although confirmed by authoritative's checklists, is still not sustained by observations:
@@ -182,10 +236,10 @@ write_tsv(
 
 ## Grid cells intersecting protected areas
 
-We get information about intersection of grid cells with Belgian protected areas by reading file `intersect_EEA_ref_grid_protected_areas.tsv` in `data/output`:
+We get information about the intersection of grid cells with Belgian protected areas by reading file `intersect_EEA_ref_grid_protected_areas.tsv` in `data/output`:
 
 ```{r read_protected_areas}
-df_prot_areas <- read_tsv(
+df_prot_areas <- readr::read_tsv(
   here::here(
     "data",
     "interim",
@@ -213,11 +267,12 @@ df_prot_areas <-
   )
 ```
 
+
 #  Pre-processing
 
 ## Add informative columns
 
-For better interpretation of the data, we retrieve scientific names (without authorship) of the species whose data we are going to analyze. We also retrieve the class of each alien species to link occurrence data with the related baseline data:
+For better interpretation of the data, we retrieve scientific names (without authorship) of the species whose data we are going to analyze. We also retrieve the class of each alien species to link occurrence data with the related baseline data. This step requires an internet connection and can take long time as we are querying the GBIF API:
 
 ```{r get_canonical_names}
 taxon_key <-
@@ -313,16 +368,16 @@ Extract coordinates from column `eea_cell_code`. For example, the coordinates of
 df_xy <-
   df %>%
   tidylog::distinct(eea_cell_code) %>%
-  bind_cols(
-    tibble(
-      x = unlist(str_extract_all(unique(df$eea_cell_code),
+  dplyr::bind_cols(
+    dplyr::tibble(
+      x = unlist(stringr::str_extract_all(unique(df$eea_cell_code),
         pattern = "(?<=E)[0-9\\-]+"
       )),
-      y = unlist(str_extract_all(unique(df$eea_cell_code),
+      y = unlist(stringr::str_extract_all(unique(df$eea_cell_code),
         pattern = "(?<=N)[0-9\\-]+"
       ))
     ) %>%
-      mutate_all(as.integer)
+    tidylog::mutate(across(where(is.character), as.integer))
   )
 ```
 
@@ -366,14 +421,12 @@ year_of_introduction <- 1950
 
 recent_alien_species <-
   taxa_df %>%
-  # lower limit on date of first introduction if present
+  # Lower limit on date of first introduction if present
   tidylog::filter(first_observed >= year_of_introduction | is.na(first_observed)) %>%
-  # remove duplicates due to other columns as pathways
+  # Remove duplicates due to other columns as pathways
   tidylog::distinct(nubKey, first_observed, last_observed) %>%
-
-  # get classkey info and filter out taxa without data
+  # Get classKey info and filter out taxa without data
   tidylog::inner_join(spec_names, by = c("nubKey" = "taxonKey")) %>%
-
   tidylog::distinct(
     taxonKey = nubKey,
     .data$canonicalName,
@@ -444,24 +497,16 @@ We also limit the time series analysis on observations from 1950, start of state
 first_year <- 1950
 ```
 
-Some observations can be published with erroneous coordinates (see [#trias-project/occ-processing#13](https://github.com/trias-project/occ-processing/issues/13)) or can be assigned to a grid cell out of Belgium and should therefore removed.
-
-```{r define_x_y_range_values}
-be_cellcodes <- df_prot_areas$CELLCODE
-```
-
-Apply spatial and temporal restraints defined above to both occurrence data:
+Apply temporal restraint to both occurrence data:
 
 ```{r apply_restraints_time_space_occ_data}
 df <-
   df %>%
-  # recently introduced taxa
+  # Recently introduced taxa
   tidylog::filter(taxonKey %in% recent_alien_species$taxonKey) %>%
   tidylog::left_join(df_xy, by = "eea_cell_code") %>%
-  # recent history
-  tidylog::filter(year > first_year) %>%
-  # in Belgium
-  tidylog::filter(eea_cell_code %in% be_cellcodes)
+  # Recent history
+  tidylog::filter(year > first_year)
 ```
 
 and baseline data:
@@ -470,10 +515,8 @@ and baseline data:
 df_bl <-
   df_bl %>%
   tidylog::left_join(df_bl_xy, by = "eea_cell_code") %>%
-  # recent history
-  tidylog::filter(year > first_year) %>%
-  # in Belgium
-  tidylog::filter(eea_cell_code %in% be_cellcodes)
+  # Recent history
+  tidylog::filter(year > first_year)
 ```
 
 ## Add information about presence in protected areas
@@ -557,25 +600,38 @@ make_time_series <- function(eea_cell_code, taxonKey, begin_year, last_year ) {
 }
 
 # create timeseries slots
-df_ts <- pmap_dfr(df_cc, 
-                  .f = make_time_series, 
-                  last_year = year(Sys.Date())
+df_ts <- purrr::pmap_dfr(df_cc, 
+                         .f = make_time_series, 
+                         last_year = year(Sys.Date())
 )
 
 ## Add data
 
-# add occurrence data
+# Add occurrence data and protected areas
 df_ts <- 
   df_ts %>%
-  tidylog::left_join(df %>% tidylog::select(taxonKey, year, eea_cell_code, obs), 
+  tidylog::left_join(
+    df %>% tidylog::select(taxonKey,
+                           year,
+                           eea_cell_code,
+                           obs), 
                      by = c("taxonKey", "year", "eea_cell_code"))
-
-# add membership to protected areas
+# Add membership to protected areas
 df_ts <- 
   df_ts %>%
   tidylog::left_join(df_prot_areas %>% tidylog::select(CELLCODE, natura2000),
                      by = c("eea_cell_code" = "CELLCODE"))
-# add classKey
+# Add regional information
+df_ts <- 
+  df_ts %>%
+  tidylog::left_join(eea_grid_regions %>% 
+                       as.data.frame() %>%
+                       tidylog::select(CELLCODE, 
+                                       isFlanders, 
+                                       isWallonia, 
+                                       isBrussels),
+                     by = c("eea_cell_code" = "CELLCODE"))
+# Add classKey
 df_ts <- 
   df_ts %>%
   tidylog::left_join(spec_names %>% tidylog::select(taxonKey, classKey), 
@@ -587,7 +643,7 @@ df_ts <-
 To correct the effect of research effort of an alien speies, we calculate the number of observations at class level excluding the observations of the alien species itself:
 
 ```{r correct_cobs_research_effort_bias}
-# add baseline data (at class level) diminished by obs of specific alien taxon
+# Add baseline data (at class level) diminished by obs of specific alien taxon
 df_ts <- 
   df_ts %>%
   tidylog::left_join(df_bl %>% 
@@ -621,15 +677,18 @@ Arrange order columns:
 ```{r set_order_columns}
 df_ts <-
   df_ts %>%
-  tidylog::select(taxonKey, 
-                  year, 
-                  eea_cell_code, 
-                  obs, 
-                  pa_obs, 
-                  cobs, 
-                  pa_cobs,
-                  classKey,
-                  natura2000)
+  tidylog::relocate(taxonKey, 
+                    year, 
+                    eea_cell_code, 
+                    obs, 
+                    pa_obs, 
+                    cobs, 
+                    pa_cobs,
+                    classKey,
+                    isFlanders,
+                    isWallonia,
+                    isBrussels,
+                    natura2000)
 ```
 
 # Save data

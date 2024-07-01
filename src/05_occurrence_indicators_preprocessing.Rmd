@@ -619,7 +619,8 @@ df_ts <-
 # Add membership to protected areas
 df_ts <- 
   df_ts %>%
-  tidylog::left_join(df_prot_areas %>% tidylog::select(CELLCODE, natura2000),
+  tidylog::left_join(df_prot_areas %>% 
+                       tidylog::select(CELLCODE, natura2000),
                      by = c("eea_cell_code" = "CELLCODE"))
 # Add regional information
 df_ts <- 

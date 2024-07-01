@@ -338,13 +338,11 @@ plot_dimensions <- list(width = 2800, height = 1500)
 ```
 
 
-### Observations
+We define also a wrap-up function, `apply_gam_for_eval_years` to apply GAM for each evaluation year and taxon:
 
-We apply GAM for all taxa in Belgium, its regions and protected areas:
-
-```{r apply_gam_to_all_taxa, message=FALSE, cache=TRUE}
-# Define wrap function to apply GAM for every time series (BE, its regions and
-# protected areas)
+```{r apply_gam_for_eval_years}
+# Define wrap function to apply GAM for every time series (Belgium, its regions
+# and protected areas)
 apply_gam_for_eval_years <- function(df,
                                      region,
                                      eval_years,
@@ -365,6 +363,7 @@ apply_gam_for_eval_years <- function(df,
   }
   taxon_keys <- unique(df$taxonKey)
   taxon_names <- unique(df$canonicalName)
+  message(paste0("Applying GAM. Variable: ", y_var, "; region: ", region, "."))
   gam_occs <- map2(
     taxon_keys, taxon_names,
     function(t, n) {
@@ -414,7 +413,14 @@ apply_gam_for_eval_years <- function(df,
   names(gam_occs) <- taxon_keys
   gam_occs
 }
+```
 
+
+### Observations
+
+We apply GAM modelling by using the wrap-up function defined above to observations in Belgium, its regions and protected areas. This step can take long.
+
+```{r apply_gam_to_all_taxa, message=FALSE, cache=TRUE}
 # Apply `apply_gam_for_eval_years` to observations:
 gam_occs <- purrr::imap(
   df_ts_compact,
@@ -430,17 +436,21 @@ gam_occs <- purrr::imap(
 )
 ```
 
-Show results for _Hydrocotyle ranunculoides_ and _Trachemys scripta elegans_:
+Show results for _Pinus sylvestris_:
 
-```{r show_results_preview_occs_BE, message=FALSE}
-gam_occs$isBelgium$`7978544`$plot
-gam_occs$issBelgium$`6157026`$plot
+```{r show_results_preview_occs_all_regions}
+taxon_example <- "5285637"
+purrr::map(gam_occs, function(x) {
+  x %>%
+    purrr::pluck(taxon_example) %>%
+    purrr::pluck("plot")
+})
 ```
 
 
 ### Occupancy
 
-Apply GAM for the observed area of occupancy (number of occupied cells):
+We apply GAM modelling by using the wrap-up function defined above to occupancy in Belgium, its regions and protected areas. This step can take long.
 
 ```{r apply_gam_occupancy_to_all_taxa, message=FALSE, cache=TRUE}
 gam_occupancy <- purrr::imap(
@@ -457,11 +467,14 @@ gam_occupancy <- purrr::imap(
 )
 ```
 
-Show results for _Hydrocotyle ranunculoides_ and _Trachemys scripta elegans_:
+Show results for _Pinus Sylvestris_:
 
-```{r preview_gam_occupancy_Belgium, message=FALSE}
-gam_occupancy$isBelgium$`7978544`$plot
-gam_occupancy$isBelgium$`6157026`$plot
+```{r preview_gam_occupancy_Belgium}
+purrr::map(gam_occupancy, function(x) {
+  x %>%
+    purrr::pluck(taxon_example) %>%
+    purrr::pluck("plot")
+})
 ```
 
 
@@ -472,30 +485,31 @@ gam_occupancy$isBelgium$`6157026`$plot
 Save emerging status based on decision rules:
 
 ```{r save_decision_rules_results}
-# Define function to save the results for Belgium, its regions and protected areas
-save_decision_rules_output <- function(df,
-                                       region,
-                                       indicator) {
-  readr::write_tsv(
-    df,
+# Define function to save the results for Belgium, its regions and protected
+# areas
+save_decision_rules_output <- function(df, region, indicator) {
+  # Remove "is" from "isBrussels", "isFlanders", "isWallonia" to create the
+  # subdirectory to be added to the basic directory
+  region <- stringr::str_remove(region, "^is")
+  readr::write_tsv(x = df,
     file = here::here(
       "data", "output",
       "decision_rules_outputs",
-      paste0("output_decision_rules_", indicator, "_", region, ".tsv"),
+      paste0("output_decision_rules_", indicator, "_", region, ".tsv")
+    ),
     na = ""
-    )
   )
 }
 
 # Apply function to save decision rules outputs applied to occurrences
-purrr::iwalk(em_decision_rules_occs,
-            save_decision_rules_output,
-            indicator = "occs")
+purrr::iwalk(em_decision_rules_occs, function(df, region) {
+  save_decision_rules_output(df, region, indicator = "occs")
+})
 
 # Apply function to save decision rules outputs applied to occupancy
-purrr::iwalk(em_decision_rules_occupancy,
-            save_decision_rules_output,
-            indicator = "occupancy")
+purrr::iwalk(em_decision_rules_occupancy, function(df, region) {
+  save_decision_rules_output(df, region, indicator = "occupancy")
+})
 ```
 
 
@@ -534,24 +548,45 @@ save_gam_output <- function(gam_results,
     file = here::here(
       dir_name_basic,
       paste0("summary_GAM_", indicator, "_", region, ".tsv")
-      )
     )
-  }
-)
-```
+  )
+}
 
+# Apply function to save GAM outputs applied to ocurrences
+purrr::iwalk(gam_occs, function(df, region) {
+  save_gam_output(df, region, indicator = "occs")
+})
+
+# Apply function to save decision rules outputs applied to occupancy
+purrr::iwalk(gam_occupancy, function(df, region) {
+  save_gam_output(df, region, indicator = "occupancy")
+})
+```
 
 ## Plots
 
 We create a zip file with all generated GAM plots:
 
-```{r create-zip-file}
+```{r create-zip-file, results='hide'}
 folder_path <- here::here("data", "output", "GAM_outputs")
-zip(zipfile = here::here("data", "output", "GAM_outputs", "GAM_plots.zip"),
-    files = list.files(folder_path,
-                       pattern = ".png$",
-                       full.names = TRUE,
-                       recursive = TRUE)
-)
+
+# Get relative paths of PNG files
+png_files <- list.files(folder_path,
+                        pattern = "\\.png$",
+                        recursive = TRUE)
+
+# Change working directory temporarily
+old_wd <- getwd()
+setwd(folder_path)
+
+# Create zip file
+zip(zipfile = "GAM_plots.zip", files = png_files)
+
+# Restore working directory
+setwd(old_wd)
+
+# Move zip file to the desired location (if needed)
+file.rename(file.path(folder_path, "GAM_plots.zip"),
+            here::here("data", "output", "GAM_outputs", "GAM_plots.zip"))
 ```
 

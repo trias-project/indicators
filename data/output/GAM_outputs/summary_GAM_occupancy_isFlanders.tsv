@@ -1,0 +1,4966 @@
+taxonKey	year	em_status	growth	method
+1003567	2020			correct_baseline
+1003567	2021			correct_baseline
+1003567	2022			correct_baseline
+1008955	2020			correct_baseline
+1008955	2021			correct_baseline
+1008955	2022			correct_baseline
+1014565	2020			correct_baseline
+1014565	2021			correct_baseline
+1014565	2022			correct_baseline
+1017419	2020			correct_baseline
+1017419	2021			correct_baseline
+1017419	2022			correct_baseline
+1031394	2020			correct_baseline
+1031394	2021			correct_baseline
+1031394	2022			correct_baseline
+1031400	2020			correct_baseline
+1031400	2021			correct_baseline
+1031400	2022			correct_baseline
+1031684	2020			correct_baseline
+1031684	2021			correct_baseline
+1031684	2022			correct_baseline
+1031737	2020			correct_baseline
+1031737	2021			correct_baseline
+1031737	2022			correct_baseline
+1031742	2020			correct_baseline
+1031742	2021			correct_baseline
+1031742	2022			correct_baseline
+1043717	2020			correct_baseline
+1043717	2021			correct_baseline
+1043717	2022			correct_baseline
+1047536	2020	3	1.3810887180995854	correct_baseline
+1047536	2021	3	1.3782166658623718	correct_baseline
+1047536	2022	3	1.3752165526180353	correct_baseline
+1095946	2020			correct_baseline
+1095946	2021			correct_baseline
+1095946	2022			correct_baseline
+1119292	2020			correct_baseline
+1119292	2021			correct_baseline
+1119292	2022			correct_baseline
+1133603	2020			correct_baseline
+1133603	2021			correct_baseline
+1133603	2022			correct_baseline
+1152186	2020			correct_baseline
+1152186	2021			correct_baseline
+1152186	2022			correct_baseline
+1247584	2020			correct_baseline
+1247584	2021			correct_baseline
+1247584	2022			correct_baseline
+1276876	2020			correct_baseline
+1276876	2021			correct_baseline
+1276876	2022			correct_baseline
+1309600	2020	2	0.9779483945584696	correct_baseline
+1309600	2021	1	0.9877365355815046	correct_baseline
+1309600	2022	1	0.9905925624083698	correct_baseline
+1309606	2020			correct_baseline
+1309606	2021			correct_baseline
+1309606	2022			correct_baseline
+1309652	2020			correct_baseline
+1309652	2021			correct_baseline
+1309652	2022			correct_baseline
+1311477	2020			correct_baseline
+1311477	2021			correct_baseline
+1311477	2022			correct_baseline
+1313740	2020			correct_baseline
+1313740	2021			correct_baseline
+1313740	2022			correct_baseline
+1316908	2020			correct_baseline
+1316908	2021			correct_baseline
+1316908	2022			correct_baseline
+1320777	2020			correct_baseline
+1320777	2021			correct_baseline
+1320777	2022			correct_baseline
+1325561	2020			correct_baseline
+1325561	2021			correct_baseline
+1325561	2022			correct_baseline
+1342324	2020			correct_baseline
+1342324	2021			correct_baseline
+1342324	2022			correct_baseline
+1346919	2020			correct_baseline
+1346919	2021			correct_baseline
+1346919	2022			correct_baseline
+1421091	2020	0	0.8195000690734285	correct_baseline
+1421091	2021	0	0.7687333765709485	correct_baseline
+1421091	2022	0	0.7208212604239845	correct_baseline
+1421095	2020			correct_baseline
+1421095	2021			correct_baseline
+1421095	2022			correct_baseline
+1421105	2020			correct_baseline
+1421105	2021			correct_baseline
+1421105	2022			correct_baseline
+1450317	2020			correct_baseline
+1450317	2021			correct_baseline
+1450317	2022			correct_baseline
+1521740	2020			correct_baseline
+1521740	2021			correct_baseline
+1521740	2022			correct_baseline
+1523628	2020			correct_baseline
+1523628	2021			correct_baseline
+1523628	2022			correct_baseline
+1551754	2020			correct_baseline
+1551754	2021			correct_baseline
+1551754	2022			correct_baseline
+1577153	2020			correct_baseline
+1577153	2021			correct_baseline
+1577153	2022			correct_baseline
+1579447	2020			correct_baseline
+1579447	2021			correct_baseline
+1579447	2022			correct_baseline
+1622599	2020			correct_baseline
+1622599	2021			correct_baseline
+1622599	2022			correct_baseline
+1622658	2020			correct_baseline
+1622658	2021			correct_baseline
+1622658	2022			correct_baseline
+1623354	2020			correct_baseline
+1623354	2021			correct_baseline
+1623354	2022			correct_baseline
+1626096	2020			correct_baseline
+1626096	2021			correct_baseline
+1626096	2022			correct_baseline
+1651430	2020			correct_baseline
+1651430	2021			correct_baseline
+1651430	2022			correct_baseline
+1652150	2020			correct_baseline
+1652150	2021			correct_baseline
+1652150	2022			correct_baseline
+1652212	2020			correct_baseline
+1652212	2021			correct_baseline
+1652212	2022			correct_baseline
+1690276	2020			correct_baseline
+1690276	2021			correct_baseline
+1690276	2022			correct_baseline
+1690429	2020	1	0.9407928573156418	correct_baseline
+1690429	2021	1	0.9298332673322942	correct_baseline
+1690429	2022	1	0.9185522688070862	correct_baseline
+1702101	2020			correct_baseline
+1702101	2021			correct_baseline
+1702101	2022			correct_baseline
+1707320	2020			correct_baseline
+1707320	2021			correct_baseline
+1707320	2022			correct_baseline
+1713034	2020			correct_baseline
+1713034	2021			correct_baseline
+1713034	2022			correct_baseline
+1714140	2020			correct_baseline
+1714140	2021			correct_baseline
+1714140	2022			correct_baseline
+1718308	2020	1	0.9579412245529253	correct_baseline
+1718308	2021	1	0.9555414191044114	correct_baseline
+1718308	2022	1	0.9531024247084839	correct_baseline
+1720196	2020			correct_baseline
+1720196	2021			correct_baseline
+1720196	2022			correct_baseline
+1722299	2020			correct_baseline
+1722299	2021			correct_baseline
+1722299	2022			correct_baseline
+1728965	2020			correct_baseline
+1728965	2021			correct_baseline
+1728965	2022			correct_baseline
+1737131	2020			correct_baseline
+1737131	2021			correct_baseline
+1737131	2022			correct_baseline
+1749449	2020			correct_baseline
+1749449	2021			correct_baseline
+1749449	2022			correct_baseline
+1749580	2020			correct_baseline
+1749580	2021			correct_baseline
+1749580	2022			correct_baseline
+1751299	2020			correct_baseline
+1751299	2021			correct_baseline
+1751299	2022			correct_baseline
+1829659	2020			correct_baseline
+1829659	2021			correct_baseline
+1829659	2022			correct_baseline
+1830284	2020			correct_baseline
+1830284	2021			correct_baseline
+1830284	2022			correct_baseline
+1830823	2020			correct_baseline
+1830823	2021			correct_baseline
+1830823	2022			correct_baseline
+1852787	2020			correct_baseline
+1852787	2021			correct_baseline
+1852787	2022			correct_baseline
+1852831	2020			correct_baseline
+1852831	2021			correct_baseline
+1852831	2022			correct_baseline
+1865660	2020			correct_baseline
+1865660	2021			correct_baseline
+1865660	2022			correct_baseline
+1866356	2020			correct_baseline
+1866356	2021			correct_baseline
+1866356	2022			correct_baseline
+1873051	2020			correct_baseline
+1873051	2021			correct_baseline
+1873051	2022			correct_baseline
+1873890	2020			correct_baseline
+1873890	2021			correct_baseline
+1873890	2022			correct_baseline
+1885213	2020			correct_baseline
+1885213	2021			correct_baseline
+1885213	2022			correct_baseline
+1886729	2020			correct_baseline
+1886729	2021			correct_baseline
+1886729	2022			correct_baseline
+1932752	2020			correct_baseline
+1932752	2021			correct_baseline
+1932752	2022			correct_baseline
+1941864	2020			correct_baseline
+1941864	2021			correct_baseline
+1941864	2022			correct_baseline
+1971998	2020			correct_baseline
+1971998	2021			correct_baseline
+1971998	2022			correct_baseline
+1995489	2020			correct_baseline
+1995489	2021			correct_baseline
+1995489	2022			correct_baseline
+1997215	2020			correct_baseline
+1997215	2021			correct_baseline
+1997215	2022			correct_baseline
+2000152	2020			correct_baseline
+2000152	2021			correct_baseline
+2000152	2022			correct_baseline
+2000204	2020			correct_baseline
+2000204	2021			correct_baseline
+2000204	2022			correct_baseline
+2008616	2020			correct_baseline
+2008616	2021			correct_baseline
+2008616	2022			correct_baseline
+2010226	2020			correct_baseline
+2010226	2021			correct_baseline
+2010226	2022			correct_baseline
+2020655	2020	0	0.7163037199841259	correct_baseline
+2020655	2021	0	0.6121158951204642	correct_baseline
+2020655	2022	0	0.5222902582546546	correct_baseline
+2020686	2020			correct_baseline
+2020686	2021			correct_baseline
+2020686	2022			correct_baseline
+2020688	2020			correct_baseline
+2020688	2021			correct_baseline
+2020688	2022			correct_baseline
+2020779	2020			correct_baseline
+2020779	2021			correct_baseline
+2020779	2022			correct_baseline
+2020832	2020			correct_baseline
+2020832	2021			correct_baseline
+2020832	2022			correct_baseline
+2020879	2020			correct_baseline
+2020879	2021			correct_baseline
+2020879	2022			correct_baseline
+2029273	2020			correct_baseline
+2029273	2021			correct_baseline
+2029273	2022			correct_baseline
+2029899	2020			correct_baseline
+2029899	2021			correct_baseline
+2029899	2022			correct_baseline
+2037925	2020	0	0.4734000463057886	correct_baseline
+2037925	2021	0	0.31869711603307255	correct_baseline
+2037925	2022	0	0.21139999562052775	correct_baseline
+2037991	2020			correct_baseline
+2037991	2021			correct_baseline
+2037991	2022			correct_baseline
+2038171	2020			correct_baseline
+2038171	2021			correct_baseline
+2038171	2022			correct_baseline
+2041682	2020	1	0.8548658174554306	correct_baseline
+2041682	2021	1	0.8112219424318776	correct_baseline
+2041682	2022	1	0.7665884324510079	correct_baseline
+2047706	2020			correct_baseline
+2047706	2021			correct_baseline
+2047706	2022			correct_baseline
+2049296	2020			correct_baseline
+2049296	2021			correct_baseline
+2049296	2022			correct_baseline
+2049512	2020			correct_baseline
+2049512	2021			correct_baseline
+2049512	2022			correct_baseline
+2049661	2020			correct_baseline
+2049661	2021			correct_baseline
+2049661	2022			correct_baseline
+2049722	2020			correct_baseline
+2049722	2021			correct_baseline
+2049722	2022			correct_baseline
+2049732	2020			correct_baseline
+2049732	2021			correct_baseline
+2049732	2022			correct_baseline
+2053954	2020			correct_baseline
+2053954	2021			correct_baseline
+2053954	2022			correct_baseline
+2077985	2020			correct_baseline
+2077985	2021			correct_baseline
+2077985	2022			correct_baseline
+2078852	2020	2	1.3827552902565345	correct_baseline
+2078852	2021	2	1.0899526770615948	correct_baseline
+2078852	2022	0	0.8521496175342006	correct_baseline
+2080592	2020			correct_baseline
+2080592	2021			correct_baseline
+2080592	2022			correct_baseline
+2091932	2020			correct_baseline
+2091932	2021			correct_baseline
+2091932	2022			correct_baseline
+2092040	2020			correct_baseline
+2092040	2021			correct_baseline
+2092040	2022			correct_baseline
+2095283	2020			correct_baseline
+2095283	2021			correct_baseline
+2095283	2022			correct_baseline
+2114769	2020			correct_baseline
+2114769	2021			correct_baseline
+2114769	2022			correct_baseline
+2115706	2020			correct_baseline
+2115706	2021			correct_baseline
+2115706	2022			correct_baseline
+2115769	2020	3	1.1757129772243746	basic
+2115769	2021	3	1.1707699627546495	basic
+2115769	2022	3	1.1656068834475906	basic
+2128502	2020			correct_baseline
+2128502	2021			correct_baseline
+2128502	2022			correct_baseline
+2138688	2020			correct_baseline
+2138688	2021			correct_baseline
+2138688	2022			correct_baseline
+2142456	2020			correct_baseline
+2142456	2021			correct_baseline
+2142456	2022			correct_baseline
+2149679	2020			correct_baseline
+2149679	2021			correct_baseline
+2149679	2022			correct_baseline
+2149761	2020			correct_baseline
+2149761	2021			correct_baseline
+2149761	2022			correct_baseline
+2150043	2020			correct_baseline
+2150043	2021			correct_baseline
+2150043	2022			correct_baseline
+2150089	2020			correct_baseline
+2150089	2021			correct_baseline
+2150089	2022			correct_baseline
+2153287	2020			correct_baseline
+2153287	2021			correct_baseline
+2153287	2022			correct_baseline
+2155867	2020			correct_baseline
+2155867	2021			correct_baseline
+2155867	2022			correct_baseline
+2157203	2020			correct_baseline
+2157203	2021			correct_baseline
+2157203	2022			correct_baseline
+2157245	2020			correct_baseline
+2157245	2021			correct_baseline
+2157245	2022			correct_baseline
+2162537	2020			correct_baseline
+2162537	2021			correct_baseline
+2162537	2022			correct_baseline
+2164198	2020			correct_baseline
+2164198	2021			correct_baseline
+2164198	2022			correct_baseline
+2169430	2020			correct_baseline
+2169430	2021			correct_baseline
+2169430	2022			correct_baseline
+2172885	2020			correct_baseline
+2172885	2021			correct_baseline
+2172885	2022			correct_baseline
+2174528	2020			correct_baseline
+2174528	2021			correct_baseline
+2174528	2022			correct_baseline
+2176858	2020			correct_baseline
+2176858	2021			correct_baseline
+2176858	2022			correct_baseline
+2177741	2020			correct_baseline
+2177741	2021			correct_baseline
+2177741	2022			correct_baseline
+2188249	2020			correct_baseline
+2188249	2021			correct_baseline
+2188249	2022			correct_baseline
+2204831	2020			correct_baseline
+2204831	2021			correct_baseline
+2204831	2022			correct_baseline
+2204981	2020			correct_baseline
+2204981	2021			correct_baseline
+2204981	2022			correct_baseline
+2205951	2020			correct_baseline
+2205951	2021			correct_baseline
+2205951	2022			correct_baseline
+2209044	2020			correct_baseline
+2209044	2021			correct_baseline
+2209044	2022			correct_baseline
+2215949	2020			correct_baseline
+2215949	2021			correct_baseline
+2215949	2022			correct_baseline
+2217982	2020	1	0.9942731479914496	correct_baseline
+2217982	2021	1	0.9920680884842528	correct_baseline
+2217982	2022	1	0.9895716797620266	correct_baseline
+2219863	2020	1	0.9567905187847161	correct_baseline
+2219863	2021	1	0.9543447893737905	correct_baseline
+2219863	2022	1	0.951897932404722	correct_baseline
+2220312	2020			correct_baseline
+2220312	2021			correct_baseline
+2220312	2022			correct_baseline
+2220347	2020			correct_baseline
+2220347	2021			correct_baseline
+2220347	2022			correct_baseline
+2224970	2020			correct_baseline
+2224970	2021			correct_baseline
+2224970	2022			correct_baseline
+2225646	2020			correct_baseline
+2225646	2021			correct_baseline
+2225646	2022			correct_baseline
+2225770	2020			correct_baseline
+2225770	2021			correct_baseline
+2225770	2022			correct_baseline
+2225772	2020			correct_baseline
+2225772	2021			correct_baseline
+2225772	2022			correct_baseline
+2226990	2020			correct_baseline
+2226990	2021			correct_baseline
+2226990	2022			correct_baseline
+2227289	2020			correct_baseline
+2227289	2021			correct_baseline
+2227289	2022			correct_baseline
+2227300	2020			correct_baseline
+2227300	2021			correct_baseline
+2227300	2022			correct_baseline
+2227663	2020			correct_baseline
+2227663	2021			correct_baseline
+2227663	2022			correct_baseline
+2234836	2020			correct_baseline
+2234836	2021			correct_baseline
+2234836	2022			correct_baseline
+2266009	2020			correct_baseline
+2266009	2021			correct_baseline
+2266009	2022			correct_baseline
+2266561	2020			correct_baseline
+2266561	2021			correct_baseline
+2266561	2022			correct_baseline
+2286388	2020			correct_baseline
+2286388	2021			correct_baseline
+2286388	2022			correct_baseline
+2287073	2020			correct_baseline
+2287073	2021			correct_baseline
+2287073	2022			correct_baseline
+2287249	2020			correct_baseline
+2287249	2021			correct_baseline
+2287249	2022			correct_baseline
+2288926	2020			correct_baseline
+2288926	2021			correct_baseline
+2288926	2022			correct_baseline
+2294275	2020			correct_baseline
+2294275	2021			correct_baseline
+2294275	2022			correct_baseline
+2294284	2020			correct_baseline
+2294284	2021			correct_baseline
+2294284	2022			correct_baseline
+2295442	2020	0	0.7537721524538062	correct_baseline
+2295442	2021	0	0.6937000780843171	correct_baseline
+2295442	2022	0	0.6380951845112429	correct_baseline
+2297108	2020			correct_baseline
+2297108	2021			correct_baseline
+2297108	2022			correct_baseline
+2307447	2020			correct_baseline
+2307447	2021			correct_baseline
+2307447	2022			correct_baseline
+2307726	2020			correct_baseline
+2307726	2021			correct_baseline
+2307726	2022			correct_baseline
+2307929	2020			correct_baseline
+2307929	2021			correct_baseline
+2307929	2022			correct_baseline
+2308609	2020			correct_baseline
+2308609	2021			correct_baseline
+2308609	2022			correct_baseline
+2321010	2020			correct_baseline
+2321010	2021			correct_baseline
+2321010	2022			correct_baseline
+2327735	2020			correct_baseline
+2327735	2021			correct_baseline
+2327735	2022			correct_baseline
+2330928	2020			correct_baseline
+2330928	2021			correct_baseline
+2330928	2022			correct_baseline
+2331942	2020			correct_baseline
+2331942	2021			correct_baseline
+2331942	2022			correct_baseline
+2337607	2020	0	0.5032583994450719	basic
+2337607	2021	0	0.42471284380598573	basic
+2337607	2022	0	0.3574885770968617	basic
+2362030	2020	1	0.8613747293808681	basic
+2362030	2021	1	0.826860105993218	basic
+2362030	2022	1	0.7932631760674556	basic
+2362473	2020			basic
+2362473	2021			basic
+2362473	2022			basic
+2362486	2020			basic
+2362486	2021			basic
+2362486	2022			basic
+2362868	2020	1	0.8802034502039455	basic
+2362868	2021	1	0.8665451628990011	basic
+2362868	2022	1	0.8527381060049067	basic
+2362881	2020	0	0.7378221009813027	basic
+2362881	2021	0	0.7217418457775103	basic
+2362881	2022	0	0.7059937128884929	basic
+2367742	2020			basic
+2367742	2021			basic
+2367742	2022			basic
+2367919	2020			basic
+2367919	2021			basic
+2367919	2022			basic
+2379089	2020	0	0.7718233329105838	basic
+2379089	2021	0	0.6888185155326351	basic
+2379089	2022	0	0.6093184735302949	basic
+2379105	2020			basic
+2379105	2021			basic
+2379105	2022			basic
+2379245	2020	0	0.47338919477774505	basic
+2379245	2021	0	0.4097916346948652	basic
+2379245	2022	0	0.35450049776534037	basic
+2399874	2020			basic
+2399874	2021			basic
+2399874	2022			basic
+2402129	2020	0	0.4549795512903803	basic
+2402129	2021	0	0.38309835402458187	basic
+2402129	2022	0	0.32118589228477157	basic
+2402168	2020			basic
+2402168	2021			basic
+2402168	2022			basic
+2423441	2020			correct_baseline
+2423441	2021			correct_baseline
+2423441	2022			correct_baseline
+2426640	2020			correct_baseline
+2426640	2021			correct_baseline
+2426640	2022			correct_baseline
+2426661	2020			correct_baseline
+2426661	2021			correct_baseline
+2426661	2022			correct_baseline
+2427091	2020			correct_baseline
+2427091	2021			correct_baseline
+2427091	2022			correct_baseline
+2427555	2020			correct_baseline
+2427555	2021			correct_baseline
+2427555	2022			correct_baseline
+2431781	2020			correct_baseline
+2431781	2021			correct_baseline
+2431781	2022			correct_baseline
+2431875	2020			correct_baseline
+2431875	2021			correct_baseline
+2431875	2022			correct_baseline
+2431965	2020			correct_baseline
+2431965	2021			correct_baseline
+2431965	2022			correct_baseline
+2432352	2020			correct_baseline
+2432352	2021			correct_baseline
+2432352	2022			correct_baseline
+2434552	2020			correct_baseline
+2434552	2021			correct_baseline
+2434552	2022			correct_baseline
+2435035	2020	0	0.9286200321290726	correct_baseline
+2435035	2021	0	0.8922925113506416	correct_baseline
+2435035	2022	0	0.8564171456061455	correct_baseline
+2436940	2020	1	0.9381301061445979	correct_baseline
+2436940	2021	1	0.9265903387943306	correct_baseline
+2436940	2022	1	0.9150685275496242	correct_baseline
+2437232	2020			correct_baseline
+2437232	2021			correct_baseline
+2437232	2022			correct_baseline
+2437282	2020			correct_baseline
+2437282	2021			correct_baseline
+2437282	2022			correct_baseline
+2437394	2020			correct_baseline
+2437394	2021			correct_baseline
+2437394	2022			correct_baseline
+2437397	2020			correct_baseline
+2437397	2021			correct_baseline
+2437397	2022			correct_baseline
+2437450	2020			correct_baseline
+2437450	2021			correct_baseline
+2437450	2022			correct_baseline
+2437619	2020			correct_baseline
+2437619	2021			correct_baseline
+2437619	2022			correct_baseline
+2439261	2020	3	1.018696256480123	correct_baseline
+2439261	2021	3	1.0096188886335913	correct_baseline
+2439261	2022	3	1.0005210636165058	correct_baseline
+2439270	2020			correct_baseline
+2439270	2021			correct_baseline
+2439270	2022			correct_baseline
+2440196	2020			correct_baseline
+2440196	2021			correct_baseline
+2440196	2022			correct_baseline
+2440946	2020			correct_baseline
+2440946	2021			correct_baseline
+2440946	2022			correct_baseline
+2440954	2020			correct_baseline
+2440954	2021			correct_baseline
+2440954	2022			correct_baseline
+2441905	2020			correct_baseline
+2441905	2021			correct_baseline
+2441905	2022			correct_baseline
+2443002	2020			correct_baseline
+2443002	2021			correct_baseline
+2443002	2022			correct_baseline
+2443079	2020			correct_baseline
+2443079	2021			correct_baseline
+2443079	2022			correct_baseline
+2445034	2020			correct_baseline
+2445034	2021			correct_baseline
+2445034	2022			correct_baseline
+2449133	2020			correct_baseline
+2449133	2021			correct_baseline
+2449133	2022			correct_baseline
+2455615	2020			correct_baseline
+2455615	2021			correct_baseline
+2455615	2022			correct_baseline
+2458538	2020			correct_baseline
+2458538	2021			correct_baseline
+2458538	2022			correct_baseline
+2459658	2020			correct_baseline
+2459658	2021			correct_baseline
+2459658	2022			correct_baseline
+2465380	2020			correct_baseline
+2465380	2021			correct_baseline
+2465380	2022			correct_baseline
+2469188	2020			correct_baseline
+2469188	2021			correct_baseline
+2469188	2022			correct_baseline
+2473341	2020			correct_baseline
+2473341	2021			correct_baseline
+2473341	2022			correct_baseline
+2473477	2020			correct_baseline
+2473477	2021			correct_baseline
+2473477	2022			correct_baseline
+2474029	2020			correct_baseline
+2474029	2021			correct_baseline
+2474029	2022			correct_baseline
+2474051	2020			correct_baseline
+2474051	2021			correct_baseline
+2474051	2022			correct_baseline
+2474055	2020			correct_baseline
+2474055	2021			correct_baseline
+2474055	2022			correct_baseline
+2474162	2020			correct_baseline
+2474162	2021			correct_baseline
+2474162	2022			correct_baseline
+2474416	2020			correct_baseline
+2474416	2021			correct_baseline
+2474416	2022			correct_baseline
+2474936	2020			correct_baseline
+2474936	2021			correct_baseline
+2474936	2022			correct_baseline
+2474937	2020			correct_baseline
+2474937	2021			correct_baseline
+2474937	2022			correct_baseline
+2474942	2020			correct_baseline
+2474942	2021			correct_baseline
+2474942	2022			correct_baseline
+2474944	2020			correct_baseline
+2474944	2021			correct_baseline
+2474944	2022			correct_baseline
+2475212	2020			correct_baseline
+2475212	2021			correct_baseline
+2475212	2022			correct_baseline
+2475364	2020			correct_baseline
+2475364	2021			correct_baseline
+2475364	2022			correct_baseline
+2475648	2020			correct_baseline
+2475648	2021			correct_baseline
+2475648	2022			correct_baseline
+2476041	2020			correct_baseline
+2476041	2021			correct_baseline
+2476041	2022			correct_baseline
+2479226	2020	3	1.022177685271486	correct_baseline
+2479226	2021	3	1.024488736483898	correct_baseline
+2479226	2022	3	1.0266627633738148	correct_baseline
+2479311	2020			correct_baseline
+2479311	2021			correct_baseline
+2479311	2022			correct_baseline
+2479320	2020			correct_baseline
+2479320	2021			correct_baseline
+2479320	2022			correct_baseline
+2479329	2020			correct_baseline
+2479329	2021			correct_baseline
+2479329	2022			correct_baseline
+2479407	2020			correct_baseline
+2479407	2021			correct_baseline
+2479407	2022			correct_baseline
+2479498	2020			correct_baseline
+2479498	2021			correct_baseline
+2479498	2022			correct_baseline
+2479501	2020			correct_baseline
+2479501	2021			correct_baseline
+2479501	2022			correct_baseline
+2479544	2020			correct_baseline
+2479544	2021			correct_baseline
+2479544	2022			correct_baseline
+2479553	2020			correct_baseline
+2479553	2021			correct_baseline
+2479553	2022			correct_baseline
+2479555	2020			correct_baseline
+2479555	2021			correct_baseline
+2479555	2022			correct_baseline
+2479598	2020			correct_baseline
+2479598	2021			correct_baseline
+2479598	2022			correct_baseline
+2479612	2020			correct_baseline
+2479612	2021			correct_baseline
+2479612	2022			correct_baseline
+2479666	2020			correct_baseline
+2479666	2021			correct_baseline
+2479666	2022			correct_baseline
+2479686	2020			correct_baseline
+2479686	2021			correct_baseline
+2479686	2022			correct_baseline
+2479798	2020	1	0.9948586275597817	correct_baseline
+2479798	2021	1	0.9918697907418728	correct_baseline
+2479798	2022	1	0.9882159175216595	correct_baseline
+2479955	2020			correct_baseline
+2479955	2021			correct_baseline
+2479955	2022			correct_baseline
+2479964	2020			correct_baseline
+2479964	2021			correct_baseline
+2479964	2022			correct_baseline
+2479977	2020	0	0.9640705461977646	correct_baseline
+2479977	2021	0	0.9595113010134013	correct_baseline
+2479977	2022	0	0.954900584930764	correct_baseline
+2480075	2020			correct_baseline
+2480075	2021			correct_baseline
+2480075	2022			correct_baseline
+2480089	2020			correct_baseline
+2480089	2021			correct_baseline
+2480089	2022			correct_baseline
+2480181	2020			correct_baseline
+2480181	2021			correct_baseline
+2480181	2022			correct_baseline
+2480317	2020			correct_baseline
+2480317	2021			correct_baseline
+2480317	2022			correct_baseline
+2480350	2020	1	0.909396315919111	correct_baseline
+2480350	2021	1	0.8959567270695575	correct_baseline
+2480350	2022	1	0.8824354424223273	correct_baseline
+2480352	2020			correct_baseline
+2480352	2021			correct_baseline
+2480352	2022			correct_baseline
+2480410	2020			correct_baseline
+2480410	2021			correct_baseline
+2480410	2022			correct_baseline
+2480445	2020			correct_baseline
+2480445	2021			correct_baseline
+2480445	2022			correct_baseline
+2480446	2020			correct_baseline
+2480446	2021			correct_baseline
+2480446	2022			correct_baseline
+2480514	2020			correct_baseline
+2480514	2021			correct_baseline
+2480514	2022			correct_baseline
+2480542	2020			correct_baseline
+2480542	2021			correct_baseline
+2480542	2022			correct_baseline
+2480568	2020			correct_baseline
+2480568	2021			correct_baseline
+2480568	2022			correct_baseline
+2480668	2020			correct_baseline
+2480668	2021			correct_baseline
+2480668	2022			correct_baseline
+2480762	2020			correct_baseline
+2480762	2021			correct_baseline
+2480762	2022			correct_baseline
+2480764	2020	1	0.9602590803781207	correct_baseline
+2480764	2021	1	0.9594631805811054	correct_baseline
+2480764	2022	1	0.9585942467758239	correct_baseline
+2480766	2020			correct_baseline
+2480766	2021			correct_baseline
+2480766	2022			correct_baseline
+2480772	2020			correct_baseline
+2480772	2021			correct_baseline
+2480772	2022			correct_baseline
+2480786	2020			correct_baseline
+2480786	2021			correct_baseline
+2480786	2022			correct_baseline
+2480800	2020			correct_baseline
+2480800	2021			correct_baseline
+2480800	2022			correct_baseline
+2480897	2020			correct_baseline
+2480897	2021			correct_baseline
+2480897	2022			correct_baseline
+2480989	2020			correct_baseline
+2480989	2021			correct_baseline
+2480989	2022			correct_baseline
+2481034	2020			correct_baseline
+2481034	2021			correct_baseline
+2481034	2022			correct_baseline
+2481092	2020			correct_baseline
+2481092	2021			correct_baseline
+2481092	2022			correct_baseline
+2481104	2020			correct_baseline
+2481104	2021			correct_baseline
+2481104	2022			correct_baseline
+2481110	2020			correct_baseline
+2481110	2021			correct_baseline
+2481110	2022			correct_baseline
+2482478	2020			correct_baseline
+2482478	2021			correct_baseline
+2482478	2022			correct_baseline
+2482499	2020			correct_baseline
+2482499	2021			correct_baseline
+2482499	2022			correct_baseline
+2482519	2020			correct_baseline
+2482519	2021			correct_baseline
+2482519	2022			correct_baseline
+2484103	2020			correct_baseline
+2484103	2021			correct_baseline
+2484103	2022			correct_baseline
+2484133	2020			correct_baseline
+2484133	2021			correct_baseline
+2484133	2022			correct_baseline
+2484155	2020			correct_baseline
+2484155	2021			correct_baseline
+2484155	2022			correct_baseline
+2486131	2020			correct_baseline
+2486131	2021			correct_baseline
+2486131	2022			correct_baseline
+2486151	2020			correct_baseline
+2486151	2021			correct_baseline
+2486151	2022			correct_baseline
+2489004	2020			correct_baseline
+2489004	2021			correct_baseline
+2489004	2022			correct_baseline
+2489005	2020			correct_baseline
+2489005	2021			correct_baseline
+2489005	2022			correct_baseline
+2489010	2020			correct_baseline
+2489010	2021			correct_baseline
+2489010	2022			correct_baseline
+2489071	2020			correct_baseline
+2489071	2021			correct_baseline
+2489071	2022			correct_baseline
+2489075	2020			correct_baseline
+2489075	2021			correct_baseline
+2489075	2022			correct_baseline
+2489080	2020			correct_baseline
+2489080	2021			correct_baseline
+2489080	2022			correct_baseline
+2489089	2020			correct_baseline
+2489089	2021			correct_baseline
+2489089	2022			correct_baseline
+2489450	2020			correct_baseline
+2489450	2021			correct_baseline
+2489450	2022			correct_baseline
+2490384	2020			correct_baseline
+2490384	2021			correct_baseline
+2490384	2022			correct_baseline
+2492081	2020			correct_baseline
+2492081	2021			correct_baseline
+2492081	2022			correct_baseline
+2492196	2020			correct_baseline
+2492196	2021			correct_baseline
+2492196	2022			correct_baseline
+2493598	2020			correct_baseline
+2493598	2021			correct_baseline
+2493598	2022			correct_baseline
+2493633	2020	0	0.8186114981687835	correct_baseline
+2493633	2021	0	0.7945340196017903	correct_baseline
+2493633	2022	0	0.7708969228699872	correct_baseline
+2493660	2020			correct_baseline
+2493660	2021			correct_baseline
+2493660	2022			correct_baseline
+2493698	2020			correct_baseline
+2493698	2021			correct_baseline
+2493698	2022			correct_baseline
+2493739	2020			correct_baseline
+2493739	2021			correct_baseline
+2493739	2022			correct_baseline
+2494066	2020			correct_baseline
+2494066	2021			correct_baseline
+2494066	2022			correct_baseline
+2494070	2020			correct_baseline
+2494070	2021			correct_baseline
+2494070	2022			correct_baseline
+2494086	2020			correct_baseline
+2494086	2021			correct_baseline
+2494086	2022			correct_baseline
+2494088	2020			correct_baseline
+2494088	2021			correct_baseline
+2494088	2022			correct_baseline
+2494097	2020			correct_baseline
+2494097	2021			correct_baseline
+2494097	2022			correct_baseline
+2494303	2020	1	0.8784441704834659	correct_baseline
+2494303	2021	1	0.8445531482850601	correct_baseline
+2494303	2022	1	0.8111633039490795	correct_baseline
+2494408	2020			correct_baseline
+2494408	2021			correct_baseline
+2494408	2022			correct_baseline
+2494514	2020			correct_baseline
+2494514	2021			correct_baseline
+2494514	2022			correct_baseline
+2495134	2020			correct_baseline
+2495134	2021			correct_baseline
+2495134	2022			correct_baseline
+2495190	2020			correct_baseline
+2495190	2021			correct_baseline
+2495190	2022			correct_baseline
+2495414	2020	3	1.0099298802038925	correct_baseline
+2495414	2021	3	1.0154693032493614	correct_baseline
+2495414	2022	3	1.020901170669646	correct_baseline
+2495494	2020			correct_baseline
+2495494	2021			correct_baseline
+2495494	2022			correct_baseline
+2495688	2020			correct_baseline
+2495688	2021			correct_baseline
+2495688	2022			correct_baseline
+2495699	2020			correct_baseline
+2495699	2021			correct_baseline
+2495699	2022			correct_baseline
+2495840	2020			correct_baseline
+2495840	2021			correct_baseline
+2495840	2022			correct_baseline
+2497509	2020			correct_baseline
+2497509	2021			correct_baseline
+2497509	2022			correct_baseline
+2498001	2020			correct_baseline
+2498001	2021			correct_baseline
+2498001	2022			correct_baseline
+2498007	2020			correct_baseline
+2498007	2021			correct_baseline
+2498007	2022			correct_baseline
+2498010	2020			correct_baseline
+2498010	2021			correct_baseline
+2498010	2022			correct_baseline
+2498011	2020			correct_baseline
+2498011	2021			correct_baseline
+2498011	2022			correct_baseline
+2498034	2020	1	0.979161962782351	correct_baseline
+2498034	2021	1	0.9766117790219886	correct_baseline
+2498034	2022	1	0.9740217445325865	correct_baseline
+2498035	2020	2	0.9951793410522174	correct_baseline
+2498035	2021	2	0.9955366218066753	correct_baseline
+2498035	2022	2	0.9958347692659366	correct_baseline
+2498046	2020	1	0.9493779519527756	correct_baseline
+2498046	2021	1	0.9408393483989193	correct_baseline
+2498046	2022	1	0.9321297922335278	correct_baseline
+2498064	2020			correct_baseline
+2498064	2021			correct_baseline
+2498064	2022			correct_baseline
+2498065	2020			correct_baseline
+2498065	2021			correct_baseline
+2498065	2022			correct_baseline
+2498084	2020			correct_baseline
+2498084	2021			correct_baseline
+2498084	2022			correct_baseline
+2498090	2020	1	0.9572774668623344	correct_baseline
+2498090	2021	1	0.9532275094167069	correct_baseline
+2498090	2022	1	0.9491577360479807	correct_baseline
+2498094	2020			correct_baseline
+2498094	2021			correct_baseline
+2498094	2022			correct_baseline
+2498097	2020			correct_baseline
+2498097	2021			correct_baseline
+2498097	2022			correct_baseline
+2498108	2020			correct_baseline
+2498108	2021			correct_baseline
+2498108	2022			correct_baseline
+2498155	2020	0	0.7008586067777054	correct_baseline
+2498155	2021	0	0.6751803245122977	correct_baseline
+2498155	2022	0	0.650303891049274	correct_baseline
+2498156	2020			correct_baseline
+2498156	2021			correct_baseline
+2498156	2022			correct_baseline
+2498161	2020			correct_baseline
+2498161	2021			correct_baseline
+2498161	2022			correct_baseline
+2498163	2020			correct_baseline
+2498163	2021			correct_baseline
+2498163	2022			correct_baseline
+2498167	2020	1	0.947907455939745	correct_baseline
+2498167	2021	1	0.9445489745193418	correct_baseline
+2498167	2022	1	0.9411802341963887	correct_baseline
+2498181	2020			correct_baseline
+2498181	2021			correct_baseline
+2498181	2022			correct_baseline
+2498252	2020	3	1.0491720107739522	correct_baseline
+2498252	2021	3	1.058533957729056	correct_baseline
+2498252	2022	3	1.0678706340143491	correct_baseline
+2498288	2020			correct_baseline
+2498288	2021			correct_baseline
+2498288	2022			correct_baseline
+2498305	2020	1	0.9740489298413446	correct_baseline
+2498305	2021	1	0.9725082462892575	correct_baseline
+2498305	2022	1	0.970963313858019	correct_baseline
+2498310	2020			correct_baseline
+2498310	2021			correct_baseline
+2498310	2022			correct_baseline
+2498313	2020			correct_baseline
+2498313	2021			correct_baseline
+2498313	2022			correct_baseline
+2498329	2020			correct_baseline
+2498329	2021			correct_baseline
+2498329	2022			correct_baseline
+2498335	2020			correct_baseline
+2498335	2021			correct_baseline
+2498335	2022			correct_baseline
+2498344	2020	3	1.0012363045045662	correct_baseline
+2498344	2021	3	1.0017812132585644	correct_baseline
+2498344	2022	3	1.0022036712591917	correct_baseline
+2498345	2020			correct_baseline
+2498345	2021			correct_baseline
+2498345	2022			correct_baseline
+2498380	2020			correct_baseline
+2498380	2021			correct_baseline
+2498380	2022			correct_baseline
+2498384	2020	1	0.9463978164639174	correct_baseline
+2498384	2021	1	0.9414178902323634	correct_baseline
+2498384	2022	1	0.9364294264743639	correct_baseline
+2498387	2020	1	0.98044460554358	correct_baseline
+2498387	2021	1	0.978062776827498	correct_baseline
+2498387	2022	1	0.9755465292415574	correct_baseline
+2498388	2020	3	1.001084059576651	correct_baseline
+2498388	2021	3	1.0002086993113095	correct_baseline
+2498388	2022	1	0.9992336816691962	correct_baseline
+2498390	2020			correct_baseline
+2498390	2021			correct_baseline
+2498390	2022			correct_baseline
+2498393	2020			correct_baseline
+2498393	2021			correct_baseline
+2498393	2022			correct_baseline
+2498396	2020			correct_baseline
+2498396	2021			correct_baseline
+2498396	2022			correct_baseline
+2498398	2020			correct_baseline
+2498398	2021			correct_baseline
+2498398	2022			correct_baseline
+2498402	2020	1	0.9366427395554902	correct_baseline
+2498402	2021	1	0.9313794814711912	correct_baseline
+2498402	2022	1	0.926050844695674	correct_baseline
+2498405	2020			correct_baseline
+2498405	2021			correct_baseline
+2498405	2022			correct_baseline
+2498408	2020	1	0.9572904092077869	correct_baseline
+2498408	2021	1	0.9533968596064593	correct_baseline
+2498408	2022	1	0.9494924965554267	correct_baseline
+2498411	2020			correct_baseline
+2498411	2021			correct_baseline
+2498411	2022			correct_baseline
+2501248	2020			correct_baseline
+2501248	2021			correct_baseline
+2501248	2022			correct_baseline
+2502810	2020			basic
+2502810	2021			basic
+2502810	2022			basic
+2514972	2020			correct_baseline
+2514972	2021			correct_baseline
+2514972	2022			correct_baseline
+2516075	2020			correct_baseline
+2516075	2021			correct_baseline
+2516075	2022			correct_baseline
+2516419	2020			correct_baseline
+2516419	2021			correct_baseline
+2516419	2022			correct_baseline
+2516809	2020			correct_baseline
+2516809	2021			correct_baseline
+2516809	2022			correct_baseline
+2537743	2020			correct_baseline
+2537743	2021			correct_baseline
+2537743	2022			correct_baseline
+2650479	2020			correct_baseline
+2650479	2021			correct_baseline
+2650479	2022			correct_baseline
+2650827	2020	3	1.1185848379841492	correct_baseline
+2650827	2021	3	1.127565435869849	correct_baseline
+2650827	2022	3	1.1344618402311903	correct_baseline
+2650829	2020			correct_baseline
+2650829	2021			correct_baseline
+2650829	2022			correct_baseline
+2650944	2020			correct_baseline
+2650944	2021			correct_baseline
+2650944	2022			correct_baseline
+2651098	2020			correct_baseline
+2651098	2021			correct_baseline
+2651098	2022			correct_baseline
+2651122	2020			correct_baseline
+2651122	2021			correct_baseline
+2651122	2022			correct_baseline
+2651816	2020			correct_baseline
+2651816	2021			correct_baseline
+2651816	2022			correct_baseline
+2651826	2020			correct_baseline
+2651826	2021			correct_baseline
+2651826	2022			correct_baseline
+2651843	2020			correct_baseline
+2651843	2021			correct_baseline
+2651843	2022			correct_baseline
+2653256	2020			correct_baseline
+2653256	2021			correct_baseline
+2653256	2022			correct_baseline
+2677047	2020	3	1.0251391413060913	correct_baseline
+2677047	2021	3	1.026197808515926	correct_baseline
+2677047	2022	3	1.0271898503297958	correct_baseline
+2683866	2020	3	1.0543220336051962	correct_baseline
+2683866	2021	3	1.0515222252775205	correct_baseline
+2683866	2022	3	1.048439288310046	correct_baseline
+2683894	2020			correct_baseline
+2683894	2021			correct_baseline
+2683894	2022			correct_baseline
+2684120	2020			correct_baseline
+2684120	2021			correct_baseline
+2684120	2022			correct_baseline
+2684171	2020	0	0.93169353823446	correct_baseline
+2684171	2021	0	0.9152734499201765	correct_baseline
+2684171	2022	0	0.8988660633997243	correct_baseline
+2684178	2020			correct_baseline
+2684178	2021			correct_baseline
+2684178	2022			correct_baseline
+2684191	2020			correct_baseline
+2684191	2021			correct_baseline
+2684191	2022			correct_baseline
+2685361	2020	3	1.037075903788513	correct_baseline
+2685361	2021	3	1.0372581362927726	correct_baseline
+2685361	2022	3	1.03743542523071	correct_baseline
+2685484	2020			correct_baseline
+2685484	2021			correct_baseline
+2685484	2022			correct_baseline
+2685552	2020			correct_baseline
+2685552	2021			correct_baseline
+2685552	2022			correct_baseline
+2685663	2020			correct_baseline
+2685663	2021			correct_baseline
+2685663	2022			correct_baseline
+2685796	2020	2	0.9842606046201118	correct_baseline
+2685796	2021	2	0.9877905312631191	correct_baseline
+2685796	2022	2	0.991139022576923	correct_baseline
+2686157	2020	0	0.9104302366931925	correct_baseline
+2686157	2021	0	0.9061065525581459	correct_baseline
+2686157	2022	0	0.9017926148682305	correct_baseline
+2686212	2020	0	0.9611288092999796	correct_baseline
+2686212	2021	0	0.9589572942239809	correct_baseline
+2686212	2022	0	0.9567862223007888	correct_baseline
+2687182	2020			correct_baseline
+2687182	2021			correct_baseline
+2687182	2022			correct_baseline
+2687210	2020	3	1.0446271126690216	correct_baseline
+2687210	2021	3	1.042987326382374	correct_baseline
+2687210	2022	3	1.0413312962101446	correct_baseline
+2687885	2020			correct_baseline
+2687885	2021			correct_baseline
+2687885	2022			correct_baseline
+2687948	2020			correct_baseline
+2687948	2021			correct_baseline
+2687948	2022			correct_baseline
+2700768	2020			correct_baseline
+2700768	2021			correct_baseline
+2700768	2022			correct_baseline
+2701578	2020			correct_baseline
+2701578	2021			correct_baseline
+2701578	2022			correct_baseline
+2701612	2020			correct_baseline
+2701612	2021			correct_baseline
+2701612	2022			correct_baseline
+2701649	2020			correct_baseline
+2701649	2021			correct_baseline
+2701649	2022			correct_baseline
+2701831	2020			correct_baseline
+2701831	2021			correct_baseline
+2701831	2022			correct_baseline
+2701986	2020	3	1.010092995587161	correct_baseline
+2701986	2021	3	1.0098770526207623	correct_baseline
+2701986	2022	3	1.0096009190422932	correct_baseline
+2702058	2020			correct_baseline
+2702058	2021			correct_baseline
+2702058	2022			correct_baseline
+2702543	2020			correct_baseline
+2702543	2021			correct_baseline
+2702543	2022			correct_baseline
+2702820	2020			correct_baseline
+2702820	2021			correct_baseline
+2702820	2022			correct_baseline
+2702822	2020			correct_baseline
+2702822	2021			correct_baseline
+2702822	2022			correct_baseline
+2703041	2020			correct_baseline
+2703041	2021			correct_baseline
+2703041	2022			correct_baseline
+2703231	2020			correct_baseline
+2703231	2021			correct_baseline
+2703231	2022			correct_baseline
+2703240	2020			correct_baseline
+2703240	2021			correct_baseline
+2703240	2022			correct_baseline
+2703346	2020			correct_baseline
+2703346	2021			correct_baseline
+2703346	2022			correct_baseline
+2703459	2020			correct_baseline
+2703459	2021			correct_baseline
+2703459	2022			correct_baseline
+2703712	2020	1	0.966355123703396	correct_baseline
+2703712	2021	1	0.9644175261861169	correct_baseline
+2703712	2022	1	0.9624750350783581	correct_baseline
+2704194	2020			correct_baseline
+2704194	2021			correct_baseline
+2704194	2022			correct_baseline
+2704523	2020	0	0.9604150452583199	correct_baseline
+2704523	2021	0	0.9419181620197059	correct_baseline
+2704523	2022	0	0.9233570462236633	correct_baseline
+2704854	2020			correct_baseline
+2704854	2021			correct_baseline
+2704854	2022			correct_baseline
+2705090	2020	1	0.9737066216856066	correct_baseline
+2705090	2021	1	0.9719295945064234	correct_baseline
+2705090	2022	1	0.9701105067240855	correct_baseline
+2705286	2020			correct_baseline
+2705286	2021			correct_baseline
+2705286	2022			correct_baseline
+2705512	2020			correct_baseline
+2705512	2021			correct_baseline
+2705512	2022			correct_baseline
+2705565	2020			correct_baseline
+2705565	2021			correct_baseline
+2705565	2022			correct_baseline
+2705587	2020			correct_baseline
+2705587	2021			correct_baseline
+2705587	2022			correct_baseline
+2705621	2020			correct_baseline
+2705621	2021			correct_baseline
+2705621	2022			correct_baseline
+2705622	2020			correct_baseline
+2705622	2021			correct_baseline
+2705622	2022			correct_baseline
+2705828	2020			correct_baseline
+2705828	2021			correct_baseline
+2705828	2022			correct_baseline
+2705854	2020			correct_baseline
+2705854	2021			correct_baseline
+2705854	2022			correct_baseline
+2705875	2020			correct_baseline
+2705875	2021			correct_baseline
+2705875	2022			correct_baseline
+2705932	2020			correct_baseline
+2705932	2021			correct_baseline
+2705932	2022			correct_baseline
+2706026	2020	1	0.9515979010368423	correct_baseline
+2706026	2021	1	0.945726524743696	correct_baseline
+2706026	2022	1	0.9397956975056186	correct_baseline
+2706209	2020	1	0.9462043662629607	correct_baseline
+2706209	2021	1	0.9426083226588506	correct_baseline
+2706209	2022	1	0.9389862525542902	correct_baseline
+2706225	2020			correct_baseline
+2706225	2021			correct_baseline
+2706225	2022			correct_baseline
+2706301	2020			correct_baseline
+2706301	2021			correct_baseline
+2706301	2022			correct_baseline
+2706526	2020			correct_baseline
+2706526	2021			correct_baseline
+2706526	2022			correct_baseline
+2714453	2020			correct_baseline
+2714453	2021			correct_baseline
+2714453	2022			correct_baseline
+2714818	2020			correct_baseline
+2714818	2021			correct_baseline
+2714818	2022			correct_baseline
+2716226	2020	3	1.0084198462198206	correct_baseline
+2716226	2021	3	1.0084624313861732	correct_baseline
+2716226	2022	3	1.008502914751012	correct_baseline
+2716838	2020			correct_baseline
+2716838	2021			correct_baseline
+2716838	2022			correct_baseline
+2717467	2020			correct_baseline
+2717467	2021			correct_baseline
+2717467	2022			correct_baseline
+2718302	2020			correct_baseline
+2718302	2021			correct_baseline
+2718302	2022			correct_baseline
+2718377	2020			correct_baseline
+2718377	2021			correct_baseline
+2718377	2022			correct_baseline
+2718387	2020			correct_baseline
+2718387	2021			correct_baseline
+2718387	2022			correct_baseline
+2720171	2020			correct_baseline
+2720171	2021			correct_baseline
+2720171	2022			correct_baseline
+2722380	2020			correct_baseline
+2722380	2021			correct_baseline
+2722380	2022			correct_baseline
+2722515	2020			correct_baseline
+2722515	2021			correct_baseline
+2722515	2022			correct_baseline
+2722973	2020			correct_baseline
+2722973	2021			correct_baseline
+2722973	2022			correct_baseline
+2723271	2020			correct_baseline
+2723271	2021			correct_baseline
+2723271	2022			correct_baseline
+2726360	2020			correct_baseline
+2726360	2021			correct_baseline
+2726360	2022			correct_baseline
+2726538	2020			correct_baseline
+2726538	2021			correct_baseline
+2726538	2022			correct_baseline
+2726539	2020			correct_baseline
+2726539	2021			correct_baseline
+2726539	2022			correct_baseline
+2727875	2020			correct_baseline
+2727875	2021			correct_baseline
+2727875	2022			correct_baseline
+2728060	2020			correct_baseline
+2728060	2021			correct_baseline
+2728060	2022			correct_baseline
+2739071	2020			correct_baseline
+2739071	2021			correct_baseline
+2739071	2022			correct_baseline
+2747489	2020			correct_baseline
+2747489	2021			correct_baseline
+2747489	2022			correct_baseline
+2747564	2020	1	0.9336875554520758	correct_baseline
+2747564	2021	1	0.9024451483744647	correct_baseline
+2747564	2022	1	0.8720590310291505	correct_baseline
+2747567	2020	1	0.9424765852515061	correct_baseline
+2747567	2021	1	0.9408600148953166	correct_baseline
+2747567	2022	1	0.939242636188579	correct_baseline
+2747718	2020			correct_baseline
+2747718	2021			correct_baseline
+2747718	2022			correct_baseline
+2747750	2020			correct_baseline
+2747750	2021			correct_baseline
+2747750	2022			correct_baseline
+2747939	2020			correct_baseline
+2747939	2021			correct_baseline
+2747939	2022			correct_baseline
+2749791	2020			correct_baseline
+2749791	2021			correct_baseline
+2749791	2022			correct_baseline
+2752849	2020			correct_baseline
+2752849	2021			correct_baseline
+2752849	2022			correct_baseline
+2762737	2020			correct_baseline
+2762737	2021			correct_baseline
+2762737	2022			correct_baseline
+2763962	2020			correct_baseline
+2763962	2021			correct_baseline
+2763962	2022			correct_baseline
+2764202	2020			correct_baseline
+2764202	2021			correct_baseline
+2764202	2022			correct_baseline
+2765156	2020			correct_baseline
+2765156	2021			correct_baseline
+2765156	2022			correct_baseline
+2765221	2020			correct_baseline
+2765221	2021			correct_baseline
+2765221	2022			correct_baseline
+2765942	2020			correct_baseline
+2765942	2021			correct_baseline
+2765942	2022			correct_baseline
+2766030	2020	0	0.9696289814871908	correct_baseline
+2766030	2021	0	0.936896540221418	correct_baseline
+2766030	2022	0	0.9042612993527473	correct_baseline
+2767229	2020			correct_baseline
+2767229	2021			correct_baseline
+2767229	2022			correct_baseline
+2767271	2020			correct_baseline
+2767271	2021			correct_baseline
+2767271	2022			correct_baseline
+2767275	2020			correct_baseline
+2767275	2021			correct_baseline
+2767275	2022			correct_baseline
+2767428	2020			correct_baseline
+2767428	2021			correct_baseline
+2767428	2022			correct_baseline
+2769069	2020			correct_baseline
+2769069	2021			correct_baseline
+2769069	2022			correct_baseline
+2769073	2020			correct_baseline
+2769073	2021			correct_baseline
+2769073	2022			correct_baseline
+2769435	2020			correct_baseline
+2769435	2021			correct_baseline
+2769435	2022			correct_baseline
+2769493	2020			correct_baseline
+2769493	2021			correct_baseline
+2769493	2022			correct_baseline
+2772082	2020			correct_baseline
+2772082	2021			correct_baseline
+2772082	2022			correct_baseline
+2772094	2020	1	0.9954951827502131	correct_baseline
+2772094	2021	1	0.9954389263662697	correct_baseline
+2772094	2022	1	0.9953813180608146	correct_baseline
+2772174	2020			correct_baseline
+2772174	2021			correct_baseline
+2772174	2022			correct_baseline
+2772666	2020	3	1.066573892380632	correct_baseline
+2772666	2021	3	1.0509907884219074	correct_baseline
+2772666	2022	3	1.035341914894953	correct_baseline
+2772885	2020			correct_baseline
+2772885	2021			correct_baseline
+2772885	2022			correct_baseline
+2772958	2020			correct_baseline
+2772958	2021			correct_baseline
+2772958	2022			correct_baseline
+2774214	2020			correct_baseline
+2774214	2021			correct_baseline
+2774214	2022			correct_baseline
+2774846	2020			correct_baseline
+2774846	2021			correct_baseline
+2774846	2022			correct_baseline
+2775530	2020	0	0.9298468810922288	correct_baseline
+2775530	2021	0	0.9029440270300604	correct_baseline
+2775530	2022	0	0.8763944188958406	correct_baseline
+2775619	2020	0	0.8510842602964648	correct_baseline
+2775619	2021	0	0.8246773543493879	correct_baseline
+2775619	2022	0	0.7987366891321607	correct_baseline
+2781103	2020			correct_baseline
+2781103	2021			correct_baseline
+2781103	2022			correct_baseline
+2855338	2020			correct_baseline
+2855338	2021			correct_baseline
+2855338	2022			correct_baseline
+2855398	2020			correct_baseline
+2855398	2021			correct_baseline
+2855398	2022			correct_baseline
+2855439	2020			correct_baseline
+2855439	2021			correct_baseline
+2855439	2022			correct_baseline
+2855705	2020			correct_baseline
+2855705	2021			correct_baseline
+2855705	2022			correct_baseline
+2855823	2020			correct_baseline
+2855823	2021			correct_baseline
+2855823	2022			correct_baseline
+2855893	2020			correct_baseline
+2855893	2021			correct_baseline
+2855893	2022			correct_baseline
+2856204	2020			correct_baseline
+2856204	2021			correct_baseline
+2856204	2022			correct_baseline
+2856456	2020			correct_baseline
+2856456	2021			correct_baseline
+2856456	2022			correct_baseline
+2856457	2020			correct_baseline
+2856457	2021			correct_baseline
+2856457	2022			correct_baseline
+2856780	2020			correct_baseline
+2856780	2021			correct_baseline
+2856780	2022			correct_baseline
+2856920	2020			correct_baseline
+2856920	2021			correct_baseline
+2856920	2022			correct_baseline
+2857017	2020			correct_baseline
+2857017	2021			correct_baseline
+2857017	2022			correct_baseline
+2857341	2020			correct_baseline
+2857341	2021			correct_baseline
+2857341	2022			correct_baseline
+2857449	2020			correct_baseline
+2857449	2021			correct_baseline
+2857449	2022			correct_baseline
+2857679	2020			correct_baseline
+2857679	2021			correct_baseline
+2857679	2022			correct_baseline
+2857697	2020			correct_baseline
+2857697	2021			correct_baseline
+2857697	2022			correct_baseline
+2858501	2020			correct_baseline
+2858501	2021			correct_baseline
+2858501	2022			correct_baseline
+2858846	2020			correct_baseline
+2858846	2021			correct_baseline
+2858846	2022			correct_baseline
+2858909	2020			correct_baseline
+2858909	2021			correct_baseline
+2858909	2022			correct_baseline
+2859597	2020			correct_baseline
+2859597	2021			correct_baseline
+2859597	2022			correct_baseline
+2865501	2020			correct_baseline
+2865501	2021			correct_baseline
+2865501	2022			correct_baseline
+2865524	2020			correct_baseline
+2865524	2021			correct_baseline
+2865524	2022			correct_baseline
+2865565	2020			correct_baseline
+2865565	2021			correct_baseline
+2865565	2022			correct_baseline
+2867614	2020	1	0.97564275719905	correct_baseline
+2867614	2021	1	0.9743432950026149	correct_baseline
+2867614	2022	1	0.9730416032961137	correct_baseline
+2867631	2020	1	0.892218628781646	correct_baseline
+2867631	2021	1	0.880282124212539	correct_baseline
+2867631	2022	1	0.8684353243702808	correct_baseline
+2868827	2020			correct_baseline
+2868827	2021			correct_baseline
+2868827	2022			correct_baseline
+2869311	2020			correct_baseline
+2869311	2021			correct_baseline
+2869311	2022			correct_baseline
+2869597	2020			correct_baseline
+2869597	2021			correct_baseline
+2869597	2022			correct_baseline
+2870583	2020			correct_baseline
+2870583	2021			correct_baseline
+2870583	2022			correct_baseline
+2873877	2020	1	0.8886608023602253	correct_baseline
+2873877	2021	1	0.8792548586229214	correct_baseline
+2873877	2022	1	0.8698618610180624	correct_baseline
+2874199	2020			correct_baseline
+2874199	2021			correct_baseline
+2874199	2022			correct_baseline
+2874515	2020			correct_baseline
+2874515	2021			correct_baseline
+2874515	2022			correct_baseline
+2874538	2020			correct_baseline
+2874538	2021			correct_baseline
+2874538	2022			correct_baseline
+2874569	2020			correct_baseline
+2874569	2021			correct_baseline
+2874569	2022			correct_baseline
+2874574	2020			correct_baseline
+2874574	2021			correct_baseline
+2874574	2022			correct_baseline
+2874702	2020			correct_baseline
+2874702	2021			correct_baseline
+2874702	2022			correct_baseline
+2874706	2020			correct_baseline
+2874706	2021			correct_baseline
+2874706	2022			correct_baseline
+2875968	2020			correct_baseline
+2875968	2021			correct_baseline
+2875968	2022			correct_baseline
+2876049	2020			correct_baseline
+2876049	2021			correct_baseline
+2876049	2022			correct_baseline
+2876571	2020			correct_baseline
+2876571	2021			correct_baseline
+2876571	2022			correct_baseline
+2876607	2020	0	0.9004280125741903	correct_baseline
+2876607	2021	0	0.8806581323990276	correct_baseline
+2876607	2022	0	0.8610193818993045	correct_baseline
+2878826	2020			correct_baseline
+2878826	2021			correct_baseline
+2878826	2022			correct_baseline
+2879098	2020	0	0.7500629516743568	correct_baseline
+2879098	2021	0	0.5984929948829982	correct_baseline
+2879098	2022	0	0.47017304849835045	correct_baseline
+2879411	2020			correct_baseline
+2879411	2021			correct_baseline
+2879411	2022			correct_baseline
+2879520	2020			correct_baseline
+2879520	2021			correct_baseline
+2879520	2022			correct_baseline
+2880539	2020	1	0.9781496964805745	correct_baseline
+2880539	2021	1	0.97643782716319	correct_baseline
+2880539	2022	1	0.974710956328803	correct_baseline
+2880580	2020			correct_baseline
+2880580	2021			correct_baseline
+2880580	2022			correct_baseline
+2882360	2020			correct_baseline
+2882360	2021			correct_baseline
+2882360	2022			correct_baseline
+2882443	2020			correct_baseline
+2882443	2021			correct_baseline
+2882443	2022			correct_baseline
+2882482	2020	1	0.99375988814647	correct_baseline
+2882482	2021	1	0.9933747762683719	correct_baseline
+2882482	2022	1	0.9929856837867054	correct_baseline
+2882631	2020			correct_baseline
+2882631	2021			correct_baseline
+2882631	2022			correct_baseline
+2882841	2020			correct_baseline
+2882841	2021			correct_baseline
+2882841	2022			correct_baseline
+2882849	2020			correct_baseline
+2882849	2021			correct_baseline
+2882849	2022			correct_baseline
+2888323	2020			correct_baseline
+2888323	2021			correct_baseline
+2888323	2022			correct_baseline
+2888435	2020			correct_baseline
+2888435	2021			correct_baseline
+2888435	2022			correct_baseline
+2888437	2020			correct_baseline
+2888437	2021			correct_baseline
+2888437	2022			correct_baseline
+2888439	2020	0	0.928520233260943	correct_baseline
+2888439	2021	0	0.9260428211682739	correct_baseline
+2888439	2022	0	0.9235705904489381	correct_baseline
+2888564	2020			correct_baseline
+2888564	2021			correct_baseline
+2888564	2022			correct_baseline
+2888579	2020			correct_baseline
+2888579	2021			correct_baseline
+2888579	2022			correct_baseline
+2888585	2020	1	0.8388656321364762	correct_baseline
+2888585	2021	1	0.8119801117702099	correct_baseline
+2888585	2022	1	0.7853879875098438	correct_baseline
+2888622	2020			correct_baseline
+2888622	2021			correct_baseline
+2888622	2022			correct_baseline
+2888625	2020	0	0.8759270271825076	correct_baseline
+2888625	2021	0	0.8522011980902632	correct_baseline
+2888625	2022	0	0.8284826952052189	correct_baseline
+2888636	2020			correct_baseline
+2888636	2021			correct_baseline
+2888636	2022			correct_baseline
+2888706	2020			correct_baseline
+2888706	2021			correct_baseline
+2888706	2022			correct_baseline
+2888797	2020			correct_baseline
+2888797	2021			correct_baseline
+2888797	2022			correct_baseline
+2888806	2020			correct_baseline
+2888806	2021			correct_baseline
+2888806	2022			correct_baseline
+2888859	2020			correct_baseline
+2888859	2021			correct_baseline
+2888859	2022			correct_baseline
+2888867	2020			correct_baseline
+2888867	2021			correct_baseline
+2888867	2022			correct_baseline
+2888948	2020			correct_baseline
+2888948	2021			correct_baseline
+2888948	2022			correct_baseline
+2888978	2020			correct_baseline
+2888978	2021			correct_baseline
+2888978	2022			correct_baseline
+2888990	2020			correct_baseline
+2888990	2021			correct_baseline
+2888990	2022			correct_baseline
+2889005	2020			correct_baseline
+2889005	2021			correct_baseline
+2889005	2022			correct_baseline
+2889010	2020			correct_baseline
+2889010	2021			correct_baseline
+2889010	2022			correct_baseline
+2889037	2020			correct_baseline
+2889037	2021			correct_baseline
+2889037	2022			correct_baseline
+2889304	2020			correct_baseline
+2889304	2021			correct_baseline
+2889304	2022			correct_baseline
+2889934	2020	0	0.8939356728844602	correct_baseline
+2889934	2021	0	0.8637064442883483	correct_baseline
+2889934	2022	0	0.8338299269887725	correct_baseline
+2889980	2020			correct_baseline
+2889980	2021			correct_baseline
+2889980	2022			correct_baseline
+2890541	2020	1	0.9274925463755676	correct_baseline
+2890541	2021	1	0.9133142615112463	correct_baseline
+2890541	2022	1	0.8988107761545651	correct_baseline
+2890623	2020			correct_baseline
+2890623	2021			correct_baseline
+2890623	2022			correct_baseline
+2890651	2020			correct_baseline
+2890651	2021			correct_baseline
+2890651	2022			correct_baseline
+2890739	2020			correct_baseline
+2890739	2021			correct_baseline
+2890739	2022			correct_baseline
+2890972	2020			correct_baseline
+2890972	2021			correct_baseline
+2890972	2022			correct_baseline
+2890995	2020			correct_baseline
+2890995	2021			correct_baseline
+2890995	2022			correct_baseline
+2891664	2020			correct_baseline
+2891664	2021			correct_baseline
+2891664	2022			correct_baseline
+2891677	2020			correct_baseline
+2891677	2021			correct_baseline
+2891677	2022			correct_baseline
+2891707	2020	0	0.9309181961415474	correct_baseline
+2891707	2021	0	0.9056898454724617	correct_baseline
+2891707	2022	0	0.8809928817023696	correct_baseline
+2891755	2020	1	0.8110785633838592	correct_baseline
+2891755	2021	1	0.788739662217617	correct_baseline
+2891755	2022	1	0.766617900514915	correct_baseline
+2891774	2020	1	0.9121424007701399	correct_baseline
+2891774	2021	1	0.895191380315309	correct_baseline
+2891774	2022	1	0.8778319893399	correct_baseline
+2891783	2020			correct_baseline
+2891783	2021			correct_baseline
+2891783	2022			correct_baseline
+2913169	2020	0	0.8598694123352791	correct_baseline
+2913169	2021	0	0.8385337237181749	correct_baseline
+2913169	2022	0	0.8174494445546994	correct_baseline
+2914404	2020			correct_baseline
+2914404	2021			correct_baseline
+2914404	2022			correct_baseline
+2925351	2020			correct_baseline
+2925351	2021			correct_baseline
+2925351	2022			correct_baseline
+2925366	2020			correct_baseline
+2925366	2021			correct_baseline
+2925366	2022			correct_baseline
+2925496	2020			correct_baseline
+2925496	2021			correct_baseline
+2925496	2022			correct_baseline
+2925530	2020			correct_baseline
+2925530	2021			correct_baseline
+2925530	2022			correct_baseline
+2925532	2020			correct_baseline
+2925532	2021			correct_baseline
+2925532	2022			correct_baseline
+2925816	2020			correct_baseline
+2925816	2021			correct_baseline
+2925816	2022			correct_baseline
+2925874	2020			correct_baseline
+2925874	2021			correct_baseline
+2925874	2022			correct_baseline
+2926042	2020			correct_baseline
+2926042	2021			correct_baseline
+2926042	2022			correct_baseline
+2926572	2020			correct_baseline
+2926572	2021			correct_baseline
+2926572	2022			correct_baseline
+2926681	2020			correct_baseline
+2926681	2021			correct_baseline
+2926681	2022			correct_baseline
+2926992	2020			correct_baseline
+2926992	2021			correct_baseline
+2926992	2022			correct_baseline
+2927174	2020			correct_baseline
+2927174	2021			correct_baseline
+2927174	2022			correct_baseline
+2927303	2020			correct_baseline
+2927303	2021			correct_baseline
+2927303	2022			correct_baseline
+2927363	2020			correct_baseline
+2927363	2021			correct_baseline
+2927363	2022			correct_baseline
+2927484	2020			correct_baseline
+2927484	2021			correct_baseline
+2927484	2022			correct_baseline
+2927492	2020			correct_baseline
+2927492	2021			correct_baseline
+2927492	2022			correct_baseline
+2927530	2020			correct_baseline
+2927530	2021			correct_baseline
+2927530	2022			correct_baseline
+2927727	2020			correct_baseline
+2927727	2021			correct_baseline
+2927727	2022			correct_baseline
+2927744	2020			correct_baseline
+2927744	2021			correct_baseline
+2927744	2022			correct_baseline
+2928026	2020			correct_baseline
+2928026	2021			correct_baseline
+2928026	2022			correct_baseline
+2928034	2020			correct_baseline
+2928034	2021			correct_baseline
+2928034	2022			correct_baseline
+2928238	2020			correct_baseline
+2928238	2021			correct_baseline
+2928238	2022			correct_baseline
+2928534	2020			correct_baseline
+2928534	2021			correct_baseline
+2928534	2022			correct_baseline
+2928538	2020			correct_baseline
+2928538	2021			correct_baseline
+2928538	2022			correct_baseline
+2928583	2020			correct_baseline
+2928583	2021			correct_baseline
+2928583	2022			correct_baseline
+2928584	2020			correct_baseline
+2928584	2021			correct_baseline
+2928584	2022			correct_baseline
+2928666	2020			correct_baseline
+2928666	2021			correct_baseline
+2928666	2022			correct_baseline
+2928668	2020			correct_baseline
+2928668	2021			correct_baseline
+2928668	2022			correct_baseline
+2928761	2020			correct_baseline
+2928761	2021			correct_baseline
+2928761	2022			correct_baseline
+2928783	2020			correct_baseline
+2928783	2021			correct_baseline
+2928783	2022			correct_baseline
+2928805	2020			correct_baseline
+2928805	2021			correct_baseline
+2928805	2022			correct_baseline
+2928859	2020			correct_baseline
+2928859	2021			correct_baseline
+2928859	2022			correct_baseline
+2928861	2020			correct_baseline
+2928861	2021			correct_baseline
+2928861	2022			correct_baseline
+2929847	2020			correct_baseline
+2929847	2021			correct_baseline
+2929847	2022			correct_baseline
+2929892	2020			correct_baseline
+2929892	2021			correct_baseline
+2929892	2022			correct_baseline
+2930222	2020			correct_baseline
+2930222	2021			correct_baseline
+2930222	2022			correct_baseline
+2931104	2020			correct_baseline
+2931104	2021			correct_baseline
+2931104	2022			correct_baseline
+2931738	2020			correct_baseline
+2931738	2021			correct_baseline
+2931738	2022			correct_baseline
+2931914	2020			correct_baseline
+2931914	2021			correct_baseline
+2931914	2022			correct_baseline
+2943190	2020			correct_baseline
+2943190	2021			correct_baseline
+2943190	2022			correct_baseline
+2945513	2020			correct_baseline
+2945513	2021			correct_baseline
+2945513	2022			correct_baseline
+2956441	2020			correct_baseline
+2956441	2021			correct_baseline
+2956441	2022			correct_baseline
+2956442	2020			correct_baseline
+2956442	2021			correct_baseline
+2956442	2022			correct_baseline
+2957408	2020			correct_baseline
+2957408	2021			correct_baseline
+2957408	2022			correct_baseline
+2957966	2020			correct_baseline
+2957966	2021			correct_baseline
+2957966	2022			correct_baseline
+2959443	2020			correct_baseline
+2959443	2021			correct_baseline
+2959443	2022			correct_baseline
+2963569	2020			correct_baseline
+2963569	2021			correct_baseline
+2963569	2022			correct_baseline
+2964167	2020			correct_baseline
+2964167	2021			correct_baseline
+2964167	2022			correct_baseline
+2965354	2020	1	0.9834380154164218	correct_baseline
+2965354	2021	1	0.9829281085273965	correct_baseline
+2965354	2022	1	0.9824155802942456	correct_baseline
+2965434	2020			correct_baseline
+2965434	2021			correct_baseline
+2965434	2022			correct_baseline
+2970585	2020			correct_baseline
+2970585	2021			correct_baseline
+2970585	2022			correct_baseline
+2971033	2020			correct_baseline
+2971033	2021			correct_baseline
+2971033	2022			correct_baseline
+2975132	2020			correct_baseline
+2975132	2021			correct_baseline
+2975132	2022			correct_baseline
+2975187	2020			correct_baseline
+2975187	2021			correct_baseline
+2975187	2022			correct_baseline
+2977222	2020			correct_baseline
+2977222	2021			correct_baseline
+2977222	2022			correct_baseline
+2982380	2020			correct_baseline
+2982380	2021			correct_baseline
+2982380	2022			correct_baseline
+2984306	2020			correct_baseline
+2984306	2021			correct_baseline
+2984306	2022			correct_baseline
+2984492	2020			correct_baseline
+2984492	2021			correct_baseline
+2984492	2022			correct_baseline
+2984532	2020			correct_baseline
+2984532	2021			correct_baseline
+2984532	2022			correct_baseline
+2984676	2020	0	0.8881060050301559	correct_baseline
+2984676	2021	0	0.8280943193933464	correct_baseline
+2984676	2022	0	0.7704678493033044	correct_baseline
+2985863	2020			correct_baseline
+2985863	2021			correct_baseline
+2985863	2022			correct_baseline
+2985944	2020			correct_baseline
+2985944	2021			correct_baseline
+2985944	2022			correct_baseline
+2985963	2020			correct_baseline
+2985963	2021			correct_baseline
+2985963	2022			correct_baseline
+2985964	2020			correct_baseline
+2985964	2021			correct_baseline
+2985964	2022			correct_baseline
+2985965	2020			correct_baseline
+2985965	2021			correct_baseline
+2985965	2022			correct_baseline
+2985986	2020			correct_baseline
+2985986	2021			correct_baseline
+2985986	2022			correct_baseline
+2985994	2020			correct_baseline
+2985994	2021			correct_baseline
+2985994	2022			correct_baseline
+2985995	2020			correct_baseline
+2985995	2021			correct_baseline
+2985995	2022			correct_baseline
+2986010	2020			correct_baseline
+2986010	2021			correct_baseline
+2986010	2022			correct_baseline
+2986022	2020			correct_baseline
+2986022	2021			correct_baseline
+2986022	2022			correct_baseline
+2986111	2020	1	0.9321023475534718	correct_baseline
+2986111	2021	1	0.9286701852720394	correct_baseline
+2986111	2022	1	0.9252205842005645	correct_baseline
+2987780	2020			correct_baseline
+2987780	2021			correct_baseline
+2987780	2022			correct_baseline
+2988040	2020			correct_baseline
+2988040	2021			correct_baseline
+2988040	2022			correct_baseline
+2988188	2020	0	0.9092285347762612	correct_baseline
+2988188	2021	0	0.8981339021704473	correct_baseline
+2988188	2022	0	0.8870546586058307	correct_baseline
+2988224	2020			correct_baseline
+2988224	2021			correct_baseline
+2988224	2022			correct_baseline
+2989222	2020			correct_baseline
+2989222	2021			correct_baseline
+2989222	2022			correct_baseline
+2994120	2020			correct_baseline
+2994120	2021			correct_baseline
+2994120	2022			correct_baseline
+2994229	2020			correct_baseline
+2994229	2021			correct_baseline
+2994229	2022			correct_baseline
+2995149	2020	0	0.8170782602209019	correct_baseline
+2995149	2021	0	0.7756623629029492	correct_baseline
+2995149	2022	0	0.7358825573710769	correct_baseline
+2996525	2020	1	0.9465165649939996	correct_baseline
+2996525	2021	1	0.9456498918895414	correct_baseline
+2996525	2022	1	0.9445719966080641	correct_baseline
+2996897	2020			correct_baseline
+2996897	2021			correct_baseline
+2996897	2022			correct_baseline
+3000406	2020			correct_baseline
+3000406	2021			correct_baseline
+3000406	2022			correct_baseline
+3000610	2020	1	0.8173267957400931	correct_baseline
+3000610	2021	1	0.8017203457557941	correct_baseline
+3000610	2022	1	0.7862148079203372	correct_baseline
+3000679	2020			correct_baseline
+3000679	2021			correct_baseline
+3000679	2022			correct_baseline
+3001362	2020			correct_baseline
+3001362	2021			correct_baseline
+3001362	2022			correct_baseline
+3002530	2020			correct_baseline
+3002530	2021			correct_baseline
+3002530	2022			correct_baseline
+3003244	2020	0	0.8888369075457098	correct_baseline
+3003244	2021	0	0.8662444736723341	correct_baseline
+3003244	2022	0	0.8438874251444207	correct_baseline
+3003709	2020			correct_baseline
+3003709	2021			correct_baseline
+3003709	2022			correct_baseline
+3005039	2020			correct_baseline
+3005039	2021			correct_baseline
+3005039	2022			correct_baseline
+3011247	2020			correct_baseline
+3011247	2021			correct_baseline
+3011247	2022			correct_baseline
+3012089	2020	1	0.8415500316885633	correct_baseline
+3012089	2021	1	0.8208868161931603	correct_baseline
+3012089	2022	1	0.8004206723348766	correct_baseline
+3012103	2020			correct_baseline
+3012103	2021			correct_baseline
+3012103	2022			correct_baseline
+3012117	2020			correct_baseline
+3012117	2021			correct_baseline
+3012117	2022			correct_baseline
+3015457	2020			correct_baseline
+3015457	2021			correct_baseline
+3015457	2022			correct_baseline
+3020838	2020			correct_baseline
+3020838	2021			correct_baseline
+3020838	2022			correct_baseline
+3020871	2020	0	0.6866292709916804	correct_baseline
+3020871	2021	0	0.6289921775152137	correct_baseline
+3020871	2022	0	0.574973705011954	correct_baseline
+3021496	2020	0	0.9364875533792136	correct_baseline
+3021496	2021	0	0.9228074471205361	correct_baseline
+3021496	2022	0	0.9092869209693715	correct_baseline
+3021730	2020	1	0.9796744694802608	correct_baseline
+3021730	2021	1	0.9790374521146005	correct_baseline
+3021730	2022	1	0.9783995607469275	correct_baseline
+3021955	2020			correct_baseline
+3021955	2021			correct_baseline
+3021955	2022			correct_baseline
+3022203	2020			correct_baseline
+3022203	2021			correct_baseline
+3022203	2022			correct_baseline
+3022609	2020			correct_baseline
+3022609	2021			correct_baseline
+3022609	2022			correct_baseline
+3022668	2020			correct_baseline
+3022668	2021			correct_baseline
+3022668	2022			correct_baseline
+3023671	2020			correct_baseline
+3023671	2021			correct_baseline
+3023671	2022			correct_baseline
+3025605	2020			correct_baseline
+3025605	2021			correct_baseline
+3025605	2022			correct_baseline
+3025617	2020	1	0.9832489226473006	correct_baseline
+3025617	2021	1	0.9825308742936832	correct_baseline
+3025617	2022	1	0.9818094376342694	correct_baseline
+3025731	2020			correct_baseline
+3025731	2021			correct_baseline
+3025731	2022			correct_baseline
+3025858	2020			correct_baseline
+3025858	2021			correct_baseline
+3025858	2022			correct_baseline
+3025875	2020			correct_baseline
+3025875	2021			correct_baseline
+3025875	2022			correct_baseline
+3025889	2020			correct_baseline
+3025889	2021			correct_baseline
+3025889	2022			correct_baseline
+3025896	2020	1	0.9422658731460732	correct_baseline
+3025896	2021	1	0.9338551609032042	correct_baseline
+3025896	2022	1	0.9253709190871116	correct_baseline
+3025907	2020			correct_baseline
+3025907	2021			correct_baseline
+3025907	2022			correct_baseline
+3025986	2020			correct_baseline
+3025986	2021			correct_baseline
+3025986	2022			correct_baseline
+3026004	2020			correct_baseline
+3026004	2021			correct_baseline
+3026004	2022			correct_baseline
+3026024	2020			correct_baseline
+3026024	2021			correct_baseline
+3026024	2022			correct_baseline
+3026035	2020			correct_baseline
+3026035	2021			correct_baseline
+3026035	2022			correct_baseline
+3026040	2020			correct_baseline
+3026040	2021			correct_baseline
+3026040	2022			correct_baseline
+3026049	2020			correct_baseline
+3026049	2021			correct_baseline
+3026049	2022			correct_baseline
+3026074	2020	0	0.8691407680203471	correct_baseline
+3026074	2021	0	0.8555072933874072	correct_baseline
+3026074	2022	0	0.8420245064224131	correct_baseline
+3026092	2020	1	0.9060901239635293	correct_baseline
+3026092	2021	1	0.8932134231463444	correct_baseline
+3026092	2022	1	0.8803121700174277	correct_baseline
+3026105	2020			correct_baseline
+3026105	2021			correct_baseline
+3026105	2022			correct_baseline
+3026107	2020			correct_baseline
+3026107	2021			correct_baseline
+3026107	2022			correct_baseline
+3026162	2020	1	0.9112310444377613	correct_baseline
+3026162	2021	1	0.898419640648143	correct_baseline
+3026162	2022	1	0.8856715694809018	correct_baseline
+3026294	2020	0	0.9356685776480957	correct_baseline
+3026294	2021	0	0.9298479392045859	correct_baseline
+3026294	2022	0	0.924019794391966	correct_baseline
+3026334	2020	1	0.9238969605200751	correct_baseline
+3026334	2021	1	0.9131138717807321	correct_baseline
+3026334	2022	1	0.9022087622070404	correct_baseline
+3026454	2020			correct_baseline
+3026454	2021			correct_baseline
+3026454	2022			correct_baseline
+3026622	2020			correct_baseline
+3026622	2021			correct_baseline
+3026622	2022			correct_baseline
+3027138	2020			correct_baseline
+3027138	2021			correct_baseline
+3027138	2022			correct_baseline
+3027332	2020			correct_baseline
+3027332	2021			correct_baseline
+3027332	2022			correct_baseline
+3027341	2020			correct_baseline
+3027341	2021			correct_baseline
+3027341	2022			correct_baseline
+3027791	2020			correct_baseline
+3027791	2021			correct_baseline
+3027791	2022			correct_baseline
+3028528	2020	0	0.9516658531221783	correct_baseline
+3028528	2021	0	0.9320405768687117	correct_baseline
+3028528	2022	0	0.9127263933247013	correct_baseline
+3032611	2020			correct_baseline
+3032611	2021			correct_baseline
+3032611	2022			correct_baseline
+3032646	2020			correct_baseline
+3032646	2021			correct_baseline
+3032646	2022			correct_baseline
+3032653	2020			correct_baseline
+3032653	2021			correct_baseline
+3032653	2022			correct_baseline
+3033077	2020	0	0.9369902724179727	correct_baseline
+3033077	2021	0	0.9260264441340963	correct_baseline
+3033077	2022	0	0.915030088100325	correct_baseline
+3033242	2020	0	0.8898923087066787	correct_baseline
+3033242	2021	0	0.8366223738984209	correct_baseline
+3033242	2022	0	0.7856420933091459	correct_baseline
+3033261	2020			correct_baseline
+3033261	2021			correct_baseline
+3033261	2022			correct_baseline
+3033396	2020			correct_baseline
+3033396	2021			correct_baseline
+3033396	2022			correct_baseline
+3033460	2020			correct_baseline
+3033460	2021			correct_baseline
+3033460	2022			correct_baseline
+3033535	2020			correct_baseline
+3033535	2021			correct_baseline
+3033535	2022			correct_baseline
+3033865	2020	1	0.9518869735530103	correct_baseline
+3033865	2021	1	0.9496759179188338	correct_baseline
+3033865	2022	1	0.9473799222096215	correct_baseline
+3033896	2020	0	0.7781311379699107	correct_baseline
+3033896	2021	0	0.7457040880002876	correct_baseline
+3033896	2022	0	0.7144606442696795	correct_baseline
+3033905	2020			correct_baseline
+3033905	2021			correct_baseline
+3033905	2022			correct_baseline
+3033965	2020			correct_baseline
+3033965	2021			correct_baseline
+3033965	2022			correct_baseline
+3034002	2020			correct_baseline
+3034002	2021			correct_baseline
+3034002	2022			correct_baseline
+3034015	2020			correct_baseline
+3034015	2021			correct_baseline
+3034015	2022			correct_baseline
+3034046	2020			correct_baseline
+3034046	2021			correct_baseline
+3034046	2022			correct_baseline
+3034602	2020			correct_baseline
+3034602	2021			correct_baseline
+3034602	2022			correct_baseline
+3034782	2020			correct_baseline
+3034782	2021			correct_baseline
+3034782	2022			correct_baseline
+3036033	2020	1	0.9579842480402315	correct_baseline
+3036033	2021	1	0.9362046153330723	correct_baseline
+3036033	2022	1	0.9142868424923717	correct_baseline
+3036892	2020	0	0.8067825554510436	correct_baseline
+3036892	2021	0	0.7875369854837597	correct_baseline
+3036892	2022	0	0.7685826966470742	correct_baseline
+3039046	2020			correct_baseline
+3039046	2021			correct_baseline
+3039046	2022			correct_baseline
+3039194	2020	0	0.8872132022190733	correct_baseline
+3039194	2021	0	0.881449626549845	correct_baseline
+3039194	2022	0	0.8757044165478199	correct_baseline
+3039267	2020	1	0.8579911353846724	correct_baseline
+3039267	2021	1	0.8487054363196178	correct_baseline
+3039267	2022	1	0.8394841738971659	correct_baseline
+3039270	2020			correct_baseline
+3039270	2021			correct_baseline
+3039270	2022			correct_baseline
+3039272	2020			correct_baseline
+3039272	2021			correct_baseline
+3039272	2022			correct_baseline
+3039418	2020			correct_baseline
+3039418	2021			correct_baseline
+3039418	2022			correct_baseline
+3040184	2020			correct_baseline
+3040184	2021			correct_baseline
+3040184	2022			correct_baseline
+3040185	2020	1	0.9857367211844683	correct_baseline
+3040185	2021	1	0.9841396949161068	correct_baseline
+3040185	2022	1	0.9825056030507201	correct_baseline
+3040232	2020			correct_baseline
+3040232	2021			correct_baseline
+3040232	2022			correct_baseline
+3040233	2020	1	0.8723785984954413	correct_baseline
+3040233	2021	1	0.8594387972257485	correct_baseline
+3040233	2022	1	0.8466536824347838	correct_baseline
+3040241	2020			correct_baseline
+3040241	2021			correct_baseline
+3040241	2022			correct_baseline
+3040928	2020			correct_baseline
+3040928	2021			correct_baseline
+3040928	2022			correct_baseline
+3040999	2020			correct_baseline
+3040999	2021			correct_baseline
+3040999	2022			correct_baseline
+3042799	2020			correct_baseline
+3042799	2021			correct_baseline
+3042799	2022			correct_baseline
+3042845	2020	1	0.9535720915803172	correct_baseline
+3042845	2021	1	0.9513969793783927	correct_baseline
+3042845	2022	1	0.9492189038145702	correct_baseline
+3044912	2020			correct_baseline
+3044912	2021			correct_baseline
+3044912	2022			correct_baseline
+3045803	2020			correct_baseline
+3045803	2021			correct_baseline
+3045803	2022			correct_baseline
+3046015	2020	0	0.8015929553282768	correct_baseline
+3046015	2021	0	0.7825343184801463	correct_baseline
+3046015	2022	0	0.7638066647222435	correct_baseline
+3046744	2020			correct_baseline
+3046744	2021			correct_baseline
+3046744	2022			correct_baseline
+3046765	2020			correct_baseline
+3046765	2021			correct_baseline
+3046765	2022			correct_baseline
+3054117	2020			correct_baseline
+3054117	2021			correct_baseline
+3054117	2022			correct_baseline
+3054352	2020			correct_baseline
+3054352	2021			correct_baseline
+3054352	2022			correct_baseline
+3054357	2020	0	0.91276912070354	correct_baseline
+3054357	2021	0	0.8910088588814151	correct_baseline
+3054357	2022	0	0.8695576473306067	correct_baseline
+3054368	2020	1	0.8927216124031506	correct_baseline
+3054368	2021	1	0.8866552259350562	correct_baseline
+3054368	2022	1	0.8804606451092308	correct_baseline
+3064221	2020			correct_baseline
+3064221	2021			correct_baseline
+3064221	2022			correct_baseline
+3064495	2020			correct_baseline
+3064495	2021			correct_baseline
+3064495	2022			correct_baseline
+3064669	2020			correct_baseline
+3064669	2021			correct_baseline
+3064669	2022			correct_baseline
+3065244	2020			correct_baseline
+3065244	2021			correct_baseline
+3065244	2022			correct_baseline
+3065883	2020			correct_baseline
+3065883	2021			correct_baseline
+3065883	2022			correct_baseline
+3066321	2020			correct_baseline
+3066321	2021			correct_baseline
+3066321	2022			correct_baseline
+3066993	2020			correct_baseline
+3066993	2021			correct_baseline
+3066993	2022			correct_baseline
+3067119	2020	0	0.7747829307185198	correct_baseline
+3067119	2021	0	0.7491110861872323	correct_baseline
+3067119	2022	0	0.7241471323449393	correct_baseline
+3067353	2020	0	0.9024983223994247	correct_baseline
+3067353	2021	0	0.8778571670105203	correct_baseline
+3067353	2022	0	0.8535573651328873	correct_baseline
+3067891	2020	1	0.7448740525654517	correct_baseline
+3067891	2021	1	0.7230410061893986	correct_baseline
+3067891	2022	1	0.7013556671704108	correct_baseline
+3069460	2020			correct_baseline
+3069460	2021			correct_baseline
+3069460	2022			correct_baseline
+3082279	2020			correct_baseline
+3082279	2021			correct_baseline
+3082279	2022			correct_baseline
+3083486	2020			correct_baseline
+3083486	2021			correct_baseline
+3083486	2022			correct_baseline
+3083488	2020			correct_baseline
+3083488	2021			correct_baseline
+3083488	2022			correct_baseline
+3083680	2020	1	0.9283707699162631	correct_baseline
+3083680	2021	1	0.9066136348702185	correct_baseline
+3083680	2022	1	0.8835751876425163	correct_baseline
+3083888	2020			correct_baseline
+3083888	2021			correct_baseline
+3083888	2022			correct_baseline
+3083935	2020			correct_baseline
+3083935	2021			correct_baseline
+3083935	2022			correct_baseline
+3084015	2020	0	0.829092516318261	correct_baseline
+3084015	2021	0	0.819380118053138	correct_baseline
+3084015	2022	0	0.8097580396630724	correct_baseline
+3084022	2020	0	0.9234805965431936	correct_baseline
+3084022	2021	0	0.898569340307581	correct_baseline
+3084022	2022	0	0.8742186498881189	correct_baseline
+3084839	2020			correct_baseline
+3084839	2021			correct_baseline
+3084839	2022			correct_baseline
+3084842	2020			correct_baseline
+3084842	2021			correct_baseline
+3084842	2022			correct_baseline
+3085346	2020			correct_baseline
+3085346	2021			correct_baseline
+3085346	2022			correct_baseline
+3085357	2020			correct_baseline
+3085357	2021			correct_baseline
+3085357	2022			correct_baseline
+3085366	2020			correct_baseline
+3085366	2021			correct_baseline
+3085366	2022			correct_baseline
+3085389	2020			correct_baseline
+3085389	2021			correct_baseline
+3085389	2022			correct_baseline
+3085420	2020			correct_baseline
+3085420	2021			correct_baseline
+3085420	2022			correct_baseline
+3086784	2020			correct_baseline
+3086784	2021			correct_baseline
+3086784	2022			correct_baseline
+3086845	2020			correct_baseline
+3086845	2021			correct_baseline
+3086845	2022			correct_baseline
+3088310	2020	1	0.8730026684178694	correct_baseline
+3088310	2021	1	0.8586548459608458	correct_baseline
+3088310	2022	1	0.8444660609341738	correct_baseline
+3088488	2020			correct_baseline
+3088488	2021			correct_baseline
+3088488	2022			correct_baseline
+3088623	2020			correct_baseline
+3088623	2021			correct_baseline
+3088623	2022			correct_baseline
+3094939	2020			correct_baseline
+3094939	2021			correct_baseline
+3094939	2022			correct_baseline
+3096529	2020			correct_baseline
+3096529	2021			correct_baseline
+3096529	2022			correct_baseline
+3097504	2020			correct_baseline
+3097504	2021			correct_baseline
+3097504	2022			correct_baseline
+3098912	2020	3	1.1694061011383279	correct_baseline
+3098912	2021	3	1.1713007410799479	correct_baseline
+3098912	2022	3	1.1731867982841415	correct_baseline
+3098951	2020			correct_baseline
+3098951	2021			correct_baseline
+3098951	2022			correct_baseline
+3099650	2020			correct_baseline
+3099650	2021			correct_baseline
+3099650	2022			correct_baseline
+3100375	2020			correct_baseline
+3100375	2021			correct_baseline
+3100375	2022			correct_baseline
+3104106	2020			correct_baseline
+3104106	2021			correct_baseline
+3104106	2022			correct_baseline
+3104150	2020			correct_baseline
+3104150	2021			correct_baseline
+3104150	2022			correct_baseline
+3104314	2020			correct_baseline
+3104314	2021			correct_baseline
+3104314	2022			correct_baseline
+3105768	2020			correct_baseline
+3105768	2021			correct_baseline
+3105768	2022			correct_baseline
+3110041	2020			correct_baseline
+3110041	2021			correct_baseline
+3110041	2022			correct_baseline
+3111754	2020			correct_baseline
+3111754	2021			correct_baseline
+3111754	2022			correct_baseline
+3112361	2020			correct_baseline
+3112361	2021			correct_baseline
+3112361	2022			correct_baseline
+3112364	2020			correct_baseline
+3112364	2021			correct_baseline
+3112364	2022			correct_baseline
+3112994	2020			correct_baseline
+3112994	2021			correct_baseline
+3112994	2022			correct_baseline
+3113637	2020			correct_baseline
+3113637	2021			correct_baseline
+3113637	2022			correct_baseline
+3113852	2020			correct_baseline
+3113852	2021			correct_baseline
+3113852	2022			correct_baseline
+3115131	2020			correct_baseline
+3115131	2021			correct_baseline
+3115131	2022			correct_baseline
+3115828	2020			correct_baseline
+3115828	2021			correct_baseline
+3115828	2022			correct_baseline
+3119185	2020			correct_baseline
+3119185	2021			correct_baseline
+3119185	2022			correct_baseline
+3119206	2020			correct_baseline
+3119206	2021			correct_baseline
+3119206	2022			correct_baseline
+3119219	2020			correct_baseline
+3119219	2021			correct_baseline
+3119219	2022			correct_baseline
+3120391	2020			correct_baseline
+3120391	2021			correct_baseline
+3120391	2022			correct_baseline
+3120692	2020			correct_baseline
+3120692	2021			correct_baseline
+3120692	2022			correct_baseline
+3120790	2020	1	0.9334278048053737	correct_baseline
+3120790	2021	1	0.9277820893580132	correct_baseline
+3120790	2022	1	0.9220151822011762	correct_baseline
+3121088	2020			correct_baseline
+3121088	2021			correct_baseline
+3121088	2022			correct_baseline
+3121228	2020			correct_baseline
+3121228	2021			correct_baseline
+3121228	2022			correct_baseline
+3121258	2020			correct_baseline
+3121258	2021			correct_baseline
+3121258	2022			correct_baseline
+3121474	2020			correct_baseline
+3121474	2021			correct_baseline
+3121474	2022			correct_baseline
+3121562	2020			correct_baseline
+3121562	2021			correct_baseline
+3121562	2022			correct_baseline
+3123249	2020			correct_baseline
+3123249	2021			correct_baseline
+3123249	2022			correct_baseline
+3125933	2020			correct_baseline
+3125933	2021			correct_baseline
+3125933	2022			correct_baseline
+3128225	2020	1	0.990564656646158	correct_baseline
+3128225	2021	1	0.9902705336525471	correct_baseline
+3128225	2022	1	0.9899750497449923	correct_baseline
+3128601	2020			correct_baseline
+3128601	2021			correct_baseline
+3128601	2022			correct_baseline
+3128888	2020			correct_baseline
+3128888	2021			correct_baseline
+3128888	2022			correct_baseline
+3131367	2020			correct_baseline
+3131367	2021			correct_baseline
+3131367	2022			correct_baseline
+3131614	2020			correct_baseline
+3131614	2021			correct_baseline
+3131614	2022			correct_baseline
+3133446	2020			correct_baseline
+3133446	2021			correct_baseline
+3133446	2022			correct_baseline
+3133887	2020			correct_baseline
+3133887	2021			correct_baseline
+3133887	2022			correct_baseline
+3133938	2020	1	0.8733501634918169	correct_baseline
+3133938	2021	1	0.8615466969089239	correct_baseline
+3133938	2022	1	0.8497787354525245	correct_baseline
+3136320	2020			correct_baseline
+3136320	2021			correct_baseline
+3136320	2022			correct_baseline
+3136929	2020			correct_baseline
+3136929	2021			correct_baseline
+3136929	2022			correct_baseline
+3138192	2020			correct_baseline
+3138192	2021			correct_baseline
+3138192	2022			correct_baseline
+3138195	2020			correct_baseline
+3138195	2021			correct_baseline
+3138195	2022			correct_baseline
+3138953	2020			correct_baseline
+3138953	2021			correct_baseline
+3138953	2022			correct_baseline
+3139003	2020			correct_baseline
+3139003	2021			correct_baseline
+3139003	2022			correct_baseline
+3140436	2020			correct_baseline
+3140436	2021			correct_baseline
+3140436	2022			correct_baseline
+3142967	2020			correct_baseline
+3142967	2021			correct_baseline
+3142967	2022			correct_baseline
+3144603	2020			correct_baseline
+3144603	2021			correct_baseline
+3144603	2022			correct_baseline
+3146683	2020	1	0.9382683810248856	correct_baseline
+3146683	2021	1	0.9320723629406884	correct_baseline
+3146683	2022	1	0.9256734962020452	correct_baseline
+3147018	2020	1	0.941118411796414	correct_baseline
+3147018	2021	1	0.9328069807591974	correct_baseline
+3147018	2022	1	0.9243572734460773	correct_baseline
+3147168	2020	0	0.8836014327388703	correct_baseline
+3147168	2021	0	0.871658643315283	correct_baseline
+3147168	2022	0	0.8598306958804303	correct_baseline
+3147815	2020			correct_baseline
+3147815	2021			correct_baseline
+3147815	2022			correct_baseline
+3147913	2020			correct_baseline
+3147913	2021			correct_baseline
+3147913	2022			correct_baseline
+3148560	2020			correct_baseline
+3148560	2021			correct_baseline
+3148560	2022			correct_baseline
+3150935	2020			correct_baseline
+3150935	2021			correct_baseline
+3150935	2022			correct_baseline
+3151434	2020			correct_baseline
+3151434	2021			correct_baseline
+3151434	2022			correct_baseline
+3151692	2020			correct_baseline
+3151692	2021			correct_baseline
+3151692	2022			correct_baseline
+3152268	2020			correct_baseline
+3152268	2021			correct_baseline
+3152268	2022			correct_baseline
+3152519	2020			correct_baseline
+3152519	2021			correct_baseline
+3152519	2022			correct_baseline
+3152583	2020	0	0.9426510789768779	correct_baseline
+3152583	2021	0	0.9222886594511545	correct_baseline
+3152583	2022	0	0.9017943256484408	correct_baseline
+3152816	2020			correct_baseline
+3152816	2021			correct_baseline
+3152816	2022			correct_baseline
+3152824	2020			correct_baseline
+3152824	2021			correct_baseline
+3152824	2022			correct_baseline
+3152861	2020			correct_baseline
+3152861	2021			correct_baseline
+3152861	2022			correct_baseline
+3164340	2020			correct_baseline
+3164340	2021			correct_baseline
+3164340	2022			correct_baseline
+3167003	2020			correct_baseline
+3167003	2021			correct_baseline
+3167003	2022			correct_baseline
+3169120	2020			correct_baseline
+3169120	2021			correct_baseline
+3169120	2022			correct_baseline
+3169137	2020	0	0.8032272403366211	correct_baseline
+3169137	2021	0	0.7562416112495963	correct_baseline
+3169137	2022	0	0.7112693402486907	correct_baseline
+3169169	2020			correct_baseline
+3169169	2021			correct_baseline
+3169169	2022			correct_baseline
+3169331	2020			correct_baseline
+3169331	2021			correct_baseline
+3169331	2022			correct_baseline
+3169713	2020			correct_baseline
+3169713	2021			correct_baseline
+3169713	2022			correct_baseline
+3169756	2020			correct_baseline
+3169756	2021			correct_baseline
+3169756	2022			correct_baseline
+3170247	2020			correct_baseline
+3170247	2021			correct_baseline
+3170247	2022			correct_baseline
+3170266	2020			correct_baseline
+3170266	2021			correct_baseline
+3170266	2022			correct_baseline
+3170823	2020	0	0.6645636520530331	correct_baseline
+3170823	2021	0	0.6383081032862621	correct_baseline
+3170823	2022	0	0.6130512550886767	correct_baseline
+3170873	2020			correct_baseline
+3170873	2021			correct_baseline
+3170873	2022			correct_baseline
+3171302	2020			correct_baseline
+3171302	2021			correct_baseline
+3171302	2022			correct_baseline
+3171304	2020			correct_baseline
+3171304	2021			correct_baseline
+3171304	2022			correct_baseline
+3171888	2020	1	0.9485588280689059	correct_baseline
+3171888	2021	1	0.9462185806629062	correct_baseline
+3171888	2022	1	0.9437756173671972	correct_baseline
+3171952	2020			correct_baseline
+3171952	2021			correct_baseline
+3171952	2022			correct_baseline
+3172059	2020			correct_baseline
+3172059	2021			correct_baseline
+3172059	2022			correct_baseline
+3172068	2020			correct_baseline
+3172068	2021			correct_baseline
+3172068	2022			correct_baseline
+3172099	2020			correct_baseline
+3172099	2021			correct_baseline
+3172099	2022			correct_baseline
+3172206	2020			correct_baseline
+3172206	2021			correct_baseline
+3172206	2022			correct_baseline
+3172266	2020			correct_baseline
+3172266	2021			correct_baseline
+3172266	2022			correct_baseline
+3172291	2020	1	0.9558231462344199	correct_baseline
+3172291	2021	1	0.9541712160766825	correct_baseline
+3172291	2022	1	0.9525202246686367	correct_baseline
+3172294	2020			correct_baseline
+3172294	2021			correct_baseline
+3172294	2022			correct_baseline
+3172327	2020			correct_baseline
+3172327	2021			correct_baseline
+3172327	2022			correct_baseline
+3172348	2020	1	0.8534289623137757	correct_baseline
+3172348	2021	1	0.8303501416691388	correct_baseline
+3172348	2022	1	0.807714976850175	correct_baseline
+3172549	2020			correct_baseline
+3172549	2021			correct_baseline
+3172549	2022			correct_baseline
+3172613	2020			correct_baseline
+3172613	2021			correct_baseline
+3172613	2022			correct_baseline
+3172615	2020			correct_baseline
+3172615	2021			correct_baseline
+3172615	2022			correct_baseline
+3172622	2020			correct_baseline
+3172622	2021			correct_baseline
+3172622	2022			correct_baseline
+3188711	2020			correct_baseline
+3188711	2021			correct_baseline
+3188711	2022			correct_baseline
+3188829	2020			correct_baseline
+3188829	2021			correct_baseline
+3188829	2022			correct_baseline
+3188859	2020			correct_baseline
+3188859	2021			correct_baseline
+3188859	2022			correct_baseline
+3188896	2020			correct_baseline
+3188896	2021			correct_baseline
+3188896	2022			correct_baseline
+3189073	2020			correct_baseline
+3189073	2021			correct_baseline
+3189073	2022			correct_baseline
+3189457	2020			correct_baseline
+3189457	2021			correct_baseline
+3189457	2022			correct_baseline
+3189807	2020			correct_baseline
+3189807	2021			correct_baseline
+3189807	2022			correct_baseline
+3189815	2020	1	0.9548572913593206	correct_baseline
+3189815	2021	1	0.9506976479538928	correct_baseline
+3189815	2022	1	0.946517932377008	correct_baseline
+3189824	2020			correct_baseline
+3189824	2021			correct_baseline
+3189824	2022			correct_baseline
+3189828	2020			correct_baseline
+3189828	2021			correct_baseline
+3189828	2022			correct_baseline
+3189835	2020			correct_baseline
+3189835	2021			correct_baseline
+3189835	2022			correct_baseline
+3189836	2020			correct_baseline
+3189836	2021			correct_baseline
+3189836	2022			correct_baseline
+3189837	2020	0	0.8930613645314704	correct_baseline
+3189837	2021	0	0.8669802993988281	correct_baseline
+3189837	2022	0	0.8411530431105505	correct_baseline
+3189843	2020			correct_baseline
+3189843	2021			correct_baseline
+3189843	2022			correct_baseline
+3189866	2020	0	0.9102214226435316	correct_baseline
+3189866	2021	0	0.9046443420996522	correct_baseline
+3189866	2022	0	0.8990866002104131	correct_baseline
+3189882	2020			correct_baseline
+3189882	2021			correct_baseline
+3189882	2022			correct_baseline
+3189883	2020			correct_baseline
+3189883	2021			correct_baseline
+3189883	2022			correct_baseline
+3189939	2020			correct_baseline
+3189939	2021			correct_baseline
+3189939	2022			correct_baseline
+3190411	2020			correct_baseline
+3190411	2021			correct_baseline
+3190411	2022			correct_baseline
+3190522	2020			correct_baseline
+3190522	2021			correct_baseline
+3190522	2022			correct_baseline
+3190544	2020			correct_baseline
+3190544	2021			correct_baseline
+3190544	2022			correct_baseline
+3190551	2020			correct_baseline
+3190551	2021			correct_baseline
+3190551	2022			correct_baseline
+3190653	2020	1	0.9335282408863802	correct_baseline
+3190653	2021	1	0.928206900494557	correct_baseline
+3190653	2022	1	0.9228586422938196	correct_baseline
+3197314	2020			correct_baseline
+3197314	2021			correct_baseline
+3197314	2022			correct_baseline
+3340858	2020			correct_baseline
+3340858	2021			correct_baseline
+3340858	2022			correct_baseline
+3586046	2020			correct_baseline
+3586046	2021			correct_baseline
+3586046	2022			correct_baseline
+3596131	2020			correct_baseline
+3596131	2021			correct_baseline
+3596131	2022			correct_baseline
+3602227	2020			correct_baseline
+3602227	2021			correct_baseline
+3602227	2022			correct_baseline
+3602683	2020			correct_baseline
+3602683	2021			correct_baseline
+3602683	2022			correct_baseline
+3631129	2020			correct_baseline
+3631129	2021			correct_baseline
+3631129	2022			correct_baseline
+3633319	2020			correct_baseline
+3633319	2021			correct_baseline
+3633319	2022			correct_baseline
+3637507	2020			correct_baseline
+3637507	2021			correct_baseline
+3637507	2022			correct_baseline
+3638303	2020			correct_baseline
+3638303	2021			correct_baseline
+3638303	2022			correct_baseline
+3642339	2020			correct_baseline
+3642339	2021			correct_baseline
+3642339	2022			correct_baseline
+3642531	2020			correct_baseline
+3642531	2021			correct_baseline
+3642531	2022			correct_baseline
+3663237	2020	1	0.9476857122021891	correct_baseline
+3663237	2021	1	0.9318146229574383	correct_baseline
+3663237	2022	1	0.9149750656143936	correct_baseline
+3663772	2020			correct_baseline
+3663772	2021			correct_baseline
+3663772	2022			correct_baseline
+3664287	2020			correct_baseline
+3664287	2021			correct_baseline
+3664287	2022			correct_baseline
+3664589	2020			correct_baseline
+3664589	2021			correct_baseline
+3664589	2022			correct_baseline
+3665817	2020			correct_baseline
+3665817	2021			correct_baseline
+3665817	2022			correct_baseline
+3665966	2020			correct_baseline
+3665966	2021			correct_baseline
+3665966	2022			correct_baseline
+3666059	2020			correct_baseline
+3666059	2021			correct_baseline
+3666059	2022			correct_baseline
+3666422	2020			correct_baseline
+3666422	2021			correct_baseline
+3666422	2022			correct_baseline
+3666776	2020	0	0.8815890002198731	correct_baseline
+3666776	2021	0	0.8259308894419173	correct_baseline
+3666776	2022	0	0.7728096972375883	correct_baseline
+3667007	2020			correct_baseline
+3667007	2021			correct_baseline
+3667007	2022			correct_baseline
+3667238	2020			correct_baseline
+3667238	2021			correct_baseline
+3667238	2022			correct_baseline
+3667721	2020			correct_baseline
+3667721	2021			correct_baseline
+3667721	2022			correct_baseline
+3678256	2020			correct_baseline
+3678256	2021			correct_baseline
+3678256	2022			correct_baseline
+3690997	2020	0	0.8514057160542313	correct_baseline
+3690997	2021	0	0.8173699123120566	correct_baseline
+3690997	2022	0	0.7842326867129319	correct_baseline
+3693336	2020			correct_baseline
+3693336	2021			correct_baseline
+3693336	2022			correct_baseline
+3707631	2020			correct_baseline
+3707631	2021			correct_baseline
+3707631	2022			correct_baseline
+3727713	2020			correct_baseline
+3727713	2021			correct_baseline
+3727713	2022			correct_baseline
+3729273	2020			correct_baseline
+3729273	2021			correct_baseline
+3729273	2022			correct_baseline
+3741446	2020			correct_baseline
+3741446	2021			correct_baseline
+3741446	2022			correct_baseline
+3754587	2020			correct_baseline
+3754587	2021			correct_baseline
+3754587	2022			correct_baseline
+3759032	2020			correct_baseline
+3759032	2021			correct_baseline
+3759032	2022			correct_baseline
+3767816	2020			correct_baseline
+3767816	2021			correct_baseline
+3767816	2022			correct_baseline
+3768287	2020			correct_baseline
+3768287	2021			correct_baseline
+3768287	2022			correct_baseline
+3797084	2020	1	0.9732486430051878	correct_baseline
+3797084	2021	1	0.9724770435742517	correct_baseline
+3797084	2022	1	0.9717049832223607	correct_baseline
+3814157	2020			correct_baseline
+3814157	2021			correct_baseline
+3814157	2022			correct_baseline
+3826854	2020			correct_baseline
+3826854	2021			correct_baseline
+3826854	2022			correct_baseline
+3827975	2020			correct_baseline
+3827975	2021			correct_baseline
+3827975	2022			correct_baseline
+3829143	2020			correct_baseline
+3829143	2021			correct_baseline
+3829143	2022			correct_baseline
+3833284	2020			correct_baseline
+3833284	2021			correct_baseline
+3833284	2022			correct_baseline
+3853033	2020			correct_baseline
+3853033	2021			correct_baseline
+3853033	2022			correct_baseline
+3856436	2020			correct_baseline
+3856436	2021			correct_baseline
+3856436	2022			correct_baseline
+3886505	2020			correct_baseline
+3886505	2021			correct_baseline
+3886505	2022			correct_baseline
+3892732	2020			correct_baseline
+3892732	2021			correct_baseline
+3892732	2022			correct_baseline
+3896282	2020			correct_baseline
+3896282	2021			correct_baseline
+3896282	2022			correct_baseline
+3902360	2020			correct_baseline
+3902360	2021			correct_baseline
+3902360	2022			correct_baseline
+3905825	2020			correct_baseline
+3905825	2021			correct_baseline
+3905825	2022			correct_baseline
+3916499	2020			correct_baseline
+3916499	2021			correct_baseline
+3916499	2022			correct_baseline
+3924221	2020			correct_baseline
+3924221	2021			correct_baseline
+3924221	2022			correct_baseline
+3933415	2020			correct_baseline
+3933415	2021			correct_baseline
+3933415	2022			correct_baseline
+3935079	2020			correct_baseline
+3935079	2021			correct_baseline
+3935079	2022			correct_baseline
+3981543	2020	0	0.8103541926531393	correct_baseline
+3981543	2021	0	0.7679859929179469	correct_baseline
+3981543	2022	0	0.7274519890384327	correct_baseline
+3988179	2020			correct_baseline
+3988179	2021			correct_baseline
+3988179	2022			correct_baseline
+4005004	2020			correct_baseline
+4005004	2021			correct_baseline
+4005004	2022			correct_baseline
+4033335	2020			correct_baseline
+4033335	2021			correct_baseline
+4033335	2022			correct_baseline
+4034001	2020			correct_baseline
+4034001	2021			correct_baseline
+4034001	2022			correct_baseline
+4038485	2020	1	0.9070429264451288	correct_baseline
+4038485	2021	1	0.8966524384731608	correct_baseline
+4038485	2022	1	0.8862954878749115	correct_baseline
+4046493	2020			correct_baseline
+4046493	2021			correct_baseline
+4046493	2022			correct_baseline
+4048240	2020			correct_baseline
+4048240	2021			correct_baseline
+4048240	2022			correct_baseline
+4063383	2020			correct_baseline
+4063383	2021			correct_baseline
+4063383	2022			correct_baseline
+4067281	2020			correct_baseline
+4067281	2021			correct_baseline
+4067281	2022			correct_baseline
+4067302	2020	0	0.9198154610031697	correct_baseline
+4067302	2021	0	0.8736943726685606	correct_baseline
+4067302	2022	0	0.826447164871427	correct_baseline
+4083707	2020			correct_baseline
+4083707	2021			correct_baseline
+4083707	2022			correct_baseline
+4086523	2020			correct_baseline
+4086523	2021			correct_baseline
+4086523	2022			correct_baseline
+4091345	2020			correct_baseline
+4091345	2021			correct_baseline
+4091345	2022			correct_baseline
+4094511	2020			correct_baseline
+4094511	2021			correct_baseline
+4094511	2022			correct_baseline
+4097656	2020			correct_baseline
+4097656	2021			correct_baseline
+4097656	2022			correct_baseline
+4102909	2020			correct_baseline
+4102909	2021			correct_baseline
+4102909	2022			correct_baseline
+4102952	2020			correct_baseline
+4102952	2021			correct_baseline
+4102952	2022			correct_baseline
+4114348	2020			correct_baseline
+4114348	2021			correct_baseline
+4114348	2022			correct_baseline
+4114502	2020			correct_baseline
+4114502	2021			correct_baseline
+4114502	2022			correct_baseline
+4118773	2020			correct_baseline
+4118773	2021			correct_baseline
+4118773	2022			correct_baseline
+4120602	2020			correct_baseline
+4120602	2021			correct_baseline
+4120602	2022			correct_baseline
+4121360	2020			correct_baseline
+4121360	2021			correct_baseline
+4121360	2022			correct_baseline
+4121791	2020			correct_baseline
+4121791	2021			correct_baseline
+4121791	2022			correct_baseline
+4123394	2020			correct_baseline
+4123394	2021			correct_baseline
+4123394	2022			correct_baseline
+4123912	2020			correct_baseline
+4123912	2021			correct_baseline
+4123912	2022			correct_baseline
+4125930	2020			correct_baseline
+4125930	2021			correct_baseline
+4125930	2022			correct_baseline
+4127352	2020			correct_baseline
+4127352	2021			correct_baseline
+4127352	2022			correct_baseline
+4129181	2020	1	0.9622963395899076	correct_baseline
+4129181	2021	1	0.9603177508488412	correct_baseline
+4129181	2022	1	0.9583388872469298	correct_baseline
+4133390	2020			correct_baseline
+4133390	2021			correct_baseline
+4133390	2022			correct_baseline
+4137839	2020			correct_baseline
+4137839	2021			correct_baseline
+4137839	2022			correct_baseline
+4154259	2020			correct_baseline
+4154259	2021			correct_baseline
+4154259	2022			correct_baseline
+4201607	2020	0	0.887230612667539	correct_baseline
+4201607	2021	0	0.8831773384717078	correct_baseline
+4201607	2022	0	0.8791401591615953	correct_baseline
+4201688	2020			correct_baseline
+4201688	2021			correct_baseline
+4201688	2022			correct_baseline
+4201695	2020			correct_baseline
+4201695	2021			correct_baseline
+4201695	2022			correct_baseline
+4201709	2020			correct_baseline
+4201709	2021			correct_baseline
+4201709	2022			correct_baseline
+4205640	2020			correct_baseline
+4205640	2021			correct_baseline
+4205640	2022			correct_baseline
+4219118	2020			correct_baseline
+4219118	2021			correct_baseline
+4219118	2022			correct_baseline
+4250676	2020			correct_baseline
+4250676	2021			correct_baseline
+4250676	2022			correct_baseline
+4259350	2020			correct_baseline
+4259350	2021			correct_baseline
+4259350	2022			correct_baseline
+4264680	2020			correct_baseline
+4264680	2021			correct_baseline
+4264680	2022			correct_baseline
+4270675	2020			correct_baseline
+4270675	2021			correct_baseline
+4270675	2022			correct_baseline
+4271356	2020			correct_baseline
+4271356	2021			correct_baseline
+4271356	2022			correct_baseline
+4273336	2020			correct_baseline
+4273336	2021			correct_baseline
+4273336	2022			correct_baseline
+4283395	2020			correct_baseline
+4283395	2021			correct_baseline
+4283395	2022			correct_baseline
+4285968	2020	0	0.1024838899930382	basic
+4285968	2021	0	0.02327429857470196	basic
+4285968	2022	0	0.004601030432924307	basic
+4287131	2020	0	0.42196163109821033	basic
+4287131	2021	0	0.32163556324974846	basic
+4287131	2022	0	0.24357576058603503	basic
+4293134	2020			correct_baseline
+4293134	2021			correct_baseline
+4293134	2022			correct_baseline
+4314683	2020	0	0.3394663532708792	correct_baseline
+4314683	2021	0	0.3099804348322209	correct_baseline
+4314683	2022	0	0.2828193214630992	correct_baseline
+4314702	2020			correct_baseline
+4314702	2021			correct_baseline
+4314702	2022			correct_baseline
+4315705	2020	1	0.9090360124906038	correct_baseline
+4315705	2021	1	0.9031089102676428	correct_baseline
+4315705	2022	1	0.8971743194342731	correct_baseline
+4344674	2020			basic
+4344674	2021			basic
+4344674	2022			basic
+4352332	2020			correct_baseline
+4352332	2021			correct_baseline
+4352332	2022			correct_baseline
+4354937	2020			correct_baseline
+4354937	2021			correct_baseline
+4354937	2022			correct_baseline
+4354941	2020			correct_baseline
+4354941	2021			correct_baseline
+4354941	2022			correct_baseline
+4362883	2020			correct_baseline
+4362883	2021			correct_baseline
+4362883	2022			correct_baseline
+4362965	2020			correct_baseline
+4362965	2021			correct_baseline
+4362965	2022			correct_baseline
+4363583	2020			correct_baseline
+4363583	2021			correct_baseline
+4363583	2022			correct_baseline
+4366460	2020			correct_baseline
+4366460	2021			correct_baseline
+4366460	2022			correct_baseline
+4366527	2020			correct_baseline
+4366527	2021			correct_baseline
+4366527	2022			correct_baseline
+4372686	2020	0	0.9554133691087751	correct_baseline
+4372686	2021	0	0.8489331856177148	correct_baseline
+4372686	2022	0	0.751037363374805	correct_baseline
+4382841	2020	1	0.9275007841842149	correct_baseline
+4382841	2021	1	0.9035429614856392	correct_baseline
+4382841	2022	1	0.8800166925908209	correct_baseline
+4400961	2020			correct_baseline
+4400961	2021			correct_baseline
+4400961	2022			correct_baseline
+4409643	2020	0	0.677510655294437	basic
+4409643	2021	0	0.6592361175838437	basic
+4409643	2022	0	0.6414433814410493	basic
+4410056	2020			correct_baseline
+4410056	2021			correct_baseline
+4410056	2022			correct_baseline
+4410088	2020			correct_baseline
+4410088	2021			correct_baseline
+4410088	2022			correct_baseline
+4416920	2020			correct_baseline
+4416920	2021			correct_baseline
+4416920	2022			correct_baseline
+4417132	2020			correct_baseline
+4417132	2021			correct_baseline
+4417132	2022			correct_baseline
+4423428	2020			correct_baseline
+4423428	2021			correct_baseline
+4423428	2022			correct_baseline
+4427283	2020			correct_baseline
+4427283	2021			correct_baseline
+4427283	2022			correct_baseline
+4427319	2020			correct_baseline
+4427319	2021			correct_baseline
+4427319	2022			correct_baseline
+4460066	2020	1	0.870314389353544	correct_baseline
+4460066	2021	1	0.8109870048481069	correct_baseline
+4460066	2022	1	0.750056256406628	correct_baseline
+4483961	2020	1	0.8469445150491084	correct_baseline
+4483961	2021	1	0.8166260751932565	correct_baseline
+4483961	2022	1	0.7866757577668837	correct_baseline
+4483971	2020			correct_baseline
+4483971	2021			correct_baseline
+4483971	2022			correct_baseline
+4484009	2020			correct_baseline
+4484009	2021			correct_baseline
+4484009	2022			correct_baseline
+4484176	2020			correct_baseline
+4484176	2021			correct_baseline
+4484176	2022			correct_baseline
+4485839	2020			correct_baseline
+4485839	2021			correct_baseline
+4485839	2022			correct_baseline
+4485843	2020			correct_baseline
+4485843	2021			correct_baseline
+4485843	2022			correct_baseline
+4486243	2020			correct_baseline
+4486243	2021			correct_baseline
+4486243	2022			correct_baseline
+4486297	2020			correct_baseline
+4486297	2021			correct_baseline
+4486297	2022			correct_baseline
+4486365	2020			correct_baseline
+4486365	2021			correct_baseline
+4486365	2022			correct_baseline
+4486382	2020			correct_baseline
+4486382	2021			correct_baseline
+4486382	2022			correct_baseline
+4487243	2020			correct_baseline
+4487243	2021			correct_baseline
+4487243	2022			correct_baseline
+4487370	2020			correct_baseline
+4487370	2021			correct_baseline
+4487370	2022			correct_baseline
+4487610	2020			correct_baseline
+4487610	2021			correct_baseline
+4487610	2022			correct_baseline
+4487661	2020			correct_baseline
+4487661	2021			correct_baseline
+4487661	2022			correct_baseline
+4487799	2020			correct_baseline
+4487799	2021			correct_baseline
+4487799	2022			correct_baseline
+4488819	2020			correct_baseline
+4488819	2021			correct_baseline
+4488819	2022			correct_baseline
+4488821	2020	1	0.7893025571883373	correct_baseline
+4488821	2021	1	0.7604824675443554	correct_baseline
+4488821	2022	1	0.7326402227175929	correct_baseline
+4488933	2020			correct_baseline
+4488933	2021			correct_baseline
+4488933	2022			correct_baseline
+4496869	2020			correct_baseline
+4496869	2021			correct_baseline
+4496869	2022			correct_baseline
+4496973	2020			correct_baseline
+4496973	2021			correct_baseline
+4496973	2022			correct_baseline
+4497054	2020	1	0.8182813634081451	correct_baseline
+4497054	2021	1	0.7959422136855996	correct_baseline
+4497054	2022	1	0.7739560985222391	correct_baseline
+4497120	2020			correct_baseline
+4497120	2021			correct_baseline
+4497120	2022			correct_baseline
+4497124	2020	0	0.3461409496572395	correct_baseline
+4497124	2021	0	0.24808131803500763	correct_baseline
+4497124	2022	0	0.17489492906976906	correct_baseline
+4497180	2020			correct_baseline
+4497180	2021			correct_baseline
+4497180	2022			correct_baseline
+4532122	2020	0	0.9469946878654734	correct_baseline
+4532122	2021	0	0.8887395972315086	correct_baseline
+4532122	2022	1	0.833626375855969	correct_baseline
+4535888	2020			correct_baseline
+4535888	2021			correct_baseline
+4535888	2022			correct_baseline
+4550810	2020			correct_baseline
+4550810	2021			correct_baseline
+4550810	2022			correct_baseline
+4553535	2020			correct_baseline
+4553535	2021			correct_baseline
+4553535	2022			correct_baseline
+4553820	2020			correct_baseline
+4553820	2021			correct_baseline
+4553820	2022			correct_baseline
+4559541	2020			correct_baseline
+4559541	2021			correct_baseline
+4559541	2022			correct_baseline
+4565039	2020	0	0.9600821708623505	correct_baseline
+4565039	2021	0	0.7907948752695312	correct_baseline
+4565039	2022	0	0.6316080851362826	correct_baseline
+4565061	2020			correct_baseline
+4565061	2021			correct_baseline
+4565061	2022			correct_baseline
+4567717	2020			correct_baseline
+4567717	2021			correct_baseline
+4567717	2022			correct_baseline
+4568269	2020			correct_baseline
+4568269	2021			correct_baseline
+4568269	2022			correct_baseline
+4845776	2020			correct_baseline
+4845776	2021			correct_baseline
+4845776	2022			correct_baseline
+4925890	2020			correct_baseline
+4925890	2021			correct_baseline
+4925890	2022			correct_baseline
+4926534	2020			correct_baseline
+4926534	2021			correct_baseline
+4926534	2022			correct_baseline
+4926977	2020			correct_baseline
+4926977	2021			correct_baseline
+4926977	2022			correct_baseline
+4932232	2020			correct_baseline
+4932232	2021			correct_baseline
+4932232	2022			correct_baseline
+4933624	2020	1	0.8381838869176136	correct_baseline
+4933624	2021	1	0.8192385030322561	correct_baseline
+4933624	2022	1	0.8005240521730035	correct_baseline
+4938160	2020			correct_baseline
+4938160	2021			correct_baseline
+4938160	2022			correct_baseline
+4938682	2020			correct_baseline
+4938682	2021			correct_baseline
+4938682	2022			correct_baseline
+4985072	2020			correct_baseline
+4985072	2021			correct_baseline
+4985072	2022			correct_baseline
+4989904	2020	3	1.0752063556963543	correct_baseline
+4989904	2021	3	1.089107226589246	correct_baseline
+4989904	2022	3	1.1026646335049786	correct_baseline
+4990175	2020			correct_baseline
+4990175	2021			correct_baseline
+4990175	2022			correct_baseline
+4990176	2020			correct_baseline
+4990176	2021			correct_baseline
+4990176	2022			correct_baseline
+5041466	2020			correct_baseline
+5041466	2021			correct_baseline
+5041466	2022			correct_baseline
+5104748	2020			correct_baseline
+5104748	2021			correct_baseline
+5104748	2022			correct_baseline
+5108665	2020			correct_baseline
+5108665	2021			correct_baseline
+5108665	2022			correct_baseline
+5123474	2020			correct_baseline
+5123474	2021			correct_baseline
+5123474	2022			correct_baseline
+5128034	2020			correct_baseline
+5128034	2021			correct_baseline
+5128034	2022			correct_baseline
+5133523	2020			correct_baseline
+5133523	2021			correct_baseline
+5133523	2022			correct_baseline
+5151589	2020			correct_baseline
+5151589	2021			correct_baseline
+5151589	2022			correct_baseline
+5152536	2020			correct_baseline
+5152536	2021			correct_baseline
+5152536	2022			correct_baseline
+5152721	2020			correct_baseline
+5152721	2021			correct_baseline
+5152721	2022			correct_baseline
+5154481	2020			correct_baseline
+5154481	2021			correct_baseline
+5154481	2022			correct_baseline
+5156102	2020	0	0.762921149578249	correct_baseline
+5156102	2021	0	0.7070912890314224	correct_baseline
+5156102	2022	0	0.6552391973146945	correct_baseline
+5177089	2020			correct_baseline
+5177089	2021			correct_baseline
+5177089	2022			correct_baseline
+5177825	2020			correct_baseline
+5177825	2021			correct_baseline
+5177825	2022			correct_baseline
+5178052	2020			correct_baseline
+5178052	2021			correct_baseline
+5178052	2022			correct_baseline
+5178057	2020			correct_baseline
+5178057	2021			correct_baseline
+5178057	2022			correct_baseline
+5179027	2020			correct_baseline
+5179027	2021			correct_baseline
+5179027	2022			correct_baseline
+5188971	2020			correct_baseline
+5188971	2021			correct_baseline
+5188971	2022			correct_baseline
+5189032	2020			correct_baseline
+5189032	2021			correct_baseline
+5189032	2022			correct_baseline
+5189713	2020			correct_baseline
+5189713	2021			correct_baseline
+5189713	2022			correct_baseline
+5199161	2020			correct_baseline
+5199161	2021			correct_baseline
+5199161	2022			correct_baseline
+5202793	2020			basic
+5202793	2021			basic
+5202793	2022			basic
+5218786	2020			correct_baseline
+5218786	2021			correct_baseline
+5218786	2022			correct_baseline
+5218823	2020			correct_baseline
+5218823	2021			correct_baseline
+5218823	2022			correct_baseline
+5218899	2020			correct_baseline
+5218899	2021			correct_baseline
+5218899	2022			correct_baseline
+5219380	2020			correct_baseline
+5219380	2021			correct_baseline
+5219380	2022			correct_baseline
+5219681	2020			correct_baseline
+5219681	2021			correct_baseline
+5219681	2022			correct_baseline
+5219683	2020			correct_baseline
+5219683	2021			correct_baseline
+5219683	2022			correct_baseline
+5219702	2020			correct_baseline
+5219702	2021			correct_baseline
+5219702	2022			correct_baseline
+5219721	2020			correct_baseline
+5219721	2021			correct_baseline
+5219721	2022			correct_baseline
+5219858	2020	1	0.7611244219777907	correct_baseline
+5219858	2021	1	0.7536175833674955	correct_baseline
+5219858	2022	1	0.7460545368331604	correct_baseline
+5220136	2020	0	0.7853218328415109	correct_baseline
+5220136	2021	0	0.7457051055943221	correct_baseline
+5220136	2022	0	0.7078961320309208	correct_baseline
+5224503	2020			correct_baseline
+5224503	2021			correct_baseline
+5224503	2022			correct_baseline
+5227775	2020			correct_baseline
+5227775	2021			correct_baseline
+5227775	2022			correct_baseline
+5227966	2020			correct_baseline
+5227966	2021			correct_baseline
+5227966	2022			correct_baseline
+5227993	2020			correct_baseline
+5227993	2021			correct_baseline
+5227993	2022			correct_baseline
+5228033	2020			correct_baseline
+5228033	2021			correct_baseline
+5228033	2022			correct_baseline
+5228034	2020			correct_baseline
+5228034	2021			correct_baseline
+5228034	2022			correct_baseline
+5228080	2020			correct_baseline
+5228080	2021			correct_baseline
+5228080	2022			correct_baseline
+5228229	2020			correct_baseline
+5228229	2021			correct_baseline
+5228229	2022			correct_baseline
+5229044	2020			correct_baseline
+5229044	2021			correct_baseline
+5229044	2022			correct_baseline
+5229045	2020			correct_baseline
+5229045	2021			correct_baseline
+5229045	2022			correct_baseline
+5229055	2020	1	0.9223391748049407	correct_baseline
+5229055	2021	1	0.9091064239989339	correct_baseline
+5229055	2022	1	0.8955576902494199	correct_baseline
+5229110	2020			correct_baseline
+5229110	2021			correct_baseline
+5229110	2022			correct_baseline
+5229128	2020			correct_baseline
+5229128	2021			correct_baseline
+5229128	2022			correct_baseline
+5229134	2020			correct_baseline
+5229134	2021			correct_baseline
+5229134	2022			correct_baseline
+5229142	2020			correct_baseline
+5229142	2021			correct_baseline
+5229142	2022			correct_baseline
+5229154	2020			correct_baseline
+5229154	2021			correct_baseline
+5229154	2022			correct_baseline
+5229156	2020			correct_baseline
+5229156	2021			correct_baseline
+5229156	2022			correct_baseline
+5229203	2020			correct_baseline
+5229203	2021			correct_baseline
+5229203	2022			correct_baseline
+5229204	2020			correct_baseline
+5229204	2021			correct_baseline
+5229204	2022			correct_baseline
+5229205	2020			correct_baseline
+5229205	2021			correct_baseline
+5229205	2022			correct_baseline
+5229411	2020			correct_baseline
+5229411	2021			correct_baseline
+5229411	2022			correct_baseline
+5230852	2020			correct_baseline
+5230852	2021			correct_baseline
+5230852	2022			correct_baseline
+5230862	2020			correct_baseline
+5230862	2021			correct_baseline
+5230862	2022			correct_baseline
+5231103	2020			correct_baseline
+5231103	2021			correct_baseline
+5231103	2022			correct_baseline
+5231398	2020			correct_baseline
+5231398	2021			correct_baseline
+5231398	2022			correct_baseline
+5232422	2020			correct_baseline
+5232422	2021			correct_baseline
+5232422	2022			correct_baseline
+5232423	2020			correct_baseline
+5232423	2021			correct_baseline
+5232423	2022			correct_baseline
+5232428	2020	1	0.9282713444780312	correct_baseline
+5232428	2021	1	0.9227520360050357	correct_baseline
+5232428	2022	1	0.9172553584401333	correct_baseline
+5232432	2020			correct_baseline
+5232432	2021			correct_baseline
+5232432	2022			correct_baseline
+5232437	2020	3	1.034720207743492	correct_baseline
+5232437	2021	3	1.0518484400189436	correct_baseline
+5232437	2022	3	1.0690943745915882	correct_baseline
+5232445	2020			correct_baseline
+5232445	2021			correct_baseline
+5232445	2022			correct_baseline
+5232452	2020	1	0.9431513486787937	correct_baseline
+5232452	2021	1	0.9362878239941855	correct_baseline
+5232452	2022	1	0.9294148819421008	correct_baseline
+5232465	2020			correct_baseline
+5232465	2021			correct_baseline
+5232465	2022			correct_baseline
+5232469	2020			correct_baseline
+5232469	2021			correct_baseline
+5232469	2022			correct_baseline
+5250069	2020			correct_baseline
+5250069	2021			correct_baseline
+5250069	2022			correct_baseline
+5274861	2020			correct_baseline
+5274861	2021			correct_baseline
+5274861	2022			correct_baseline
+5275398	2020			correct_baseline
+5275398	2021			correct_baseline
+5275398	2022			correct_baseline
+5275404	2020			correct_baseline
+5275404	2021			correct_baseline
+5275404	2022			correct_baseline
+5275415	2020			correct_baseline
+5275415	2021			correct_baseline
+5275415	2022			correct_baseline
+5281901	2020	3	1.1248880297173007	correct_baseline
+5281901	2021	3	1.1320186039664826	correct_baseline
+5281901	2022	3	1.1391131529204976	correct_baseline
+5284231	2020			correct_baseline
+5284231	2021			correct_baseline
+5284231	2022			correct_baseline
+5284237	2020			correct_baseline
+5284237	2021			correct_baseline
+5284237	2022			correct_baseline
+5284698	2020			correct_baseline
+5284698	2021			correct_baseline
+5284698	2022			correct_baseline
+5284702	2020			correct_baseline
+5284702	2021			correct_baseline
+5284702	2022			correct_baseline
+5284809	2020	0	0.9911776165336885	correct_baseline
+5284809	2021	0	0.9897581950874051	correct_baseline
+5284809	2022	0	0.9883362616511143	correct_baseline
+5284827	2020			correct_baseline
+5284827	2021			correct_baseline
+5284827	2022			correct_baseline
+5284884	2020	0	0.9232353491430291	correct_baseline
+5284884	2021	0	0.9188284483937594	correct_baseline
+5284884	2022	0	0.914437109786014	correct_baseline
+5284950	2020			correct_baseline
+5284950	2021			correct_baseline
+5284950	2022			correct_baseline
+5284982	2020	3	1.02895614464962	correct_baseline
+5284982	2021	3	1.0285128017491616	correct_baseline
+5284982	2022	3	1.028063416646254	correct_baseline
+5285074	2020			correct_baseline
+5285074	2021			correct_baseline
+5285074	2022			correct_baseline
+5285385	2020			correct_baseline
+5285385	2021			correct_baseline
+5285385	2022			correct_baseline
+5285565	2020	1	0.9666980613553566	correct_baseline
+5285565	2021	1	0.9613963414542571	correct_baseline
+5285565	2022	1	0.9560611622321533	correct_baseline
+5285635	2020			correct_baseline
+5285635	2021			correct_baseline
+5285635	2022			correct_baseline
+5285637	2020	0	0.8241395244086918	correct_baseline
+5285637	2021	0	0.8134441946498039	correct_baseline
+5285637	2022	0	0.8028329429829683	correct_baseline
+5285750	2020			correct_baseline
+5285750	2021			correct_baseline
+5285750	2022			correct_baseline
+5289503	2020			correct_baseline
+5289503	2021			correct_baseline
+5289503	2022			correct_baseline
+5289666	2020	1	0.9667807686557457	correct_baseline
+5289666	2021	1	0.9642870146476917	correct_baseline
+5289666	2022	1	0.9617579594370567	correct_baseline
+5289686	2020	3	1.0029168776315616	correct_baseline
+5289686	2021	3	1.003422637973773	correct_baseline
+5289686	2022	3	1.003897016229464	correct_baseline
+5289709	2020			correct_baseline
+5289709	2021			correct_baseline
+5289709	2022			correct_baseline
+5289739	2020			correct_baseline
+5289739	2021			correct_baseline
+5289739	2022			correct_baseline
+5289746	2020			correct_baseline
+5289746	2021			correct_baseline
+5289746	2022			correct_baseline
+5289764	2020			correct_baseline
+5289764	2021			correct_baseline
+5289764	2022			correct_baseline
+5289929	2020			correct_baseline
+5289929	2021			correct_baseline
+5289929	2022			correct_baseline
+5289995	2020			correct_baseline
+5289995	2021			correct_baseline
+5289995	2022			correct_baseline
+5290170	2020			correct_baseline
+5290170	2021			correct_baseline
+5290170	2022			correct_baseline
+5295044	2020			correct_baseline
+5295044	2021			correct_baseline
+5295044	2022			correct_baseline
+5295375	2020			correct_baseline
+5295375	2021			correct_baseline
+5295375	2022			correct_baseline
+5296218	2020			correct_baseline
+5296218	2021			correct_baseline
+5296218	2022			correct_baseline
+5296432	2020			correct_baseline
+5296432	2021			correct_baseline
+5296432	2022			correct_baseline
+5298406	2020			correct_baseline
+5298406	2021			correct_baseline
+5298406	2022			correct_baseline
+5298765	2020			correct_baseline
+5298765	2021			correct_baseline
+5298765	2022			correct_baseline
+5299590	2020			correct_baseline
+5299590	2021			correct_baseline
+5299590	2022			correct_baseline
+5300102	2020			correct_baseline
+5300102	2021			correct_baseline
+5300102	2022			correct_baseline
+5300716	2020			correct_baseline
+5300716	2021			correct_baseline
+5300716	2022			correct_baseline
+5303040	2020			correct_baseline
+5303040	2021			correct_baseline
+5303040	2022			correct_baseline
+5303515	2020			correct_baseline
+5303515	2021			correct_baseline
+5303515	2022			correct_baseline
+5303524	2020			correct_baseline
+5303524	2021			correct_baseline
+5303524	2022			correct_baseline
+5303891	2020			correct_baseline
+5303891	2021			correct_baseline
+5303891	2022			correct_baseline
+5304187	2020			correct_baseline
+5304187	2021			correct_baseline
+5304187	2022			correct_baseline
+5304294	2020	0	0.6225627506510043	correct_baseline
+5304294	2021	0	0.5957310816782749	correct_baseline
+5304294	2022	0	0.5699710367087627	correct_baseline
+5305162	2020			correct_baseline
+5305162	2021			correct_baseline
+5305162	2022			correct_baseline
+5328593	2020			correct_baseline
+5328593	2021			correct_baseline
+5328593	2022			correct_baseline
+5328909	2020	3	1.0662536090702621	correct_baseline
+5328909	2021	3	1.0551433469567195	correct_baseline
+5328909	2022	3	1.0435995715172164	correct_baseline
+5329263	2020			correct_baseline
+5329263	2021			correct_baseline
+5329263	2022			correct_baseline
+5330001	2020			correct_baseline
+5330001	2021			correct_baseline
+5330001	2022			correct_baseline
+5330085	2020			correct_baseline
+5330085	2021			correct_baseline
+5330085	2022			correct_baseline
+5330661	2020	1	0.9095930804669429	correct_baseline
+5330661	2021	1	0.9043369197900989	correct_baseline
+5330661	2022	1	0.8990224840003785	correct_baseline
+5331238	2020			correct_baseline
+5331238	2021			correct_baseline
+5331238	2022			correct_baseline
+5332004	2020			correct_baseline
+5332004	2021			correct_baseline
+5332004	2022			correct_baseline
+5332120	2020			correct_baseline
+5332120	2021			correct_baseline
+5332120	2022			correct_baseline
+5332305	2020			correct_baseline
+5332305	2021			correct_baseline
+5332305	2022			correct_baseline
+5333354	2020			correct_baseline
+5333354	2021			correct_baseline
+5333354	2022			correct_baseline
+5334194	2020			correct_baseline
+5334194	2021			correct_baseline
+5334194	2022			correct_baseline
+5334239	2020			correct_baseline
+5334239	2021			correct_baseline
+5334239	2022			correct_baseline
+5334240	2020	1	0.8527715173734465	correct_baseline
+5334240	2021	1	0.8354943200524348	correct_baseline
+5334240	2022	1	0.8181973487754882	correct_baseline
+5334247	2020			correct_baseline
+5334247	2021			correct_baseline
+5334247	2022			correct_baseline
+5334253	2020			correct_baseline
+5334253	2021			correct_baseline
+5334253	2022			correct_baseline
+5334275	2020			correct_baseline
+5334275	2021			correct_baseline
+5334275	2022			correct_baseline
+5334315	2020			correct_baseline
+5334315	2021			correct_baseline
+5334315	2022			correct_baseline
+5334527	2020			correct_baseline
+5334527	2021			correct_baseline
+5334527	2022			correct_baseline
+5341112	2020			correct_baseline
+5341112	2021			correct_baseline
+5341112	2022			correct_baseline
+5341187	2020			correct_baseline
+5341187	2021			correct_baseline
+5341187	2022			correct_baseline
+5341201	2020	1	0.9815871579038411	correct_baseline
+5341201	2021	1	0.9811136433897933	correct_baseline
+5341201	2022	1	0.9806392289215289	correct_baseline
+5341394	2020			correct_baseline
+5341394	2021			correct_baseline
+5341394	2022			correct_baseline
+5341407	2020			correct_baseline
+5341407	2021			correct_baseline
+5341407	2022			correct_baseline
+5341497	2020	1	0.7557455517208375	correct_baseline
+5341497	2021	1	0.7185067596533506	correct_baseline
+5341497	2022	1	0.6824167154281646	correct_baseline
+5341540	2020			correct_baseline
+5341540	2021			correct_baseline
+5341540	2022			correct_baseline
+5341548	2020			correct_baseline
+5341548	2021			correct_baseline
+5341548	2022			correct_baseline
+5341558	2020			correct_baseline
+5341558	2021			correct_baseline
+5341558	2022			correct_baseline
+5343253	2020			correct_baseline
+5343253	2021			correct_baseline
+5343253	2022			correct_baseline
+5353590	2020			correct_baseline
+5353590	2021			correct_baseline
+5353590	2022			correct_baseline
+5354707	2020			correct_baseline
+5354707	2021			correct_baseline
+5354707	2022			correct_baseline
+5355395	2020			correct_baseline
+5355395	2021			correct_baseline
+5355395	2022			correct_baseline
+5356541	2020			correct_baseline
+5356541	2021			correct_baseline
+5356541	2022			correct_baseline
+5356892	2020			correct_baseline
+5356892	2021			correct_baseline
+5356892	2022			correct_baseline
+5358774	2020			correct_baseline
+5358774	2021			correct_baseline
+5358774	2022			correct_baseline
+5358906	2020			correct_baseline
+5358906	2021			correct_baseline
+5358906	2022			correct_baseline
+5358907	2020			correct_baseline
+5358907	2021			correct_baseline
+5358907	2022			correct_baseline
+5359068	2020			correct_baseline
+5359068	2021			correct_baseline
+5359068	2022			correct_baseline
+5359099	2020			correct_baseline
+5359099	2021			correct_baseline
+5359099	2022			correct_baseline
+5359169	2020			correct_baseline
+5359169	2021			correct_baseline
+5359169	2022			correct_baseline
+5359249	2020			correct_baseline
+5359249	2021			correct_baseline
+5359249	2022			correct_baseline
+5359411	2020			correct_baseline
+5359411	2021			correct_baseline
+5359411	2022			correct_baseline
+5359475	2020			correct_baseline
+5359475	2021			correct_baseline
+5359475	2022			correct_baseline
+5359660	2020			correct_baseline
+5359660	2021			correct_baseline
+5359660	2022			correct_baseline
+5360429	2020			correct_baseline
+5360429	2021			correct_baseline
+5360429	2022			correct_baseline
+5360508	2020			correct_baseline
+5360508	2021			correct_baseline
+5360508	2022			correct_baseline
+5361762	2020	1	0.8849333984805138	correct_baseline
+5361762	2021	1	0.8660064936973838	correct_baseline
+5361762	2022	1	0.8458325779781978	correct_baseline
+5361785	2020	2	0.9957791053005367	correct_baseline
+5361785	2021	3	1.0053629709539935	correct_baseline
+5361785	2022	3	1.0148375863184935	correct_baseline
+5361841	2020			correct_baseline
+5361841	2021			correct_baseline
+5361841	2022			correct_baseline
+5361888	2020			correct_baseline
+5361888	2021			correct_baseline
+5361888	2022			correct_baseline
+5361944	2020			correct_baseline
+5361944	2021			correct_baseline
+5361944	2022			correct_baseline
+5362004	2020			correct_baseline
+5362004	2021			correct_baseline
+5362004	2022			correct_baseline
+5362046	2020			correct_baseline
+5362046	2021			correct_baseline
+5362046	2022			correct_baseline
+5362054	2020	1	0.9633615323472154	correct_baseline
+5362054	2021	1	0.9554479135587435	correct_baseline
+5362054	2022	1	0.9472995722620098	correct_baseline
+5362573	2020	1	0.9617644493680845	correct_baseline
+5362573	2021	1	0.9596106073418776	correct_baseline
+5362573	2022	1	0.9574359798463802	correct_baseline
+5363119	2020			correct_baseline
+5363119	2021			correct_baseline
+5363119	2022			correct_baseline
+5363627	2020			correct_baseline
+5363627	2021			correct_baseline
+5363627	2022			correct_baseline
+5365494	2020			correct_baseline
+5365494	2021			correct_baseline
+5365494	2022			correct_baseline
+5365705	2020	0	0.9597534166354982	correct_baseline
+5365705	2021	0	0.9581961707542664	correct_baseline
+5365705	2022	0	0.9566400746924707	correct_baseline
+5366327	2020			correct_baseline
+5366327	2021			correct_baseline
+5366327	2022			correct_baseline
+5367186	2020			correct_baseline
+5367186	2021			correct_baseline
+5367186	2022			correct_baseline
+5367214	2020			correct_baseline
+5367214	2021			correct_baseline
+5367214	2022			correct_baseline
+5367294	2020	0	0.9355874140333228	correct_baseline
+5367294	2021	0	0.9333321942329684	correct_baseline
+5367294	2022	0	0.9310813484515281	correct_baseline
+5369784	2020	0	0.7655216792782632	correct_baseline
+5369784	2021	0	0.711492635885131	correct_baseline
+5369784	2022	0	0.660289857996981	correct_baseline
+5370006	2020			correct_baseline
+5370006	2021			correct_baseline
+5370006	2022			correct_baseline
+5370829	2020			correct_baseline
+5370829	2021			correct_baseline
+5370829	2022			correct_baseline
+5370832	2020			correct_baseline
+5370832	2021			correct_baseline
+5370832	2022			correct_baseline
+5371605	2020			correct_baseline
+5371605	2021			correct_baseline
+5371605	2022			correct_baseline
+5371610	2020			correct_baseline
+5371610	2021			correct_baseline
+5371610	2022			correct_baseline
+5371655	2020			correct_baseline
+5371655	2021			correct_baseline
+5371655	2022			correct_baseline
+5372559	2020			correct_baseline
+5372559	2021			correct_baseline
+5372559	2022			correct_baseline
+5372614	2020			correct_baseline
+5372614	2021			correct_baseline
+5372614	2022			correct_baseline
+5372639	2020	0	0.9441824275049153	correct_baseline
+5372639	2021	0	0.9245265428865103	correct_baseline
+5372639	2022	0	0.9047494566260352	correct_baseline
+5372655	2020			correct_baseline
+5372655	2021			correct_baseline
+5372655	2022			correct_baseline
+5372827	2020			correct_baseline
+5372827	2021			correct_baseline
+5372827	2022			correct_baseline
+5372854	2020			correct_baseline
+5372854	2021			correct_baseline
+5372854	2022			correct_baseline
+5372875	2020			correct_baseline
+5372875	2021			correct_baseline
+5372875	2022			correct_baseline
+5372917	2020			correct_baseline
+5372917	2021			correct_baseline
+5372917	2022			correct_baseline
+5373039	2020			correct_baseline
+5373039	2021			correct_baseline
+5373039	2022			correct_baseline
+5373124	2020			correct_baseline
+5373124	2021			correct_baseline
+5373124	2022			correct_baseline
+5373160	2020			correct_baseline
+5373160	2021			correct_baseline
+5373160	2022			correct_baseline
+5373475	2020			correct_baseline
+5373475	2021			correct_baseline
+5373475	2022			correct_baseline
+5373483	2020			correct_baseline
+5373483	2021			correct_baseline
+5373483	2022			correct_baseline
+5375012	2020			correct_baseline
+5375012	2021			correct_baseline
+5375012	2022			correct_baseline
+5375020	2020			correct_baseline
+5375020	2021			correct_baseline
+5375020	2022			correct_baseline
+5376139	2020			correct_baseline
+5376139	2021			correct_baseline
+5376139	2022			correct_baseline
+5376158	2020			correct_baseline
+5376158	2021			correct_baseline
+5376158	2022			correct_baseline
+5376179	2020			correct_baseline
+5376179	2021			correct_baseline
+5376179	2022			correct_baseline
+5376326	2020			correct_baseline
+5376326	2021			correct_baseline
+5376326	2022			correct_baseline
+5377163	2020			correct_baseline
+5377163	2021			correct_baseline
+5377163	2022			correct_baseline
+5377378	2020			correct_baseline
+5377378	2021			correct_baseline
+5377378	2022			correct_baseline
+5377395	2020			correct_baseline
+5377395	2021			correct_baseline
+5377395	2022			correct_baseline
+5384361	2020	1	0.9779062609428526	correct_baseline
+5384361	2021	1	0.976950003319573	correct_baseline
+5384361	2022	1	0.9759875722129717	correct_baseline
+5384390	2020			correct_baseline
+5384390	2021			correct_baseline
+5384390	2022			correct_baseline
+5384393	2020			correct_baseline
+5384393	2021			correct_baseline
+5384393	2022			correct_baseline
+5384464	2020			correct_baseline
+5384464	2021			correct_baseline
+5384464	2022			correct_baseline
+5384931	2020			correct_baseline
+5384931	2021			correct_baseline
+5384931	2022			correct_baseline
+5384932	2020			correct_baseline
+5384932	2021			correct_baseline
+5384932	2022			correct_baseline
+5384950	2020			correct_baseline
+5384950	2021			correct_baseline
+5384950	2022			correct_baseline
+5387098	2020			correct_baseline
+5387098	2021			correct_baseline
+5387098	2022			correct_baseline
+5387396	2020			correct_baseline
+5387396	2021			correct_baseline
+5387396	2022			correct_baseline
+5387639	2020			correct_baseline
+5387639	2021			correct_baseline
+5387639	2022			correct_baseline
+5389058	2020			correct_baseline
+5389058	2021			correct_baseline
+5389058	2022			correct_baseline
+5391810	2020			correct_baseline
+5391810	2021			correct_baseline
+5391810	2022			correct_baseline
+5391928	2020			correct_baseline
+5391928	2021			correct_baseline
+5391928	2022			correct_baseline
+5392145	2020			correct_baseline
+5392145	2021			correct_baseline
+5392145	2022			correct_baseline
+5392270	2020			correct_baseline
+5392270	2021			correct_baseline
+5392270	2022			correct_baseline
+5392271	2020			correct_baseline
+5392271	2021			correct_baseline
+5392271	2022			correct_baseline
+5395475	2020			correct_baseline
+5395475	2021			correct_baseline
+5395475	2022			correct_baseline
+5395559	2020			correct_baseline
+5395559	2021			correct_baseline
+5395559	2022			correct_baseline
+5396474	2020			correct_baseline
+5396474	2021			correct_baseline
+5396474	2022			correct_baseline
+5396551	2020			correct_baseline
+5396551	2021			correct_baseline
+5396551	2022			correct_baseline
+5397564	2020			correct_baseline
+5397564	2021			correct_baseline
+5397564	2022			correct_baseline
+5401007	2020			correct_baseline
+5401007	2021			correct_baseline
+5401007	2022			correct_baseline
+5402340	2020			correct_baseline
+5402340	2021			correct_baseline
+5402340	2022			correct_baseline
+5402363	2020			correct_baseline
+5402363	2021			correct_baseline
+5402363	2022			correct_baseline
+5403541	2020			correct_baseline
+5403541	2021			correct_baseline
+5403541	2022			correct_baseline
+5403605	2020			correct_baseline
+5403605	2021			correct_baseline
+5403605	2022			correct_baseline
+5403743	2020			correct_baseline
+5403743	2021			correct_baseline
+5403743	2022			correct_baseline
+5406261	2020			correct_baseline
+5406261	2021			correct_baseline
+5406261	2022			correct_baseline
+5406735	2020			correct_baseline
+5406735	2021			correct_baseline
+5406735	2022			correct_baseline
+5406741	2020			correct_baseline
+5406741	2021			correct_baseline
+5406741	2022			correct_baseline
+5407810	2020			correct_baseline
+5407810	2021			correct_baseline
+5407810	2022			correct_baseline
+5408682	2020			correct_baseline
+5408682	2021			correct_baseline
+5408682	2022			correct_baseline
+5409852	2020			correct_baseline
+5409852	2021			correct_baseline
+5409852	2022			correct_baseline
+5410151	2020	0	0.9132770207042454	correct_baseline
+5410151	2021	0	0.8896758250328355	correct_baseline
+5410151	2022	0	0.8664326634472479	correct_baseline
+5410210	2020			correct_baseline
+5410210	2021			correct_baseline
+5410210	2022			correct_baseline
+5410411	2020	1	0.908100781932751	correct_baseline
+5410411	2021	1	0.9021267864749449	correct_baseline
+5410411	2022	1	0.8959173248088341	correct_baseline
+5410826	2020			correct_baseline
+5410826	2021			correct_baseline
+5410826	2022			correct_baseline
+5411392	2020			correct_baseline
+5411392	2021			correct_baseline
+5411392	2022			correct_baseline
+5411453	2020			correct_baseline
+5411453	2021			correct_baseline
+5411453	2022			correct_baseline
+5414239	2020	0	0.8577027267485448	correct_baseline
+5414239	2021	0	0.7927958597598815	correct_baseline
+5414239	2022	0	0.7291842689638512	correct_baseline
+5414932	2020			correct_baseline
+5414932	2021			correct_baseline
+5414932	2022			correct_baseline
+5414959	2020			correct_baseline
+5414959	2021			correct_baseline
+5414959	2022			correct_baseline
+5414976	2020			correct_baseline
+5414976	2021			correct_baseline
+5414976	2022			correct_baseline
+5414991	2020			correct_baseline
+5414991	2021			correct_baseline
+5414991	2022			correct_baseline
+5415012	2020	0	0.9136872508448705	correct_baseline
+5415012	2021	0	0.8921369291532574	correct_baseline
+5415012	2022	0	0.8708734318726228	correct_baseline
+5415053	2020			correct_baseline
+5415053	2021			correct_baseline
+5415053	2022			correct_baseline
+5415054	2020			correct_baseline
+5415054	2021			correct_baseline
+5415054	2022			correct_baseline
+5415056	2020			correct_baseline
+5415056	2021			correct_baseline
+5415056	2022			correct_baseline
+5415453	2020			correct_baseline
+5415453	2021			correct_baseline
+5415453	2022			correct_baseline
+5415455	2020			correct_baseline
+5415455	2021			correct_baseline
+5415455	2022			correct_baseline
+5415463	2020			correct_baseline
+5415463	2021			correct_baseline
+5415463	2022			correct_baseline
+5420957	2020			correct_baseline
+5420957	2021			correct_baseline
+5420957	2022			correct_baseline
+5420978	2020			correct_baseline
+5420978	2021			correct_baseline
+5420978	2022			correct_baseline
+5420991	2020			correct_baseline
+5420991	2021			correct_baseline
+5420991	2022			correct_baseline
+5421039	2020	1	0.9568915252375858	correct_baseline
+5421039	2021	1	0.9505474057080613	correct_baseline
+5421039	2022	1	0.9423917396691207	correct_baseline
+5421180	2020			correct_baseline
+5421180	2021			correct_baseline
+5421180	2022			correct_baseline
+5421385	2020			correct_baseline
+5421385	2021			correct_baseline
+5421385	2022			correct_baseline
+5422556	2020			correct_baseline
+5422556	2021			correct_baseline
+5422556	2022			correct_baseline
+5528747	2020			correct_baseline
+5528747	2021			correct_baseline
+5528747	2022			correct_baseline
+5530855	2020			correct_baseline
+5530855	2021			correct_baseline
+5530855	2022			correct_baseline
+5538946	2020			correct_baseline
+5538946	2021			correct_baseline
+5538946	2022			correct_baseline
+5545159	2020			correct_baseline
+5545159	2021			correct_baseline
+5545159	2022			correct_baseline
+5549949	2020			correct_baseline
+5549949	2021			correct_baseline
+5549949	2022			correct_baseline
+5561475	2020	0	0.8408711937775422	correct_baseline
+5561475	2021	0	0.818576754466917	correct_baseline
+5561475	2022	0	0.7966778455921618	correct_baseline
+5563116	2020			correct_baseline
+5563116	2021			correct_baseline
+5563116	2022			correct_baseline
+5567694	2020			correct_baseline
+5567694	2021			correct_baseline
+5567694	2022			correct_baseline
+5568442	2020			correct_baseline
+5568442	2021			correct_baseline
+5568442	2022			correct_baseline
+5569367	2020			correct_baseline
+5569367	2021			correct_baseline
+5569367	2022			correct_baseline
+5582033	2020			correct_baseline
+5582033	2021			correct_baseline
+5582033	2022			correct_baseline
+5584240	2020			correct_baseline
+5584240	2021			correct_baseline
+5584240	2022			correct_baseline
+5584611	2020			correct_baseline
+5584611	2021			correct_baseline
+5584611	2022			correct_baseline
+5587011	2020			correct_baseline
+5587011	2021			correct_baseline
+5587011	2022			correct_baseline
+5587240	2020			correct_baseline
+5587240	2021			correct_baseline
+5587240	2022			correct_baseline
+5598598	2020			correct_baseline
+5598598	2021			correct_baseline
+5598598	2022			correct_baseline
+5598839	2020			correct_baseline
+5598839	2021			correct_baseline
+5598839	2022			correct_baseline
+5598915	2020	1	0.9577964631962389	correct_baseline
+5598915	2021	1	0.9593744609374719	correct_baseline
+5598915	2022	1	0.960056932602735	correct_baseline
+5609719	2020			correct_baseline
+5609719	2021			correct_baseline
+5609719	2022			correct_baseline
+5617467	2020			correct_baseline
+5617467	2021			correct_baseline
+5617467	2022			correct_baseline
+5640518	2020			correct_baseline
+5640518	2021			correct_baseline
+5640518	2022			correct_baseline
+5646410	2020			correct_baseline
+5646410	2021			correct_baseline
+5646410	2022			correct_baseline
+5652131	2020			correct_baseline
+5652131	2021			correct_baseline
+5652131	2022			correct_baseline
+5660450	2020			correct_baseline
+5660450	2021			correct_baseline
+5660450	2022			correct_baseline
+5669632	2020			correct_baseline
+5669632	2021			correct_baseline
+5669632	2022			correct_baseline
+5671747	2020	1	0.9156717630723307	correct_baseline
+5671747	2021	1	0.8974710558163332	correct_baseline
+5671747	2022	1	0.8785994380820508	correct_baseline
+5676646	2020			correct_baseline
+5676646	2021			correct_baseline
+5676646	2022			correct_baseline
+5678495	2020			correct_baseline
+5678495	2021			correct_baseline
+5678495	2022			correct_baseline
+5686494	2020			correct_baseline
+5686494	2021			correct_baseline
+5686494	2022			correct_baseline
+5690814	2020			correct_baseline
+5690814	2021			correct_baseline
+5690814	2022			correct_baseline
+5701337	2020			correct_baseline
+5701337	2021			correct_baseline
+5701337	2022			correct_baseline
+5709400	2020			correct_baseline
+5709400	2021			correct_baseline
+5709400	2022			correct_baseline
+5712981	2020			correct_baseline
+5712981	2021			correct_baseline
+5712981	2022			correct_baseline
+5729018	2020			correct_baseline
+5729018	2021			correct_baseline
+5729018	2022			correct_baseline
+5739357	2020			correct_baseline
+5739357	2021			correct_baseline
+5739357	2022			correct_baseline
+5740285	2020			correct_baseline
+5740285	2021			correct_baseline
+5740285	2022			correct_baseline
+5774728	2020			correct_baseline
+5774728	2021			correct_baseline
+5774728	2022			correct_baseline
+5786666	2020			correct_baseline
+5786666	2021			correct_baseline
+5786666	2022			correct_baseline
+5806954	2020			correct_baseline
+5806954	2021			correct_baseline
+5806954	2022			correct_baseline
+5825913	2020			correct_baseline
+5825913	2021			correct_baseline
+5825913	2022			correct_baseline
+5828216	2020			correct_baseline
+5828216	2021			correct_baseline
+5828216	2022			correct_baseline
+5831060	2020			correct_baseline
+5831060	2021			correct_baseline
+5831060	2022			correct_baseline
+5851603	2020	1	0.8970436631630239	basic
+5851603	2021	1	0.8770838944290388	basic
+5851603	2022	1	0.8574441037355381	basic
+5869933	2020			correct_baseline
+5869933	2021			correct_baseline
+5869933	2022			correct_baseline
+5879783	2020			correct_baseline
+5879783	2021			correct_baseline
+5879783	2022			correct_baseline
+5892120	2020			basic
+5892120	2021			basic
+5892120	2022			basic
+5914287	2020			correct_baseline
+5914287	2021			correct_baseline
+5914287	2022			correct_baseline
+5930559	2020			correct_baseline
+5930559	2021			correct_baseline
+5930559	2022			correct_baseline
+5959118	2020			correct_baseline
+5959118	2021			correct_baseline
+5959118	2022			correct_baseline
+5959231	2020			correct_baseline
+5959231	2021			correct_baseline
+5959231	2022			correct_baseline
+5972004	2020			correct_baseline
+5972004	2021			correct_baseline
+5972004	2022			correct_baseline
+5997154	2020			correct_baseline
+5997154	2021			correct_baseline
+5997154	2022			correct_baseline
+6026665	2020			correct_baseline
+6026665	2021			correct_baseline
+6026665	2022			correct_baseline
+6027176	2020			correct_baseline
+6027176	2021			correct_baseline
+6027176	2022			correct_baseline
+6027290	2020			correct_baseline
+6027290	2021			correct_baseline
+6027290	2022			correct_baseline
+6035638	2020	1	0.9342006700159304	correct_baseline
+6035638	2021	1	0.9300990014243238	correct_baseline
+6035638	2022	1	0.9259644242180549	correct_baseline
+6068804	2020			correct_baseline
+6068804	2021			correct_baseline
+6068804	2022			correct_baseline
+6070732	2020			correct_baseline
+6070732	2021			correct_baseline
+6070732	2022			correct_baseline
+6076957	2020			correct_baseline
+6076957	2021			correct_baseline
+6076957	2022			correct_baseline
+6091856	2020			correct_baseline
+6091856	2021			correct_baseline
+6091856	2022			correct_baseline
+6096602	2020	3	1.089562573471133	correct_baseline
+6096602	2021	3	1.098939884464025	correct_baseline
+6096602	2022	3	1.1082507370434385	correct_baseline
+6098843	2020	3	1.3832083275795402	correct_baseline
+6098843	2021	3	1.3860609677002667	correct_baseline
+6098843	2022	3	1.3882250601917818	correct_baseline
+6100962	2020			correct_baseline
+6100962	2021			correct_baseline
+6100962	2022			correct_baseline
+6100996	2020			correct_baseline
+6100996	2021			correct_baseline
+6100996	2022			correct_baseline
+6101013	2020			correct_baseline
+6101013	2021			correct_baseline
+6101013	2022			correct_baseline
+6101223	2020			correct_baseline
+6101223	2021			correct_baseline
+6101223	2022			correct_baseline
+6109535	2020	1	0.995689871088489	correct_baseline
+6109535	2021	1	0.9955737708726066	correct_baseline
+6109535	2022	1	0.9954572633612649	correct_baseline
+6157026	2020	0	0.8208214315260283	correct_baseline
+6157026	2021	0	0.8076001350142116	correct_baseline
+6157026	2022	0	0.7945781476144349	correct_baseline
+6157035	2020	0	0.6142828396863478	correct_baseline
+6157035	2021	0	0.5346604044351384	correct_baseline
+6157035	2022	0	0.46060068910580826	correct_baseline
+6157050	2020			correct_baseline
+6157050	2021			correct_baseline
+6157050	2022			correct_baseline
+6159223	2020			correct_baseline
+6159223	2021			correct_baseline
+6159223	2022			correct_baseline
+6159273	2020			correct_baseline
+6159273	2021			correct_baseline
+6159273	2022			correct_baseline
+6161327	2020			correct_baseline
+6161327	2021			correct_baseline
+6161327	2022			correct_baseline
+6161340	2020			correct_baseline
+6161340	2021			correct_baseline
+6161340	2022			correct_baseline
+6164210	2020			correct_baseline
+6164210	2021			correct_baseline
+6164210	2022			correct_baseline
+6302047	2020			correct_baseline
+6302047	2021			correct_baseline
+6302047	2022			correct_baseline
+6313051	2020			correct_baseline
+6313051	2021			correct_baseline
+6313051	2022			correct_baseline
+6362904	2020	0	0.9555457326584582	correct_baseline
+6362904	2021	0	0.9495429682374829	correct_baseline
+6362904	2022	0	0.9435198974113752	correct_baseline
+6369140	2020			correct_baseline
+6369140	2021			correct_baseline
+6369140	2022			correct_baseline
+6369819	2020			correct_baseline
+6369819	2021			correct_baseline
+6369819	2022			correct_baseline
+6371424	2020			correct_baseline
+6371424	2021			correct_baseline
+6371424	2022			correct_baseline
+6376216	2020			correct_baseline
+6376216	2021			correct_baseline
+6376216	2022			correct_baseline
+6387003	2020			correct_baseline
+6387003	2021			correct_baseline
+6387003	2022			correct_baseline
+6391417	2020			correct_baseline
+6391417	2021			correct_baseline
+6391417	2022			correct_baseline
+6391450	2020			correct_baseline
+6391450	2021			correct_baseline
+6391450	2022			correct_baseline
+6427785	2020			correct_baseline
+6427785	2021			correct_baseline
+6427785	2022			correct_baseline
+6436603	2020			correct_baseline
+6436603	2021			correct_baseline
+6436603	2022			correct_baseline
+6476704	2020			basic
+6476704	2021			basic
+6476704	2022			basic
+6709291	2020			correct_baseline
+6709291	2021			correct_baseline
+6709291	2022			correct_baseline
+7062200	2020	0	0.5900372629167048	correct_baseline
+7062200	2021	0	0.5285120559333021	correct_baseline
+7062200	2022	0	0.4726572281853875	correct_baseline
+7068732	2020			correct_baseline
+7068732	2021			correct_baseline
+7068732	2022			correct_baseline
+7102937	2020			correct_baseline
+7102937	2021			correct_baseline
+7102937	2022			correct_baseline
+7116158	2020			correct_baseline
+7116158	2021			correct_baseline
+7116158	2022			correct_baseline
+7127354	2020			correct_baseline
+7127354	2021			correct_baseline
+7127354	2022			correct_baseline
+7127810	2020	0	0.828956492998534	correct_baseline
+7127810	2021	0	0.7167100930885887	correct_baseline
+7127810	2022	0	0.6170962457908488	correct_baseline
+7135755	2020	0	0.8239914791463083	correct_baseline
+7135755	2021	0	0.7809934876633288	correct_baseline
+7135755	2022	0	0.7399330229187702	correct_baseline
+7150619	2020			correct_baseline
+7150619	2021			correct_baseline
+7150619	2022			correct_baseline
+7153734	2020			correct_baseline
+7153734	2021			correct_baseline
+7153734	2022			correct_baseline
+7156971	2020			correct_baseline
+7156971	2021			correct_baseline
+7156971	2022			correct_baseline
+7157952	2020			correct_baseline
+7157952	2021			correct_baseline
+7157952	2022			correct_baseline
+7158449	2020			correct_baseline
+7158449	2021			correct_baseline
+7158449	2022			correct_baseline
+7161168	2020			correct_baseline
+7161168	2021			correct_baseline
+7161168	2022			correct_baseline
+7162908	2020			correct_baseline
+7162908	2021			correct_baseline
+7162908	2022			correct_baseline
+7172831	2020			correct_baseline
+7172831	2021			correct_baseline
+7172831	2022			correct_baseline
+7190901	2020			correct_baseline
+7190901	2021			correct_baseline
+7190901	2022			correct_baseline
+7222255	2020			correct_baseline
+7222255	2021			correct_baseline
+7222255	2022			correct_baseline
+7224157	2020	1	0.9940283461041961	correct_baseline
+7224157	2021	1	0.993855526282054	correct_baseline
+7224157	2022	1	0.9936816674571178	correct_baseline
+7225712	2020			correct_baseline
+7225712	2021			correct_baseline
+7225712	2022			correct_baseline
+7227181	2020			correct_baseline
+7227181	2021			correct_baseline
+7227181	2022			correct_baseline
+7230699	2020			correct_baseline
+7230699	2021			correct_baseline
+7230699	2022			correct_baseline
+7262908	2020			correct_baseline
+7262908	2021			correct_baseline
+7262908	2022			correct_baseline
+7262958	2020			correct_baseline
+7262958	2021			correct_baseline
+7262958	2022			correct_baseline
+7263145	2020			correct_baseline
+7263145	2021			correct_baseline
+7263145	2022			correct_baseline
+7266329	2020			correct_baseline
+7266329	2021			correct_baseline
+7266329	2022			correct_baseline
+7266343	2020			correct_baseline
+7266343	2021			correct_baseline
+7266343	2022			correct_baseline
+7267630	2020			correct_baseline
+7267630	2021			correct_baseline
+7267630	2022			correct_baseline
+7272185	2020			correct_baseline
+7272185	2021			correct_baseline
+7272185	2022			correct_baseline
+7277106	2020			correct_baseline
+7277106	2021			correct_baseline
+7277106	2022			correct_baseline
+7277286	2020			correct_baseline
+7277286	2021			correct_baseline
+7277286	2022			correct_baseline
+7278926	2020			correct_baseline
+7278926	2021			correct_baseline
+7278926	2022			correct_baseline
+7282357	2020			correct_baseline
+7282357	2021			correct_baseline
+7282357	2022			correct_baseline
+7291264	2020	0	0.7923707757211588	correct_baseline
+7291264	2021	0	0.741391886670859	correct_baseline
+7291264	2022	0	0.6929064058764797	correct_baseline
+7293727	2020			correct_baseline
+7293727	2021			correct_baseline
+7293727	2022			correct_baseline
+7294681	2020			correct_baseline
+7294681	2021			correct_baseline
+7294681	2022			correct_baseline
+7294771	2020			correct_baseline
+7294771	2021			correct_baseline
+7294771	2022			correct_baseline
+7298987	2020			correct_baseline
+7298987	2021			correct_baseline
+7298987	2022			correct_baseline
+7303117	2020			correct_baseline
+7303117	2021			correct_baseline
+7303117	2022			correct_baseline
+7307327	2020			correct_baseline
+7307327	2021			correct_baseline
+7307327	2022			correct_baseline
+7315030	2020			correct_baseline
+7315030	2021			correct_baseline
+7315030	2022			correct_baseline
+7315072	2020			correct_baseline
+7315072	2021			correct_baseline
+7315072	2022			correct_baseline
+7315286	2020	1	0.9414424719778074	correct_baseline
+7315286	2021	1	0.9387048173733575	correct_baseline
+7315286	2022	1	0.9359353921742812	correct_baseline
+7318131	2020			correct_baseline
+7318131	2021			correct_baseline
+7318131	2022			correct_baseline
+7318448	2020			correct_baseline
+7318448	2021			correct_baseline
+7318448	2022			correct_baseline
+7319302	2020			correct_baseline
+7319302	2021			correct_baseline
+7319302	2022			correct_baseline
+7322122	2020			correct_baseline
+7322122	2021			correct_baseline
+7322122	2022			correct_baseline
+7322292	2020			correct_baseline
+7322292	2021			correct_baseline
+7322292	2022			correct_baseline
+7322373	2020			correct_baseline
+7322373	2021			correct_baseline
+7322373	2022			correct_baseline
+7323906	2020			correct_baseline
+7323906	2021			correct_baseline
+7323906	2022			correct_baseline
+7325877	2020			correct_baseline
+7325877	2021			correct_baseline
+7325877	2022			correct_baseline
+7327959	2020			correct_baseline
+7327959	2021			correct_baseline
+7327959	2022			correct_baseline
+7331666	2020			correct_baseline
+7331666	2021			correct_baseline
+7331666	2022			correct_baseline
+7332415	2020			correct_baseline
+7332415	2021			correct_baseline
+7332415	2022			correct_baseline
+7332416	2020			correct_baseline
+7332416	2021			correct_baseline
+7332416	2022			correct_baseline
+7334368	2020			correct_baseline
+7334368	2021			correct_baseline
+7334368	2022			correct_baseline
+7339492	2020			correct_baseline
+7339492	2021			correct_baseline
+7339492	2022			correct_baseline
+7346102	2020	1	0.950861205858703	correct_baseline
+7346102	2021	1	0.9481550943118271	correct_baseline
+7346102	2022	1	0.9454378510048269	correct_baseline
+7358677	2020			correct_baseline
+7358677	2021			correct_baseline
+7358677	2022			correct_baseline
+7358948	2020			correct_baseline
+7358948	2021			correct_baseline
+7358948	2022			correct_baseline
+7380533	2020			correct_baseline
+7380533	2021			correct_baseline
+7380533	2022			correct_baseline
+7384449	2020			correct_baseline
+7384449	2021			correct_baseline
+7384449	2022			correct_baseline
+7393329	2020			correct_baseline
+7393329	2021			correct_baseline
+7393329	2022			correct_baseline
+7400250	2020			correct_baseline
+7400250	2021			correct_baseline
+7400250	2022			correct_baseline
+7415922	2020			correct_baseline
+7415922	2021			correct_baseline
+7415922	2022			correct_baseline
+7420038	2020			correct_baseline
+7420038	2021			correct_baseline
+7420038	2022			correct_baseline
+7427542	2020			correct_baseline
+7427542	2021			correct_baseline
+7427542	2022			correct_baseline
+7433196	2020			correct_baseline
+7433196	2021			correct_baseline
+7433196	2022			correct_baseline
+7437751	2020			correct_baseline
+7437751	2021			correct_baseline
+7437751	2022			correct_baseline
+7443846	2020			correct_baseline
+7443846	2021			correct_baseline
+7443846	2022			correct_baseline
+7455425	2020			correct_baseline
+7455425	2021			correct_baseline
+7455425	2022			correct_baseline
+7461690	2020			correct_baseline
+7461690	2021			correct_baseline
+7461690	2022			correct_baseline
+7475424	2020			correct_baseline
+7475424	2021			correct_baseline
+7475424	2022			correct_baseline
+7501634	2020	1	0.9010651637397507	correct_baseline
+7501634	2021	1	0.8930647780582207	correct_baseline
+7501634	2022	1	0.8849792477904973	correct_baseline
+7504215	2020			correct_baseline
+7504215	2021			correct_baseline
+7504215	2022			correct_baseline
+7519710	2020			correct_baseline
+7519710	2021			correct_baseline
+7519710	2022			correct_baseline
+7520678	2020			correct_baseline
+7520678	2021			correct_baseline
+7520678	2022			correct_baseline
+7523432	2020			correct_baseline
+7523432	2021			correct_baseline
+7523432	2022			correct_baseline
+7528816	2020			correct_baseline
+7528816	2021			correct_baseline
+7528816	2022			correct_baseline
+7529533	2020			correct_baseline
+7529533	2021			correct_baseline
+7529533	2022			correct_baseline
+7536754	2020			correct_baseline
+7536754	2021			correct_baseline
+7536754	2022			correct_baseline
+7540164	2020			correct_baseline
+7540164	2021			correct_baseline
+7540164	2022			correct_baseline
+7547256	2020			correct_baseline
+7547256	2021			correct_baseline
+7547256	2022			correct_baseline
+7560711	2020			correct_baseline
+7560711	2021			correct_baseline
+7560711	2022			correct_baseline
+7564934	2020			correct_baseline
+7564934	2021			correct_baseline
+7564934	2022			correct_baseline
+7569075	2020			correct_baseline
+7569075	2021			correct_baseline
+7569075	2022			correct_baseline
+7572133	2020			correct_baseline
+7572133	2021			correct_baseline
+7572133	2022			correct_baseline
+7577557	2020			correct_baseline
+7577557	2021			correct_baseline
+7577557	2022			correct_baseline
+7619206	2020			correct_baseline
+7619206	2021			correct_baseline
+7619206	2022			correct_baseline
+7624620	2020			correct_baseline
+7624620	2021			correct_baseline
+7624620	2022			correct_baseline
+7636833	2020			correct_baseline
+7636833	2021			correct_baseline
+7636833	2022			correct_baseline
+7645931	2020			correct_baseline
+7645931	2021			correct_baseline
+7645931	2022			correct_baseline
+7664179	2020			correct_baseline
+7664179	2021			correct_baseline
+7664179	2022			correct_baseline
+7671397	2020			correct_baseline
+7671397	2021			correct_baseline
+7671397	2022			correct_baseline
+7681436	2020			correct_baseline
+7681436	2021			correct_baseline
+7681436	2022			correct_baseline
+7683374	2020			correct_baseline
+7683374	2021			correct_baseline
+7683374	2022			correct_baseline
+7690055	2020			correct_baseline
+7690055	2021			correct_baseline
+7690055	2022			correct_baseline
+7699567	2020			correct_baseline
+7699567	2021			correct_baseline
+7699567	2022			correct_baseline
+7730307	2020			correct_baseline
+7730307	2021			correct_baseline
+7730307	2022			correct_baseline
+7738766	2020	1	0.8849179472426321	correct_baseline
+7738766	2021	1	0.8679210109893032	correct_baseline
+7738766	2022	1	0.851040906466377	correct_baseline
+7740617	2020			correct_baseline
+7740617	2021			correct_baseline
+7740617	2022			correct_baseline
+7740944	2020			correct_baseline
+7740944	2021			correct_baseline
+7740944	2022			correct_baseline
+7763534	2020			correct_baseline
+7763534	2021			correct_baseline
+7763534	2022			correct_baseline
+7768495	2020			correct_baseline
+7768495	2021			correct_baseline
+7768495	2022			correct_baseline
+7790614	2020			correct_baseline
+7790614	2021			correct_baseline
+7790614	2022			correct_baseline
+7802465	2020	0	0.8978605864212381	correct_baseline
+7802465	2021	0	0.8644953594208983	correct_baseline
+7802465	2022	0	0.8321226048035708	correct_baseline
+7818643	2020			correct_baseline
+7818643	2021			correct_baseline
+7818643	2022			correct_baseline
+7820753	2020	2	0.6990909129337138	correct_baseline
+7820753	2021	2	0.712938381036838	correct_baseline
+7820753	2022	2	0.7257490576712565	correct_baseline
+7823272	2020			correct_baseline
+7823272	2021			correct_baseline
+7823272	2022			correct_baseline
+7828157	2020	1	0.9794858896886139	correct_baseline
+7828157	2021	1	0.975665414701431	correct_baseline
+7828157	2022	1	0.9718043194287382	correct_baseline
+7848132	2020			correct_baseline
+7848132	2021			correct_baseline
+7848132	2022			correct_baseline
+7848321	2020			correct_baseline
+7848321	2021			correct_baseline
+7848321	2022			correct_baseline
+7855120	2020			correct_baseline
+7855120	2021			correct_baseline
+7855120	2022			correct_baseline
+7878507	2020			correct_baseline
+7878507	2021			correct_baseline
+7878507	2022			correct_baseline
+7881150	2020			correct_baseline
+7881150	2021			correct_baseline
+7881150	2022			correct_baseline
+7901010	2020			correct_baseline
+7901010	2021			correct_baseline
+7901010	2022			correct_baseline
+7902463	2020			correct_baseline
+7902463	2021			correct_baseline
+7902463	2022			correct_baseline
+7911993	2020			correct_baseline
+7911993	2021			correct_baseline
+7911993	2022			correct_baseline
+7915783	2020	0	0.9472291106685424	correct_baseline
+7915783	2021	0	0.9444231958682768	correct_baseline
+7915783	2022	0	0.941615293587282	correct_baseline
+7938233	2020			correct_baseline
+7938233	2021			correct_baseline
+7938233	2022			correct_baseline
+7961815	2020			correct_baseline
+7961815	2021			correct_baseline
+7961815	2022			correct_baseline
+7963687	2020			correct_baseline
+7963687	2021			correct_baseline
+7963687	2022			correct_baseline
+7975549	2020			correct_baseline
+7975549	2021			correct_baseline
+7975549	2022			correct_baseline
+7978544	2020	1	0.9514425940480423	correct_baseline
+7978544	2021	1	0.9513373007077258	correct_baseline
+7978544	2022	1	0.9502313399966064	correct_baseline
+7989836	2020			correct_baseline
+7989836	2021			correct_baseline
+7989836	2022			correct_baseline
+8010581	2020			correct_baseline
+8010581	2021			correct_baseline
+8010581	2022			correct_baseline
+8011733	2020			correct_baseline
+8011733	2021			correct_baseline
+8011733	2022			correct_baseline
+8014966	2020			correct_baseline
+8014966	2021			correct_baseline
+8014966	2022			correct_baseline
+8021567	2020			correct_baseline
+8021567	2021			correct_baseline
+8021567	2022			correct_baseline
+8022932	2020			correct_baseline
+8022932	2021			correct_baseline
+8022932	2022			correct_baseline
+8031875	2020			correct_baseline
+8031875	2021			correct_baseline
+8031875	2022			correct_baseline
+8045533	2020			correct_baseline
+8045533	2021			correct_baseline
+8045533	2022			correct_baseline
+8049400	2020			correct_baseline
+8049400	2021			correct_baseline
+8049400	2022			correct_baseline
+8052025	2020			correct_baseline
+8052025	2021			correct_baseline
+8052025	2022			correct_baseline
+8059430	2020			correct_baseline
+8059430	2021			correct_baseline
+8059430	2022			correct_baseline
+8060423	2020			correct_baseline
+8060423	2021			correct_baseline
+8060423	2022			correct_baseline
+8062758	2020			correct_baseline
+8062758	2021			correct_baseline
+8062758	2022			correct_baseline
+8076173	2020			correct_baseline
+8076173	2021			correct_baseline
+8076173	2022			correct_baseline
+8080743	2020			correct_baseline
+8080743	2021			correct_baseline
+8080743	2022			correct_baseline
+8096233	2020			correct_baseline
+8096233	2021			correct_baseline
+8096233	2022			correct_baseline
+8116963	2020			correct_baseline
+8116963	2021			correct_baseline
+8116963	2022			correct_baseline
+8133114	2020			correct_baseline
+8133114	2021			correct_baseline
+8133114	2022			correct_baseline
+8144599	2020			correct_baseline
+8144599	2021			correct_baseline
+8144599	2022			correct_baseline
+8149049	2020			correct_baseline
+8149049	2021			correct_baseline
+8149049	2022			correct_baseline
+8149923	2020	0	0.8218667538365753	correct_baseline
+8149923	2021	0	0.7982724833861113	correct_baseline
+8149923	2022	0	0.7751683504377057	correct_baseline
+8160803	2020			correct_baseline
+8160803	2021			correct_baseline
+8160803	2022			correct_baseline
+8168344	2020	0	0.8346691579632438	correct_baseline
+8168344	2021	0	0.7851098847870399	correct_baseline
+8168344	2022	0	0.7382706642873867	correct_baseline
+8183217	2020	1	0.9762463208899412	correct_baseline
+8183217	2021	1	0.9751270375400861	correct_baseline
+8183217	2022	1	0.9740015733800278	correct_baseline
+8190077	2020	1	0.966434932938727	correct_baseline
+8190077	2021	1	0.962548132901551	correct_baseline
+8190077	2022	1	0.9586001417479653	correct_baseline
+8190231	2020	3	1.141899734703763	correct_baseline
+8190231	2021	3	1.134280068180225	correct_baseline
+8190231	2022	3	1.1260495955601588	correct_baseline
+8199647	2020			correct_baseline
+8199647	2021			correct_baseline
+8199647	2022			correct_baseline
+8200663	2020	1	0.9148917685437019	correct_baseline
+8200663	2021	1	0.9103114062877128	correct_baseline
+8200663	2022	1	0.90570003009832	correct_baseline
+8207952	2020			correct_baseline
+8207952	2021			correct_baseline
+8207952	2022			correct_baseline
+8212772	2020			correct_baseline
+8212772	2021			correct_baseline
+8212772	2022			correct_baseline
+8237223	2020			correct_baseline
+8237223	2021			correct_baseline
+8237223	2022			correct_baseline
+8242349	2020			correct_baseline
+8242349	2021			correct_baseline
+8242349	2022			correct_baseline
+8242651	2020			correct_baseline
+8242651	2021			correct_baseline
+8242651	2022			correct_baseline
+8255921	2020			correct_baseline
+8255921	2021			correct_baseline
+8255921	2022			correct_baseline
+8265082	2020			correct_baseline
+8265082	2021			correct_baseline
+8265082	2022			correct_baseline
+8288647	2020	1	0.81930783603998	correct_baseline
+8288647	2021	1	0.7987802115241102	correct_baseline
+8288647	2022	1	0.7770265883970608	correct_baseline
+8302634	2020			correct_baseline
+8302634	2021			correct_baseline
+8302634	2022			correct_baseline
+8305409	2020			correct_baseline
+8305409	2021			correct_baseline
+8305409	2022			correct_baseline
+8313153	2020	1	0.9151578424987202	correct_baseline
+8313153	2021	1	0.909242454292394	correct_baseline
+8313153	2022	1	0.9033007160804852	correct_baseline
+8323119	2020			correct_baseline
+8323119	2021			correct_baseline
+8323119	2022			correct_baseline
+8323485	2020			correct_baseline
+8323485	2021			correct_baseline
+8323485	2022			correct_baseline
+8326061	2020			correct_baseline
+8326061	2021			correct_baseline
+8326061	2022			correct_baseline
+8335191	2020			correct_baseline
+8335191	2021			correct_baseline
+8335191	2022			correct_baseline
+8342911	2020			correct_baseline
+8342911	2021			correct_baseline
+8342911	2022			correct_baseline
+8356787	2020			correct_baseline
+8356787	2021			correct_baseline
+8356787	2022			correct_baseline
+8358048	2020			correct_baseline
+8358048	2021			correct_baseline
+8358048	2022			correct_baseline
+8362005	2020			correct_baseline
+8362005	2021			correct_baseline
+8362005	2022			correct_baseline
+8369366	2020			correct_baseline
+8369366	2021			correct_baseline
+8369366	2022			correct_baseline
+8381801	2020			correct_baseline
+8381801	2021			correct_baseline
+8381801	2022			correct_baseline
+8389446	2020			correct_baseline
+8389446	2021			correct_baseline
+8389446	2022			correct_baseline
+8400045	2020			correct_baseline
+8400045	2021			correct_baseline
+8400045	2022			correct_baseline
+8402586	2020			correct_baseline
+8402586	2021			correct_baseline
+8402586	2022			correct_baseline
+8406661	2020			correct_baseline
+8406661	2021			correct_baseline
+8406661	2022			correct_baseline
+8408816	2020			correct_baseline
+8408816	2021			correct_baseline
+8408816	2022			correct_baseline
+8418338	2020			correct_baseline
+8418338	2021			correct_baseline
+8418338	2022			correct_baseline
+8421432	2020			correct_baseline
+8421432	2021			correct_baseline
+8421432	2022			correct_baseline
+8428499	2020			correct_baseline
+8428499	2021			correct_baseline
+8428499	2022			correct_baseline
+8485639	2020	0	0.601374539740991	correct_baseline
+8485639	2021	0	0.5639214576349085	correct_baseline
+8485639	2022	0	0.5287312534539322	correct_baseline
+8537667	2020			correct_baseline
+8537667	2021			correct_baseline
+8537667	2022			correct_baseline
+8577467	2020			correct_baseline
+8577467	2021			correct_baseline
+8577467	2022			correct_baseline
+8599762	2020			correct_baseline
+8599762	2021			correct_baseline
+8599762	2022			correct_baseline
+8602699	2020			correct_baseline
+8602699	2021			correct_baseline
+8602699	2022			correct_baseline
+8699607	2020			correct_baseline
+8699607	2021			correct_baseline
+8699607	2022			correct_baseline
+8701771	2020			basic
+8701771	2021			basic
+8701771	2022			basic
+8741260	2020			correct_baseline
+8741260	2021			correct_baseline
+8741260	2022			correct_baseline
+8745918	2020	1	0.790162290812062	correct_baseline
+8745918	2021	1	0.708634037548682	correct_baseline
+8745918	2022	1	0.6251840184968316	correct_baseline
+8766638	2020			correct_baseline
+8766638	2021			correct_baseline
+8766638	2022			correct_baseline
+8889878	2020			correct_baseline
+8889878	2021			correct_baseline
+8889878	2022			correct_baseline
+8898408	2020			correct_baseline
+8898408	2021			correct_baseline
+8898408	2022			correct_baseline
+8909595	2020	1	0.8845875029765234	correct_baseline
+8909595	2021	1	0.8593073471866128	correct_baseline
+8909595	2022	1	0.8345699484990936	correct_baseline
+8946295	2020			correct_baseline
+8946295	2021			correct_baseline
+8946295	2022			correct_baseline
+8969026	2020			correct_baseline
+8969026	2021			correct_baseline
+8969026	2022			correct_baseline
+8993502	2020			correct_baseline
+8993502	2021			correct_baseline
+8993502	2022			correct_baseline
+9018536	2020			correct_baseline
+9018536	2021			correct_baseline
+9018536	2022			correct_baseline
+9040863	2020			correct_baseline
+9040863	2021			correct_baseline
+9040863	2022			correct_baseline
+9060332	2020			correct_baseline
+9060332	2021			correct_baseline
+9060332	2022			correct_baseline
+9078997	2020			correct_baseline
+9078997	2021			correct_baseline
+9078997	2022			correct_baseline
+9153437	2020			correct_baseline
+9153437	2021			correct_baseline
+9153437	2022			correct_baseline
+9185677	2020			correct_baseline
+9185677	2021			correct_baseline
+9185677	2022			correct_baseline
+9188840	2020	1	0.9870976048333348	correct_baseline
+9188840	2021	1	0.9856233740645954	correct_baseline
+9188840	2022	1	0.9841238596223862	correct_baseline
+9228211	2020			correct_baseline
+9228211	2021			correct_baseline
+9228211	2022			correct_baseline
+9231612	2020			correct_baseline
+9231612	2021			correct_baseline
+9231612	2022			correct_baseline
+9235549	2020			correct_baseline
+9235549	2021			correct_baseline
+9235549	2022			correct_baseline
+9254355	2020			correct_baseline
+9254355	2021			correct_baseline
+9254355	2022			correct_baseline
+9288935	2020			correct_baseline
+9288935	2021			correct_baseline
+9288935	2022			correct_baseline
+9305555	2020			correct_baseline
+9305555	2021			correct_baseline
+9305555	2022			correct_baseline
+9326020	2020	1	0.9410312246657133	correct_baseline
+9326020	2021	1	0.9305002399492678	correct_baseline
+9326020	2022	1	0.919575023209123	correct_baseline
+9345027	2020			correct_baseline
+9345027	2021			correct_baseline
+9345027	2022			correct_baseline
+9350124	2020			correct_baseline
+9350124	2021			correct_baseline
+9350124	2022			correct_baseline
+9362842	2020			correct_baseline
+9362842	2021			correct_baseline
+9362842	2022			correct_baseline
+9376410	2020			correct_baseline
+9376410	2021			correct_baseline
+9376410	2022			correct_baseline
+9382645	2020			correct_baseline
+9382645	2021			correct_baseline
+9382645	2022			correct_baseline
+9398259	2020	1	0.9420781645340008	correct_baseline
+9398259	2021	1	0.932380031323529	correct_baseline
+9398259	2022	1	0.9226211911127841	correct_baseline
+9405036	2020			correct_baseline
+9405036	2021			correct_baseline
+9405036	2022			correct_baseline
+9419395	2020			correct_baseline
+9419395	2021			correct_baseline
+9419395	2022			correct_baseline
+9450106	2020			correct_baseline
+9450106	2021			correct_baseline
+9450106	2022			correct_baseline
+9451184	2020	1	0.9426603261307713	correct_baseline
+9451184	2021	1	0.9378866569308424	correct_baseline
+9451184	2022	1	0.9326208305524363	correct_baseline
+9462721	2020			correct_baseline
+9462721	2021			correct_baseline
+9462721	2022			correct_baseline
+9480191	2020			correct_baseline
+9480191	2021			correct_baseline
+9480191	2022			correct_baseline
+9496048	2020			correct_baseline
+9496048	2021			correct_baseline
+9496048	2022			correct_baseline
+9508460	2020	1	0.9603853723705252	correct_baseline
+9508460	2021	1	0.9574614884296395	correct_baseline
+9508460	2022	1	0.9545244041258425	correct_baseline
+9508942	2020			correct_baseline
+9508942	2021			correct_baseline
+9508942	2022			correct_baseline
+9541940	2020			correct_baseline
+9541940	2021			correct_baseline
+9541940	2022			correct_baseline
+9583342	2020			correct_baseline
+9583342	2021			correct_baseline
+9583342	2022			correct_baseline
+9592414	2020			correct_baseline
+9592414	2021			correct_baseline
+9592414	2022			correct_baseline
+9606290	2020			correct_baseline
+9606290	2021			correct_baseline
+9606290	2022			correct_baseline
+9673106	2020			correct_baseline
+9673106	2021			correct_baseline
+9673106	2022			correct_baseline
+9675867	2020			correct_baseline
+9675867	2021			correct_baseline
+9675867	2022			correct_baseline
+9685907	2020			correct_baseline
+9685907	2021			correct_baseline
+9685907	2022			correct_baseline
+9691034	2020			correct_baseline
+9691034	2021			correct_baseline
+9691034	2022			correct_baseline
+9771172	2020			correct_baseline
+9771172	2021			correct_baseline
+9771172	2022			correct_baseline
+9776414	2020			correct_baseline
+9776414	2021			correct_baseline
+9776414	2022			correct_baseline
+9791464	2020			correct_baseline
+9791464	2021			correct_baseline
+9791464	2022			correct_baseline
+10676000	2020			correct_baseline
+10676000	2021			correct_baseline
+10676000	2022			correct_baseline
+10701161	2020			correct_baseline
+10701161	2021			correct_baseline
+10701161	2022			correct_baseline
+10755213	2020	1	0.960473813030801	correct_baseline
+10755213	2021	1	0.9579833662530557	correct_baseline
+10755213	2022	1	0.955476815816685	correct_baseline
+10786206	2020			correct_baseline
+10786206	2021			correct_baseline
+10786206	2022			correct_baseline
+10801424	2020			correct_baseline
+10801424	2021			correct_baseline
+10801424	2022			correct_baseline
+10852031	2020			correct_baseline
+10852031	2021			correct_baseline
+10852031	2022			correct_baseline
+10902460	2020			correct_baseline
+10902460	2021			correct_baseline
+10902460	2022			correct_baseline
+10933479	2020			correct_baseline
+10933479	2021			correct_baseline
+10933479	2022			correct_baseline
+10972541	2020			correct_baseline
+10972541	2021			correct_baseline
+10972541	2022			correct_baseline
+11055820	2020			correct_baseline
+11055820	2021			correct_baseline
+11055820	2022			correct_baseline
+11104870	2020			correct_baseline
+11104870	2021			correct_baseline
+11104870	2022			correct_baseline
+11141765	2020			correct_baseline
+11141765	2021			correct_baseline
+11141765	2022			correct_baseline
+11844792	2020			correct_baseline
+11844792	2021			correct_baseline
+11844792	2022			correct_baseline
+12187916	2020			correct_baseline
+12187916	2021			correct_baseline
+12187916	2022			correct_baseline
+12262171	2020			correct_baseline
+12262171	2021			correct_baseline
+12262171	2022			correct_baseline

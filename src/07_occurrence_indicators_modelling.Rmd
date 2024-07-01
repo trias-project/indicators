@@ -3,6 +3,7 @@ title: 'Emerging status: modelling'
 author:
 - Damiano Oldoni
 - Toon Van Daele
+- Soria Delva
 - Tim Adriaens
 date: "`r Sys.Date()`"
 output:

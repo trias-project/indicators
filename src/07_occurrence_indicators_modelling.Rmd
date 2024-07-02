@@ -489,8 +489,7 @@ Save emerging status based on decision rules:
 # Define function to save the results for Belgium, its regions and protected
 # areas
 save_decision_rules_output <- function(df, region, indicator) {
-  # Remove "is" from "isBrussels", "isFlanders", "isWallonia" to create the
-  # subdirectory to be added to the basic directory
+  # Remove "is" from "isBrussels", "isFlanders", "isWallonia" for a better filename
   region <- stringr::str_remove(region, "^is")
   readr::write_tsv(x = df,
     file = here::here(

@@ -38,88 +38,53 @@ library(here) # To find files
 
 ## GAM outputs
 
-We read the emerging status based on GAM, saved as one of the outputs of [modelling pipeline](https://trias-project.github.io/indicators/07_occurrence_indicators_modelling.html):
+We read the emerging status based on GAM, saved as one of the outputs of [modelling pipeline](https://trias-project.github.io/indicators/07_occurrence_indicators_modelling.html). We do it for Belgium, its regions (Flanders, Wallonia and Brussels) and protected areas and for both occurrences and observed occupancy (number of occupied cells):
 
 ```{r read_em_summary}
-method_gam <- "correct_baseline"
-em_gam_occs_be <- readr::read_tsv(
-  file = here::here(
-    "data",
-    "output",
-    "GAM_outputs",
-    paste0(
-      "summary_GAM_observations_belgium_",
-      method_gam,
-      ".tsv"
-    )
-  )
-) %>%
-  tidylog::mutate(indicator = "observations_BE")
+regions <- list("Belgium", 
+                "Flanders", 
+                "Wallonia", 
+                "Brussels", 
+                "natura2000"
+)
+names(regions) <- regions
+indicators <- c("occs", "occupancy")
+names(indicators) <- indicators
 
-em_gam_occs_pa <- readr::read_tsv(
-  file = here::here(
-    "data",
-    "output",
-    "GAM_outputs",
-    paste0(
-      "summary_GAM_observations_pa_",
-      method_gam,
-      ".tsv"
-    )
-  )
-) %>%
-  tidylog::mutate(indicator = "observations_pa")
+# Create all combinations regions/indicators
+combinations <- expand_grid(region = regions, indicator = indicators)
 
-em_gam_occupancy_be <- readr::read_tsv(
-  file = here::here(
-    "data",
-    "output",
-    "GAM_outputs",
-    paste0(
-      "summary_GAM_occupancy_belgium_",
-      method_gam,
-      ".tsv"
-    )
-  )
-) %>%
-  tidylog::mutate(indicator = "occupancy_BE")
+# Apply a function to read files for each combination
+em_gam_list <- pmap(combinations, function(region, indicator) {
+  paste("Reading", indicator, "for", region)
+  readr::read_tsv(
+        file = here::here(
+          "data",
+          "output",
+          "GAM_outputs",
+          paste0("summary_GAM_", indicator, "_", region, ".tsv" )),
+        na = "") %>%
+      tidylog::mutate(indicator =  paste(indicator, region, sep= "_"),
+                      model = "GAM")
+})
 
-em_gam_occupancy_pa <- readr::read_tsv(
-  file = here::here(
-    "data",
-    "output",
-    "GAM_outputs",
-    paste0(
-      "summary_GAM_occupancy_pa_",
-      method_gam,
-      ".tsv"
-    )
-  )
-) %>%
-  tidylog::mutate(indicator = "occupancy_pa")
-
-em_gam_list <- list(
-  gam_observations_be = em_gam_occs_be,
-  gam_observations_pa = em_gam_occs_pa,
-  gam_occupancy_be = em_gam_occupancy_be,
-  gam_occupancy_pa = em_gam_occupancy_pa
-) %>%
-  purrr::map(~ tidylog::mutate(
-    .data = .,
-    model = "GAM"
-  ))
+# Name the results
+names(em_gam_list) <- paste("gam", combinations$indicator, 
+                            combinations$region, 
+                            sep = "_"
+)
 ```
 
-Preview GAM ouput for modelling number of observations in Belgium:
+Preview GAM ouput for modelling the number of occurrences in Belgium (100 rows):
 
 ```{r preview_gam_occs_BE}
-em_gam_list$gam_observations_be %>% head(10)
+em_gam_list$gam_occs_Belgium %>% head(100)
 ```
 
-Preview GAM ouput for modelling occupancy (number of 1x1km cells) in Belgium:
+Preview GAM ouput for modelling occupancy (number of 1x1km cells) in Belgium (100 rows):
 
 ```{r preview_gam_occupancy_BE}
-em_gam_list$gam_occupancy_be %>% head(10)
+em_gam_list$gam_occupancy_Belgium %>% head(100)
 ```
 
 The emerging status (column `em_status`) score is encoded as follows:
@@ -132,14 +97,22 @@ The emerging status (column `em_status`) score is encoded as follows:
 As you can see in preview above, GAM could not be applied to all taxa (`em_status` = `NA`). Number of taxon/year combinations without emerging status:
 
 ```{r get_number_nas}
-sum(purrr::map_int(
+em_gam_na <- purrr::map(
   em_gam_list,
   function(df) {
-    df %>%
-      tidylog::filter(is.na(em_status)) %>%
+    nas <- df %>%
+      dplyr::filter(is.na(em_status)) %>%
       nrow()
+    total <- nrow(df)
+    list("NAs" = nas, "Total" = total)
   }
-))
+)
+purrr::iwalk(
+  em_gam_na, 
+  function(x, y) {
+    message(paste0("Number of NAs (", y, "): ", x$NAs, "/", x$Total))
+  }
+)
 ```
 
 In these cases we will use the emerging status as assessed by applying decision rules.
@@ -148,67 +121,34 @@ In these cases we will use the emerging status as assessed by applying decision 
 
 We read the emerging status based on decision rules, saved as one of the outputs of [modelling pipeline](https://trias-project.github.io/indicators/07_occurrence_indicators_modelling.html):
 
-```{r read_dr_results}
-em_decision_rules_occs_BE <- readr::read_tsv(
-  file = here::here(
-    "data",
-    "output",
-    "decision_rules_outputs",
-    "output_decision_rules_occs_belgium.tsv"
-  ),
-  na = ""
-) %>%
-  tidylog::mutate(indicator = "observations_BE")
+```{r read_decision_rules_results}
+# Apply a function to read files for each combination
+em_decision_rules_list <- pmap(combinations, function(region, indicator) {
+  paste("Reading", indicator, "for", region)
+  readr::read_tsv(
+        file = here::here(
+          "data",
+          "output",
+          "decision_rules_outputs",
+          paste0("output_decision_rules_", indicator, "_", region, ".tsv" )),
+        na = "") %>%
+      tidylog::mutate(indicator = paste(indicator, region, sep = "_"),
+                      model = "decision_rules")
+})
 
-em_decision_rules_occs_pa <- readr::read_tsv(
-  file = here::here(
-    "data",
-    "output",
-    "decision_rules_outputs",
-    "output_decision_rules_occs_pa.tsv"
-  ),
-  na = ""
-) %>%
-  tidylog::mutate(indicator = "observations_pa")
-
-em_decision_rules_occupancy_BE <- readr::read_tsv(
-  file = here::here(
-    "data",
-    "output",
-    "decision_rules_outputs",
-    "output_decision_rules_occupancy_belgium.tsv"
-  ),
-  na = ""
-) %>%
-  tidylog::mutate(indicator = "occupancy_BE")
-
-em_decision_rules_occupancy_pa <- readr::read_tsv(
-  file = here::here(
-    "data",
-    "output",
-    "decision_rules_outputs",
-    "output_decision_rules_occupancy_pa.tsv"
-  ),
-  na = ""
-) %>%
-  tidylog::mutate(indicator = "occupancy_pa")
-
-em_decision_rules_list <- list(
-  decision_rules_observations_be = em_decision_rules_occs_BE,
-  decision_rules_observations_pa = em_decision_rules_occs_pa,
-  decision_rules_occupancy_be = em_decision_rules_occupancy_BE,
-  decision_rules_occupancy_pa = em_decision_rules_occupancy_pa
-) %>%
-  purrr::map(~ tidylog::mutate(
-    .data = .,
-    model = "decision_rules"
-  ))
+# Name the results
+names(em_decision_rules_list) <- paste(
+  "decision_rules",
+  combinations$indicator,
+  combinations$region,
+  sep = "_"
+)
 ```
 
-Previewing output of decision rules for occupancy in protected areas:
+Previewing output of decision rules for occupancy in Natura2000 protected areas (100 rows):
 
 ```{r preview_dr_list}
-em_decision_rules_list$decision_rules_occupancy_pa %>% head(10)
+em_decision_rules_list$decision_rules_occupancy_natura2000 %>% head(100)
 ```
 
 ## Scientific names
@@ -226,7 +166,7 @@ taxa_names <- readr::read_tsv(
 )
 ```
 
-These names will be added to ranking for better readibility.
+These names will be added to ranking for better readability.
 
 # Preprocessing
 
@@ -236,130 +176,204 @@ Merge results from GAM and decision rules:
 em_list <- append(em_gam_list, em_decision_rules_list)
 ```
 
-Spread columns for ranking:
+
+We have now to make a distinction between Belgium and its provinces. Assessment at Belgian level takes into account the emerging status of the protected areas as well, while at regional level this is not (yet) done.
+
+However, We can define a general function to spread columns for ranking. We spread the data frames by model (GAM or decision rules), year and indicator (occurrences or occupancy). We then assign a unique emerging score (if GAM is NA, we choose decision rules). We spread by years and indicators and add scientific names.
 
 ```{r spread_em_dfs}
-# make a data.frame binding all dfs by row
-em_df <-
-  dplyr::bind_rows(em_list) %>%
-  tidylog::select(-c(dplyr::starts_with("growth"), dplyr::starts_with("dr")))
-
-# spread by model
-em_df <-
-  em_df %>%
-  tidylog::pivot_wider(
-    names_from = model,
-    id_cols = c(taxonKey, year, indicator),
-    values_from = em_status
-  )
-
-# assign unique emerging score (if GAM is NA, choose decision rules)
-em_df <-
-  em_df %>%
-  tidylog::mutate(em = ifelse(is.na(GAM), decision_rules, GAM),
-         method = ifelse(is.na(GAM), "decision_rules", "GAM"))
-
-# spread by years
-em_df <-
-  em_df %>%
-  tidylog::pivot_wider(
-    names_from = year,
-    values_from = em,
-    id_cols = c(taxonKey, indicator),
-    names_prefix = paste0("year_")
-  )
-
-# spread by indicator
-em_df <-
-  em_df %>%
-  tidylog::pivot_wider(
-    names_from = indicator,
-    id_cols = taxonKey,
-    values_from = starts_with("year"),
-    names_prefix = "em_status_"
-  )
+spread_em_dfs <- function(em_list) {
+  # Make a data.frame binding all dfs by row
+  em_df <-
+    dplyr::bind_rows(em_list) %>%
+    tidylog::select(-c(dplyr::starts_with("growth"),
+                       dplyr::starts_with("dr"))) %>%
+    # Spread by model
+    tidylog::pivot_wider(
+      names_from = model,
+      id_cols = c(taxonKey, year, indicator),
+      values_from = em_status) %>%
+    # Assign unique emerging score (if GAM is NA, choose decision rules)
+    tidylog::mutate(em = ifelse(is.na(GAM), decision_rules, GAM),
+           method = ifelse(is.na(GAM), "decision_rules", "GAM")) %>%
+    # Spread by years
+    tidylog::pivot_wider(
+      names_from = year,
+      values_from = em,
+      id_cols = c(taxonKey, indicator),
+      names_prefix = paste0("year_")) %>%
+    # Spread by indicator
+    tidylog::pivot_wider(
+      names_from = indicator,
+      id_cols = taxonKey,
+      values_from = starts_with("year"),
+      names_prefix = "em_status_") %>%
+    # Add scientific names
+    tidylog::left_join(taxa_names, by = "taxonKey")
+  em_df
+}
 ```
 
-We also add scientific names:
+## Belgium
 
-```{r add_sc_names}
-em_df <-
-  em_df %>%
-  tidylog::left_join(taxa_names, by = "taxonKey")
+Select only list elements containing `Belgium` or `natura2000` in the name:
+
+```{r em_list_be}
+em_list_be <- em_list[grep("Belgium|natura2000", names(em_list))]
 ```
 
-To rank taxa equally placed, we use the average of the minimal guaranteed growth of number of observations in all Belgium over all the evaluation years.
+Apply the function `spread_em_dfs()` to Belgium:
 
-```{r add_mean_growth_occs_BE}
-# add mean growth to em_df
-em_df <-
-  em_df %>%
-  tidylog::left_join(em_gam_list$gam_observations_be %>%
+```{r spread_em_dfs_be}
+em_df_be <- spread_em_dfs(em_list_be)
+```
+
+To rank taxa equally placed, we use the average of the minimal guaranteed growth of number of occurrences in all Belgium over all the evaluation years.
+
+```{r add_mean_growth_occs_be}
+# Add mean growth to em_df
+em_df_be <-
+  em_df_be %>%
+  tidylog::left_join(em_gam_list$gam_occs_Belgium %>%
     tidylog::group_by(taxonKey) %>%
     tidylog::summarize(mean_growth = mean(growth, na.rm = TRUE))) %>%
   tidylog::relocate(.data$mean_growth, .before = .data$canonicalName)
 ```
 
-A preview:
+A preview (100 rows):
 
-```{r}
-# show preview
-em_df %>%
+```{r preview_em_df_be}
+em_df_be %>%
   tidylog::filter(!is.na(mean_growth)) %>%
-  tidylog::slice_head(n = 10)
+  tidylog::slice_head(n = 100)
 ```
 
+## Regions
+
+Select only list elements containing the region in the name:
+
+```{r em_list_regions}
+regions <- list("Flanders", "Wallonia", "Brussels")
+names(regions) <- regions
+em_list_regions <- purrr::map(regions, 
+                              function(r) em_list[grep(r, names(em_list))]
+)
+```
+
+Apply the function `spread_em_dfs()` to each region:
+
+```{r spread_em_dfs_regions}
+em_df_regions <- purrr::map(em_list_regions, spread_em_dfs)
+```
+
+To rank taxa equally placed, we use the average of the minimal guaranteed growth of number of occurrences over all the evaluation years.
+
+```{r add_mean_growth_occs_regions}
+# Add mean growth to em_df
+em_df_regions <-
+  em_df_regions %>% purrr::imap(
+    function(df, region) {
+      occs_column <- paste0("gam_occs_", region)
+      df %>%
+        tidylog::left_join(em_gam_list[[occs_column]] %>%
+          tidylog::group_by(taxonKey) %>%
+          tidylog::summarize(mean_growth = mean(growth, na.rm = TRUE))) %>%
+        tidylog::relocate(.data$mean_growth, .before = .data$canonicalName)
+    }
+  )
+```
+
+A preview (100 rows) for each region:
+
+```{r preview_em_df_regions}
+em_df_regions %>%
+  purrr::map(function(df) {
+    df %>%
+      tidylog::filter(!is.na(mean_growth)) %>% tidylog::slice_head(n = 100)
+})
+```
 
 # Ranking by emerging status
 
-In this section we create the ranking of introduced species based on the emerging status.
+Now we are ready to rank the alien species based on the emerging status.
 
 ## Hierarchical ranking
+
+### Belgium
 
 The ranking is based on the highest emerging status. The following priority rules are applied, in order of importance:
 
 1. the more recent, the higher priority is
 2. emerging statuses in protected areas are more important than the ones defined over entire Belgium
-3. emerging statuses from occupancy indicators have priority above the ones from occurrence indicator
+3. emerging statuses from occupancy are more important than the ones from occurrences
 4. the higher average minimal guaranteed growth (#occs/year), the higher priority is
 
-```{r rank_basic}
-ranking <-
-  em_df %>%
-  dplyr::arrange(
-    desc(year_2022_em_status_occupancy_pa),
-    desc(year_2022_em_status_observations_pa),
-    desc(year_2022_em_status_occupancy_BE),
-    desc(year_2022_em_status_observations_BE),
-    desc(year_2021_em_status_occupancy_pa),
-    desc(year_2021_em_status_observations_pa),
-    desc(year_2021_em_status_occupancy_BE),
-    desc(year_2021_em_status_observations_BE),
-    desc(year_2020_em_status_occupancy_pa),
-    desc(year_2020_em_status_observations_pa),
-    desc(year_2020_em_status_occupancy_BE),
-    desc(year_2020_em_status_observations_BE),
-    desc(mean_growth)
-  ) %>%
-  tidylog::select(
-    taxonKey, canonicalName, kingdom, class,
-    year_2022_em_status_occupancy_pa,
-    year_2022_em_status_observations_pa,
-    year_2022_em_status_occupancy_BE,
-    year_2022_em_status_observations_BE,
-    year_2021_em_status_occupancy_pa,
-    year_2021_em_status_observations_pa,
-    year_2021_em_status_occupancy_BE,
-    year_2021_em_status_observations_BE,
-    year_2020_em_status_occupancy_pa,
-    year_2020_em_status_observations_pa,
-    year_2020_em_status_occupancy_BE,
-    year_2020_em_status_observations_BE,
-    mean_growth,
-    dplyr::everything()
-  )
-ranking
+We first define a function to rank the emerging status of species based on the priority rules above. The function takes as input the years, indicators, regions and the data frame with emerging status scores. It returns a data frame with the ranking of species based on the priority rules. The function is called `hierarchical_ranking()` and is defined as follows:
+
+```{r hierarchical_ranking_function}
+hierarchical_ranking <- function(years, indicators, regions, df) {
+  # Generate the column names dynamically
+  cols_to_sort <- expand.grid(indicator = indicators, region = regions, year = years) %>%
+    mutate(col_name = paste("year", year, "em_status", indicator, region, sep = "_")) %>%
+    pull(col_name)
+
+  # Add mean_growth to the end of the sorting columns
+  cols_to_sort <- c(cols_to_sort, "mean_growth")
+
+  # Apply the sorting
+  ranking <- df %>%
+    arrange(across(all_of(cols_to_sort), desc)) %>%
+    tidylog::select(
+      taxonKey, canonicalName, kingdom, class,
+      cols_to_sort,
+      dplyr::everything()
+    )
+  ranking
+}
 ```
+
+We apply the function to Belgium and its Natura2000 protected areas:
+
+```{r rank_basic_be}
+years <- sort(
+  unique(
+    as.numeric(gsub("^year_(\\d+)_em_status_.*", "\\1", names(em_df_be)))), 
+  decreasing = TRUE
+)
+indicators <- c("occupancy", "occs")
+regions <- c("natura2000", "Belgium")
+
+ranking_be <- hierarchical_ranking(years, indicators, regions, em_df_be)
+ranking_be
+```
+
+
+### Regions
+
+We have not done (yet) an analysis for protected areas at regional level. So, the ranking for regions will be simplified. It means that the priority rule 2 described above will not be applied. The priority rules will then look as follows:
+
+1. the more recent, the higher priority is
+2. emerging statuses from occupancy indicators have priority above the ones from occurrence indicator
+3. the higher average minimal guaranteed growth (#occs/year), the higher priority is
+
+We apply the function `hierarchical_ranking()` to Flanders, Wallonia and Brussels:
+
+```{r rank_basic_regions}
+years <- sort(
+  unique(
+    as.numeric(gsub("^year_(\\d+)_em_status_.*", "\\1", names(em_df_be)))), 
+  decreasing = TRUE
+)
+indicators <- c("occupancy", "occs")
+regions <- c("Flanders", "Wallonia", "Brussels")
+
+ranking_regions <- purrr::imap(
+  em_df_regions, 
+  function(em_df, region) hierarchical_ranking(years, indicators, region, em_df)
+)
+ranking_regions
+```
+
 
 ## Point strategy
 

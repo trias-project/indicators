@@ -523,6 +523,8 @@ Save complete outputs and summaries:
 save_gam_output <- function(gam_results,
                             region,
                             indicator) {
+  # Remove "is" from "isBrussels", "isFlanders", "isWallonia" for a better filename
+  region <- stringr::str_remove(region, "^is")
   # Save outputs
   readr::write_tsv(
     # Merge the outputs of all taxa as a data.frame for saving

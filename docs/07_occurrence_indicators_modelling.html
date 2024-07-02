@@ -1051,8 +1051,7 @@ take long.</p>
 <pre class="r"><code># Define function to save the results for Belgium, its regions and protected
 # areas
 save_decision_rules_output &lt;- function(df, region, indicator) {
-  # Remove &quot;is&quot; from &quot;isBrussels&quot;, &quot;isFlanders&quot;, &quot;isWallonia&quot; to create the
-  # subdirectory to be added to the basic directory
+  # Remove &quot;is&quot; from &quot;isBrussels&quot;, &quot;isFlanders&quot;, &quot;isWallonia&quot; for a better filename
   region &lt;- stringr::str_remove(region, &quot;^is&quot;)
   readr::write_tsv(
     x = df,
@@ -1083,6 +1082,8 @@ purrr::iwalk(em_decision_rules_occupancy, function(df, region) {
 save_gam_output &lt;- function(gam_results,
                             region,
                             indicator) {
+  # Remove &quot;is&quot; from &quot;isBrussels&quot;, &quot;isFlanders&quot;, &quot;isWallonia&quot; for a better filename
+  region &lt;- stringr::str_remove(region, &quot;^is&quot;)
   # Save outputs
   readr::write_tsv(
     # Merge the outputs of all taxa as a data.frame for saving

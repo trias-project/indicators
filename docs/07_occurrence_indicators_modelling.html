@@ -11,9 +11,10 @@
 
 <meta name="author" content="Damiano Oldoni" />
 <meta name="author" content="Toon Van Daele" />
+<meta name="author" content="Soria Delva" />
 <meta name="author" content="Tim Adriaens" />
 
-<meta name="date" content="2024-04-18" />
+<meta name="date" content="2024-07-02" />
 
 <title>Emerging status: modelling</title>
 
@@ -423,8 +424,9 @@ div.tocify {
 <h1 class="title toc-ignore">Emerging status: modelling</h1>
 <h4 class="author">Damiano Oldoni</h4>
 <h4 class="author">Toon Van Daele</h4>
+<h4 class="author">Soria Delva</h4>
 <h4 class="author">Tim Adriaens</h4>
-<h4 class="date">2024-04-18</h4>
+<h4 class="date">2024-07-02</h4>
 
 </div>
 
@@ -437,26 +439,14 @@ of alien species.</p>
 <pre class="r"><code>library(tidyverse) # To do data science</code></pre>
 <pre><code>## Warning: package &#39;tidyverse&#39; was built under R version 4.3.3</code></pre>
 <pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 4.3.3</code></pre>
-<pre><code>## Warning: package &#39;tibble&#39; was built under R version 4.3.3</code></pre>
-<pre><code>## Warning: package &#39;tidyr&#39; was built under R version 4.3.3</code></pre>
-<pre><code>## Warning: package &#39;readr&#39; was built under R version 4.3.3</code></pre>
-<pre><code>## Warning: package &#39;purrr&#39; was built under R version 4.3.3</code></pre>
-<pre><code>## Warning: package &#39;dplyr&#39; was built under R version 4.3.3</code></pre>
-<pre><code>## Warning: package &#39;stringr&#39; was built under R version 4.3.3</code></pre>
-<pre><code>## Warning: package &#39;forcats&#39; was built under R version 4.3.3</code></pre>
-<pre><code>## Warning: package &#39;lubridate&#39; was built under R version 4.3.3</code></pre>
 <pre class="r"><code>library(tidyselect) # To help tidyverse functions</code></pre>
 <pre><code>## Warning: package &#39;tidyselect&#39; was built under R version 4.3.3</code></pre>
-<pre class="r"><code>library(tidylog) # To provide feedback on dplyr functions</code></pre>
-<pre><code>## Warning: package &#39;tidylog&#39; was built under R version 4.3.3</code></pre>
-<pre class="r"><code>library(rgbif) # To get information from GBIF</code></pre>
-<pre><code>## Warning: package &#39;rgbif&#39; was built under R version 4.3.3</code></pre>
-<pre class="r"><code>library(lubridate) # To work with dates
-library(here) # To find files</code></pre>
-<pre><code>## Warning: package &#39;here&#39; was built under R version 4.3.3</code></pre>
-<pre class="r"><code>library(trias)
+<pre class="r"><code>library(tidylog) # To provide feedback on dplyr functions
+library(rgbif) # To get information from GBIF
+library(lubridate) # To work with dates
+library(here) # To find files
+library(trias)
 library(INBOtheme) # To load graphic INBO theme</code></pre>
-<pre><code>## Warning: package &#39;INBOtheme&#39; was built under R version 4.3.3</code></pre>
 </div>
 <div id="get-data" class="section level1" number="2">
 <h1><span class="header-section-number">2</span> Get data</h1>
@@ -482,7 +472,7 @@ df_ts %&gt;%
   )</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["taxonKey"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["year"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["eea_cell_code"],"name":[3],"type":["chr"],"align":["left"]},{"label":["obs"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["pa_obs"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["cobs"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["pa_cobs"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["classKey"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["natura2000"],"name":[9],"type":["lgl"],"align":["right"]}],"data":[],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["taxonKey"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["year"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["eea_cell_code"],"name":[3],"type":["chr"],"align":["left"]},{"label":["obs"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["pa_obs"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["cobs"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["pa_cobs"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["classKey"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["isFlanders"],"name":[9],"type":["lgl"],"align":["right"]},{"label":["isWallonia"],"name":[10],"type":["lgl"],"align":["right"]},{"label":["isBrussels"],"name":[11],"type":["lgl"],"align":["right"]},{"label":["natura2000"],"name":[12],"type":["lgl"],"align":["right"]}],"data":[],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p>Retrieve scientific names which will be useful to better discuss the
@@ -493,37 +483,125 @@ results.</p>
 ) %&gt;%
   tidylog::select(taxonKey, canonicalName) %&gt;%
   tidylog::filter(taxonKey %in% df_ts$taxonKey)</code></pre>
-<p>Lump geographic information:</p>
-<pre class="r"><code>df_ts_compact &lt;-
-  df_ts %&gt;%
-  tidylog::group_by(taxonKey, year, classKey) %&gt;%
-  tidylog::summarise(
-    obs = sum(obs),
-    cobs = sum(cobs),
-    ncells = sum(pa_obs),
-    c_ncells = sum(pa_cobs)
-  ) %&gt;%
-  tidylog::ungroup()</code></pre>
-<p>We create a similar data.frame specific to protected areas
-(Natura2000):</p>
-<pre class="r"><code>df_ts_compact_prot_areas &lt;-
-  df_ts %&gt;%
-  tidylog::filter(natura2000 == TRUE) %&gt;%
-  tidylog::group_by(taxonKey, year, classKey) %&gt;%
-  tidylog::summarise(
-    obs = sum(obs),
-    cobs = sum(cobs),
-    ncells = sum(pa_cobs),
-    c_ncells = sum(pa_cobs)
-  ) %&gt;%
-  tidylog::ungroup()</code></pre>
+<p>Add column <code>isBelgium</code> to the time series data to simplify
+the code while running the modelling for both Belgium and its
+regions:</p>
+<pre class="r"><code>df_ts$isBelgium &lt;- TRUE</code></pre>
+<p>Define function to lump geographic information for Belgium, its
+regions and protected areas:</p>
+<pre class="r"><code>filter_compact_time_series &lt;- function(df, col_to_filter) {
+  df %&gt;%
+    tidylog::filter(!!sym(col_to_filter) == TRUE) %&gt;%
+    tidylog::group_by(taxonKey, year, classKey) %&gt;%
+    tidylog::summarise(
+      obs = sum(obs),
+      cobs = sum(cobs),
+      ncells = sum(pa_obs),
+      c_ncells = sum(pa_cobs)
+    ) %&gt;%
+    tidylog::ungroup()
+}</code></pre>
+<p>Apply the function to the time series data:</p>
+<pre class="r"><code>colnames_to_filter &lt;- c(
+  &quot;isBelgium&quot;,
+  &quot;isFlanders&quot;,
+  &quot;isWallonia&quot;,
+  &quot;isBrussels&quot;,
+  &quot;natura2000&quot;
+)
+df_ts_compact &lt;- purrr::map(
+  colnames_to_filter,
+  function(x) filter_compact_time_series(df = df_ts, col_to_filter = x)
+) %&gt;%
+  purrr::set_names(colnames_to_filter)</code></pre>
+<p>We have now a compact version of the time series data for:</p>
+<pre class="r"><code>names(df_ts_compact)</code></pre>
+<pre><code>## [1] &quot;isBelgium&quot;  &quot;isFlanders&quot; &quot;isWallonia&quot; &quot;isBrussels&quot; &quot;natura2000&quot;</code></pre>
+<p>Previews:</p>
+<pre class="r"><code>df_ts_compact %&gt;% head()</code></pre>
+<pre><code>## $isBelgium
+## # A tibble: 46,592 × 7
+##    taxonKey  year classKey   obs  cobs ncells c_ncells
+##       &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;
+##  1  1003567  2014      139     1     0      1        0
+##  2  1003567  2015      139     0     0      0        0
+##  3  1003567  2016      139     0     0      0        0
+##  4  1003567  2017      139     0     0      0        0
+##  5  1003567  2018      139     3     0      2        0
+##  6  1003567  2019      139     0     0      0        0
+##  7  1003567  2020      139     0     0      0        0
+##  8  1003567  2021      139     0     0      0        0
+##  9  1003567  2022      139     0     0      0        0
+## 10  1003567  2023      139     0     0      0        0
+## # ℹ 46,582 more rows
+## 
+## $isFlanders
+## # A tibble: 45,073 × 7
+##    taxonKey  year classKey   obs  cobs ncells c_ncells
+##       &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;
+##  1  1003567  2014      139     1     0      1        0
+##  2  1003567  2015      139     0     0      0        0
+##  3  1003567  2016      139     0     0      0        0
+##  4  1003567  2017      139     0     0      0        0
+##  5  1003567  2018      139     3     0      2        0
+##  6  1003567  2019      139     0     0      0        0
+##  7  1003567  2020      139     0     0      0        0
+##  8  1003567  2021      139     0     0      0        0
+##  9  1003567  2022      139     0     0      0        0
+## 10  1003567  2023      139     0     0      0        0
+## # ℹ 45,063 more rows
+## 
+## $isWallonia
+## # A tibble: 32,230 × 7
+##    taxonKey  year classKey   obs  cobs ncells c_ncells
+##       &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;
+##  1  1016841  2020      361     1     0      1        0
+##  2  1016841  2021      361     0     0      0        0
+##  3  1016841  2022      361     0     0      0        0
+##  4  1016841  2023      361     0     0      0        0
+##  5  1016841  2024      361     0     0      0        0
+##  6  1017419  2009      361     0     0      0        0
+##  7  1017419  2010      361     0     0      0        0
+##  8  1017419  2011      361     0     0      0        0
+##  9  1017419  2012      361     0     0      0        0
+## 10  1017419  2013      361     0     0      0        0
+## # ℹ 32,220 more rows
+## 
+## $isBrussels
+## # A tibble: 21,654 × 7
+##    taxonKey  year classKey   obs  cobs ncells c_ncells
+##       &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;
+##  1  1017419  2009      361     0     0      0        0
+##  2  1017419  2010      361     0     0      0        0
+##  3  1017419  2011      361     0     0      0        0
+##  4  1017419  2012      361     0     0      0        0
+##  5  1017419  2013      361     0     0      0        0
+##  6  1017419  2014      361     0     0      0        0
+##  7  1017419  2015      361     0     0      0        0
+##  8  1017419  2016      361     0     0      0        0
+##  9  1017419  2017      361     1     0      1        0
+## 10  1017419  2018      361     0     0      0        0
+## # ℹ 21,644 more rows
+## 
+## $natura2000
+## # A tibble: 39,525 × 7
+##    taxonKey  year classKey   obs  cobs ncells c_ncells
+##       &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;
+##  1  1003567  2014      139     1     0      1        0
+##  2  1003567  2015      139     0     0      0        0
+##  3  1003567  2016      139     0     0      0        0
+##  4  1003567  2017      139     0     0      0        0
+##  5  1003567  2018      139     3     0      2        0
+##  6  1003567  2019      139     0     0      0        0
+##  7  1003567  2020      139     0     0      0        0
+##  8  1003567  2021      139     0     0      0        0
+##  9  1003567  2022      139     0     0      0        0
+## 10  1003567  2023      139     0     0      0        0
+## # ℹ 39,515 more rows</code></pre>
 <p>Add canonical names:</p>
-<pre class="r"><code>df_ts_compact &lt;-
-  df_ts_compact %&gt;%
-  tidylog::left_join(spec_names, by = &quot;taxonKey&quot;)
-df_ts_compact_prot_areas &lt;-
-  df_ts_compact_prot_areas %&gt;%
-  tidylog::left_join(spec_names, by = &quot;taxonKey&quot;)</code></pre>
+<pre class="r"><code>df_ts_compact &lt;- purrr::map(df_ts_compact, function(df) {
+  tidylog::left_join(df, spec_names, by = &quot;taxonKey&quot;)
+})</code></pre>
 </div>
 <div id="modelling" class="section level1" number="3">
 <h1><span class="header-section-number">3</span> Modelling</h1>
@@ -560,12 +638,10 @@ evaluation_years</code></pre>
 <pre><code>## [1] 2020 2021 2022</code></pre>
 <p>We remove recent data due to publishing delay. Underestimation of the
 number of observations would sensibly affect the GAM output.</p>
-<pre class="r"><code>df_ts_compact &lt;-
-  df_ts_compact %&gt;%
-  tidylog::filter(year &lt;= last_year)
-df_ts_compact_prot_areas &lt;-
-  df_ts_compact_prot_areas %&gt;%
-  tidylog::filter(year &lt;= last_year)</code></pre>
+<pre class="r"><code>df_ts_compact &lt;- purrr::map(
+  df_ts_compact,
+  function(df) df %&gt;% tidylog::filter(year &lt;= last_year)
+)</code></pre>
 </div>
 <div id="remove-appearing-taxa" class="section level2" number="3.2">
 <h2><span class="header-section-number">3.2</span> Remove appearing
@@ -574,24 +650,41 @@ taxa</h2>
 as no trend can be assesed for them. See <a
 href="https://trias-project.github.io/indicators/06_occurrence_indicators_appearing_taxa.html">analysis
 of appearing and reappearing taxa</a>.</p>
-<pre class="r"><code>appearing_taxa_to_remove &lt;-
-  df_ts_compact %&gt;%
-  tidylog::group_by(taxonKey) %&gt;%
-  tidylog::summarize(begin_year = min(year)) %&gt;%
-  tidylog::filter(begin_year &gt; min(evaluation_years)) %&gt;%
-  dplyr::pull(taxonKey)
+<pre class="r"><code># Define function to remove appearing taxa from the data for modelling
+remove_appearing_taxa &lt;- function(df, min_eval_year) {
+  df %&gt;%
+    # Filter to include only years before min(eval_years)
+    tidylog::filter(year &lt; min_eval_year) %&gt;%
+    # Group by taxonKey
+    tidylog::group_by(taxonKey) %&gt;%
+    # Arrange by year within each group to ensure we get the first occurrence
+    dplyr::arrange(year, .by_group = TRUE) %&gt;%
+    # Filter to keep only the first year where obs &gt; 0 for each taxon
+    tidylog::slice(which(obs &gt; 0)[1]) %&gt;%
+    # Keep only taxonKey
+    tidylog::select(taxonKey) %&gt;%
+    # Ungroup to remove grouping
+    tidylog::ungroup() %&gt;%
+    # Add data from the original data frame
+    tidylog::left_join(df, by = &quot;taxonKey&quot;)
+}
 
-df_ts_compact &lt;-
-  df_ts_compact %&gt;%
-  tidylog::filter(!taxonKey %in% appearing_taxa_to_remove)
-
-df_ts_compact_prot_areas &lt;-
-  df_ts_compact_prot_areas %&gt;%
-  tidylog::filter(!taxonKey %in% appearing_taxa_to_remove)
+# Apply the function to Belgium, its regions and the protected areas
+df_ts_compact &lt;- purrr::map(df_ts_compact,
+  remove_appearing_taxa,
+  min_eval_year = min(evaluation_years)
+)
 
 spec_names &lt;-
   spec_names %&gt;%
-  tidylog::filter(!taxonKey %in% appearing_taxa_to_remove)</code></pre>
+  tidylog::filter(
+    taxonKey %in%
+      purrr::pluck(
+        purrr::map_dfr(df_ts_compact, function(x) {
+          x %&gt;% dplyr::distinct(taxonKey)
+        }), &quot;taxonKey&quot;
+      )
+  )</code></pre>
 </div>
 <div id="decision-rules" class="section level2" number="3.3">
 <h2><span class="header-section-number">3.3</span> Decision rules</h2>
@@ -601,90 +694,184 @@ observations in all Belgium and in protected areas using function
 <code>trias</code>.</p>
 <div id="observations" class="section level3" number="3.3.1">
 <h3><span class="header-section-number">3.3.1</span> Observations</h3>
-<div id="belgium" class="section level4" number="3.3.1.1">
-<h4><span class="header-section-number">3.3.1.1</span> Belgium</h4>
-<p>We apply function <code>apply_decision_rules()</code> to observations
-for all Belgium:</p>
-<pre class="r"><code>em_decision_rules_occs_BE &lt;- purrr::map_dfr(
-  evaluation_years,
-  ~ apply_decision_rules(
-    df = df_ts_compact,
-    y_var = &quot;obs&quot;,
-    eval_year = .
+<p>We apply function <code>apply_decision_rules()</code> to the
+observations:</p>
+<pre class="r"><code># Define wrap function to apply decision rules for each evaluation year
+apply_decision_rules_for_ev_years &lt;- function(df, eval_years, y_var) {
+  purrr::map_dfr(
+    eval_years,
+    function(year) {
+      trias::apply_decision_rules(
+        df = df,
+        y_var = y_var,
+        eval_year = year
+      )
+    }
   )
+}
+
+# Apply the wrap function to BE, regions and protected areas for observations
+em_decision_rules_occs &lt;- purrr::map(
+  df_ts_compact,
+  apply_decision_rules_for_ev_years,
+  eval_years = evaluation_years,
+  y_var = &quot;obs&quot;
 )</code></pre>
-<p>Examples:</p>
-<pre class="r"><code>em_decision_rules_occs_BE %&gt;% tidylog::slice_head(n = 10)</code></pre>
+<p>Preview from Belgium:</p>
+<pre class="r"><code>em_decision_rules_occs %&gt;%
+  purrr::pluck(&quot;isBelgium&quot;) %&gt;%
+  tidylog::slice_head(n = 10)</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["taxonKey"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["year"],"name":[2],"type":["int"],"align":["right"]},{"label":["em_status"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["dr_1"],"name":[4],"type":["lgl"],"align":["right"]},{"label":["dr_2"],"name":[5],"type":["lgl"],"align":["right"]},{"label":["dr_3"],"name":[6],"type":["lgl"],"align":["right"]},{"label":["dr_4"],"name":[7],"type":["lgl"],"align":["right"]}],"data":[{"1":"1003567","2":"2020","3":"1","4":"FALSE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1008955","2":"2020","3":"0","4":"FALSE","5":"FALSE","6":"TRUE","7":"FALSE"},{"1":"1014565","2":"2020","3":"1","4":"FALSE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1016841","2":"2020","3":"1","4":"TRUE","5":"FALSE","6":"FALSE","7":"TRUE"},{"1":"1017419","2":"2020","3":"3","4":"FALSE","5":"TRUE","6":"FALSE","7":"TRUE"},{"1":"1031394","2":"2020","3":"1","4":"FALSE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1031400","2":"2020","3":"1","4":"FALSE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1031684","2":"2020","3":"3","4":"FALSE","5":"TRUE","6":"FALSE","7":"TRUE"},{"1":"1031737","2":"2020","3":"1","4":"TRUE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1031742","2":"2020","3":"1","4":"FALSE","5":"FALSE","6":"FALSE","7":"FALSE"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["taxonKey"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["year"],"name":[2],"type":["int"],"align":["right"]},{"label":["em_status"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["dr_1"],"name":[4],"type":["lgl"],"align":["right"]},{"label":["dr_2"],"name":[5],"type":["lgl"],"align":["right"]},{"label":["dr_3"],"name":[6],"type":["lgl"],"align":["right"]},{"label":["dr_4"],"name":[7],"type":["lgl"],"align":["right"]}],"data":[{"1":"1003567","2":"2020","3":"1","4":"FALSE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1008955","2":"2020","3":"0","4":"FALSE","5":"FALSE","6":"TRUE","7":"FALSE"},{"1":"1014565","2":"2020","3":"1","4":"FALSE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1017419","2":"2020","3":"3","4":"FALSE","5":"TRUE","6":"FALSE","7":"TRUE"},{"1":"1031394","2":"2020","3":"1","4":"FALSE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1031400","2":"2020","3":"1","4":"FALSE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1031684","2":"2020","3":"3","4":"FALSE","5":"TRUE","6":"FALSE","7":"TRUE"},{"1":"1031737","2":"2020","3":"1","4":"TRUE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1031742","2":"2020","3":"1","4":"FALSE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1043717","2":"2020","3":"1","4":"FALSE","5":"FALSE","6":"FALSE","7":"FALSE"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-</div>
-<div id="protected-areas" class="section level4" number="3.3.1.2">
-<h4><span class="header-section-number">3.3.1.2</span> Protected
-areas</h4>
-<p>We apply function <code>apply_decision_rules()</code> to observations
-for protected areas:</p>
-<pre class="r"><code>em_decision_rules_occs_pa &lt;- purrr::map_dfr(
-  evaluation_years,
-  ~ apply_decision_rules(
-    df = df_ts_compact_prot_areas,
-    y_var = &quot;obs&quot;,
-    eval_year = .
-  )
+<p>Preview from the regions:</p>
+<pre class="r"><code>regions &lt;- c(&quot;isFlanders&quot;, &quot;isWallonia&quot;, &quot;isBrussels&quot;)
+purrr::map(
+  regions,
+  function(x) {
+    em_decision_rules_occs %&gt;%
+      purrr::pluck(x) %&gt;%
+      tidylog::slice_head(n = 10)
+  }
 )</code></pre>
-<p>Examples:</p>
-<pre class="r"><code>em_decision_rules_occs_pa %&gt;% tidylog::slice_head(n = 10)</code></pre>
+<pre><code>## [[1]]
+## # A tibble: 10 × 7
+##    taxonKey  year em_status dr_1  dr_2  dr_3  dr_4 
+##       &lt;dbl&gt; &lt;int&gt;     &lt;dbl&gt; &lt;lgl&gt; &lt;lgl&gt; &lt;lgl&gt; &lt;lgl&gt;
+##  1  1003567  2020         1 FALSE FALSE FALSE FALSE
+##  2  1008955  2020         0 FALSE FALSE TRUE  FALSE
+##  3  1014565  2020         1 FALSE FALSE FALSE FALSE
+##  4  1017419  2020         3 FALSE TRUE  FALSE TRUE 
+##  5  1031394  2020         1 FALSE FALSE FALSE FALSE
+##  6  1031400  2020         1 FALSE FALSE FALSE FALSE
+##  7  1031684  2020         3 FALSE TRUE  FALSE TRUE 
+##  8  1031737  2020         1 TRUE  FALSE FALSE FALSE
+##  9  1031742  2020         1 FALSE FALSE FALSE FALSE
+## 10  1043717  2020         1 FALSE FALSE FALSE FALSE
+## 
+## [[2]]
+## # A tibble: 10 × 7
+##    taxonKey  year em_status dr_1  dr_2  dr_3  dr_4 
+##       &lt;dbl&gt; &lt;int&gt;     &lt;dbl&gt; &lt;lgl&gt; &lt;lgl&gt; &lt;lgl&gt; &lt;lgl&gt;
+##  1  1017419  2020         1 TRUE  FALSE FALSE FALSE
+##  2  1031394  2020         1 TRUE  FALSE FALSE FALSE
+##  3  1031400  2020         1 TRUE  FALSE FALSE FALSE
+##  4  1031684  2020         2 FALSE TRUE  FALSE FALSE
+##  5  1031742  2020         1 FALSE FALSE FALSE FALSE
+##  6  1043717  2020         1 TRUE  FALSE FALSE FALSE
+##  7  1045323  2020         0 TRUE  FALSE TRUE  FALSE
+##  8  1047536  2020         3 FALSE TRUE  FALSE TRUE 
+##  9  1119292  2020         1 TRUE  FALSE FALSE FALSE
+## 10  1309600  2020         2 FALSE TRUE  FALSE FALSE
+## 
+## [[3]]
+## # A tibble: 10 × 7
+##    taxonKey  year em_status dr_1  dr_2  dr_3  dr_4 
+##       &lt;dbl&gt; &lt;int&gt;     &lt;dbl&gt; &lt;lgl&gt; &lt;lgl&gt; &lt;lgl&gt; &lt;lgl&gt;
+##  1  1017419  2020         1 TRUE  FALSE FALSE FALSE
+##  2  1031394  2020         1 FALSE FALSE FALSE FALSE
+##  3  1031400  2020         0 TRUE  FALSE TRUE  FALSE
+##  4  1031684  2020         0 TRUE  FALSE TRUE  FALSE
+##  5  1031742  2020         1 TRUE  FALSE FALSE FALSE
+##  6  1047536  2020         3 FALSE TRUE  FALSE TRUE 
+##  7  1095946  2020         1 FALSE FALSE FALSE FALSE
+##  8  1152186  2020         2 FALSE TRUE  FALSE FALSE
+##  9  1309600  2020         1 FALSE FALSE FALSE FALSE
+## 10  1309606  2020         1 FALSE FALSE FALSE FALSE</code></pre>
+<p>Preview from protected areas:</p>
+<pre class="r"><code>em_decision_rules_occs %&gt;%
+  purrr::pluck(&quot;natura2000&quot;) %&gt;%
+  tidylog::slice_head(n = 10)</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["taxonKey"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["year"],"name":[2],"type":["int"],"align":["right"]},{"label":["em_status"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["dr_1"],"name":[4],"type":["lgl"],"align":["right"]},{"label":["dr_2"],"name":[5],"type":["lgl"],"align":["right"]},{"label":["dr_3"],"name":[6],"type":["lgl"],"align":["right"]},{"label":["dr_4"],"name":[7],"type":["lgl"],"align":["right"]}],"data":[{"1":"1003567","2":"2020","3":"1","4":"FALSE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1008955","2":"2020","3":"0","4":"FALSE","5":"FALSE","6":"TRUE","7":"FALSE"},{"1":"1016841","2":"2020","3":"1","4":"TRUE","5":"FALSE","6":"FALSE","7":"TRUE"},{"1":"1017419","2":"2020","3":"3","4":"FALSE","5":"TRUE","6":"FALSE","7":"TRUE"},{"1":"1031394","2":"2020","3":"1","4":"FALSE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1031400","2":"2020","3":"1","4":"FALSE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1031684","2":"2020","3":"2","4":"FALSE","5":"TRUE","6":"FALSE","7":"FALSE"},{"1":"1031737","2":"2020","3":"1","4":"TRUE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1043717","2":"2020","3":"1","4":"TRUE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1045323","2":"2020","3":"0","4":"TRUE","5":"FALSE","6":"TRUE","7":"FALSE"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["taxonKey"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["year"],"name":[2],"type":["int"],"align":["right"]},{"label":["em_status"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["dr_1"],"name":[4],"type":["lgl"],"align":["right"]},{"label":["dr_2"],"name":[5],"type":["lgl"],"align":["right"]},{"label":["dr_3"],"name":[6],"type":["lgl"],"align":["right"]},{"label":["dr_4"],"name":[7],"type":["lgl"],"align":["right"]}],"data":[{"1":"1003567","2":"2020","3":"1","4":"FALSE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1008955","2":"2020","3":"0","4":"FALSE","5":"FALSE","6":"TRUE","7":"FALSE"},{"1":"1017419","2":"2020","3":"3","4":"FALSE","5":"TRUE","6":"FALSE","7":"TRUE"},{"1":"1031394","2":"2020","3":"1","4":"FALSE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1031400","2":"2020","3":"1","4":"FALSE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1031684","2":"2020","3":"2","4":"FALSE","5":"TRUE","6":"FALSE","7":"FALSE"},{"1":"1031737","2":"2020","3":"1","4":"TRUE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1043717","2":"2020","3":"1","4":"TRUE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1045323","2":"2020","3":"0","4":"TRUE","5":"FALSE","6":"TRUE","7":"FALSE"},{"1":"1047536","2":"2020","3":"3","4":"FALSE","5":"TRUE","6":"FALSE","7":"TRUE"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
-</div>
 </div>
 </div>
 <div id="occupancy" class="section level3" number="3.3.2">
 <h3><span class="header-section-number">3.3.2</span> Occupancy</h3>
-<div id="belgium-1" class="section level4" number="3.3.2.1">
-<h4><span class="header-section-number">3.3.2.1</span> Belgium</h4>
 <p>We apply function <code>trias::apply_decision_rules()</code> to
-occupancy for all Belgium:</p>
-<pre class="r"><code>em_decision_rules_occupancy_BE &lt;- purrr::map_dfr(
-  evaluation_years,
-  ~ trias::apply_decision_rules(
-    df = df_ts_compact,
-    y_var = &quot;ncells&quot;,
-    eval_year = .
-  )
+occupancy:</p>
+<pre class="r"><code># Apply the wrap function to BE, regions and protected areas for occupancy
+em_decision_rules_occupancy &lt;- purrr::map(
+  df_ts_compact,
+  apply_decision_rules_for_ev_years,
+  eval_years = evaluation_years,
+  y_var = &quot;ncells&quot;
 )</code></pre>
-<p>Examples:</p>
-<pre class="r"><code>em_decision_rules_occupancy_BE %&gt;% tidylog::slice_head(n = 10)</code></pre>
+<p>Preview from Belgium:</p>
+<pre class="r"><code>em_decision_rules_occupancy %&gt;%
+  purrr::pluck(&quot;isBelgium&quot;) %&gt;%
+  tidylog::slice_head(n = 10)</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["taxonKey"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["year"],"name":[2],"type":["int"],"align":["right"]},{"label":["em_status"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["dr_1"],"name":[4],"type":["lgl"],"align":["right"]},{"label":["dr_2"],"name":[5],"type":["lgl"],"align":["right"]},{"label":["dr_3"],"name":[6],"type":["lgl"],"align":["right"]},{"label":["dr_4"],"name":[7],"type":["lgl"],"align":["right"]}],"data":[{"1":"1003567","2":"2020","3":"1","4":"FALSE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1008955","2":"2020","3":"0","4":"FALSE","5":"FALSE","6":"TRUE","7":"FALSE"},{"1":"1014565","2":"2020","3":"1","4":"FALSE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1016841","2":"2020","3":"1","4":"TRUE","5":"FALSE","6":"FALSE","7":"TRUE"},{"1":"1017419","2":"2020","3":"3","4":"FALSE","5":"TRUE","6":"FALSE","7":"TRUE"},{"1":"1031394","2":"2020","3":"1","4":"FALSE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1031400","2":"2020","3":"1","4":"FALSE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1031684","2":"2020","3":"3","4":"FALSE","5":"TRUE","6":"FALSE","7":"TRUE"},{"1":"1031737","2":"2020","3":"1","4":"TRUE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1031742","2":"2020","3":"1","4":"FALSE","5":"FALSE","6":"FALSE","7":"FALSE"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["taxonKey"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["year"],"name":[2],"type":["int"],"align":["right"]},{"label":["em_status"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["dr_1"],"name":[4],"type":["lgl"],"align":["right"]},{"label":["dr_2"],"name":[5],"type":["lgl"],"align":["right"]},{"label":["dr_3"],"name":[6],"type":["lgl"],"align":["right"]},{"label":["dr_4"],"name":[7],"type":["lgl"],"align":["right"]}],"data":[{"1":"1003567","2":"2020","3":"1","4":"FALSE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1008955","2":"2020","3":"0","4":"FALSE","5":"FALSE","6":"TRUE","7":"FALSE"},{"1":"1014565","2":"2020","3":"1","4":"FALSE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1017419","2":"2020","3":"3","4":"FALSE","5":"TRUE","6":"FALSE","7":"TRUE"},{"1":"1031394","2":"2020","3":"1","4":"FALSE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1031400","2":"2020","3":"1","4":"FALSE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1031684","2":"2020","3":"3","4":"FALSE","5":"TRUE","6":"FALSE","7":"TRUE"},{"1":"1031737","2":"2020","3":"1","4":"TRUE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1031742","2":"2020","3":"1","4":"FALSE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1043717","2":"2020","3":"1","4":"FALSE","5":"FALSE","6":"FALSE","7":"FALSE"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-</div>
-<div id="protected-areas-1" class="section level4" number="3.3.2.2">
-<h4><span class="header-section-number">3.3.2.2</span> Protected
-areas</h4>
-<p>We apply function <code>trias::apply_decision_rules()</code> to
-occupancy in protected areas:</p>
-<pre class="r"><code>em_decision_rules_occupancy_pa &lt;- purrr::map_dfr(
-  evaluation_years,
-  ~ trias::apply_decision_rules(
-    df = df_ts_compact_prot_areas,
-    y_var = &quot;ncells&quot;,
-    eval_year = .
-  )
+<p>Preview from the regions:</p>
+<pre class="r"><code>regions &lt;- c(&quot;isFlanders&quot;, &quot;isWallonia&quot;, &quot;isBrussels&quot;)
+purrr::map(
+  regions,
+  function(x) {
+    em_decision_rules_occupancy %&gt;%
+      purrr::pluck(x) %&gt;%
+      tidylog::slice_head(n = 10)
+  }
 )</code></pre>
-<p>Examples:</p>
-<pre class="r"><code>em_decision_rules_occupancy_pa %&gt;% tidylog::slice_head(n = 10)</code></pre>
+<pre><code>## [[1]]
+## # A tibble: 10 × 7
+##    taxonKey  year em_status dr_1  dr_2  dr_3  dr_4 
+##       &lt;dbl&gt; &lt;int&gt;     &lt;dbl&gt; &lt;lgl&gt; &lt;lgl&gt; &lt;lgl&gt; &lt;lgl&gt;
+##  1  1003567  2020         1 FALSE FALSE FALSE FALSE
+##  2  1008955  2020         0 FALSE FALSE TRUE  FALSE
+##  3  1014565  2020         1 FALSE FALSE FALSE FALSE
+##  4  1017419  2020         3 FALSE TRUE  FALSE TRUE 
+##  5  1031394  2020         1 FALSE FALSE FALSE FALSE
+##  6  1031400  2020         1 FALSE FALSE FALSE FALSE
+##  7  1031684  2020         3 FALSE TRUE  FALSE TRUE 
+##  8  1031737  2020         1 TRUE  FALSE FALSE FALSE
+##  9  1031742  2020         1 FALSE FALSE FALSE FALSE
+## 10  1043717  2020         1 FALSE FALSE FALSE FALSE
+## 
+## [[2]]
+## # A tibble: 10 × 7
+##    taxonKey  year em_status dr_1  dr_2  dr_3  dr_4 
+##       &lt;dbl&gt; &lt;int&gt;     &lt;dbl&gt; &lt;lgl&gt; &lt;lgl&gt; &lt;lgl&gt; &lt;lgl&gt;
+##  1  1017419  2020         1 TRUE  FALSE FALSE FALSE
+##  2  1031394  2020         1 TRUE  FALSE FALSE FALSE
+##  3  1031400  2020         1 TRUE  FALSE FALSE FALSE
+##  4  1031684  2020         2 FALSE TRUE  FALSE FALSE
+##  5  1031742  2020         1 FALSE FALSE FALSE FALSE
+##  6  1043717  2020         1 TRUE  FALSE FALSE FALSE
+##  7  1045323  2020         0 TRUE  FALSE TRUE  FALSE
+##  8  1047536  2020         3 FALSE TRUE  FALSE TRUE 
+##  9  1119292  2020         1 TRUE  FALSE FALSE FALSE
+## 10  1309600  2020         2 FALSE TRUE  FALSE FALSE
+## 
+## [[3]]
+## # A tibble: 10 × 7
+##    taxonKey  year em_status dr_1  dr_2  dr_3  dr_4 
+##       &lt;dbl&gt; &lt;int&gt;     &lt;dbl&gt; &lt;lgl&gt; &lt;lgl&gt; &lt;lgl&gt; &lt;lgl&gt;
+##  1  1017419  2020         1 TRUE  FALSE FALSE FALSE
+##  2  1031394  2020         1 FALSE FALSE FALSE FALSE
+##  3  1031400  2020         0 TRUE  FALSE TRUE  FALSE
+##  4  1031684  2020         0 TRUE  FALSE TRUE  FALSE
+##  5  1031742  2020         1 TRUE  FALSE FALSE FALSE
+##  6  1047536  2020         3 FALSE TRUE  FALSE TRUE 
+##  7  1095946  2020         1 FALSE FALSE FALSE FALSE
+##  8  1152186  2020         3 FALSE TRUE  FALSE TRUE 
+##  9  1309600  2020         1 FALSE FALSE FALSE FALSE
+## 10  1309606  2020         1 FALSE FALSE FALSE FALSE</code></pre>
+<p>Preview from protected areas:</p>
+<pre class="r"><code>em_decision_rules_occupancy %&gt;%
+  purrr::pluck(&quot;natura2000&quot;) %&gt;%
+  tidylog::slice_head(n = 10)</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["taxonKey"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["year"],"name":[2],"type":["int"],"align":["right"]},{"label":["em_status"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["dr_1"],"name":[4],"type":["lgl"],"align":["right"]},{"label":["dr_2"],"name":[5],"type":["lgl"],"align":["right"]},{"label":["dr_3"],"name":[6],"type":["lgl"],"align":["right"]},{"label":["dr_4"],"name":[7],"type":["lgl"],"align":["right"]}],"data":[{"1":"1031394","2":"2020","3":"1","4":"FALSE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1031400","2":"2020","3":"1","4":"FALSE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1031684","2":"2020","3":"2","4":"FALSE","5":"TRUE","6":"FALSE","7":"FALSE"},{"1":"1031737","2":"2020","3":"1","4":"TRUE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1043717","2":"2020","3":"1","4":"TRUE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1045323","2":"2020","3":"0","4":"TRUE","5":"FALSE","6":"TRUE","7":"FALSE"},{"1":"1047536","2":"2020","3":"3","4":"FALSE","5":"TRUE","6":"FALSE","7":"TRUE"},{"1":"1119292","2":"2020","3":"1","4":"TRUE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1152186","2":"2020","3":"3","4":"FALSE","5":"TRUE","6":"FALSE","7":"TRUE"},{"1":"1247584","2":"2020","3":"0","4":"TRUE","5":"FALSE","6":"TRUE","7":"FALSE"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["taxonKey"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["year"],"name":[2],"type":["int"],"align":["right"]},{"label":["em_status"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["dr_1"],"name":[4],"type":["lgl"],"align":["right"]},{"label":["dr_2"],"name":[5],"type":["lgl"],"align":["right"]},{"label":["dr_3"],"name":[6],"type":["lgl"],"align":["right"]},{"label":["dr_4"],"name":[7],"type":["lgl"],"align":["right"]}],"data":[{"1":"1003567","2":"2020","3":"1","4":"FALSE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1008955","2":"2020","3":"0","4":"FALSE","5":"FALSE","6":"TRUE","7":"FALSE"},{"1":"1017419","2":"2020","3":"3","4":"FALSE","5":"TRUE","6":"FALSE","7":"TRUE"},{"1":"1031394","2":"2020","3":"1","4":"FALSE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1031400","2":"2020","3":"1","4":"FALSE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1031684","2":"2020","3":"2","4":"FALSE","5":"TRUE","6":"FALSE","7":"FALSE"},{"1":"1031737","2":"2020","3":"1","4":"TRUE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1043717","2":"2020","3":"1","4":"TRUE","5":"FALSE","6":"FALSE","7":"FALSE"},{"1":"1045323","2":"2020","3":"0","4":"TRUE","5":"FALSE","6":"TRUE","7":"FALSE"},{"1":"1047536","2":"2020","3":"3","4":"FALSE","5":"TRUE","6":"FALSE","7":"TRUE"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
-</div>
 </div>
 </div>
 </div>
@@ -692,211 +879,167 @@ occupancy in protected areas:</p>
 number="3.4">
 <h2><span class="header-section-number">3.4</span> Generalized additive
 model (GAM)</h2>
-<p>We apply GAM to observations and occupancy in all Belgium and in
-protected areas using function <code>trias::apply_gam()</code> from
-project package <code>trias</code>.</p>
-<p>Plots are saved in <code>./data/output/GAM_outputs</code>:</p>
-<pre class="r"><code>dir_name &lt;- here::here(&quot;data&quot;, &quot;output&quot;, &quot;GAM_outputs&quot;)</code></pre>
+<p>We apply GAM to observations and occupancy in all Belgium, its
+regions and the protected areas using function
+<code>trias::apply_gam()</code> from project package
+<code>trias</code>.</p>
+<p>Plots are saved in <code>./data/output/GAM_outputs</code>
+directory:</p>
+<pre class="r"><code>dir_name_basic &lt;- here::here(&quot;data&quot;, &quot;output&quot;, &quot;GAM_outputs&quot;)</code></pre>
+<p>We also define the plot dimensions in pixels:</p>
+<pre class="r"><code>plot_dimensions &lt;- list(width = 2800, height = 1500)</code></pre>
+<p>We define also a wrap-up function,
+<code>apply_gam_for_eval_years</code> to apply GAM for each evaluation
+year and taxon:</p>
+<pre class="r"><code># Define wrap function to apply GAM for every time series (Belgium, its regions
+# and protected areas)
+apply_gam_for_eval_years &lt;- function(df,
+                                     region,
+                                     eval_years,
+                                     y_var,
+                                     indicator,
+                                     baseline_var,
+                                     root_dir,
+                                     y_label,
+                                     w,
+                                     h) {
+  # Remove &quot;is&quot; from &quot;isBrussels&quot;, &quot;isFlanders&quot;, &quot;isWallonia&quot; to create the
+  # subdirectory to be added to the basic directory
+  region &lt;- stringr::str_remove(region, &quot;^is&quot;)
+  dir_name &lt;- here::here(dir_name_basic, region)
+  # Check if directory exists before creating
+  if (!dir.exists(dir_name)) {
+    dir.create(dir_name)
+  }
+  taxon_keys &lt;- unique(df$taxonKey)
+  taxon_names &lt;- unique(df$canonicalName)
+  message(paste0(&quot;Applying GAM. Variable: &quot;, y_var, &quot;; region: &quot;, region, &quot;.&quot;))
+  gam_occs &lt;- map2(
+    taxon_keys, taxon_names,
+    function(t, n) {
+      df_key &lt;- df %&gt;%
+        dplyr::filter(taxonKey == t)
+      class_key &lt;- unique(df_key[[&quot;classKey&quot;]])
+      # Use covariate only if taxon belongs to a class (classKey is available)
+      if (!is.na(class_key)) {
+        results_gam &lt;- trias::apply_gam(
+          df = df_key,
+          y_var = y_var,
+          taxonKey = &quot;taxonKey&quot;,
+          eval_years = eval_years,
+          type_indicator = indicator,
+          baseline_var = baseline_var,
+          taxon_key = t,
+          name = n,
+          df_title = region,
+          dir_name = dir_name,
+          y_label = y_label,
+          saveplot = TRUE,
+          width = w,
+          height = h
+        )
+      } else {
+        # If taxon doesn&#39;t belong to any class (classKey is not available), use
+        # the default GAM model without covariate
+        results_gam &lt;- trias::apply_gam(
+          df = df_key,
+          y_var = y_var,
+          taxonKey = &quot;taxonKey&quot;,
+          eval_years = eval_years,
+          type_indicator = indicator,
+          taxon_key = t,
+          name = n,
+          df_title = region,
+          dir_name = dir_name,
+          y_label = y_label,
+          saveplot = TRUE,
+          width = w,
+          height = h
+        )
+      }
+      return(results_gam)
+    }
+  )
+  names(gam_occs) &lt;- taxon_keys
+  gam_occs
+}</code></pre>
 <div id="observations-1" class="section level3" number="3.4.1">
 <h3><span class="header-section-number">3.4.1</span> Observations</h3>
-<div id="belgium-2" class="section level4" number="3.4.1.1">
-<h4><span class="header-section-number">3.4.1.1</span> Belgium</h4>
-<p>Apply GAM for observation data in all Belgium:</p>
-<pre class="r"><code>taxon_keys &lt;- unique(df_ts_compact$taxonKey)
-taxon_names &lt;- unique(df_ts_compact$canonicalName)
-gam_occs_BE &lt;- map2(
-  taxon_keys, taxon_names,
-  function(t, n) {
-    df_key &lt;- df_ts_compact %&gt;%
-      dplyr::filter(taxonKey == t)
-    class_key &lt;- unique(df_key[[&quot;classKey&quot;]])
-    if (!is.na(class_key)) {
-      results_gam &lt;- trias::apply_gam(
-        df = df_key,
-        y_var = &quot;obs&quot;,
-        taxonKey = &quot;taxonKey&quot;,
-        eval_years = evaluation_years,
-        type_indicator = &quot;observations&quot;,
-        taxon_key = t,
-        name = n,
-        baseline_var = &quot;cobs&quot;,
-        dir_name = dir_name,
-        saveplot = TRUE
-      )
-    } else {
-      results_gam &lt;- trias::apply_gam(
-        df = df_key,
-        y_var = &quot;obs&quot;,
-        eval_years = evaluation_years,
-        type_indicator = &quot;observations&quot;,
-        taxon_key = t,
-        name = n,
-        dir_name = dir_name,
-        saveplot = TRUE
-      )
-    }
-    return(results_gam)
-  }
-)
-names(gam_occs_BE) &lt;- taxon_keys</code></pre>
-<p>Show results for <em>Hydrocotyle ranunculoides</em> and <em>Trachemys
-scripta elegans</em>:</p>
-<pre class="r"><code>gam_occs_BE$`7978544`$plot</code></pre>
-<p><img src="07_occurrence_indicators_modelling_files/figure-html/show_results_preview_occs_BE-1.png" width="672" /></p>
-<pre class="r"><code>gam_occs_BE$`6157026`$plot</code></pre>
-<p><img src="07_occurrence_indicators_modelling_files/figure-html/show_results_preview_occs_BE-2.png" width="672" /></p>
-</div>
-<div id="protected-aras" class="section level4" number="3.4.1.2">
-<h4><span class="header-section-number">3.4.1.2</span> Protected
-aras</h4>
-<p>Apply GAM for observation data in protected areas:</p>
-<pre class="r"><code>taxon_keys &lt;- unique(df_ts_compact_prot_areas$taxonKey)
-taxon_names &lt;- unique(df_ts_compact_prot_areas$canonicalName)
-gam_occs_pa &lt;- map2(
-  taxon_keys, taxon_names,
-  function(t, n) {
-    df_key &lt;- df_ts_compact_prot_areas %&gt;%
-      dplyr::filter(taxonKey == t)
-    class_key &lt;- unique(df_key[[&quot;classKey&quot;]])
-    if (!is.na(class_key)) {
-      trias::apply_gam(
-        df = df_key,
-        y_var = &quot;obs&quot;,
-        eval_years = evaluation_years,
-        type_indicator = &quot;observations&quot;,
-        taxon_key = t,
-        name = n,
-        baseline_var = &quot;cobs&quot;,
-        df_title = &quot;Natura2000&quot;,
-        dir_name = dir_name,
-        saveplot = TRUE
-      )
-    } else {
-      trias::apply_gam(
-        df = df_key,
-        y_var = &quot;obs&quot;,
-        eval_years = evaluation_years,
-        type_indicator = &quot;observations&quot;,
-        taxon_key = t,
-        name = n,
-        df_title = &quot;Natura2000&quot;,
-        dir_name = dir_name,
-        saveplot = TRUE
-      )
-    }
-  }
-)
-names(gam_occs_pa) &lt;- taxon_keys</code></pre>
-<p>Show results for <em>Hydrocotyle ranunculoides</em> and <em>Trachemys
-scripta elegans</em>:</p>
-<pre class="r"><code>gam_occs_pa$`7978544`$plot</code></pre>
-<p><img src="07_occurrence_indicators_modelling_files/figure-html/preview_gam_occs_PA-1.png" width="672" /></p>
-<pre class="r"><code>gam_occs_pa$`6157026`$plot</code></pre>
-<p><img src="07_occurrence_indicators_modelling_files/figure-html/preview_gam_occs_PA-2.png" width="672" /></p>
-</div>
+<p>We apply GAM modelling by using the wrap-up function defined above to
+observations in Belgium, its regions and protected areas. This step can
+take long.</p>
+<pre class="r"><code># Apply `apply_gam_for_eval_years` to observations:
+gam_occs &lt;- purrr::imap(
+  df_ts_compact,
+  apply_gam_for_eval_years,
+  eval_years = evaluation_years,
+  y_var = &quot;obs&quot;,
+  indicator = &quot;observations&quot;,
+  baseline_var = &quot;cobs&quot;,
+  root_dir = dir_name_basic,
+  y_label = &quot;number of observations&quot;,
+  w = plot_dimensions$width,
+  h = plot_dimensions$height
+)</code></pre>
+<p>Show results for <em>Pinus sylvestris</em>:</p>
+<pre class="r"><code>taxon_example &lt;- &quot;5285637&quot;
+purrr::map(gam_occs, function(x) {
+  x %&gt;%
+    purrr::pluck(taxon_example) %&gt;%
+    purrr::pluck(&quot;plot&quot;)
+})</code></pre>
+<pre><code>## $isBelgium</code></pre>
+<p><img src="07_occurrence_indicators_modelling_files/figure-html/show_results_preview_occs_all_regions-1.png" width="672" /></p>
+<pre><code>## 
+## $isFlanders</code></pre>
+<p><img src="07_occurrence_indicators_modelling_files/figure-html/show_results_preview_occs_all_regions-2.png" width="672" /></p>
+<pre><code>## 
+## $isWallonia</code></pre>
+<p><img src="07_occurrence_indicators_modelling_files/figure-html/show_results_preview_occs_all_regions-3.png" width="672" /></p>
+<pre><code>## 
+## $isBrussels</code></pre>
+<p><img src="07_occurrence_indicators_modelling_files/figure-html/show_results_preview_occs_all_regions-4.png" width="672" /></p>
+<pre><code>## 
+## $natura2000</code></pre>
+<p><img src="07_occurrence_indicators_modelling_files/figure-html/show_results_preview_occs_all_regions-5.png" width="672" /></p>
 </div>
 <div id="occupancy-1" class="section level3" number="3.4.2">
 <h3><span class="header-section-number">3.4.2</span> Occupancy</h3>
-<div id="belgium-3" class="section level4" number="3.4.2.1">
-<h4><span class="header-section-number">3.4.2.1</span> Belgium</h4>
-<p>Apply GAM for occupancy data (number of occupied cells) in all
-Belgium:</p>
-<pre class="r"><code>taxon_keys &lt;- unique(df_ts_compact$taxonKey)
-taxon_names &lt;- unique(df_ts_compact$canonicalName)
-gam_occupancy_BE &lt;- map2(
-  taxon_keys, taxon_names,
-  function(t, n) {
-    df_key &lt;- df_ts_compact %&gt;%
-      dplyr::filter(taxonKey == t) %&gt;%
-      dplyr::filter(year &lt;= max(evaluation_years))
-    class_key &lt;- unique(df_key[[&quot;classKey&quot;]])
-    if (!is.na(class_key)) {
-      trias::apply_gam(
-        df = df_key,
-        y_var = &quot;ncells&quot;,
-        eval_years = evaluation_years,
-        type_indicator = &quot;occupancy&quot;,
-        taxon_key = t,
-        name = n,
-        baseline_var = &quot;c_ncells&quot;,
-        dir_name = dir_name,
-        saveplot = TRUE,
-        y_label = &quot;occupancy (km2)&quot;
-      )
-    } else {
-      trias::apply_gam(
-        df = df_key,
-        y_var = &quot;ncells&quot;,
-        eval_years = evaluation_years,
-        type_indicator = &quot;occupancy&quot;,
-        taxon_key = t,
-        name = n,
-        dir_name = dir_name,
-        saveplot = TRUE,
-        y_label = &quot;occupancy (km2)&quot;
-      )
-    }
-  }
-)
-names(gam_occupancy_BE) &lt;- taxon_keys</code></pre>
-<p>Show results for <em>Hydrocotyle ranunculoides</em> and <em>Trachemys
-scripta elegans</em>:</p>
-<pre class="r"><code>gam_occupancy_BE$`7978544`$plot</code></pre>
-<p><img src="07_occurrence_indicators_modelling_files/figure-html/preview_gam_occupancy_BE-1.png" width="672" /></p>
-<pre class="r"><code>gam_occupancy_BE$`6157026`$plot</code></pre>
-<p><img src="07_occurrence_indicators_modelling_files/figure-html/preview_gam_occupancy_BE-2.png" width="672" /></p>
-</div>
-<div id="protected-aras-1" class="section level4" number="3.4.2.2">
-<h4><span class="header-section-number">3.4.2.2</span> Protected
-aras</h4>
-<p>Apply GAM for occupancy in protected areas:</p>
-<pre class="r"><code>taxon_keys &lt;- unique(df_ts_compact_prot_areas$taxonKey)
-taxon_names &lt;- unique(df_ts_compact_prot_areas$canonicalName)
-gam_occupancy_pa &lt;- map2(
-  taxon_keys, taxon_names,
-  function(t, n) {
-    df_key &lt;- df_ts_compact_prot_areas %&gt;%
-      dplyr::filter(taxonKey == t)
-    class_key &lt;- unique(df_key[[&quot;classKey&quot;]])
-    if (!is.na(class_key)) {
-      trias::apply_gam(
-        df = df_key,
-        y_var = &quot;ncells&quot;,
-        eval_years = evaluation_years,
-        type_indicator = &quot;occupancy&quot;,
-        taxon_key = t,
-        name = n,
-        baseline_var = &quot;c_ncells&quot;,
-        df_title = &quot;Natura2000&quot;,
-        dir_name = dir_name,
-        saveplot = TRUE,
-        y_label = &quot;occupancy (km2)&quot;
-      )
-    } else {
-      trias::apply_gam(
-        df = df_key,
-        y_var = &quot;ncells&quot;,
-        eval_years = evaluation_years,
-        type_indicator = &quot;occupancy&quot;,
-        taxon_key = t,
-        name = n,
-        df_title = &quot;Natura2000&quot;,
-        dir_name = dir_name,
-        saveplot = TRUE,
-        y_label = &quot;occupancy (km2)&quot;
-      )
-    }
-  }
-)
-names(gam_occupancy_pa) &lt;- taxon_keys</code></pre>
-<p>Show results for <em>Hydrocotyle ranunculoides</em> (for
-<em>Trachemys scripta elegans</em> GAM could not be applied or didn’t
-converged):</p>
-<pre class="r"><code>gam_occupancy_pa$`7978544`$plot</code></pre>
-<p><img src="07_occurrence_indicators_modelling_files/figure-html/preview_gam_occupancy_PA-1.png" width="672" /></p>
-<pre class="r"><code>gam_occupancy_pa$`6157026`$plot</code></pre>
-<p><img src="07_occurrence_indicators_modelling_files/figure-html/preview_gam_occupancy_PA-2.png" width="672" /></p>
-</div>
+<p>We apply GAM modelling by using the wrap-up function defined above to
+occupancy in Belgium, its regions and protected areas. This step can
+take long.</p>
+<pre class="r"><code>gam_occupancy &lt;- purrr::imap(
+  df_ts_compact,
+  apply_gam_for_eval_years,
+  eval_years = evaluation_years,
+  y_var = &quot;ncells&quot;,
+  indicator = &quot;occupancy&quot;,
+  baseline_var = &quot;c_ncells&quot;,
+  root_dir = dir_name_basic,
+  y_label = &quot;occupancy (km2)&quot;,
+  w = plot_dimensions$width,
+  h = plot_dimensions$height
+)</code></pre>
+<p>Show results for <em>Pinus Sylvestris</em>:</p>
+<pre class="r"><code>purrr::map(gam_occupancy, function(x) {
+  x %&gt;%
+    purrr::pluck(taxon_example) %&gt;%
+    purrr::pluck(&quot;plot&quot;)
+})</code></pre>
+<pre><code>## $isBelgium</code></pre>
+<p><img src="07_occurrence_indicators_modelling_files/figure-html/preview_gam_occupancy_Belgium-1.png" width="672" /></p>
+<pre><code>## 
+## $isFlanders</code></pre>
+<p><img src="07_occurrence_indicators_modelling_files/figure-html/preview_gam_occupancy_Belgium-2.png" width="672" /></p>
+<pre><code>## 
+## $isWallonia</code></pre>
+<p><img src="07_occurrence_indicators_modelling_files/figure-html/preview_gam_occupancy_Belgium-3.png" width="672" /></p>
+<pre><code>## 
+## $isBrussels</code></pre>
+<p><img src="07_occurrence_indicators_modelling_files/figure-html/preview_gam_occupancy_Belgium-4.png" width="672" /></p>
+<pre><code>## 
+## $natura2000</code></pre>
+<p><img src="07_occurrence_indicators_modelling_files/figure-html/preview_gam_occupancy_Belgium-5.png" width="672" /></p>
 </div>
 </div>
 </div>
@@ -905,169 +1048,109 @@ converged):</p>
 <div id="decision-rules-1" class="section level2" number="4.1">
 <h2><span class="header-section-number">4.1</span> Decision rules</h2>
 <p>Save emerging status based on decision rules:</p>
-<pre class="r"><code>write_tsv(em_decision_rules_occs_BE,
-  file = here::here(
-    &quot;data&quot;, &quot;output&quot;,
-    &quot;decision_rules_outputs&quot;,
-    &quot;output_decision_rules_occs_belgium.tsv&quot;
-  ),
-  na = &quot;&quot;
-)
-write_tsv(em_decision_rules_occs_pa,
-  file = here::here(
-    &quot;data&quot;, &quot;output&quot;,
-    &quot;decision_rules_outputs&quot;,
-    &quot;output_decision_rules_occs_pa.tsv&quot;
-  ),
-  na = &quot;&quot;
-)
-write_tsv(em_decision_rules_occupancy_BE,
-  file = here::here(
-    &quot;data&quot;, &quot;output&quot;,
-    &quot;decision_rules_outputs&quot;,
-    &quot;output_decision_rules_occupancy_belgium.tsv&quot;
-  ),
-  na = &quot;&quot;
-)
-write_tsv(em_decision_rules_occupancy_pa,
-  file = here::here(
-    &quot;data&quot;, &quot;output&quot;,
-    &quot;decision_rules_outputs&quot;,
-    &quot;output_decision_rules_occupancy_pa.tsv&quot;
-  ),
-  na = &quot;&quot;
-)</code></pre>
+<pre class="r"><code># Define function to save the results for Belgium, its regions and protected
+# areas
+save_decision_rules_output &lt;- function(df, region, indicator) {
+  # Remove &quot;is&quot; from &quot;isBrussels&quot;, &quot;isFlanders&quot;, &quot;isWallonia&quot; to create the
+  # subdirectory to be added to the basic directory
+  region &lt;- stringr::str_remove(region, &quot;^is&quot;)
+  readr::write_tsv(
+    x = df,
+    file = here::here(
+      &quot;data&quot;, &quot;output&quot;,
+      &quot;decision_rules_outputs&quot;,
+      paste0(&quot;output_decision_rules_&quot;, indicator, &quot;_&quot;, region, &quot;.tsv&quot;)
+    ),
+    na = &quot;&quot;
+  )
+}
+
+# Apply function to save decision rules outputs applied to occurrences
+purrr::iwalk(em_decision_rules_occs, function(df, region) {
+  save_decision_rules_output(df, region, indicator = &quot;occs&quot;)
+})
+
+# Apply function to save decision rules outputs applied to occupancy
+purrr::iwalk(em_decision_rules_occupancy, function(df, region) {
+  save_decision_rules_output(df, region, indicator = &quot;occupancy&quot;)
+})</code></pre>
 </div>
 <div id="gam-models" class="section level2" number="4.2">
 <h2><span class="header-section-number">4.2</span> GAM models</h2>
-<p>Save complete outputs:</p>
-<pre class="r"><code>method_em &lt;- gam_occs_BE[[1]]$em_summary$method[1]
-write_tsv(purrr::map_dfr(gam_occs_BE, function(x) {
-  x$output
-}),
-na = &quot;&quot;,
-file = here::here(
-  &quot;data&quot;,
-  &quot;output&quot;,
-  &quot;GAM_outputs&quot;,
-  paste0(
-    &quot;output_GAM_observations_belgium_&quot;,
-    method_em, &quot;.tsv&quot;
+<p>Save complete outputs and summaries:</p>
+<pre class="r"><code># Define function to save GAM model outputs and summaries for Belgium, its
+# regions and protected areas
+save_gam_output &lt;- function(gam_results,
+                            region,
+                            indicator) {
+  # Save outputs
+  readr::write_tsv(
+    # Merge the outputs of all taxa as a data.frame for saving
+    purrr::map_dfr(
+      gam_results,
+      function(x) {
+        x$output
+      }
+    ),
+    na = &quot;&quot;,
+    file = here::here(
+      dir_name_basic,
+      paste0(&quot;output_GAM_&quot;, indicator, &quot;_&quot;, region, &quot;.tsv&quot;)
+    )
   )
-)
+
+  # Save summaries
+  readr::write_tsv(
+    # Merge the summaries of all taxa as a data.frame for saving
+    purrr::map_dfr(
+      gam_results,
+      function(x) {
+        x$em_summary
+      }
+    ),
+    na = &quot;&quot;,
+    file = here::here(
+      dir_name_basic,
+      paste0(&quot;summary_GAM_&quot;, indicator, &quot;_&quot;, region, &quot;.tsv&quot;)
+    )
+  )
+}
+
+# Apply function to save GAM outputs applied to ocurrences
+purrr::iwalk(gam_occs, function(df, region) {
+  save_gam_output(df, region, indicator = &quot;occs&quot;)
+})
+
+# Apply function to save decision rules outputs applied to occupancy
+purrr::iwalk(gam_occupancy, function(df, region) {
+  save_gam_output(df, region, indicator = &quot;occupancy&quot;)
+})</code></pre>
+</div>
+<div id="plots" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> Plots</h2>
+<p>We create a zip file with all generated GAM plots:</p>
+<pre class="r"><code>folder_path &lt;- here::here(&quot;data&quot;, &quot;output&quot;, &quot;GAM_outputs&quot;)
+
+# Get relative paths of PNG files
+png_files &lt;- list.files(folder_path,
+  pattern = &quot;\\.png$&quot;,
+  recursive = TRUE
 )
 
-method_em &lt;- gam_occs_pa[[1]]$em_summary$method[1]
-write_tsv(purrr::map_dfr(gam_occs_pa, function(x) {
-  x$output
-}),
-na = &quot;&quot;,
-file = here::here(
-  &quot;data&quot;,
-  &quot;output&quot;,
-  &quot;GAM_outputs&quot;,
-  paste0(
-    &quot;output_GAM_observations_pa_&quot;,
-    method_em, &quot;.tsv&quot;
-  )
-)
-)
+# Change working directory temporarily
+old_wd &lt;- getwd()
+setwd(folder_path)
 
-method_em &lt;- gam_occupancy_BE[[1]]$em_summary$method[1]
-write_tsv(purrr::map_dfr(gam_occupancy_BE, function(x) {
-  x$output
-}),
-na = &quot;&quot;,
-file = here::here(
-  &quot;data&quot;,
-  &quot;output&quot;,
-  &quot;GAM_outputs&quot;,
-  paste0(
-    &quot;output_GAM_occupancy_belgium_&quot;,
-    method_em, &quot;.tsv&quot;
-  )
-)
-)
+# Create zip file
+zip(zipfile = &quot;GAM_plots.zip&quot;, files = png_files)
 
-method_em &lt;- gam_occupancy_pa[[1]]$em_summary$method[1]
-write_tsv(purrr::map_dfr(gam_occupancy_pa, function(x) {
-  x$output
-}),
-na = &quot;&quot;,
-file = here::here(
-  &quot;data&quot;,
-  &quot;output&quot;,
-  &quot;GAM_outputs&quot;,
-  paste0(
-    &quot;output_GAM_occupancy_pa_&quot;,
-    method_em, &quot;.tsv&quot;
-  )
-)
-)</code></pre>
-<p>Save summary of results limited to the years included in
-evaluation:</p>
-<pre class="r"><code>method_em &lt;- gam_occs_BE[[1]]$em_summary$method[1]
-write_tsv(purrr::map_dfr(gam_occs_BE, function(x) {
-  x$em_summary
-}),
-na = &quot;&quot;,
-file = here::here(
-  &quot;data&quot;,
-  &quot;output&quot;,
-  &quot;GAM_outputs&quot;,
-  paste0(
-    &quot;output_GAM_observations_belgium_&quot;,
-    method_em, &quot;.tsv&quot;
-  )
-)
-)
+# Restore working directory
+setwd(old_wd)
 
-method_em &lt;- gam_occs_pa[[1]]$em_summary$method[1]
-write_tsv(purrr::map_dfr(gam_occs_pa, function(x) {
-  x$em_summary
-}),
-na = &quot;&quot;,
-file = here::here(
-  &quot;data&quot;,
-  &quot;output&quot;,
-  &quot;GAM_outputs&quot;,
-  paste0(
-    &quot;output_GAM_observations_pa_&quot;,
-    method_em, &quot;.tsv&quot;
-  )
-)
-)
-
-method_em &lt;- gam_occupancy_BE[[1]]$em_summary$method[1]
-write_tsv(purrr::map_dfr(gam_occupancy_BE, function(x) {
-  x$em_summary
-}),
-na = &quot;&quot;,
-file = here::here(
-  &quot;data&quot;,
-  &quot;output&quot;,
-  &quot;GAM_outputs&quot;,
-  paste0(
-    &quot;output_GAM_occupancy_belgium_&quot;,
-    method_em, &quot;.tsv&quot;
-  )
-)
-)
-
-method_em &lt;- gam_occupancy_pa[[1]]$em_summary$method[1]
-write_tsv(purrr::map_dfr(gam_occupancy_pa, function(x) {
-  x$em_summary
-}),
-na = &quot;&quot;,
-file = here::here(
-  &quot;data&quot;,
-  &quot;output&quot;,
-  &quot;GAM_outputs&quot;,
-  paste0(
-    &quot;output_GAM_occupancy_pa_&quot;,
-    method_em, &quot;.tsv&quot;
-  )
-)
+# Move zip file to the desired location (if needed)
+file.rename(
+  file.path(folder_path, &quot;GAM_plots.zip&quot;),
+  here::here(&quot;data&quot;, &quot;output&quot;, &quot;GAM_outputs&quot;, &quot;GAM_plots.zip&quot;)
 )</code></pre>
 </div>
 </div>

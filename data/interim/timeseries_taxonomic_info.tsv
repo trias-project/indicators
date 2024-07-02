@@ -235,7 +235,6 @@ taxonKey	canonicalName	kingdomKey	classKey	class	kingdom
 2742119	Veratrum album	6	196	Liliopsida	Plantae
 3034915	Astrantia major	6	220	Magnoliopsida	Plantae
 2879098	Quercus ilex	6	220	Magnoliopsida	Plantae
-2495414	Columba livia	1	212	Aves	Animalia
 3042416	Camelina microcarpa	6	220	Magnoliopsida	Plantae
 2705953	Eleusine indica	6	196	Liliopsida	Plantae
 3042751	Brassica juncea	6	220	Magnoliopsida	Plantae
@@ -323,7 +322,6 @@ taxonKey	canonicalName	kingdomKey	classKey	class	kingdom
 3002530	Rosa gallica	6	220	Magnoliopsida	Plantae
 5341548	Gilia capitata	6	220	Magnoliopsida	Plantae
 5285637	Pinus sylvestris	6	194	Pinopsida	Plantae
-8909809	Emys orbicularis	1	11418114	Testudines	Animalia
 3034653	Chaerophyllum bulbosum	6	220	Magnoliopsida	Plantae
 3189828	Aesculus parviflora	6	220	Magnoliopsida	Plantae
 7903057	Brassica rapa	6	220	Magnoliopsida	Plantae
@@ -334,6 +332,7 @@ taxonKey	canonicalName	kingdomKey	classKey	class	kingdom
 2925874	Amsinckia lycopsoides Lehm.	6	220	Magnoliopsida	Plantae
 5358266	Ornithopus sativus	6	220	Magnoliopsida	Plantae
 5377303	Iberis umbellata	6	220	Magnoliopsida	Plantae
+2495414	Columba livia	1	212	Aves	Animalia
 3033965	Akebia quinata	6	220	Magnoliopsida	Plantae
 5375920	Eruca vesicaria	6	220	Magnoliopsida	Plantae
 9350124	Natrix helvetica	1	11592253	Squamata	Animalia
@@ -345,7 +344,6 @@ taxonKey	canonicalName	kingdomKey	classKey	class	kingdom
 7828157	Petroselinum crispum	6	220	Magnoliopsida	Plantae
 3128091	Centaurea melitensis	6	220	Magnoliopsida	Plantae
 5392243	Cichorium endivia	6	220	Magnoliopsida	Plantae
-7791733	Mya arenaria	1	137	Bivalvia	Animalia
 3039194	Parthenocissus quinquefolia	6	220	Magnoliopsida	Plantae
 5389402	Bidens bipinnata	6	220	Magnoliopsida	Plantae
 5374614	Barbarea stricta	6	220	Magnoliopsida	Plantae
@@ -682,12 +680,10 @@ taxonKey	canonicalName	kingdomKey	classKey	class	kingdom
 2925879	Amsinckia eastwoodiae	6	220	Magnoliopsida	Plantae
 8429167	Delphinium hispanicum	6	220	Magnoliopsida	Plantae
 3104314	Liatris spicata	6	220	Magnoliopsida	Plantae
-4315760	Echinogammarus berilloni	1	229	Malacostraca	Animalia
 2687210	Tsuga heterophylla	6	194	Pinopsida	Plantae
 7763534	Lauritrioza alacris	1	216	Insecta	Animalia
 3114225	Rudbeckia hirta	6	220	Magnoliopsida	Plantae
 3033757	Delphinium elatum	6	220	Magnoliopsida	Plantae
-6467647	Amphibalanus improvisus	1	203	Maxillopoda	Animalia
 2444339	Vipera aspis	1	11592253	Squamata	Animalia
 2439261	Rattus norvegicus	1	359	Mammalia	Animalia
 4286942	Carassius auratus	1			Animalia
@@ -708,6 +704,7 @@ taxonKey	canonicalName	kingdomKey	classKey	class	kingdom
 3120790	Artemisia verlotiorum	6	220	Magnoliopsida	Plantae
 11007246	Clinopodium menthifolium	6	220	Magnoliopsida	Plantae
 3678949	Calystegia pulchra	6	220	Magnoliopsida	Plantae
+4315760	Echinogammarus berilloni	1	229	Malacostraca	Animalia
 4264680	Myocastor coypus	1	359	Mammalia	Animalia
 6159223	Lacerta agilis	1	11592253	Squamata	Animalia
 3083761	Atriplex hortensis	6	220	Magnoliopsida	Plantae
@@ -732,6 +729,7 @@ taxonKey	canonicalName	kingdomKey	classKey	class	kingdom
 3172001	Antirrhinum majus	6	220	Magnoliopsida	Plantae
 2926995	Salvia verticillata	6	220	Magnoliopsida	Plantae
 5356517	Lathyrus latifolius	6	220	Magnoliopsida	Plantae
+6467647	Amphibalanus improvisus	1	203	Maxillopoda	Animalia
 3639326	Bupleurum croceum	6	220	Magnoliopsida	Plantae
 2685552	Abies nordmanniana	6	194	Pinopsida	Plantae
 3098912	Cosmos bipinnatus	6	220	Magnoliopsida	Plantae
@@ -835,6 +833,7 @@ taxonKey	canonicalName	kingdomKey	classKey	class	kingdom
 2516075	Cumminsiella mirabilissima	5	270	Pucciniomycetes	Fungi
 3133950	Coreopsis tinctoria	6	220	Magnoliopsida	Plantae
 5296015	Sisyrinchium angustifolium	6	196	Liliopsida	Plantae
+7791733	Mya arenaria	1	137	Bivalvia	Animalia
 2294277	Theba pisana	1	225	Gastropoda	Animalia
 8624880	Cernuella virgata	1	225	Gastropoda	Animalia
 7733140	Bellardia viscosa	6	220	Magnoliopsida	Plantae
@@ -1015,7 +1014,6 @@ taxonKey	canonicalName	kingdomKey	classKey	class	kingdom
 2458916	Hierophis viridiflavus	1	11592253	Squamata	Animalia
 3172291	Ligustrum ovalifolium	6	220	Magnoliopsida	Plantae
 5383909	Bassia hyssopifolia	6	220	Magnoliopsida	Plantae
-6161340	Natrix maura	1	11592253	Squamata	Animalia
 2498015	Tadorna ferruginea	1	212	Aves	Animalia
 2651826	Adiantum raddianum	6	7228684	Polypodiopsida	Plantae
 5367186	Potentilla rivalis	6	220	Magnoliopsida	Plantae
@@ -1089,6 +1087,7 @@ taxonKey	canonicalName	kingdomKey	classKey	class	kingdom
 5362136	Aruncus dioicus	6	220	Magnoliopsida	Plantae
 2889037	Rumex rugosus	6	220	Magnoliopsida	Plantae
 2688189	Selaginella kraussiana	6	245	Lycopodiopsida	Plantae
+6161340	Natrix maura	1	11592253	Squamata	Animalia
 2925527	Verbena hastata	6	220	Magnoliopsida	Plantae
 3033518	Clematis viticella	6	220	Magnoliopsida	Plantae
 3171951	Verbascum phoeniceum	6	220	Magnoliopsida	Plantae
@@ -1172,7 +1171,6 @@ taxonKey	canonicalName	kingdomKey	classKey	class	kingdom
 3067119	Euphorbia maculata	6	220	Magnoliopsida	Plantae
 4487661	Dichrooscytus intermedius	1	216	Insecta	Animalia
 5152536	Gastrodes abietum	1	216	Insecta	Animalia
-7563173	Cryptorchestia cavimana	1	229	Malacostraca	Animalia
 2437450	Tamias sibiricus	1	359	Mammalia	Animalia
 5383971	Blitum capitatum	6	220	Magnoliopsida	Plantae
 2498344	Cygnus atratus	1	212	Aves	Animalia
@@ -1196,6 +1194,7 @@ taxonKey	canonicalName	kingdomKey	classKey	class	kingdom
 2705966	Secale cereale	6	196	Liliopsida	Plantae
 9691034	Phoenicopterus ruber	1	212	Aves	Animalia
 5274861	Salvinia auriculata	6	7228684	Polypodiopsida	Plantae
+7563173	Cryptorchestia cavimana	1	229	Malacostraca	Animalia
 2874570	Cucumis melo	6	220	Magnoliopsida	Plantae
 5290069	Parapholis incurva	6	196	Liliopsida	Plantae
 5289670	Setaria adhaerens	6	196	Liliopsida	Plantae
@@ -1269,7 +1268,6 @@ taxonKey	canonicalName	kingdomKey	classKey	class	kingdom
 3112994	Cirsium subalpinum	6	220	Magnoliopsida	Plantae
 2434552	Nyctereutes procyonoides	1	359	Mammalia	Animalia
 3021496	Prunus laurocerasus	6	220	Magnoliopsida	Plantae
-8485639	Ensis leei	1	137	Bivalvia	Animalia
 2930222	Solanum americanum	6	220	Magnoliopsida	Plantae
 3040232	Populus deltoides	6	220	Magnoliopsida	Plantae
 2889980	Geranium magnificum	6	220	Magnoliopsida	Plantae
@@ -1330,7 +1328,6 @@ taxonKey	canonicalName	kingdomKey	classKey	class	kingdom
 5777912	Lithoglyphus naticoides	1	225	Gastropoda	Animalia
 2706526	Agrostis exarata	6	196	Liliopsida	Plantae
 2480762	Pluvianus aegyptius	1	212	Aves	Animalia
-9099408	Elaphe quatuorlineata	1	11592253	Squamata	Animalia
 2705854	Urochloa platyphylla	6	196	Liliopsida	Plantae
 3064221	Euphorbia serpens	6	220	Magnoliopsida	Plantae
 3046015	Cardamine corymbosa	6	220	Magnoliopsida	Plantae
@@ -1569,6 +1566,7 @@ taxonKey	canonicalName	kingdomKey	classKey	class	kingdom
 3026334	Cotoneaster divaricatus	6	220	Magnoliopsida	Plantae
 3120692	Artemisia crithmifolia	6	220	Magnoliopsida	Plantae
 2775619	Yucca gloriosa	6	196	Liliopsida	Plantae
+8485639	Ensis leei	1	137	Bivalvia	Animalia
 3033896	Berberis thunbergii	6	220	Magnoliopsida	Plantae
 8342911	Papaver setiferum	6	220	Magnoliopsida	Plantae
 10701161	Paramesotriton labiatus	1	131	Amphibia	Animalia
@@ -1625,7 +1623,6 @@ taxonKey	canonicalName	kingdomKey	classKey	class	kingdom
 4201695	Phedimus hybridus	6	220	Magnoliopsida	Plantae
 3044912	Alyssum montanum	6	220	Magnoliopsida	Plantae
 1045323	Pycnomerus sulcicollis	1	216	Insecta	Animalia
-4382841	Hemigrapsus takanoi	1	229	Malacostraca	Animalia
 5156102	Leptoglossus occidentalis	1	216	Insecta	Animalia
 6101013	Chloris spinoides	1	212	Aves	Animalia
 2225770	Hemigrapsus penicillatus	1	229	Malacostraca	Animalia
@@ -1771,6 +1768,7 @@ taxonKey	canonicalName	kingdomKey	classKey	class	kingdom
 2484103	Chrysomus icterocephalus	1	212	Aves	Animalia
 1316805	Tapinoma melanocephalum	1	216	Insecta	Animalia
 7307829	Lavandula dentata	6	220	Magnoliopsida	Plantae
+4382841	Hemigrapsus takanoi	1	229	Malacostraca	Animalia
 6387003	Equisetum praealtum	6	7228684	Polypodiopsida	Plantae
 5402363	Dimorphotheca pluvialis	6	220	Magnoliopsida	Plantae
 3197314	Sargassum muticum	4	7073593	Phaeophyceae	Chromista
@@ -2531,6 +2529,7 @@ taxonKey	canonicalName	kingdomKey	classKey	class	kingdom
 7308640	Caryopteris incana	6	220	Magnoliopsida	Plantae
 2204831	Synidotea laticauda	1	229	Malacostraca	Animalia
 2077985	Impatientinum asiaticum	1	216	Insecta	Animalia
+8909809	Emys orbicularis	1	11418114	Testudines	Animalia
 10852031	Oncosiphon pilulifer	6	220	Magnoliopsida	Plantae
 9254355	Lithotoma axillaris	6	220	Magnoliopsida	Plantae
 3152519	Althaea cannabina	6	220	Magnoliopsida	Plantae

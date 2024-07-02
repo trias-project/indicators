@@ -377,7 +377,9 @@ ranking_regions
 
 ## Point strategy
 
-We can also rank using a point strategy reflecting the same ranking strategy as before. We apply gain factors to all emerging status scores using the number of observations in 2020 in all Belgium as reference (gain factor  = 1). The following gain factors are applied:
+We can also rank using a point strategy reflecting the same ranking strategy as before. To do so we apply gain factors to all emerging status scores using the number of observations in 2020 in all Belgium/region as reference (gain factor  = 1).
+
+The following gain factors are applied for Belgium:
 
 | indicator | year | region | gain factor |
 | --- | --- | --- | --- | 
@@ -394,21 +396,36 @@ observations | 2020 | protected areas | 1.5
 occupancy | 2020 | Belgium | 1.5
 observations | 2020 | Belgium | 1
 
-```{r rank_by_em_pts}
-ranking_pts <-
-  em_df %>%
-  tidylog::mutate(em_pts = year_2022_em_status_occupancy_pa * 3 +
-    year_2022_em_status_observations_pa * 2.5 +
-    year_2022_em_status_occupancy_BE * 2.5 +
-    year_2022_em_status_observations_BE * 2 +
-    year_2021_em_status_occupancy_pa * 2.5 +
-    year_2021_em_status_observations_pa * 2 +
-    year_2021_em_status_occupancy_BE * 2 +
-    year_2021_em_status_observations_BE * 1.5 +
-    year_2020_em_status_occupancy_pa * 2 +
-    year_2020_em_status_observations_pa * 1.5 +
-    year_2020_em_status_occupancy_BE * 1.5 +
-    year_2020_em_status_observations_BE) %>%
+For regions, the gain factors are the same, but the ones for protected areas are not applied.
+
+The following gain factors are applied for each region:
+
+| indicator | year | gain factor |
+| --- | --- | --- |
+occupancy | 2022 | 2.5
+observations | 2022 | 2
+occupancy | 2021 | 2
+observations | 2021 | 1.5
+occupancy | 2020 | 1.5
+observations | 2020 | 1
+
+### Belgium
+
+```{r rank_by_em_pts_be}
+ranking_pts_be <-
+  em_df_be %>%
+  tidylog::mutate(em_pts = year_2022_em_status_occupancy_natura2000 * 3 +
+    year_2022_em_status_occs_natura2000 * 2.5 +
+    year_2022_em_status_occupancy_Belgium * 2.5 +
+    year_2022_em_status_occs_Belgium * 2 +
+    year_2021_em_status_occupancy_natura2000 * 2.5 +
+    year_2021_em_status_occs_natura2000 * 2 +
+    year_2021_em_status_occupancy_Belgium * 2 +
+    year_2021_em_status_occs_Belgium * 1.5 +
+    year_2020_em_status_occupancy_natura2000 * 2 +
+    year_2020_em_status_occs_natura2000 * 1.5 +
+    year_2020_em_status_occupancy_Belgium * 1.5 +
+    year_2020_em_status_occs_Belgium) %>%
   dplyr::arrange(
     desc(em_pts),
     desc(mean_growth)
@@ -416,58 +433,145 @@ ranking_pts <-
   tidylog::select(
     taxonKey, canonicalName, kingdom, class,
     em_pts, mean_growth,
-    year_2022_em_status_occupancy_pa,
-    year_2022_em_status_observations_pa,
-    year_2022_em_status_occupancy_BE,
-    year_2022_em_status_observations_BE,
-    year_2021_em_status_occupancy_pa,
-    year_2021_em_status_observations_pa,
-    year_2021_em_status_occupancy_BE,
-    year_2021_em_status_observations_BE,
-    year_2020_em_status_occupancy_pa,
-    year_2020_em_status_observations_pa,
-    year_2020_em_status_occupancy_BE,
-    year_2020_em_status_observations_BE,
+    year_2022_em_status_occupancy_natura2000,
+    year_2022_em_status_occs_natura2000,
+    year_2022_em_status_occupancy_Belgium,
+    year_2022_em_status_occs_Belgium,
+    year_2021_em_status_occupancy_natura2000,
+    year_2021_em_status_occs_natura2000,
+    year_2021_em_status_occupancy_Belgium,
+    year_2021_em_status_occs_Belgium,
+    year_2020_em_status_occupancy_natura2000,
+    year_2020_em_status_occs_natura2000,
+    year_2020_em_status_occupancy_Belgium,
+    year_2020_em_status_occs_Belgium,
     dplyr::everything()
   )
-ranking_pts
+ranking_pts_be
+```
+
+### Regions
+
+```{r rank_by_em_pts_regions}
+ranking_pts_regions <- purrr::imap(
+  em_df_regions,
+  function(em_df, region) {
+    em_df %>%
+      # Remove the region from the column names for generalization
+      tidylog::rename_with(~ gsub(paste0("_", region, "$"), "", .x)) %>%
+      tidylog::mutate(em_pts = year_2022_em_status_occupancy * 2.5 +
+        year_2022_em_status_occs * 2 +
+        year_2021_em_status_occupancy * 2 +
+        year_2021_em_status_occs * 1.5 +
+        year_2020_em_status_occupancy * 1.5 +
+        year_2020_em_status_occs) %>%
+      dplyr::arrange(
+        desc(em_pts),
+        desc(mean_growth)
+      ) %>%
+      tidylog::select(
+        taxonKey, canonicalName, kingdom, class,
+        em_pts, mean_growth,
+        year_2022_em_status_occupancy,
+        year_2022_em_status_occs,
+        year_2021_em_status_occupancy,
+        year_2021_em_status_occs,
+        year_2020_em_status_occupancy,
+        year_2020_em_status_occs,
+        dplyr::everything()
+      ) %>%
+      # Add region back to the column names starting with `year`
+      tidylog::rename_with(~ paste0(.x, "_", region), starts_with("year"))
+  }
+)
+ranking_pts_regions
 ```
 
 # Save results
 
 ## Final emerging status
 
-We save the final emerging status, `em_df`:
+We save the final emerging status for Belgium, `em_dfbe`:
 
-```{r save_em_df}
-readr::write_tsv(em_df, 
-          file = here::here("data", "output", "emerging_status.tsv"),
+```{r save_em_df_be}
+readr::write_tsv(em_df_be, 
+          file = here::here("data", "output", "emerging_status_Belgium.tsv"),
           na = ""
+)
+```
+
+and the final emerging status for regions, `em_df_regions`:
+
+```{r save_em_df_regions}
+purrr::iwalk(
+  em_df_regions,
+  function(df, region) {
+    readr::write_tsv(df, 
+              file = here::here("data", "output", paste0("emerging_status_", region, ".tsv")),
+              na = ""
+    )
+  }
 )
 ```
 
 ## Rankings
 
-We save both the rankings.
+We save both the hierarchical ranking and the ranking based on points strategy for Belgium and its regions.
 
-Ranking based on hierarchical strategy is saved in `data/output/ranking_emerging_status_hierarchical_strategy.tsv`:
+### Hierarchical ranking
 
-```{r save_ranking_basic}
-readr::write_tsv(ranking,
+The ranking for Belgium based on hierarchical strategy is saved in `data/output/ranking_emerging_status_hierarchical_strategy_Belgium.tsv`:
+
+```{r save_ranking_basic_be}
+readr::write_tsv(ranking_be,
           file = here::here("data",
                      "output",
-                     "ranking_emerging_status_hierarchical_strategy.tsv"),
+                     "ranking_emerging_status_hierarchical_strategy_Belgium.tsv"),
           na = ""
 )
 ```
 
-Ranking based on points strategy is saved in `data/output/ranking_emerging_status_points_strategy.tsv`:
+The ranking for the regions based on hierarchical strategy are saved in `data/output/ranking_emerging_status_hierarchical_strategy_*.tsv` where * is the region:
 
-```{r save_ranking_pts}
-readr::write_tsv(ranking_pts,
+```{r save_ranking_basic_regions}
+purrr::iwalk(
+  ranking_regions,
+  function(df, region) {
+    readr::write_tsv(df,
+              file = here::here("data",
+                     "output",
+                     paste0("ranking_emerging_status_hierarchical_strategy_", region, ".tsv")),
+              na = ""
+    )
+  }
+)
+```
+
+### Points strategy
+
+Ranking for Belgium based on points strategy is saved in `data/output/ranking_emerging_status_points_strategy_Belgium.tsv`:
+
+```{r save_ranking_pts_be}
+readr::write_tsv(ranking_pts_be,
   file = here::here("data",
                     "output", 
-                    "ranking_emerging_status_points_strategy.tsv"),
+                    "ranking_emerging_status_points_strategy_Belgium.tsv"),
   na = ""
+)
+```
+
+Ranking for the regions based on points strategy are saved in `data/output/ranking_emerging_status_points_strategy_*.tsv` where * is the region:
+
+```{r save_ranking_pts_regions}
+purrr::iwalk(
+  ranking_pts_regions,
+  function(df, region) {
+    readr::write_tsv(df,
+              file = here::here("data",
+                     "output",
+                     paste0("ranking_emerging_status_points_strategy_", region, ".tsv")),
+              na = ""
+    )
+  }
 )
 ```

@@ -82,7 +82,7 @@ Years to evaluate:
 # Last evaluation year
 last_year <- lubridate::year(Sys.Date()) - 2
 
-# First evalution year
+# First evaluation year
 first_year <- last_year - 2
 
 # Evaluation years

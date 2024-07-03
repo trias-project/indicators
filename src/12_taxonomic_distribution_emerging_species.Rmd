@@ -1,5 +1,5 @@
 ---
-title: "Taxonomic distribution emerging species"
+title: "Taxonomic distribution of emerging species"
 author:
 - Damiano Oldoni
 - Tim Adriaens
@@ -39,7 +39,7 @@ Read the tab separated files containing the emerging status output:
 em_df <- readr::read_tsv(here::here(
   "data",
   "output", 
-  "ranking_emerging_status_hierarchical_strategy.tsv"),
+  "ranking_emerging_status_hierarchical_strategy_Belgium.tsv"),
   na = ""
 )
 ```
@@ -72,7 +72,7 @@ We calculate the number of emerging species (`emerging_status` = 3)
 at class level for each combination of:
 
 - year
-- variable: occupancy or number of observations
+- variable: occupancy or number of occurrences
 - area of interest: Belgium or protected areas
 
 ```{r n_emerging}
@@ -92,10 +92,10 @@ emerging_df <-
   emerging_df %>%
   tidylog::mutate(
     year = stringr::str_extract(.data$variable, pattern = "\\d+"),
-    area = stringr::str_extract(.data$variable, pattern = "BE$|pa$"),
+    area = stringr::str_extract(.data$variable, pattern = "Belgium$|natura2000$"),
     variable = stringr::str_extract(.data$variable,
-                                    pattern = "occupancy|observations")) %>%
-  tidylog::mutate(area = recode(.data$area, BE = "Belgium", pa = "Natura2000")) %>%
+                                    pattern = "occupancy|occs")) %>%
+  tidylog::mutate(area = recode(.data$area, natura2000 = "Natura2000")) %>%
   tidylog::relocate(n_emerging, n_total, .after = last_col()) %>%
   tidylog::ungroup() %>%
   dplyr::arrange(.data$year, desc(.data$n_emerging))
@@ -344,22 +344,22 @@ purrr::walk2(
 ```
 
 
-### Number of observations: Belgium
+### Number of occurrences: Belgium
 
 Table:
 
-```{r emerging_df_BE_obs}
-emerging_df_BE_obs <-
+```{r emerging_df_BE_occs}
+emerging_df_BE_occs <-
   emerging_df %>%
-  tidylog::filter(.data$area == "Belgium" & .data$variable == "observations")
-emerging_df_BE_obs
+  tidylog::filter(.data$area == "Belgium" & .data$variable == "occs")
+emerging_df_BE_occs
 ```
 
 Graphs:
 
-```{r emerging_plots_BE_obs}
-emerging_plots_BE_obs <- purrr::map(kingdoms$kingdom, function(x) {
-  data <- emerging_df_BE_obs %>%
+```{r emerging_plots_BE_occs}
+emerging_plots_BE_occs <- purrr::map(kingdoms$kingdom, function(x) {
+  data <- emerging_df_BE_occs %>%
     tidylog::filter(.data$kingdom == x & .data$n_emerging > 0)
   ggplot2::ggplot(data) +
     ggplot2::geom_col(aes(x = class, y = n_emerging, fill = year), 
@@ -372,30 +372,30 @@ emerging_plots_BE_obs <- purrr::map(kingdoms$kingdom, function(x) {
       )
     )
 })
-emerging_plots_BE_obs
+emerging_plots_BE_occs
 ```
 
 Save both table and graphs:
 
-```{r save_emerging_BE_obs}
+```{r save_emerging_BE_occs}
 readr::write_tsv(
-  emerging_df_BE_obs,
+  emerging_df_BE_occs,
   here::here(
   "data",
   "output",
   "taxonomic_distribution_emerging_species",
-  "n_emerging_taxa_per_class_in_BE_observations.tsv"),
+  "n_emerging_taxa_per_class_in_Belgium_occs.tsv"),
   na = ""
 )
 purrr::walk2(
-  emerging_plots_BE_obs,
+  emerging_plots_BE_occs,
   kingdoms$kingdom, 
   function(x, y) {
     ggplot2::ggsave(here::here(
       "data",
       "output",
       "taxonomic_distribution_emerging_species",
-      paste0("n_emerging_taxa_per_class_in_BE_observations_",
+      paste0("n_emerging_taxa_per_class_in_Belgium_occs_",
              y,".png")
       ),
       x
@@ -404,22 +404,22 @@ purrr::walk2(
 ```
 
 
-### Number of observations: Natura2000
+### Number of occurrences: Natura2000
 
 Table:
 
-```{r emerging_df_Natura2000_obs}
-emerging_df_Natura2000_obs <-
+```{r emerging_df_Natura2000_occs}
+emerging_df_Natura2000_occs <-
   emerging_df %>%
-  tidylog::filter(.data$area == "Natura2000" & .data$variable == "observations")
-emerging_df_Natura2000_obs
+  tidylog::filter(.data$area == "Natura2000" & .data$variable == "occs")
+emerging_df_Natura2000_occs
 ```
 
 Graphs:
 
-```{r plot_emerging_df_Natura2000_obs}
-emerging_plots_Natura2000_obs <- purrr::map(kingdoms$kingdom, function(x) {
-  data <- emerging_df_Natura2000_obs %>%
+```{r plot_emerging_df_Natura2000_occs}
+emerging_plots_Natura2000_occs <- purrr::map(kingdoms$kingdom, function(x) {
+  data <- emerging_df_Natura2000_occs %>%
     tidylog::filter(.data$kingdom == x & .data$n_emerging > 0)
   ggplot2::ggplot(data) +
     ggplot2::geom_col(aes(x = class, y = n_emerging, fill = year), 
@@ -432,30 +432,30 @@ emerging_plots_Natura2000_obs <- purrr::map(kingdoms$kingdom, function(x) {
       )
     )
 })
-emerging_plots_Natura2000_obs
+emerging_plots_Natura2000_occs
 ```
 
 Save both table and graphs:
 
-```{r save_emerging_Natura2000_obs}
+```{r save_emerging_Natura2000_occs}
 readr::write_tsv(
-  emerging_df_Natura2000_obs,
+  emerging_df_Natura2000_occs,
   here::here(
   "data",
   "output",
   "taxonomic_distribution_emerging_species",
-  "n_emerging_taxa_per_class_in_Natura2000_observations.tsv"),
+  "n_emerging_taxa_per_class_in_Natura2000_occs.tsv"),
   na = ""
 )
 purrr::walk2(
-  emerging_plots_Natura2000_obs,
+  emerging_plots_Natura2000_occs,
   kingdoms$kingdom, 
   function(x, y) {
     ggplot2::ggsave(here::here(
       "data",
       "output",
       "taxonomic_distribution_emerging_species",
-      paste0("n_emerging_taxa_per_class_in_Natura2000_observations_",
+      paste0("n_emerging_taxa_per_class_in_Natura2000_occs_",
              y,".png")
       ),
       x

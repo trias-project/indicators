@@ -283,7 +283,7 @@ prot_areas_species_info <-
   tidylog::filter(speciesKey %in% occs_prot_areas$speciesKey)
 ```
 
-We retrieve taxonomic tree from GBIF:
+We retrieve the taxonomic tree from GBIF. This step can take long.
 
 ```{r taxonomic_info_species_cube, cache = TRUE}
 prot_areas_species_taxon_info <-

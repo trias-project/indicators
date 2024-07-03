@@ -3,6 +3,7 @@ title: 'Emerging status: modelling'
 author:
 - Damiano Oldoni
 - Toon Van Daele
+- Soria Delva
 - Tim Adriaens
 date: "`r Sys.Date()`"
 output:
@@ -75,11 +76,18 @@ spec_names <- read_tsv(
   tidylog::filter(taxonKey %in% df_ts$taxonKey)
 ```
 
-Lump geographic information:
+Add column `isBelgium` to the time series data to simplify the code while running the modelling for both Belgium and its regions:
 
-```{r df_ts_compact}
-df_ts_compact <-
-  df_ts %>%
+```{r add_isBelgium}
+df_ts$isBelgium <- TRUE
+```
+
+Define function to lump geographic information for Belgium, its regions and protected areas:
+
+```{r lump_geographic_info}
+filter_compact_time_series <- function(df, col_to_filter) {
+  df %>%
+  tidylog::filter(!!sym(col_to_filter) == TRUE) %>%
   tidylog::group_by(taxonKey, year, classKey) %>%
   tidylog::summarise(
     obs = sum(obs),
@@ -88,33 +96,43 @@ df_ts_compact <-
     c_ncells = sum(pa_cobs)
   ) %>%
   tidylog::ungroup()
+}
 ```
 
-We create a similar data.frame specific to protected areas (Natura2000):
-
-```{r df_ts_compact_protected_areas}
-df_ts_compact_prot_areas <-
-  df_ts %>%
-  tidylog::filter(natura2000 == TRUE) %>%
-  tidylog::group_by(taxonKey, year, classKey) %>%
-  tidylog::summarise(
-    obs = sum(obs),
-    cobs = sum(cobs),
-    ncells = sum(pa_cobs),
-    c_ncells = sum(pa_cobs)
-  ) %>%
-  tidylog::ungroup()
+Apply the function to the time series data:
+```{r df_ts_compact}
+colnames_to_filter <- c("isBelgium",
+                        "isFlanders",
+                        "isWallonia",
+                        "isBrussels",
+                        "natura2000"
+)
+df_ts_compact <- purrr::map(
+  colnames_to_filter,
+  function(x) filter_compact_time_series(df = df_ts, col_to_filter = x)) %>%
+  purrr::set_names(colnames_to_filter)
 ```
+
+We have now a compact version of the time series data for:
+
+```{r preview_compact_ts}
+names(df_ts_compact)
+```
+
+Previews:
+
+```{r previews_compact_ts}
+df_ts_compact %>% head()
+```
+
+
 
 Add canonical names:
 
 ```{r add_canonicalName}
-df_ts_compact <-
-  df_ts_compact %>%
-  tidylog::left_join(spec_names, by = "taxonKey")
-df_ts_compact_prot_areas <-
-  df_ts_compact_prot_areas %>%
-  tidylog::left_join(spec_names, by = "taxonKey")
+df_ts_compact <- purrr::map(df_ts_compact, function(df) {
+  tidylog::left_join(df, spec_names, by = "taxonKey")
+})
 ```
 
 # Modelling
@@ -147,13 +165,11 @@ evaluation_years
 
 We remove recent data due to publishing delay. Underestimation of the number of observations would sensibly affect the GAM output.
 
-```{r remove_actual_year}
-df_ts_compact <-
-  df_ts_compact %>%
-  tidylog::filter(year <= last_year)
-df_ts_compact_prot_areas <-
-  df_ts_compact_prot_areas %>%
-  tidylog::filter(year <= last_year)
+```{r remove_recent_data}
+df_ts_compact <- purrr::map(
+  df_ts_compact, 
+  function(df) df %>% tidylog::filter(year <= last_year)
+)
 ```
 
 ## Remove appearing taxa
@@ -161,24 +177,40 @@ df_ts_compact_prot_areas <-
 Taxa appearing after the very first evalution year should be removed as no trend can be assesed for them. See [analysis of appearing and reappearing taxa](https://trias-project.github.io/indicators/06_occurrence_indicators_appearing_taxa.html).
 
 ```{r remove_appearing_taxa}
-appearing_taxa_to_remove <-
-  df_ts_compact %>%
-  tidylog::group_by(taxonKey) %>%
-  tidylog::summarize(begin_year = min(year)) %>%
-  tidylog::filter(begin_year > min(evaluation_years)) %>%
-  dplyr::pull(taxonKey)
+# Define function to remove appearing taxa from the data for modelling
+remove_appearing_taxa <- function(df, min_eval_year) {
+  df %>%
+    # Filter to include only years before min(eval_years)
+    tidylog::filter(year < min_eval_year) %>%
+    # Group by taxonKey
+    tidylog::group_by(taxonKey) %>%
+    # Arrange by year within each group to ensure we get the first occurrence
+    dplyr::arrange(year, .by_group = TRUE) %>%
+    # Filter to keep only the first year where obs > 0 for each taxon
+    tidylog::slice(which(obs > 0)[1]) %>%
+    # Keep only taxonKey
+    tidylog::select(taxonKey) %>%
+    # Ungroup to remove grouping
+    tidylog::ungroup() %>%
+    # Add data from the original data frame
+    tidylog::left_join(df, by = "taxonKey")
+}
 
-df_ts_compact <-
-  df_ts_compact %>%
-  tidylog::filter(!taxonKey %in% appearing_taxa_to_remove)
-
-df_ts_compact_prot_areas <-
-  df_ts_compact_prot_areas %>%
-  tidylog::filter(!taxonKey %in% appearing_taxa_to_remove)
+# Apply the function to Belgium, its regions and the protected areas
+df_ts_compact <- purrr::map(df_ts_compact,
+                            remove_appearing_taxa,
+                            min_eval_year = min(evaluation_years)
+)
 
 spec_names <-
   spec_names %>%
-  tidylog::filter(!taxonKey %in% appearing_taxa_to_remove)
+    tidylog::filter(
+      taxonKey %in% 
+        purrr::pluck(
+          purrr::map_dfr(df_ts_compact, function(x) {
+            x %>% dplyr::distinct(taxonKey)
+          }), "taxonKey")
+  )
 ```
 
 ## Decision rules
@@ -187,312 +219,265 @@ We define and apply some decision rules for occupancy and observations in all Be
 
 ### Observations
 
-#### Belgium
+We apply function `apply_decision_rules()` to the observations:
 
-We apply function `apply_decision_rules()` to observations for all Belgium:
-
-```{r apply_decision_rules_occs_be, message=FALSE}
-em_decision_rules_occs_BE <- purrr::map_dfr(
-  evaluation_years,
-  ~ apply_decision_rules(
-    df = df_ts_compact,
-    y_var = "obs",
-    eval_year = .
+```{r apply_decision_rules_occs, message=FALSE}
+# Define wrap function to apply decision rules for each evaluation year
+apply_decision_rules_for_ev_years <- function(df, eval_years, y_var) {
+  purrr::map_dfr(
+    eval_years,
+    function(year) {
+      trias::apply_decision_rules(
+        df = df,
+        y_var = y_var,
+        eval_year = year
+      )
+    }
   )
+}
+
+# Apply the wrap function to BE, regions and protected areas for observations
+em_decision_rules_occs <- purrr::map(
+  df_ts_compact,
+  apply_decision_rules_for_ev_years,
+  eval_years = evaluation_years,
+  y_var = "obs"
 )
 ```
 
-Examples:
+Preview from Belgium:
 
 ```{r example_dec_rules_occs_BE}
-em_decision_rules_occs_BE %>% tidylog::slice_head(n = 10)
+em_decision_rules_occs %>% 
+  purrr::pluck("isBelgium") %>% 
+  tidylog::slice_head(n = 10)
 ```
 
-#### Protected areas
 
-We apply function `apply_decision_rules()` to observations for protected areas:
+Preview from the regions:
 
-```{r apply_decision_rules_occs_pa, message=FALSE}
-em_decision_rules_occs_pa <- purrr::map_dfr(
-  evaluation_years,
-  ~ apply_decision_rules(
-    df = df_ts_compact_prot_areas,
-    y_var = "obs",
-    eval_year = .
-  )
+```{r example_dec_rules_occs_regions}
+regions <- c("isFlanders", "isWallonia", "isBrussels")
+purrr::map(
+  regions,
+  function(x) {
+    em_decision_rules_occs %>% 
+      purrr::pluck(x) %>% 
+      tidylog::slice_head(n = 10)
+  }
 )
 ```
 
-Examples:
+Preview from protected areas:
 
-```{r example_dec_rules_occs_pa}
-em_decision_rules_occs_pa %>% tidylog::slice_head(n = 10)
+```{r example_dec_rules_occs_protected_areas}
+em_decision_rules_occs %>% 
+  purrr::pluck("natura2000") %>% 
+  tidylog::slice_head(n = 10)
 ```
+
 
 ### Occupancy
 
-#### Belgium
+We apply function `trias::apply_decision_rules()` to occupancy:
 
-We apply function `trias::apply_decision_rules()` to occupancy for all Belgium:
-
-```{r apply_decision_rules_occupancy_BE, message=FALSE}
-em_decision_rules_occupancy_BE <- purrr::map_dfr(
-  evaluation_years,
-  ~ trias::apply_decision_rules(
-    df = df_ts_compact,
-    y_var = "ncells",
-    eval_year = .
-  )
+```{r apply_decision_rules_occupancy, message=FALSE}
+# Apply the wrap function to BE, regions and protected areas for occupancy
+em_decision_rules_occupancy <- purrr::map(
+  df_ts_compact,
+  apply_decision_rules_for_ev_years,
+  eval_years = evaluation_years,
+  y_var = "ncells"
 )
 ```
 
-Examples:
+Preview from Belgium:
 
-```{r example_decision_rules}
-em_decision_rules_occupancy_BE %>% tidylog::slice_head(n = 10)
+```{r example_dec_rules_occupancy_BE}
+em_decision_rules_occupancy %>% 
+  purrr::pluck("isBelgium") %>% 
+  tidylog::slice_head(n = 10)
 ```
 
-#### Protected areas
+Preview from the regions:
 
-We apply function `trias::apply_decision_rules()` to occupancy in protected areas:
-
-```{r apply_dec_rules_occupancy_pa, message=FALSE}
-em_decision_rules_occupancy_pa <- purrr::map_dfr(
-  evaluation_years,
-  ~ trias::apply_decision_rules(
-    df = df_ts_compact_prot_areas,
-    y_var = "ncells",
-    eval_year = .
-  )
+```{r example_dec_rules_occupancy_regions}
+regions <- c("isFlanders", "isWallonia", "isBrussels")
+purrr::map(
+  regions,
+  function(x) {
+    em_decision_rules_occupancy %>% 
+      purrr::pluck(x) %>% 
+      tidylog::slice_head(n = 10)
+  }
 )
 ```
 
-Examples:
+Preview from protected areas:
 
-```{r example_dr_occupancy_pa}
-em_decision_rules_occupancy_pa %>% tidylog::slice_head(n = 10)
+```{r example_dec_rules_occupancy_protected_areas}
+em_decision_rules_occupancy %>% 
+  purrr::pluck("natura2000") %>% 
+  tidylog::slice_head(n = 10)
 ```
+
 
 ## Generalized additive model (GAM)
 
-We apply GAM to observations and occupancy in all Belgium and in protected areas using function `trias::apply_gam()` from project package `trias`.
+We apply GAM to observations and occupancy in all Belgium, its regions and the protected areas using function `trias::apply_gam()` from project package `trias`.
 
-Plots are saved in `./data/output/GAM_outputs`:
+Plots are saved in `./data/output/GAM_outputs` directory:
 
 ```{r plots_dir}
-dir_name <- here::here("data", "output", "GAM_outputs")
+dir_name_basic <- here::here("data", "output", "GAM_outputs")
 ```
+
+We also define the plot dimensions in pixels:
+
+```{r plots_dimension}
+plot_dimensions <- list(width = 2800, height = 1500)
+```
+
+
+We define also a wrap-up function, `apply_gam_for_eval_years` to apply GAM for each evaluation year and taxon:
+
+```{r apply_gam_for_eval_years}
+# Define wrap function to apply GAM for every time series (Belgium, its regions
+# and protected areas)
+apply_gam_for_eval_years <- function(df,
+                                     region,
+                                     eval_years,
+                                     y_var,
+                                     indicator,
+                                     baseline_var,
+                                     root_dir,
+                                     y_label,
+                                     w,
+                                     h) {
+  # Remove "is" from "isBrussels", "isFlanders", "isWallonia" to create the
+  # subdirectory to be added to the basic directory
+  region <- stringr::str_remove(region, "^is")
+  dir_name <- here::here(dir_name_basic, region)
+  # Check if directory exists before creating
+  if (!dir.exists(dir_name)) {
+    dir.create(dir_name)
+  }
+  taxon_keys <- unique(df$taxonKey)
+  taxon_names <- unique(df$canonicalName)
+  message(paste0("Applying GAM. Variable: ", y_var, "; region: ", region, "."))
+  gam_occs <- map2(
+    taxon_keys, taxon_names,
+    function(t, n) {
+      df_key <- df %>%
+        dplyr::filter(taxonKey == t)
+      class_key <- unique(df_key[["classKey"]])
+      # Use covariate only if taxon belongs to a class (classKey is available)
+      if (!is.na(class_key)) {
+        results_gam <- trias::apply_gam(
+          df = df_key,
+          y_var = y_var,
+          taxonKey = "taxonKey",
+          eval_years = eval_years,
+          type_indicator = indicator,
+          baseline_var = baseline_var,
+          taxon_key = t,
+          name = n,
+          df_title = region,
+          dir_name = dir_name,
+          y_label = y_label,
+          saveplot = TRUE,
+          width = w,
+          height = h
+        )
+      } else {
+        # If taxon doesn't belong to any class (classKey is not available), use
+        # the default GAM model without covariate
+        results_gam <- trias::apply_gam(
+          df = df_key,
+          y_var = y_var,
+          taxonKey = "taxonKey",
+          eval_years = eval_years,
+          type_indicator = indicator,
+          taxon_key = t,
+          name = n,
+          df_title = region,
+          dir_name = dir_name,
+          y_label = y_label,
+          saveplot = TRUE,
+          width = w,
+          height = h
+        )
+      }
+      return(results_gam)
+    }
+  )
+  names(gam_occs) <- taxon_keys
+  gam_occs
+}
+```
+
 
 ### Observations
 
-#### Belgium
-
-Apply GAM for observation data in all Belgium:
+We apply GAM modelling by using the wrap-up function defined above to observations in Belgium, its regions and protected areas. This step can take long.
 
 ```{r apply_gam_to_all_taxa, message=FALSE, cache=TRUE}
-taxon_keys <- unique(df_ts_compact$taxonKey)
-taxon_names <- unique(df_ts_compact$canonicalName)
-gam_occs_BE <- map2(
-  taxon_keys, taxon_names,
-  function(t, n) {
-    df_key <- df_ts_compact %>%
-      dplyr::filter(taxonKey == t)
-    class_key <- unique(df_key[["classKey"]])
-    if (!is.na(class_key)) {
-      results_gam <- trias::apply_gam(
-        df = df_key,
-        y_var = "obs",
-        taxonKey = "taxonKey",
-        eval_years = evaluation_years,
-        type_indicator = "observations",
-        taxon_key = t,
-        name = n,
-        baseline_var = "cobs",
-        dir_name = dir_name,
-        saveplot = TRUE
-      )
-    } else {
-      results_gam <- trias::apply_gam(
-        df = df_key,
-        y_var = "obs",
-        eval_years = evaluation_years,
-        type_indicator = "observations",
-        taxon_key = t,
-        name = n,
-        dir_name = dir_name,
-        saveplot = TRUE
-      )
-    }
-    return(results_gam)
-  }
+# Apply `apply_gam_for_eval_years` to observations:
+gam_occs <- purrr::imap(
+  df_ts_compact,
+  apply_gam_for_eval_years,
+  eval_years = evaluation_years,
+  y_var = "obs",
+  indicator = "observations",
+  baseline_var = "cobs",
+  root_dir = dir_name_basic,
+  y_label = "number of observations",
+  w = plot_dimensions$width,
+  h = plot_dimensions$height
 )
-names(gam_occs_BE) <- taxon_keys
 ```
 
-Show results for _Hydrocotyle ranunculoides_ and _Trachemys scripta elegans_:
+Show results for _Pinus sylvestris_:
 
-```{r show_results_preview_occs_BE, message=FALSE}
-gam_occs_BE$`7978544`$plot
-gam_occs_BE$`6157026`$plot
+```{r show_results_preview_occs_all_regions}
+taxon_example <- "5285637"
+purrr::map(gam_occs, function(x) {
+  x %>%
+    purrr::pluck(taxon_example) %>%
+    purrr::pluck("plot")
+})
 ```
 
-#### Protected aras
-
-Apply GAM for observation data in protected areas:
-
-```{r apply_gam_observations_to_all_taxa_protected_areas, message=FALSE, cache=TRUE}
-taxon_keys <- unique(df_ts_compact_prot_areas$taxonKey)
-taxon_names <- unique(df_ts_compact_prot_areas$canonicalName)
-gam_occs_pa <- map2(
-  taxon_keys, taxon_names,
-  function(t, n) {
-    df_key <- df_ts_compact_prot_areas %>%
-      dplyr::filter(taxonKey == t)
-    class_key <- unique(df_key[["classKey"]])
-    if (!is.na(class_key)) {
-      trias::apply_gam(
-        df = df_key,
-        y_var = "obs",
-        eval_years = evaluation_years,
-        type_indicator = "observations",
-        taxon_key = t,
-        name = n,
-        baseline_var = "cobs",
-        df_title = "Natura2000",
-        dir_name = dir_name,
-        saveplot = TRUE
-      )
-    } else {
-      trias::apply_gam(
-        df = df_key,
-        y_var = "obs",
-        eval_years = evaluation_years,
-        type_indicator = "observations",
-        taxon_key = t,
-        name = n,
-        df_title = "Natura2000",
-        dir_name = dir_name,
-        saveplot = TRUE
-      )
-    }
-  }
-)
-names(gam_occs_pa) <- taxon_keys
-```
-
-Show results for _Hydrocotyle ranunculoides_ and _Trachemys scripta elegans_:
-
-```{r preview_gam_occs_PA, message=FALSE}
-gam_occs_pa$`7978544`$plot
-gam_occs_pa$`6157026`$plot
-```
 
 ### Occupancy
 
-#### Belgium
-
-Apply GAM for occupancy data (number of occupied cells) in all Belgium:
+We apply GAM modelling by using the wrap-up function defined above to occupancy in Belgium, its regions and protected areas. This step can take long.
 
 ```{r apply_gam_occupancy_to_all_taxa, message=FALSE, cache=TRUE}
-taxon_keys <- unique(df_ts_compact$taxonKey)
-taxon_names <- unique(df_ts_compact$canonicalName)
-gam_occupancy_BE <- map2(
-  taxon_keys, taxon_names,
-  function(t, n) {
-    df_key <- df_ts_compact %>%
-      dplyr::filter(taxonKey == t) %>%
-      dplyr::filter(year <= max(evaluation_years))
-    class_key <- unique(df_key[["classKey"]])
-    if (!is.na(class_key)) {
-      trias::apply_gam(
-        df = df_key,
-        y_var = "ncells",
-        eval_years = evaluation_years,
-        type_indicator = "occupancy",
-        taxon_key = t,
-        name = n,
-        baseline_var = "c_ncells",
-        dir_name = dir_name,
-        saveplot = TRUE,
-        y_label = "occupancy (km2)"
-      )
-    } else {
-      trias::apply_gam(
-        df = df_key,
-        y_var = "ncells",
-        eval_years = evaluation_years,
-        type_indicator = "occupancy",
-        taxon_key = t,
-        name = n,
-        dir_name = dir_name,
-        saveplot = TRUE,
-        y_label = "occupancy (km2)"
-      )
-    }
-  }
+gam_occupancy <- purrr::imap(
+  df_ts_compact,
+  apply_gam_for_eval_years,
+  eval_years = evaluation_years,
+  y_var = "ncells",
+  indicator = "occupancy",
+  baseline_var = "c_ncells",
+  root_dir = dir_name_basic,
+  y_label = "occupancy (km2)",
+  w = plot_dimensions$width,
+  h = plot_dimensions$height
 )
-names(gam_occupancy_BE) <- taxon_keys
 ```
 
-Show results for _Hydrocotyle ranunculoides_ and _Trachemys scripta elegans_:
+Show results for _Pinus Sylvestris_:
 
-```{r preview_gam_occupancy_BE, message=FALSE}
-gam_occupancy_BE$`7978544`$plot
-gam_occupancy_BE$`6157026`$plot
+```{r preview_gam_occupancy_Belgium}
+purrr::map(gam_occupancy, function(x) {
+  x %>%
+    purrr::pluck(taxon_example) %>%
+    purrr::pluck("plot")
+})
 ```
 
-#### Protected aras
-
-Apply GAM for occupancy in protected areas:
-
-```{r apply_gam_occupancy_to_all_taxa_protected_areas, message=FALSE, cache=TRUE}
-taxon_keys <- unique(df_ts_compact_prot_areas$taxonKey)
-taxon_names <- unique(df_ts_compact_prot_areas$canonicalName)
-gam_occupancy_pa <- map2(
-  taxon_keys, taxon_names,
-  function(t, n) {
-    df_key <- df_ts_compact_prot_areas %>%
-      dplyr::filter(taxonKey == t)
-    class_key <- unique(df_key[["classKey"]])
-    if (!is.na(class_key)) {
-      trias::apply_gam(
-        df = df_key,
-        y_var = "ncells",
-        eval_years = evaluation_years,
-        type_indicator = "occupancy",
-        taxon_key = t,
-        name = n,
-        baseline_var = "c_ncells",
-        df_title = "Natura2000",
-        dir_name = dir_name,
-        saveplot = TRUE,
-        y_label = "occupancy (km2)"
-      )
-    } else {
-      trias::apply_gam(
-        df = df_key,
-        y_var = "ncells",
-        eval_years = evaluation_years,
-        type_indicator = "occupancy",
-        taxon_key = t,
-        name = n,
-        df_title = "Natura2000",
-        dir_name = dir_name,
-        saveplot = TRUE,
-        y_label = "occupancy (km2)"
-      )
-    }
-  }
-)
-names(gam_occupancy_pa) <- taxon_keys
-```
-
-Show results for _Hydrocotyle ranunculoides_ (for _Trachemys scripta elegans_ GAM  could not be applied or didn't converged):
-
-```{r preview_gam_occupancy_PA, message=FALSE}
-gam_occupancy_pa$`7978544`$plot
-gam_occupancy_pa$`6157026`$plot
-```
 
 # Save results
 
@@ -500,192 +485,110 @@ gam_occupancy_pa$`6157026`$plot
 
 Save emerging status based on decision rules:
 
-```{r save_decisionrules_results}
-write_tsv(em_decision_rules_occs_BE,
-  file = here::here(
-    "data", "output",
-    "decision_rules_outputs",
-    "output_decision_rules_occs_belgium.tsv"
-  ),
-  na = ""
-)
-write_tsv(em_decision_rules_occs_pa,
-  file = here::here(
-    "data", "output",
-    "decision_rules_outputs",
-    "output_decision_rules_occs_pa.tsv"
-  ),
-  na = ""
-)
-write_tsv(em_decision_rules_occupancy_BE,
-  file = here::here(
-    "data", "output",
-    "decision_rules_outputs",
-    "output_decision_rules_occupancy_belgium.tsv"
-  ),
-  na = ""
-)
-write_tsv(em_decision_rules_occupancy_pa,
-  file = here::here(
-    "data", "output",
-    "decision_rules_outputs",
-    "output_decision_rules_occupancy_pa.tsv"
-  ),
-  na = ""
-)
+```{r save_decision_rules_results}
+# Define function to save the results for Belgium, its regions and protected
+# areas
+save_decision_rules_output <- function(df, region, indicator) {
+  # Remove "is" from "isBrussels", "isFlanders", "isWallonia" for a better filename
+  region <- stringr::str_remove(region, "^is")
+  readr::write_tsv(x = df,
+    file = here::here(
+      "data", "output",
+      "decision_rules_outputs",
+      paste0("output_decision_rules_", indicator, "_", region, ".tsv")
+    ),
+    na = ""
+  )
+}
+
+# Apply function to save decision rules outputs applied to occurrences
+purrr::iwalk(em_decision_rules_occs, function(df, region) {
+  save_decision_rules_output(df, region, indicator = "occs")
+})
+
+# Apply function to save decision rules outputs applied to occupancy
+purrr::iwalk(em_decision_rules_occupancy, function(df, region) {
+  save_decision_rules_output(df, region, indicator = "occupancy")
+})
 ```
 
 
 ## GAM models
 
-Save complete outputs:
+Save complete outputs and summaries:
 
-```{r  save_outputs}
-method_em <- gam_occs_BE[[1]]$em_summary$method[1]
-write_tsv(purrr::map_dfr(gam_occs_BE, function(x) {
-  x$output
-}),
-na = "",
-file = here::here(
-  "data",
-  "output",
-  "GAM_outputs",
-  paste0(
-    "output_GAM_observations_belgium_",
-    method_em, ".tsv"
+```{r  save_gam_outputs}
+# Define function to save GAM model outputs and summaries for Belgium, its
+# regions and protected areas
+save_gam_output <- function(gam_results,
+                            region,
+                            indicator) {
+  # Remove "is" from "isBrussels", "isFlanders", "isWallonia" for a better filename
+  region <- stringr::str_remove(region, "^is")
+  # Save outputs
+  readr::write_tsv(
+    # Merge the outputs of all taxa as a data.frame for saving
+    purrr::map_dfr(gam_results, 
+                   function(x) {
+                     x$output
+                    }),
+    na = "",
+    file = here::here(
+      dir_name_basic,
+      paste0("output_GAM_", indicator, "_", region, ".tsv")
+    )
   )
-)
-)
-
-method_em <- gam_occs_pa[[1]]$em_summary$method[1]
-write_tsv(purrr::map_dfr(gam_occs_pa, function(x) {
-  x$output
-}),
-na = "",
-file = here::here(
-  "data",
-  "output",
-  "GAM_outputs",
-  paste0(
-    "output_GAM_observations_pa_",
-    method_em, ".tsv"
+  
+  # Save summaries
+  readr::write_tsv(
+    # Merge the summaries of all taxa as a data.frame for saving
+    purrr::map_dfr(gam_results, 
+                   function(x) {
+                     x$em_summary
+                    }),
+    na = "",
+    file = here::here(
+      dir_name_basic,
+      paste0("summary_GAM_", indicator, "_", region, ".tsv")
+    )
   )
-)
-)
+}
 
-method_em <- gam_occupancy_BE[[1]]$em_summary$method[1]
-write_tsv(purrr::map_dfr(gam_occupancy_BE, function(x) {
-  x$output
-}),
-na = "",
-file = here::here(
-  "data",
-  "output",
-  "GAM_outputs",
-  paste0(
-    "output_GAM_occupancy_belgium_",
-    method_em, ".tsv"
-  )
-)
-)
+# Apply function to save GAM outputs applied to ocurrences
+purrr::iwalk(gam_occs, function(df, region) {
+  save_gam_output(df, region, indicator = "occs")
+})
 
-method_em <- gam_occupancy_pa[[1]]$em_summary$method[1]
-write_tsv(purrr::map_dfr(gam_occupancy_pa, function(x) {
-  x$output
-}),
-na = "",
-file = here::here(
-  "data",
-  "output",
-  "GAM_outputs",
-  paste0(
-    "output_GAM_occupancy_pa_",
-    method_em, ".tsv"
-  )
-)
-)
-```
-
-Save summary of results limited to the years included in evaluation:
-
-```{r save_em_summary}
-method_em <- gam_occs_BE[[1]]$em_summary$method[1]
-write_tsv(purrr::map_dfr(gam_occs_BE, function(x) {
-  x$em_summary
-}),
-na = "",
-file = here::here(
-  "data",
-  "output",
-  "GAM_outputs",
-  paste0(
-    "output_GAM_observations_belgium_",
-    method_em, ".tsv"
-  )
-)
-)
-
-method_em <- gam_occs_pa[[1]]$em_summary$method[1]
-write_tsv(purrr::map_dfr(gam_occs_pa, function(x) {
-  x$em_summary
-}),
-na = "",
-file = here::here(
-  "data",
-  "output",
-  "GAM_outputs",
-  paste0(
-    "output_GAM_observations_pa_",
-    method_em, ".tsv"
-  )
-)
-)
-
-method_em <- gam_occupancy_BE[[1]]$em_summary$method[1]
-write_tsv(purrr::map_dfr(gam_occupancy_BE, function(x) {
-  x$em_summary
-}),
-na = "",
-file = here::here(
-  "data",
-  "output",
-  "GAM_outputs",
-  paste0(
-    "output_GAM_occupancy_belgium_",
-    method_em, ".tsv"
-  )
-)
-)
-
-method_em <- gam_occupancy_pa[[1]]$em_summary$method[1]
-write_tsv(purrr::map_dfr(gam_occupancy_pa, function(x) {
-  x$em_summary
-}),
-na = "",
-file = here::here(
-  "data",
-  "output",
-  "GAM_outputs",
-  paste0(
-    "output_GAM_occupancy_pa_",
-    method_em, ".tsv"
-  )
-)
-)
+# Apply function to save decision rules outputs applied to occupancy
+purrr::iwalk(gam_occupancy, function(df, region) {
+  save_gam_output(df, region, indicator = "occupancy")
+})
 ```
 
 ## Plots
 
-We create a zip file with all generated plots:
+We create a zip file with all generated GAM plots:
 
-```{r create-zip-file}
+```{r create-zip-file, results='hide'}
 folder_path <- here::here("data", "output", "GAM_outputs")
-zip(zipfile = here::here("data", "output", "GAM_outputs", "plots.zip"),
-    files = list.files(
-      folder_path,
-      pattern = "png$",
-      full.names = FALSE,
-      recursive = FALSE
-)
+
+# Get relative paths of PNG files
+png_files <- list.files(folder_path,
+                        pattern = "\\.png$",
+                        recursive = TRUE)
+
+# Change working directory temporarily
+old_wd <- getwd()
+setwd(folder_path)
+
+# Create zip file
+zip(zipfile = "GAM_plots.zip", files = png_files)
+
+# Restore working directory
+setwd(old_wd)
+
+# Move zip file to the desired location (if needed)
+file.rename(file.path(folder_path, "GAM_plots.zip"),
+            here::here("data", "output", "GAM_outputs", "GAM_plots.zip"))
 ```
 

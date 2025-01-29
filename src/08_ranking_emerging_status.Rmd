@@ -633,6 +633,20 @@ purrr::iwalk(
 )
 ```
 
+and the final emerging status for protected areas within specific regions, `em_df_protected_regions`:
+
+```{r save_em_df_protected_regions}
+purrr::iwalk(
+  em_df_protected_regions,
+  function(df, region) {
+    readr::write_tsv(df, 
+              file = here::here("data", "output", paste0("emerging_status_", region, ".tsv")),
+              na = ""
+    )
+  }
+)
+```
+
 ## Rankings
 
 We save both the hierarchical ranking and the ranking based on points strategy for Belgium, its regions, and the protected areas within each region.
@@ -666,6 +680,23 @@ purrr::iwalk(
 )
 ```
 
+The ranking for protected areas within each region based on hierarchical strategy are saved in `data/output/ranking_emerging_status_hierarchical_strategy_natura2000_*.tsv` where * is the region:
+
+```{r save_ranking_protected_ regions}
+purrr::iwalk(
+  ranking_protected_regions,
+  function(df, region) {
+    readr::write_tsv(df,
+              file = here::here("data",
+                     "output",
+                     paste0("ranking_emerging_status_hierarchical_strategy_", region, ".tsv")),
+              na = ""
+    )
+  }
+)
+```
+
+
 ### Points strategy
 
 Ranking for Belgium based on points strategy is saved in `data/output/ranking_emerging_status_points_strategy_Belgium.tsv`:
@@ -684,6 +715,23 @@ Ranking for the regions based on points strategy are saved in `data/output/ranki
 ```{r save_ranking_pts_regions}
 purrr::iwalk(
   ranking_pts_regions,
+  function(df, region) {
+    readr::write_tsv(df,
+              file = here::here("data",
+                     "output",
+                     paste0("ranking_emerging_status_points_strategy_", region, ".tsv")),
+              na = ""
+    )
+  }
+)
+```
+
+
+Ranking for the protected areas within each region based on points strategy are saved in `data/output/ranking_emerging_status_points_strategy_natura2000_*.tsv` where * is the region:
+
+```{r save_ranking_pts_protected_regions}
+purrr::iwalk(
+  ranking_pts_protected_regions,
   function(df, region) {
     readr::write_tsv(df,
               file = here::here("data",

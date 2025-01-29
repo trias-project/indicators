@@ -151,7 +151,7 @@ names(em_decision_rules_list) <- paste(
 Previewing output of decision rules for occupancy in Natura2000 protected areas (100 rows):
 
 ```{r preview_dr_list}
-em_decision_rules_list$decision_rules_occupancy_natura2000 %>% head(100)
+em_decision_rules_list$decision_rules_occupancy_natura2000_Belgium %>% head(100)
 ```
 
 ## Scientific names

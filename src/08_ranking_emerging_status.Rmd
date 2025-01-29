@@ -240,7 +240,7 @@ em_df_be <-
   tidylog::left_join(em_gam_list$gam_occs_Belgium %>%
     tidylog::group_by(taxonKey) %>%
     tidylog::summarize(mean_growth = mean(growth, na.rm = TRUE))) %>%
-  tidylog::relocate(.data$mean_growth, .before = .data$canonicalName)
+  tidylog::relocate(mean_growth, .before = canonicalName)
 ```
 
 A preview (100 rows):

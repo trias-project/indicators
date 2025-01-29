@@ -404,11 +404,10 @@ ranking_be
 ### Regions
 The ranking of species at regional levels will be performed in the same way as indicated before. Specifically, species will be sorted according to the following priority rules (in order of importance):
 
-We have not done (yet) an analysis for protected areas at regional level. So, the ranking for regions will be simplified. It means that the priority rule 2 described above will not be applied. The priority rules will then look as follows:
-
-1. the more recent, the higher priority is
-2. emerging statuses from occupancy indicators have priority above the ones from occurrence indicator
-3. the higher average minimal guaranteed growth (#occs/year), the higher priority is
+1. the more recent, the higher priority
+2. emerging statuses in protected areas are more important than the ones defined over the entire region
+3. emerging statuses from occupancy are more important than the ones from occurrences
+4. the higher average minimal guaranteed growth (#occs/year), the higher priority is
 
 We apply the function `hierarchical_ranking()` to Flanders, Wallonia and Brussels:
 

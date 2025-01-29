@@ -242,7 +242,7 @@ df_ts_compact_prot_areas <-
   tidylog::summarise(
     obs = sum(obs),
     cobs = sum(cobs),
-    ncells = sum(pa_cobs),
+    ncells = sum(pa_obs), 
     c_ncells = sum(pa_cobs)
   ) %>%
   tidylog::ungroup()

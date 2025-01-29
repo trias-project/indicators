@@ -44,7 +44,7 @@ df_ts <- read_tsv(
 )
 ```
 
-Columns `pa_obs` and `pa_native_obs` indicate the presence (1) or absence (0) of the specific taxon and native species at class level.
+Columns `pa_obs` and `pa_cobs` indicate the presence (1) or absence (0) of the specific taxon and taxa belonging to the same class.
 
 Preview:
 

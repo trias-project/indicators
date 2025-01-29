@@ -82,6 +82,17 @@ Add column `isBelgium` to the time series data to simplify the code while runnin
 df_ts$isBelgium <- TRUE
 ```
 
+
+Add columns `natura2000_Flanders`, `natura2000_Wallonia`, and `natura2000_Brussels` to the time series data to simplify the code while running the modelling for the natura2000 sites of each region separately:
+
+```{r add_isBelgium}
+df_ts <- df_ts%>%
+  mutate(natura2000_Flanders=isFlanders & natura2000,
+         natura2000_Wallonia=isWallonia & natura2000,
+         natura2000_Brussels= isBrussels & natura2000)%>%
+  rename(natura2000_Belgium=natura2000)
+```
+
 Define function to lump geographic information for Belgium, its regions and protected areas:
 
 ```{r lump_geographic_info}
@@ -105,7 +116,10 @@ colnames_to_filter <- c("isBelgium",
                         "isFlanders",
                         "isWallonia",
                         "isBrussels",
-                        "natura2000"
+                        "natura2000_Belgium",
+                        "natura2000_Brussels",
+                        "natura2000_Wallonia",
+                        "natura2000_Flanders"
 )
 df_ts_compact <- purrr::map(
   colnames_to_filter,

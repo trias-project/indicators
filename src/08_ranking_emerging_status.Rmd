@@ -420,11 +420,11 @@ years <- names(em_df_be) %>%
   sort(decreasing = TRUE)
 
 indicators <- c("occupancy", "occs")
-regions <- c("Flanders", "Wallonia", "Brussels")
+protection_status<-c("natura2000", "entire_region")
 
 ranking_regions <- purrr::imap(
   em_df_regions, 
-  function(em_df, region) hierarchical_ranking(years, indicators, region, em_df)
+  function(em_df, region) hierarchical_ranking(years, indicators, protection_status, region, em_df)
 )
 ranking_regions
 ```

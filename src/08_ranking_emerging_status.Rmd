@@ -537,8 +537,26 @@ point_ranking <- function(years, indicators, protection_status, regions, weights
   ranking_pts_be
 }
 ```
+
+We apply the function to Belgium and its Natura2000 protected areas:
+
+```{r rank_basic_be}
+years <- names(em_df_be) %>%
+  grep("^year_\\d+_em_status_", ., value = TRUE) %>%
+  gsub("^year_(\\d+)_em_status_.*", "\\1", .) %>%
+  as.numeric() %>%
+  unique() %>%
+  sort(decreasing = TRUE)
+
+indicators <- c("occupancy", "occs")
+protection_status<-c("natura2000", "entire_region")
+regions <- "Belgium"
+weights<-c(3, 2.5, 2.5, 2, 2.5, 2, 2, 1.5, 2, 1.5, 1.5, 1)
+
+ranking_pts_be <- point_ranking(years, indicators, protection_status, regions,weights, em_df_be)
 ranking_pts_be
 ```
+`
 
 ### Regions
 

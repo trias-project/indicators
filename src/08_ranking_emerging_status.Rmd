@@ -180,9 +180,9 @@ em_list <- append(em_gam_list, em_decision_rules_list)
 ```
 
 
-We have now to make a distinction between Belgium and its provinces. Assessment at Belgian level takes into account the emerging status of the protected areas as well, while at regional level this is not (yet) done.
+We have now to make a distinction between Belgium and its provinces. Assessment at each of these levels also takes into account the emerging status of the protected areas. In addition, separate assessments can be done for protected areas in specific regions.
 
-However, We can define a general function to spread columns for ranking. We spread the data frames by model (GAM or decision rules), year and indicator (occurrences or occupancy). We then assign a unique emerging score (if GAM is NA, we choose decision rules). We spread by years and indicators and add scientific names.
+We can define a general function to spread columns for ranking. We spread the data frames by model (GAM or decision rules), year and indicator (occurrences or occupancy). We then assign a unique emerging score (if GAM is NA, we choose decision rules). We spread by years and indicators and add scientific names.
 
 ```{r spread_em_dfs}
 spread_em_dfs <- function(em_list) {
@@ -219,7 +219,7 @@ spread_em_dfs <- function(em_list) {
 
 ## Belgium
 
-Select only list elements containing `Belgium` or `natura2000` in the name:
+Select only list elements containing `Belgium` in the name:
 
 ```{r em_list_be}
 em_list_be <- em_list[grep("Belgium|natura2000", names(em_list))]
@@ -311,7 +311,7 @@ The ranking is based on the highest emerging status. The following priority rule
 3. emerging statuses from occupancy are more important than the ones from occurrences
 4. the higher average minimal guaranteed growth (#occs/year), the higher priority is
 
-We first define a function to rank the emerging status of species based on the priority rules above. The function takes as input the years, indicators, regions and the data frame with emerging status scores. It returns a data frame with the ranking of species based on the priority rules. The function is called `hierarchical_ranking()` and is defined as follows:
+We first define a function to rank the emerging status of species based on the priority rules above. The function takes as input the years, indicators, protection status, regions and the data frame with emerging status scores. It returns a data frame with the ranking of species based on the priority rules. The function is called `hierarchical_ranking()` and is defined as follows:
 
 ```{r hierarchical_ranking_function}
 hierarchical_ranking <- function(years, indicators, regions, df) {
@@ -352,6 +352,7 @@ ranking_be
 
 
 ### Regions
+The ranking of species at regional levels will be performed in the same way as indicated before. Specifically, species will be sorted according to the following priority rules (in order of importance):
 
 We have not done (yet) an analysis for protected areas at regional level. So, the ranking for regions will be simplified. It means that the priority rule 2 described above will not be applied. The priority rules will then look as follows:
 
@@ -380,9 +381,9 @@ ranking_regions
 
 ## Point strategy
 
-We can also rank using a point strategy reflecting the same ranking strategy as before. To do so we apply gain factors to all emerging status scores using the number of observations in 2020 in all Belgium/region as reference (gain factor  = 1).
+We can also rank using a point strategy reflecting the same ranking strategy as before. To do so we apply gain factors to all emerging status scores using the number of observations in the earliest evaluation year in all Belgium/region as reference (gain factor  = 1).
 
-The following gain factors are applied for Belgium:
+The following gain factors are applied for Belgium for evaluation years 2020, 2021 and 2022:
 
 | indicator | year | region | gain factor |
 | --- | --- | --- | --- | 
@@ -399,18 +400,35 @@ observations | 2020 | protected areas | 1.5
 occupancy | 2020 | Belgium | 1.5
 observations | 2020 | Belgium | 1
 
-For regions, the gain factors are the same, but the ones for protected areas are not applied.
+The same gain factors are applied for each region:
 
-The following gain factors are applied for each region:
+| indicator | year | region | gain factor |
+| --- | --- | --- | --- | 
+occupancy | 2022 | protected areas | 3
+observations | 2022 | protected areas | 2.5
+occupancy | 2022 | entire region | 2.5
+observations | 2022 | entire region | 2
+occupancy | 2021 | protected areas | 2.5
+observations | 2021 | protected areas | 2
+occupancy | 2021 | entire region | 2
+observations | 2021 | entire region | 1.5
+occupancy | 2020 | protected areas | 2
+observations | 2020 | protected areas | 1.5
+occupancy | 2020 | entire region | 1.5
+observations | 2020 | entire region | 1
 
-| indicator | year | gain factor |
-| --- | --- | --- |
-occupancy | 2022 | 2.5
-observations | 2022 | 2
-occupancy | 2021 | 2
-observations | 2021 | 1.5
-occupancy | 2020 | 1.5
-observations | 2020 | 1
+For protected areas of specific regions, the gain factors are the same, but the ones for protected areas are not applied.
+
+Specifically, the following gain factors are applied:
+
+| indicator | year | region | gain factor |
+| --- | --- | --- | --- | 
+occupancy | 2022 | protected areas | 3
+observations | 2022 | protected areas | 2.5
+occupancy | 2021 | protected areas | 2.5
+observations | 2021 | protected areas | 2
+occupancy | 2020 | protected areas | 2
+observations | 2020 | protected areas | 1.5
 
 ### Belgium
 
@@ -503,7 +521,7 @@ readr::write_tsv(em_df_be,
 )
 ```
 
-and the final emerging status for regions, `em_df_regions`:
+the final emerging status for regions, `em_df_regions`:
 
 ```{r save_em_df_regions}
 purrr::iwalk(
@@ -519,7 +537,7 @@ purrr::iwalk(
 
 ## Rankings
 
-We save both the hierarchical ranking and the ranking based on points strategy for Belgium and its regions.
+We save both the hierarchical ranking and the ranking based on points strategy for Belgium, its regions, and the protected areas within each region.
 
 ### Hierarchical ranking
 

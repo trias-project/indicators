@@ -581,6 +581,31 @@ ranking_pts_regions <- purrr::imap(
 ranking_pts_regions
 ```
 
+### Protected areas within regions
+To rank species within protected areas of a specific region, we will use the same point strategy. However, as the focus of this analysis is already on protected areas we will apply a slightly different weighting scheme as indicated above.
+
+We apply the function `point_ranking()` to Natura2000 areas of Flanders, Wallonia and Brussels: 
+
+```{r rank_by_em_pts_protected_regions}
+years <- names(em_df_be) %>%
+  grep("^year_\\d+_em_status_", ., value = TRUE) %>%
+  gsub("^year_(\\d+)_em_status_.*", "\\1", .) %>%
+  as.numeric() %>%
+  unique() %>%
+  sort(decreasing = TRUE)
+
+indicators <- c("occupancy", "occs")
+#Given that the focus is already on Natura2000 regions, we have to indicate "entire_region" as protection_status
+protection_status<-c("entire_region")
+weights<-c(3,2.5,2.5,2,2,1.5)
+
+ranking_pts_protected_regions <- purrr::imap(
+  em_df_protected_regions, 
+  function(em_df_protected_regions, region) point_ranking(years, indicators, protection_status, region, weights, em_df_protected_regions)
+)
+ranking_pts_protected_regions
+```
+
 # Save results
 
 ## Final emerging status

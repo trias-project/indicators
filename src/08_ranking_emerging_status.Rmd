@@ -45,7 +45,10 @@ regions <- list("Belgium",
                 "Flanders", 
                 "Wallonia", 
                 "Brussels", 
-                "natura2000"
+                "natura2000_Belgium",
+                "natura2000_Wallonia",
+                "natura2000_Flanders",
+                "natura2000_Brussels"
 )
 names(regions) <- regions
 indicators <- c("occs", "occupancy")

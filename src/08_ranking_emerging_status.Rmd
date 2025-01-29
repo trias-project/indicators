@@ -510,43 +510,33 @@ occupancy | 2020 | protected areas | 2
 observations | 2020 | protected areas | 1.5
 
 ### Belgium
+We first define a function to rank the emerging status of species based on the point strategy explained above. The function takes as input the years, indicators, protection status, regions and the data frame with emerging status scores. It returns a data frame with the ranking of species based on the aforementioned weighting scheme. The function is called `point_ranking()` and is defined as follows:
 
-```{r rank_by_em_pts_be}
-ranking_pts_be <-
-  em_df_be %>%
-  tidylog::mutate(em_pts = year_2022_em_status_occupancy_natura2000 * 3 +
-    year_2022_em_status_occs_natura2000 * 2.5 +
-    year_2022_em_status_occupancy_Belgium * 2.5 +
-    year_2022_em_status_occs_Belgium * 2 +
-    year_2021_em_status_occupancy_natura2000 * 2.5 +
-    year_2021_em_status_occs_natura2000 * 2 +
-    year_2021_em_status_occupancy_Belgium * 2 +
-    year_2021_em_status_occs_Belgium * 1.5 +
-    year_2020_em_status_occupancy_natura2000 * 2 +
-    year_2020_em_status_occs_natura2000 * 1.5 +
-    year_2020_em_status_occupancy_Belgium * 1.5 +
-    year_2020_em_status_occs_Belgium) %>%
-  dplyr::arrange(
-    desc(em_pts),
-    desc(mean_growth)
-  ) %>%
-  tidylog::select(
-    taxonKey, canonicalName, kingdom, class,
-    em_pts, mean_growth,
-    year_2022_em_status_occupancy_natura2000,
-    year_2022_em_status_occs_natura2000,
-    year_2022_em_status_occupancy_Belgium,
-    year_2022_em_status_occs_Belgium,
-    year_2021_em_status_occupancy_natura2000,
-    year_2021_em_status_occs_natura2000,
-    year_2021_em_status_occupancy_Belgium,
-    year_2021_em_status_occs_Belgium,
-    year_2020_em_status_occupancy_natura2000,
-    year_2020_em_status_occs_natura2000,
-    year_2020_em_status_occupancy_Belgium,
-    year_2020_em_status_occs_Belgium,
-    dplyr::everything()
-  )
+```{r point_ranking_function}
+point_ranking <- function(years, indicators, protection_status, regions, weights, df) {
+  # Generate column names dynamically
+  cols_to_weigh <- expand.grid(indicator = indicators, protectionstatus=protection_status, region = regions, year = years) %>%
+    mutate(col_name = ifelse(protectionstatus=="entire_region",
+                             paste("year", year, "em_status", indicator,region, sep = "_"), 
+                             paste("year", year, "em_status", indicator,protectionstatus, region, sep = "_"))) %>%
+    pull(col_name)
+  
+  ranking_pts_be <-df %>%
+    rowwise() %>%
+    mutate(em_pts = sum(c_across(all_of(cols_to_weigh)) * weights, na.rm = TRUE)) %>%
+    ungroup() %>%
+    dplyr::arrange(
+      desc(em_pts),
+      desc(mean_growth)) %>%
+    tidylog::select(
+      taxonKey, canonicalName, kingdom, class,
+      em_pts, mean_growth,
+      all_of(cols_to_weigh),
+      dplyr::everything()
+    )
+  ranking_pts_be
+}
+```
 ranking_pts_be
 ```
 

@@ -282,12 +282,18 @@ purrr::map(
 )
 ```
 
-Preview from protected areas:
+Preview from protected areas within each region:
 
 ```{r example_dec_rules_occs_protected_areas}
-em_decision_rules_occs %>% 
-  purrr::pluck("natura2000") %>% 
-  tidylog::slice_head(n = 10)
+protected_areas <- c("natura2000_Flanders", "natura2000_Wallonia", "natura2000_Brussels","natura2000_Belgium")
+purrr::map(
+  protected_areas,
+  function(x) {
+    em_decision_rules_occs %>% 
+      purrr::pluck(x) %>% 
+      tidylog::slice_head(n = 10)
+  }
+)
 ```
 
 
@@ -327,12 +333,18 @@ purrr::map(
 )
 ```
 
-Preview from protected areas:
+Preview from protected areas within each region:
 
 ```{r example_dec_rules_occupancy_protected_areas}
-em_decision_rules_occupancy %>% 
-  purrr::pluck("natura2000") %>% 
-  tidylog::slice_head(n = 10)
+protected_areas <- c("natura2000_Flanders", "natura2000_Wallonia", "natura2000_Brussels","natura2000_Belgium")
+purrr::map(
+  protected_areas,
+  function(x) {
+    em_decision_rules_occupancy %>% 
+      purrr::pluck(x) %>% 
+      tidylog::slice_head(n = 10)
+  }
+)
 ```
 
 

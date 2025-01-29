@@ -272,7 +272,7 @@ em_df_regions <- purrr::map(em_list_regions, spread_em_dfs)
 To rank taxa equally placed, we use the average of the minimal guaranteed growth of number of occurrences over all the evaluation years.
 
 ```{r add_mean_growth_occs_regions}
-# Add mean growth to em_df
+# Add mean growth to em_df_regions
 em_df_regions <-
   em_df_regions %>% purrr::imap(
     function(df, region) {

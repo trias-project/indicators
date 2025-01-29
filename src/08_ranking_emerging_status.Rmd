@@ -375,7 +375,7 @@ cols_to_sort <- expand.grid(indicator = indicators, protectionstatus=protection_
     arrange(across(all_of(cols_to_sort), desc)) %>%
     tidylog::select(
       taxonKey, canonicalName, kingdom, class,
-      cols_to_sort,
+      all_of(cols_to_sort),
       dplyr::everything()
     )
   ranking

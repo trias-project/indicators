@@ -385,11 +385,13 @@ cols_to_sort <- expand.grid(indicator = indicators, protectionstatus=protection_
 We apply the function to Belgium and its Natura2000 protected areas:
 
 ```{r rank_basic_be}
-years <- sort(
-  unique(
-    as.numeric(gsub("^year_(\\d+)_em_status_.*", "\\1", names(em_df_be)))), 
-  decreasing = TRUE
-)
+years <- names(em_df_be) %>%
+  grep("^year_\\d+_em_status_", ., value = TRUE) %>%
+  gsub("^year_(\\d+)_em_status_.*", "\\1", .) %>%
+  as.numeric() %>%
+  unique() %>%
+  sort(decreasing = TRUE)
+
 indicators <- c("occupancy", "occs")
 protection_status<-c("natura2000", "entire_region")
 regions <- "Belgium"
@@ -411,11 +413,13 @@ We have not done (yet) an analysis for protected areas at regional level. So, th
 We apply the function `hierarchical_ranking()` to Flanders, Wallonia and Brussels:
 
 ```{r rank_basic_regions}
-years <- sort(
-  unique(
-    as.numeric(gsub("^year_(\\d+)_em_status_.*", "\\1", names(em_df_be)))), 
-  decreasing = TRUE
-)
+years <- names(em_df_be) %>%
+  grep("^year_\\d+_em_status_", ., value = TRUE) %>%
+  gsub("^year_(\\d+)_em_status_.*", "\\1", .) %>%
+  as.numeric() %>%
+  unique() %>%
+  sort(decreasing = TRUE)
+
 indicators <- c("occupancy", "occs")
 regions <- c("Flanders", "Wallonia", "Brussels")
 

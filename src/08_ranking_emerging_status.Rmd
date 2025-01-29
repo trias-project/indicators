@@ -430,6 +430,34 @@ ranking_regions
 ```
 
 
+### Protected areas within regions
+For some analyses, it can be valuable to rank only species that occur in Natura2000 areas at a regional level. The ranking of these species will be performed in a similar way as before, with the exception that they will not be sorted according to point 2: emerging status in protected areas, as these are already the focus of this analysis. Therefore, species will be sorted according to the following priority rules (in order of importance):
+
+1. the more recent, the higher priority
+2. emerging statuses from occupancy are more important than the ones from occurrences
+3. the higher average minimal guaranteed growth (#occs/year), the higher priority is
+
+We apply the function `hierarchical_ranking()` to Natura2000 areas of Flanders, Wallonia and Brussels: 
+
+```{r rank_basic_protected_regions}
+years <- names(em_df_be) %>%
+  grep("^year_\\d+_em_status_", ., value = TRUE) %>%
+  gsub("^year_(\\d+)_em_status_.*", "\\1", .) %>%
+  as.numeric() %>%
+  unique() %>%
+  sort(decreasing = TRUE)
+
+indicators <- c("occupancy", "occs")
+#Given that the focus is already on Natura2000 regions, we have to indicate "entire_region" as protection_status
+protection_status<-c("entire_region")
+
+ranking_protected_regions <- purrr::imap(
+  em_df_protected_regions, 
+  function(em_df, region) hierarchical_ranking(years, indicators, protection_status, region, em_df)
+)
+ranking_protected_regions
+```
+
 ## Point strategy
 
 We can also rank using a point strategy reflecting the same ranking strategy as before. To do so we apply gain factors to all emerging status scores using the number of observations in the earliest evaluation year in all Belgium/region as reference (gain factor  = 1).

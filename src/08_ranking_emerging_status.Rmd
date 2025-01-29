@@ -222,7 +222,7 @@ spread_em_dfs <- function(em_list) {
 Select only list elements containing `Belgium` in the name:
 
 ```{r em_list_be}
-em_list_be <- em_list[grep("Belgium|natura2000", names(em_list))]
+em_list_be <- em_list[grep("Belgium", names(em_list))]
 ```
 
 Apply the function `spread_em_dfs()` to Belgium:

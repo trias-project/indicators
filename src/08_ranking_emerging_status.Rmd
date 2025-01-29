@@ -560,37 +560,23 @@ ranking_pts_be
 
 ### Regions
 
+The same function is applied to each region and its associated Natura2000 protected areas.
+
 ```{r rank_by_em_pts_regions}
+years <- names(em_df_be) %>%
+  grep("^year_\\d+_em_status_", ., value = TRUE) %>%
+  gsub("^year_(\\d+)_em_status_.*", "\\1", .) %>%
+  as.numeric() %>%
+  unique() %>%
+  sort(decreasing = TRUE)
+
+indicators <- c("occupancy", "occs")
+protection_status<-c("natura2000", "entire_region")
+weights<-c(3, 2.5, 2.5, 2, 2.5, 2, 2, 1.5, 2, 1.5, 1.5, 1)
+
 ranking_pts_regions <- purrr::imap(
-  em_df_regions,
-  function(em_df, region) {
-    em_df %>%
-      # Remove the region from the column names for generalization
-      tidylog::rename_with(~ gsub(paste0("_", region, "$"), "", .x)) %>%
-      tidylog::mutate(em_pts = year_2022_em_status_occupancy * 2.5 +
-        year_2022_em_status_occs * 2 +
-        year_2021_em_status_occupancy * 2 +
-        year_2021_em_status_occs * 1.5 +
-        year_2020_em_status_occupancy * 1.5 +
-        year_2020_em_status_occs) %>%
-      dplyr::arrange(
-        desc(em_pts),
-        desc(mean_growth)
-      ) %>%
-      tidylog::select(
-        taxonKey, canonicalName, kingdom, class,
-        em_pts, mean_growth,
-        year_2022_em_status_occupancy,
-        year_2022_em_status_occs,
-        year_2021_em_status_occupancy,
-        year_2021_em_status_occs,
-        year_2020_em_status_occupancy,
-        year_2020_em_status_occs,
-        dplyr::everything()
-      ) %>%
-      # Add region back to the column names starting with `year`
-      tidylog::rename_with(~ paste0(.x, "_", region), starts_with("year"))
-  }
+  em_df_regions, 
+  function(em_df_regions, region) point_ranking(years, indicators, protection_status, region, weights, em_df_regions)
 )
 ranking_pts_regions
 ```

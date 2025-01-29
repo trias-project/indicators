@@ -359,10 +359,12 @@ The ranking is based on the highest emerging status. The following priority rule
 We first define a function to rank the emerging status of species based on the priority rules above. The function takes as input the years, indicators, protection status, regions and the data frame with emerging status scores. It returns a data frame with the ranking of species based on the priority rules. The function is called `hierarchical_ranking()` and is defined as follows:
 
 ```{r hierarchical_ranking_function}
-hierarchical_ranking <- function(years, indicators, regions, df) {
+hierarchical_ranking <- function(years, indicators, protection_status, regions, df) {
   # Generate the column names dynamically
-  cols_to_sort <- expand.grid(indicator = indicators, region = regions, year = years) %>%
-    mutate(col_name = paste("year", year, "em_status", indicator, region, sep = "_")) %>%
+cols_to_sort <- expand.grid(indicator = indicators, protectionstatus=protection_status, region = regions, year = years) %>%
+    mutate(col_name = ifelse(protectionstatus=="entire_region",
+                             paste("year", year, "em_status", indicator,region, sep = "_"), 
+                             paste("year", year, "em_status", indicator,protectionstatus, region, sep = "_"))) %>%
     pull(col_name)
 
   # Add mean_growth to the end of the sorting columns
@@ -389,9 +391,10 @@ years <- sort(
   decreasing = TRUE
 )
 indicators <- c("occupancy", "occs")
-regions <- c("natura2000", "Belgium")
+protection_status<-c("natura2000", "entire_region")
+regions <- "Belgium"
 
-ranking_be <- hierarchical_ranking(years, indicators, regions, em_df_be)
+ranking_be <- hierarchical_ranking(years, indicators, protection_status, regions, em_df_be)
 ranking_be
 ```
 

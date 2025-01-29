@@ -296,6 +296,51 @@ em_df_regions %>%
 })
 ```
 
+## Protected areas within regions
+
+Select only list elements containing natura2000 and the region in the name:
+
+```{r em_list_protected_regions}
+protected_regions <- list("natura2000_Flanders", "natura2000_Wallonia", "natura2000_Brussels")
+names(protected_regions) <- protected_regions
+em_list_protected_regions <- purrr::map(protected_regions, 
+                              function(r) em_list[grep(r, names(em_list))]
+)
+```
+
+Apply the function `spread_em_dfs()` to each regional protected area:
+
+```{r spread_em_dfs_protected_regions}
+em_df_protected_regions <- purrr::map(em_list_protected_regions, spread_em_dfs)
+```
+
+To rank taxa equally placed, we use the average of the minimal guaranteed growth of number of occurrences over all the evaluation years.
+
+```{r add_mean_growth_occs_protected_regions}
+# Add mean growth to em_df
+em_df_protected_regions <-
+  em_df_protected_regions %>% purrr::imap(
+    function(df, region) {
+      occs_column <- paste0("gam_occs_", region)
+      df %>%
+        tidylog::left_join(em_gam_list[[occs_column]] %>%
+          tidylog::group_by(taxonKey) %>%
+          tidylog::summarize(mean_growth = mean(growth, na.rm = TRUE))) %>%
+        tidylog::relocate(.data$mean_growth, .before = .data$canonicalName)
+    }
+  )
+```
+
+A preview (100 rows) for each region:
+
+```{r preview_em_df_protected_regions}
+em_df_protected_regions %>%
+  purrr::map(function(df) {
+    df %>%
+      tidylog::filter(!is.na(mean_growth)) %>% tidylog::slice_head(n = 100)
+})
+```
+
 # Ranking by emerging status
 
 Now we are ready to rank the alien species based on the emerging status.

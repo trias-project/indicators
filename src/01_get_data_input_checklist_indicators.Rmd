@@ -28,6 +28,7 @@ library(janitor) # To clean column names
 library(here) # To find files
 library(rgbif) # To get taxa from publisehd unified checklist
 library(trias) # To get indicator functionalities
+library(progressr) #To create a progress bar
 ```
 
 # Get data
@@ -466,6 +467,64 @@ merged_info %>%
   distinct(pathway_level1, pathway_level2) %>%
   arrange(pathway_level1)
 ```
+## Convert synonyms to the respective accepted taxon
+
+Some of the taxa on the GRIIS checklist are synonyms. We have to replace these these taxa and their nubKeys with the accepted taxon and its associated taxonomic info.
+
+```{r convert_synonyms_to_accepted_taxa}
+#Get nubKeys of all taxa on the GRIIS checklist
+nubKeys<-merged_info%>%
+  distinct(nubKey)%>%
+  pull(nubKey)
+
+#Get taxonomic details for each of these nubkeys
+with_progress({
+  p <- progressor(along = nubKeys)  # Creates a progress tracker
+  
+  synonym_fix <- data.frame()
+  for (i in nubKeys) {
+    p()  # Updates the progress bar
+    backbone_data <- name_usage(key = i)$data
+    synonym_fix <- bind_rows(synonym_fix, backbone_data)
+  }
+})
+
+#Store the acceptedKey and the GRIIS checklist key of the taxa that are synonyms 
+synonyms<-synonym_fix%>%
+  dplyr::filter(!is.na(acceptedKey))%>%
+  dplyr::select(nubKey, acceptedKey)%>%
+  left_join(merged_info%>%
+              select(key, nubKey), by="nubKey")%>%
+  select(-nubKey)%>%
+  distinct()
+
+#For each synonymous taxon, extract the key of the accepted species 
+accepted_keys<-synonym_fix%>%
+  dplyr::filter(!is.na(acceptedKey))%>%
+  pull(acceptedKey)
+
+#Get taxonomic details for each of these accepted taxa
+with_progress({
+  p <- progressor(along = accepted_keys) 
+  
+  accepted_taxa <- data.frame()
+  for (i in accepted_keys) {
+    p()  
+    backbone_data <- name_usage(key = i)$data
+    accepted_taxa<- bind_rows(accepted_taxa, backbone_data)
+  }
+})
+
+#Select columns holding taxonomic info that should be replaced in the final dataset
+accepted_taxa<-accepted_taxa%>%  
+  select(nubKey,scientificName, canonicalName, species, genus, family, order, class, phylum, kingdom, rank, speciesKey, genusKey, familyKey, orderKey, classKey, phylumKey, kingdomKey)%>%
+  left_join(synonyms, by=c("nubKey"="acceptedKey"))
+
+#Replace taxonomic info of synonyms with info of the accepted taxon in the final dataset, keep all the rest of the info as it was (i.e., pathways,...)
+merged_info <- merged_info%>%
+  dplyr::rows_update(accepted_taxa, by = "key")
+```
+
 # Save data
 
 The data.frame `merged_info` is saved as output file:

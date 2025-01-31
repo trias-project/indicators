@@ -525,6 +525,21 @@ merged_info <- merged_info%>%
   dplyr::rows_update(accepted_taxa, by = "key")
 ```
 
+## Manually add species Sedum pallidum M.Bieb. to the GRIIS checklist if it has not been included yet
+
+This species was listed as introduced on the [List of species observed in Belgium](https://www.gbif.org/dataset/2c38cf8a-f981-4dfb-bc9d-dd2b6fc792ed) published by Natuurpunt, but has not been included on the GRIIS checklist yet. We will here add this species manually, until it is included (then we can remove this part of the code).
+
+```{r add_Sedum_pallidum}
+if(!8016728 %in% merged_info$nubKey){
+  Sedum_pallidum<- name_usage(key =8016728)$data%>%
+    select(nubKey,scientificName, canonicalName, species, genus, family, order, class, phylum, kingdom, rank, speciesKey, genusKey, familyKey, orderKey, classKey, phylumKey, kingdomKey, taxonomicStatus)
+  
+  merged_info<-bind_rows(merged_info, Sedum_pallidum)
+}
+
+```
+
+
 # Save data
 
 The data.frame `merged_info` is saved as output file:

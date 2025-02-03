@@ -60,7 +60,7 @@ src/*.html
 _site
 
 # natura200 shapefiles
-data/external/Natura2000_end2019_Shapefile/*
+data/external/Natura2000_Shapefile/*
 
 # timeseries
 data/interim/df_timeseries.tsv

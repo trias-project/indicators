@@ -479,11 +479,11 @@ nubKeys<-merged_info%>%
 
 #Get taxonomic details for each of these nubkeys
 with_progress({
-  p <- progressor(along = nubKeys)  # Creates a progress tracker
+  p <- progressor(along = nubKeys)  # Creates progress tracker
   
   synonym_fix <- data.frame()
   for (i in nubKeys) {
-    p()  # Updates the progress bar
+    p()  # Updates progress bar
     backbone_data <- name_usage(key = i)$data
     synonym_fix <- bind_rows(synonym_fix, backbone_data)
   }

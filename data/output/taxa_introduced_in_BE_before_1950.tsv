@@ -24,7 +24,6 @@ taxonKey	canonicalName	first_observed	last_observed	class	kingdom	kingdomKey	cla
 3188867	Oenothera laciniata	1893	2020	Magnoliopsida	Plantae	6	220
 3188884	Oenothera oakesiana	1867	1923	Magnoliopsida	Plantae	6	220
 3188924	Oenothera biennis	1792	2020	Magnoliopsida	Plantae	6	220
-3188894	Oenothera glazioviana	1868	2020	Magnoliopsida	Plantae	6	220
 2340977	Ameiurus melas	1892	2017		Animalia	1	
 2340989	Ameiurus nebulosus	1871	1871		Animalia	1	
 5204019	Oncorhynchus mykiss	1884	1884		Animalia	1	
@@ -952,6 +951,7 @@ taxonKey	canonicalName	first_observed	last_observed	class	kingdom	kingdomKey	cla
 9890104	Xeroplexa intersecta	1922	1922	Gastropoda	Animalia	1	225
 7563173	Cryptorchestia cavimana	1927	2016	Malacostraca	Animalia	1	229
 6085036	Vulpia ciliata ciliata	1948	2020	Liliopsida	Plantae	6	196
+5289972	Digitaria sanguinalis	1803	2020	Liliopsida	Plantae	6	196
 2703776	Bromus polyanthus	1915	1915	Liliopsida	Plantae	6	196
 2458916	Hierophis viridiflavus	1894	2023	Squamata	Animalia	1	11592253
 2441454	Testudo hermanni	1935	2020	Testudines	Animalia	1	11418114
@@ -1026,6 +1026,7 @@ taxonKey	canonicalName	first_observed	last_observed	class	kingdom	kingdomKey	cla
 3973495	Vicia eriocarpa	1877	1934	Magnoliopsida	Plantae	6	220
 3973001	Vicia lens	1852	2014	Magnoliopsida	Plantae	6	220
 2974811	Vicia pannonica	1894	2011	Magnoliopsida	Plantae	6	220
+2974811	Vicia pannonica	1877	2017	Magnoliopsida	Plantae	6	220
 2975135	Vicia serratifolia	1876	2016	Magnoliopsida	Plantae	6	220
 5347846	Lathyrus oleraceus	1912	2020	Magnoliopsida	Plantae	6	220
 5350005	Coronilla varia	1803	2020	Magnoliopsida	Plantae	6	220

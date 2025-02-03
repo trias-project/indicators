@@ -51,14 +51,14 @@ Preview:
 ```{r preview_ts}
 # Get a taxon
 taxon <-
-  df_ts$taxonKey[10]
+  df_ts$taxonKey[1]
 
 # Preview
 df_ts %>%
   tidylog::filter(
     taxonKey == taxon,
     year %in% c(2016, 2017),
-    eea_cell_code == "1kmE3924N3102"
+    eea_cell_code == "1kmE3800N3131"
   )
 ```
 

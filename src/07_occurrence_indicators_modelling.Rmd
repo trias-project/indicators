@@ -616,5 +616,10 @@ setwd(old_wd)
 # Move zip file to the desired location (if needed)
 file.rename(file.path(folder_path, "GAM_plots.zip"),
             here::here("data", "output", "GAM_outputs", "GAM_plots.zip"))
+
+#Remove GAM plots after the zip file was created
+png_folders<-list.dirs(folder_path,
+                       recursive = FALSE)
+unlink(png_folders, recursive = TRUE)
 ```
 

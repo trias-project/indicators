@@ -91,6 +91,16 @@ taxa <- taxa %>%
   dplyr::left_join(
     classes,
     dplyr::join_by(acceptedKey == key)
+  ) %>%
+  # Add prefix `accepted` as in taxa for GBIF Backbone info
+  dplyr::rename(
+    acceptedClass = class,
+    acceptedClassKey = classKey
+  ) %>%
+  # Place kingdom info after class
+  dplyr::relocate(
+    acceptedKingdom,
+    .after = last_col()
   )
 ```
 

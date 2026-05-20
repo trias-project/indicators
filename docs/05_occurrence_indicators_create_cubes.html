@@ -1057,6 +1057,17 @@ readr::write_csv(
   here::here(&quot;data&quot;, &quot;interim&quot;, &quot;be_classes_cube.csv&quot;),
   na = &quot;&quot;
 )</code></pre>
+<p>We save also the taxa and their match to the GBIF Backbone as read
+from the <a
+href="https://www.gbif.org/dataset/6d9e952f-948c-4483-9807-575348147c7e">Global
+Register of Introduced and Invasive Species - Belgium</a>. Wa save them
+in file <code>griis_taxon_core.tsv</code> in directory
+<code>data/input</code></p>
+<pre class="r"><code>readr::write_tsv(
+  x = taxa,
+  file = here::here(&quot;data&quot;, &quot;input&quot;, &quot;griis_taxon_core.tsv&quot;),
+  na = &quot;&quot;
+)</code></pre>
 </div>
 
 

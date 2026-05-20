@@ -26,422 +26,548 @@ Load libraries:
 
 ```{r load_libraries, message = FALSE}
 library(tidyverse) # To do data science
-library(tidylog) # To provide feedback on dplyr functions
 library(here) # To find files
 library(rgbif) # To get information from GBIF
 ```
 
-# Get data
+# Read data
 
-We read the output of preprocessing pipeline.
+## Read occurrence cubes
 
-Time series:
+We read the enriched cubes:
 
-```{r read_preprocessed_data, message = FALSE}
-df_ts <- read_tsv(
-  here::here("data", "interim", "df_timeseries.tsv"),
+```{r read_cubes, message = FALSE}
+df <- readr::read_csv(
+  here::here("data", "interim", "be_alientaxa_cube_enriched.csv"),
+  na = ""
+)
+df_bl <- readr::read_csv(
+  here::here("data", "interim", "be_classes_cube_enriched.csv"),
   na = ""
 )
 ```
 
-Columns `pa_obs` and `pa_native_obs` indicate the presence (1) or absence (0) of the specific taxon and native species at class level.
+## Read taxonomic information
 
-Preview:
+We read the taxonomic core from the GRIIS Belgium as done in previous pipelines:
 
-```{r preview_ts}
-# Get a taxon
-taxon <-
-  df_ts$taxonKey[10]
-
-# Preview
-df_ts %>%
-  tidylog::filter(
-    taxonKey == taxon,
-    year %in% c(2016, 2017),
-    eea_cell_code == "1kmE3924N3102"
-  )
-```
-
-Taxonomic information:
-
-```{r spec_names}
-spec_names <- read_tsv(
-  file = here::here(
-    "data",
-    "interim",
-    "timeseries_taxonomic_info.tsv"
-  )
+```{r taxon_info}
+taxa_df <- readr::read_tsv(
+  here::here("data", "input", "griis_taxon_core.tsv"),
+  na = ""
 )
 ```
 
-# Detect appearing - reappearing species
+Preview:
 
-Years to evaluate:
+```{r preview_taxa_df}
+head(taxa_df)
+```
+
+
+# Detect appearing and reappearing species
+
+For emerging trends in the next workflow we do not take into account the present year and the last year as data publication delays can occur. However, for getting a list of appearing and reappearing species we can of course consider the present year and the last year as evaluation years. 
 
 ```{r eval_years}
-# Last evaluation year
-last_year <- lubridate::year(Sys.Date()) - 2
+# First year to consider for evaluation of (re)appearing taxa
+first_year <- lubridate::year(Sys.Date()) - 2 - 2
 
 # First evaluation year
-first_year <- last_year - 2
+last_year <- lubridate::year(Sys.Date())
 
 # Evaluation years
 years <- seq(first_year, last_year)
 ```
 
-We define the minimum latency (in years) before we speak about reappearance. For example, a latency time window of 3 years means that we consider a taxon reappearing in 2019 if observations occur in 2019 and 2015 or before:
+## Appearing species
 
-```{r latency_years}
-years_latency <- 3
-```
-
-## Appearing - reappearing species in Belgium
-
-Lump geographic information:
-
-```{r df_ts_compact}
-df_ts_compact <-
-  df_ts %>%
-  tidylog::group_by(taxonKey, year, classKey) %>%
-  tidylog::summarise(
-    obs = sum(obs),
-    cobs = sum(cobs),
-    ncells = sum(pa_obs),
-    c_ncells = sum(pa_cobs)
-  ) %>%
-  tidylog::ungroup()
-```
-
-We define the function `is_appearing` for appearing/reappearing detection (this function could be moved to TrIAS package `trias` later):
+We define the function `get_appearing_taxa` for detecting appearing taxa (this function could be generalised and added to TrIAS package `trias` later):
 
 ```{r decision_rules_function, class.source = 'fold-hide'}
-#' @param df data frame with time series
-#' @param eval_years vector with years used for evaluation. Warning is returned
-#' if not a sequence. Typically present year and year before.
-#' @param latency years of latency (no observations). Strictly positive integer.
-#' @param df_reference data frame with time series used to assess reappearing. If NULL (default) df is used.
-#' @return data.frame with appearing or reappearing taxa
-is_appearing <- function(df,
-                         eval_years,
-                         latency = 2,
-                         df_reference = NULL,
-                         data_col = "ncells",
-                         id_col = "taxonKey",
-                         year_col = "year") {
-  df <-
-    df %>%
-    tidylog::select(id_col, year_col, data_col) %>%
-    tidylog::rename(
-      "taxonKey" = id_col,
-      "year" = year_col,
-      "occ" = data_col
-    ) %>%
-    tidylog::filter(occ > 0) %>%
-    tidylog::group_by(taxonKey)
-
-  if (!is.null(df_reference)) {
-    df_reference <-
-      df_reference %>%
-      tidylog::select(id_col, year_col, data_col) %>%
-      tidylog::rename(
-        "taxonKey" = id_col,
-        "year" = year_col,
-        "occ" = data_col
+#' @param cube data frame with occurrence cube. Columns `taxonKey` and `taxonName` must be present.
+#' @param first_eval_year first year to consider for evaluation of appearing taxa
+#' @return data.frame with appearing taxa
+get_appearing_taxa <- function(cube, first_eval_year) {
+    cube %>%
+      dplyr::group_by(taxonKey, taxonName) %>%
+      dplyr::summarise(
+        first_year = min(year),
+        .groups = "drop"
       ) %>%
-      tidylog::filter(occ > 0) %>%
-      tidylog::group_by(taxonKey)
-  } else {
-    df_reference <- df
+      dplyr::filter(first_year >= first_eval_year)
   }
+```
 
-  # Taxa present in evaluated years
+### Appearing species in Belgium
 
-  taxa_eval_years_df <-
-    df %>%
-    tidylog::filter(year %in% eval_years) %>%
-    tidylog::filter(year == min(year))
+Apply function defined above over the entire cube referring to Belgium:
 
-  taxa_eval_years <-
-    taxa_eval_years_df %>%
-    tidylog::distinct(taxonKey) %>%
-    dplyr::pull()
+```{r appearing_taxa_BE}
+appearing_taxa_be <- get_appearing_taxa(
+  cube = df,
+  first_eval_year = first_year
+  ) %>%
+  dplyr::arrange(desc(first_year)) %>%
+  dplyr::left_join(
+    taxa_df %>%
+      dplyr::select(acceptedKey, acceptedKingdom),
+    dplyr::join_by(taxonKey == acceptedKey)
+  )
+```
 
-  # appearing taxa
-  appearing_taxa <-
-    df %>%
-    tidylog::filter(taxonKey %in% taxa_eval_years) %>%
-    tidylog::filter(min(year) %in% eval_years) %>%
-    tidylog::filter(year == min(year)) %>%
-    tidylog::ungroup()
+Appearing taxa in Belgium:
 
-  appearing_taxa <-
-    appearing_taxa %>%
-    tidylog::rename(!!sym(data_col) := "occ")
+```{r show_appearing_taxa_BE}
+appearing_taxa_be
+```
 
-  # reappearing taxa
-  reappearing_taxa <-
-    df_reference %>%
-    tidylog::filter(taxonKey %in% taxa_eval_years) %>%
-    tidylog::filter(year < min(eval_years)) %>%
-    tidylog::filter(year == max(year)) %>%
-    tidylog::ungroup() %>%
-    tidylog::rename(last_year_before_reappearing = year) %>%
-    tidylog::left_join(taxa_eval_years_df, by = "taxonKey") %>%
-    tidylog::group_by(taxonKey) %>%
-    tidylog::summarise(n_latent_years = year - last_year_before_reappearing) %>%
-    tidylog::filter(n_latent_years > latency) %>%
-    tidylog::left_join(taxa_eval_years_df %>% tidylog::select(taxonKey, occ, year),
-      by = "taxonKey"
+### Appearing species in Belgian protected areas
+
+Apply `get_appearing_taxa()` only to the part of the cube referring to cells in protected areas:
+
+```{r appearing_taxa_prot_areas}
+appearing_taxa_prot_areas <- df %>%
+  dplyr::filter(natura2000 == TRUE) %>%
+  get_appearing_taxa(first_eval_year = first_year) %>%
+  dplyr::arrange(desc(first_year)) %>%
+  dplyr::left_join(
+    taxa_df %>%
+      dplyr::select(acceptedKey, acceptedKingdom),
+    dplyr::join_by(taxonKey == acceptedKey)
+  )
+```
+
+Appearing taxa in Belgian protected areas:
+
+```{r show_appearing_taxa_prot_areas}
+appearing_taxa_prot_areas
+```
+
+### Appearing species in Flanders
+
+Apply `get_appearing_taxa()` only to the part of the cube referring to Flanders:
+
+```{r appearing_taxa_flanders}
+appearing_taxa_flanders <- df %>%
+  dplyr::filter(isFlanders == TRUE) %>%
+  get_appearing_taxa(first_eval_year = first_year) %>%
+  dplyr::arrange(desc(first_year)) %>%
+  dplyr::left_join(
+    taxa_df %>%
+      dplyr::select(acceptedKey, acceptedKingdom),
+    dplyr::join_by(taxonKey == acceptedKey)
+  )
+```
+
+Appearing taxa in Flanders:
+
+```{r show_appearing_taxa_flanders}
+appearing_taxa_flanders
+```
+
+### Appearing species in Flemish protected areas
+
+Apply `get_appearing_taxa()` only to the part of the cube referring to cells in protected areas in Flanders:
+
+```{r appearing_taxa_prot_areas_flanders}
+appearing_taxa_prot_areas_flanders <- df %>%
+  dplyr::filter(natura2000 == TRUE, isFlanders == TRUE) %>%
+  get_appearing_taxa(first_eval_year = first_year) %>%
+  dplyr::arrange(desc(first_year)) %>%
+  dplyr::left_join(
+    taxa_df %>%
+      dplyr::select(acceptedKey, acceptedKingdom),
+    dplyr::join_by(taxonKey == acceptedKey)
+  )
+```
+
+Appearing taxa in Flemish protected areas:
+
+```{r show_appearing_taxa_prot_areas_flanders}
+appearing_taxa_prot_areas_flanders
+```
+
+### Appearing species in Wallonia
+
+Apply `get_appearing_taxa()` only to the part of the cube referring to Wallonia:
+
+```{r appearing_taxa_wallonia}
+appearing_taxa_wallonia <- df %>%
+  dplyr::filter(isWallonia == TRUE) %>%
+  get_appearing_taxa(first_eval_year = first_year) %>%
+  dplyr::arrange(desc(first_year)) %>%
+  dplyr::left_join(
+    taxa_df %>%
+      dplyr::select(acceptedKey, acceptedKingdom),
+    dplyr::join_by(taxonKey == acceptedKey)
+  )
+```
+
+Appearing taxa in Wallonia:
+
+```{r show_appearing_taxa_wallonia}
+appearing_taxa_wallonia
+```
+
+### Appearing species in Walloon protected areas
+
+Apply `get_appearing_taxa()` only to the part of the cube referring to cells in protected areas in Wallonia:
+
+```{r appearing_taxa_prot_areas_wallonia}
+appearing_taxa_prot_areas_wallonia <- df %>%
+  dplyr::filter(natura2000 == TRUE, isWallonia == TRUE) %>%
+  get_appearing_taxa(first_eval_year = first_year) %>%
+  dplyr::arrange(desc(first_year)) %>%
+  dplyr::left_join(
+    taxa_df %>%
+      dplyr::select(acceptedKey, acceptedKingdom),
+    dplyr::join_by(taxonKey == acceptedKey)
+  )
+```
+
+Appearing taxa in Walloon protected areas:
+
+```{r show_appearing_taxa_prot_areas_wallonia}
+appearing_taxa_prot_areas_wallonia
+```
+
+### Appearing species in Brussels
+
+Apply `get_appearing_taxa()` only to the part of the cube referring to Brussels:
+
+```{r appearing_taxa_brussels}
+appearing_taxa_brussels <- df %>%
+  dplyr::filter(isBrussels == TRUE) %>%
+  get_appearing_taxa(first_eval_year = first_year) %>%
+  dplyr::arrange(desc(first_year)) %>%
+  dplyr::left_join(
+    taxa_df %>%
+      dplyr::select(acceptedKey, acceptedKingdom),
+    dplyr::join_by(taxonKey == acceptedKey)
+  )
+```
+
+Appearing taxa in Brussels:
+
+```{r show_appearing_taxa_brussels}
+appearing_taxa_brussels
+```
+
+### Appearing species in Brussels protected areas
+
+Apply `get_appearing_taxa()` only to the part of the cube referring to cells in protected areas in Brussels:
+
+```{r appearing_taxa_prot_areas_brussels}
+appearing_taxa_prot_areas_brussels <- df %>%
+  dplyr::filter(natura2000 == TRUE, isBrussels == TRUE) %>%
+  get_appearing_taxa(first_eval_year = first_year) %>%
+  dplyr::arrange(desc(first_year)) %>%
+  dplyr::left_join(
+    taxa_df %>%
+      dplyr::select(acceptedKey, acceptedKingdom),
+    dplyr::join_by(taxonKey == acceptedKey)
+  )
+```
+
+Appearing taxa in Brussels protected areas:
+
+```{r appearing_taxa_prot_areas_brussels}
+appearing_taxa_prot_areas_brussels
+```
+
+## Reappearing species
+
+We define the minimum latency (in years) before we speak about reappearance. For example, a latency time window of 5 years means that we consider a taxon reappearing in 2025 if observations occur in 2025 and 2019 or before:
+
+```{r latency_years}
+years_latency <- 5
+```
+
+We define the function `get_reappearing_taxa` for detecting reappearing taxa (this function could be generalised and added to TrIAS package `trias` later):
+
+```{r get_reappearing_taxa_function, class.source = 'fold-hide'}
+#' @param cube data frame with occurrence cube. Columns `taxonKey` and `taxonName` must be present.
+#' @param first_eval_year first year to consider for evaluation of appearing taxa
+#' @param latency_threshold minimum latency (in years) before we speak about reappearance. For example, a latency time window of 5 years means that we consider a taxon reappearing in 2025 if observations occur in 2025 and 2019 or before.
+#' @return data.frame with reappearing taxa
+get_reappearing_taxa <- function(
+    cube,
+    first_eval_year,
+    latency_threshold) {
+  reappearing_species <- cube %>%
+    dplyr::group_by(taxonKey, taxonName) %>%
+    dplyr::summarise(
+      # set to min(year) from the first evaluation year if there are 
+      # occurrences in those years, otherwise set to NA. This way we can 
+      # filter for species that reappear in the evaluation years or later.
+      reappearance_year = ifelse(
+        any(year >= first_eval_year),
+        min(year[year >= first_eval_year]),
+        NA_integer_
+      ),
+      years_without_occurrences = ifelse(
+        any(year >= first_eval_year) & any(year < first_eval_year),
+        min(year[year >= first_eval_year]) - max(year[year < first_eval_year]),
+        NA_integer_
+      ),
+      .groups = "drop"
+    ) %>%
+    dplyr::filter(
+      !is.na(reappearance_year) & 
+        !is.na(years_without_occurrences) & 
+        years_without_occurrences >= latency_threshold
     )
-
-  reappearing_taxa <-
-    reappearing_taxa %>%
-    tidylog::rename(!!sym(data_col) := "occ")
-
-  return(list(
-    appearing_taxa = appearing_taxa,
-    reappearing_taxa = reappearing_taxa
-  ))
 }
 ```
 
-Apply function defined above:
+### Reappearing species in Belgium
 
-```{r appearing_reappearing_taxa}
-appearing_reappearing_taxa <- is_appearing(
-  df = df_ts_compact,
-  eval_years = years,
-  latency = years_latency,
-  df_reference = NULL
-)
-```
+Apply function defined above over the entire cube referring to Belgium:
 
-Number of appearing taxa:
-
-```{r n_appearing_taxa_BE}
-nrow(appearing_reappearing_taxa$appearing_taxa)
-```
-
-Number of reappearing taxa:
-
-```{r n_reappearing_taxa_BE}
-nrow(appearing_reappearing_taxa$reappearing_taxa)
-```
-
-## Appearing - reappearing species in Belgian protected areas
-
-We repeat the workflow defined above to assess which taxa are appearing or reappearing in protected areas.
-
-First we select( data referring to protected areas (Natura2000) and then we lump geographical information:
-
-```{r df_ts_compact_protected_areas}
-df_ts_compact_prot_areas <-
-  df_ts %>%
-  tidylog::filter(natura2000 == TRUE) %>%
-  tidylog::group_by(taxonKey, year) %>%
-  tidylog::summarise(
-    obs = sum(obs),
-    cobs = sum(cobs),
-    ncells = sum(pa_cobs),
-    c_ncells = sum(pa_cobs)
+```{r reappearing_taxa_BE}
+reappearing_taxa_be <- get_reappearing_taxa(
+  cube = df,
+  first_eval_year = first_year,
+  latency_threshold = years_latency
   ) %>%
-  tidylog::ungroup()
-```
-
-We apply function `is_appearing`. Notice that we use occurrences about all Belgium to assess the reappearance in protected areas:
-
-```{r appearing_reappearing_taxa_prot_areas}
-appearing_reappearing_taxa_prot_areas <- is_appearing(
-  df = df_ts_compact_prot_areas,
-  eval_years = years,
-  latency = years_latency,
-  df_reference = df_ts_compact
-)
-```
-
-Number of appearing taxa:
-
-```{r n_appearing_taxa_prot_areas}
-nrow(appearing_reappearing_taxa_prot_areas$appearing_taxa)
-```
-
-Number of reappearing taxa:
-
-```{r n_appearing_taxa_BE_prot_areas}
-nrow(appearing_reappearing_taxa_prot_areas$reappearing_taxa)
-```
-
-## Merge
-
-We merge appearing taxa from all Belgium and from protected areas. We rank taxa by area of occupancy (number of cells) in protected areas and in all Belgium. We do the same for reappearing taxa as well:
-
-```{r merge_ranking_by_presence_in protected_area}
-app_reapp_global <-
-  purrr::map2(
-    appearing_reappearing_taxa_prot_areas,
-    appearing_reappearing_taxa,
-    function(x, y) {
-      x <-
-        x %>%
-        tidylog::rename(ncells_prot_areas = ncells)
-      y <-
-        y %>%
-        tidylog::rename(ncells_BE = ncells)
-      tidylog::full_join(x, y) %>%
-        tidylog::mutate(
-          in_prot_areas = ifelse(!is.na(ncells_prot_areas),
-            TRUE,
-            FALSE
-          ),
-          in_BE = ifelse(!is.na(ncells_BE),
-            TRUE,
-            FALSE
-          )
-        ) %>%
-        arrange(
-          desc(ncells_prot_areas),
-          desc(ncells_BE)
-        )
-    }
+  dplyr::arrange(desc(reappearance_year), desc(years_without_occurrences)) %>%
+  dplyr::left_join(
+    taxa_df %>%
+      dplyr::select(acceptedKey, acceptedKingdom),
+    dplyr::join_by(taxonKey == acceptedKey)
   )
 ```
 
-## Add canonical names
+Reappearing taxa in Belgium:
 
-Add taxonomic information for better readability.
-
-```{r add_taxonomic_info}
-app_reapp_global <- purrr::map(
-  app_reapp_global,
-  function(x) {
-    x %>%
-      tidylog::left_join(spec_names, by = "taxonKey")
-  }
-)
+```{r show_reappearing_taxa_BE}
+reappearing_taxa_be
 ```
 
-# Table of appearing and reappearing taxa
+### Reappearing species in Belgian protected areas
 
-## Appearing taxa
+Apply `get_reappearing_taxa()` only to the part of the cube referring to cells in protected areas:
 
-Reorder columns of data.frame containing appearing taxa:
-
-```{r reorder_cols_appearing}
-app_reapp_global$appearing_taxa <-
-  app_reapp_global$appearing_taxa %>%
-  tidylog::select(
-    taxonKey,
-    canonicalName,
-    year,
-    ncells_prot_areas,
-    ncells_BE,
-    in_prot_areas,
-    in_BE,
-    class,
-    kingdom,
-    classKey,
-    kingdomKey
-  )
-```
-
-Appearing taxa:
-
-```{r add_taxonomic_info_appearing_taxa}
-app_reapp_global$appearing_taxa
-```
-
-Empty `ncells_BE` and `in_BE` equal to FALSE means that the taxon is appearing in protected areas but not appearing outside, i.e. the taxon is maybe reappearing at Belgian level or occurring with a more stable presence. See next section for more details about. 
-
-## Reappearing taxa
-
-Reorder columns of data.frame containing reappearing taxa:
-
-```{r reorder_cols_reappearing}
-app_reapp_global$reappearing_taxa <-
-  app_reapp_global$reappearing_taxa %>%
-  tidylog::select(
-    taxonKey,
-    canonicalName,
-    year,
-    ncells_prot_areas,
-    ncells_BE,
-    in_prot_areas,
-    in_BE,
-    n_latent_years,
-    class,
-    kingdom,
-    classKey,
-    kingdomKey
-  )
-```
-
-Reappearing taxa:
-
-```{r add_taxonomic_info_reappearing_taxa}
-app_reapp_global$reappearing_taxa
-```
-
-Taxa appearing in protected areas and reappearing outside:
-
-```{r appearing_in_pa_reappearing_outside}
-app_reapp_global$appearing_taxa %>%
-  tidylog::filter(in_BE == FALSE) %>%
-  tidylog::filter(taxonKey %in% app_reapp_global$reappearing_taxa$taxonKey) %>%
-  tidylog::select(taxonKey, canonicalName)
-```
-
-Taxa appearing in protected areas and with a stable presence outside:
-
-```{r appearing_in_pa_stable_outside}
-app_reapp_global$appearing_taxa %>%
-  tidylog::filter(in_BE == FALSE) %>%
-  tidylog::filter(!taxonKey %in% app_reapp_global$reappearing_taxa$taxonKey) %>%
-  tidylog::select(taxonKey, canonicalName, class, kingdom, classKey, kingdomKey)
-```
-
-Two examples:
-
-```{r taxa_examples, echo=FALSE}
-taxa_examples <- app_reapp_global$appearing_taxa %>%
-  tidylog::filter(in_BE == FALSE) %>%
-  tidylog::filter(!taxonKey %in% app_reapp_global$reappearing_taxa$taxonKey) %>%
-  tidylog::distinct(taxonKey, canonicalName) %>%
-  tidylog::slice_head(n = 2)
-taxa_examples %>%
-  tidylog::left_join(df_ts_compact %>%
-    tidylog::select(-starts_with("native")),
-  by = "taxonKey"
+```{r reappearing_taxa_prot_areas}
+reappearing_taxa_prot_areas <- df %>%
+  dplyr::filter(natura2000 == TRUE) %>%
+  get_reappearing_taxa(
+    first_eval_year = first_year,
+    latency_threshold = years_latency
   ) %>%
-  tidylog::left_join(df_ts_compact_prot_areas %>%
-    tidylog::select(-starts_with("native")) %>%
-    tidylog::rename(
-      prot_areas_ncells = ncells,
-      prot_areas_obs = obs
-    ),
-  by = c("taxonKey", "year")
+  dplyr::arrange(desc(reappearance_year), desc(years_without_occurrences)) %>%
+  dplyr::left_join(
+    taxa_df %>%
+      dplyr::select(acceptedKey, acceptedKingdom),
+    dplyr::join_by(taxonKey == acceptedKey)
   )
+```
+
+Reappearing taxa in Belgian protected areas:
+
+```{r reappearing_taxa_prot_areas}
+reappearing_taxa_prot_areas
+```
+
+### Reappearing species in Flanders
+
+Apply `get_reappearing_taxa()` only to the part of the cube referring to Flanders:
+
+```{r reappearing_taxa_flanders}
+reappearing_taxa_flanders <- df %>%
+  dplyr::filter(isFlanders == TRUE) %>%
+  get_reappearing_taxa(
+    first_eval_year = first_year,
+    latency_threshold = years_latency
+  ) %>%
+  dplyr::arrange(desc(reappearance_year), desc(years_without_occurrences)) %>%
+  dplyr::left_join(
+    taxa_df %>%
+      dplyr::select(acceptedKey, acceptedKingdom),
+    dplyr::join_by(taxonKey == acceptedKey)
+  )
+```
+
+Reappearing taxa in Flanders:
+
+```{r reappearing_taxa_flanders}
+reappearing_taxa_flanders
+```
+
+### Reappearing species in Flemish protected areas
+
+Apply `get_reappearing_taxa()` only to the part of the cube referring to cells in protected areas in Flanders:
+
+```{r reappearing_taxa_prot_areas_flanders}
+reappearing_taxa_prot_areas_flanders <- df %>%
+  dplyr::filter(natura2000 == TRUE, isFlanders == TRUE) %>%
+  get_reappearing_taxa(
+    first_eval_year = first_year,
+    latency_threshold = years_latency
+  ) %>%
+  dplyr::arrange(desc(reappearance_year), desc(years_without_occurrences)) %>%
+  dplyr::left_join(
+    taxa_df %>%
+      dplyr::select(acceptedKey, acceptedKingdom),
+    dplyr::join_by(taxonKey == acceptedKey)
+  )
+```
+
+Reappearing taxa in Flemish protected areas:
+
+```{r reappearing_taxa_prot_areas_flanders}
+reappearing_taxa_prot_areas_flanders
+```
+
+### Reappearing species in Wallonia
+
+Apply `get_appearing_taxa()` only to the part of the cube referring to Wallonia:
+
+```{r reappearing_taxa_wallonia}
+reappearing_taxa_wallonia <- df %>%
+  dplyr::filter(isWallonia == TRUE) %>%
+  get_reappearing_taxa(
+    first_eval_year = first_year,
+    latency_threshold = years_latency
+  ) %>%
+  dplyr::arrange(desc(reappearance_year), desc(years_without_occurrences)) %>%
+  dplyr::left_join(
+    taxa_df %>%
+      dplyr::select(acceptedKey, acceptedKingdom),
+    dplyr::join_by(taxonKey == acceptedKey)
+  )
+```
+
+Reappearing taxa in Wallonia:
+
+```{r reappearing_taxa_wallonia}
+reappearing_taxa_wallonia
+```
+
+### Reappearing species in Walloon protected areas
+
+Apply `get_reappearing_taxa()` only to the part of the cube referring to cells in protected areas in Wallonia:
+
+```{r reappearing_taxa_prot_areas_wallonia}
+reappearing_taxa_prot_areas_wallonia <- df %>%
+  dplyr::filter(natura2000 == TRUE, isWallonia == TRUE) %>%
+  get_reappearing_taxa(
+    first_eval_year = first_year,
+    latency_threshold = years_latency
+  ) %>%
+  dplyr::arrange(desc(reappearance_year), desc(years_without_occurrences)) %>%
+  dplyr::left_join(
+    taxa_df %>%
+      dplyr::select(acceptedKey, acceptedKingdom),
+    dplyr::join_by(taxonKey == acceptedKey)
+  )
+```
+
+Reappearing taxa in Walloon protected areas:
+
+```{r reappearing_taxa_prot_areas_wallonia}
+reappearing_taxa_prot_areas_wallonia
+```
+
+### Reappearing species in Brussels
+
+Apply `get_appearing_taxa()` only to the part of the cube referring to Brussels:
+
+```{r reappearing_taxa_brussels}
+reappearing_taxa_brussels <- df %>%
+  dplyr::filter(isBrussels == TRUE) %>%
+  get_reappearing_taxa(
+    first_eval_year = first_year,
+    latency_threshold = years_latency
+  ) %>%
+  dplyr::arrange(desc(reappearance_year), desc(years_without_occurrences)) %>%
+  dplyr::left_join(
+    taxa_df %>%
+      dplyr::select(acceptedKey, acceptedKingdom),
+    dplyr::join_by(taxonKey == acceptedKey)
+  )
+```
+
+Reappearing taxa in Brussels:
+
+```{r reappearing_taxa_brussels}
+reappearing_taxa_brussels
+```
+
+### Reappearing species in Brussels protected areas
+
+Apply `get_reappearing_taxa()` only to the part of the cube referring to cells in protected areas in Brussels:
+
+```{r reappearing_taxa_prot_areas_brussels}
+reappearing_taxa_prot_areas_brussels <- df %>%
+  dplyr::filter(natura2000 == TRUE, isBrussels == TRUE) %>%
+  get_reappearing_taxa(
+    first_eval_year = first_year,
+    latency_threshold = years_latency
+  ) %>%
+  dplyr::arrange(desc(reappearance_year), desc(years_without_occurrences)) %>%
+  dplyr::left_join(
+    taxa_df %>%
+      dplyr::select(acceptedKey, acceptedKingdom),
+    dplyr::join_by(taxonKey == acceptedKey)
+  )
+```
+
+Reappearing taxa in Brussels protected areas:
+
+```{r reappearing_taxa_prot_areas_brussels}
+reappearing_taxa_prot_areas_brussels
 ```
 
 # Save data
 
 ## Appearing taxa
 
-Save appearing taxa:
+Save appearing taxa as tab separated files:
 
 ```{r save_appearing_taxa}
-write_tsv(app_reapp_global$appearing_taxa,
-  file = here::here("data", "output", "appearing_taxa.tsv"),
-  na = ""
+appearing_taxa <- list(
+  appearing_taxa_be = appearing_taxa_be,
+  appearing_taxa_prot_areas = appearing_taxa_prot_areas,
+  appearing_taxa_flanders = appearing_taxa_flanders,
+  appearing_taxa_prot_areas_flanders = appearing_taxa_prot_areas_flanders,
+  appearing_taxa_wallonia = appearing_taxa_wallonia,
+  appearing_taxa_prot_areas_wallonia = appearing_taxa_prot_areas_wallonia,
+  appearing_taxa_brussels = appearing_taxa_brussels,
+  appearing_taxa_prot_areas_brussels = appearing_taxa_prot_areas_brussels
+)
+purrr::iwalk(
+  appearing_taxa,
+  ~ write_tsv(
+    .x,
+    file = here::here("data", "output", paste0(.y, ".tsv")),
+    na = ""
+  )
 )
 ```
 
 ## Reappearing taxa
 
-Save reappearing taxa:
+Save reappearing taxa as tab separated files:
 
 ```{r save_reappearing_taxa}
-write_tsv(app_reapp_global$reappearing_taxa,
-  file = here::here("data", "output", "reappearing_taxa.tsv"),
-  na = ""
+reappearing_taxa_list <- list(
+  reappearing_taxa_be = reappearing_taxa_be,
+  reappearing_taxa_prot_areas = reappearing_taxa_prot_areas,
+  reappearing_taxa_flanders = reappearing_taxa_flanders,
+  reappearing_taxa_prot_areas_flanders = reappearing_taxa_prot_areas_flanders,
+  reappearing_taxa_wallonia = reappearing_taxa_wallonia,
+  reappearing_taxa_prot_areas_wallonia = reappearing_taxa_prot_areas_wallonia,
+  reappearing_taxa_brussels = reappearing_taxa_brussels,
+  reappearing_taxa_prot_areas_brussels = reappearing_taxa_prot_areas_brussels
+)
+purrr::iwalk(
+  reappearing_taxa_list,
+  ~ write_tsv(
+    .x,
+    file = here::here("data", "output", paste0(.y, ".tsv")),
+    na = ""
+  )
 )
 ```

@@ -272,7 +272,7 @@ appearing_taxa_prot_areas_brussels <- df %>%
 
 Appearing taxa in Brussels protected areas:
 
-```{r appearing_taxa_prot_areas_brussels}
+```{r show_appearing_taxa_prot_areas_brussels}
 appearing_taxa_prot_areas_brussels
 ```
 
@@ -366,7 +366,7 @@ reappearing_taxa_prot_areas <- df %>%
 
 Reappearing taxa in Belgian protected areas:
 
-```{r reappearing_taxa_prot_areas}
+```{r show_reappearing_taxa_prot_areas}
 reappearing_taxa_prot_areas
 ```
 
@@ -391,7 +391,7 @@ reappearing_taxa_flanders <- df %>%
 
 Reappearing taxa in Flanders:
 
-```{r reappearing_taxa_flanders}
+```{r show_reappearing_taxa_flanders}
 reappearing_taxa_flanders
 ```
 
@@ -416,7 +416,7 @@ reappearing_taxa_prot_areas_flanders <- df %>%
 
 Reappearing taxa in Flemish protected areas:
 
-```{r reappearing_taxa_prot_areas_flanders}
+```{r show_reappearing_taxa_prot_areas_flanders}
 reappearing_taxa_prot_areas_flanders
 ```
 
@@ -441,7 +441,7 @@ reappearing_taxa_wallonia <- df %>%
 
 Reappearing taxa in Wallonia:
 
-```{r reappearing_taxa_wallonia}
+```{r show_reappearing_taxa_wallonia}
 reappearing_taxa_wallonia
 ```
 
@@ -466,7 +466,7 @@ reappearing_taxa_prot_areas_wallonia <- df %>%
 
 Reappearing taxa in Walloon protected areas:
 
-```{r reappearing_taxa_prot_areas_wallonia}
+```{r show_reappearing_taxa_prot_areas_wallonia}
 reappearing_taxa_prot_areas_wallonia
 ```
 
@@ -491,7 +491,7 @@ reappearing_taxa_brussels <- df %>%
 
 Reappearing taxa in Brussels:
 
-```{r reappearing_taxa_brussels}
+```{r show_reappearing_taxa_brussels}
 reappearing_taxa_brussels
 ```
 
@@ -516,7 +516,7 @@ reappearing_taxa_prot_areas_brussels <- df %>%
 
 Reappearing taxa in Brussels protected areas:
 
-```{r reappearing_taxa_prot_areas_brussels}
+```{r show_reappearing_taxa_prot_areas_brussels}
 reappearing_taxa_prot_areas_brussels
 ```
 

@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Damiano Oldoni" />
+<meta name="author" content="Toon Van Daele" />
+<meta name="author" content="Tim Adriaens" />
+
+<meta name="date" content="2026-05-20" />
+
+<title>Occurrence indicators: create cubes</title>
+
+<script src="site_libs/header-attrs-2.31/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+<link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="static/css/trias.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">TrIAS indicators</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Checklist-based indicators
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="01_get_data_input_checklist_indicators.html">Preprocessing for checklist-based indicators</a>
+    </li>
+    <li>
+      <a href="02_indicator_introductions_per_year.html">New species introductions</a>
+    </li>
+    <li>
+      <a href="03_indicator_cumulative_number.html">Cumulative number of species</a>
+    </li>
+    <li>
+      <a href="04_indicator_pathways.html">Introduction pathways</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Occurrence-based indicators
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="05_create_occurrence_create_cubes.html">Create occurrence cubes</a>
+    </li>
+    <li>
+      <a href="05_occurrence_indicators_preprocessing.html">Preprocessing for occurrence-based indicators</a>
+    </li>
+    <li>
+      <a href="06_occurrence_indicators_appearing_taxa.html">Appearing-reappearing species</a>
+    </li>
+    <li class="dropdown-submenu">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Emerging status analysis</a>
+      <ul class="dropdown-menu" role="menu">
+        <li>
+          <a href="07_occurrence_indicators_modelling.html">Assessing emerging status of alien species</a>
+        </li>
+        <li>
+          <a href="08_ranking_emerging_status.html">Ranking species by emerging status</a>
+        </li>
+        <li>
+          <a href="12_taxonomic_distribution_emerging_species.html">Taxonomic distribution of emerging species</a>
+        </li>
+      </ul>
+    </li>
+    <li class="dropdown-submenu">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Protected areas analysis</a>
+      <ul class="dropdown-menu" role="menu">
+        <li>
+          <a href="09_define_overlay_grid_belgium_with_protected_areas.html">Belgian protected areas and EEA grid of Belgium</a>
+        </li>
+        <li>
+          <a href="10_species_observations_occupancy_in_protected_areas.html">Belgian protected areas: observations and occupancy</a>
+        </li>
+        <li>
+          <a href="11_status_alien_species_in_protected_areas.html">Status of invasion of Belgian protected areas</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/trias-project/pipeline">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Occurrence indicators: create cubes</h1>
+<h4 class="author">Damiano Oldoni</h4>
+<h4 class="author">Toon Van Daele</h4>
+<h4 class="author">Tim Adriaens</h4>
+<h4 class="date">2026-05-20</h4>
+
+</div>
+
+
+<p>This document describes the pre-processing of occurrence data of
+alien species in Belgium. The outputs of this pipeline will be used as
+input for modelling.</p>
+<div id="setup" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Setup</h1>
+<p>Load libraries:</p>
+<pre class="r"><code>library(tidyverse) # To do data science
+library(here) # To find files
+library(rgbif) # To get taxa from publisehd unified checklist
+# pak::pak(&quot;onestop-project/elodea&quot;)
+library(elodea) # To work with GBIF checklists</code></pre>
+</div>
+<div id="intro" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> Intro</h1>
+<p>In this pipeline we create the <a
+href="https://www.gbif.org/occurrence-cubes">GBIF species occurrence
+cube</a> for Belgian alien species. This requires the following steps:
+1. Get the alien taxa from the <a
+href="https://www.gbif.org/dataset/6d9e952f-948c-4483-9807-575348147c7e">Global
+Register of Introduced and Invasive Species - Belgium</a>. Notice that
+the alien taxa have different taxonomi rank. 2. Create occurrence cubes
+for each taxonomic rank of the alien taxa. 3. Create a cube at class
+level of all classes related to the alien taxa. This cube will be used
+to compensate the research effort bias. 3. Merge the cubes and save the
+cubes as interim products.</p>
+</div>
+<div id="get-taxa" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> Get taxa</h1>
+<p>Get taxa from the <a
+href="https://www.gbif.org/dataset/6d9e952f-948c-4483-9807-575348147c7e">Global
+Register of Introduced and Invasive Species - Belgium</a> and their
+match to the GBIF Backbone:</p>
+<pre class="r"><code>taxa &lt;- elodea::get_taxa(datasetKey = &quot;6d9e952f-948c-4483-9807-575348147c7e&quot;)</code></pre>
+<p>We don’t need to retrieve distributions to select alien species as
+all taxa are by definition introduced in Belgium and/or one of its
+regions.</p>
+<p>The columns <code>accepted*</code> are very important as they contain
+information from the GBIF Backbone:</p>
+<pre class="r"><code>taxa %&gt;%
+  dplyr::select(starts_with(&quot;accepted&quot;)) %&gt;%
+  head()</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["acceptedKey"],"name":[1],"type":["int"],"align":["right"]},{"label":["acceptedName"],"name":[2],"type":["chr"],"align":["left"]},{"label":["acceptedTaxonRank"],"name":[3],"type":["chr"],"align":["left"]},{"label":["acceptedKingdom"],"name":[4],"type":["chr"],"align":["left"]}],"data":[{"1":"5740285","2":"Gyrodactylus proterorhini Ergens, 1967","3":"SPECIES","4":"Animalia"},{"1":"3202936","2":"Aphanomyces astaci Schikora","3":"SPECIES","4":"Chromista"},{"1":"5179027","2":"Scutigera coleoptrata Linnaeus, 1758","3":"SPECIES","4":"Animalia"},{"1":"5250069","2":"Thecaphora oxalidis (Ellis & Tracy) M.Lutz, R.Bauer & Piątek","3":"SPECIES","4":"Fungi"},{"1":"4985072","2":"Tricellaria inopinata d'Hondt & Occhipinti Ambrogi, 1985","3":"SPECIES","4":"Animalia"},{"1":"5250090","2":"Urocystis trollii Nannf.","3":"SPECIES","4":"Fungi"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>Taxonomic rank distribution:</p>
+<pre class="r"><code>taxa %&gt;%
+  select(starts_with(&quot;accepted&quot;)) %&gt;%
+  distinct() %&gt;%
+  count(acceptedTaxonRank) %&gt;%
+  arrange(desc(n))</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["acceptedTaxonRank"],"name":[1],"type":["chr"],"align":["left"]},{"label":["n"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"SPECIES","2":"3985"},{"1":"SUBSPECIES","2":"159"},{"1":"VARIETY","2":"29"},{"1":"GENUS","2":"27"},{"1":"FORM","2":"2"},{"1":"FAMILY","2":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<div id="buid-sql-query-to-create-occurrence-cubes"
+class="section level1" number="4">
+<h1><span class="header-section-number">4</span> Buid SQL query to
+create occurrence cubes</h1>
+<p>We need to create selveral cubes as the taxonomic rank is not
+uniform. The following cubes are needed: - cube at species level for
+species (<code>acceptedTaxonRank</code> = <code>SPECIES</code>) - cube
+at genus level for genera (<code>acceptedTaxonRank</code> =
+<code>GENUS</code>) - cube at family level for families
+(<code>acceptedTaxonRank</code> = <code>FAMILY</code>) - cube at
+taxonomic level for subtaxa, forms and varieties
+(<code>acceptedTaxonRank</code> one of (<code>SUBSPECIES</code>,
+<code>VARIETY</code>, <code>FORM</code>))</p>
+<p>We build the list of keys needed to create the cubes:</p>
+<pre class="r"><code>ranks &lt;- list(
+  species = &quot;SPECIES&quot;,
+  genus = &quot;GENUS&quot;,
+  family = &quot;FAMILY&quot;,
+  taxa = list(
+    subspecies = &quot;SUBSPECIES&quot;,
+    variety = &quot;VARIETY&quot;,
+    form = &quot;FORM&quot;
+  )
+)
+keys &lt;- ranks %&gt;%
+  purrr::map(
+    function(x) {
+      taxa %&gt;%
+        dplyr::filter(acceptedTaxonRank %in% x) %&gt;%
+        dplyr::distinct(acceptedKey) %&gt;%
+        pull()
+    }
+  )</code></pre>
+<p>We define the SQL queries needed to create an occurrence cube for the
+alien species in Belgium.</p>
+<div id="occurrence-cube-at-species-level" class="section level2"
+number="4.1">
+<h2><span class="header-section-number">4.1</span> Occurrence cube at
+species level</h2>
+<pre class="r"><code>sql_query &lt;- &quot;
+  SELECT
+    \&quot;year\&quot;,
+    GBIF_EEARGCode(
+      1000,
+      decimalLatitude,
+      decimalLongitude,
+      COALESCE(coordinateUncertaintyInMeters, 500)
+    ) AS eeaCellCode,
+    speciesKey,
+    species,
+    COUNT(*) AS occurrences,
+    MIN(COALESCE(coordinateUncertaintyInMeters, 500)) AS minCoordinateUncertaintyInMeters
+  FROM
+    occurrence
+  WHERE
+    occurrenceStatus = &#39;PRESENT&#39;
+    AND NOT occurrence.basisofrecord IN (&#39;FOSSIL_SPECIMEN&#39;, &#39;LIVING_SPECIMEN&#39;)
+    AND speciesKey IN ({keys})
+    AND speciesKey IS NOT NULL
+    AND countryCode = &#39;BE&#39;
+    AND \&quot;year\&quot; &gt;= 1980
+    AND \&quot;year\&quot; IS NOT NULL
+    AND hasCoordinate = TRUE
+    AND NOT GBIF_STRINGARRAYCONTAINS(issue, &#39;ZERO_COORDINATE&#39;, TRUE)
+    AND NOT GBIF_STRINGARRAYCONTAINS(issue, &#39;COORDINATE_OUT_OF_RANGE&#39;, TRUE)
+    AND NOT GBIF_STRINGARRAYCONTAINS(issue, &#39;COORDINATE_INVALID&#39;, TRUE)
+    AND NOT GBIF_STRINGARRAYCONTAINS(issue, &#39;COUNTRY_COORDINATE_MISMATCH&#39;, TRUE)
+    AND NOT GBIF_STRINGARRAYCONTAINS(issue, &#39;TAXON_MATCH_FUZZY&#39;, TRUE)
+    AND (
+      LOWER(identificationVerificationStatus) NOT IN (
+        &#39;unverified&#39;,
+        &#39;unvalidated&#39;,
+        &#39;not validated&#39;,
+        &#39;under validation&#39;,
+        &#39;not able to validate&#39;,
+        &#39;control could not be conclusive due to insufficient knowledge&#39;,
+        &#39;uncertain&#39;,
+        &#39;unconfirmed&#39;,
+        &#39;unconfirmed - not reviewed&#39;,
+        &#39;validation requested&#39;
+        )
+      OR identificationVerificationStatus IS NULL
+    )
+  GROUP BY
+    \&quot;year\&quot;,
+    eeaCellCode,
+    speciesKey,
+    species,
+    classKey
+  ORDER BY
+    \&quot;year\&quot; DESC,
+    eeaCellCode ASC,
+    speciesKey ASC;
+&quot;
+
+query_filled &lt;- glue::glue(
+  sql_query,
+  keys = paste(keys$species, collapse = &quot;, &quot;)
+)</code></pre>
+<p>We can now trigger the download of a species occurrence cube with
+rgbif function <a
+href="https://docs.ropensci.org/rgbif/reference/occ_download_sql.html"><code>occ_download_sql</code></a>:</p>
+<pre class="r"><code># Trigger species occurrence cube download with rgbif
+# Uncomment to run again
+# d &lt;- rgbif::occ_download_sql(
+#   q = query_filled,
+#   format = &quot;SQL_TSV_ZIP&quot;,
+#   user = Sys.getenv(&quot;GBIF_USER&quot;),
+#   pwd = Sys.getenv(&quot;GBIF_PWD&quot;),
+#   email = Sys.getenv(&quot;GBIF_EMAIL&quot;),
+#   validate = TRUE
+# )
+# d</code></pre>
+<p>Download key returned: <a
+href="https://www.gbif.org/occurrence/download/0026660-260507073636908"><code>0026660-260507073636908</code></a>.</p>
+<pre class="r"><code>download_key_species &lt;- &quot;0026660-260507073636908&quot;</code></pre>
+</div>
+<div id="occurrence-cube-at-genus-level" class="section level2"
+number="4.2">
+<h2><span class="header-section-number">4.2</span> Occurrence cube at
+genus level</h2>
+<pre class="r"><code>sql_query &lt;- &quot;
+  SELECT
+    \&quot;year\&quot;,
+    GBIF_EEARGCode(
+      1000,
+      decimalLatitude,
+      decimalLongitude,
+      COALESCE(coordinateUncertaintyInMeters, 500)
+    ) AS eeaCellCode,
+    genusKey,
+    genus,
+    COUNT(*) AS occurrences,
+    MIN(COALESCE(coordinateUncertaintyInMeters, 500)) AS minCoordinateUncertaintyInMeters
+  FROM
+    occurrence
+  WHERE
+    occurrenceStatus = &#39;PRESENT&#39;
+    AND NOT occurrence.basisofrecord IN (&#39;FOSSIL_SPECIMEN&#39;, &#39;LIVING_SPECIMEN&#39;)
+    AND genusKey IN ({keys})
+    AND genusKey IS NOT NULL
+    AND countryCode = &#39;BE&#39;
+    AND \&quot;year\&quot; &gt;= 1980
+    AND \&quot;year\&quot; IS NOT NULL
+    AND hasCoordinate = TRUE
+    AND NOT GBIF_STRINGARRAYCONTAINS(issue, &#39;ZERO_COORDINATE&#39;, TRUE)
+    AND NOT GBIF_STRINGARRAYCONTAINS(issue, &#39;COORDINATE_OUT_OF_RANGE&#39;, TRUE)
+    AND NOT GBIF_STRINGARRAYCONTAINS(issue, &#39;COORDINATE_INVALID&#39;, TRUE)
+    AND NOT GBIF_STRINGARRAYCONTAINS(issue, &#39;COUNTRY_COORDINATE_MISMATCH&#39;, TRUE)
+    AND NOT GBIF_STRINGARRAYCONTAINS(issue, &#39;TAXON_MATCH_FUZZY&#39;, TRUE)
+    AND (
+      LOWER(identificationVerificationStatus) NOT IN (
+        &#39;unverified&#39;,
+        &#39;unvalidated&#39;,
+        &#39;not validated&#39;,
+        &#39;under validation&#39;,
+        &#39;not able to validate&#39;,
+        &#39;control could not be conclusive due to insufficient knowledge&#39;,
+        &#39;uncertain&#39;,
+        &#39;unconfirmed&#39;,
+        &#39;unconfirmed - not reviewed&#39;,
+        &#39;validation requested&#39;
+        )
+      OR identificationVerificationStatus IS NULL
+    )
+  GROUP BY
+    \&quot;year\&quot;,
+    eeaCellCode,
+    genusKey,
+    genus,
+    classKey
+  ORDER BY
+    \&quot;year\&quot; DESC,
+    eeaCellCode ASC,
+    genusKey ASC;
+&quot;
+
+query_filled &lt;- glue::glue(
+  sql_query,
+  keys = paste(keys$genus, collapse = &quot;, &quot;)
+)</code></pre>
+<p>We can now trigger the download of the genus occurrence cube with
+rgbif function <a
+href="https://docs.ropensci.org/rgbif/reference/occ_download_sql.html"><code>occ_download_sql</code></a>:</p>
+<pre class="r"><code># Trigger species occurrence cube download with rgbif
+# Uncomment to run again
+# d &lt;- rgbif::occ_download_sql(
+#   q = query_filled,
+#   format = &quot;SQL_TSV_ZIP&quot;,
+#   user = Sys.getenv(&quot;GBIF_USER&quot;),
+#   pwd = Sys.getenv(&quot;GBIF_PWD&quot;),
+#   email = Sys.getenv(&quot;GBIF_EMAIL&quot;),
+#   validate = TRUE
+# )
+# d</code></pre>
+<p>Download key returned: <a
+href="https://www.gbif.org/occurrence/download/0000097-260519110011954"><code>0000097-260519110011954</code></a>.</p>
+<pre class="r"><code>download_key_genus &lt;- &quot;0000097-260519110011954&quot;</code></pre>
+</div>
+<div id="occurrence-cube-at-family-level" class="section level2"
+number="4.3">
+<h2><span class="header-section-number">4.3</span> Occurrence cube at
+family level</h2>
+<pre class="r"><code>sql_query &lt;- &quot;
+  SELECT
+    \&quot;year\&quot;,
+    GBIF_EEARGCode(
+      1000,
+      decimalLatitude,
+      decimalLongitude,
+      COALESCE(coordinateUncertaintyInMeters, 500)
+    ) AS eeaCellCode,
+    familyKey,
+    family,
+    COUNT(*) AS occurrences,
+    MIN(COALESCE(coordinateUncertaintyInMeters, 500)) AS minCoordinateUncertaintyInMeters
+  FROM
+    occurrence
+  WHERE
+    occurrenceStatus = &#39;PRESENT&#39;
+    AND NOT occurrence.basisofrecord IN (&#39;FOSSIL_SPECIMEN&#39;, &#39;LIVING_SPECIMEN&#39;)
+    AND familyKey IN ({keys})
+    AND familyKey IS NOT NULL
+    AND countryCode = &#39;BE&#39;
+    AND \&quot;year\&quot; &gt;= 1980
+    AND \&quot;year\&quot; IS NOT NULL
+    AND hasCoordinate = TRUE
+    AND NOT GBIF_STRINGARRAYCONTAINS(issue, &#39;ZERO_COORDINATE&#39;, TRUE)
+    AND NOT GBIF_STRINGARRAYCONTAINS(issue, &#39;COORDINATE_OUT_OF_RANGE&#39;, TRUE)
+    AND NOT GBIF_STRINGARRAYCONTAINS(issue, &#39;COORDINATE_INVALID&#39;, TRUE)
+    AND NOT GBIF_STRINGARRAYCONTAINS(issue, &#39;COUNTRY_COORDINATE_MISMATCH&#39;, TRUE)
+    AND NOT GBIF_STRINGARRAYCONTAINS(issue, &#39;TAXON_MATCH_FUZZY&#39;, TRUE)
+    AND (
+      LOWER(identificationVerificationStatus) NOT IN (
+        &#39;unverified&#39;,
+        &#39;unvalidated&#39;,
+        &#39;not validated&#39;,
+        &#39;under validation&#39;,
+        &#39;not able to validate&#39;,
+        &#39;control could not be conclusive due to insufficient knowledge&#39;,
+        &#39;uncertain&#39;,
+        &#39;unconfirmed&#39;,
+        &#39;unconfirmed - not reviewed&#39;,
+        &#39;validation requested&#39;
+        )
+      OR identificationVerificationStatus IS NULL
+    )
+  GROUP BY
+    \&quot;year\&quot;,
+    eeaCellCode,
+    familyKey,
+    family,
+    classKey
+  ORDER BY
+    \&quot;year\&quot; DESC,
+    eeaCellCode ASC,
+    familyKey ASC;
+&quot;
+query_filled &lt;- glue::glue(
+  sql_query,
+  keys = paste(keys$family, collapse = &quot;, &quot;)
+)</code></pre>
+<p>We can now trigger the download of the family occurrence cube with
+rgbif function <a
+href="https://docs.ropensci.org/rgbif/reference/occ_download_sql.html"><code>occ_download_sql</code></a>:</p>
+<pre class="r"><code># Trigger family occurrence cube download with rgbif
+# Uncomment to run again
+# d &lt;- rgbif::occ_download_sql(
+#   q = query_filled,
+#   format = &quot;SQL_TSV_ZIP&quot;,
+#   user = Sys.getenv(&quot;GBIF_USER&quot;),
+#   pwd = Sys.getenv(&quot;GBIF_PWD&quot;),
+#   email = Sys.getenv(&quot;GBIF_EMAIL&quot;),
+#   validate = TRUE
+# )
+# d</code></pre>
+<p>Download key returned: <a
+href="https://www.gbif.org/occurrence/download/0000101-260519110011954"><code>0000101-260519110011954</code></a>.</p>
+<pre class="r"><code>download_key_family &lt;- &quot;0000101-260519110011954&quot;</code></pre>
+</div>
+<div
+id="occurrence-cube-at-taxonomic-level-for-subtaxa-forms-and-varieties"
+class="section level2" number="4.4">
+<h2><span class="header-section-number">4.4</span> Occurrence cube at
+taxonomic level for subtaxa, forms and varieties</h2>
+<pre class="r"><code>sql_query &lt;- &quot;
+  SELECT
+    \&quot;year\&quot;,
+    GBIF_EEARGCode(
+      1000,
+      decimalLatitude,
+      decimalLongitude,
+      COALESCE(coordinateUncertaintyInMeters, 500)
+    ) AS eeaCellCode,
+    taxonKey,
+    scientificName,
+    COUNT(*) AS occurrences,
+    MIN(COALESCE(coordinateUncertaintyInMeters, 500)) AS minCoordinateUncertaintyInMeters
+  FROM
+    occurrence
+  WHERE
+    occurrenceStatus = &#39;PRESENT&#39;
+    AND NOT occurrence.basisofrecord IN (&#39;FOSSIL_SPECIMEN&#39;, &#39;LIVING_SPECIMEN&#39;)
+    AND taxonKey IN ({keys})
+    AND taxonKey IS NOT NULL
+    AND countryCode = &#39;BE&#39;
+    AND \&quot;year\&quot; &gt;= 1980
+    AND \&quot;year\&quot; IS NOT NULL
+    AND hasCoordinate = TRUE
+    AND NOT GBIF_STRINGARRAYCONTAINS(issue, &#39;ZERO_COORDINATE&#39;, TRUE)
+    AND NOT GBIF_STRINGARRAYCONTAINS(issue, &#39;COORDINATE_OUT_OF_RANGE&#39;, TRUE)
+    AND NOT GBIF_STRINGARRAYCONTAINS(issue, &#39;COORDINATE_INVALID&#39;, TRUE)
+    AND NOT GBIF_STRINGARRAYCONTAINS(issue, &#39;COUNTRY_COORDINATE_MISMATCH&#39;, TRUE)
+    AND NOT GBIF_STRINGARRAYCONTAINS(issue, &#39;TAXON_MATCH_FUZZY&#39;, TRUE)
+    AND (
+      LOWER(identificationVerificationStatus) NOT IN (
+        &#39;unverified&#39;,
+        &#39;unvalidated&#39;,
+        &#39;not validated&#39;,
+        &#39;under validation&#39;,
+        &#39;not able to validate&#39;,
+        &#39;control could not be conclusive due to insufficient knowledge&#39;,
+        &#39;uncertain&#39;,
+        &#39;unconfirmed&#39;,
+        &#39;unconfirmed - not reviewed&#39;,
+        &#39;validation requested&#39;
+        )
+      OR identificationVerificationStatus IS NULL
+    )
+  GROUP BY
+    \&quot;year\&quot;,
+    eeaCellCode,
+    taxonKey,
+    scientificName,
+    classKey
+  ORDER BY
+    \&quot;year\&quot; DESC,
+    eeaCellCode ASC,
+    taxonKey ASC;
+&quot;
+query_filled &lt;- glue::glue(
+  sql_query,
+  keys = paste(keys$taxa, collapse = &quot;, &quot;)
+)</code></pre>
+<p>We can now trigger the download of the taxonomy occurrence cube with
+rgbif function <a
+href="https://docs.ropensci.org/rgbif/reference/occ_download_sql.html"><code>occ_download_sql</code></a>:</p>
+<pre class="r"><code># Trigger taxonomy occurrence cube download with rgbif
+# Uncomment to run again
+# d &lt;- rgbif::occ_download_sql(
+#   q = query_filled,
+#   format = &quot;SQL_TSV_ZIP&quot;,
+#   user = Sys.getenv(&quot;GBIF_USER&quot;),
+#   pwd = Sys.getenv(&quot;GBIF_PWD&quot;),
+#   email = Sys.getenv(&quot;GBIF_EMAIL&quot;),
+#   validate = TRUE
+# )
+# d</code></pre>
+<p>Download key returned: <a
+href="https://www.gbif.org/occurrence/download/0000162-260519110011954"><code>0000162-260519110011954</code></a>.</p>
+<pre class="r"><code>download_key_taxon &lt;- &quot;0000162-260519110011954&quot;</code></pre>
+</div>
+<div id="occurrence-cube-at-class-level-for-baseline"
+class="section level2" number="4.5">
+<h2><span class="header-section-number">4.5</span> Occurrence cube at
+class level for baseline</h2>
+<p>We collect all classes of the alien species in the unified checklist
+to create a baseline cube at class level:</p>
+<pre class="r"><code>class_keys &lt;- purrr::map_dbl(
+  unlist(keys, use.names = FALSE),
+  function(k) {
+    class_key &lt;- rgbif::name_usage(key = k) %&gt;%
+      purrr::pluck(&quot;data&quot;) %&gt;%
+      dplyr::select(any_of(&quot;classKey&quot;))
+    if (&quot;classKey&quot; %in% names(class_key)) {
+      class_key %&gt;%
+        dplyr::pull(classKey) %&gt;%
+        unique()
+    } else {
+      NA_real_
+    }
+  }
+)
+# Get unique not NA class keys
+class_keys &lt;- unique(class_keys[!is.na(class_keys)])</code></pre>
+<pre class="r"><code>sql_query &lt;- &quot;
+  SELECT
+    \&quot;year\&quot;,
+    GBIF_EEARGCode(
+      1000,
+      decimalLatitude,
+      decimalLongitude,
+      COALESCE(coordinateUncertaintyInMeters, 500)
+    ) AS eeaCellCode,
+    classKey,
+    class,
+    COUNT(*) AS occurrences,
+    MIN(COALESCE(coordinateUncertaintyInMeters, 500)) AS minCoordinateUncertaintyInMeters
+  FROM
+    occurrence
+  WHERE
+    occurrenceStatus = &#39;PRESENT&#39;
+    AND NOT occurrence.basisofrecord IN (&#39;FOSSIL_SPECIMEN&#39;, &#39;LIVING_SPECIMEN&#39;)
+    AND classKey IN ({keys})
+    AND classKey IS NOT NULL
+    AND countryCode = &#39;BE&#39;
+    AND \&quot;year\&quot; &gt;= 1980
+    AND \&quot;year\&quot; IS NOT NULL
+    AND hasCoordinate = TRUE
+    AND NOT GBIF_STRINGARRAYCONTAINS(issue, &#39;ZERO_COORDINATE&#39;, TRUE)
+    AND NOT GBIF_STRINGARRAYCONTAINS(issue, &#39;COORDINATE_OUT_OF_RANGE&#39;, TRUE)
+    AND NOT GBIF_STRINGARRAYCONTAINS(issue, &#39;COORDINATE_INVALID&#39;, TRUE)
+    AND NOT GBIF_STRINGARRAYCONTAINS(issue, &#39;COUNTRY_COORDINATE_MISMATCH&#39;, TRUE)
+    AND NOT GBIF_STRINGARRAYCONTAINS(issue, &#39;TAXON_MATCH_FUZZY&#39;, TRUE)
+    AND (
+      LOWER(identificationVerificationStatus) NOT IN (
+        &#39;unverified&#39;,
+        &#39;unvalidated&#39;,
+        &#39;not validated&#39;,
+        &#39;under validation&#39;,
+        &#39;not able to validate&#39;,
+        &#39;control could not be conclusive due to insufficient knowledge&#39;,
+        &#39;uncertain&#39;,
+        &#39;unconfirmed&#39;,
+        &#39;unconfirmed - not reviewed&#39;,
+        &#39;validation requested&#39;
+        )
+      OR identificationVerificationStatus IS NULL
+    )
+  GROUP BY
+    \&quot;year\&quot;,
+    eeaCellCode,
+    classKey,
+    class
+  ORDER BY
+    \&quot;year\&quot; DESC,
+    eeaCellCode ASC,
+    classKey ASC;
+&quot;
+
+query_filled &lt;- glue::glue(
+  sql_query,
+  keys = paste(class_keys, collapse = &quot;, &quot;)
+)</code></pre>
+<p>We can now trigger the download of a class occurrence cube with rgbif
+function <a
+href="https://docs.ropensci.org/rgbif/reference/occ_download_sql.html"><code>occ_download_sql</code></a>:</p>
+<pre class="r"><code># Trigger species occurrence cube download with rgbif
+# Uncomment to run again
+# d &lt;- rgbif::occ_download_sql(
+#   q = query_filled,
+#   format = &quot;SQL_TSV_ZIP&quot;,
+#   user = Sys.getenv(&quot;GBIF_USER&quot;),
+#   pwd = Sys.getenv(&quot;GBIF_PWD&quot;),
+#   email = Sys.getenv(&quot;GBIF_EMAIL&quot;),
+#   validate = TRUE
+# )
+# d</code></pre>
+<p>Download key returned: <a
+href="https://www.gbif.org/occurrence/download/0000669-260519110011954"><code>0000669-260519110011954</code></a>.</p>
+<pre class="r"><code>download_key_baseline &lt;- &quot;0000669-260519110011954&quot;</code></pre>
+</div>
+</div>
+<div id="download-and-load-the-occurrence-cubes" class="section level1"
+number="5">
+<h1><span class="header-section-number">5</span> Download and load the
+occurrence cubes</h1>
+<p>We download now all the GBIF occurrence cubes:</p>
+<pre class="r"><code>downloads &lt;- list(
+  species = download_key_species,
+  genus = download_key_genus,
+  family = download_key_family,
+  taxon = download_key_taxon,
+  class = download_key_baseline
+)
+cube_zip_files &lt;- purrr::map(
+  downloads, function(k) {
+    rgbif::occ_download_get(
+      key = k,
+      path = here::here(&quot;data&quot;, &quot;input&quot;, &quot;gbif_cubes&quot;),
+      overwrite = TRUE
+    )
+  }
+)</code></pre>
+<p>Load the cubes:</p>
+<pre class="r"><code>cubes &lt;- purrr::map(
+  cube_zip_files,
+  rgbif::occ_download_import,
+  path = here::here(&quot;data&quot;, &quot;input&quot;, &quot;gbif_cubes&quot;)
+)</code></pre>
+</div>
+<div id="merge-the-cubes" class="section level1" number="6">
+<h1><span class="header-section-number">6</span> Merge the cubes</h1>
+<p>The cube containing the baseline information at class level must not
+be merged with the others, but set apart:</p>
+<pre class="r"><code>baseline_cube &lt;- cubes$class
+cubes$class &lt;- NULL</code></pre>
+<div id="standardise-column-names" class="section level2" number="6.1">
+<h2><span class="header-section-number">6.1</span> Standardise column
+names</h2>
+<p>The cubes have different column names for idenitifying the taxon
+columns, e.g. <code>specieskey</code> and <code>species</code>,
+<code>genuskey</code> and <code>genus</code>. We standardise the names
+of the taxon columns to <code>taxonKey</code> and <code>taxonName</code>
+for all cubes:</p>
+<pre class="r"><code># First rename the taxonomic columns of the cube at taxonomic level as it has scientificName in place of taxon
+cubes$taxon &lt;- cubes$taxon %&gt;%
+  dplyr::rename(
+    taxon = scientificname
+  )
+# Rename all the cubes at once
+cubes &lt;- purrr::imap(
+  cubes,
+  function(cube, rank) {
+    cube %&gt;%
+      dplyr::rename(
+        taxonKey = paste0(rank, &quot;key&quot;),
+        taxonName = rank
+      )
+  }
+)</code></pre>
+<pre><code>## Warning: Using an external vector in selections was deprecated in tidyselect 1.1.0.
+## ℹ Please use `all_of()` or `any_of()` instead.
+##   # Was:
+##   data %&gt;% select(rank)
+## 
+##   # Now:
+##   data %&gt;% select(all_of(rank))
+## 
+## See &lt;https://tidyselect.r-lib.org/reference/faq-external-vector.html&gt;.
+## This warning is displayed once per session.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+## generated.</code></pre>
+<p>Merge:</p>
+<pre class="r"><code>occurrence_cube &lt;- purrr::reduce(cubes, dplyr::full_join)</code></pre>
+<p>Use camel case consequently for all column names:</p>
+<pre class="r"><code>occurrence_cube &lt;- occurrence_cube %&gt;%
+  dplyr::rename(
+    eeaCellCode = eeacellcode,
+    minCoordinateUncertaintyInMeters = mincoordinateuncertaintyinmeters
+  )
+baseline_cube &lt;- baseline_cube %&gt;%
+  dplyr::rename(
+    eeaCellCode = eeacellcode,
+    classKey = classkey,
+    minCoordinateUncertaintyInMeters = mincoordinateuncertaintyinmeters
+  )</code></pre>
+<p>Preview:</p>
+<pre class="r"><code>head(x = occurrence_cube, n = 10)</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["year"],"name":[1],"type":["int"],"align":["right"]},{"label":["eeaCellCode"],"name":[2],"type":["chr"],"align":["left"]},{"label":["taxonKey"],"name":[3],"type":["int"],"align":["right"]},{"label":["taxonName"],"name":[4],"type":["chr"],"align":["left"]},{"label":["occurrences"],"name":[5],"type":["int"],"align":["right"]},{"label":["minCoordinateUncertaintyInMeters"],"name":[6],"type":["dbl"],"align":["right"]}],"data":[{"1":"2026","2":"1kmE3799N3133","3":"2294277","4":"Theba pisana","5":"1","6":"999"},{"1":"2026","2":"1kmE3799N3134","3":"4562917","4":"Cochlicella acuta","5":"2","6":"1"},{"1":"2026","2":"1kmE3799N3135","3":"2294277","4":"Theba pisana","5":"1","6":"5"},{"1":"2026","2":"1kmE3799N3135","3":"3197314","4":"Sargassum muticum","5":"1","6":"3"},{"1":"2026","2":"1kmE3799N3136","3":"8485639","4":"Ensis leei","5":"1","6":"999"},{"1":"2026","2":"1kmE3800N3132","3":"5232437","4":"Branta canadensis","5":"1","6":"8"},{"1":"2026","2":"1kmE3800N3133","3":"3172077","4":"Veronica persica","5":"1","6":"2"},{"1":"2026","2":"1kmE3800N3133","3":"5219858","4":"Ondatra zibethicus","5":"3","6":"30"},{"1":"2026","2":"1kmE3800N3133","3":"5232437","4":"Branta canadensis","5":"5","6":"3"},{"1":"2026","2":"1kmE3800N3133","3":"9752149","4":"Phasianus colchicus","5":"2","6":"3"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>Number of rows in the merged cube:</p>
+<pre class="r"><code>n_rows_merged &lt;- nrow(occurrence_cube)
+n_rows_merged</code></pre>
+<pre><code>## [1] 1948103</code></pre>
+<p>The number of rows in the merged cube should equal to the sum of the
+number of rows in the single cubes as there are no taxa shared between
+the cubes:</p>
+<pre class="r"><code>n_rows_merged == sum(purrr::map_dbl(cubes, nrow))</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+</div>
+</div>
+<div id="save-the-cubes" class="section level1" number="7">
+<h1><span class="header-section-number">7</span> Save the cubes</h1>
+<p>Save both the merged cube and the baseline cube as csv files in
+<code>data/interim</code>:</p>
+<pre class="r"><code>readr::write_csv(
+  occurrence_cube,
+  here::here(&quot;data&quot;, &quot;interim&quot;, &quot;be_alientaxa_cube.csv&quot;),
+  na = &quot;&quot;
+)
+readr::write_csv(
+  baseline_cube,
+  here::here(&quot;data&quot;, &quot;interim&quot;, &quot;be_classes_cube.csv&quot;),
+  na = &quot;&quot;
+)</code></pre>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

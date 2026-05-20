@@ -18,6 +18,8 @@ navbar:
     - text: "Occurrence-based indicators"
       href: ""
       menu:
+      - text: "Create occurrence cubes"
+        href: 05_create_occurrence_create_cubes.html
       - text: "Preprocessing for occurrence-based indicators"
         href: 05_occurrence_indicators_preprocessing.html
       - text: "Appearing-reappearing species"

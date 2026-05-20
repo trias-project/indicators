@@ -1,0 +1,677 @@
+---
+title: "Occurrence indicators: create cubes"
+author:
+- Damiano Oldoni
+- Toon Van Daele
+- Tim Adriaens
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    toc_depth: 3
+    toc_float: true
+    number_sections: true
+---
+
+This document describes the pre-processing of occurrence data of alien species in Belgium. The outputs of this pipeline will be used as input for modelling.
+
+# Setup
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, tidy='styler')
+```
+
+Load libraries:
+
+```{r load_libraries, message = FALSE}
+library(tidyverse) # To do data science
+library(here) # To find files
+library(rgbif) # To get taxa from publisehd unified checklist
+# pak::pak("onestop-project/elodea")
+library(elodea) # To work with GBIF checklists
+```
+
+# Intro
+
+In this pipeline we create the [GBIF species occurrence cube](https://www.gbif.org/occurrence-cubes) for Belgian alien species. This requires the following steps:
+1. Get the alien taxa from the [Global Register of Introduced and Invasive Species - Belgium](https://www.gbif.org/dataset/6d9e952f-948c-4483-9807-575348147c7e). Notice that the alien taxa have different taxonomi rank.
+2. Create occurrence cubes for each taxonomic rank of the alien taxa.
+3. Create a cube at class level of all classes related to the alien taxa. This cube will be used to compensate the research effort bias.
+3. Merge the cubes and save the cubes as interim products.
+
+# Get taxa
+
+Get taxa from the [Global Register of Introduced and Invasive Species - Belgium](https://www.gbif.org/dataset/6d9e952f-948c-4483-9807-575348147c7e) and their match to the GBIF Backbone:
+
+```{r get_taxa_checklist, cache=TRUE}
+taxa <- elodea::get_taxa(datasetKey = "6d9e952f-948c-4483-9807-575348147c7e")
+```
+
+We don't need to retrieve distributions to select alien species as all taxa are by definition introduced in Belgium and/or one of its regions.
+
+The columns `accepted*` are very important as they contain information from the GBIF Backbone:
+
+```{r preview_accepted}
+taxa %>% 
+  dplyr::select(starts_with("accepted")) %>%
+  head()
+```
+Taxonomic rank distribution:
+
+```{r}
+taxa %>%
+  select(starts_with("accepted")) %>%
+  distinct() %>%
+  count(acceptedTaxonRank) %>%
+  arrange(desc(n))
+```
+
+# Buid SQL query to create occurrence cubes
+
+We need to create selveral cubes as the taxonomic rank is not uniform. The following cubes are needed:
+- cube at species level for species (`acceptedTaxonRank` = `SPECIES`)
+- cube at genus level for genera (`acceptedTaxonRank` = `GENUS`)
+- cube at family level for families (`acceptedTaxonRank` = `FAMILY`)
+- cube at taxonomic level for subtaxa, forms and varieties (`acceptedTaxonRank` one of (`SUBSPECIES`, `VARIETY`, `FORM`))
+
+We build the list of keys needed to create the cubes:
+
+```{r species_keys}
+ranks <- list(
+  species = "SPECIES",
+  genus = "GENUS",
+  family = "FAMILY",
+  taxa = list(
+    subspecies = "SUBSPECIES",
+    variety = "VARIETY",
+    form = "FORM"
+  )
+)
+keys <- ranks %>%
+  purrr::map(
+    function(x) {
+      taxa %>%
+        dplyr::filter(acceptedTaxonRank %in% x) %>%
+        dplyr::distinct(acceptedKey) %>%
+        pull()
+    }
+  )
+```
+
+We define the SQL queries needed to create an occurrence cube for the alien species  in Belgium.
+
+## Occurrence cube at species level
+
+```{r build_sql_query_species}
+sql_query <- "
+  SELECT
+    \"year\",
+    GBIF_EEARGCode(
+      1000,
+      decimalLatitude,
+      decimalLongitude,
+      COALESCE(coordinateUncertaintyInMeters, 500)
+    ) AS eeaCellCode,
+    speciesKey,
+    species,
+    COUNT(*) AS occurrences,
+    MIN(COALESCE(coordinateUncertaintyInMeters, 500)) AS minCoordinateUncertaintyInMeters
+  FROM
+    occurrence
+  WHERE 
+    occurrenceStatus = 'PRESENT'
+    AND NOT occurrence.basisofrecord IN ('FOSSIL_SPECIMEN', 'LIVING_SPECIMEN')
+    AND speciesKey IN ({keys})
+    AND speciesKey IS NOT NULL
+    AND countryCode = 'BE'
+    AND \"year\" >= 1980
+    AND \"year\" IS NOT NULL
+    AND hasCoordinate = TRUE
+    AND NOT GBIF_STRINGARRAYCONTAINS(issue, 'ZERO_COORDINATE', TRUE)
+    AND NOT GBIF_STRINGARRAYCONTAINS(issue, 'COORDINATE_OUT_OF_RANGE', TRUE)
+    AND NOT GBIF_STRINGARRAYCONTAINS(issue, 'COORDINATE_INVALID', TRUE)
+    AND NOT GBIF_STRINGARRAYCONTAINS(issue, 'COUNTRY_COORDINATE_MISMATCH', TRUE)
+    AND NOT GBIF_STRINGARRAYCONTAINS(issue, 'TAXON_MATCH_FUZZY', TRUE)
+    AND (
+      LOWER(identificationVerificationStatus) NOT IN (
+        'unverified',
+        'unvalidated',
+        'not validated',
+        'under validation',
+        'not able to validate',
+        'control could not be conclusive due to insufficient knowledge',
+        'uncertain',
+        'unconfirmed',
+        'unconfirmed - not reviewed',
+        'validation requested'
+        )
+      OR identificationVerificationStatus IS NULL
+    )
+  GROUP BY
+    \"year\",
+    eeaCellCode,
+    speciesKey,
+    species,
+    classKey
+  ORDER BY
+    \"year\" DESC,
+    eeaCellCode ASC,
+    speciesKey ASC;
+"
+
+query_filled <- glue::glue(
+  sql_query,
+  keys = paste(keys$species, collapse = ", ")
+)
+```
+
+We can now trigger the download of a species occurrence cube with rgbif function [`occ_download_sql`](https://docs.ropensci.org/rgbif/reference/occ_download_sql.html):
+
+```{r trigger_species_occurrence_cube_download}
+# Trigger species occurrence cube download with rgbif
+# Uncomment to run again
+# d <- rgbif::occ_download_sql(
+#   q = query_filled,
+#   format = "SQL_TSV_ZIP",
+#   user = Sys.getenv("GBIF_USER"),
+#   pwd = Sys.getenv("GBIF_PWD"),
+#   email = Sys.getenv("GBIF_EMAIL"),
+#   validate = TRUE
+# )
+# d
+```
+
+Download key returned: [`0026660-260507073636908`](https://www.gbif.org/occurrence/download/0026660-260507073636908).
+
+```{r download_occurrence_cube_species}
+download_key_species <- "0026660-260507073636908"
+```
+
+## Occurrence cube at genus level
+
+```{r build_sql_query_genus}
+sql_query <- "
+  SELECT
+    \"year\",
+    GBIF_EEARGCode(
+      1000,
+      decimalLatitude,
+      decimalLongitude,
+      COALESCE(coordinateUncertaintyInMeters, 500)
+    ) AS eeaCellCode,
+    genusKey,
+    genus,
+    COUNT(*) AS occurrences,
+    MIN(COALESCE(coordinateUncertaintyInMeters, 500)) AS minCoordinateUncertaintyInMeters
+  FROM
+    occurrence
+  WHERE 
+    occurrenceStatus = 'PRESENT'
+    AND NOT occurrence.basisofrecord IN ('FOSSIL_SPECIMEN', 'LIVING_SPECIMEN')
+    AND genusKey IN ({keys})
+    AND genusKey IS NOT NULL
+    AND countryCode = 'BE'
+    AND \"year\" >= 1980
+    AND \"year\" IS NOT NULL
+    AND hasCoordinate = TRUE
+    AND NOT GBIF_STRINGARRAYCONTAINS(issue, 'ZERO_COORDINATE', TRUE)
+    AND NOT GBIF_STRINGARRAYCONTAINS(issue, 'COORDINATE_OUT_OF_RANGE', TRUE)
+    AND NOT GBIF_STRINGARRAYCONTAINS(issue, 'COORDINATE_INVALID', TRUE)
+    AND NOT GBIF_STRINGARRAYCONTAINS(issue, 'COUNTRY_COORDINATE_MISMATCH', TRUE)
+    AND NOT GBIF_STRINGARRAYCONTAINS(issue, 'TAXON_MATCH_FUZZY', TRUE)
+    AND (
+      LOWER(identificationVerificationStatus) NOT IN (
+        'unverified',
+        'unvalidated',
+        'not validated',
+        'under validation',
+        'not able to validate',
+        'control could not be conclusive due to insufficient knowledge',
+        'uncertain',
+        'unconfirmed',
+        'unconfirmed - not reviewed',
+        'validation requested'
+        )
+      OR identificationVerificationStatus IS NULL
+    )
+  GROUP BY
+    \"year\",
+    eeaCellCode,
+    genusKey,
+    genus,
+    classKey
+  ORDER BY
+    \"year\" DESC,
+    eeaCellCode ASC,
+    genusKey ASC;
+"
+
+query_filled <- glue::glue(
+  sql_query,
+  keys = paste(keys$genus, collapse = ", ")
+)
+```
+
+We can now trigger the download of the genus occurrence cube with rgbif function [`occ_download_sql`](https://docs.ropensci.org/rgbif/reference/occ_download_sql.html):
+
+```{r trigger_genus_occurrence_cube_download}
+# Trigger species occurrence cube download with rgbif
+# Uncomment to run again
+# d <- rgbif::occ_download_sql(
+#   q = query_filled,
+#   format = "SQL_TSV_ZIP",
+#   user = Sys.getenv("GBIF_USER"),
+#   pwd = Sys.getenv("GBIF_PWD"),
+#   email = Sys.getenv("GBIF_EMAIL"),
+#   validate = TRUE
+# )
+# d
+```
+
+Download key returned: [`0000097-260519110011954`](https://www.gbif.org/occurrence/download/0000097-260519110011954).
+
+```{r download_occurrence_cube_genus}
+download_key_genus <- "0000097-260519110011954"
+```
+
+## Occurrence cube at family level
+
+```{r build_sql_query_family}
+sql_query <- "
+  SELECT
+    \"year\",
+    GBIF_EEARGCode(
+      1000,
+      decimalLatitude,
+      decimalLongitude,
+      COALESCE(coordinateUncertaintyInMeters, 500)
+    ) AS eeaCellCode,
+    familyKey,
+    family,
+    COUNT(*) AS occurrences,
+    MIN(COALESCE(coordinateUncertaintyInMeters, 500)) AS minCoordinateUncertaintyInMeters
+  FROM
+    occurrence
+  WHERE
+    occurrenceStatus = 'PRESENT'
+    AND NOT occurrence.basisofrecord IN ('FOSSIL_SPECIMEN', 'LIVING_SPECIMEN')
+    AND familyKey IN ({keys})
+    AND familyKey IS NOT NULL
+    AND countryCode = 'BE'
+    AND \"year\" >= 1980
+    AND \"year\" IS NOT NULL
+    AND hasCoordinate = TRUE
+    AND NOT GBIF_STRINGARRAYCONTAINS(issue, 'ZERO_COORDINATE', TRUE)
+    AND NOT GBIF_STRINGARRAYCONTAINS(issue, 'COORDINATE_OUT_OF_RANGE', TRUE)
+    AND NOT GBIF_STRINGARRAYCONTAINS(issue, 'COORDINATE_INVALID', TRUE)
+    AND NOT GBIF_STRINGARRAYCONTAINS(issue, 'COUNTRY_COORDINATE_MISMATCH', TRUE)
+    AND NOT GBIF_STRINGARRAYCONTAINS(issue, 'TAXON_MATCH_FUZZY', TRUE)
+    AND (
+      LOWER(identificationVerificationStatus) NOT IN (
+        'unverified',
+        'unvalidated',
+        'not validated',
+        'under validation',
+        'not able to validate',
+        'control could not be conclusive due to insufficient knowledge',
+        'uncertain',
+        'unconfirmed',
+        'unconfirmed - not reviewed',
+        'validation requested'
+        )
+      OR identificationVerificationStatus IS NULL
+    )
+  GROUP BY
+    \"year\",
+    eeaCellCode,
+    familyKey,
+    family,
+    classKey
+  ORDER BY
+    \"year\" DESC,
+    eeaCellCode ASC,
+    familyKey ASC;
+"
+query_filled <- glue::glue(
+  sql_query,
+  keys = paste(keys$family, collapse = ", ")
+)
+```
+
+We can now trigger the download of the family occurrence cube with rgbif function [`occ_download_sql`](https://docs.ropensci.org/rgbif/reference/occ_download_sql.html):
+
+```{r trigger_family_occurrence_cube_download}
+# Trigger family occurrence cube download with rgbif
+# Uncomment to run again
+# d <- rgbif::occ_download_sql(
+#   q = query_filled,
+#   format = "SQL_TSV_ZIP",
+#   user = Sys.getenv("GBIF_USER"),
+#   pwd = Sys.getenv("GBIF_PWD"),
+#   email = Sys.getenv("GBIF_EMAIL"),
+#   validate = TRUE
+# )
+# d
+```
+
+Download key returned: [`0000101-260519110011954`](https://www.gbif.org/occurrence/download/0000101-260519110011954).
+
+```{r download_occurrence_cube_family}
+download_key_family <- "0000101-260519110011954"
+```
+
+## Occurrence cube at taxonomic level for subtaxa, forms and varieties
+
+```{r build_sql_query_taxa}
+sql_query <- "
+  SELECT
+    \"year\",
+    GBIF_EEARGCode(
+      1000,
+      decimalLatitude,
+      decimalLongitude,
+      COALESCE(coordinateUncertaintyInMeters, 500)
+    ) AS eeaCellCode,
+    taxonKey,
+    scientificName,
+    COUNT(*) AS occurrences,
+    MIN(COALESCE(coordinateUncertaintyInMeters, 500)) AS minCoordinateUncertaintyInMeters
+  FROM
+    occurrence
+  WHERE
+    occurrenceStatus = 'PRESENT'
+    AND NOT occurrence.basisofrecord IN ('FOSSIL_SPECIMEN', 'LIVING_SPECIMEN')
+    AND taxonKey IN ({keys})
+    AND taxonKey IS NOT NULL
+    AND countryCode = 'BE'
+    AND \"year\" >= 1980
+    AND \"year\" IS NOT NULL
+    AND hasCoordinate = TRUE
+    AND NOT GBIF_STRINGARRAYCONTAINS(issue, 'ZERO_COORDINATE', TRUE)
+    AND NOT GBIF_STRINGARRAYCONTAINS(issue, 'COORDINATE_OUT_OF_RANGE', TRUE)
+    AND NOT GBIF_STRINGARRAYCONTAINS(issue, 'COORDINATE_INVALID', TRUE)
+    AND NOT GBIF_STRINGARRAYCONTAINS(issue, 'COUNTRY_COORDINATE_MISMATCH', TRUE)
+    AND NOT GBIF_STRINGARRAYCONTAINS(issue, 'TAXON_MATCH_FUZZY', TRUE)
+    AND (
+      LOWER(identificationVerificationStatus) NOT IN (
+        'unverified',
+        'unvalidated',
+        'not validated',
+        'under validation',
+        'not able to validate',
+        'control could not be conclusive due to insufficient knowledge',
+        'uncertain',
+        'unconfirmed',
+        'unconfirmed - not reviewed',
+        'validation requested'
+        )
+      OR identificationVerificationStatus IS NULL
+    )
+  GROUP BY
+    \"year\",
+    eeaCellCode,
+    taxonKey,
+    scientificName,
+    classKey
+  ORDER BY
+    \"year\" DESC,
+    eeaCellCode ASC,
+    taxonKey ASC;
+"
+query_filled <- glue::glue(
+  sql_query,
+  keys = paste(keys$taxa, collapse = ", ")
+)
+```
+
+We can now trigger the download of the taxonomy occurrence cube with rgbif function [`occ_download_sql`](https://docs.ropensci.org/rgbif/reference/occ_download_sql.html):
+
+```{r trigger_taxonomy_occurrence_cube_download}
+# Trigger taxonomy occurrence cube download with rgbif
+# Uncomment to run again
+# d <- rgbif::occ_download_sql(
+#   q = query_filled,
+#   format = "SQL_TSV_ZIP",
+#   user = Sys.getenv("GBIF_USER"),
+#   pwd = Sys.getenv("GBIF_PWD"),
+#   email = Sys.getenv("GBIF_EMAIL"),
+#   validate = TRUE
+# )
+# d
+```
+
+Download key returned: [`0000162-260519110011954`](https://www.gbif.org/occurrence/download/0000162-260519110011954).
+
+```{r download_occurrence_cube_taxon}
+download_key_taxon <- "0000162-260519110011954"
+```
+
+## Occurrence cube at class level for baseline
+
+We collect all classes of the alien species in the unified checklist to create a baseline cube at class level:
+
+```{r get_class_keys_baseline}
+class_keys <- purrr::map_dbl(
+  unlist(keys, use.names = FALSE),
+  function(k) {
+    class_key <- rgbif::name_usage(key = k) %>%
+      purrr::pluck("data") %>%
+      dplyr::select(any_of("classKey"))
+    if ("classKey" %in% names(class_key)) {
+      class_key %>%
+        dplyr::pull(classKey) %>%
+        unique()
+    } else {
+      NA_real_
+    }
+})
+# Get unique not NA class keys
+class_keys <- unique(class_keys[!is.na(class_keys)])
+```
+
+```{r build_sql_query_class_baseline}
+sql_query <- "
+  SELECT
+    \"year\",
+    GBIF_EEARGCode(
+      1000,
+      decimalLatitude,
+      decimalLongitude,
+      COALESCE(coordinateUncertaintyInMeters, 500)
+    ) AS eeaCellCode,
+    classKey,
+    class,
+    COUNT(*) AS occurrences,
+    MIN(COALESCE(coordinateUncertaintyInMeters, 500)) AS minCoordinateUncertaintyInMeters
+  FROM
+    occurrence
+  WHERE 
+    occurrenceStatus = 'PRESENT'
+    AND NOT occurrence.basisofrecord IN ('FOSSIL_SPECIMEN', 'LIVING_SPECIMEN')
+    AND classKey IN ({keys})
+    AND classKey IS NOT NULL
+    AND countryCode = 'BE'
+    AND \"year\" >= 1980
+    AND \"year\" IS NOT NULL
+    AND hasCoordinate = TRUE
+    AND NOT GBIF_STRINGARRAYCONTAINS(issue, 'ZERO_COORDINATE', TRUE)
+    AND NOT GBIF_STRINGARRAYCONTAINS(issue, 'COORDINATE_OUT_OF_RANGE', TRUE)
+    AND NOT GBIF_STRINGARRAYCONTAINS(issue, 'COORDINATE_INVALID', TRUE)
+    AND NOT GBIF_STRINGARRAYCONTAINS(issue, 'COUNTRY_COORDINATE_MISMATCH', TRUE)
+    AND NOT GBIF_STRINGARRAYCONTAINS(issue, 'TAXON_MATCH_FUZZY', TRUE)
+    AND (
+      LOWER(identificationVerificationStatus) NOT IN (
+        'unverified',
+        'unvalidated',
+        'not validated',
+        'under validation',
+        'not able to validate',
+        'control could not be conclusive due to insufficient knowledge',
+        'uncertain',
+        'unconfirmed',
+        'unconfirmed - not reviewed',
+        'validation requested'
+        )
+      OR identificationVerificationStatus IS NULL
+    )
+  GROUP BY
+    \"year\",
+    eeaCellCode,
+    classKey,
+    class
+  ORDER BY
+    \"year\" DESC,
+    eeaCellCode ASC,
+    classKey ASC;
+"
+
+query_filled <- glue::glue(
+  sql_query,
+  keys = paste(class_keys, collapse = ", ")
+)
+```
+
+We can now trigger the download of a class occurrence cube with rgbif function [`occ_download_sql`](https://docs.ropensci.org/rgbif/reference/occ_download_sql.html):
+
+```{r trigger_baseline_occurrence_cube_download}
+# Trigger species occurrence cube download with rgbif
+# Uncomment to run again
+# d <- rgbif::occ_download_sql(
+#   q = query_filled,
+#   format = "SQL_TSV_ZIP",
+#   user = Sys.getenv("GBIF_USER"),
+#   pwd = Sys.getenv("GBIF_PWD"),
+#   email = Sys.getenv("GBIF_EMAIL"),
+#   validate = TRUE
+# )
+# d
+```
+
+Download key returned: [`0000669-260519110011954`](https://www.gbif.org/occurrence/download/0000669-260519110011954).
+
+```{r download_occurrence_cube_baseline}
+download_key_baseline <- "0000669-260519110011954"
+```
+
+# Download and load the occurrence cubes
+
+We download now all the GBIF occurrence cubes:
+
+```{r download_cube}
+downloads <- list(
+  species = download_key_species,
+  genus = download_key_genus,
+  family = download_key_family,
+  taxon = download_key_taxon,
+  class = download_key_baseline
+)
+cube_zip_files <- purrr::map(
+  downloads, function(k) {
+    rgbif::occ_download_get(
+      key = k,
+      path = here::here("data", "input", "gbif_cubes"),
+      overwrite = TRUE
+    )
+  }
+)
+```
+
+Load the cubes:
+
+```{r unzip_and_load_cubes}
+cubes <- purrr::map(
+  cube_zip_files,
+  rgbif::occ_download_import,
+  path = here::here("data", "input", "gbif_cubes")
+)
+```
+
+# Merge the cubes
+
+The cube containing the baseline information at class level must not be merged with the others, but set apart:
+
+```{r set_cube_baselin_apart}
+baseline_cube <- cubes$class
+cubes$class <- NULL
+```
+
+## Standardise column names
+
+The cubes have different column names for idenitifying the taxon columns, e.g. `specieskey` and `species`, `genuskey` and `genus`. We standardise the names of the taxon columns to `taxonKey` and `taxonName` for all cubes:
+
+```{r}
+# First rename the taxonomic columns of the cube at taxonomic level as it has scientificName in place of taxon
+cubes$taxon <- cubes$taxon %>%
+  dplyr::rename(
+    taxon = scientificname
+  )
+# Rename all the cubes at once
+cubes <- purrr::imap(
+  cubes,
+  function(cube, rank) {
+    cube %>%
+      dplyr::rename(
+        taxonKey = paste0(rank, "key"),
+        taxonName = rank
+      )
+  }
+)
+```
+
+Merge:
+
+```{r merge_cubes}
+occurrence_cube <- purrr::reduce(cubes, dplyr::full_join)
+```
+
+Use camel case consequently for all column names:
+
+```{r set_camel_case}
+occurrence_cube <- occurrence_cube %>%
+  dplyr::rename(
+    eeaCellCode = eeacellcode,
+    minCoordinateUncertaintyInMeters = mincoordinateuncertaintyinmeters
+  )
+baseline_cube <- baseline_cube %>%
+  dplyr::rename(
+    eeaCellCode = eeacellcode,
+    classKey = classkey,
+    minCoordinateUncertaintyInMeters = mincoordinateuncertaintyinmeters
+  )
+```
+
+Preview:
+```{r preview}
+head(x = occurrence_cube, n = 10)
+```
+
+Number of rows in the merged cube:
+
+```{r n_rows_merged}
+n_rows_merged <- nrow(occurrence_cube)
+n_rows_merged
+```
+
+The number of rows in the merged cube should equal to the sum of the number of rows in the single cubes as there are no taxa shared between the cubes:
+
+```{r check_n_rows_total}
+n_rows_merged == sum(purrr::map_dbl(cubes, nrow))
+```
+
+# Save the cubes
+
+Save both the merged cube and the baseline cube as csv files in `data/interim`:
+
+```{r save_merged_cube}
+readr::write_csv(
+  occurrence_cube,
+  here::here("data", "interim", "be_alientaxa_cube.csv"),
+  na = ""
+)
+readr::write_csv(
+  baseline_cube,
+  here::here("data", "interim", "be_classes_cube.csv"),
+  na = ""
+)
+```
+

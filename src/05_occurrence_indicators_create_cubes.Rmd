@@ -450,7 +450,7 @@ download_key_taxon <- "0000162-260519110011954"
 
 We collect all classes of the alien species in the unified checklist to create a baseline cube at class level:
 
-```{r get_class_keys_baseline}
+```{r get_class_keys_baseline, cache=TRUE}
 class_keys <- purrr::map_dbl(
   unlist(keys, use.names = FALSE),
   function(k) {

@@ -477,6 +477,44 @@ information from the GBIF Backbone:</p>
 {"columns":[{"label":["acceptedTaxonRank"],"name":[1],"type":["chr"],"align":["left"]},{"label":["n"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"SPECIES","2":"3985"},{"1":"SUBSPECIES","2":"159"},{"1":"VARIETY","2":"29"},{"1":"GENUS","2":"27"},{"1":"FORM","2":"2"},{"1":"FAMILY","2":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
+<div id="add-class-information" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Add class
+information</h2>
+<p>Add two columns, <code>acceptedClassKey</code> and
+<code>acceptedClass</code> to know which class the accepted taxa belong
+to. This information will be important later to create a cube for those
+classes to try to correct the research effort bias.</p>
+<pre class="r"><code>classes &lt;- purrr::map(
+  taxa$acceptedKey,
+  function(k) {
+    class_info &lt;- rgbif::name_usage(key = k) %&gt;%
+      purrr::pluck(&quot;data&quot;) %&gt;%
+      dplyr::select(any_of(c(&quot;key&quot;, &quot;classKey&quot;, &quot;class&quot;)))
+    if (all(c(&quot;classKey&quot;, &quot;class&quot;) %in% names(class_info))) {
+      return(class_info)
+    } else {
+      return(dplyr::tibble(key = class_info$key, class = NA_character_, classKey = NA_real_))
+    }
+  }
+) %&gt;%
+  list_rbind() %&gt;%
+  distinct()
+taxa &lt;- taxa %&gt;%
+  dplyr::left_join(
+    classes,
+    dplyr::join_by(acceptedKey == key)
+  ) %&gt;%
+  # Add prefix `accepted` as in taxa for GBIF Backbone info
+  dplyr::rename(
+    acceptedClass = class,
+    acceptedClassKey = classKey
+  ) %&gt;%
+  # Place kingdom info after class
+  dplyr::relocate(
+    acceptedKingdom,
+    .after = last_col()
+  )</code></pre>
+</div>
 </div>
 <div id="buid-sql-query-to-create-occurrence-cubes"
 class="section level1" number="4">
@@ -846,22 +884,7 @@ class="section level2" number="4.5">
 class level for baseline</h2>
 <p>We collect all classes of the alien species in the unified checklist
 to create a baseline cube at class level:</p>
-<pre class="r"><code>class_keys &lt;- purrr::map_dbl(
-  unlist(keys, use.names = FALSE),
-  function(k) {
-    class_key &lt;- rgbif::name_usage(key = k) %&gt;%
-      purrr::pluck(&quot;data&quot;) %&gt;%
-      dplyr::select(any_of(&quot;classKey&quot;))
-    if (&quot;classKey&quot; %in% names(class_key)) {
-      class_key %&gt;%
-        dplyr::pull(classKey) %&gt;%
-        unique()
-    } else {
-      NA_real_
-    }
-  }
-)
-# Get unique not NA class keys
+<pre class="r"><code>class_keys &lt;- classes$classKey
 class_keys &lt;- unique(class_keys[!is.na(class_keys)])</code></pre>
 <pre class="r"><code>sql_query &lt;- &quot;
   SELECT

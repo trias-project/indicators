@@ -71,3 +71,4 @@ data/input/eu_modellingtaxa_*.csv
 data/input/*_classes_*.csv
 # Analysis of data about protected areas
 data/output/protected_areas_species_occurrence.csv
+.positai

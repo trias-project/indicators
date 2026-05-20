@@ -56,6 +56,7 @@ taxa %>%
   dplyr::select(starts_with("accepted")) %>%
   head()
 ```
+
 Taxonomic rank distribution:
 
 ```{r}
@@ -64,6 +65,33 @@ taxa %>%
   distinct() %>%
   count(acceptedTaxonRank) %>%
   arrange(desc(n))
+```
+
+## Add class information
+
+Add two columns, `acceptedClassKey` and `acceptedClass` to know which class the accepted taxa belong to. This information will be important later to create a cube for those classes to try to correct the research effort bias.
+
+```{r classes, cache=TRUE}
+classes <- purrr::map(
+  taxa$acceptedKey,
+  function(k) {
+    class_info <- rgbif::name_usage(key = k) %>%
+      purrr::pluck("data") %>%
+      dplyr::select(any_of(c("key", "classKey", "class")))
+    if (all(c("classKey", "class") %in% names(class_info))) {
+      return(class_info)
+    } else {
+      return(dplyr::tibble(key = class_info$key, class = NA_character_, classKey = NA_real_))
+    }
+  }
+) %>%
+  list_rbind() %>%
+  distinct()
+taxa <- taxa %>%
+  dplyr::left_join(
+    classes,
+    dplyr::join_by(acceptedKey == key)
+  )
 ```
 
 # Buid SQL query to create occurrence cubes
@@ -450,22 +478,8 @@ download_key_taxon <- "0000162-260519110011954"
 
 We collect all classes of the alien species in the unified checklist to create a baseline cube at class level:
 
-```{r get_class_keys_baseline, cache=TRUE}
-class_keys <- purrr::map_dbl(
-  unlist(keys, use.names = FALSE),
-  function(k) {
-    class_key <- rgbif::name_usage(key = k) %>%
-      purrr::pluck("data") %>%
-      dplyr::select(any_of("classKey"))
-    if ("classKey" %in% names(class_key)) {
-      class_key %>%
-        dplyr::pull(classKey) %>%
-        unique()
-    } else {
-      NA_real_
-    }
-})
-# Get unique not NA class keys
+```{r get_class_keys_baseline}
+class_keys <- classes$classKey
 class_keys <- unique(class_keys[!is.na(class_keys)])
 ```
 

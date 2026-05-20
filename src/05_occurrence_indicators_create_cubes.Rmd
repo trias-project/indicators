@@ -684,17 +684,17 @@ n_rows_merged == sum(purrr::map_dbl(cubes, nrow))
 
 # Save the cubes
 
-Save both the merged cube and the baseline cube as csv files in `data/interim`:
+Save both the merged cube and the baseline cube as csv files in `data/input`:
 
 ```{r save_merged_cube}
 readr::write_csv(
   occurrence_cube,
-  here::here("data", "interim", "be_alientaxa_cube.csv"),
+  here::here("data", "input", "be_alientaxa_cube.csv"),
   na = ""
 )
 readr::write_csv(
   baseline_cube,
-  here::here("data", "interim", "be_classes_cube.csv"),
+  here::here("data", "input", "be_classes_cube.csv"),
   na = ""
 )
 ```

@@ -1069,15 +1069,15 @@ the cubes:</p>
 <div id="save-the-cubes" class="section level1" number="7">
 <h1><span class="header-section-number">7</span> Save the cubes</h1>
 <p>Save both the merged cube and the baseline cube as csv files in
-<code>data/interim</code>:</p>
+<code>data/input</code>:</p>
 <pre class="r"><code>readr::write_csv(
   occurrence_cube,
-  here::here(&quot;data&quot;, &quot;interim&quot;, &quot;be_alientaxa_cube.csv&quot;),
+  here::here(&quot;data&quot;, &quot;input&quot;, &quot;be_alientaxa_cube.csv&quot;),
   na = &quot;&quot;
 )
 readr::write_csv(
   baseline_cube,
-  here::here(&quot;data&quot;, &quot;interim&quot;, &quot;be_classes_cube.csv&quot;),
+  here::here(&quot;data&quot;, &quot;input&quot;, &quot;be_classes_cube.csv&quot;),
   na = &quot;&quot;
 )</code></pre>
 <p>We save also the taxa and their match to the GBIF Backbone as read

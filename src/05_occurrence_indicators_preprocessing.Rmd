@@ -25,7 +25,6 @@ Load libraries:
 
 ```{r load_libraries, message = FALSE}
 library(tidyverse) # To do data science
-library(tidylog) # To provide feedback on dplyr functions
 library(here) # To find files
 library(lubridate) # To work with dates
 library(rgbif) # To get taxa from publisehd unified checklist
@@ -62,7 +61,7 @@ We remove columns we will never use:
 ```{r remove_coords_uncertainty}
 df <-
   df %>%
-  tidylog::select(-min_coord_uncertainty)
+  dplyr::select(-min_coord_uncertainty)
 ```
 
 and rename column `n` to `obs`:
@@ -70,7 +69,7 @@ and rename column `n` to `obs`:
 ```{r rename_n_to_obs}
 df <-
   df %>%
-  tidylog::rename(obs = n)
+  dplyr::rename(obs = n)
 ```
 
 We also remove data not assigned to any cell code:
@@ -78,7 +77,7 @@ We also remove data not assigned to any cell code:
 ```{r remove_na_cell_code}
 df <- 
   df %>%
-  tidylog::filter(!is.na(eea_cell_code))
+  dplyr::filter(!is.na(eea_cell_code))
 ```
 
 ### Baseline
@@ -104,7 +103,7 @@ We remove columns we will never use:
 ```{r remove_coords_uncertainty_baseline}
 df_bl <-
   df_bl %>%
-  tidylog::select(-min_coord_uncertainty)
+  dplyr::select(-min_coord_uncertainty)
 ```
 
 and rename column `n` to `cobs`:
@@ -112,7 +111,7 @@ and rename column `n` to `cobs`:
 ```{r rename_n_to_obs_bl}
 df_bl <-
   df_bl %>%
-  tidylog::rename(cobs = n)
+  dplyr::rename(cobs = n)
 ```
 
 We remove data not assigned to any cell code:
@@ -120,7 +119,7 @@ We remove data not assigned to any cell code:
 ```{r remove_na_cell_code_bl}
 df_bl <- 
   df_bl %>%
-  tidylog::filter(!is.na(eea_cell_code))
+  dplyr::filter(!is.na(eea_cell_code))
 ```
 
 We remove also data with `classKey` equal to `NA`. These data are related to IAS species not linked to any class:
@@ -128,7 +127,7 @@ We remove also data with `classKey` equal to `NA`. These data are related to IAS
 ```{r remove_data_no_class}
 df_bl <- 
   df_bl %>%
-  tidylog::filter(!is.na(classKey))
+  dplyr::filter(!is.na(classKey))
 ```
 
 ## Checklist data
@@ -143,7 +142,7 @@ taxa_df <-
   )
 taxa_df <-
   taxa_df %>%
-  tidylog::filter(locationId == "ISO_3166:BE")
+  dplyr::filter(locationId == "ISO_3166:BE")
 ```
 
 ## Remove some taxa
@@ -181,24 +180,24 @@ We identify the rows to remove in alien species occurrence cube, `df`, and  base
 
 ```{r show-cells-out-of-belgium}
 df %>%
-  tidylog::filter(!eea_cell_code %in% eea_grid_regions$CELLCODE)
+  dplyr::filter(!eea_cell_code %in% eea_grid_regions$CELLCODE)
 ```
 
 ```{r show-cells-out-of-belgium-baseline}
 df_bl %>%
-  tidylog::filter(!eea_cell_code %in% eea_grid_regions$CELLCODE)
+  dplyr::filter(!eea_cell_code %in% eea_grid_regions$CELLCODE)
 ```
 
 We remove them:
 
 ```{r remove-cells-out-of-be}
 df <- df %>%
-  tidylog::filter(eea_cell_code %in% eea_grid_regions$CELLCODE)
+  dplyr::filter(eea_cell_code %in% eea_grid_regions$CELLCODE)
 ```
 
 ```{r remove-cells-out-of-be-baseline}
 df_bl <- df_bl %>%
-  tidylog::inner_join(eea_grid_regions %>% as.data.frame(),
+  dplyr::inner_join(eea_grid_regions %>% as.data.frame(),
                       by = c("eea_cell_code" = "CELLCODE"))
 ```
 
@@ -209,8 +208,8 @@ There is a group of taxa defined in the unified checklist which are not present 
 ```{r taxa_without_occs}
 alien_taxa_without_occs <-
   taxa_df %>%
-  tidylog::filter(!nubKey %in% df$taxonKey) %>%
-  tidylog::distinct(
+  dplyr::filter(!nubKey %in% df$taxonKey) %>%
+  dplyr::distinct(
     key,
     nubKey,
     canonicalName,
@@ -261,7 +260,7 @@ We are interested in areas included in Natura2000. We remove columns we are not 
 ```{r select_cols_prot_areas}
 df_prot_areas <-
   df_prot_areas %>%
-  tidylog::select(
+  dplyr::select(
     CELLCODE,
     natura2000
   )
@@ -277,7 +276,7 @@ For better interpretation of the data, we retrieve scientific names (without aut
 ```{r get_canonical_names}
 taxon_key <-
   df %>%
-  tidylog::distinct(taxonKey) %>%
+  dplyr::distinct(taxonKey) %>%
   pull()
 spec_names <- purrr::map_df(
   taxon_key,
@@ -285,13 +284,13 @@ spec_names <- purrr::map_df(
     name_usage(key = k)$data
   }
 ) %>%
-  tidylog::select(
+  dplyr::select(
     taxonKey = key,
     canonicalName,
     scientificName,
     kingdomKey, classKey
   ) %>%
-  tidylog::mutate(canonicalName = ifelse(
+  dplyr::mutate(canonicalName = ifelse(
     is.na(canonicalName), scientificName, canonicalName
   ))
 ```
@@ -301,13 +300,13 @@ In the rare case multiple taxa share the same scientific name, authorship is add
 ```{r add_authorship_if_needed}
 spec_names <-
   spec_names %>%
-  tidylog::group_by(canonicalName) %>%
-  tidylog::add_tally() %>%
-  tidylog::ungroup() %>%
-  tidylog::mutate(canonicalName = if_else(n > 1,
+  dplyr::group_by(canonicalName) %>%
+  dplyr::add_tally() %>%
+  dplyr::ungroup() %>%
+  dplyr::mutate(canonicalName = if_else(n > 1,
                                           scientificName,
                                           canonicalName)) %>%
-  tidylog::select(-c(n, scientificName))
+  dplyr::select(-c(n, scientificName))
 ```
 
 We also retrieve kingdom and class:
@@ -315,8 +314,8 @@ We also retrieve kingdom and class:
 ```{r get_kingodm_class}
 class_key <-
   spec_names %>%
-  tidylog::distinct(classKey) %>%
-  tidylog::filter(!is.na(classKey)) %>%
+  dplyr::distinct(classKey) %>%
+  dplyr::filter(!is.na(classKey)) %>%
   pull()
 kingdom_class <- map_df(
   class_key,
@@ -324,7 +323,7 @@ kingdom_class <- map_df(
     name_usage(key = x)$data
   }
 ) %>%
-  tidylog::select(classKey, class, kingdomKey, kingdom)
+  dplyr::select(classKey, class, kingdomKey, kingdom)
 ```
 
 and we add them:
@@ -333,16 +332,16 @@ and we add them:
 # add class
 spec_names <-
   spec_names %>%
-  tidylog::left_join(kingdom_class %>%
-              tidylog::distinct(.data$classKey, .data$class),
+  dplyr::left_join(kingdom_class %>%
+              dplyr::distinct(.data$classKey, .data$class),
             by = "classKey"
   )
 
 # add kingdom
 spec_names <-
   spec_names %>%
-  tidylog::left_join(kingdom_class %>%
-              tidylog::distinct(.data$kingdomKey, .data$kingdom),
+  dplyr::left_join(kingdom_class %>%
+              dplyr::distinct(.data$kingdomKey, .data$kingdom),
             by = "kingdomKey"
   ) 
 ```
@@ -357,7 +356,7 @@ Taxa not assigned to any class:
 
 ```{r taxa_no_class}
 spec_names %>%
-  tidylog::filter(is.na(classKey))
+  dplyr::filter(is.na(classKey))
 ```
 
 ## Extract x-y coordinates from cellcodes
@@ -367,7 +366,7 @@ Extract coordinates from column `eea_cell_code`. For example, the coordinates of
 ```{r extract_x_y}
 df_xy <-
   df %>%
-  tidylog::distinct(eea_cell_code) %>%
+  dplyr::distinct(eea_cell_code) %>%
   dplyr::bind_cols(
     dplyr::tibble(
       x = unlist(stringr::str_extract_all(unique(df$eea_cell_code),
@@ -377,7 +376,7 @@ df_xy <-
         pattern = "(?<=N)[0-9\\-]+"
       ))
     ) %>%
-    tidylog::mutate(across(where(is.character), as.integer))
+    dplyr::mutate(across(where(is.character), as.integer))
   )
 ```
 
@@ -392,7 +391,7 @@ Do the same for baseline data:
 ```{r extract_x_y_baseline}
 df_bl_xy <-
   df_bl %>%
-  tidylog::distinct(eea_cell_code) %>%
+  dplyr::distinct(eea_cell_code) %>%
   bind_cols(
     tibble(
       x = unlist(str_extract_all(unique(df_bl$eea_cell_code),
@@ -422,12 +421,12 @@ year_of_introduction <- 1950
 recent_alien_species <-
   taxa_df %>%
   # Lower limit on date of first introduction if present
-  tidylog::filter(first_observed >= year_of_introduction | is.na(first_observed)) %>%
+  dplyr::filter(first_observed >= year_of_introduction | is.na(first_observed)) %>%
   # Remove duplicates due to other columns as pathways
-  tidylog::distinct(nubKey, first_observed, last_observed) %>%
+  dplyr::distinct(nubKey, first_observed, last_observed) %>%
   # Get classKey info and filter out taxa without data
-  tidylog::inner_join(spec_names, by = c("nubKey" = "taxonKey")) %>%
-  tidylog::distinct(
+  dplyr::inner_join(spec_names, by = c("nubKey" = "taxonKey")) %>%
+  dplyr::distinct(
     taxonKey = nubKey,
     .data$canonicalName,
     .data$first_observed,
@@ -450,18 +449,18 @@ List of alien species excluded as first introduction date is earlier than 1950:
 ```{r recent_alien_species}
 old_introductions_taxa <-
   taxa_df %>%
-  tidylog::filter(first_observed < year_of_introduction) %>%
-  tidylog::anti_join(recent_alien_species %>%
-    tidylog::select(taxonKey),
+  dplyr::filter(first_observed < year_of_introduction) %>%
+  dplyr::anti_join(recent_alien_species %>%
+    dplyr::select(taxonKey),
   by = c("nubKey" = "taxonKey")
   ) %>%
-  tidylog::distinct(
+  dplyr::distinct(
     nubKey,
     first_observed,
     last_observed
   ) %>%
-  tidylog::inner_join(spec_names, by = c("nubKey" = "taxonKey")) %>%
-  tidylog::select(
+  dplyr::inner_join(spec_names, by = c("nubKey" = "taxonKey")) %>%
+  dplyr::select(
     taxonKey = nubKey,
     canonicalName,
     first_observed,
@@ -503,10 +502,10 @@ Apply temporal restraint to both occurrence data:
 df <-
   df %>%
   # Recently introduced taxa
-  tidylog::filter(taxonKey %in% recent_alien_species$taxonKey) %>%
-  tidylog::left_join(df_xy, by = "eea_cell_code") %>%
+  dplyr::filter(taxonKey %in% recent_alien_species$taxonKey) %>%
+  dplyr::left_join(df_xy, by = "eea_cell_code") %>%
   # Recent history
-  tidylog::filter(year > first_year)
+  dplyr::filter(year > first_year)
 ```
 
 and baseline data:
@@ -514,9 +513,9 @@ and baseline data:
 ```{r apply_restraints_time_space_baseline_data}
 df_bl <-
   df_bl %>%
-  tidylog::left_join(df_bl_xy, by = "eea_cell_code") %>%
+  dplyr::left_join(df_bl_xy, by = "eea_cell_code") %>%
   # Recent history
-  tidylog::filter(year > first_year)
+  dplyr::filter(year > first_year)
 ```
 
 ## Add information about presence in protected areas
@@ -526,7 +525,7 @@ We add whether the grid cell intersects any of the Natura2000 Belgian protected 
 ```{r add_natura2000_col}
 df <-
   df %>%
-  tidylog::left_join(df_prot_areas,
+  dplyr::left_join(df_prot_areas,
     by = c("eea_cell_code" = "CELLCODE")
   )
 ```
@@ -542,7 +541,7 @@ We do the same for baseline data:
 ```{r add_natura2000_col_baseline}
 df_bl <-
   df_bl %>%
-  tidylog::left_join(df_prot_areas,
+  dplyr::left_join(df_prot_areas,
     by = c("eea_cell_code" = "CELLCODE")
   )
 ```
@@ -560,9 +559,9 @@ For each species, define cells with at least one observation:
 ```{r distinct_cells_taxa}
 df_cc <- 
   df %>%
-  tidylog::group_by(taxonKey) %>%
-  tidylog::distinct(eea_cell_code) %>%
-  tidylog::ungroup()
+  dplyr::group_by(taxonKey) %>%
+  dplyr::distinct(eea_cell_code) %>%
+  dplyr::ungroup()
 ```
 
 For each species, identify the first year with at least one observation:
@@ -570,8 +569,8 @@ For each species, identify the first year with at least one observation:
 ```{r begin_year_per_species}
 df_begin_year <- 
   df %>%
-  tidylog::group_by(taxonKey) %>%
-  tidylog::summarize(begin_year = min(year))
+  dplyr::group_by(taxonKey) %>%
+  dplyr::summarize(begin_year = min(year))
 ```
 
 For each species, combine `begin_year` and unique `eea_cell_code` as found above: 
@@ -579,8 +578,8 @@ For each species, combine `begin_year` and unique `eea_cell_code` as found above
 ```{r combine_begin_year_cells_taxa}
 df_cc <- 
   df_cc %>%
-  tidylog::left_join(df_begin_year, by = "taxonKey") %>%
-  tidylog::select(taxonKey, begin_year, eea_cell_code)
+  dplyr::left_join(df_begin_year, by = "taxonKey") %>%
+  dplyr::select(taxonKey, begin_year, eea_cell_code)
 ```
 
 Preview:
@@ -610,8 +609,8 @@ df_ts <- purrr::pmap_dfr(df_cc,
 # Add occurrence data and protected areas
 df_ts <- 
   df_ts %>%
-  tidylog::left_join(
-    df %>% tidylog::select(taxonKey,
+  dplyr::left_join(
+    df %>% dplyr::select(taxonKey,
                            year,
                            eea_cell_code,
                            obs), 
@@ -619,15 +618,15 @@ df_ts <-
 # Add membership to protected areas
 df_ts <- 
   df_ts %>%
-  tidylog::left_join(df_prot_areas %>% 
-                       tidylog::select(CELLCODE, natura2000),
+  dplyr::left_join(df_prot_areas %>% 
+                       dplyr::select(CELLCODE, natura2000),
                      by = c("eea_cell_code" = "CELLCODE"))
 # Add regional information
 df_ts <- 
   df_ts %>%
-  tidylog::left_join(eea_grid_regions %>% 
+  dplyr::left_join(eea_grid_regions %>% 
                        as.data.frame() %>%
-                       tidylog::select(CELLCODE, 
+                       dplyr::select(CELLCODE, 
                                        isFlanders, 
                                        isWallonia, 
                                        isBrussels),
@@ -635,7 +634,7 @@ df_ts <-
 # Add classKey
 df_ts <- 
   df_ts %>%
-  tidylog::left_join(spec_names %>% tidylog::select(taxonKey, classKey), 
+  dplyr::left_join(spec_names %>% dplyr::select(taxonKey, classKey), 
                      by = "taxonKey")
 ```
 
@@ -647,15 +646,15 @@ To correct the effect of research effort of an alien speies, we calculate the nu
 # Add baseline data (at class level) diminished by obs of specific alien taxon
 df_ts <- 
   df_ts %>%
-  tidylog::left_join(df_bl %>% 
-                       tidylog::select(year, eea_cell_code, classKey, cobs),
+  dplyr::left_join(df_bl %>% 
+                       dplyr::select(year, eea_cell_code, classKey, cobs),
                      by = c("year", "eea_cell_code", "classKey")) %>%
-  tidylog::mutate(cobs = cobs - obs)
+  dplyr::mutate(cobs = cobs - obs)
 
 # replace NAs with 0
 df_ts <-
   df_ts %>%
-  tidylog::replace_na(list(cobs = 0, obs = 0))
+  dplyr::replace_na(list(cobs = 0, obs = 0))
 ```
 
 Preview:
@@ -669,7 +668,7 @@ Add column for presence (1) or absence (0)
 ```{r add_presence_absence}
 df_ts <- 
   df_ts %>%
-  tidylog::mutate(pa_cobs = if_else(cobs > 0, 1, 0),
+  dplyr::mutate(pa_cobs = if_else(cobs > 0, 1, 0),
                   pa_obs = if_else(obs > 0, 1, 0))
 ```
 
@@ -678,7 +677,7 @@ Arrange order columns:
 ```{r set_order_columns}
 df_ts <-
   df_ts %>%
-  tidylog::relocate(taxonKey, 
+  dplyr::relocate(taxonKey, 
                     year, 
                     eea_cell_code, 
                     obs, 

@@ -28,124 +28,111 @@ library(tidyverse) # To do data science
 library(here) # To find files
 library(lubridate) # To work with dates
 library(rgbif) # To get taxa from publisehd unified checklist
+library(elodea) # To work with GBIF checklists
 ```
 
 # Get data
 
-## Occurrence data
+## Occurrence cubes
 
-### Download
+Read the occurrence cubes from `data/interim`.
 
-We download occurrence cubes from Zenodo deposit: https://zenodo.org/records/10527772. 
+First, the cube related to alien taxa:
 
-### Alien species
-
-We read occurrence data related to alien species in Belgium:
-
-```{r read_data_cube, message = FALSE, warning = FALSE}
-df <- read_csv(
-  file = "https://zenodo.org/records/10527772/files/be_alientaxa_cube.csv?download=1",
+```{r load_cube}
+df <- readr::read_csv(
+  here::here("data", "input", "be_alientaxa_cube.csv"),
   col_types = cols(
     year = col_double(),
-    eea_cell_code = col_character(),
+    eeaCellCode = col_character(),
     taxonKey = col_double(),
-    n = col_double(),
-    min_coord_uncertainty = col_double()
+    occurrences = col_double(),
+    minCoordinateUncertaintyInMeters = col_double()
   ),
   na = ""
 )
 ```
+
+Second, the cube related to the baseline:
+
+```{r load_baseline}
+df_bl <- readr::read_csv(
+  here::here("data", "input", "be_classes_cube.csv"),
+  col_types = cols(
+    year = col_double(),
+    eeaCellCode = col_character(),
+    classKey = col_double(),
+    occurrences = col_double(),
+    minCoordinateUncertaintyInMeters = col_double()
+  ),
+  na = ""
+)
+```
+
+### Download
+
+For users who want to reproduce the workflow from this stage, notice we are going to upload the cubes on the Zenodo deposit [10.5281/zenodo.3632749](https://doi.org/10.5281/zenodo.3632749): link to the the right version will follow here.
+
+### Alien species
 
 We remove columns we will never use:
 
 ```{r remove_coords_uncertainty}
 df <-
   df %>%
-  dplyr::select(-min_coord_uncertainty)
+  dplyr::select(-minCoordinateUncertaintyInMeters)
 ```
 
-and rename column `n` to `obs`:
+and rename column `occurrences` to `obs`:
 
 ```{r rename_n_to_obs}
 df <-
   df %>%
-  dplyr::rename(obs = n)
-```
-
-We also remove data not assigned to any cell code:
-
-```{r remove_na_cell_code}
-df <- 
-  df %>%
-  dplyr::filter(!is.na(eea_cell_code))
+  dplyr::rename(obs = occurrences)
 ```
 
 ### Baseline
-
-We read occurrence related data at class level used for correcting the research bias effort:
-
-```{r get_data_baseline}
-df_bl <- read_csv(
-  file = "https://zenodo.org/records/10527772/files/be_classes_cube.csv?download=1",
-  col_types = cols(
-    year = col_double(),
-    eea_cell_code = col_character(),
-    classKey = col_double(),
-    n = col_double(),
-    min_coord_uncertainty = col_double()
-  ),
-  na = ""
-)
-```
 
 We remove columns we will never use:
 
 ```{r remove_coords_uncertainty_baseline}
 df_bl <-
   df_bl %>%
-  dplyr::select(-min_coord_uncertainty)
+  dplyr::select(-minCoordinateUncertaintyInMeters)
 ```
 
-and rename column `n` to `cobs`:
+and rename column `occurrences` to `cobs`:
 
 ```{r rename_n_to_obs_bl}
 df_bl <-
   df_bl %>%
-  dplyr::rename(cobs = n)
-```
-
-We remove data not assigned to any cell code:
-
-```{r remove_na_cell_code_bl}
-df_bl <- 
-  df_bl %>%
-  dplyr::filter(!is.na(eea_cell_code))
-```
-
-We remove also data with `classKey` equal to `NA`. These data are related to IAS species not linked to any class:
-
-```{r remove_data_no_class}
-df_bl <- 
-  df_bl %>%
-  dplyr::filter(!is.na(classKey))
+  dplyr::rename(cobs = occurrences)
 ```
 
 ## Checklist data
 
-We read input data based on [Global Register of Introduced and Invasive Species - Belgium](https://www.gbif.org/dataset/6d9e952f-948c-4483-9807-575348147c7e). These data contain taxonomic information as well as distribution, description and species profiles. We limit to taxa introduced in Belgium (`locationId` : `ISO_3166:BE`).
+## Taxon core
 
-```{r unified_checklist_tidy_df}
-taxa_df <-
-  read_tsv(here::here("data", "interim", "data_input_checklist_indicators.tsv"),
-    na = "",
-    guess_max = 5000
-  )
-taxa_df <-
-  taxa_df %>%
-  dplyr::filter(locationId == "ISO_3166:BE")
+We read input data based on [Global Register of Introduced and Invasive Species - Belgium](https://www.gbif.org/dataset/6d9e952f-948c-4483-9807-575348147c7e). We saved these taxa in previous pipeline in file `griis_taxon_core.tsv` in `data/input`:
+
+```{r read_taxa}
+taxa_df <- readr::read_tsv(
+  here::here("data", "input", "griis_taxon_core.tsv"),
+  na = ""
+)
 ```
 
-## Remove some taxa
+### Retrieve distribution information of alien species in Belgium
+
+Retrieve the distribution information of the [Global Register of Introduced and Invasive Species - Belgium](https://www.gbif.org/dataset/6d9e952f-948c-4483-9807-575348147c7e) as it will be used to define some temporal restraints. We save this information in file `griis_distributions.tsv` in `data/output`:
+
+```{r get_distributions, cache=TRUE}
+distributions <- elodea::get_distributions(
+  datasetKey ="6d9e952f-948c-4483-9807-575348147c7e"
+)
+```
+
+## Filter data
 
 ### Cells in occurrence cubes not in EEA Belgian grid
 
@@ -180,25 +167,24 @@ We identify the rows to remove in alien species occurrence cube, `df`, and  base
 
 ```{r show-cells-out-of-belgium}
 df %>%
-  dplyr::filter(!eea_cell_code %in% eea_grid_regions$CELLCODE)
+  dplyr::filter(!eeaCellCode %in% eea_grid_regions$CELLCODE)
 ```
 
 ```{r show-cells-out-of-belgium-baseline}
 df_bl %>%
-  dplyr::filter(!eea_cell_code %in% eea_grid_regions$CELLCODE)
+  dplyr::filter(!eeaCellCode %in% eea_grid_regions$CELLCODE)
 ```
 
 We remove them:
 
 ```{r remove-cells-out-of-be}
 df <- df %>%
-  dplyr::filter(eea_cell_code %in% eea_grid_regions$CELLCODE)
+  dplyr::filter(eeaCellCode %in% eea_grid_regions$CELLCODE)
 ```
 
 ```{r remove-cells-out-of-be-baseline}
 df_bl <- df_bl %>%
-  dplyr::inner_join(eea_grid_regions %>% as.data.frame(),
-                      by = c("eea_cell_code" = "CELLCODE"))
+  dplyr::filter(!eeaCellCode %in% eea_grid_regions$CELLCODE)
 ```
 
 ### Taxa in unified checklist without occurrences
@@ -208,22 +194,12 @@ There is a group of taxa defined in the unified checklist which are not present 
 ```{r taxa_without_occs}
 alien_taxa_without_occs <-
   taxa_df %>%
-  dplyr::filter(!nubKey %in% df$taxonKey) %>%
-  dplyr::distinct(
-    key,
-    nubKey,
-    canonicalName,
-    first_observed,
-    last_observed,
-    class,
-    kingdom
-  ) %>%
+  dplyr::filter(!acceptedKey %in% df$taxonKey) %>%
   dplyr::arrange(nubKey)
 alien_taxa_without_occs
 ```
 
-where `key` is the unique GBIF identifier of the taxon as published in the unified checklist, while `nubKey` is the unique GBIF identifier of the taxon in the GBIF Backbone Taxonomy.
-We save this data.frame as `alien_taxa_without_occurrences.tsv` in `data/output`:
+where `taxonKey` is the unique GBIF identifier of the taxon as published in the unified checklist, while `nubKey` is the unique GBIF identifier of the taxon in the GBIF Backbone Taxonomy. The field `acceptedTaxonKey` is equal to `nubKey` if `nubKey` is not a synonym. We save this data.frame as `alien_taxa_without_occurrences.tsv` in `data/output`:
 
 ```{r save_alien_taxa_without_occs}
 write_tsv(
@@ -231,6 +207,25 @@ write_tsv(
   here::here("data", "output", "alien_taxa_without_occs.tsv"),
   na = ""
 )
+```
+
+## Regional information
+
+Add regional information to the occurrence cubes by doing a left join with the EEA grid with regional information:
+
+```{r add_regional_info}
+df <- df %>%
+  dplyr::inner_join(
+    eea_grid_regions %>% as.data.frame(),
+    by = c("eeaCellCode" = "CELLCODE")
+  ) %>%
+  dplyr::select(-c("EOFORIGIN", "NOFORIGIN", "geom"))
+df_bl <- df_bl %>%
+  dplyr::inner_join(
+    eea_grid_regions %>% as.data.frame(),
+    by = c("eeaCellCode" = "CELLCODE")
+  ) %>%
+  dplyr::select(-c("EOFORIGIN", "NOFORIGIN", "geom"))
 ```
 
 ## Grid cells intersecting protected areas
@@ -269,110 +264,20 @@ df_prot_areas <-
 
 #  Pre-processing
 
-## Add informative columns
-
-For better interpretation of the data, we retrieve scientific names (without authorship) of the species whose data we are going to analyze. We also retrieve the class of each alien species to link occurrence data with the related baseline data. This step requires an internet connection and can take long time as we are querying the GBIF API:
-
-```{r get_canonical_names}
-taxon_key <-
-  df %>%
-  dplyr::distinct(taxonKey) %>%
-  pull()
-spec_names <- purrr::map_df(
-  taxon_key,
-  function(k) {
-    name_usage(key = k)$data
-  }
-) %>%
-  dplyr::select(
-    taxonKey = key,
-    canonicalName,
-    scientificName,
-    kingdomKey, classKey
-  ) %>%
-  dplyr::mutate(canonicalName = ifelse(
-    is.na(canonicalName), scientificName, canonicalName
-  ))
-```
-
-In the rare case multiple taxa share the same scientific name, authorship is added:
-
-```{r add_authorship_if_needed}
-spec_names <-
-  spec_names %>%
-  dplyr::group_by(canonicalName) %>%
-  dplyr::add_tally() %>%
-  dplyr::ungroup() %>%
-  dplyr::mutate(canonicalName = if_else(n > 1,
-                                          scientificName,
-                                          canonicalName)) %>%
-  dplyr::select(-c(n, scientificName))
-```
-
-We also retrieve kingdom and class:
-
-```{r get_kingodm_class}
-class_key <-
-  spec_names %>%
-  dplyr::distinct(classKey) %>%
-  dplyr::filter(!is.na(classKey)) %>%
-  pull()
-kingdom_class <- map_df(
-  class_key,
-  function(x) {
-    name_usage(key = x)$data
-  }
-) %>%
-  dplyr::select(classKey, class, kingdomKey, kingdom)
-```
-
-and we add them:
-
-```{r add_kingdom_class}
-# add class
-spec_names <-
-  spec_names %>%
-  dplyr::left_join(kingdom_class %>%
-              dplyr::distinct(.data$classKey, .data$class),
-            by = "classKey"
-  )
-
-# add kingdom
-spec_names <-
-  spec_names %>%
-  dplyr::left_join(kingdom_class %>%
-              dplyr::distinct(.data$kingdomKey, .data$kingdom),
-            by = "kingdomKey"
-  ) 
-```
-
-Preview:
-
-```{r preview_species}
-spec_names %>% head(10)
-```
-
-Taxa not assigned to any class:
-
-```{r taxa_no_class}
-spec_names %>%
-  dplyr::filter(is.na(classKey))
-```
-
 ## Extract x-y coordinates from cellcodes
 
-Extract coordinates from column `eea_cell_code`. For example, the coordinates of cellcode `1kmE3895N3116` are `x = 3895` and `y = 3116`:
+Extract coordinates from column `eeaCellCode`. For example, the coordinates of cellcode `1kmE3895N3116` are `x = 3895` and `y = 3116`:
 
 ```{r extract_x_y}
 df_xy <-
   df %>%
-  dplyr::distinct(eea_cell_code) %>%
+  dplyr::distinct(eeaCellCode) %>%
   dplyr::bind_cols(
     dplyr::tibble(
-      x = unlist(stringr::str_extract_all(unique(df$eea_cell_code),
+      x = unlist(stringr::str_extract_all(unique(df$eeaCellCode),
         pattern = "(?<=E)[0-9\\-]+"
       )),
-      y = unlist(stringr::str_extract_all(unique(df$eea_cell_code),
+      y = unlist(stringr::str_extract_all(unique(df$eeaCellCode),
         pattern = "(?<=N)[0-9\\-]+"
       ))
     ) %>%
@@ -391,13 +296,13 @@ Do the same for baseline data:
 ```{r extract_x_y_baseline}
 df_bl_xy <-
   df_bl %>%
-  dplyr::distinct(eea_cell_code) %>%
+  dplyr::distinct(eeaCellCode) %>%
   bind_cols(
     tibble(
-      x = unlist(str_extract_all(unique(df_bl$eea_cell_code),
+      x = unlist(str_extract_all(unique(df_bl$eeaCellCode),
         pattern = "(?<=E)[0-9\\-]+"
       )),
-      y = unlist(str_extract_all(unique(df_bl$eea_cell_code),
+      y = unlist(str_extract_all(unique(df_bl$eeaCellCode),
         pattern = "(?<=N)[0-9\\-]+"
       ))
     ) %>%
@@ -413,7 +318,30 @@ df_bl_xy %>% head()
 
 ## Apply temporal and spatial restraints
 
-Select alien species introduced after 1950 (`year_of_introduction`: 1950) or whose date of introduction is not known:
+From the distribution information, retrieve the first year of introduction (`first_observed`) for each taxon:
+
+```{r get_first_observed_from_eventDate}
+distributions <- distributions %>%
+  # Parse eventDate to get year of introduction. Get the characters before `/` if present and convert to numberic if not character `"NA"`
+  dplyr::mutate(
+    first_observed = case_when(
+      is.na(eventDate) ~ NA_real_,
+      stringr::str_detect(eventDate, "/") ~ as.numeric(stringr::str_extract(eventDate, "^[0-9]+"))
+    )
+  )
+```
+
+Add such information to the taxonomic information:
+
+```{r add_first_observed}
+taxa_df <- taxa_df %>%
+  dplyr::left_join(
+    distributions %>% dplyr::select(taxonKey, first_observed),
+    dplyr::join_by(taxonKey)
+  )
+```
+
+Select alien species introduced after 1980 (`year_of_introduction`: 1950) or whose date of introduction is not known:
 
 ```{r select_aliens_after_year_of_introduction}
 year_of_introduction <- 1950
@@ -421,59 +349,25 @@ year_of_introduction <- 1950
 recent_alien_species <-
   taxa_df %>%
   # Lower limit on date of first introduction if present
-  dplyr::filter(first_observed >= year_of_introduction | is.na(first_observed)) %>%
-  # Remove duplicates due to other columns as pathways
-  dplyr::distinct(nubKey, first_observed, last_observed) %>%
-  # Get classKey info and filter out taxa without data
-  dplyr::inner_join(spec_names, by = c("nubKey" = "taxonKey")) %>%
-  dplyr::distinct(
-    taxonKey = nubKey,
-    .data$canonicalName,
-    .data$first_observed,
-    .data$last_observed,
-    .data$class,
-    .data$kingdom,
-    .data$classKey,
-    .data$kingdomKey
-  )
+  dplyr::filter(first_observed >= year_of_introduction | is.na(first_observed))
 ```
 
-Number of taxa recently introduced or whose introduction year is not specified:
+Number of (accepted) taxa recently introduced or whose introduction year is not specified:
 
 ```{r n_recent_taxa}
-nrow(recent_alien_species)
+length(unique(recent_alien_species$acceptedKey))
 ```
 
-List of alien species excluded as first introduction date is earlier than 1950:
+Alien species excluded as first introduction date is earlier than 1950:
 
 ```{r recent_alien_species}
 old_introductions_taxa <-
   taxa_df %>%
-  dplyr::filter(first_observed < year_of_introduction) %>%
-  dplyr::anti_join(recent_alien_species %>%
-    dplyr::select(taxonKey),
-  by = c("nubKey" = "taxonKey")
-  ) %>%
-  dplyr::distinct(
-    nubKey,
-    first_observed,
-    last_observed
-  ) %>%
-  dplyr::inner_join(spec_names, by = c("nubKey" = "taxonKey")) %>%
-  dplyr::select(
-    taxonKey = nubKey,
-    canonicalName,
-    first_observed,
-    last_observed,
-    class,
-    kingdom,
-    everything()
-  )
-
+  dplyr::filter(first_observed < year_of_introduction)
 old_introductions_taxa
 ```
 
-We save them in file `taxa_introduced_in_BE_before_1950.tsv` in  `data/output`:
+We save them in file `taxa_introduced_in_BE_before_1950.tsv` in `data/output`:
 
 ```{r save_old_introduced_taxa_as_tsv_file}
 write_tsv(old_introductions_taxa,
@@ -490,33 +384,25 @@ write_tsv(old_introductions_taxa,
 )
 ```
 
-We also limit the time series analysis on observations from 1950, start of state of invasion researches:
-
-```{r define_year_range}
-first_year <- 1950
-```
-
-Apply temporal restraint to both occurrence data:
+Remove from the occurrence cubes the taxa introduced before 1950 and add x-y coordinates:
 
 ```{r apply_restraints_time_space_occ_data}
 df <-
   df %>%
   # Recently introduced taxa
-  dplyr::filter(taxonKey %in% recent_alien_species$taxonKey) %>%
-  dplyr::left_join(df_xy, by = "eea_cell_code") %>%
-  # Recent history
-  dplyr::filter(year > first_year)
+  dplyr::filter(taxonKey %in% recent_alien_species$acceptedKey) %>%
+  dplyr::left_join(df_xy, by = "eeaCellCode")
 ```
 
-and baseline data:
+Add x-y coordinates to the baseline cube:
 
-```{r apply_restraints_time_space_baseline_data}
-df_bl <-
+```{r add_space_baseline_data}
+df_bl_xy <-
   df_bl %>%
-  dplyr::left_join(df_bl_xy, by = "eea_cell_code") %>%
-  # Recent history
-  dplyr::filter(year > first_year)
+  dplyr::left_join(df_bl_xy, by = "eeaCellCode")
 ```
+
+Notice that the occurrence cubes are already temporally limited to GBIF occurrences observed after 1980.
 
 ## Add information about presence in protected areas
 
@@ -526,7 +412,7 @@ We add whether the grid cell intersects any of the Natura2000 Belgian protected 
 df <-
   df %>%
   dplyr::left_join(df_prot_areas,
-    by = c("eea_cell_code" = "CELLCODE")
+    by = c("eeaCellCode" = "CELLCODE")
   )
 ```
 
@@ -542,7 +428,7 @@ We do the same for baseline data:
 df_bl <-
   df_bl %>%
   dplyr::left_join(df_prot_areas,
-    by = c("eea_cell_code" = "CELLCODE")
+    by = c("eeaCellCode" = "CELLCODE")
   )
 ```
 
@@ -552,165 +438,34 @@ Preview:
 df_bl %>% head()
 ```
 
-## Create time series
-
-For each species, define cells with at least one observation:
-
-```{r distinct_cells_taxa}
-df_cc <- 
-  df %>%
-  dplyr::group_by(taxonKey) %>%
-  dplyr::distinct(eea_cell_code) %>%
-  dplyr::ungroup()
-```
-
-For each species, identify the first year with at least one observation:
-
-```{r begin_year_per_species}
-df_begin_year <- 
-  df %>%
-  dplyr::group_by(taxonKey) %>%
-  dplyr::summarize(begin_year = min(year))
-```
-
-For each species, combine `begin_year` and unique `eea_cell_code` as found above: 
-
-```{r combine_begin_year_cells_taxa}
-df_cc <- 
-  df_cc %>%
-  dplyr::left_join(df_begin_year, by = "taxonKey") %>%
-  dplyr::select(taxonKey, begin_year, eea_cell_code)
-```
-
-Preview:
-
-```{r preview_begin_year_cells_combo}
-df_cc %>% head()
-```
-
-For each cell (`eea_cell_code`) and species (`taxonKey`) we can now create a time series:
-
-```{r make_ts, cache=TRUE}
-make_time_series <- function(eea_cell_code, taxonKey, begin_year, last_year ) {
-  expand_grid(eea_cell_code = eea_cell_code,
-              taxonKey = taxonKey,
-              year = seq(from = begin_year, to = last_year))
-
-}
-
-# create timeseries slots
-df_ts <- purrr::pmap_dfr(df_cc, 
-                         .f = make_time_series, 
-                         last_year = year(Sys.Date())
-)
-
-## Add data
-
-# Add occurrence data and protected areas
-df_ts <- 
-  df_ts %>%
-  dplyr::left_join(
-    df %>% dplyr::select(taxonKey,
-                           year,
-                           eea_cell_code,
-                           obs), 
-                     by = c("taxonKey", "year", "eea_cell_code"))
-# Add membership to protected areas
-df_ts <- 
-  df_ts %>%
-  dplyr::left_join(df_prot_areas %>% 
-                       dplyr::select(CELLCODE, natura2000),
-                     by = c("eea_cell_code" = "CELLCODE"))
-# Add regional information
-df_ts <- 
-  df_ts %>%
-  dplyr::left_join(eea_grid_regions %>% 
-                       as.data.frame() %>%
-                       dplyr::select(CELLCODE, 
-                                       isFlanders, 
-                                       isWallonia, 
-                                       isBrussels),
-                     by = c("eea_cell_code" = "CELLCODE"))
-# Add classKey
-df_ts <- 
-  df_ts %>%
-  dplyr::left_join(spec_names %>% dplyr::select(taxonKey, classKey), 
-                     by = "taxonKey")
-```
-
-## Research effort correction
-
-To correct the effect of research effort of an alien speies, we calculate the number of observations at class level excluding the observations of the alien species itself:
-
-```{r correct_cobs_research_effort_bias}
-# Add baseline data (at class level) diminished by obs of specific alien taxon
-df_ts <- 
-  df_ts %>%
-  dplyr::left_join(df_bl %>% 
-                       dplyr::select(year, eea_cell_code, classKey, cobs),
-                     by = c("year", "eea_cell_code", "classKey")) %>%
-  dplyr::mutate(cobs = cobs - obs)
-
-# replace NAs with 0
-df_ts <-
-  df_ts %>%
-  dplyr::replace_na(list(cobs = 0, obs = 0))
-```
-
-Preview:
-
-```{r preview_df_ts}
-df_ts %>% head(n = 30)
-```
-
-Add column for presence (1) or absence (0)
-
-```{r add_presence_absence}
-df_ts <- 
-  df_ts %>%
-  dplyr::mutate(pa_cobs = if_else(cobs > 0, 1, 0),
-                  pa_obs = if_else(obs > 0, 1, 0))
-```
-
-Arrange order columns:
-
-```{r set_order_columns}
-df_ts <-
-  df_ts %>%
-  dplyr::relocate(taxonKey, 
-                    year, 
-                    eea_cell_code, 
-                    obs, 
-                    pa_obs, 
-                    cobs, 
-                    pa_cobs,
-                    classKey,
-                    isFlanders,
-                    isWallonia,
-                    isBrussels,
-                    natura2000)
-```
 
 # Save data
 
-## Save timeseries and taxonomic metadata
+## Save enriched cubes
 
-Save `df_ts` as it will be used as start point of modelling pipelines:
+Save the cubes:
 
-```{r save_data_as_tsv}
-write_tsv(df_ts, 
-          file = here::here("data", "interim", "df_timeseries.tsv"), 
-          na = ""
+```{r save_data_as_csv}
+readr::write_csv(
+  df,
+  file = here::here("data", "interim", "be_alientaxa_cube_enriched.csv"),
+  na = ""
+)
+readr::write_csv(
+  df_bl,
+  file = here::here("data", "interim", "be_classes_cube_enriched.csv"), 
+  na = ""
 )
 ```
 
-We save also the taxonomic information:
+## Save distribution information of alien species in Belgium
 
-```{r save_spec_names}
-write_tsv(spec_names,
-          file = here::here("data", 
-                            "interim", 
-                            "timeseries_taxonomic_info.tsv"),
-          na = ""
+Save distribution extension:
+
+```{r save_distributions}
+write_tsv(
+  distributions,
+  file = here::here("data", "output", "griis_distributions.tsv"),
+  na = ""
 )
 ```

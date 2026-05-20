@@ -675,3 +675,13 @@ readr::write_csv(
 )
 ```
 
+We save also the taxa and their match to the GBIF Backbone as read from the [Global Register of Introduced and Invasive Species - Belgium](https://www.gbif.org/dataset/6d9e952f-948c-4483-9807-575348147c7e). Wa save them in file `griis_taxon_core.tsv` in directory `data/input`
+
+```{r save_taxa}
+readr::write_tsv(
+  x = taxa,
+  file = here::here("data", "input", "griis_taxon_core.tsv"),
+  na = ""
+)
+```
+

@@ -28,111 +28,218 @@ Load libraries:
 ```{r load_libraries, message = FALSE}
 library(tidyverse) # To do data science
 library(tidyselect) # To help tidyverse functions
-library(tidylog) # To provide feedback on dplyr functions
-library(rgbif) # To get information from GBIF
-library(lubridate) # To work with dates
+library(dplyr) # To provide feedback on dplyr functions
 library(here) # To find files
 library(trias)
 library(INBOtheme) # To load graphic INBO theme
 ```
 
-# Get data
+# Read data
 
-We read the time series data, output of preprocessing pipeline:
+## Read occurrence cubes
 
-```{r read_preprocessed_data, message=FALSE}
-df_ts <- read_tsv(
-  file = here::here("data", "interim", "df_timeseries.tsv"),
+We read the cubes with taxonomic and spatial information (regions and protected areas):
+
+```{r read_cubes, message = FALSE}
+df <- readr::read_csv(
+  here::here("data", "interim", "be_alientaxa_cube_enriched.csv"),
+  na = ""
+)
+df_bl <- readr::read_csv(
+  here::here("data", "interim", "be_classes_cube_enriched.csv"),
   na = ""
 )
 ```
 
-Columns `pa_obs` and `pa_cobs` indicate the presence (1) or absence (0) of the specific taxon and any other taxa within same class respectively.
+Preview the cube: 
+
+```{r}
+head(df)
+```
+
+Preview the baseline cube:
+
+```{r}
+head(df_bl)
+```
+
+## Read taxonomic information
+
+We read the taxonomic core from the GRIIS Belgium as done in previous pipelines:
+
+```{r taxon_info}
+taxa_df <- readr::read_tsv(
+  here::here("data", "input", "griis_taxon_core.tsv"),
+  na = ""
+)
+```
 
 Preview:
 
-```{r preview_ts}
-# Get a taxon
-taxon <-
-  df_ts$taxonKey[10]
+```{r preview_taxa_df}
+head(taxa_df)
+```
 
-# Preview
-df_ts %>%
-  tidylog::filter(
-    taxonKey == taxon,
-    year %in% c(2016, 2017),
-    eea_cell_code == "1kmE3924N3102"
+
+We set `isBelgium` = `TRUE` for all grid cells. Notice that at this moment `isBelgium` = `FALSE` for North Sea areas:
+
+```{r add_isBelgium}
+df$isBelgium <- TRUE
+df_bl$isBelgium <- TRUE
+```
+
+Add class information to the cube:
+
+```{r add_class}
+df <- df %>%
+  dplyr::left_join(
+    taxa_df %>% dplyr::distinct(acceptedKey, acceptedClassKey, acceptedClass, acceptedKingdom),
+     dplyr::join_by(taxonKey == acceptedKey)
+  ) %>%
+  dplyr::rename(
+    classKey = acceptedClassKey,
+    class = acceptedClass,
+    kingdom = acceptedKingdom
   )
 ```
 
-Retrieve scientific names which will be useful to better discuss the results.
+Preview:
 
-```{r taxon_names, message=FALSE}
-spec_names <- read_tsv(
-  file = here::here("data", "interim", "timeseries_taxonomic_info.tsv"),
-  na = ""
-) %>%
-  tidylog::select(taxonKey, canonicalName) %>%
-  tidylog::filter(taxonKey %in% df_ts$taxonKey)
+```{r}
+head(df)
 ```
 
-Add column `isBelgium` to the time series data to simplify the code while running the modelling for both Belgium and its regions:
+## Add information about regional protected areas
 
-```{r add_isBelgium}
-df_ts$isBelgium <- TRUE
+We would like to add information about regional protected areas, i.e. grid cells intersecting protected areas in Flanders, Wallonia and Brussels. We use the columns `natura2000`, `isFlanders`, `isWallonia` and `isBrussels`:
+
+```{r add_region_protectedareas}
+df <- df %>%
+  dplyr::mutate(
+    isFlandersNatura2000 = isFlanders == TRUE & natura2000 == TRUE,
+    isWalloniaNatura2000 = isWallonia == TRUE & natura2000 == TRUE,
+    isBrusselsNatura2000 = isBrussels == TRUE & natura2000 == TRUE
+  ) %>%
+  dplyr::relocate(dplyr::ends_with("natura2000"), .before = x)
 ```
 
-Define function to lump geographic information for Belgium, its regions and protected areas:
+Preview:
+
+```{r}
+head(df)
+```
+
+Same for cube at class level (baseline):
+
+```{r add_region_protectedareas_class}
+df_bl <- df_bl %>%
+  dplyr::mutate(
+    isFlandersNatura2000 = isFlanders == TRUE & natura2000 == TRUE,
+    isWalloniaNatura2000 = isWallonia == TRUE & natura2000 == TRUE,
+    isBrusselsNatura2000 = isBrussels == TRUE & natura2000 == TRUE
+  ) %>%
+  dplyr::relocate(dplyr::ends_with("natura2000"), .before = x)
+```
+
+Preview:
+
+```{r}
+df_bl
+```
+
+# Create time series for number of occurrences and number of occupied grid cells
+
+Define function to calculate number of occurrences and grid cells for a specific area (Belgium, protected areas or Belgian regions):
 
 ```{r lump_geographic_info}
-filter_compact_time_series <- function(df, col_to_filter) {
-  df %>%
-  tidylog::filter(!!sym(col_to_filter) == TRUE) %>%
-  tidylog::group_by(taxonKey, year, classKey) %>%
-  tidylog::summarise(
-    obs = sum(obs),
-    cobs = sum(cobs),
-    ncells = sum(pa_obs),
-    c_ncells = sum(pa_cobs)
-  ) %>%
-  tidylog::ungroup()
+#' Function to calculate the number of observations and occupied cells at taxon 
+#' level per year for a specific area.
+#' 
+#' @param cube Data frame with enriched cube at taxon-level.
+#' @param cube_bl Data frame with enriched cube at class-level.
+#' @param area Character. Name of the column in the cube to filter by (e.g.
+#' "isBelgium", "isFlanders", "natura2000"). Default: `NULL`: no filtering by
+#' area.
+calculate_variables <- function(cube, cube_bl, area = NULL) {
+  # Filter by area
+  if (!is.null(area)) {
+    cube <- cube %>%
+    dplyr::filter(!!sym(area) == TRUE)
+  }
+  
+  cube_bl <-  cube_bl %>%
+    dplyr::filter(!!sym(area) == TRUE)
+  # Calculate the number of observations and occupied cells at taxon level per
+  # year
+  variables <- cube %>%
+    dplyr::group_by(taxonKey, taxonName, year, class, classKey, kingdom) %>%
+    dplyr::summarise(
+      obs = sum(obs),
+      ncells = dplyr::n(),
+      .groups = "drop"
+    )
+  # Calculate the number of observations and occupied cells at class level per
+  # year
+  variables_bl <- cube_bl %>%
+    dplyr::group_by(year, classKey, class) %>%
+    dplyr::summarise(
+      cobs = sum(cobs),
+      c_ncells = dplyr::n(),
+      .groups = "drop"
+    )
+  # Add number of observations and occupied cells at class level to the
+  # taxon-level data
+  variables <- variables %>%
+    dplyr::left_join(variables_bl, dplyr::join_by(year, classKey, class))
+  # Reduce it by number of obs/cells of the alien taxon. If the number of
+  # obs/cells of the alien taxon is higher than the number of obs/cells at class
+  # level, we set the value to 0 (we cannot have negative values)
+  variables <- variables %>%
+    dplyr::mutate(
+      cobs = cobs - obs,
+      c_ncells = c_ncells - ncells
+    ) %>%
+    dplyr::mutate(
+      cobs = ifelse(cobs < 0, 0, cobs),
+      c_ncells = ifelse(c_ncells < 0, 0, c_ncells)
+    )
+  # Add 0s for years with no observations or occupied cells for a taxon
+  variables <- variables %>%
+    group_by(taxonKey, taxonName, class, classKey, kingdom) %>%
+    tidyr::complete(year = tidyr::full_seq(year, 1), fill = list(obs = 0, ncells = 0, cobs = 0, c_ncells = 0)) %>%
+    ungroup()
+  return(variables)
 }
 ```
 
-Apply the function to the time series data:
-```{r df_ts_compact}
-colnames_to_filter <- c("isBelgium",
-                        "isFlanders",
-                        "isWallonia",
-                        "isBrussels",
-                        "natura2000"
+Apply the function to the regions and protected areas:
+```{r calc_variables_per_area}
+areas <- c("isBelgium",
+           "isFlanders",
+           "isWallonia",
+           "isBrussels",
+           "natura2000",
+           "isFlandersNatura2000",
+           "isWalloniaNatura2000",
+           "isBrusselsNatura2000"
 )
-df_ts_compact <- purrr::map(
-  colnames_to_filter,
-  function(x) filter_compact_time_series(df = df_ts, col_to_filter = x)) %>%
-  purrr::set_names(colnames_to_filter)
+names(areas) <- areas
+df_ts <- purrr::map(
+  areas,
+  function(x) calculate_variables(df, df_bl, area = x)
+)
 ```
 
-We have now a compact version of the time series data for:
+We have now compact time series of the variables for all regions and the protected areas:
 
-```{r preview_compact_ts}
-names(df_ts_compact)
+```{r preview_ts}
+names(df_ts)
 ```
 
 Previews:
 
 ```{r previews_compact_ts}
-df_ts_compact %>% head()
-```
-
-
-
-Add canonical names:
-
-```{r add_canonicalName}
-df_ts_compact <- purrr::map(df_ts_compact, function(df) {
-  tidylog::left_join(df, spec_names, by = "taxonKey")
-})
+purrr::map(df_ts, head)
 ```
 
 # Modelling
@@ -166,51 +273,129 @@ evaluation_years
 We remove recent data due to publishing delay. Underestimation of the number of observations would sensibly affect the GAM output.
 
 ```{r remove_recent_data}
-df_ts_compact <- purrr::map(
-  df_ts_compact, 
-  function(df) df %>% tidylog::filter(year <= last_year)
+df_ts <- purrr::map(
+  df_ts, 
+  function(df) df %>% dplyr::filter(year <= last_year)
 )
 ```
 
-## Remove appearing taxa
+## Remove taxa with time series missing the evaluation years
 
-Taxa appearing after the very first evalution year should be removed as no trend can be assesed for them. See [analysis of appearing and reappearing taxa](https://trias-project.github.io/indicators/06_occurrence_indicators_appearing_taxa.html).
+Some taxa have time series ending before the evaluation years, i.e. no data are in `last_year`. For these taxa, no trend can be assessed in the evaluation period, and thus they should be removed from the analysis. We identify them by checking if the last year with observations or occupied cells is before the first evaluation year:
 
-```{r remove_appearing_taxa}
-# Define function to remove appearing taxa from the data for modelling
-remove_appearing_taxa <- function(df, min_eval_year) {
-  df %>%
-    # Filter to include only years before min(eval_years)
-    tidylog::filter(year < min_eval_year) %>%
-    # Group by taxonKey
-    tidylog::group_by(taxonKey) %>%
-    # Arrange by year within each group to ensure we get the first occurrence
-    dplyr::arrange(year, .by_group = TRUE) %>%
-    # Filter to keep only the first year where obs > 0 for each taxon
-    tidylog::slice(which(obs > 0)[1]) %>%
-    # Keep only taxonKey
-    tidylog::select(taxonKey) %>%
-    # Ungroup to remove grouping
-    tidylog::ungroup() %>%
-    # Add data from the original data frame
-    tidylog::left_join(df, by = "taxonKey")
-}
-
-# Apply the function to Belgium, its regions and the protected areas
-df_ts_compact <- purrr::map(df_ts_compact,
-                            remove_appearing_taxa,
-                            min_eval_year = min(evaluation_years)
+```{r taxa_to_remove_no_data_in_evaluation_year}
+taxa_to_remove <- purrr::map(
+  df_ts,
+  function(df) {
+    df %>%
+      dplyr::group_by(taxonKey, taxonName) %>%
+      dplyr::summarise(
+        last_year_obs = max(year[obs > 0], na.rm = TRUE),
+        last_year_ncells = max(year[ncells > 0], na.rm = TRUE)
+      ) %>%
+      dplyr::filter(last_year_obs < last_year & last_year_ncells < last_year)
+  }
 )
+taxa_to_remove
+```
 
-spec_names <-
-  spec_names %>%
-    tidylog::filter(
-      taxonKey %in% 
-        purrr::pluck(
-          purrr::map_dfr(df_ts_compact, function(x) {
-            x %>% dplyr::distinct(taxonKey)
-          }), "taxonKey")
-  )
+Remove them:
+
+```{r remove_taxa_to_not_evaluate}
+df_ts <- purrr::map2(
+  df_ts, taxa_to_remove,
+  function(df, t) {
+    df %>%
+      dplyr::filter(!taxonKey %in% t$taxonKey)
+  }
+)
+```
+
+
+## Remove appearing taxa and reappearing taxa
+
+Taxa appearing or reappearing from the evaluation years up to now should be removed as no trend can be assesed for them. See [analysis of appearing and reappearing taxa](https://trias-project.github.io/indicators/06_occurrence_indicators_appearing_taxa.html). 
+
+### Remove appearing taxa
+
+We read the appearing taxa from the generated files in `data/output`:
+
+```{r appearing_taxa}
+dir_path <- here::here("data", "output")
+appearing_taxa_files <- list(
+  isBelgium = here::here(dir_path, "appearing_taxa_be.tsv"),
+  isFlanders = here::here(dir_path, "appearing_taxa_flanders.tsv"),
+  isWallonia = here::here(dir_path, "appearing_taxa_wallonia.tsv"),
+  isBrussels = here::here(dir_path, "appearing_taxa_brussels.tsv"),
+  natura2000 = here::here(dir_path, "appearing_taxa_prot_areas.tsv"),
+  isFlandersNatura2000 = here::here(
+    dir_path, "appearing_taxa_prot_areas_flanders.tsv"
+    ),
+  isWalloniaNatura2000 = here::here(
+    dir_path, "appearing_taxa_prot_areas_wallonia.tsv"
+    ),
+  isBrusselsNatura2000 = here::here(
+    dir_path, "appearing_taxa_prot_areas_brussels.tsv"
+    )
+)
+appearing_taxa <- purrr::map(
+  appearing_taxa_files,
+  readr::read_tsv,
+  na = ""
+)
+```
+
+We remove them from the time series:
+
+```{r remove_appearing_taxa_from_ts}
+df_ts <- purrr::map2(
+  df_ts, appearing_taxa,
+  function(ts, taxa_to_remove) {
+    ts %>%
+      dplyr::filter(!taxonKey %in% taxa_to_remove$taxonKey)
+  }
+)
+```
+
+### Reappearing taxa
+
+Similar to appearing taxa, we read the reappearing taxa from the generated files in `data/output`:
+
+```{r reappearing_taxa}
+dir_path <- here::here("data", "output")
+reappearing_taxa_files <- list(
+  isBelgium = here::here(dir_path, "reappearing_taxa_be.tsv"),
+  isFlanders = here::here(dir_path, "reappearing_taxa_flanders.tsv"),
+  isWallonia = here::here(dir_path, "reappearing_taxa_wallonia.tsv"),
+  isBrussels = here::here(dir_path, "reappearing_taxa_brussels.tsv"),
+  natura2000 = here::here(dir_path, "reappearing_taxa_prot_areas.tsv"),
+  isFlandersNatura2000 = here::here(
+    dir_path, "reappearing_taxa_prot_areas_flanders.tsv"
+    ),
+  isWalloniaNatura2000 = here::here(
+    dir_path, "reappearing_taxa_prot_areas_wallonia.tsv"
+    ),
+  isBrusselsNatura2000 = here::here(
+    dir_path, "reappearing_taxa_prot_areas_brussels.tsv"
+    )
+)
+reappearing_taxa <- purrr::map(
+  reappearing_taxa_files,
+  readr::read_tsv,
+  na = ""
+)
+```
+
+We remove them from the time series:
+
+```{r remove_reappearing_taxa_from_ts}
+df_ts <- purrr::map2(
+  df_ts, reappearing_taxa,
+  function(ts, taxa_to_remove) {
+    ts %>%
+      dplyr::filter(!taxonKey %in% taxa_to_remove$taxonKey)
+  }
+)
 ```
 
 ## Decision rules
@@ -223,14 +408,15 @@ We apply function `apply_decision_rules()` to the observations:
 
 ```{r apply_decision_rules_occs, message=FALSE}
 # Define wrap function to apply decision rules for each evaluation year
-apply_decision_rules_for_ev_years <- function(df, eval_years, y_var) {
+apply_decision_rules_for_ev_years <- function(df, y_var, eval_years, taxa_col) {
   purrr::map_dfr(
     eval_years,
     function(year) {
       trias::apply_decision_rules(
         df = df,
         y_var = y_var,
-        eval_year = year
+        eval_year = year,
+        taxonKey = taxa_col,
       )
     }
   )
@@ -238,44 +424,26 @@ apply_decision_rules_for_ev_years <- function(df, eval_years, y_var) {
 
 # Apply the wrap function to BE, regions and protected areas for observations
 em_decision_rules_occs <- purrr::map(
-  df_ts_compact,
+  df_ts,
   apply_decision_rules_for_ev_years,
+  y_var = "obs",
   eval_years = evaluation_years,
-  y_var = "obs"
+  taxa_col = "taxonKey"
 )
 ```
 
-Preview from Belgium:
+Previews:
 
-```{r example_dec_rules_occs_BE}
-em_decision_rules_occs %>% 
-  purrr::pluck("isBelgium") %>% 
-  tidylog::slice_head(n = 10)
-```
-
-
-Preview from the regions:
-
-```{r example_dec_rules_occs_regions}
-regions <- c("isFlanders", "isWallonia", "isBrussels")
+```{r example_dec_rules_occs}
 purrr::map(
-  regions,
+  areas,
   function(x) {
     em_decision_rules_occs %>% 
       purrr::pluck(x) %>% 
-      tidylog::slice_head(n = 10)
+      dplyr::slice_head(n = 10)
   }
 )
 ```
-
-Preview from protected areas:
-
-```{r example_dec_rules_occs_protected_areas}
-em_decision_rules_occs %>% 
-  purrr::pluck("natura2000") %>% 
-  tidylog::slice_head(n = 10)
-```
-
 
 ### Occupancy
 
@@ -284,43 +452,26 @@ We apply function `trias::apply_decision_rules()` to occupancy:
 ```{r apply_decision_rules_occupancy, message=FALSE}
 # Apply the wrap function to BE, regions and protected areas for occupancy
 em_decision_rules_occupancy <- purrr::map(
-  df_ts_compact,
+  df_ts,
   apply_decision_rules_for_ev_years,
+  y_var = "ncells",
   eval_years = evaluation_years,
-  y_var = "ncells"
+  taxa_col = "taxonKey"
 )
 ```
 
-Preview from Belgium:
+Previews:
 
-```{r example_dec_rules_occupancy_BE}
-em_decision_rules_occupancy %>% 
-  purrr::pluck("isBelgium") %>% 
-  tidylog::slice_head(n = 10)
-```
-
-Preview from the regions:
-
-```{r example_dec_rules_occupancy_regions}
-regions <- c("isFlanders", "isWallonia", "isBrussels")
+```{r example_dec_rules_occupancy}
 purrr::map(
-  regions,
+  areas,
   function(x) {
     em_decision_rules_occupancy %>% 
       purrr::pluck(x) %>% 
-      tidylog::slice_head(n = 10)
+      dplyr::slice_head(n = 10)
   }
 )
 ```
-
-Preview from protected areas:
-
-```{r example_dec_rules_occupancy_protected_areas}
-em_decision_rules_occupancy %>% 
-  purrr::pluck("natura2000") %>% 
-  tidylog::slice_head(n = 10)
-```
-
 
 ## Generalized additive model (GAM)
 
@@ -338,7 +489,6 @@ We also define the plot dimensions in pixels:
 plot_dimensions <- list(width = 2800, height = 1500)
 ```
 
-
 We define also a wrap-up function, `apply_gam_for_eval_years` to apply GAM for each evaluation year and taxon:
 
 ```{r apply_gam_for_eval_years}
@@ -354,7 +504,7 @@ apply_gam_for_eval_years <- function(df,
                                      y_label,
                                      w,
                                      h) {
-  # Remove "is" from "isBrussels", "isFlanders", "isWallonia" to create the
+  # Remove "is" from "isBrussels", "isFlanders", "isWallonia", etc. to create the
   # subdirectory to be added to the basic directory
   region <- stringr::str_remove(region, "^is")
   dir_name <- here::here(dir_name_basic, region)
@@ -362,11 +512,11 @@ apply_gam_for_eval_years <- function(df,
   if (!dir.exists(dir_name)) {
     dir.create(dir_name)
   }
-  taxon_keys <- unique(df$taxonKey)
-  taxon_names <- unique(df$canonicalName)
+  taxon_keys_names <- df %>%
+    dplyr::distinct(taxonKey, taxonName)
   message(paste0("Applying GAM. Variable: ", y_var, "; region: ", region, "."))
   gam_occs <- map2(
-    taxon_keys, taxon_names,
+    taxon_keys_names$taxonKey, taxon_keys_names$taxonName,
     function(t, n) {
       df_key <- df %>%
         dplyr::filter(taxonKey == t)
@@ -411,11 +561,10 @@ apply_gam_for_eval_years <- function(df,
       return(results_gam)
     }
   )
-  names(gam_occs) <- taxon_keys
+  names(gam_occs) <- taxon_keys_names$taxonKey
   gam_occs
 }
 ```
-
 
 ### Observations
 
@@ -424,7 +573,7 @@ We apply GAM modelling by using the wrap-up function defined above to observatio
 ```{r apply_gam_to_all_taxa, message=FALSE, cache=TRUE}
 # Apply `apply_gam_for_eval_years` to observations:
 gam_occs <- purrr::imap(
-  df_ts_compact,
+  df_ts,
   apply_gam_for_eval_years,
   eval_years = evaluation_years,
   y_var = "obs",
@@ -455,7 +604,7 @@ We apply GAM modelling by using the wrap-up function defined above to occupancy 
 
 ```{r apply_gam_occupancy_to_all_taxa, message=FALSE, cache=TRUE}
 gam_occupancy <- purrr::imap(
-  df_ts_compact,
+  df_ts,
   apply_gam_for_eval_years,
   eval_years = evaluation_years,
   y_var = "ncells",

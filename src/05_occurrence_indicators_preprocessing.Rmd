@@ -230,7 +230,7 @@ df_bl <- df_bl %>%
 
 ## Grid cells intersecting protected areas
 
-We get information about the intersection of grid cells with Belgian protected areas by reading file `intersect_EEA_ref_grid_protected_areas.tsv` in `data/output`:
+We get information about the intersection of grid cells with Belgian protected areas by reading file `intersect_EEA_ref_grid_protected_areas.tsv` in `data/interim`:
 
 ```{r read_protected_areas}
 df_prot_areas <- readr::read_tsv(

@@ -124,7 +124,7 @@ taxa_df <- readr::read_tsv(
 
 ### Retrieve distribution information of alien species in Belgium
 
-Retrieve the distribution information of the [Global Register of Introduced and Invasive Species - Belgium](https://www.gbif.org/dataset/6d9e952f-948c-4483-9807-575348147c7e) as it will be used to define some temporal restraints. We save this information in file `griis_distributions.tsv` in `data/output`:
+Retrieve the distribution information of the [Global Register of Introduced and Invasive Species - Belgium](https://www.gbif.org/dataset/6d9e952f-948c-4483-9807-575348147c7e) as it will be used to define some temporal restraints. We save this information in file `griis_distributions.tsv` in `data/output`. This step will take a while and needs a stable internet connection. If you want to skip it, you can directly read the file `griis_distributions.tsv` in `data/output`.
 
 ```{r get_distributions, cache=TRUE}
 distributions <- elodea::get_distributions(
@@ -158,9 +158,9 @@ eea_grid_regions %>%
   # Transform to data.frame
   as.data.frame() %>%
   # Count the number of cells in Belgium
-  count(isBelgium) %>%
+  dplyr::count(isBelgium) %>%
   # Add percentage as a column
-  mutate(percentage = n / sum(n) * 100)
+  dplyr::mutate(percentage = n / sum(n) * 100)
 ```
 
 We identify the rows to remove in alien species occurrence cube, `df`, and  baseline, `df_bl`, by doing an `anti_join`:
@@ -184,7 +184,7 @@ df <- df %>%
 
 ```{r remove-cells-out-of-be-baseline}
 df_bl <- df_bl %>%
-  dplyr::filter(!eeaCellCode %in% eea_grid_regions$CELLCODE)
+  dplyr::filter(eeaCellCode %in% eea_grid_regions$CELLCODE)
 ```
 
 ### Taxa in unified checklist without occurrences
@@ -297,8 +297,8 @@ Do the same for baseline data:
 df_bl_xy <-
   df_bl %>%
   dplyr::distinct(eeaCellCode) %>%
-  bind_cols(
-    tibble(
+  dplyr::bind_cols(
+    dplyr::tibble(
       x = unlist(str_extract_all(unique(df_bl$eeaCellCode),
         pattern = "(?<=E)[0-9\\-]+"
       )),
@@ -306,7 +306,7 @@ df_bl_xy <-
         pattern = "(?<=N)[0-9\\-]+"
       ))
     ) %>%
-      mutate_all(as.integer)
+      dplyr::mutate_all(as.integer)
   )
 ```
 
@@ -397,7 +397,7 @@ df <-
 Add x-y coordinates to the baseline cube:
 
 ```{r add_space_baseline_data}
-df_bl_xy <-
+df_bl <-
   df_bl %>%
   dplyr::left_join(df_bl_xy, by = "eeaCellCode")
 ```
@@ -437,7 +437,6 @@ Preview:
 ```{r preview_df_bl_with_natura2000_col}
 df_bl %>% head()
 ```
-
 
 # Save data
 

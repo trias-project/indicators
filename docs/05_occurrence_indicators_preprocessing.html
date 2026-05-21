@@ -13,7 +13,7 @@
 <meta name="author" content="Toon Van Daele" />
 <meta name="author" content="Tim Adriaens" />
 
-<meta name="date" content="2026-05-20" />
+<meta name="date" content="2026-05-21" />
 
 <title>Occurrence indicators: pre-processing</title>
 
@@ -415,7 +415,7 @@ div.tocify {
 <h4 class="author">Damiano Oldoni</h4>
 <h4 class="author">Toon Van Daele</h4>
 <h4 class="author">Tim Adriaens</h4>
-<h4 class="date">2026-05-20</h4>
+<h4 class="date">2026-05-21</h4>
 
 </div>
 
@@ -513,8 +513,10 @@ distribution information of alien species in Belgium</h3>
 href="https://www.gbif.org/dataset/6d9e952f-948c-4483-9807-575348147c7e">Global
 Register of Introduced and Invasive Species - Belgium</a> as it will be
 used to define some temporal restraints. We save this information in
-file <code>griis_distributions.tsv</code> in
-<code>data/output</code>:</p>
+file <code>griis_distributions.tsv</code> in <code>data/output</code>.
+This step will take a while and needs a stable internet connection. If
+you want to skip it, you can directly read the file
+<code>griis_distributions.tsv</code> in <code>data/output</code>.</p>
 <pre class="r"><code>distributions &lt;- elodea::get_distributions(
   datasetKey = &quot;6d9e952f-948c-4483-9807-575348147c7e&quot;
 )</code></pre>
@@ -565,9 +567,9 @@ that these areas cover almost 40% of the EEA grid:</p>
   # Transform to data.frame
   as.data.frame() %&gt;%
   # Count the number of cells in Belgium
-  count(isBelgium) %&gt;%
+  dplyr::count(isBelgium) %&gt;%
   # Add percentage as a column
-  mutate(percentage = n / sum(n) * 100)</code></pre>
+  dplyr::mutate(percentage = n / sum(n) * 100)</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["isBelgium"],"name":[1],"type":["lgl"],"align":["right"]},{"label":["n"],"name":[2],"type":["int"],"align":["right"]},{"label":["percentage"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"FALSE","2":"20186","3":"39.02486"},{"1":"TRUE","2":"31540","3":"60.97514"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -594,7 +596,7 @@ that these areas cover almost 40% of the EEA grid:</p>
 <pre class="r"><code>df &lt;- df %&gt;%
   dplyr::filter(eeaCellCode %in% eea_grid_regions$CELLCODE)</code></pre>
 <pre class="r"><code>df_bl &lt;- df_bl %&gt;%
-  dplyr::filter(!eeaCellCode %in% eea_grid_regions$CELLCODE)</code></pre>
+  dplyr::filter(eeaCellCode %in% eea_grid_regions$CELLCODE)</code></pre>
 </div>
 <div id="taxa-in-unified-checklist-without-occurrences"
 class="section level3" number="2.4.2">
@@ -714,8 +716,8 @@ example, the coordinates of cellcode <code>1kmE3895N3116</code> are
 <pre class="r"><code>df_bl_xy &lt;-
   df_bl %&gt;%
   dplyr::distinct(eeaCellCode) %&gt;%
-  bind_cols(
-    tibble(
+  dplyr::bind_cols(
+    dplyr::tibble(
       x = unlist(str_extract_all(unique(df_bl$eeaCellCode),
         pattern = &quot;(?&lt;=E)[0-9\\-]+&quot;
       )),
@@ -723,13 +725,13 @@ example, the coordinates of cellcode <code>1kmE3895N3116</code> are
         pattern = &quot;(?&lt;=N)[0-9\\-]+&quot;
       ))
     ) %&gt;%
-      mutate_all(as.integer)
+      dplyr::mutate_all(as.integer)
   )</code></pre>
 <p>Preview:</p>
 <pre class="r"><code>df_bl_xy %&gt;% head()</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["eeaCellCode"],"name":[1],"type":["chr"],"align":["left"]}],"data":[],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["eeaCellCode"],"name":[1],"type":["chr"],"align":["left"]},{"label":["x"],"name":[2],"type":["int"],"align":["right"]},{"label":["y"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"1kmE3799N3134","2":"3799","3":"3134"},{"1":"1kmE3799N3135","2":"3799","3":"3135"},{"1":"1kmE3800N3132","2":"3800","3":"3132"},{"1":"1kmE3800N3133","2":"3800","3":"3133"},{"1":"1kmE3800N3134","2":"3800","3":"3134"},{"1":"1kmE3800N3135","2":"3800","3":"3135"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
@@ -800,7 +802,7 @@ add x-y coordinates:</p>
   dplyr::filter(taxonKey %in% recent_alien_species$acceptedKey) %&gt;%
   dplyr::left_join(df_xy, by = &quot;eeaCellCode&quot;)</code></pre>
 <p>Add x-y coordinates to the baseline cube:</p>
-<pre class="r"><code>df_bl_xy &lt;-
+<pre class="r"><code>df_bl &lt;-
   df_bl %&gt;%
   dplyr::left_join(df_bl_xy, by = &quot;eeaCellCode&quot;)</code></pre>
 <p>Notice that the occurrence cubes are already temporally limited to
@@ -834,7 +836,7 @@ protected areas.</p>
 <pre class="r"><code>df_bl %&gt;% head()</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["eeaCellCode"],"name":[2],"type":["chr"],"align":["left"]},{"label":["classKey"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["class"],"name":[4],"type":["chr"],"align":["left"]},{"label":["cobs"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["isFlanders"],"name":[6],"type":["lgl"],"align":["right"]},{"label":["isBelgium"],"name":[7],"type":["lgl"],"align":["right"]},{"label":["isWallonia"],"name":[8],"type":["lgl"],"align":["right"]},{"label":["isBrussels"],"name":[9],"type":["lgl"],"align":["right"]},{"label":["natura2000"],"name":[10],"type":["lgl"],"align":["right"]}],"data":[],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["eeaCellCode"],"name":[2],"type":["chr"],"align":["left"]},{"label":["classKey"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["class"],"name":[4],"type":["chr"],"align":["left"]},{"label":["cobs"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["isFlanders"],"name":[6],"type":["lgl"],"align":["right"]},{"label":["isBelgium"],"name":[7],"type":["lgl"],"align":["right"]},{"label":["isWallonia"],"name":[8],"type":["lgl"],"align":["right"]},{"label":["isBrussels"],"name":[9],"type":["lgl"],"align":["right"]},{"label":["x"],"name":[10],"type":["int"],"align":["right"]},{"label":["y"],"name":[11],"type":["int"],"align":["right"]},{"label":["natura2000"],"name":[12],"type":["lgl"],"align":["right"]}],"data":[{"1":"2026","2":"1kmE3799N3134","3":"137","4":"Bivalvia","5":"1","6":"TRUE","7":"TRUE","8":"FALSE","9":"FALSE","10":"3799","11":"3134","12":"TRUE"},{"1":"2026","2":"1kmE3799N3134","3":"220","4":"Magnoliopsida","5":"4","6":"TRUE","7":"TRUE","8":"FALSE","9":"FALSE","10":"3799","11":"3134","12":"TRUE"},{"1":"2026","2":"1kmE3799N3134","3":"225","4":"Gastropoda","5":"2","6":"TRUE","7":"TRUE","8":"FALSE","9":"FALSE","10":"3799","11":"3134","12":"TRUE"},{"1":"2026","2":"1kmE3799N3135","3":"225","4":"Gastropoda","5":"1","6":"TRUE","7":"TRUE","8":"FALSE","9":"FALSE","10":"3799","11":"3135","12":"TRUE"},{"1":"2026","2":"1kmE3799N3135","3":"7073593","4":"Phaeophyceae","5":"1","6":"TRUE","7":"TRUE","8":"FALSE","9":"FALSE","10":"3799","11":"3135","12":"TRUE"},{"1":"2026","2":"1kmE3800N3132","3":"212","4":"Aves","5":"3","6":"TRUE","7":"TRUE","8":"FALSE","9":"FALSE","10":"3800","11":"3132","12":"TRUE"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>

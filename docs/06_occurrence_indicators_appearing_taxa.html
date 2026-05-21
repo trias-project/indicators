@@ -13,7 +13,7 @@
 <meta name="author" content="Toon Van Daele" />
 <meta name="author" content="Tim Adriaens" />
 
-<meta name="date" content="2026-05-20" />
+<meta name="date" content="2026-05-21" />
 
 <title>Detect appearing and reappearing species</title>
 
@@ -428,7 +428,7 @@ species</h1>
 <h4 class="author">Damiano Oldoni</h4>
 <h4 class="author">Toon Van Daele</h4>
 <h4 class="author">Tim Adriaens</h4>
-<h4 class="date">2026-05-20</h4>
+<h4 class="date">2026-05-21</h4>
 
 </div>
 
@@ -443,23 +443,26 @@ appearing/reappearing in protected areas as additional warning.</p>
 <h1><span class="header-section-number">1</span> Setup</h1>
 <p>Load libraries:</p>
 <pre class="r"><code>library(tidyverse) # To do data science
-library(here) # To find files
-library(rgbif) # To get information from GBIF</code></pre>
+library(here) # To find files</code></pre>
 </div>
 <div id="read-data" class="section level1" number="2">
 <h1><span class="header-section-number">2</span> Read data</h1>
-<div id="read-occurrence-cubes" class="section level2" number="2.1">
+<div id="read-occurrence-cube" class="section level2" number="2.1">
 <h2><span class="header-section-number">2.1</span> Read occurrence
-cubes</h2>
-<p>We read the enriched cubes:</p>
+cube</h2>
+<p>We read the cube with taxonomic and spatial information (regions and
+protected areas):</p>
 <pre class="r"><code>df &lt;- readr::read_csv(
   here::here(&quot;data&quot;, &quot;interim&quot;, &quot;be_alientaxa_cube_enriched.csv&quot;),
   na = &quot;&quot;
-)
-df_bl &lt;- readr::read_csv(
-  here::here(&quot;data&quot;, &quot;interim&quot;, &quot;be_classes_cube_enriched.csv&quot;),
-  na = &quot;&quot;
 )</code></pre>
+<p>Preview the cube:</p>
+<pre class="r"><code>head(df)</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["eeaCellCode"],"name":[2],"type":["chr"],"align":["left"]},{"label":["taxonKey"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["taxonName"],"name":[4],"type":["chr"],"align":["left"]},{"label":["obs"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["isFlanders"],"name":[6],"type":["lgl"],"align":["right"]},{"label":["isBelgium"],"name":[7],"type":["lgl"],"align":["right"]},{"label":["isWallonia"],"name":[8],"type":["lgl"],"align":["right"]},{"label":["isBrussels"],"name":[9],"type":["lgl"],"align":["right"]},{"label":["x"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["y"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["natura2000"],"name":[12],"type":["lgl"],"align":["right"]}],"data":[{"1":"2026","2":"1kmE3799N3133","3":"2294277","4":"Theba pisana","5":"1","6":"FALSE","7":"FALSE","8":"FALSE","9":"FALSE","10":"3799","11":"3133","12":"FALSE"},{"1":"2026","2":"1kmE3799N3134","3":"4562917","4":"Cochlicella acuta","5":"2","6":"TRUE","7":"TRUE","8":"FALSE","9":"FALSE","10":"3799","11":"3134","12":"TRUE"},{"1":"2026","2":"1kmE3799N3135","3":"2294277","4":"Theba pisana","5":"1","6":"TRUE","7":"TRUE","8":"FALSE","9":"FALSE","10":"3799","11":"3135","12":"TRUE"},{"1":"2026","2":"1kmE3799N3135","3":"3197314","4":"Sargassum muticum","5":"1","6":"TRUE","7":"TRUE","8":"FALSE","9":"FALSE","10":"3799","11":"3135","12":"TRUE"},{"1":"2026","2":"1kmE3799N3136","3":"8485639","4":"Ensis leei","5":"1","6":"FALSE","7":"FALSE","8":"FALSE","9":"FALSE","10":"3799","11":"3136","12":"TRUE"},{"1":"2026","2":"1kmE3800N3132","3":"5232437","4":"Branta canadensis","5":"1","6":"TRUE","7":"TRUE","8":"FALSE","9":"FALSE","10":"3800","11":"3132","12":"TRUE"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 <div id="read-taxonomic-information" class="section level2"
 number="2.2">

@@ -27,24 +27,25 @@ Load libraries:
 ```{r load_libraries, message = FALSE}
 library(tidyverse) # To do data science
 library(here) # To find files
-library(rgbif) # To get information from GBIF
 ```
 
 # Read data
 
-## Read occurrence cubes
+## Read occurrence cube
 
-We read the enriched cubes:
+We read the cube with taxonomic and spatial information (regions and protected areas):
 
 ```{r read_cubes, message = FALSE}
 df <- readr::read_csv(
   here::here("data", "interim", "be_alientaxa_cube_enriched.csv"),
   na = ""
 )
-df_bl <- readr::read_csv(
-  here::here("data", "interim", "be_classes_cube_enriched.csv"),
-  na = ""
-)
+```
+
+Preview the cube: 
+
+```{r}
+head(df)
 ```
 
 ## Read taxonomic information

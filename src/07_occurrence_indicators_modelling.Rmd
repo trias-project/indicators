@@ -611,7 +611,7 @@ gam_occupancy <- purrr::imap(
   indicator = "occupancy",
   baseline_var = "c_ncells",
   root_dir = dir_name_basic,
-  y_label = "occupancy (km2)",
+  y_label = "measured occupancy (km2)",
   w = plot_dimensions$width,
   h = plot_dimensions$height
 )

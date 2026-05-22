@@ -1,26 +1,13 @@
 taxonKey	taxonName	kingdom	year	em_status	dr_1	dr_2	dr_3	dr_4
-1017419	Oxidus gracilis (C.L.Koch, 1847)	Animalia	2022	1	FALSE	FALSE	FALSE	TRUE
-1031394	Ectopsocus petersi Smithers, 1978	Animalia	2022	2	FALSE	TRUE	FALSE	FALSE
-1031400	Ectopsocus briggsi McLachlan, 1899	Animalia	2022	1	FALSE	FALSE	FALSE	FALSE
-1031684	Lepinotus patruelis Pearman, 1931	Animalia	2022	2	FALSE	TRUE	FALSE	FALSE
-1031742	Dorypteryx domestica (Smithers, 1958)	Animalia	2022	3	FALSE	TRUE	FALSE	TRUE
+1031684	Lepinotus patruelis Pearman, 1931	Animalia	2022	1	FALSE	FALSE	FALSE	FALSE
 1047536	Leptinotarsa decemlineata (Say, 1824)	Animalia	2022	2	FALSE	TRUE	FALSE	FALSE
-1309600	Andricus kollari (Hartig, 1843)	Animalia	2022	3	FALSE	TRUE	FALSE	TRUE
+1309600	Andricus kollari (Hartig, 1843)	Animalia	2022	2	FALSE	TRUE	FALSE	FALSE
 1309652	Dryocosmus kuriphilus Yasumatsu, 1951	Animalia	2022	1	FALSE	FALSE	FALSE	FALSE
 1311477	Vespa velutina Lepeletier, 1836	Animalia	2022	3	FALSE	TRUE	FALSE	TRUE
-1346919	Isodontia mexicana (de Saussure, 1867)	Animalia	2022	3	FALSE	TRUE	FALSE	TRUE
 1421091	Lepisma saccharinum Linnaeus, 1758	Animalia	2022	3	FALSE	TRUE	FALSE	TRUE
-1622599	Rhagoletis cingulata (Loew, 1862)	Animalia	2022	1	FALSE	FALSE	FALSE	FALSE
-1622658	Rhagoletis completa Cresson, 1929	Animalia	2022	1	TRUE	FALSE	FALSE	FALSE
-1626096	Ceratitis capitata (Wiedemann, 1824)	Animalia	2022	3	FALSE	TRUE	FALSE	TRUE
-1652212	Aedes japonicus (Theobald, 1901)	Animalia	2022	2	FALSE	TRUE	FALSE	FALSE
 1690429	Meconema meridionale Costa, 1860	Animalia	2022	1	FALSE	FALSE	FALSE	FALSE
-1718308	Acheta domesticus (Linnaeus, 1758)	Animalia	2022	2	FALSE	TRUE	FALSE	FALSE
-1749449	Cameraria ohridella Deschka & Dimić, 1986	Animalia	2022	2	FALSE	TRUE	FALSE	FALSE
-1749580	Phyllocnistis citrella Stainton, 1856	Animalia	2022	1	FALSE	FALSE	FALSE	FALSE
-1920491	Pieris mannii (Mayer, 1851)	Animalia	2022	1	FALSE	FALSE	FALSE	FALSE
-1997215	Blattella germanica (Linnaeus, 1767)	Animalia	2022	3	FALSE	TRUE	FALSE	TRUE
-2008616	Empicoris rubromaculatus (Blackburn, 1888)	Animalia	2022	3	FALSE	TRUE	FALSE	TRUE
+1718308	Acheta domesticus (Linnaeus, 1758)	Animalia	2022	1	FALSE	FALSE	FALSE	FALSE
+1749449	Cameraria ohridella Deschka & Dimić, 1986	Animalia	2022	1	FALSE	FALSE	FALSE	FALSE
 2020655	Corythucha ciliata (Say, 1832)	Animalia	2022	2	FALSE	TRUE	FALSE	FALSE
 2020686	Stephanitis takeyai Drake & Maa, 1955	Animalia	2022	3	FALSE	TRUE	FALSE	TRUE
 2037925	Orientus ishidae (Matsumura, 1902)	Animalia	2022	3	FALSE	TRUE	FALSE	TRUE
@@ -28,70 +15,49 @@ taxonKey	taxonName	kingdom	year	em_status	dr_1	dr_2	dr_3	dr_4
 2049296	Pithyotettix abietinus (Fallén, 1806)	Animalia	2022	3	FALSE	TRUE	FALSE	TRUE
 2049661	Adelges abietis (Linnaeus, 1758)	Animalia	2022	2	FALSE	TRUE	FALSE	FALSE
 2078852	Nezara viridula (Linnaeus, 1758)	Animalia	2022	3	FALSE	TRUE	FALSE	TRUE
-2095283	Pseudococcus longispinus (Targioni Tozzetti, 1867)	Animalia	2022	3	FALSE	TRUE	FALSE	TRUE
-2142456	Uloborus plumipes Lucas, 1846	Animalia	2022	3	FALSE	TRUE	FALSE	TRUE
 2153287	Zoropsis spinimana (Dufour, 1820)	Animalia	2022	3	FALSE	TRUE	FALSE	TRUE
-2169430	Macaroeris nidicolens (Walckenaer, 1802)	Animalia	2022	1	FALSE	FALSE	FALSE	FALSE
-2176858	Philaeus chrysops (Poda, 1761)	Animalia	2022	1	FALSE	FALSE	FALSE	TRUE
 2217982	Crangonyx pseudogracilis Bousfield, 1958	Animalia	2022	1	FALSE	FALSE	FALSE	FALSE
-2225776	Eriocheir sinensis H.Milne Edwards, 1853	Animalia	2022	2	FALSE	TRUE	FALSE	FALSE
+2225776	Eriocheir sinensis H.Milne Edwards, 1853	Animalia	2022	1	FALSE	FALSE	FALSE	FALSE
 2226990	Pacifastacus leniusculus (Dana, 1852)	Animalia	2022	3	FALSE	TRUE	FALSE	TRUE
 2227300	Procambarus clarkii (Girard, 1852)	Animalia	2022	2	FALSE	TRUE	FALSE	FALSE
-2287072	Dreissena polymorpha (Pallas, 1771)	Animalia	2022	2	FALSE	TRUE	FALSE	FALSE
-2287073	Dreissena bugensis (Andrusov, 1897)	Animalia	2022	3	FALSE	TRUE	FALSE	TRUE
-2295442	Limacus flavus (Linnaeus, 1758)	Animalia	2022	2	FALSE	TRUE	FALSE	FALSE
-2297108	Milax gagates (Draparnaud, 1801)	Animalia	2022	3	FALSE	TRUE	FALSE	TRUE
+2295442	Limacus flavus (Linnaeus, 1758)	Animalia	2022	3	FALSE	TRUE	FALSE	TRUE
+2297108	Milax gagates (Draparnaud, 1801)	Animalia	2022	1	FALSE	FALSE	FALSE	FALSE
 2362030	Ctenopharyngodon idella (Valenciennes, 1844)	Animalia	2022	3	FALSE	TRUE	FALSE	TRUE
 2362868	Pseudorasbora parva (Temminck & Schlegel, 1846)	Animalia	2022	1	FALSE	FALSE	FALSE	FALSE
-2366634	Carassius gibelio (Bloch, 1782)	Animalia	2022	2	FALSE	TRUE	FALSE	FALSE
+2366634	Carassius gibelio (Bloch, 1782)	Animalia	2022	1	FALSE	FALSE	FALSE	FALSE
 2379089	Neogobius melanostomus (Pallas, 1814)	Animalia	2022	1	FALSE	FALSE	FALSE	FALSE
 2382155	Sander lucioperca (Linnaeus, 1758)	Animalia	2022	1	FALSE	FALSE	FALSE	FALSE
-2394486	Lepomis gibbosus (Linnaeus, 1758)	Animalia	2022	2	FALSE	TRUE	FALSE	FALSE
+2394486	Lepomis gibbosus (Linnaeus, 1758)	Animalia	2022	1	FALSE	FALSE	FALSE	FALSE
 2426661	Pelophylax ridibundus (Pallas, 1771)	Animalia	2022	2	FALSE	TRUE	FALSE	FALSE
-2435035	Felis catus Linnaeus, 1758	Animalia	2022	2	FALSE	TRUE	FALSE	FALSE
+2435035	Felis catus Linnaeus, 1758	Animalia	2022	3	FALSE	TRUE	FALSE	TRUE
 2436940	Oryctolagus cuniculus (Linnaeus, 1758)	Animalia	2022	2	FALSE	TRUE	FALSE	FALSE
 2437450	Tamias sibiricus (Laxmann, 1769)	Animalia	2022	2	FALSE	TRUE	FALSE	FALSE
-2437619	Dolichotis patagonum (Zimmermann, 1780)	Animalia	2022	1	FALSE	FALSE	FALSE	FALSE
 2439261	Rattus norvegicus (Berkenhout, 1769)	Animalia	2022	3	FALSE	TRUE	FALSE	TRUE
 2440946	Muntiacus reevesi (Ogilby, 1839)	Animalia	2022	1	FALSE	FALSE	FALSE	FALSE
 2440954	Cervus nippon Temminck, 1838	Animalia	2022	1	FALSE	FALSE	FALSE	FALSE
 2443002	Trachemys scripta (Thunberg In Schoepff, 1792)	Animalia	2022	2	FALSE	TRUE	FALSE	FALSE
-2445034	Tarentola mauritanica (Linnaeus, 1758)	Animalia	2022	1	FALSE	FALSE	FALSE	FALSE
 2469188	Podarcis muralis (Laurenti, 1768)	Animalia	2022	2	FALSE	TRUE	FALSE	FALSE
-2473477	Syrmaticus reevesii (J.E.Gray, 1829)	Animalia	2022	2	FALSE	TRUE	FALSE	FALSE
-2474936	Anthropoides virgo (Linnaeus, 1758)	Animalia	2022	1	FALSE	FALSE	FALSE	FALSE
-2475648	Dacelo novaeguineae (Hermann, 1783)	Animalia	2022	1	FALSE	FALSE	FALSE	FALSE
+2473477	Syrmaticus reevesii (J.E.Gray, 1829)	Animalia	2022	1	FALSE	FALSE	FALSE	FALSE
 2479226	Psittacula krameri (Scopoli, 1769)	Animalia	2022	2	FALSE	TRUE	FALSE	FALSE
-2479798	Melopsittacus undulatus (Shaw, 1805)	Animalia	2022	2	FALSE	TRUE	FALSE	FALSE
-2479977	Nymphicus hollandicus (Kerr, 1792)	Animalia	2022	2	FALSE	TRUE	FALSE	FALSE
-2480350	Pelecanus onocrotalus Linnaeus, 1758	Animalia	2022	1	FALSE	FALSE	FALSE	FALSE
-2480372	Elanus caeruleus (Desfontaines, 1789)	Animalia	2022	1	FALSE	FALSE	FALSE	FALSE
-2480491	Circus macrourus (S.G.Gmelin, 1770)	Animalia	2022	1	FALSE	FALSE	FALSE	FALSE
-2480524	Buteo lagopus (Pontoppidan, 1763)	Animalia	2022	2	FALSE	TRUE	FALSE	FALSE
-2481962	Gavia immer (Brunnich, 1764)	Animalia	2022	1	FALSE	FALSE	FALSE	FALSE
-2494303	Serinus canaria (Linnaeus, 1758)	Animalia	2022	2	FALSE	TRUE	FALSE	FALSE
+2479798	Melopsittacus undulatus (Shaw, 1805)	Animalia	2022	1	FALSE	FALSE	FALSE	FALSE
+2479977	Nymphicus hollandicus (Kerr, 1792)	Animalia	2022	3	FALSE	TRUE	FALSE	TRUE
 2495414	Columba livia J.F.Gmelin, 1789	Animalia	2022	2	FALSE	TRUE	FALSE	FALSE
 2497701	Otus scops (Linnaeus, 1758)	Animalia	2022	1	FALSE	FALSE	FALSE	FALSE
 2498015	Tadorna ferruginea (Pallas, 1764)	Animalia	2022	2	FALSE	TRUE	FALSE	FALSE
 2498034	Anser cygnoides (Linnaeus, 1758)	Animalia	2022	3	FALSE	TRUE	FALSE	TRUE
 2498035	Anser indicus (Latham, 1790)	Animalia	2022	3	FALSE	TRUE	FALSE	TRUE
-2498046	Chenonetta jubata (Latham, 1801)	Animalia	2022	1	FALSE	FALSE	FALSE	FALSE
 2498252	Alopochen aegyptiaca (Linnaeus, 1766)	Animalia	2022	2	FALSE	TRUE	FALSE	FALSE
-2498259	Aythya nyroca (Güldenstädt, 1770)	Animalia	2022	1	FALSE	FALSE	FALSE	FALSE
-2498344	Cygnus atratus (Latham, 1790)	Animalia	2022	2	FALSE	TRUE	FALSE	FALSE
+2498344	Cygnus atratus (Latham, 1790)	Animalia	2022	1	FALSE	FALSE	FALSE	FALSE
 2498384	Callonetta leucophrys (Vieillot, 1816)	Animalia	2022	2	FALSE	TRUE	FALSE	FALSE
-2498387	Aix sponsa (Linnaeus, 1758)	Animalia	2022	2	FALSE	TRUE	FALSE	FALSE
-2498388	Aix galericulata (Linnaeus, 1758)	Animalia	2022	3	FALSE	TRUE	FALSE	TRUE
-2498408	Lophodytes cucullatus (Linnaeus, 1758)	Animalia	2022	1	FALSE	FALSE	FALSE	FALSE
-2502810	Caenoplana coerulea Moseley, 1877	Animalia	2022	1	TRUE	FALSE	FALSE	FALSE
+2498387	Aix sponsa (Linnaeus, 1758)	Animalia	2022	1	FALSE	FALSE	FALSE	FALSE
+2498388	Aix galericulata (Linnaeus, 1758)	Animalia	2022	2	FALSE	TRUE	FALSE	FALSE
 2650107	Azolla filiculoides Lam.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 2650827	Cyrtomium fortunei J.Sm.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 2650903	Onoclea sensibilis L.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
 2677047	Orthodontium lineare Schwägr.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 2683866	Chamaecyparis lawsoniana (A.Murray bis) Parl.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-2684120	Sequoiadendron giganteum (Lindl.) J.T.Buchholz	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 2684171	Thuja plicata Donn ex D.Don	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-2685361	Abies grandis (Douglas ex D.Don) Lindl.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
+2685361	Abies grandis (Douglas ex D.Don) Lindl.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
 2685484	Abies alba Mill.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 2685796	Pseudotsuga menziesii (Mirb.) Franco	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
 2686157	Larix kaempferi (Lamb.) Carrière	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
@@ -99,55 +65,39 @@ taxonKey	taxonName	kingdom	year	em_status	dr_1	dr_2	dr_3	dr_4
 2687210	Tsuga heterophylla (Raf.) Sarg.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 2702084	Juncus tenuis Willd.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 2702727	Festuca myuros L.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
-2702792	Briza maxima L.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
 2702808	Echinochloa crus-galli (L.) P.Beauv.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-2703698	Bromus sitchensis Trin.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
-2703723	Bromus catharticus Vahl	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-2703760	Bromus diandrus Roth	Plantae	2022	1	TRUE	FALSE	FALSE	FALSE
-2704757	Sporobolus indicus (L.) R.Br.	Plantae	2022	1	TRUE	FALSE	FALSE	FALSE
 2705031	Festuca glauca Vill.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
-2705090	Panicum miliaceum L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-2705162	Panicum capillare L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
+2705162	Panicum capillare L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 2705181	Sorghum bicolor (L.) Moench	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 2705185	Sorghum halepense (L.) Pers.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
 2705290	Avena sativa L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-2705400	Eragrostis pilosa (L.) P.Beauv.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-2705401	Eragrostis multicaulis Steud.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
+2705400	Eragrostis pilosa (L.) P.Beauv.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
 2705449	Eragrostis minor Host	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-2705966	Secale cereale L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
+2705966	Secale cereale L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 2706056	Hordeum vulgare L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 2715482	Cyperus eragrostis Lam.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 2717467	Eleocharis obtusa (Willd.) Schult.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
 2720120	Scirpus atrovirens Willd.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 2720269	Scirpus georgianus R.M.Harper	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
-2722515	Carex morrowii Boott	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
-2726360	Carex grayi J.Carey	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
 2747564	Crocus tommasinianus Herb.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 2747567	Crocus vernus (L.) Hill	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-2747939	Crocosmia ×crocosmiiflora (Lemoine) N.E.Br.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-2753146	Lilium martagon L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-2765272	Tradescantia virginiana L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
+2753146	Lilium martagon L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
+2765272	Tradescantia virginiana L.	Plantae	2022	1	TRUE	FALSE	FALSE	FALSE
 2766030	Pontederia cordata L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-2767271	Scilla luciliae (Boiss.) Speta	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
+2767271	Scilla luciliae (Boiss.) Speta	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 2767275	Scilla forbesii (Baker) Speta	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 2767428	Puschkinia scilloides Adams	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-2769766	Ruscus aculeatus L.	Plantae	2022	1	TRUE	FALSE	FALSE	FALSE
 2772094	Muscari botryoides (L.) Mill.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-2772174	Muscari armeniacum Leichtlin ex Baker	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
+2772174	Muscari armeniacum Leichtlin ex Baker	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 2772666	Hyacinthus orientalis L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-2773453	Ornithogalum divergens Boreau	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-2775530	Yucca flaccida Haw.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
 2775619	Yucca gloriosa L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 2781074	Hemerocallis fulva (L.) L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-2781103	Hemerocallis lilioasphodelus L.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
 2840931	Goodyera repens (L.) R.Br.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 2855356	Galanthus nivalis L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 2855398	Galanthus elwesii Hook.f.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 2855439	Galanthus woronowii Losinsk.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 2855860	Allium schoenoprasum L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-2856037	Allium ampeloprasum L.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
-2856920	Allium hollandicum R.M.Fritsch	Plantae	2022	1	TRUE	FALSE	FALSE	FALSE
-2857017	Allium paradoxum (M.Bieb.) G.Don	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
+2857017	Allium paradoxum (M.Bieb.) G.Don	Plantae	2022	1	FALSE	FALSE	FALSE	TRUE
 2858581	Narcissus poeticus L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 2865448	Elodea canadensis Michx.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
 2865565	Lagarosiphon major (Ridl.) Moss	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
@@ -156,95 +106,71 @@ taxonKey	taxonName	kingdom	year	em_status	dr_1	dr_2	dr_3	dr_4
 2873769	Acorus calamus L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 2873861	Linum usitatissimum L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 2873877	Linum austriacum L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-2873926	Linum grandiflorum Desf.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
+2873926	Linum grandiflorum Desf.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
 2873991	Aristolochia clematitis L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-2874508	Cucurbita pepo L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-2874570	Cucumis melo L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-2875968	Corylus colurna L.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
+2875968	Corylus colurna L.	Plantae	2022	1	FALSE	FALSE	FALSE	TRUE
 2876607	Alnus cordata (Loisel.) Duby	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-2879098	Quercus ilex L.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
 2880539	Quercus rubra L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-2880580	Quercus cerris L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
+2880580	Quercus cerris L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 2888380	Eschscholzia californica Cham.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-2888437	Papaver orientale L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 2888439	Papaver somniferum L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 2888513	Pseudofumaria lutea (L.) Borkh.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-2888564	Lamprocapnos spectabilis (L.) Fukuhara	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
-2888579	Leycesteria formosa Wall.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 2888625	Viburnum rhytidophyllum Hemsl. ex Forbes & Hemsl.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-2888636	Symphoricarpos orbiculatus Moench	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
 2888740	Centranthus ruber (L.) DC.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-2888814	Dipsacus laciniatus L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 2888859	Muehlenbeckia complexa (A.Cunn.) Meisn.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-2888978	Rumex pulcher L.	Plantae	2022	1	TRUE	FALSE	FALSE	FALSE
 2889019	Rumex patientia L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-2889088	Reynoutria sachalinensis (F.Schmidt) Nakai	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
+2889088	Reynoutria sachalinensis (F.Schmidt) Nakai	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 2889173	Reynoutria japonica Houtt.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 2889229	Persicaria orientalis (L.) Spach	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
 2889373	Fagopyrum esculentum Moench	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-2889378	Fagopyrum tataricum (L.) Gaertn.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 2889934	Tropaeolum majus L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-2890035	Geranium ×oxonianum P.F.Yeo	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
+2890035	Geranium ×oxonianum P.F.Yeo	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 2890122	Geranium pyrenaicum Burm.f.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 2890287	Geranium nodosum L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 2890502	Geranium endressii J.Gay	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 2890541	Geranium purpureum Vill.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 2891079	Geranium macrorrhizum L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-2891390	Geranium phaeum L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-2891755	Oxalis latifolia Kunth	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
+2891390	Geranium phaeum L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 2891770	Impatiens glandulifera Royle	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 2891774	Impatiens capensis Meerb.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 2891782	Impatiens parviflora DC.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-2891783	Impatiens balfourii Hook.fil.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
+2891783	Impatiens balfourii Hook.fil.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 2913169	Galium parisiense L.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
-2913219	Galium anglicum Huds.	Plantae	2022	1	TRUE	FALSE	FALSE	FALSE
-2914590	Galium murale (L.) All.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
 2925514	Verbena bonariensis L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-2925756	Lappula squarrosa (Retz.) Dumort.	Plantae	2022	1	TRUE	FALSE	FALSE	FALSE
 2925895	Echium plantagineum L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-2926045	Brunnera macrophylla (Adams) I.M.Johnst.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-2926066	Symphytum asperum Lepech.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-2926110	Borago officinalis L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
+2926045	Brunnera macrophylla (Adams) I.M.Johnst.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
+2926066	Symphytum asperum Lepech.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
+2926110	Borago officinalis L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 2926130	Pentaglottis sempervirens (L.) Tausch ex L.H.Bailey	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 2926884	Satureja montana L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 2926992	Salvia hispanica L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-2926995	Salvia verticillata L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 2927004	Salvia officinalis L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 2927028	Salvia nemorosa L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 2927230	Stachys byzantina K.Koch	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 2927305	Lavandula angustifolia Mill.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 2927850	Polemonium caeruleum L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-2928026	Nemophila menziesii Hook. & Arn.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
+2928026	Nemophila menziesii Hook. & Arn.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
 2928226	Phacelia tanacetifolia Benth.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-2928576	Ipomoea purpurea (L.) Roth	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 2928751	Datura stramonium L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-2928761	Nicotiana alata Link & Otto	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
-2928767	Nicotiana sylvestris Speg.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-2928835	Lycium barbarum L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-2929505	Solanum villosum Mill.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
+2928835	Lycium barbarum L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 2930137	Solanum lycopersicum L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-2930222	Solanum americanum Mill.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
+2930222	Solanum americanum Mill.	Plantae	2022	1	TRUE	FALSE	FALSE	FALSE
 2930262	Solanum tuberosum L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-2959443	Gleditsia triacanthos L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 2964355	Lupinus polyphyllus Lindl.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 2965331	Medicago ×varia Martyn	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
 2965354	Medicago falcata L.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
 2965531	Medicago polymorpha L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 2971095	Melilotus albus Medik.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 2972595	Onobrychis viciifolia Scop.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-2974811	Vicia pannonica Crantz	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
 2974832	Vicia faba L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 2975667	Galega officinalis L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-2984306	Gunnera tinctoria (Molina) Mirb.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-2984366	Soleirolia soleirolii (Req.) Dandy	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-2984676	Pachysandra terminalis Siebold & Zucc.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
+2984366	Soleirolia soleirolii (Req.) Dandy	Plantae	2022	1	FALSE	FALSE	FALSE	TRUE
+2984676	Pachysandra terminalis Siebold & Zucc.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 2985949	Sempervivum tectorum L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 2986045	Philadelphus coronarius L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-2986111	Ribes aureum Pursh	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 2986130	Ribes sanguineum Pursh	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-2986184	Ribes alpinum L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
+2986184	Ribes alpinum L.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
 2988188	Pyracantha coccinea M.Roem.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-2988354	Physocarpus opulifolius (L.) Maxim.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 2992543	Rubus laciniatus Willd.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 2995149	Rubus phoenicolasius Maxim.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 2996525	Rubus armeniacus Focke	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
@@ -254,7 +180,6 @@ taxonKey	taxonName	kingdom	year	em_status	dr_1	dr_2	dr_3	dr_4
 3003709	Rosa glauca Pourr.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 3003979	Rosa rugosa Thunb.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 3012089	Sorbaria sorbifolia (L.) A.Braun	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-3015457	Crataegus persimilis Sarg.	Plantae	2022	1	TRUE	FALSE	FALSE	FALSE
 3020871	Prunus lusitanica L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 3021496	Prunus laurocerasus L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 3021730	Prunus cerasifera Ehrh.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
@@ -262,141 +187,100 @@ taxonKey	taxonName	kingdom	year	em_status	dr_1	dr_2	dr_3	dr_4
 3021922	Prunus cerasus L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 3024109	Amelanchier ×lamarckii F.G.Schroed.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 3025617	Cotoneaster horizontalis Decne.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-3026024	Cotoneaster ascendens Flinck & B.Hylmö	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
-3026035	Cotoneaster coriaceus Franch.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-3026074	Cotoneaster salicifolius Franch.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
+3026074	Cotoneaster salicifolius Franch.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 3026092	Cotoneaster hjelmqvistii Flinck & B.Hylmö	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-3026162	Cotoneaster franchetii Boiss.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
+3026162	Cotoneaster franchetii Boiss.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 3026294	Cotoneaster bullatus Bois ex Bilm. & Bois	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-3026334	Cotoneaster divaricatus Rehder & E.H.Wilson	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
+3026334	Cotoneaster divaricatus Rehder & E.H.Wilson	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 3026585	Spiraea alba Du Roi	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 3027159	Spiraea douglasii Hook.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 3028528	Alchemilla mollis (Buser) Rothm.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-3029912	Fragaria ×ananassa (Weston) Rozier	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
 3031774	Mespilus germanica L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-3032611	Darmera peltata (Torr. ex Benth.) Voss	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-3032653	Heuchera sanguinea Engelm.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-3032698	Tellima grandiflora (Pursh) Douglas ex Lindl.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-3033077	Aucuba japonica Thunb.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
+3032611	Darmera peltata (Torr. ex Benth.) Voss	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
+3032698	Tellima grandiflora (Pursh) Douglas ex Lindl.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
+3033077	Aucuba japonica Thunb.	Plantae	2022	1	FALSE	FALSE	FALSE	TRUE
 3033227	Eranthis hyemalis (L.) Salisb.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 3033242	Anemone blanda Schott & Kotschy	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 3033518	Clematis viticella L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-3033543	Clematis recta L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 3033833	Delphinium ajacis L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-3033865	Mahonia aquifolium (Pursh) Nutt.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
+3033865	Mahonia aquifolium (Pursh) Nutt.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 3033896	Berberis thunbergii DC.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-3034182	Ammi majus L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-3034393	Eryngium planum L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
+3034182	Ammi majus L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 3034681	Myrrhis odorata (L.) Scop.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 3034825	Heracleum mantegazzianum Sommier & Levier	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-3034871	Coriandrum sativum L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 3034915	Astrantia major L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 3034922	Foeniculum vulgare Mill.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 3036033	Hedera colchica (K.Koch) K.Koch	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-3036892	Aralia elata (Miq.) Seem.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
-3039194	Parthenocissus quinquefolia (L.) Planch.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-3039203	Parthenocissus inserta (A.Kern.) Fritsch	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-3039209	Parthenocissus tricuspidata (Siebold & Zucc.) Planch.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-3039267	Elaeagnus umbellata Thunb.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-3040184	Populus balsamifera L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-3040185	Populus ×canescens (Aiton) Sm.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
+3039194	Parthenocissus quinquefolia (L.) Planch.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
+3039203	Parthenocissus inserta (A.Kern.) Fritsch	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
 3040233	Populus alba L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 3041022	Armoracia rusticana P.Gaertn., B.Mey. & Scherb.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 3042291	Hesperis matronalis L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 3042636	Brassica napus L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-3042751	Brassica juncea (L.) Czern.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
-3042845	Brassica oleracea L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-3045803	Cardamine graeca L.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
-3046736	Sisymbrium altissimum L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-3046812	Sisymbrium orientale L.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
 3046929	Sisymbrium chrysanthum Jord.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 3047621	Sinapis alba L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 3048203	Erysimum cheiri (L.) Crantz	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 3050364	Bunias orientalis L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-3053522	Berteroa incana (L.) DC.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-3054110	Aubrieta columnae Guss.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
+3053522	Berteroa incana (L.) DC.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 3054117	Aubrieta deltoidea (L.) DC.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 3054357	Juglans nigra L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 3054368	Juglans regia L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 3064056	Euphorbia palustris L.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
-3064669	Euphorbia myrsinites L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 3066965	Euphorbia lathyris L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 3067119	Euphorbia maculata L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-3067353	Euphorbia characias L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-3067891	Euphorbia prostrata Aiton	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
+3067891	Euphorbia prostrata Aiton	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 3069053	Euphorbia verrucosa L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-3082244	Cornus sericea L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-3083680	Atriplex micrantha Ledeb.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-3083761	Atriplex hortensis L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
+3082244	Cornus sericea L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 3084015	Phytolacca americana L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 3084022	Phytolacca acinosa Roxb.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 3084719	Portulaca oleracea L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 3084742	Claytonia sibirica L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 3085357	Saponaria ocymoides L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 3085360	Saponaria officinalis L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-3085381	Polycarpon tetraphyllum (L.) L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 3085421	Dianthus barbatus L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 3085438	Cerastium tomentosum L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-3085623	Petrorhagia saxifraga (L.) Link	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-3086240	Mirabilis jalapa L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-3088310	Petasites japonicus (Siebold & Zucc.) Maxim.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-3088481	Tagetes minuta L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-3088488	Tagetes erecta L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-3092576	Silphium perfoliatum L.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
+3085623	Petrorhagia saxifraga (L.) Link	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
+3086240	Mirabilis jalapa L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
+3088310	Petasites japonicus (Siebold & Zucc.) Maxim.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
+3092576	Silphium perfoliatum L.	Plantae	2022	1	FALSE	FALSE	FALSE	TRUE
 3098912	Cosmos bipinnatus Cav.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 3098951	Cosmos sulphureus Cav.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
-3101193	Dittrichia graveolens (L.) Greuter	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
+3101193	Dittrichia graveolens (L.) Greuter	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
 3103791	Matricaria discoidea DC.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 3109086	Senecio inaequidens DC.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-3112364	Cynara cardunculus L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-3114225	Rudbeckia hirta L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-3114229	Rudbeckia laciniata L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-3114643	Carduus acanthoides L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
+3114225	Rudbeckia hirta L.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
 3117449	Erigeron annuus (L.) Pers.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 3118254	Tanacetum balsamita L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-3118430	Tanacetum parthenium (L.) Sch.Bip.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
+3118430	Tanacetum parthenium (L.) Sch.Bip.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 3119175	Helianthus tuberosus L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-3119181	Helianthus ×laetiflorus Pers.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
 3120024	Achillea nobilis L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-3120284	Achillea filipendulina Lam.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-3120790	Artemisia verlotiorum Lamotte	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 3121088	Artemisia alba Turra	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
 3122924	Pilosella aurantiaca (L.) F.W.Schultz & Sch.Bip.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-3123663	Pilosella caespitosa (Dumort.) P.D.Sell & C.West	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
+3123663	Pilosella caespitosa (Dumort.) P.D.Sell & C.West	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 3128225	Centaurea nigra L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 3132570	Galinsoga parviflora Cav.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-3133887	Coreopsis verticillata L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 3133950	Coreopsis tinctoria Nutt.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 3136320	Hieracium amplexicaule L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 3140436	Lactuca macrophylla (Willd.) A.Gray	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 3145214	Silybum marianum (L.) Gaertn.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 3146683	Erigeron sumatrensis Retz.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-3146717	Erigeron bonariensis L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 3146791	Erigeron canadensis L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-3147018	Erigeron floribundus (Kunth) Sch.Bip.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 3147168	Erigeron karvinskianus DC.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 3148340	Inula helenium L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-3151558	Symphyotrichum novi-belgii (L.) G.L.Nesom	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-3152372	Malva pusilla Sm.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-3152377	Malva verticillata L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-3152378	Malva parviflora L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-3152521	Althaea hirsuta L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
+3151558	Symphyotrichum novi-belgii (L.) G.L.Nesom	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
+3152521	Althaea hirsuta L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 3152583	Hibiscus syriacus L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 3152614	Abutilon theophrasti Medik.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-3152861	Liriodendron tulipifera L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-3164340	Platycodon grandiflorus (Jacq.) A.DC.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-3169137	Euonymus fortunei (Turcz.) Hand.-Mazz.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
+3169137	Euonymus fortunei (Turcz.) Hand.-Mazz.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 3169340	Lysimachia punctata L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 3169391	Lysimachia ciliata L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-3169708	Vinca major L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
+3169708	Vinca major L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 3170040	Gentiana lutea L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 3170247	Asclepias syriaca L.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
-3170823	Paulownia tomentosa (Thunb.) Steud.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
+3170823	Paulownia tomentosa (Thunb.) Steud.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 3171948	Verbascum phlomoides L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-3171952	Verbascum speciosum Schrad.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
 3171954	Verbascum virgatum Stokes	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
 3172001	Antirrhinum majus L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-3172068	Veronica cymbalaria Bodard	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 3172077	Veronica persica Poir.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 3172100	Veronica filiformis Sm.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 3172104	Veronica peregrina L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
@@ -404,88 +288,70 @@ taxonKey	taxonName	kingdom	year	em_status	dr_1	dr_2	dr_3	dr_4
 3172266	Jasminum nudiflorum Lindl.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 3172291	Ligustrum ovalifolium Hassk.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 3172347	Fraxinus ornus L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-3172549	Campsis radicans (L.) Bureau	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
-3172615	Catalpa bignonioides Walter	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-3173338	Buddleja davidii Franch.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
+3172549	Campsis radicans (L.) Bureau	Plantae	2022	1	TRUE	FALSE	FALSE	FALSE
+3173338	Buddleja davidii Franch.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 3188894	Oenothera glazioviana Micheli	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-3188924	Oenothera biennis L.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
-3189073	Epilobium brachycarpum C.Presl	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-3189497	Hypericum calycinum L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
+3188924	Oenothera biennis L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
+3189073	Epilobium brachycarpum C.Presl	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 3189815	Aesculus hippocastanum L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-3189837	Acer saccharinum L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
+3189837	Acer saccharinum L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 3189866	Acer negundo L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-3190382	Ruta graveolens L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
+3190382	Ruta graveolens L.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
 3190411	Ptelea trifoliata L.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
-3190522	Cotinus coggygria Scop.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
+3190522	Cotinus coggygria Scop.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 3190538	Rhus typhina L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 3190653	Ailanthus altissima (Mill.) Swingle	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 3602683	Papaver cambricum L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 3610757	Cuscuta campestris Yunck.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-3642531	Chaerophyllum aureum L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
+3642531	Chaerophyllum aureum L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 3664589	Oenothera lindheimeri (Engelm. & A.Gray) W.L.Wagner & Hoch	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 3666422	Chamaenerion dodonaei (Vill.) Schur ex Fuss.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-3686235	Staphylea pinnata L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-3690997	Cardamine occulta Hornem.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
+3686235	Staphylea pinnata L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 3693541	Odontarrhena muralis (Waldst. & Kit.) Endl.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
 3741446	Erinus alpinus L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 3797084	Alkekengi officinarum Moench	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-3814157	Eudianthe coeli-rosa (L.) Fenzl ex Endl.	Plantae	2022	1	TRUE	FALSE	FALSE	FALSE
 3886505	Phlomis russeliana (Sims) Lag. ex Benth.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
-3896282	Teucrium hircanicum L.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
-3940326	Malva trimestris (L.) Salisb.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
+3940326	Malva trimestris (L.) Salisb.	Plantae	2022	1	FALSE	FALSE	FALSE	TRUE
 3981543	Berberis julianae C.K.Schneid.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-4021919	Portulaca sativa Haw.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-4038485	Reynoutria ×bohemica Chrtek & Chrtková	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
+4038485	Reynoutria ×bohemica Chrtek & Chrtková	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 4063383	Trachystemon orientale (L.) D.Don	Plantae	2022	1	TRUE	FALSE	FALSE	FALSE
-4067302	Symphytum grandiflorum DC.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
-4102952	Knautia macedonica Griseb.	Plantae	2022	1	FALSE	FALSE	FALSE	TRUE
-4125308	Panicum schinzii Hack.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 4129708	Lolium multiflorum Lam.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 4201607	Phedimus spurius (M.Bieb.) 't Hart	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-4201695	Phedimus hybridus (L.) 't Hart	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
-4245384	Crepis setosa Haller fil.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
+4201695	Phedimus hybridus (L.) 't Hart	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 4264680	Myocastor coypus (Molina, 1782)	Animalia	2022	3	FALSE	TRUE	FALSE	TRUE
 4270548	Hordeum murinum subsp. leporinum (Link) Arcang.	Plantae	2022	1	TRUE	FALSE	FALSE	FALSE
 4286975	Cyprinus carpio Linnaeus, 1758	Animalia	2022	3	FALSE	TRUE	FALSE	TRUE
-4315705	Dikerogammarus villosus (Sowinsky, 1894)	Animalia	2022	1	FALSE	FALSE	FALSE	FALSE
 4427319	Anthrenus angustefasciatus Ganglbauer, 1904	Animalia	2022	3	FALSE	TRUE	FALSE	TRUE
 4460066	Chrysolina americana (Linnaeus, 1758)	Animalia	2022	2	FALSE	TRUE	FALSE	FALSE
-4483961	Viridicerus ustulatus (Mulsant & Rey, 1855)	Animalia	2022	3	FALSE	TRUE	FALSE	TRUE
-4483971	Populicerus albicans (Kirschbaum, 1868)	Animalia	2022	1	TRUE	FALSE	FALSE	FALSE
-4484176	Cacopsylla fulguralis (Kuwayama, 1908)	Animalia	2022	3	FALSE	TRUE	FALSE	TRUE
+4484176	Cacopsylla fulguralis (Kuwayama, 1908)	Animalia	2022	1	FALSE	FALSE	FALSE	FALSE
 4485843	Halyomorpha halys (Stål, 1855)	Animalia	2022	3	FALSE	TRUE	FALSE	TRUE
 4486243	Oxycarenus lavaterae (Fabricius, 1787)	Animalia	2022	3	FALSE	TRUE	FALSE	TRUE
-4486365	Nysius huttoni White, 1878	Animalia	2022	3	FALSE	TRUE	FALSE	TRUE
 4488821	Deraeocoris flavilinea (A.Costa, 1862)	Animalia	2022	3	FALSE	TRUE	FALSE	TRUE
 4532122	Cydalima perspectalis (Walker, 1859)	Animalia	2022	3	FALSE	TRUE	FALSE	TRUE
-4553469	Leiobunum Koch, 1839	Animalia	2022	2	FALSE	TRUE	FALSE	FALSE
+4553469	Leiobunum Koch, 1839	Animalia	2022	3	FALSE	TRUE	FALSE	TRUE
 4562529	Morlina glabra (Rossmässler, 1835)	Animalia	2022	3	FALSE	TRUE	FALSE	TRUE
 4565039	Hygromia cinctella (Draparnaud, 1801)	Animalia	2022	2	FALSE	TRUE	FALSE	FALSE
 4565061	Cernuella neglecta (Draparnaud, 1805)	Animalia	2022	3	FALSE	TRUE	FALSE	TRUE
-4565134	Cernuella aginnica (Locard, 1882)	Animalia	2022	1	FALSE	FALSE	FALSE	FALSE
-4567717	Boettgerilla pallens Simroth, 1912	Animalia	2022	3	FALSE	TRUE	FALSE	TRUE
-4568269	Paralaoma servilis (Shuttleworth, 1852)	Animalia	2022	3	FALSE	TRUE	FALSE	TRUE
+4565134	Cernuella aginnica (Locard, 1882)	Animalia	2022	2	FALSE	TRUE	FALSE	FALSE
+4567717	Boettgerilla pallens Simroth, 1912	Animalia	2022	2	FALSE	TRUE	FALSE	FALSE
+4568269	Paralaoma servilis (Shuttleworth, 1852)	Animalia	2022	1	FALSE	FALSE	FALSE	TRUE
 4598225	Tandonia budapestensis (Hazay, 1880)	Animalia	2022	1	FALSE	FALSE	FALSE	FALSE
-4933624	Inula racemosa Hook.fil.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
-4939668	Kitaibela vitifolia Willd.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
-4989904	Harmonia axyridis (Pallas, 1773)	Animalia	2022	2	FALSE	TRUE	FALSE	FALSE
+4939668	Kitaibela vitifolia Willd.	Plantae	2022	1	TRUE	FALSE	FALSE	FALSE
+4989904	Harmonia axyridis (Pallas, 1773)	Animalia	2022	3	FALSE	TRUE	FALSE	TRUE
 5123474	Anthophila nemorana (Hübner, 1799)	Animalia	2022	2	FALSE	TRUE	FALSE	FALSE
-5151589	Blatta orientalis Linnaeus, 1758	Animalia	2022	3	FALSE	TRUE	FALSE	TRUE
-5152536	Gastrodes abietum Bergroth, 1914	Animalia	2022	1	FALSE	FALSE	FALSE	FALSE
 5152543	Raglius alboacuminatus (Goeze, 1778)	Animalia	2022	2	FALSE	TRUE	FALSE	FALSE
 5154481	Stictocephala bisonia Kopp & Yonke, 1977	Animalia	2022	2	FALSE	TRUE	FALSE	FALSE
 5156102	Leptoglossus occidentalis Heidemann, 1910	Animalia	2022	3	FALSE	TRUE	FALSE	TRUE
-5179027	Scutigera coleoptrata Linnaeus, 1758	Animalia	2022	2	FALSE	TRUE	FALSE	FALSE
+5179027	Scutigera coleoptrata Linnaeus, 1758	Animalia	2022	3	FALSE	TRUE	FALSE	TRUE
 5189806	Physella acuta (Draparnaud, 1805)	Animalia	2022	2	FALSE	TRUE	FALSE	FALSE
-5191102	Monacha cantiana (Montagu, 1803)	Animalia	2022	2	FALSE	TRUE	FALSE	FALSE
+5191102	Monacha cantiana (Montagu, 1803)	Animalia	2022	1	FALSE	FALSE	FALSE	FALSE
 5192470	Potamopyrgus antipodarum (J.E.Gray, 1843)	Animalia	2022	1	FALSE	FALSE	FALSE	FALSE
-5204019	Oncorhynchus mykiss (Walbaum, 1792)	Animalia	2022	1	FALSE	FALSE	FALSE	FALSE
+5204019	Oncorhynchus mykiss (Walbaum, 1792)	Animalia	2022	2	FALSE	TRUE	FALSE	FALSE
 5218786	Procyon lotor (Linnaeus, 1758)	Animalia	2022	2	FALSE	TRUE	FALSE	FALSE
-5219858	Ondatra zibethicus (Linnaeus, 1766)	Animalia	2022	2	FALSE	TRUE	FALSE	FALSE
+5219858	Ondatra zibethicus (Linnaeus, 1766)	Animalia	2022	3	FALSE	TRUE	FALSE	TRUE
 5220136	Dama dama (Linnaeus, 1758)	Animalia	2022	3	FALSE	TRUE	FALSE	TRUE
 5220170	Rupicapra rupicapra (Linnaeus, 1758)	Animalia	2022	2	FALSE	TRUE	FALSE	FALSE
-5232437	Branta canadensis (Linnaeus, 1758)	Animalia	2022	2	FALSE	TRUE	FALSE	FALSE
-5232445	Branta sandvicensis (Vigors, 1834)	Animalia	2022	3	FALSE	TRUE	FALSE	TRUE
+5232437	Branta canadensis (Linnaeus, 1758)	Animalia	2022	3	FALSE	TRUE	FALSE	TRUE
 5232452	Branta hutchinsii (Richardson, 1832)	Animalia	2022	3	FALSE	TRUE	FALSE	TRUE
 5281901	Campylopus introflexus (Hedw.) Brid.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 5284237	Cryptomeria japonica (Thunb. ex L.f.) D.Don	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
@@ -495,84 +361,63 @@ taxonKey	taxonName	kingdom	year	em_status	dr_1	dr_2	dr_3	dr_4
 5284982	Pinus strobus L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 5285637	Pinus sylvestris L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 5289643	Apera interrupta (L.) P.Beauv.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
-5289666	Setaria faberi R.A.W.Herrm.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 5289684	Setaria viridis (L.) P.Beauv.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 5289686	Setaria verticillata (L.) P.Beauv.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-5289693	Setaria pumila (Poir.) Roem. & Schult.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
+5289693	Setaria pumila (Poir.) Roem. & Schult.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 5289698	Setaria italica (L.) P.Beauv.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 5289744	Phalaris canariensis L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 5289756	Phalaris arundinacea L.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
-5289833	Nassella tenuissima (Trin.) Barkworth	Plantae	2022	1	TRUE	FALSE	FALSE	FALSE
-5289917	Polypogon monspeliensis (L.) Desf.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-5289919	Polypogon viridis (Gouan) Breistr.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
+5289917	Polypogon monspeliensis (L.) Desf.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
 5289972	Digitaria sanguinalis (L.) Scop.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-5290052	Zea mays L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-5290242	Gaudinia fragilis (L.) P.Beauv.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
+5290242	Gaudinia fragilis (L.) P.Beauv.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
 5296178	Sisyrinchium montanum Greene	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 5298069	Iris ×germanica L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 5298126	Iris sibirica L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 5298675	Iris pumila L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-5298765	Iris foetidissima L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-5304257	Hyacinthoides hispanica (Mill.) Rothm.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-5304294	Hyacinthoides ×massartiana Geerinck	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
+5304294	Hyacinthoides ×massartiana Geerinck	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 5324959	Himantoglossum robertianum (Loisel.) P.Delforge	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-5328593	Aponogeton distachyos L.f.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-5328909	Sagittaria latifolia Willd.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
-5329212	Elodea nuttallii (Planch.) H.St.John	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-5329263	Elodea densa (Planch.) Casp.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
+5329212	Elodea nuttallii (Planch.) H.St.John	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
+5329263	Elodea densa (Planch.) Casp.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
 5330661	Arum italicum Mill.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 5333294	Castanea sativa Mill.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-5334194	Macleaya cordata (Willd.) R.Br.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
 5334227	Lonicera caprifolium L.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
 5334240	Lonicera japonica Thunb.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 5334242	Lonicera tatarica L.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
 5334351	Fallopia baldschuanica (Regel) Holub	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-5341201	Anchusa officinalis L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 5341203	Pulmonaria saccharata Mill.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 5341204	Pulmonaria officinalis L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-5341387	Hyssopus officinalis L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 5341442	Thymus vulgaris L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-5341497	Nepeta racemosa Lam.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
+5341497	Nepeta racemosa Lam.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 5341501	Melissa officinalis L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 5341754	Nicandra physalodes (L.) Gaertn.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 5341784	Physalis peruviana L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 5347846	Lathyrus oleraceus Lam.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 5350005	Coronilla varia L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 5352251	Robinia pseudoacacia L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-5353590	Cercis siliquastrum L.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
-5355395	Spartium junceum L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 5356345	Laburnum anagyroides Medik.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-5356488	Lathyrus sativus L.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
 5356517	Lathyrus latifolius L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-5357407	Amorpha fruticosa L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-5358907	Trifolium alexandrinum L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
+5358907	Trifolium alexandrinum L.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
 5359175	Trifolium resupinatum L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 5359378	Trifolium incarnatum L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 5360475	Trigonella foenum-graecum L.	Plantae	2022	1	TRUE	FALSE	FALSE	FALSE
-5361785	Myriophyllum aquaticum (Vell.) Verdc.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
+5361785	Myriophyllum aquaticum (Vell.) Verdc.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 5361880	Cannabis sativa L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 5361909	Ficus carica L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-5361982	Sedum hispanicum L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 5362054	Crassula helmsii (Kirk) Cockayne	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-5362136	Aruncus dioicus (Walter) Fernald	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
+5362136	Aruncus dioicus (Walter) Fernald	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 5362573	Pyrus communis L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 5365305	Potentilla norvegica L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 5365705	Potentilla intermedia L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-5365717	Potentilla indica (Andrews) Th.Wolf	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
+5365717	Potentilla indica (Andrews) Th.Wolf	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 5367294	Potentilla recta L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 5369784	Geum macrophyllum Willd.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-5370380	Dasiphora fruticosa (L.) Rydb.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 5371450	Kerria japonica (L.) DC.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
 5371699	Hepatica nobilis Schreb.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 5371702	Nigella damascena L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 5371746	Anthriscus cerefolium (L.) Hoffm.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-5371753	Visnaga daucoides Gaertn.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-5371772	Levisticum officinale W.D.J.Koch	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-5371808	Angelica archangelica L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
+5371808	Angelica archangelica L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 5372392	Vitis vinifera L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-5372639	Salix babylonica L.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
-5372647	Salix pentandra L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-5372655	Salix eleagnos Scop.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
+5372647	Salix pentandra L.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
 5373324	Lunaria annua L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 5373358	Lobularia maritima (L.) Desv.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 5373368	Rapistrum rugosum (L.) All.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
@@ -580,141 +425,109 @@ taxonKey	taxonName	kingdom	year	em_status	dr_1	dr_2	dr_3	dr_4
 5374614	Barbarea stricta Andrz. ex Besser	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 5374922	Arabis caucasica Willd.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 5375020	Arabis alpina L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-5375920	Eruca vesicaria (L.) Cav.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-5376565	Lepidium sativum L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
+5376565	Lepidium sativum L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 5376648	Lepidium virginicum L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-5376846	Lepidium heterophyllum Benth.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 5376961	Lepidium draba L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 5377060	Lepidium didymum L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 5377303	Iberis umbellata L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 5377778	Aurinia saxatilis (L.) Desv.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 5384364	Amaranthus hybridus L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-5384396	Amaranthus deflexus L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-5384466	Gypsophila elegans M.Bieb.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
+5384396	Amaranthus deflexus L.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
+5384466	Gypsophila elegans M.Bieb.	Plantae	2022	1	FALSE	FALSE	FALSE	TRUE
 5384741	Silene coronaria (L.) Clairv.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 5384931	Houttuynia cordata Thunb.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 5384932	Saururus cernuus L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-5386938	Tragopogon porrifolius L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-5388595	Jacobaea maritima (L.) Pelser & Meijden	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 5389017	Solidago gigantea Aiton	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 5389029	Solidago canadensis L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-5389173	Telekia speciosa (Schreb.) Baumg.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
+5389173	Telekia speciosa (Schreb.) Baumg.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 5391480	Calendula officinalis L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 5392174	Bidens frondosa L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 5392243	Cichorium endivia L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 5392683	Echinops exaltatus Schrad.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
 5392859	Echinops bannaticus Rochel ex Schrad.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-5392883	Echinops sphaerocephalus L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-5401760	Ageratum houstonianum Mill.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
+5392883	Echinops sphaerocephalus L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 5403272	Crepis pulchra L.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
 5406789	Alcea rosea L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 5410151	Campanula poscharskyana Degen	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-5410411	Campanula portenschlagiana Schult.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
+5410411	Campanula portenschlagiana Schult.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 5414551	Vincetoxicum nigrum (L.) Moench	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 5415009	Linaria supina (L.) Chaz.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
 5415012	Linaria purpurea (L.) Mill.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-5415016	Linaria maroccana Hook.fil.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 5415039	Syringa vulgaris L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-5415455	Acanthus mollis L.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
-5420978	Clarkia amoena (Lehm.) A.Nelson & J.F.Macbr.	Plantae	2022	1	TRUE	FALSE	FALSE	FALSE
-5420991	Ludwigia peploides (Kunth) P.H.Raven	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-5421039	Ludwigia grandiflora (Michx.) Greuter & Burdet	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
+5421039	Ludwigia grandiflora (Michx.) Greuter & Burdet	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 5530881	Corydalis cava (L.) Schweigg. & Körte	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 5551241	Iberis sempervirens L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 5559837	Cymbalaria pallida (Ten.) Wettst.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-5561475	Chaenostoma cordatum Benth.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 5582033	Salix udensis (Wimm.) Trautv. & C.A.Mey.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 5598598	Lonicera acuminata Wall.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 5598915	Lonicera pileata Oliv.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-5712981	Coccus hesperidum Linnaeus, 1758	Animalia	2022	1	TRUE	FALSE	FALSE	FALSE
-5774728	Eriophyes pyri (H.A.Pagenstecher, 1857)	Animalia	2022	1	TRUE	FALSE	FALSE	FALSE
-5806954	Tarsostenus carus (Newman, 1840)	Animalia	2022	3	FALSE	TRUE	FALSE	TRUE
-5851603	Leuciscus aspius (Linnaeus, 1758)	Animalia	2022	1	FALSE	FALSE	FALSE	FALSE
-6027089	Smyrnium perfoliatum L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
+6027089	Smyrnium perfoliatum L.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
 6063730	Senecio vernalis Waldst. & Kit.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 6096602	Lophocolea semiteres (Lehm.) Mitt.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 6098843	Ctenolepisma longicaudatum Escherich, 1905	Animalia	2022	2	FALSE	TRUE	FALSE	FALSE
 6109534	Amaranthus retroflexus L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 6109535	Trifolium hybridum L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 6109611	Amaranthus caudatus L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-6157026	Trachemys scripta elegans (Wied, 1838)	Animalia	2022	2	FALSE	TRUE	FALSE	FALSE
+6157026	Trachemys scripta elegans (Wied, 1838)	Animalia	2022	1	FALSE	FALSE	FALSE	FALSE
 6159223	Lacerta agilis Linnaeus, 1758	Animalia	2022	1	FALSE	FALSE	FALSE	FALSE
 6164210	Canis lupus familiaris Linnaeus, 1758	Animalia	2022	3	FALSE	TRUE	FALSE	TRUE
 6362904	Populus trichocarpa Torr. & A.Gray ex Hook.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 6376340	Thalictrum aquilegiifolium L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-6411098	Lamium galeobdolon subsp. argentatum (Smejkal) J.Duvign.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-6443709	Tragopogon dubius Scop.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
+6411098	Lamium galeobdolon subsp. argentatum (Smejkal) J.Duvign.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
 7062200	Trachemys scripta scripta	Animalia	2022	1	FALSE	FALSE	FALSE	FALSE
 7068379	Vicia sativa subsp. sativa	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
-7068845	Beta vulgaris subsp. vulgaris	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 7111792	Lotus corniculatus subsp. corniculatus	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-7127354	Cyclamen coum Mill.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
+7127354	Cyclamen coum Mill.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 7127810	Cyclamen hederifolium Aiton	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-7135755	Rhododendron luteum Sweet	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-7156971	Oxalis triangularis A.St.-Hil.	Plantae	2022	1	FALSE	FALSE	FALSE	TRUE
-7172720	Sedum dasyphyllum L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-7225471	Vicia villosa subsp. villosa	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
+7135755	Rhododendron luteum Sweet	Plantae	2022	1	TRUE	FALSE	FALSE	FALSE
+7156971	Oxalis triangularis A.St.-Hil.	Plantae	2022	1	TRUE	FALSE	FALSE	FALSE
+7225471	Vicia villosa subsp. villosa	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
 7226776	Setaria verticillata var. verticillata	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 7230699	Pinus nigra subsp. nigra	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
 7266343	Salix purpurea subsp. purpurea	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
-7291264	Bistorta amplexicaulis (D.Don) Greene	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
+7291264	Bistorta amplexicaulis (D.Don) Greene	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
 7313595	Asarum europaeum L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 7315063	Pseudofumaria alba (Mill.) Lidén	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-7315072	Papaver atlanticum (Ball) Coss.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-7325877	Fraxinus angustifolia Vahl	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
+7315072	Papaver atlanticum (Ball) Coss.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 7327990	Rhododendron ponticum L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-7332415	Chaenorhinum origanifolium (L.) Fourr.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-7334368	Umbilicus rupestris (Salisb.) Dandy	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 7346102	Erythranthe guttata (DC.) G.L.Nesom	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-7400250	Platanus ×hispanica Mill. ex Münchh.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-7433196	Euonymus latifolius (L.) Mill.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-7443846	Dipsacus strigosus Willd.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
+7433196	Euonymus latifolius (L.) Mill.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
+7443846	Dipsacus strigosus Willd.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 7466434	Pastinaca sativa subsp. urens (Req. ex Godr.) Celak.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 7540164	Arion vulgaris Moquin-Tandon, 1855	Animalia	2022	3	FALSE	TRUE	FALSE	TRUE
-7560711	Oxalis tetraphylla Cav.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 7627205	Glebionis coronaria (L.) Tzvelev	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-7671397	Phuopsis stylosa (Trin.) G.Nicholson	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-7678610	Raphanus sativus L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-7747216	Aira caryophyllea L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
+7671397	Phuopsis stylosa (Trin.) G.Nicholson	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
+7678610	Raphanus sativus L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
+7747216	Aira caryophyllea L.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
 7749287	Petasites albus (L.) Gaertn.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-7753992	Helix lucorum Linnaeus, 1758	Animalia	2022	1	FALSE	FALSE	FALSE	FALSE
-7763534	Lauritrioza alacris (Flor, 1861)	Animalia	2022	1	FALSE	FALSE	FALSE	FALSE
+7753992	Helix lucorum Linnaeus, 1758	Animalia	2022	1	TRUE	FALSE	FALSE	FALSE
 7795888	Triticum aestivum L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-7802465	Nymphaea ×marliacea Lat.-Marl.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
+7802465	Nymphaea ×marliacea Lat.-Marl.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 7810918	Scrophularia vernalis L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 7844167	Colutea arborescens L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-7889822	Spiraea ×billardii Hérincq	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
-7903057	Brassica rapa L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
+7903057	Brassica rapa L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 7915783	Oenothera ×fallax Renner	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
 7978544	Hydrocotyle ranunculoides L.fil.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-7989836	Symphytum caucasicum M.Bieb.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 8002952	Ambrosia artemisiifolia L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 8012439	Symphoricarpos albus (L.) K.Koch	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 8014163	Ambigolimax valentianus (A.Férussac, 1821)	Animalia	2022	3	FALSE	TRUE	FALSE	TRUE
 8042568	Artemisia abrotanum L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 8080743	Scilla siberica Andrews	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
-8091998	Gypsophila vaccaria (L.) Sm.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-8116963	Acanthus hungaricus (Borbás) Baen.	Plantae	2022	1	TRUE	FALSE	FALSE	FALSE
-8149049	Wisteria sinensis (Sims) DC.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
-8149923	Prunus persica (L.) Stokes	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-8168344	Hedera hibernica Poit.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-8170635	Spiraea japonica L.fil.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-8190077	Populus ×canadensis Moench	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
+8091998	Gypsophila vaccaria (L.) Sm.	Plantae	2022	1	TRUE	FALSE	FALSE	FALSE
+8149923	Prunus persica (L.) Stokes	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
+8170635	Spiraea japonica L.fil.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 8190231	Corbicula fluminea (O.F.Müller, 1774)	Animalia	2022	3	FALSE	TRUE	FALSE	TRUE
 8193111	Melilotus officinalis (L.) Lam.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 8200663	Cymbalaria muralis G.Gaertn., B.Mey. & Scherb.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-8287616	Linaria simplex (Willd.) DC.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
 8288647	Pterocarya fraxinifolia (Poir.) Spach	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 8288930	Pilosella piloselloides (Vill.) Soják	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 8298495	Galinsoga quadriradiata Ruiz & Pav.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 8313153	Quercus palustris Münchh.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-8362005	Sasa palmata (Burb.) E.G.Camus	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
 8373355	Artemisia annua L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 8427624	Oxalis corniculata L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 8584304	Guizotia abyssinica (L.fil.) Cass.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 8599762	Aproceros leucopoda Takeuchi, 1939	Animalia	2022	2	FALSE	TRUE	FALSE	FALSE
 8699607	Mycosarcoma maydis (DC.) Bref.	Fungi	2022	2	FALSE	TRUE	FALSE	FALSE
-8701771	Obama nungara Carbayo, Alvarez-Presas, Jones & Riutort, 2016	Animalia	2022	1	FALSE	FALSE	FALSE	TRUE
 8740315	Marionfyfea adventor Jones & Sluys, 2016	Animalia	2022	1	TRUE	FALSE	FALSE	FALSE
 8741260	Macrosaccus robiniella (Clemens, 1859)	Animalia	2022	2	FALSE	TRUE	FALSE	FALSE
 8745918	Deroceras invadens Reise, Hutchinson, Schunack & Schlitt, 2011	Animalia	2022	3	FALSE	TRUE	FALSE	TRUE
@@ -726,111 +539,75 @@ taxonKey	taxonName	kingdom	year	em_status	dr_1	dr_2	dr_3	dr_4
 9018536	Koenigia campanulata (Hook.fil.) T.M.Schust. & Reveal	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
 9148577	Alnus incana (L.) Moench	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 9151957	Medicago sativa L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-9182765	Calendula arvensis L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
+9182765	Calendula arvensis L.	Plantae	2022	1	FALSE	FALSE	FALSE	TRUE
 9188840	Epilobium ciliatum Raf.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
 9202318	Symphyotrichum lanceolatum (Willd.) G.L.Nesom	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-9206251	Helianthus annuus L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-9326020	Gallus gallus (Linnaeus, 1758)	Animalia	2022	2	FALSE	TRUE	FALSE	FALSE
-9350124	Natrix helvetica (Lacépède, 1789)	Animalia	2022	2	FALSE	TRUE	FALSE	FALSE
-9376410	Delosperma cooperi (Hook.fil.) L.Bolus	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
-9451184	Pavo cristatus Linnaeus, 1758	Animalia	2022	3	FALSE	TRUE	FALSE	TRUE
+9206251	Helianthus annuus L.	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
+9350124	Natrix helvetica (Lacépède, 1789)	Animalia	2022	3	FALSE	TRUE	FALSE	TRUE
+9451184	Pavo cristatus Linnaeus, 1758	Animalia	2022	2	FALSE	TRUE	FALSE	FALSE
 9752149	Phasianus colchicus Linnaeus, 1758	Animalia	2022	2	FALSE	TRUE	FALSE	FALSE
 9823072	Oxalis stricta L.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
 9890104	Xeroplexa intersecta (Poiret, 1801)	Animalia	2022	2	FALSE	TRUE	FALSE	FALSE
 10071055	Scandosorbus ×intermedia (Ehrh.) Sennikov	Plantae	2022	3	FALSE	TRUE	FALSE	TRUE
 11007246	Clinopodium menthifolium (Host) Merino	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-11742641	Myriophyllum rubricaule Valk. & Duist.	Plantae	2022	2	FALSE	TRUE	FALSE	FALSE
-1017419	Oxidus gracilis (C.L.Koch, 1847)	Animalia	2023	3	FALSE	TRUE	FALSE	TRUE
-1031394	Ectopsocus petersi Smithers, 1978	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
-1031400	Ectopsocus briggsi McLachlan, 1899	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
+11742641	Myriophyllum rubricaule Valk. & Duist.	Plantae	2022	1	FALSE	FALSE	FALSE	FALSE
 1031684	Lepinotus patruelis Pearman, 1931	Animalia	2023	3	FALSE	TRUE	FALSE	TRUE
-1031742	Dorypteryx domestica (Smithers, 1958)	Animalia	2023	3	FALSE	TRUE	FALSE	TRUE
 1047536	Leptinotarsa decemlineata (Say, 1824)	Animalia	2023	3	FALSE	TRUE	FALSE	TRUE
 1309600	Andricus kollari (Hartig, 1843)	Animalia	2023	3	FALSE	TRUE	FALSE	TRUE
 1309652	Dryocosmus kuriphilus Yasumatsu, 1951	Animalia	2023	1	FALSE	FALSE	FALSE	FALSE
 1311477	Vespa velutina Lepeletier, 1836	Animalia	2023	3	FALSE	TRUE	FALSE	TRUE
-1346919	Isodontia mexicana (de Saussure, 1867)	Animalia	2023	3	FALSE	TRUE	FALSE	TRUE
 1421091	Lepisma saccharinum Linnaeus, 1758	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
-1622599	Rhagoletis cingulata (Loew, 1862)	Animalia	2023	1	FALSE	FALSE	FALSE	FALSE
-1622658	Rhagoletis completa Cresson, 1929	Animalia	2023	3	FALSE	TRUE	FALSE	TRUE
-1626096	Ceratitis capitata (Wiedemann, 1824)	Animalia	2023	3	FALSE	TRUE	FALSE	TRUE
-1652212	Aedes japonicus (Theobald, 1901)	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
-1690429	Meconema meridionale Costa, 1860	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
+1690429	Meconema meridionale Costa, 1860	Animalia	2023	1	FALSE	FALSE	FALSE	FALSE
 1718308	Acheta domesticus (Linnaeus, 1758)	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
-1749449	Cameraria ohridella Deschka & Dimić, 1986	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
-1749580	Phyllocnistis citrella Stainton, 1856	Animalia	2023	1	FALSE	FALSE	FALSE	FALSE
-1920491	Pieris mannii (Mayer, 1851)	Animalia	2023	3	FALSE	TRUE	FALSE	TRUE
-1997215	Blattella germanica (Linnaeus, 1767)	Animalia	2023	3	FALSE	TRUE	FALSE	TRUE
-2008616	Empicoris rubromaculatus (Blackburn, 1888)	Animalia	2023	1	FALSE	FALSE	FALSE	FALSE
-2020655	Corythucha ciliata (Say, 1832)	Animalia	2023	3	FALSE	TRUE	FALSE	TRUE
+1749449	Cameraria ohridella Deschka & Dimić, 1986	Animalia	2023	1	FALSE	FALSE	FALSE	FALSE
+2020655	Corythucha ciliata (Say, 1832)	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
 2020686	Stephanitis takeyai Drake & Maa, 1955	Animalia	2023	3	FALSE	TRUE	FALSE	TRUE
 2037925	Orientus ishidae (Matsumura, 1902)	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
 2041682	Graphocephala fennahi Young, 1977	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
 2049296	Pithyotettix abietinus (Fallén, 1806)	Animalia	2023	1	FALSE	FALSE	FALSE	FALSE
 2049661	Adelges abietis (Linnaeus, 1758)	Animalia	2023	1	FALSE	FALSE	FALSE	FALSE
 2078852	Nezara viridula (Linnaeus, 1758)	Animalia	2023	3	FALSE	TRUE	FALSE	TRUE
-2095283	Pseudococcus longispinus (Targioni Tozzetti, 1867)	Animalia	2023	3	FALSE	TRUE	FALSE	TRUE
-2142456	Uloborus plumipes Lucas, 1846	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
 2153287	Zoropsis spinimana (Dufour, 1820)	Animalia	2023	3	FALSE	TRUE	FALSE	TRUE
-2169430	Macaroeris nidicolens (Walckenaer, 1802)	Animalia	2023	3	FALSE	TRUE	FALSE	TRUE
-2176858	Philaeus chrysops (Poda, 1761)	Animalia	2023	1	FALSE	FALSE	FALSE	FALSE
-2217982	Crangonyx pseudogracilis Bousfield, 1958	Animalia	2023	1	FALSE	FALSE	FALSE	FALSE
-2225776	Eriocheir sinensis H.Milne Edwards, 1853	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
+2217982	Crangonyx pseudogracilis Bousfield, 1958	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
+2225776	Eriocheir sinensis H.Milne Edwards, 1853	Animalia	2023	1	FALSE	FALSE	FALSE	FALSE
 2226990	Pacifastacus leniusculus (Dana, 1852)	Animalia	2023	3	FALSE	TRUE	FALSE	TRUE
 2227300	Procambarus clarkii (Girard, 1852)	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
-2287072	Dreissena polymorpha (Pallas, 1771)	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
-2287073	Dreissena bugensis (Andrusov, 1897)	Animalia	2023	3	FALSE	TRUE	FALSE	TRUE
 2295442	Limacus flavus (Linnaeus, 1758)	Animalia	2023	3	FALSE	TRUE	FALSE	TRUE
-2297108	Milax gagates (Draparnaud, 1801)	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
-2362030	Ctenopharyngodon idella (Valenciennes, 1844)	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
+2297108	Milax gagates (Draparnaud, 1801)	Animalia	2023	1	FALSE	FALSE	FALSE	FALSE
+2362030	Ctenopharyngodon idella (Valenciennes, 1844)	Animalia	2023	1	FALSE	FALSE	FALSE	FALSE
 2362868	Pseudorasbora parva (Temminck & Schlegel, 1846)	Animalia	2023	1	FALSE	FALSE	FALSE	FALSE
 2366634	Carassius gibelio (Bloch, 1782)	Animalia	2023	1	FALSE	FALSE	FALSE	FALSE
 2379089	Neogobius melanostomus (Pallas, 1814)	Animalia	2023	1	FALSE	FALSE	FALSE	FALSE
 2382155	Sander lucioperca (Linnaeus, 1758)	Animalia	2023	1	FALSE	FALSE	FALSE	FALSE
-2394486	Lepomis gibbosus (Linnaeus, 1758)	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
+2394486	Lepomis gibbosus (Linnaeus, 1758)	Animalia	2023	1	FALSE	FALSE	FALSE	FALSE
 2426661	Pelophylax ridibundus (Pallas, 1771)	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
 2435035	Felis catus Linnaeus, 1758	Animalia	2023	3	FALSE	TRUE	FALSE	TRUE
 2436940	Oryctolagus cuniculus (Linnaeus, 1758)	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
 2437450	Tamias sibiricus (Laxmann, 1769)	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
-2437619	Dolichotis patagonum (Zimmermann, 1780)	Animalia	2023	1	FALSE	FALSE	FALSE	FALSE
 2439261	Rattus norvegicus (Berkenhout, 1769)	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
 2440946	Muntiacus reevesi (Ogilby, 1839)	Animalia	2023	1	FALSE	FALSE	FALSE	FALSE
 2440954	Cervus nippon Temminck, 1838	Animalia	2023	1	FALSE	FALSE	FALSE	FALSE
 2443002	Trachemys scripta (Thunberg In Schoepff, 1792)	Animalia	2023	1	FALSE	FALSE	FALSE	FALSE
-2445034	Tarentola mauritanica (Linnaeus, 1758)	Animalia	2023	1	FALSE	FALSE	FALSE	FALSE
 2469188	Podarcis muralis (Laurenti, 1768)	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
 2473477	Syrmaticus reevesii (J.E.Gray, 1829)	Animalia	2023	3	FALSE	TRUE	FALSE	TRUE
-2474936	Anthropoides virgo (Linnaeus, 1758)	Animalia	2023	1	FALSE	FALSE	FALSE	FALSE
-2475648	Dacelo novaeguineae (Hermann, 1783)	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
-2479226	Psittacula krameri (Scopoli, 1769)	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
+2479226	Psittacula krameri (Scopoli, 1769)	Animalia	2023	3	FALSE	TRUE	FALSE	TRUE
 2479798	Melopsittacus undulatus (Shaw, 1805)	Animalia	2023	1	FALSE	FALSE	FALSE	FALSE
 2479977	Nymphicus hollandicus (Kerr, 1792)	Animalia	2023	1	FALSE	FALSE	FALSE	FALSE
-2480350	Pelecanus onocrotalus Linnaeus, 1758	Animalia	2023	1	FALSE	FALSE	FALSE	FALSE
-2480372	Elanus caeruleus (Desfontaines, 1789)	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
-2480491	Circus macrourus (S.G.Gmelin, 1770)	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
-2480524	Buteo lagopus (Pontoppidan, 1763)	Animalia	2023	1	FALSE	FALSE	FALSE	FALSE
-2481962	Gavia immer (Brunnich, 1764)	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
-2494303	Serinus canaria (Linnaeus, 1758)	Animalia	2023	1	FALSE	FALSE	FALSE	FALSE
 2495414	Columba livia J.F.Gmelin, 1789	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
-2497701	Otus scops (Linnaeus, 1758)	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
+2497701	Otus scops (Linnaeus, 1758)	Animalia	2023	1	FALSE	FALSE	FALSE	FALSE
 2498015	Tadorna ferruginea (Pallas, 1764)	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
 2498034	Anser cygnoides (Linnaeus, 1758)	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
-2498035	Anser indicus (Latham, 1790)	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
-2498046	Chenonetta jubata (Latham, 1801)	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
+2498035	Anser indicus (Latham, 1790)	Animalia	2023	1	FALSE	FALSE	FALSE	FALSE
 2498252	Alopochen aegyptiaca (Linnaeus, 1766)	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
-2498259	Aythya nyroca (Güldenstädt, 1770)	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
 2498344	Cygnus atratus (Latham, 1790)	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
 2498384	Callonetta leucophrys (Vieillot, 1816)	Animalia	2023	1	FALSE	FALSE	FALSE	FALSE
 2498387	Aix sponsa (Linnaeus, 1758)	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
 2498388	Aix galericulata (Linnaeus, 1758)	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
-2498408	Lophodytes cucullatus (Linnaeus, 1758)	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
-2502810	Caenoplana coerulea Moseley, 1877	Animalia	2023	1	TRUE	FALSE	FALSE	FALSE
 2650107	Azolla filiculoides Lam.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 2650827	Cyrtomium fortunei J.Sm.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 2650903	Onoclea sensibilis L.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 2677047	Orthodontium lineare Schwägr.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-2683866	Chamaecyparis lawsoniana (A.Murray bis) Parl.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-2684120	Sequoiadendron giganteum (Lindl.) J.T.Buchholz	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
+2683866	Chamaecyparis lawsoniana (A.Murray bis) Parl.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 2684171	Thuja plicata Donn ex D.Don	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 2685361	Abies grandis (Douglas ex D.Don) Lindl.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 2685484	Abies alba Mill.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
@@ -840,108 +617,78 @@ taxonKey	taxonName	kingdom	year	em_status	dr_1	dr_2	dr_3	dr_4
 2687210	Tsuga heterophylla (Raf.) Sarg.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 2702084	Juncus tenuis Willd.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 2702727	Festuca myuros L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-2702792	Briza maxima L.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
-2702808	Echinochloa crus-galli (L.) P.Beauv.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-2703698	Bromus sitchensis Trin.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-2703723	Bromus catharticus Vahl	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
-2703760	Bromus diandrus Roth	Plantae	2023	1	TRUE	FALSE	FALSE	FALSE
-2704757	Sporobolus indicus (L.) R.Br.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
-2705031	Festuca glauca Vill.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
-2705090	Panicum miliaceum L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
+2702808	Echinochloa crus-galli (L.) P.Beauv.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
+2705031	Festuca glauca Vill.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 2705162	Panicum capillare L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 2705181	Sorghum bicolor (L.) Moench	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 2705185	Sorghum halepense (L.) Pers.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 2705290	Avena sativa L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 2705400	Eragrostis pilosa (L.) P.Beauv.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
-2705401	Eragrostis multicaulis Steud.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 2705449	Eragrostis minor Host	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 2705966	Secale cereale L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-2706056	Hordeum vulgare L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
+2706056	Hordeum vulgare L.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 2715482	Cyperus eragrostis Lam.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 2717467	Eleocharis obtusa (Willd.) Schult.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 2720120	Scirpus atrovirens Willd.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 2720269	Scirpus georgianus R.M.Harper	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-2722515	Carex morrowii Boott	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
-2726360	Carex grayi J.Carey	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 2747564	Crocus tommasinianus Herb.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 2747567	Crocus vernus (L.) Hill	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
-2747939	Crocosmia ×crocosmiiflora (Lemoine) N.E.Br.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 2753146	Lilium martagon L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-2765272	Tradescantia virginiana L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
+2765272	Tradescantia virginiana L.	Plantae	2023	1	FALSE	FALSE	FALSE	TRUE
 2766030	Pontederia cordata L.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 2767271	Scilla luciliae (Boiss.) Speta	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 2767275	Scilla forbesii (Baker) Speta	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
-2767428	Puschkinia scilloides Adams	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
-2769766	Ruscus aculeatus L.	Plantae	2023	1	FALSE	FALSE	FALSE	TRUE
+2767428	Puschkinia scilloides Adams	Plantae	2023	1	FALSE	FALSE	FALSE	TRUE
 2772094	Muscari botryoides (L.) Mill.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 2772174	Muscari armeniacum Leichtlin ex Baker	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 2772666	Hyacinthus orientalis L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-2773453	Ornithogalum divergens Boreau	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-2775530	Yucca flaccida Haw.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 2775619	Yucca gloriosa L.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
-2781074	Hemerocallis fulva (L.) L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-2781103	Hemerocallis lilioasphodelus L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
+2781074	Hemerocallis fulva (L.) L.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 2840931	Goodyera repens (L.) R.Br.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 2855356	Galanthus nivalis L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 2855398	Galanthus elwesii Hook.f.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 2855439	Galanthus woronowii Losinsk.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 2855860	Allium schoenoprasum L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-2856037	Allium ampeloprasum L.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
-2856920	Allium hollandicum R.M.Fritsch	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
-2857017	Allium paradoxum (M.Bieb.) G.Don	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
+2857017	Allium paradoxum (M.Bieb.) G.Don	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 2858581	Narcissus poeticus L.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 2865448	Elodea canadensis Michx.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 2865565	Lagarosiphon major (Ridl.) Moss	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 2867614	Lemna minuta Kunth	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-2869311	Lysichiton americanus Hultén & H.St.John	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
-2873769	Acorus calamus L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
+2869311	Lysichiton americanus Hultén & H.St.John	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
+2873769	Acorus calamus L.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 2873861	Linum usitatissimum L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 2873877	Linum austriacum L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 2873926	Linum grandiflorum Desf.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 2873991	Aristolochia clematitis L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-2874508	Cucurbita pepo L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-2874570	Cucumis melo L.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
-2875968	Corylus colurna L.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
+2875968	Corylus colurna L.	Plantae	2023	1	FALSE	FALSE	FALSE	TRUE
 2876607	Alnus cordata (Loisel.) Duby	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-2879098	Quercus ilex L.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 2880539	Quercus rubra L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 2880580	Quercus cerris L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 2888380	Eschscholzia californica Cham.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-2888437	Papaver orientale L.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 2888439	Papaver somniferum L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-2888513	Pseudofumaria lutea (L.) Borkh.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
-2888564	Lamprocapnos spectabilis (L.) Fukuhara	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
-2888579	Leycesteria formosa Wall.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
+2888513	Pseudofumaria lutea (L.) Borkh.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 2888625	Viburnum rhytidophyllum Hemsl. ex Forbes & Hemsl.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-2888636	Symphoricarpos orbiculatus Moench	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 2888740	Centranthus ruber (L.) DC.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
-2888814	Dipsacus laciniatus L.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
-2888859	Muehlenbeckia complexa (A.Cunn.) Meisn.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
-2888978	Rumex pulcher L.	Plantae	2023	1	TRUE	FALSE	FALSE	FALSE
+2888859	Muehlenbeckia complexa (A.Cunn.) Meisn.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 2889019	Rumex patientia L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 2889088	Reynoutria sachalinensis (F.Schmidt) Nakai	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 2889173	Reynoutria japonica Houtt.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-2889229	Persicaria orientalis (L.) Spach	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
+2889229	Persicaria orientalis (L.) Spach	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 2889373	Fagopyrum esculentum Moench	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-2889378	Fagopyrum tataricum (L.) Gaertn.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 2889934	Tropaeolum majus L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 2890035	Geranium ×oxonianum P.F.Yeo	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 2890122	Geranium pyrenaicum Burm.f.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 2890287	Geranium nodosum L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 2890502	Geranium endressii J.Gay	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-2890541	Geranium purpureum Vill.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
+2890541	Geranium purpureum Vill.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 2891079	Geranium macrorrhizum L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 2891390	Geranium phaeum L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-2891755	Oxalis latifolia Kunth	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 2891770	Impatiens glandulifera Royle	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 2891774	Impatiens capensis Meerb.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 2891782	Impatiens parviflora DC.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
-2891783	Impatiens balfourii Hook.fil.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
+2891783	Impatiens balfourii Hook.fil.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 2913169	Galium parisiense L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-2913219	Galium anglicum Huds.	Plantae	2023	1	TRUE	FALSE	FALSE	FALSE
-2914590	Galium murale (L.) All.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 2925514	Verbena bonariensis L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-2925756	Lappula squarrosa (Retz.) Dumort.	Plantae	2023	1	TRUE	FALSE	FALSE	FALSE
 2925895	Echium plantagineum L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 2926045	Brunnera macrophylla (Adams) I.M.Johnst.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 2926066	Symphytum asperum Lepech.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
@@ -949,183 +696,133 @@ taxonKey	taxonName	kingdom	year	em_status	dr_1	dr_2	dr_3	dr_4
 2926130	Pentaglottis sempervirens (L.) Tausch ex L.H.Bailey	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 2926884	Satureja montana L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 2926992	Salvia hispanica L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-2926995	Salvia verticillata L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 2927004	Salvia officinalis L.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 2927028	Salvia nemorosa L.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 2927230	Stachys byzantina K.Koch	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-2927305	Lavandula angustifolia Mill.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
+2927305	Lavandula angustifolia Mill.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 2927850	Polemonium caeruleum L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 2928026	Nemophila menziesii Hook. & Arn.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 2928226	Phacelia tanacetifolia Benth.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-2928576	Ipomoea purpurea (L.) Roth	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 2928751	Datura stramonium L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-2928761	Nicotiana alata Link & Otto	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
-2928767	Nicotiana sylvestris Speg.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 2928835	Lycium barbarum L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-2929505	Solanum villosum Mill.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 2930137	Solanum lycopersicum L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-2930222	Solanum americanum Mill.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
-2930262	Solanum tuberosum L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-2959443	Gleditsia triacanthos L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
+2930222	Solanum americanum Mill.	Plantae	2023	1	FALSE	FALSE	FALSE	TRUE
+2930262	Solanum tuberosum L.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 2964355	Lupinus polyphyllus Lindl.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 2965331	Medicago ×varia Martyn	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 2965354	Medicago falcata L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 2965531	Medicago polymorpha L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 2971095	Melilotus albus Medik.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-2972595	Onobrychis viciifolia Scop.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-2974811	Vicia pannonica Crantz	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
+2972595	Onobrychis viciifolia Scop.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 2974832	Vicia faba L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 2975667	Galega officinalis L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-2984306	Gunnera tinctoria (Molina) Mirb.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-2984366	Soleirolia soleirolii (Req.) Dandy	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
+2984366	Soleirolia soleirolii (Req.) Dandy	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 2984676	Pachysandra terminalis Siebold & Zucc.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 2985949	Sempervivum tectorum L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 2986045	Philadelphus coronarius L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-2986111	Ribes aureum Pursh	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 2986130	Ribes sanguineum Pursh	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 2986184	Ribes alpinum L.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 2988188	Pyracantha coccinea M.Roem.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-2988354	Physocarpus opulifolius (L.) Maxim.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 2992543	Rubus laciniatus Willd.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 2995149	Rubus phoenicolasius Maxim.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 2996525	Rubus armeniacus Focke	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
-3000610	Chaenomeles japonica (Thunb.) Lindl. ex Spach	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
+3000610	Chaenomeles japonica (Thunb.) Lindl. ex Spach	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 3001244	Malus domestica (Suckow) Borkh.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 3003244	Rosa multiflora Thunb.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-3003709	Rosa glauca Pourr.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
+3003709	Rosa glauca Pourr.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 3003979	Rosa rugosa Thunb.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 3012089	Sorbaria sorbifolia (L.) A.Braun	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-3015457	Crataegus persimilis Sarg.	Plantae	2023	1	TRUE	FALSE	FALSE	FALSE
 3020871	Prunus lusitanica L.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 3021496	Prunus laurocerasus L.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 3021730	Prunus cerasifera Ehrh.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-3021850	Prunus serotina Ehrh.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
+3021850	Prunus serotina Ehrh.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 3021922	Prunus cerasus L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 3024109	Amelanchier ×lamarckii F.G.Schroed.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 3025617	Cotoneaster horizontalis Decne.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
-3026024	Cotoneaster ascendens Flinck & B.Hylmö	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
-3026035	Cotoneaster coriaceus Franch.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 3026074	Cotoneaster salicifolius Franch.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 3026092	Cotoneaster hjelmqvistii Flinck & B.Hylmö	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-3026162	Cotoneaster franchetii Boiss.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
+3026162	Cotoneaster franchetii Boiss.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 3026294	Cotoneaster bullatus Bois ex Bilm. & Bois	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
-3026334	Cotoneaster divaricatus Rehder & E.H.Wilson	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
+3026334	Cotoneaster divaricatus Rehder & E.H.Wilson	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 3026585	Spiraea alba Du Roi	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 3027159	Spiraea douglasii Hook.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 3028528	Alchemilla mollis (Buser) Rothm.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-3029912	Fragaria ×ananassa (Weston) Rozier	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-3031774	Mespilus germanica L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-3032611	Darmera peltata (Torr. ex Benth.) Voss	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
-3032653	Heuchera sanguinea Engelm.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
+3031774	Mespilus germanica L.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
+3032611	Darmera peltata (Torr. ex Benth.) Voss	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 3032698	Tellima grandiflora (Pursh) Douglas ex Lindl.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
-3033077	Aucuba japonica Thunb.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
+3033077	Aucuba japonica Thunb.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 3033227	Eranthis hyemalis (L.) Salisb.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 3033242	Anemone blanda Schott & Kotschy	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 3033518	Clematis viticella L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-3033543	Clematis recta L.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
-3033833	Delphinium ajacis L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
+3033833	Delphinium ajacis L.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 3033865	Mahonia aquifolium (Pursh) Nutt.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
-3033896	Berberis thunbergii DC.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
+3033896	Berberis thunbergii DC.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 3034182	Ammi majus L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-3034393	Eryngium planum L.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 3034681	Myrrhis odorata (L.) Scop.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 3034825	Heracleum mantegazzianum Sommier & Levier	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
-3034871	Coriandrum sativum L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 3034915	Astrantia major L.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 3034922	Foeniculum vulgare Mill.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-3036033	Hedera colchica (K.Koch) K.Koch	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-3036892	Aralia elata (Miq.) Seem.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
+3036033	Hedera colchica (K.Koch) K.Koch	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 3039194	Parthenocissus quinquefolia (L.) Planch.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-3039203	Parthenocissus inserta (A.Kern.) Fritsch	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-3039209	Parthenocissus tricuspidata (Siebold & Zucc.) Planch.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
-3039267	Elaeagnus umbellata Thunb.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-3040184	Populus balsamifera L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-3040185	Populus ×canescens (Aiton) Sm.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
+3039203	Parthenocissus inserta (A.Kern.) Fritsch	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 3040233	Populus alba L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 3041022	Armoracia rusticana P.Gaertn., B.Mey. & Scherb.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 3042291	Hesperis matronalis L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 3042636	Brassica napus L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-3042751	Brassica juncea (L.) Czern.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
-3042845	Brassica oleracea L.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
-3045803	Cardamine graeca L.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
-3046736	Sisymbrium altissimum L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-3046812	Sisymbrium orientale L.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 3046929	Sisymbrium chrysanthum Jord.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 3047621	Sinapis alba L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 3048203	Erysimum cheiri (L.) Crantz	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 3050364	Bunias orientalis L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 3053522	Berteroa incana (L.) DC.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-3054110	Aubrieta columnae Guss.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 3054117	Aubrieta deltoidea (L.) DC.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 3054357	Juglans nigra L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 3054368	Juglans regia L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-3064056	Euphorbia palustris L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-3064669	Euphorbia myrsinites L.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
+3064056	Euphorbia palustris L.	Plantae	2023	1	FALSE	FALSE	FALSE	TRUE
 3066965	Euphorbia lathyris L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-3067119	Euphorbia maculata L.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
-3067353	Euphorbia characias L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-3067891	Euphorbia prostrata Aiton	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-3069053	Euphorbia verrucosa L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
+3067119	Euphorbia maculata L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
+3067891	Euphorbia prostrata Aiton	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
+3069053	Euphorbia verrucosa L.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 3082244	Cornus sericea L.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
-3083680	Atriplex micrantha Ledeb.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-3083761	Atriplex hortensis L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-3084015	Phytolacca americana L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
+3084015	Phytolacca americana L.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 3084022	Phytolacca acinosa Roxb.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 3084719	Portulaca oleracea L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 3084742	Claytonia sibirica L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 3085357	Saponaria ocymoides L.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 3085360	Saponaria officinalis L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-3085381	Polycarpon tetraphyllum (L.) L.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 3085421	Dianthus barbatus L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 3085438	Cerastium tomentosum L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 3085623	Petrorhagia saxifraga (L.) Link	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
-3086240	Mirabilis jalapa L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
+3086240	Mirabilis jalapa L.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 3088310	Petasites japonicus (Siebold & Zucc.) Maxim.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
-3088481	Tagetes minuta L.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
-3088488	Tagetes erecta L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 3092576	Silphium perfoliatum L.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
-3098912	Cosmos bipinnatus Cav.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-3098951	Cosmos sulphureus Cav.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-3101193	Dittrichia graveolens (L.) Greuter	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-3103791	Matricaria discoidea DC.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
+3098912	Cosmos bipinnatus Cav.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
+3098951	Cosmos sulphureus Cav.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
+3101193	Dittrichia graveolens (L.) Greuter	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
+3103791	Matricaria discoidea DC.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 3109086	Senecio inaequidens DC.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-3112364	Cynara cardunculus L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 3114225	Rudbeckia hirta L.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
-3114229	Rudbeckia laciniata L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-3114643	Carduus acanthoides L.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 3117449	Erigeron annuus (L.) Pers.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 3118254	Tanacetum balsamita L.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 3118430	Tanacetum parthenium (L.) Sch.Bip.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-3119175	Helianthus tuberosus L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-3119181	Helianthus ×laetiflorus Pers.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
+3119175	Helianthus tuberosus L.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 3120024	Achillea nobilis L.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
-3120284	Achillea filipendulina Lam.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-3120790	Artemisia verlotiorum Lamotte	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 3121088	Artemisia alba Turra	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 3122924	Pilosella aurantiaca (L.) F.W.Schultz & Sch.Bip.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-3123663	Pilosella caespitosa (Dumort.) P.D.Sell & C.West	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
+3123663	Pilosella caespitosa (Dumort.) P.D.Sell & C.West	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 3128225	Centaurea nigra L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-3132570	Galinsoga parviflora Cav.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-3133887	Coreopsis verticillata L.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
+3132570	Galinsoga parviflora Cav.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 3133950	Coreopsis tinctoria Nutt.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 3136320	Hieracium amplexicaule L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-3140436	Lactuca macrophylla (Willd.) A.Gray	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
+3140436	Lactuca macrophylla (Willd.) A.Gray	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 3145214	Silybum marianum (L.) Gaertn.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-3146683	Erigeron sumatrensis Retz.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
-3146717	Erigeron bonariensis L.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
+3146683	Erigeron sumatrensis Retz.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 3146791	Erigeron canadensis L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-3147018	Erigeron floribundus (Kunth) Sch.Bip.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-3147168	Erigeron karvinskianus DC.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
+3147168	Erigeron karvinskianus DC.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 3148340	Inula helenium L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-3151558	Symphyotrichum novi-belgii (L.) G.L.Nesom	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-3152372	Malva pusilla Sm.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-3152377	Malva verticillata L.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
-3152378	Malva parviflora L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
+3151558	Symphyotrichum novi-belgii (L.) G.L.Nesom	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 3152521	Althaea hirsuta L.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 3152583	Hibiscus syriacus L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 3152614	Abutilon theophrasti Medik.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-3152861	Liriodendron tulipifera L.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
-3164340	Platycodon grandiflorus (Jacq.) A.DC.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 3169137	Euonymus fortunei (Turcz.) Hand.-Mazz.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 3169340	Lysimachia punctata L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 3169391	Lysimachia ciliata L.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
@@ -1134,24 +831,20 @@ taxonKey	taxonName	kingdom	year	em_status	dr_1	dr_2	dr_3	dr_4
 3170247	Asclepias syriaca L.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 3170823	Paulownia tomentosa (Thunb.) Steud.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 3171948	Verbascum phlomoides L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-3171952	Verbascum speciosum Schrad.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 3171954	Verbascum virgatum Stokes	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 3172001	Antirrhinum majus L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-3172068	Veronica cymbalaria Bodard	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 3172077	Veronica persica Poir.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 3172100	Veronica filiformis Sm.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-3172104	Veronica peregrina L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
+3172104	Veronica peregrina L.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 3172118	Veronica longifolia L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 3172266	Jasminum nudiflorum Lindl.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 3172291	Ligustrum ovalifolium Hassk.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-3172347	Fraxinus ornus L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-3172549	Campsis radicans (L.) Bureau	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
-3172615	Catalpa bignonioides Walter	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
-3173338	Buddleja davidii Franch.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
+3172347	Fraxinus ornus L.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
+3172549	Campsis radicans (L.) Bureau	Plantae	2023	1	TRUE	FALSE	FALSE	FALSE
+3173338	Buddleja davidii Franch.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 3188894	Oenothera glazioviana Micheli	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 3188924	Oenothera biennis L.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
-3189073	Epilobium brachycarpum C.Presl	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-3189497	Hypericum calycinum L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
+3189073	Epilobium brachycarpum C.Presl	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 3189815	Aesculus hippocastanum L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 3189837	Acer saccharinum L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 3189866	Acer negundo L.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
@@ -1163,60 +856,45 @@ taxonKey	taxonName	kingdom	year	em_status	dr_1	dr_2	dr_3	dr_4
 3602683	Papaver cambricum L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 3610757	Cuscuta campestris Yunck.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 3642531	Chaerophyllum aureum L.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
-3664589	Oenothera lindheimeri (Engelm. & A.Gray) W.L.Wagner & Hoch	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
+3664589	Oenothera lindheimeri (Engelm. & A.Gray) W.L.Wagner & Hoch	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 3666422	Chamaenerion dodonaei (Vill.) Schur ex Fuss.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 3686235	Staphylea pinnata L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-3690997	Cardamine occulta Hornem.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 3693541	Odontarrhena muralis (Waldst. & Kit.) Endl.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 3741446	Erinus alpinus L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 3797084	Alkekengi officinarum Moench	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-3814157	Eudianthe coeli-rosa (L.) Fenzl ex Endl.	Plantae	2023	1	TRUE	FALSE	FALSE	FALSE
 3886505	Phlomis russeliana (Sims) Lag. ex Benth.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
-3896282	Teucrium hircanicum L.	Plantae	2023	1	FALSE	FALSE	FALSE	TRUE
-3940326	Malva trimestris (L.) Salisb.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
+3940326	Malva trimestris (L.) Salisb.	Plantae	2023	1	FALSE	FALSE	FALSE	TRUE
 3981543	Berberis julianae C.K.Schneid.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-4021919	Portulaca sativa Haw.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 4038485	Reynoutria ×bohemica Chrtek & Chrtková	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 4063383	Trachystemon orientale (L.) D.Don	Plantae	2023	1	FALSE	FALSE	FALSE	TRUE
-4067302	Symphytum grandiflorum DC.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
-4102952	Knautia macedonica Griseb.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
-4125308	Panicum schinzii Hack.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 4129708	Lolium multiflorum Lam.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-4201607	Phedimus spurius (M.Bieb.) 't Hart	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
+4201607	Phedimus spurius (M.Bieb.) 't Hart	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 4201695	Phedimus hybridus (L.) 't Hart	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
-4245384	Crepis setosa Haller fil.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 4264680	Myocastor coypus (Molina, 1782)	Animalia	2023	3	FALSE	TRUE	FALSE	TRUE
 4270548	Hordeum murinum subsp. leporinum (Link) Arcang.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 4286975	Cyprinus carpio Linnaeus, 1758	Animalia	2023	3	FALSE	TRUE	FALSE	TRUE
-4315705	Dikerogammarus villosus (Sowinsky, 1894)	Animalia	2023	1	FALSE	FALSE	FALSE	FALSE
-4427319	Anthrenus angustefasciatus Ganglbauer, 1904	Animalia	2023	3	FALSE	TRUE	FALSE	TRUE
+4427319	Anthrenus angustefasciatus Ganglbauer, 1904	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
 4460066	Chrysolina americana (Linnaeus, 1758)	Animalia	2023	3	FALSE	TRUE	FALSE	TRUE
-4483961	Viridicerus ustulatus (Mulsant & Rey, 1855)	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
-4483971	Populicerus albicans (Kirschbaum, 1868)	Animalia	2023	1	TRUE	FALSE	FALSE	FALSE
 4484176	Cacopsylla fulguralis (Kuwayama, 1908)	Animalia	2023	1	FALSE	FALSE	FALSE	FALSE
 4485843	Halyomorpha halys (Stål, 1855)	Animalia	2023	3	FALSE	TRUE	FALSE	TRUE
 4486243	Oxycarenus lavaterae (Fabricius, 1787)	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
-4486365	Nysius huttoni White, 1878	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
-4488821	Deraeocoris flavilinea (A.Costa, 1862)	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
+4488821	Deraeocoris flavilinea (A.Costa, 1862)	Animalia	2023	1	FALSE	FALSE	FALSE	FALSE
 4532122	Cydalima perspectalis (Walker, 1859)	Animalia	2023	3	FALSE	TRUE	FALSE	TRUE
 4553469	Leiobunum Koch, 1839	Animalia	2023	3	FALSE	TRUE	FALSE	TRUE
-4562529	Morlina glabra (Rossmässler, 1835)	Animalia	2023	3	FALSE	TRUE	FALSE	TRUE
+4562529	Morlina glabra (Rossmässler, 1835)	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
 4565039	Hygromia cinctella (Draparnaud, 1801)	Animalia	2023	3	FALSE	TRUE	FALSE	TRUE
-4565061	Cernuella neglecta (Draparnaud, 1805)	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
-4565134	Cernuella aginnica (Locard, 1882)	Animalia	2023	3	FALSE	TRUE	FALSE	TRUE
+4565061	Cernuella neglecta (Draparnaud, 1805)	Animalia	2023	3	FALSE	TRUE	FALSE	TRUE
+4565134	Cernuella aginnica (Locard, 1882)	Animalia	2023	1	FALSE	FALSE	FALSE	FALSE
 4567717	Boettgerilla pallens Simroth, 1912	Animalia	2023	3	FALSE	TRUE	FALSE	TRUE
-4568269	Paralaoma servilis (Shuttleworth, 1852)	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
-4598225	Tandonia budapestensis (Hazay, 1880)	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
-4933624	Inula racemosa Hook.fil.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-4939668	Kitaibela vitifolia Willd.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
+4568269	Paralaoma servilis (Shuttleworth, 1852)	Animalia	2023	3	FALSE	TRUE	FALSE	TRUE
+4598225	Tandonia budapestensis (Hazay, 1880)	Animalia	2023	1	FALSE	FALSE	FALSE	FALSE
+4939668	Kitaibela vitifolia Willd.	Plantae	2023	1	TRUE	FALSE	FALSE	FALSE
 4989904	Harmonia axyridis (Pallas, 1773)	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
 5123474	Anthophila nemorana (Hübner, 1799)	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
-5151589	Blatta orientalis Linnaeus, 1758	Animalia	2023	1	FALSE	FALSE	FALSE	FALSE
-5152536	Gastrodes abietum Bergroth, 1914	Animalia	2023	1	FALSE	FALSE	FALSE	FALSE
 5152543	Raglius alboacuminatus (Goeze, 1778)	Animalia	2023	3	FALSE	TRUE	FALSE	TRUE
 5154481	Stictocephala bisonia Kopp & Yonke, 1977	Animalia	2023	3	FALSE	TRUE	FALSE	TRUE
 5156102	Leptoglossus occidentalis Heidemann, 1910	Animalia	2023	3	FALSE	TRUE	FALSE	TRUE
-5179027	Scutigera coleoptrata Linnaeus, 1758	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
+5179027	Scutigera coleoptrata Linnaeus, 1758	Animalia	2023	3	FALSE	TRUE	FALSE	TRUE
 5189806	Physella acuta (Draparnaud, 1805)	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
 5191102	Monacha cantiana (Montagu, 1803)	Animalia	2023	3	FALSE	TRUE	FALSE	TRUE
 5192470	Potamopyrgus antipodarum (J.E.Gray, 1843)	Animalia	2023	1	FALSE	FALSE	FALSE	FALSE
@@ -1226,9 +904,8 @@ taxonKey	taxonName	kingdom	year	em_status	dr_1	dr_2	dr_3	dr_4
 5220136	Dama dama (Linnaeus, 1758)	Animalia	2023	3	FALSE	TRUE	FALSE	TRUE
 5220170	Rupicapra rupicapra (Linnaeus, 1758)	Animalia	2023	3	FALSE	TRUE	FALSE	TRUE
 5232437	Branta canadensis (Linnaeus, 1758)	Animalia	2023	3	FALSE	TRUE	FALSE	TRUE
-5232445	Branta sandvicensis (Vigors, 1834)	Animalia	2023	1	FALSE	FALSE	FALSE	FALSE
 5232452	Branta hutchinsii (Richardson, 1832)	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
-5281901	Campylopus introflexus (Hedw.) Brid.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
+5281901	Campylopus introflexus (Hedw.) Brid.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 5284237	Cryptomeria japonica (Thunb. ex L.f.) D.Don	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 5284809	Pinus nigra J.F.Arnold	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 5284827	Picea sitchensis (Bong.) Carrière	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
@@ -1236,226 +913,173 @@ taxonKey	taxonName	kingdom	year	em_status	dr_1	dr_2	dr_3	dr_4
 5284982	Pinus strobus L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 5285637	Pinus sylvestris L.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 5289643	Apera interrupta (L.) P.Beauv.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
-5289666	Setaria faberi R.A.W.Herrm.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 5289684	Setaria viridis (L.) P.Beauv.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 5289686	Setaria verticillata (L.) P.Beauv.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-5289693	Setaria pumila (Poir.) Roem. & Schult.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
+5289693	Setaria pumila (Poir.) Roem. & Schult.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 5289698	Setaria italica (L.) P.Beauv.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 5289744	Phalaris canariensis L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 5289756	Phalaris arundinacea L.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
-5289833	Nassella tenuissima (Trin.) Barkworth	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
-5289917	Polypogon monspeliensis (L.) Desf.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
-5289919	Polypogon viridis (Gouan) Breistr.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
+5289917	Polypogon monspeliensis (L.) Desf.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 5289972	Digitaria sanguinalis (L.) Scop.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-5290052	Zea mays L.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
-5290242	Gaudinia fragilis (L.) P.Beauv.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
+5290242	Gaudinia fragilis (L.) P.Beauv.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 5296178	Sisyrinchium montanum Greene	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 5298069	Iris ×germanica L.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 5298126	Iris sibirica L.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 5298675	Iris pumila L.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
-5298765	Iris foetidissima L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-5304257	Hyacinthoides hispanica (Mill.) Rothm.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 5304294	Hyacinthoides ×massartiana Geerinck	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 5324959	Himantoglossum robertianum (Loisel.) P.Delforge	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-5328593	Aponogeton distachyos L.f.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-5328909	Sagittaria latifolia Willd.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 5329212	Elodea nuttallii (Planch.) H.St.John	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 5329263	Elodea densa (Planch.) Casp.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
-5330661	Arum italicum Mill.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
+5330661	Arum italicum Mill.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 5333294	Castanea sativa Mill.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-5334194	Macleaya cordata (Willd.) R.Br.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 5334227	Lonicera caprifolium L.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
-5334240	Lonicera japonica Thunb.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-5334242	Lonicera tatarica L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
+5334240	Lonicera japonica Thunb.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
+5334242	Lonicera tatarica L.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 5334351	Fallopia baldschuanica (Regel) Holub	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
-5341201	Anchusa officinalis L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 5341203	Pulmonaria saccharata Mill.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 5341204	Pulmonaria officinalis L.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
-5341387	Hyssopus officinalis L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-5341442	Thymus vulgaris L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
+5341442	Thymus vulgaris L.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 5341497	Nepeta racemosa Lam.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 5341501	Melissa officinalis L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 5341754	Nicandra physalodes (L.) Gaertn.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 5341784	Physalis peruviana L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 5347846	Lathyrus oleraceus Lam.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 5350005	Coronilla varia L.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
-5352251	Robinia pseudoacacia L.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
-5353590	Cercis siliquastrum L.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
-5355395	Spartium junceum L.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
+5352251	Robinia pseudoacacia L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 5356345	Laburnum anagyroides Medik.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
-5356488	Lathyrus sativus L.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 5356517	Lathyrus latifolius L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-5357407	Amorpha fruticosa L.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 5358907	Trifolium alexandrinum L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 5359175	Trifolium resupinatum L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 5359378	Trifolium incarnatum L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 5360475	Trigonella foenum-graecum L.	Plantae	2023	1	TRUE	FALSE	FALSE	FALSE
 5361785	Myriophyllum aquaticum (Vell.) Verdc.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
-5361880	Cannabis sativa L.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
+5361880	Cannabis sativa L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 5361909	Ficus carica L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-5361982	Sedum hispanicum L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 5362054	Crassula helmsii (Kirk) Cockayne	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 5362136	Aruncus dioicus (Walter) Fernald	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 5362573	Pyrus communis L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-5365305	Potentilla norvegica L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
+5365305	Potentilla norvegica L.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 5365705	Potentilla intermedia L.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
-5365717	Potentilla indica (Andrews) Th.Wolf	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
+5365717	Potentilla indica (Andrews) Th.Wolf	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 5367294	Potentilla recta L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 5369784	Geum macrophyllum Willd.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-5370380	Dasiphora fruticosa (L.) Rydb.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-5371450	Kerria japonica (L.) DC.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
+5371450	Kerria japonica (L.) DC.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 5371699	Hepatica nobilis Schreb.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 5371702	Nigella damascena L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-5371746	Anthriscus cerefolium (L.) Hoffm.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-5371753	Visnaga daucoides Gaertn.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
-5371772	Levisticum officinale W.D.J.Koch	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
-5371808	Angelica archangelica L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
+5371746	Anthriscus cerefolium (L.) Hoffm.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
+5371808	Angelica archangelica L.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 5372392	Vitis vinifera L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-5372639	Salix babylonica L.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 5372647	Salix pentandra L.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
-5372655	Salix eleagnos Scop.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 5373324	Lunaria annua L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 5373358	Lobularia maritima (L.) Desv.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 5373368	Rapistrum rugosum (L.) All.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-5374118	Isatis tinctoria L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
+5374118	Isatis tinctoria L.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 5374614	Barbarea stricta Andrz. ex Besser	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-5374922	Arabis caucasica Willd.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
+5374922	Arabis caucasica Willd.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 5375020	Arabis alpina L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-5375920	Eruca vesicaria (L.) Cav.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 5376565	Lepidium sativum L.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 5376648	Lepidium virginicum L.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
-5376846	Lepidium heterophyllum Benth.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 5376961	Lepidium draba L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 5377060	Lepidium didymum L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-5377303	Iberis umbellata L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
+5377303	Iberis umbellata L.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 5377778	Aurinia saxatilis (L.) Desv.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 5384364	Amaranthus hybridus L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-5384396	Amaranthus deflexus L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-5384466	Gypsophila elegans M.Bieb.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
+5384396	Amaranthus deflexus L.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
+5384466	Gypsophila elegans M.Bieb.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 5384741	Silene coronaria (L.) Clairv.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 5384931	Houttuynia cordata Thunb.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
-5384932	Saururus cernuus L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-5386938	Tragopogon porrifolius L.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
-5388595	Jacobaea maritima (L.) Pelser & Meijden	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-5389017	Solidago gigantea Aiton	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
+5384932	Saururus cernuus L.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
+5389017	Solidago gigantea Aiton	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 5389029	Solidago canadensis L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 5389173	Telekia speciosa (Schreb.) Baumg.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 5391480	Calendula officinalis L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-5392174	Bidens frondosa L.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
+5392174	Bidens frondosa L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 5392243	Cichorium endivia L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 5392683	Echinops exaltatus Schrad.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
-5392859	Echinops bannaticus Rochel ex Schrad.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
-5392883	Echinops sphaerocephalus L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-5401760	Ageratum houstonianum Mill.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
+5392859	Echinops bannaticus Rochel ex Schrad.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
+5392883	Echinops sphaerocephalus L.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 5403272	Crepis pulchra L.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 5406789	Alcea rosea L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-5410151	Campanula poscharskyana Degen	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
+5410151	Campanula poscharskyana Degen	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 5410411	Campanula portenschlagiana Schult.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 5414551	Vincetoxicum nigrum (L.) Moench	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 5415009	Linaria supina (L.) Chaz.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 5415012	Linaria purpurea (L.) Mill.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
-5415016	Linaria maroccana Hook.fil.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 5415039	Syringa vulgaris L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-5415455	Acanthus mollis L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-5420978	Clarkia amoena (Lehm.) A.Nelson & J.F.Macbr.	Plantae	2023	1	TRUE	FALSE	FALSE	FALSE
-5420991	Ludwigia peploides (Kunth) P.H.Raven	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 5421039	Ludwigia grandiflora (Michx.) Greuter & Burdet	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 5530881	Corydalis cava (L.) Schweigg. & Körte	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 5551241	Iberis sempervirens L.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 5559837	Cymbalaria pallida (Ten.) Wettst.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
-5561475	Chaenostoma cordatum Benth.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-5582033	Salix udensis (Wimm.) Trautv. & C.A.Mey.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
-5598598	Lonicera acuminata Wall.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
+5582033	Salix udensis (Wimm.) Trautv. & C.A.Mey.	Plantae	2023	1	FALSE	FALSE	FALSE	TRUE
+5598598	Lonicera acuminata Wall.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 5598915	Lonicera pileata Oliv.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-5712981	Coccus hesperidum Linnaeus, 1758	Animalia	2023	1	FALSE	FALSE	FALSE	TRUE
-5774728	Eriophyes pyri (H.A.Pagenstecher, 1857)	Animalia	2023	1	TRUE	FALSE	FALSE	FALSE
-5806954	Tarsostenus carus (Newman, 1840)	Animalia	2023	3	FALSE	TRUE	FALSE	TRUE
-5851603	Leuciscus aspius (Linnaeus, 1758)	Animalia	2023	1	FALSE	FALSE	FALSE	FALSE
 6027089	Smyrnium perfoliatum L.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 6063730	Senecio vernalis Waldst. & Kit.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 6096602	Lophocolea semiteres (Lehm.) Mitt.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 6098843	Ctenolepisma longicaudatum Escherich, 1905	Animalia	2023	3	FALSE	TRUE	FALSE	TRUE
 6109534	Amaranthus retroflexus L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 6109535	Trifolium hybridum L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-6109611	Amaranthus caudatus L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
+6109611	Amaranthus caudatus L.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 6157026	Trachemys scripta elegans (Wied, 1838)	Animalia	2023	1	FALSE	FALSE	FALSE	FALSE
 6159223	Lacerta agilis Linnaeus, 1758	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
-6164210	Canis lupus familiaris Linnaeus, 1758	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
+6164210	Canis lupus familiaris Linnaeus, 1758	Animalia	2023	3	FALSE	TRUE	FALSE	TRUE
 6362904	Populus trichocarpa Torr. & A.Gray ex Hook.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
-6376340	Thalictrum aquilegiifolium L.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
+6376340	Thalictrum aquilegiifolium L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 6411098	Lamium galeobdolon subsp. argentatum (Smejkal) J.Duvign.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
-6443709	Tragopogon dubius Scop.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 7062200	Trachemys scripta scripta	Animalia	2023	1	FALSE	FALSE	FALSE	FALSE
 7068379	Vicia sativa subsp. sativa	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
-7068845	Beta vulgaris subsp. vulgaris	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
-7111792	Lotus corniculatus subsp. corniculatus	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
+7111792	Lotus corniculatus subsp. corniculatus	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 7127354	Cyclamen coum Mill.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-7127810	Cyclamen hederifolium Aiton	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-7135755	Rhododendron luteum Sweet	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-7156971	Oxalis triangularis A.St.-Hil.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
-7172720	Sedum dasyphyllum L.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
+7127810	Cyclamen hederifolium Aiton	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
+7135755	Rhododendron luteum Sweet	Plantae	2023	1	FALSE	FALSE	FALSE	TRUE
+7156971	Oxalis triangularis A.St.-Hil.	Plantae	2023	1	TRUE	FALSE	FALSE	FALSE
 7225471	Vicia villosa subsp. villosa	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 7226776	Setaria verticillata var. verticillata	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 7230699	Pinus nigra subsp. nigra	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 7266343	Salix purpurea subsp. purpurea	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
-7291264	Bistorta amplexicaulis (D.Don) Greene	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
+7291264	Bistorta amplexicaulis (D.Don) Greene	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 7313595	Asarum europaeum L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 7315063	Pseudofumaria alba (Mill.) Lidén	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-7315072	Papaver atlanticum (Ball) Coss.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
-7325877	Fraxinus angustifolia Vahl	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
+7315072	Papaver atlanticum (Ball) Coss.	Plantae	2023	1	FALSE	FALSE	FALSE	TRUE
 7327990	Rhododendron ponticum L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-7332415	Chaenorhinum origanifolium (L.) Fourr.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
-7334368	Umbilicus rupestris (Salisb.) Dandy	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 7346102	Erythranthe guttata (DC.) G.L.Nesom	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
-7400250	Platanus ×hispanica Mill. ex Münchh.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 7433196	Euonymus latifolius (L.) Mill.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
-7443846	Dipsacus strigosus Willd.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
-7466434	Pastinaca sativa subsp. urens (Req. ex Godr.) Celak.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
+7443846	Dipsacus strigosus Willd.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
+7466434	Pastinaca sativa subsp. urens (Req. ex Godr.) Celak.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 7540164	Arion vulgaris Moquin-Tandon, 1855	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
-7560711	Oxalis tetraphylla Cav.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 7627205	Glebionis coronaria (L.) Tzvelev	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
-7671397	Phuopsis stylosa (Trin.) G.Nicholson	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
+7671397	Phuopsis stylosa (Trin.) G.Nicholson	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 7678610	Raphanus sativus L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 7747216	Aira caryophyllea L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 7749287	Petasites albus (L.) Gaertn.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-7753992	Helix lucorum Linnaeus, 1758	Animalia	2023	1	FALSE	FALSE	FALSE	TRUE
-7763534	Lauritrioza alacris (Flor, 1861)	Animalia	2023	1	FALSE	FALSE	FALSE	FALSE
+7753992	Helix lucorum Linnaeus, 1758	Animalia	2023	1	TRUE	FALSE	FALSE	FALSE
 7795888	Triticum aestivum L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-7802465	Nymphaea ×marliacea Lat.-Marl.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
+7802465	Nymphaea ×marliacea Lat.-Marl.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 7810918	Scrophularia vernalis L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-7844167	Colutea arborescens L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-7889822	Spiraea ×billardii Hérincq	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
+7844167	Colutea arborescens L.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 7903057	Brassica rapa L.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 7915783	Oenothera ×fallax Renner	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 7978544	Hydrocotyle ranunculoides L.fil.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
-7989836	Symphytum caucasicum M.Bieb.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 8002952	Ambrosia artemisiifolia L.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 8012439	Symphoricarpos albus (L.) K.Koch	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
-8014163	Ambigolimax valentianus (A.Férussac, 1821)	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
-8042568	Artemisia abrotanum L.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
+8014163	Ambigolimax valentianus (A.Férussac, 1821)	Animalia	2023	3	FALSE	TRUE	FALSE	TRUE
+8042568	Artemisia abrotanum L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 8080743	Scilla siberica Andrews	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 8091998	Gypsophila vaccaria (L.) Sm.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-8116963	Acanthus hungaricus (Borbás) Baen.	Plantae	2023	1	TRUE	FALSE	FALSE	FALSE
-8149049	Wisteria sinensis (Sims) DC.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 8149923	Prunus persica (L.) Stokes	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
-8168344	Hedera hibernica Poit.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 8170635	Spiraea japonica L.fil.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-8190077	Populus ×canadensis Moench	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 8190231	Corbicula fluminea (O.F.Müller, 1774)	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
 8193111	Melilotus officinalis (L.) Lam.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 8200663	Cymbalaria muralis G.Gaertn., B.Mey. & Scherb.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-8287616	Linaria simplex (Willd.) DC.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
-8288647	Pterocarya fraxinifolia (Poir.) Spach	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-8288930	Pilosella piloselloides (Vill.) Soják	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
+8288647	Pterocarya fraxinifolia (Poir.) Spach	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
+8288930	Pilosella piloselloides (Vill.) Soják	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 8298495	Galinsoga quadriradiata Ruiz & Pav.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 8313153	Quercus palustris Münchh.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-8362005	Sasa palmata (Burb.) E.G.Camus	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
-8373355	Artemisia annua L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
+8373355	Artemisia annua L.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
 8427624	Oxalis corniculata L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 8584304	Guizotia abyssinica (L.fil.) Cass.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 8599762	Aproceros leucopoda Takeuchi, 1939	Animalia	2023	1	FALSE	FALSE	FALSE	FALSE
-8699607	Mycosarcoma maydis (DC.) Bref.	Fungi	2023	2	FALSE	TRUE	FALSE	FALSE
-8701771	Obama nungara Carbayo, Alvarez-Presas, Jones & Riutort, 2016	Animalia	2023	1	FALSE	FALSE	FALSE	FALSE
+8699607	Mycosarcoma maydis (DC.) Bref.	Fungi	2023	3	FALSE	TRUE	FALSE	TRUE
 8740315	Marionfyfea adventor Jones & Sluys, 2016	Animalia	2023	1	TRUE	FALSE	FALSE	FALSE
 8741260	Macrosaccus robiniella (Clemens, 1859)	Animalia	2023	3	FALSE	TRUE	FALSE	TRUE
 8745918	Deroceras invadens Reise, Hutchinson, Schunack & Schlitt, 2011	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
@@ -1465,114 +1089,78 @@ taxonKey	taxonName	kingdom	year	em_status	dr_1	dr_2	dr_3	dr_4
 8946295	Pontastacus leptodactylus (Eschscholtz, 1823)	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
 8994150	Oenothera parviflora L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 9018536	Koenigia campanulata (Hook.fil.) T.M.Schust. & Reveal	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
-9148577	Alnus incana (L.) Moench	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
+9148577	Alnus incana (L.) Moench	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 9151957	Medicago sativa L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-9182765	Calendula arvensis L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
+9182765	Calendula arvensis L.	Plantae	2023	1	FALSE	FALSE	FALSE	TRUE
 9188840	Epilobium ciliatum Raf.	Plantae	2023	1	FALSE	FALSE	FALSE	FALSE
-9202318	Symphyotrichum lanceolatum (Willd.) G.L.Nesom	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
+9202318	Symphyotrichum lanceolatum (Willd.) G.L.Nesom	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
 9206251	Helianthus annuus L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-9326020	Gallus gallus (Linnaeus, 1758)	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
 9350124	Natrix helvetica (Lacépède, 1789)	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
-9376410	Delosperma cooperi (Hook.fil.) L.Bolus	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
-9451184	Pavo cristatus Linnaeus, 1758	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
+9451184	Pavo cristatus Linnaeus, 1758	Animalia	2023	3	FALSE	TRUE	FALSE	TRUE
 9752149	Phasianus colchicus Linnaeus, 1758	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
 9823072	Oxalis stricta L.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 9890104	Xeroplexa intersecta (Poiret, 1801)	Animalia	2023	2	FALSE	TRUE	FALSE	FALSE
 10071055	Scandosorbus ×intermedia (Ehrh.) Sennikov	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 11007246	Clinopodium menthifolium (Host) Merino	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
-11742641	Myriophyllum rubricaule Valk. & Duist.	Plantae	2023	3	FALSE	TRUE	FALSE	TRUE
-1017419	Oxidus gracilis (C.L.Koch, 1847)	Animalia	2024	3	FALSE	TRUE	FALSE	TRUE
-1031394	Ectopsocus petersi Smithers, 1978	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
-1031400	Ectopsocus briggsi McLachlan, 1899	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
+11742641	Myriophyllum rubricaule Valk. & Duist.	Plantae	2023	2	FALSE	TRUE	FALSE	FALSE
 1031684	Lepinotus patruelis Pearman, 1931	Animalia	2024	1	FALSE	FALSE	FALSE	FALSE
-1031742	Dorypteryx domestica (Smithers, 1958)	Animalia	2024	3	FALSE	TRUE	FALSE	TRUE
 1047536	Leptinotarsa decemlineata (Say, 1824)	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
-1309600	Andricus kollari (Hartig, 1843)	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
-1309652	Dryocosmus kuriphilus Yasumatsu, 1951	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
+1309600	Andricus kollari (Hartig, 1843)	Animalia	2024	1	FALSE	FALSE	FALSE	FALSE
+1309652	Dryocosmus kuriphilus Yasumatsu, 1951	Animalia	2024	3	FALSE	TRUE	FALSE	TRUE
 1311477	Vespa velutina Lepeletier, 1836	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
-1346919	Isodontia mexicana (de Saussure, 1867)	Animalia	2024	1	FALSE	FALSE	FALSE	FALSE
 1421091	Lepisma saccharinum Linnaeus, 1758	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
-1622599	Rhagoletis cingulata (Loew, 1862)	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
-1622658	Rhagoletis completa Cresson, 1929	Animalia	2024	3	FALSE	TRUE	FALSE	TRUE
-1626096	Ceratitis capitata (Wiedemann, 1824)	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
-1652212	Aedes japonicus (Theobald, 1901)	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
-1690429	Meconema meridionale Costa, 1860	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
+1690429	Meconema meridionale Costa, 1860	Animalia	2024	1	FALSE	FALSE	FALSE	FALSE
 1718308	Acheta domesticus (Linnaeus, 1758)	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
-1749449	Cameraria ohridella Deschka & Dimić, 1986	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
-1749580	Phyllocnistis citrella Stainton, 1856	Animalia	2024	1	FALSE	FALSE	FALSE	FALSE
-1920491	Pieris mannii (Mayer, 1851)	Animalia	2024	1	FALSE	FALSE	FALSE	FALSE
-1997215	Blattella germanica (Linnaeus, 1767)	Animalia	2024	3	FALSE	TRUE	FALSE	TRUE
-2008616	Empicoris rubromaculatus (Blackburn, 1888)	Animalia	2024	1	FALSE	FALSE	FALSE	FALSE
+1749449	Cameraria ohridella Deschka & Dimić, 1986	Animalia	2024	1	FALSE	FALSE	FALSE	FALSE
 2020655	Corythucha ciliata (Say, 1832)	Animalia	2024	3	FALSE	TRUE	FALSE	TRUE
 2020686	Stephanitis takeyai Drake & Maa, 1955	Animalia	2024	3	FALSE	TRUE	FALSE	TRUE
 2037925	Orientus ishidae (Matsumura, 1902)	Animalia	2024	3	FALSE	TRUE	FALSE	TRUE
-2041682	Graphocephala fennahi Young, 1977	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
-2049296	Pithyotettix abietinus (Fallén, 1806)	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
+2041682	Graphocephala fennahi Young, 1977	Animalia	2024	3	FALSE	TRUE	FALSE	TRUE
+2049296	Pithyotettix abietinus (Fallén, 1806)	Animalia	2024	3	FALSE	TRUE	FALSE	TRUE
 2049661	Adelges abietis (Linnaeus, 1758)	Animalia	2024	1	FALSE	FALSE	FALSE	FALSE
-2078852	Nezara viridula (Linnaeus, 1758)	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
-2095283	Pseudococcus longispinus (Targioni Tozzetti, 1867)	Animalia	2024	3	FALSE	TRUE	FALSE	TRUE
-2142456	Uloborus plumipes Lucas, 1846	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
+2078852	Nezara viridula (Linnaeus, 1758)	Animalia	2024	3	FALSE	TRUE	FALSE	TRUE
 2153287	Zoropsis spinimana (Dufour, 1820)	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
-2169430	Macaroeris nidicolens (Walckenaer, 1802)	Animalia	2024	3	FALSE	TRUE	FALSE	TRUE
-2176858	Philaeus chrysops (Poda, 1761)	Animalia	2024	3	FALSE	TRUE	FALSE	TRUE
 2217982	Crangonyx pseudogracilis Bousfield, 1958	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
-2225776	Eriocheir sinensis H.Milne Edwards, 1853	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
+2225776	Eriocheir sinensis H.Milne Edwards, 1853	Animalia	2024	3	FALSE	TRUE	FALSE	TRUE
 2226990	Pacifastacus leniusculus (Dana, 1852)	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
 2227300	Procambarus clarkii (Girard, 1852)	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
-2287072	Dreissena polymorpha (Pallas, 1771)	Animalia	2024	1	FALSE	FALSE	FALSE	FALSE
-2287073	Dreissena bugensis (Andrusov, 1897)	Animalia	2024	1	FALSE	FALSE	FALSE	FALSE
-2295442	Limacus flavus (Linnaeus, 1758)	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
+2295442	Limacus flavus (Linnaeus, 1758)	Animalia	2024	3	FALSE	TRUE	FALSE	TRUE
 2297108	Milax gagates (Draparnaud, 1801)	Animalia	2024	3	FALSE	TRUE	FALSE	TRUE
 2362030	Ctenopharyngodon idella (Valenciennes, 1844)	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
-2362868	Pseudorasbora parva (Temminck & Schlegel, 1846)	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
+2362868	Pseudorasbora parva (Temminck & Schlegel, 1846)	Animalia	2024	1	FALSE	FALSE	FALSE	FALSE
 2366634	Carassius gibelio (Bloch, 1782)	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
 2379089	Neogobius melanostomus (Pallas, 1814)	Animalia	2024	1	FALSE	FALSE	FALSE	FALSE
 2382155	Sander lucioperca (Linnaeus, 1758)	Animalia	2024	1	FALSE	FALSE	FALSE	FALSE
 2394486	Lepomis gibbosus (Linnaeus, 1758)	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
-2426661	Pelophylax ridibundus (Pallas, 1771)	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
+2426661	Pelophylax ridibundus (Pallas, 1771)	Animalia	2024	3	FALSE	TRUE	FALSE	TRUE
 2435035	Felis catus Linnaeus, 1758	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
 2436940	Oryctolagus cuniculus (Linnaeus, 1758)	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
 2437450	Tamias sibiricus (Laxmann, 1769)	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
-2437619	Dolichotis patagonum (Zimmermann, 1780)	Animalia	2024	3	FALSE	TRUE	FALSE	TRUE
 2439261	Rattus norvegicus (Berkenhout, 1769)	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
-2440946	Muntiacus reevesi (Ogilby, 1839)	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
-2440954	Cervus nippon Temminck, 1838	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
-2443002	Trachemys scripta (Thunberg In Schoepff, 1792)	Animalia	2024	1	FALSE	FALSE	FALSE	FALSE
-2445034	Tarentola mauritanica (Linnaeus, 1758)	Animalia	2024	1	FALSE	FALSE	FALSE	FALSE
-2469188	Podarcis muralis (Laurenti, 1768)	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
+2440946	Muntiacus reevesi (Ogilby, 1839)	Animalia	2024	1	FALSE	FALSE	FALSE	FALSE
+2440954	Cervus nippon Temminck, 1838	Animalia	2024	1	FALSE	FALSE	FALSE	TRUE
+2443002	Trachemys scripta (Thunberg In Schoepff, 1792)	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
+2469188	Podarcis muralis (Laurenti, 1768)	Animalia	2024	3	FALSE	TRUE	FALSE	TRUE
 2473477	Syrmaticus reevesii (J.E.Gray, 1829)	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
-2474936	Anthropoides virgo (Linnaeus, 1758)	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
-2475648	Dacelo novaeguineae (Hermann, 1783)	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
 2479226	Psittacula krameri (Scopoli, 1769)	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
 2479798	Melopsittacus undulatus (Shaw, 1805)	Animalia	2024	1	FALSE	FALSE	FALSE	FALSE
 2479977	Nymphicus hollandicus (Kerr, 1792)	Animalia	2024	1	FALSE	FALSE	FALSE	FALSE
-2480350	Pelecanus onocrotalus Linnaeus, 1758	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
-2480372	Elanus caeruleus (Desfontaines, 1789)	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
-2480491	Circus macrourus (S.G.Gmelin, 1770)	Animalia	2024	1	FALSE	FALSE	FALSE	FALSE
-2480524	Buteo lagopus (Pontoppidan, 1763)	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
-2481962	Gavia immer (Brunnich, 1764)	Animalia	2024	3	FALSE	TRUE	FALSE	TRUE
-2494303	Serinus canaria (Linnaeus, 1758)	Animalia	2024	1	FALSE	FALSE	FALSE	FALSE
 2495414	Columba livia J.F.Gmelin, 1789	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
 2497701	Otus scops (Linnaeus, 1758)	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
 2498015	Tadorna ferruginea (Pallas, 1764)	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
 2498034	Anser cygnoides (Linnaeus, 1758)	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
-2498035	Anser indicus (Latham, 1790)	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
-2498046	Chenonetta jubata (Latham, 1801)	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
+2498035	Anser indicus (Latham, 1790)	Animalia	2024	3	FALSE	TRUE	FALSE	TRUE
 2498252	Alopochen aegyptiaca (Linnaeus, 1766)	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
-2498259	Aythya nyroca (Güldenstädt, 1770)	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
 2498344	Cygnus atratus (Latham, 1790)	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
 2498384	Callonetta leucophrys (Vieillot, 1816)	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
-2498387	Aix sponsa (Linnaeus, 1758)	Animalia	2024	3	FALSE	TRUE	FALSE	TRUE
+2498387	Aix sponsa (Linnaeus, 1758)	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
 2498388	Aix galericulata (Linnaeus, 1758)	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
-2498408	Lophodytes cucullatus (Linnaeus, 1758)	Animalia	2024	3	FALSE	TRUE	FALSE	TRUE
-2502810	Caenoplana coerulea Moseley, 1877	Animalia	2024	3	FALSE	TRUE	FALSE	TRUE
 2650107	Azolla filiculoides Lam.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 2650827	Cyrtomium fortunei J.Sm.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 2650903	Onoclea sensibilis L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 2677047	Orthodontium lineare Schwägr.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 2683866	Chamaecyparis lawsoniana (A.Murray bis) Parl.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-2684120	Sequoiadendron giganteum (Lindl.) J.T.Buchholz	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-2684171	Thuja plicata Donn ex D.Don	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
+2684171	Thuja plicata Donn ex D.Don	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 2685361	Abies grandis (Douglas ex D.Don) Lindl.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 2685484	Abies alba Mill.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 2685796	Pseudotsuga menziesii (Mirb.) Franco	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
@@ -1581,58 +1169,42 @@ taxonKey	taxonName	kingdom	year	em_status	dr_1	dr_2	dr_3	dr_4
 2687210	Tsuga heterophylla (Raf.) Sarg.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 2702084	Juncus tenuis Willd.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 2702727	Festuca myuros L.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
-2702792	Briza maxima L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-2702808	Echinochloa crus-galli (L.) P.Beauv.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-2703698	Bromus sitchensis Trin.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-2703723	Bromus catharticus Vahl	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
-2703760	Bromus diandrus Roth	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
-2704757	Sporobolus indicus (L.) R.Br.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
+2702808	Echinochloa crus-galli (L.) P.Beauv.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 2705031	Festuca glauca Vill.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-2705090	Panicum miliaceum L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 2705162	Panicum capillare L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 2705181	Sorghum bicolor (L.) Moench	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 2705185	Sorghum halepense (L.) Pers.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-2705290	Avena sativa L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
+2705290	Avena sativa L.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
 2705400	Eragrostis pilosa (L.) P.Beauv.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
-2705401	Eragrostis multicaulis Steud.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 2705449	Eragrostis minor Host	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-2705966	Secale cereale L.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
+2705966	Secale cereale L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 2706056	Hordeum vulgare L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 2715482	Cyperus eragrostis Lam.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
-2717467	Eleocharis obtusa (Willd.) Schult.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
+2717467	Eleocharis obtusa (Willd.) Schult.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 2720120	Scirpus atrovirens Willd.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 2720269	Scirpus georgianus R.M.Harper	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-2722515	Carex morrowii Boott	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
-2726360	Carex grayi J.Carey	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 2747564	Crocus tommasinianus Herb.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-2747567	Crocus vernus (L.) Hill	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-2747939	Crocosmia ×crocosmiiflora (Lemoine) N.E.Br.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
-2753146	Lilium martagon L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-2765272	Tradescantia virginiana L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
+2747567	Crocus vernus (L.) Hill	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
+2753146	Lilium martagon L.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
+2765272	Tradescantia virginiana L.	Plantae	2024	1	FALSE	FALSE	FALSE	TRUE
 2766030	Pontederia cordata L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-2767271	Scilla luciliae (Boiss.) Speta	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
-2767275	Scilla forbesii (Baker) Speta	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-2767428	Puschkinia scilloides Adams	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-2769766	Ruscus aculeatus L.	Plantae	2024	1	FALSE	FALSE	FALSE	TRUE
+2767271	Scilla luciliae (Boiss.) Speta	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
+2767275	Scilla forbesii (Baker) Speta	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
+2767428	Puschkinia scilloides Adams	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 2772094	Muscari botryoides (L.) Mill.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 2772174	Muscari armeniacum Leichtlin ex Baker	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 2772666	Hyacinthus orientalis L.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
-2773453	Ornithogalum divergens Boreau	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-2775530	Yucca flaccida Haw.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
 2775619	Yucca gloriosa L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 2781074	Hemerocallis fulva (L.) L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-2781103	Hemerocallis lilioasphodelus L.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 2840931	Goodyera repens (L.) R.Br.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 2855356	Galanthus nivalis L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-2855398	Galanthus elwesii Hook.f.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
+2855398	Galanthus elwesii Hook.f.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
 2855439	Galanthus woronowii Losinsk.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
 2855860	Allium schoenoprasum L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-2856037	Allium ampeloprasum L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-2856920	Allium hollandicum R.M.Fritsch	Plantae	2024	1	FALSE	FALSE	FALSE	TRUE
-2857017	Allium paradoxum (M.Bieb.) G.Don	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
+2857017	Allium paradoxum (M.Bieb.) G.Don	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
 2858581	Narcissus poeticus L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 2865448	Elodea canadensis Michx.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
-2865565	Lagarosiphon major (Ridl.) Moss	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
+2865565	Lagarosiphon major (Ridl.) Moss	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 2867614	Lemna minuta Kunth	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 2869311	Lysichiton americanus Hultén & H.St.John	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 2873769	Acorus calamus L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
@@ -1640,233 +1212,169 @@ taxonKey	taxonName	kingdom	year	em_status	dr_1	dr_2	dr_3	dr_4
 2873877	Linum austriacum L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 2873926	Linum grandiflorum Desf.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 2873991	Aristolochia clematitis L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-2874508	Cucurbita pepo L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-2874570	Cucumis melo L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-2875968	Corylus colurna L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
+2875968	Corylus colurna L.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 2876607	Alnus cordata (Loisel.) Duby	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-2879098	Quercus ilex L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 2880539	Quercus rubra L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 2880580	Quercus cerris L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 2888380	Eschscholzia californica Cham.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-2888437	Papaver orientale L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 2888439	Papaver somniferum L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 2888513	Pseudofumaria lutea (L.) Borkh.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
-2888564	Lamprocapnos spectabilis (L.) Fukuhara	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
-2888579	Leycesteria formosa Wall.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 2888625	Viburnum rhytidophyllum Hemsl. ex Forbes & Hemsl.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-2888636	Symphoricarpos orbiculatus Moench	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-2888740	Centranthus ruber (L.) DC.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
-2888814	Dipsacus laciniatus L.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
-2888859	Muehlenbeckia complexa (A.Cunn.) Meisn.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-2888978	Rumex pulcher L.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
+2888740	Centranthus ruber (L.) DC.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
+2888859	Muehlenbeckia complexa (A.Cunn.) Meisn.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
 2889019	Rumex patientia L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 2889088	Reynoutria sachalinensis (F.Schmidt) Nakai	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 2889173	Reynoutria japonica Houtt.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 2889229	Persicaria orientalis (L.) Spach	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
 2889373	Fagopyrum esculentum Moench	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-2889378	Fagopyrum tataricum (L.) Gaertn.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
-2889934	Tropaeolum majus L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-2890035	Geranium ×oxonianum P.F.Yeo	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
+2889934	Tropaeolum majus L.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
+2890035	Geranium ×oxonianum P.F.Yeo	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
 2890122	Geranium pyrenaicum Burm.f.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 2890287	Geranium nodosum L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 2890502	Geranium endressii J.Gay	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-2890541	Geranium purpureum Vill.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
+2890541	Geranium purpureum Vill.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 2891079	Geranium macrorrhizum L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 2891390	Geranium phaeum L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-2891755	Oxalis latifolia Kunth	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 2891770	Impatiens glandulifera Royle	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 2891774	Impatiens capensis Meerb.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 2891782	Impatiens parviflora DC.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 2891783	Impatiens balfourii Hook.fil.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 2913169	Galium parisiense L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-2913219	Galium anglicum Huds.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
-2914590	Galium murale (L.) All.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
 2925514	Verbena bonariensis L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-2925756	Lappula squarrosa (Retz.) Dumort.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 2925895	Echium plantagineum L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-2926045	Brunnera macrophylla (Adams) I.M.Johnst.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
+2926045	Brunnera macrophylla (Adams) I.M.Johnst.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
 2926066	Symphytum asperum Lepech.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 2926110	Borago officinalis L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 2926130	Pentaglottis sempervirens (L.) Tausch ex L.H.Bailey	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 2926884	Satureja montana L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 2926992	Salvia hispanica L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-2926995	Salvia verticillata L.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
-2927004	Salvia officinalis L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
+2927004	Salvia officinalis L.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
 2927028	Salvia nemorosa L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 2927230	Stachys byzantina K.Koch	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-2927305	Lavandula angustifolia Mill.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
+2927305	Lavandula angustifolia Mill.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
 2927850	Polemonium caeruleum L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 2928026	Nemophila menziesii Hook. & Arn.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 2928226	Phacelia tanacetifolia Benth.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-2928576	Ipomoea purpurea (L.) Roth	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
 2928751	Datura stramonium L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-2928761	Nicotiana alata Link & Otto	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
-2928767	Nicotiana sylvestris Speg.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 2928835	Lycium barbarum L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-2929505	Solanum villosum Mill.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 2930137	Solanum lycopersicum L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-2930222	Solanum americanum Mill.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
+2930222	Solanum americanum Mill.	Plantae	2024	1	FALSE	FALSE	FALSE	TRUE
 2930262	Solanum tuberosum L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-2959443	Gleditsia triacanthos L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 2964355	Lupinus polyphyllus Lindl.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 2965331	Medicago ×varia Martyn	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 2965354	Medicago falcata L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 2965531	Medicago polymorpha L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 2971095	Melilotus albus Medik.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 2972595	Onobrychis viciifolia Scop.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
-2974811	Vicia pannonica Crantz	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 2974832	Vicia faba L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 2975667	Galega officinalis L.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
-2984306	Gunnera tinctoria (Molina) Mirb.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-2984366	Soleirolia soleirolii (Req.) Dandy	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
+2984366	Soleirolia soleirolii (Req.) Dandy	Plantae	2024	1	FALSE	FALSE	FALSE	TRUE
 2984676	Pachysandra terminalis Siebold & Zucc.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 2985949	Sempervivum tectorum L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 2986045	Philadelphus coronarius L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-2986111	Ribes aureum Pursh	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
 2986130	Ribes sanguineum Pursh	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 2986184	Ribes alpinum L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 2988188	Pyracantha coccinea M.Roem.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-2988354	Physocarpus opulifolius (L.) Maxim.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 2992543	Rubus laciniatus Willd.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 2995149	Rubus phoenicolasius Maxim.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 2996525	Rubus armeniacus Focke	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3000610	Chaenomeles japonica (Thunb.) Lindl. ex Spach	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3001244	Malus domestica (Suckow) Borkh.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-3003244	Rosa multiflora Thunb.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-3003709	Rosa glauca Pourr.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
+3003244	Rosa multiflora Thunb.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
+3003709	Rosa glauca Pourr.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3003979	Rosa rugosa Thunb.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3012089	Sorbaria sorbifolia (L.) A.Braun	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-3015457	Crataegus persimilis Sarg.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 3020871	Prunus lusitanica L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3021496	Prunus laurocerasus L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3021730	Prunus cerasifera Ehrh.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-3021850	Prunus serotina Ehrh.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
+3021850	Prunus serotina Ehrh.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3021922	Prunus cerasus L.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 3024109	Amelanchier ×lamarckii F.G.Schroed.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3025617	Cotoneaster horizontalis Decne.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-3026024	Cotoneaster ascendens Flinck & B.Hylmö	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
-3026035	Cotoneaster coriaceus Franch.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3026074	Cotoneaster salicifolius Franch.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3026092	Cotoneaster hjelmqvistii Flinck & B.Hylmö	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-3026162	Cotoneaster franchetii Boiss.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
+3026162	Cotoneaster franchetii Boiss.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
 3026294	Cotoneaster bullatus Bois ex Bilm. & Bois	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-3026334	Cotoneaster divaricatus Rehder & E.H.Wilson	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
+3026334	Cotoneaster divaricatus Rehder & E.H.Wilson	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3026585	Spiraea alba Du Roi	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3027159	Spiraea douglasii Hook.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3028528	Alchemilla mollis (Buser) Rothm.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-3029912	Fragaria ×ananassa (Weston) Rozier	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
 3031774	Mespilus germanica L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3032611	Darmera peltata (Torr. ex Benth.) Voss	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
-3032653	Heuchera sanguinea Engelm.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 3032698	Tellima grandiflora (Pursh) Douglas ex Lindl.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 3033077	Aucuba japonica Thunb.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3033227	Eranthis hyemalis (L.) Salisb.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3033242	Anemone blanda Schott & Kotschy	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3033518	Clematis viticella L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-3033543	Clematis recta L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3033833	Delphinium ajacis L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3033865	Mahonia aquifolium (Pursh) Nutt.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3033896	Berberis thunbergii DC.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3034182	Ammi majus L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-3034393	Eryngium planum L.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
-3034681	Myrrhis odorata (L.) Scop.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
+3034681	Myrrhis odorata (L.) Scop.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
 3034825	Heracleum mantegazzianum Sommier & Levier	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-3034871	Coriandrum sativum L.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
 3034915	Astrantia major L.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
 3034922	Foeniculum vulgare Mill.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3036033	Hedera colchica (K.Koch) K.Koch	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-3036892	Aralia elata (Miq.) Seem.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3039194	Parthenocissus quinquefolia (L.) Planch.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3039203	Parthenocissus inserta (A.Kern.) Fritsch	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
-3039209	Parthenocissus tricuspidata (Siebold & Zucc.) Planch.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
-3039267	Elaeagnus umbellata Thunb.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-3040184	Populus balsamifera L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-3040185	Populus ×canescens (Aiton) Sm.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
 3040233	Populus alba L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3041022	Armoracia rusticana P.Gaertn., B.Mey. & Scherb.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3042291	Hesperis matronalis L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3042636	Brassica napus L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-3042751	Brassica juncea (L.) Czern.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
-3042845	Brassica oleracea L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-3045803	Cardamine graeca L.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
-3046736	Sisymbrium altissimum L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-3046812	Sisymbrium orientale L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3046929	Sisymbrium chrysanthum Jord.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3047621	Sinapis alba L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3048203	Erysimum cheiri (L.) Crantz	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3050364	Bunias orientalis L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3053522	Berteroa incana (L.) DC.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
-3054110	Aubrieta columnae Guss.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
-3054117	Aubrieta deltoidea (L.) DC.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-3054357	Juglans nigra L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
+3054117	Aubrieta deltoidea (L.) DC.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
+3054357	Juglans nigra L.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
 3054368	Juglans regia L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-3064056	Euphorbia palustris L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-3064669	Euphorbia myrsinites L.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
+3064056	Euphorbia palustris L.	Plantae	2024	1	FALSE	FALSE	FALSE	TRUE
 3066965	Euphorbia lathyris L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3067119	Euphorbia maculata L.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
-3067353	Euphorbia characias L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-3067891	Euphorbia prostrata Aiton	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
+3067891	Euphorbia prostrata Aiton	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3069053	Euphorbia verrucosa L.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 3082244	Cornus sericea L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-3083680	Atriplex micrantha Ledeb.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-3083761	Atriplex hortensis L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3084015	Phytolacca americana L.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 3084022	Phytolacca acinosa Roxb.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3084719	Portulaca oleracea L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-3084742	Claytonia sibirica L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-3085357	Saponaria ocymoides L.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
-3085360	Saponaria officinalis L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-3085381	Polycarpon tetraphyllum (L.) L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
+3084742	Claytonia sibirica L.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
+3085357	Saponaria ocymoides L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
+3085360	Saponaria officinalis L.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 3085421	Dianthus barbatus L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3085438	Cerastium tomentosum L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3085623	Petrorhagia saxifraga (L.) Link	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-3086240	Mirabilis jalapa L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-3088310	Petasites japonicus (Siebold & Zucc.) Maxim.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-3088481	Tagetes minuta L.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
-3088488	Tagetes erecta L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-3092576	Silphium perfoliatum L.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
+3086240	Mirabilis jalapa L.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
+3088310	Petasites japonicus (Siebold & Zucc.) Maxim.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
+3092576	Silphium perfoliatum L.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
 3098912	Cosmos bipinnatus Cav.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3098951	Cosmos sulphureus Cav.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
-3101193	Dittrichia graveolens (L.) Greuter	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
+3101193	Dittrichia graveolens (L.) Greuter	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3103791	Matricaria discoidea DC.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3109086	Senecio inaequidens DC.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-3112364	Cynara cardunculus L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3114225	Rudbeckia hirta L.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
-3114229	Rudbeckia laciniata L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-3114643	Carduus acanthoides L.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 3117449	Erigeron annuus (L.) Pers.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-3118254	Tanacetum balsamita L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
+3118254	Tanacetum balsamita L.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
 3118430	Tanacetum parthenium (L.) Sch.Bip.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-3119175	Helianthus tuberosus L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-3119181	Helianthus ×laetiflorus Pers.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
+3119175	Helianthus tuberosus L.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
 3120024	Achillea nobilis L.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
-3120284	Achillea filipendulina Lam.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-3120790	Artemisia verlotiorum Lamotte	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 3121088	Artemisia alba Turra	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3122924	Pilosella aurantiaca (L.) F.W.Schultz & Sch.Bip.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 3123663	Pilosella caespitosa (Dumort.) P.D.Sell & C.West	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 3128225	Centaurea nigra L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3132570	Galinsoga parviflora Cav.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-3133887	Coreopsis verticillata L.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
-3133950	Coreopsis tinctoria Nutt.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-3136320	Hieracium amplexicaule L.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
+3133950	Coreopsis tinctoria Nutt.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
+3136320	Hieracium amplexicaule L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3140436	Lactuca macrophylla (Willd.) A.Gray	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3145214	Silybum marianum (L.) Gaertn.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3146683	Erigeron sumatrensis Retz.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-3146717	Erigeron bonariensis L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3146791	Erigeron canadensis L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-3147018	Erigeron floribundus (Kunth) Sch.Bip.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-3147168	Erigeron karvinskianus DC.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
+3147168	Erigeron karvinskianus DC.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 3148340	Inula helenium L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-3151558	Symphyotrichum novi-belgii (L.) G.L.Nesom	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-3152372	Malva pusilla Sm.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-3152377	Malva verticillata L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-3152378	Malva parviflora L.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
-3152521	Althaea hirsuta L.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
+3151558	Symphyotrichum novi-belgii (L.) G.L.Nesom	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
+3152521	Althaea hirsuta L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3152583	Hibiscus syriacus L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3152614	Abutilon theophrasti Medik.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-3152861	Liriodendron tulipifera L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-3164340	Platycodon grandiflorus (Jacq.) A.DC.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 3169137	Euonymus fortunei (Turcz.) Hand.-Mazz.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 3169340	Lysimachia punctata L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3169391	Lysimachia ciliata L.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
@@ -1875,28 +1383,24 @@ taxonKey	taxonName	kingdom	year	em_status	dr_1	dr_2	dr_3	dr_4
 3170247	Asclepias syriaca L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3170823	Paulownia tomentosa (Thunb.) Steud.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3171948	Verbascum phlomoides L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-3171952	Verbascum speciosum Schrad.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-3171954	Verbascum virgatum Stokes	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
+3171954	Verbascum virgatum Stokes	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3172001	Antirrhinum majus L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-3172068	Veronica cymbalaria Bodard	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 3172077	Veronica persica Poir.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3172100	Veronica filiformis Sm.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3172104	Veronica peregrina L.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
-3172118	Veronica longifolia L.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
+3172118	Veronica longifolia L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3172266	Jasminum nudiflorum Lindl.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3172291	Ligustrum ovalifolium Hassk.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 3172347	Fraxinus ornus L.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
 3172549	Campsis radicans (L.) Bureau	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
-3172615	Catalpa bignonioides Walter	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
 3173338	Buddleja davidii Franch.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 3188894	Oenothera glazioviana Micheli	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 3188924	Oenothera biennis L.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
 3189073	Epilobium brachycarpum C.Presl	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
-3189497	Hypericum calycinum L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3189815	Aesculus hippocastanum L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-3189837	Acer saccharinum L.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
+3189837	Acer saccharinum L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3189866	Acer negundo L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-3190382	Ruta graveolens L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
+3190382	Ruta graveolens L.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
 3190411	Ptelea trifoliata L.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 3190522	Cotinus coggygria Scop.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
 3190538	Rhus typhina L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
@@ -1907,67 +1411,51 @@ taxonKey	taxonName	kingdom	year	em_status	dr_1	dr_2	dr_3	dr_4
 3664589	Oenothera lindheimeri (Engelm. & A.Gray) W.L.Wagner & Hoch	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3666422	Chamaenerion dodonaei (Vill.) Schur ex Fuss.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3686235	Staphylea pinnata L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-3690997	Cardamine occulta Hornem.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3693541	Odontarrhena muralis (Waldst. & Kit.) Endl.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 3741446	Erinus alpinus L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 3797084	Alkekengi officinarum Moench	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-3814157	Eudianthe coeli-rosa (L.) Fenzl ex Endl.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
-3886505	Phlomis russeliana (Sims) Lag. ex Benth.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-3896282	Teucrium hircanicum L.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
-3940326	Malva trimestris (L.) Salisb.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
+3886505	Phlomis russeliana (Sims) Lag. ex Benth.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
+3940326	Malva trimestris (L.) Salisb.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 3981543	Berberis julianae C.K.Schneid.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
-4021919	Portulaca sativa Haw.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 4038485	Reynoutria ×bohemica Chrtek & Chrtková	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 4063383	Trachystemon orientale (L.) D.Don	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
-4067302	Symphytum grandiflorum DC.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
-4102952	Knautia macedonica Griseb.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
-4125308	Panicum schinzii Hack.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 4129708	Lolium multiflorum Lam.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 4201607	Phedimus spurius (M.Bieb.) 't Hart	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 4201695	Phedimus hybridus (L.) 't Hart	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-4245384	Crepis setosa Haller fil.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 4264680	Myocastor coypus (Molina, 1782)	Animalia	2024	3	FALSE	TRUE	FALSE	TRUE
 4270548	Hordeum murinum subsp. leporinum (Link) Arcang.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 4286975	Cyprinus carpio Linnaeus, 1758	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
-4315705	Dikerogammarus villosus (Sowinsky, 1894)	Animalia	2024	1	FALSE	FALSE	FALSE	FALSE
 4427319	Anthrenus angustefasciatus Ganglbauer, 1904	Animalia	2024	3	FALSE	TRUE	FALSE	TRUE
 4460066	Chrysolina americana (Linnaeus, 1758)	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
-4483961	Viridicerus ustulatus (Mulsant & Rey, 1855)	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
-4483971	Populicerus albicans (Kirschbaum, 1868)	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
 4484176	Cacopsylla fulguralis (Kuwayama, 1908)	Animalia	2024	3	FALSE	TRUE	FALSE	TRUE
 4485843	Halyomorpha halys (Stål, 1855)	Animalia	2024	3	FALSE	TRUE	FALSE	TRUE
 4486243	Oxycarenus lavaterae (Fabricius, 1787)	Animalia	2024	3	FALSE	TRUE	FALSE	TRUE
-4486365	Nysius huttoni White, 1878	Animalia	2024	1	FALSE	FALSE	FALSE	FALSE
-4488821	Deraeocoris flavilinea (A.Costa, 1862)	Animalia	2024	1	FALSE	FALSE	FALSE	FALSE
-4532122	Cydalima perspectalis (Walker, 1859)	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
+4488821	Deraeocoris flavilinea (A.Costa, 1862)	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
+4532122	Cydalima perspectalis (Walker, 1859)	Animalia	2024	3	FALSE	TRUE	FALSE	TRUE
 4553469	Leiobunum Koch, 1839	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
 4562529	Morlina glabra (Rossmässler, 1835)	Animalia	2024	3	FALSE	TRUE	FALSE	TRUE
 4565039	Hygromia cinctella (Draparnaud, 1801)	Animalia	2024	3	FALSE	TRUE	FALSE	TRUE
 4565061	Cernuella neglecta (Draparnaud, 1805)	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
-4565134	Cernuella aginnica (Locard, 1882)	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
+4565134	Cernuella aginnica (Locard, 1882)	Animalia	2024	1	FALSE	FALSE	FALSE	FALSE
 4567717	Boettgerilla pallens Simroth, 1912	Animalia	2024	3	FALSE	TRUE	FALSE	TRUE
 4568269	Paralaoma servilis (Shuttleworth, 1852)	Animalia	2024	3	FALSE	TRUE	FALSE	TRUE
 4598225	Tandonia budapestensis (Hazay, 1880)	Animalia	2024	3	FALSE	TRUE	FALSE	TRUE
-4933624	Inula racemosa Hook.fil.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
 4939668	Kitaibela vitifolia Willd.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 4989904	Harmonia axyridis (Pallas, 1773)	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
 5123474	Anthophila nemorana (Hübner, 1799)	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
-5151589	Blatta orientalis Linnaeus, 1758	Animalia	2024	3	FALSE	TRUE	FALSE	TRUE
-5152536	Gastrodes abietum Bergroth, 1914	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
 5152543	Raglius alboacuminatus (Goeze, 1778)	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
 5154481	Stictocephala bisonia Kopp & Yonke, 1977	Animalia	2024	3	FALSE	TRUE	FALSE	TRUE
 5156102	Leptoglossus occidentalis Heidemann, 1910	Animalia	2024	3	FALSE	TRUE	FALSE	TRUE
 5179027	Scutigera coleoptrata Linnaeus, 1758	Animalia	2024	3	FALSE	TRUE	FALSE	TRUE
 5189806	Physella acuta (Draparnaud, 1805)	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
-5191102	Monacha cantiana (Montagu, 1803)	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
+5191102	Monacha cantiana (Montagu, 1803)	Animalia	2024	1	FALSE	FALSE	FALSE	FALSE
 5192470	Potamopyrgus antipodarum (J.E.Gray, 1843)	Animalia	2024	1	FALSE	FALSE	FALSE	FALSE
 5204019	Oncorhynchus mykiss (Walbaum, 1792)	Animalia	2024	3	FALSE	TRUE	FALSE	TRUE
 5218786	Procyon lotor (Linnaeus, 1758)	Animalia	2024	3	FALSE	TRUE	FALSE	TRUE
-5219858	Ondatra zibethicus (Linnaeus, 1766)	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
+5219858	Ondatra zibethicus (Linnaeus, 1766)	Animalia	2024	3	FALSE	TRUE	FALSE	TRUE
 5220136	Dama dama (Linnaeus, 1758)	Animalia	2024	3	FALSE	TRUE	FALSE	TRUE
 5220170	Rupicapra rupicapra (Linnaeus, 1758)	Animalia	2024	3	FALSE	TRUE	FALSE	TRUE
 5232437	Branta canadensis (Linnaeus, 1758)	Animalia	2024	3	FALSE	TRUE	FALSE	TRUE
-5232445	Branta sandvicensis (Vigors, 1834)	Animalia	2024	1	FALSE	FALSE	FALSE	FALSE
 5232452	Branta hutchinsii (Richardson, 1832)	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
 5281901	Campylopus introflexus (Hedw.) Brid.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 5284237	Cryptomeria japonica (Thunb. ex L.f.) D.Don	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
@@ -1975,44 +1463,33 @@ taxonKey	taxonName	kingdom	year	em_status	dr_1	dr_2	dr_3	dr_4
 5284827	Picea sitchensis (Bong.) Carrière	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
 5284884	Picea abies (L.) H.Karst.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 5284982	Pinus strobus L.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
-5285637	Pinus sylvestris L.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
+5285637	Pinus sylvestris L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 5289643	Apera interrupta (L.) P.Beauv.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
-5289666	Setaria faberi R.A.W.Herrm.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 5289684	Setaria viridis (L.) P.Beauv.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 5289686	Setaria verticillata (L.) P.Beauv.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 5289693	Setaria pumila (Poir.) Roem. & Schult.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 5289698	Setaria italica (L.) P.Beauv.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-5289744	Phalaris canariensis L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
+5289744	Phalaris canariensis L.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
 5289756	Phalaris arundinacea L.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
-5289833	Nassella tenuissima (Trin.) Barkworth	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 5289917	Polypogon monspeliensis (L.) Desf.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
-5289919	Polypogon viridis (Gouan) Breistr.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 5289972	Digitaria sanguinalis (L.) Scop.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-5290052	Zea mays L.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
-5290242	Gaudinia fragilis (L.) P.Beauv.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
+5290242	Gaudinia fragilis (L.) P.Beauv.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
 5296178	Sisyrinchium montanum Greene	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 5298069	Iris ×germanica L.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
-5298126	Iris sibirica L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
+5298126	Iris sibirica L.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 5298675	Iris pumila L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-5298765	Iris foetidissima L.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
-5304257	Hyacinthoides hispanica (Mill.) Rothm.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
-5304294	Hyacinthoides ×massartiana Geerinck	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
-5324959	Himantoglossum robertianum (Loisel.) P.Delforge	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-5328593	Aponogeton distachyos L.f.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-5328909	Sagittaria latifolia Willd.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
+5304294	Hyacinthoides ×massartiana Geerinck	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
+5324959	Himantoglossum robertianum (Loisel.) P.Delforge	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
 5329212	Elodea nuttallii (Planch.) H.St.John	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-5329263	Elodea densa (Planch.) Casp.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
+5329263	Elodea densa (Planch.) Casp.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
 5330661	Arum italicum Mill.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 5333294	Castanea sativa Mill.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-5334194	Macleaya cordata (Willd.) R.Br.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 5334227	Lonicera caprifolium L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-5334240	Lonicera japonica Thunb.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-5334242	Lonicera tatarica L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
+5334240	Lonicera japonica Thunb.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
+5334242	Lonicera tatarica L.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 5334351	Fallopia baldschuanica (Regel) Holub	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-5341201	Anchusa officinalis L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 5341203	Pulmonaria saccharata Mill.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 5341204	Pulmonaria officinalis L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-5341387	Hyssopus officinalis L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 5341442	Thymus vulgaris L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 5341497	Nepeta racemosa Lam.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 5341501	Melissa officinalis L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
@@ -2021,64 +1498,50 @@ taxonKey	taxonName	kingdom	year	em_status	dr_1	dr_2	dr_3	dr_4
 5347846	Lathyrus oleraceus Lam.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 5350005	Coronilla varia L.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 5352251	Robinia pseudoacacia L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-5353590	Cercis siliquastrum L.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
-5355395	Spartium junceum L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 5356345	Laburnum anagyroides Medik.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-5356488	Lathyrus sativus L.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 5356517	Lathyrus latifolius L.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
-5357407	Amorpha fruticosa L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 5358907	Trifolium alexandrinum L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 5359175	Trifolium resupinatum L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 5359378	Trifolium incarnatum L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 5360475	Trigonella foenum-graecum L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 5361785	Myriophyllum aquaticum (Vell.) Verdc.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 5361880	Cannabis sativa L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-5361909	Ficus carica L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-5361982	Sedum hispanicum L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
+5361909	Ficus carica L.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 5362054	Crassula helmsii (Kirk) Cockayne	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-5362136	Aruncus dioicus (Walter) Fernald	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
+5362136	Aruncus dioicus (Walter) Fernald	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 5362573	Pyrus communis L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-5365305	Potentilla norvegica L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
+5365305	Potentilla norvegica L.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
 5365705	Potentilla intermedia L.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
 5365717	Potentilla indica (Andrews) Th.Wolf	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 5367294	Potentilla recta L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 5369784	Geum macrophyllum Willd.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
-5370380	Dasiphora fruticosa (L.) Rydb.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
 5371450	Kerria japonica (L.) DC.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 5371699	Hepatica nobilis Schreb.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 5371702	Nigella damascena L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 5371746	Anthriscus cerefolium (L.) Hoffm.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-5371753	Visnaga daucoides Gaertn.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
-5371772	Levisticum officinale W.D.J.Koch	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
-5371808	Angelica archangelica L.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
+5371808	Angelica archangelica L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 5372392	Vitis vinifera L.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
-5372639	Salix babylonica L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 5372647	Salix pentandra L.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
-5372655	Salix eleagnos Scop.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 5373324	Lunaria annua L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 5373358	Lobularia maritima (L.) Desv.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 5373368	Rapistrum rugosum (L.) All.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 5374118	Isatis tinctoria L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 5374614	Barbarea stricta Andrz. ex Besser	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-5374922	Arabis caucasica Willd.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
+5374922	Arabis caucasica Willd.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
 5375020	Arabis alpina L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-5375920	Eruca vesicaria (L.) Cav.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 5376565	Lepidium sativum L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-5376648	Lepidium virginicum L.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
-5376846	Lepidium heterophyllum Benth.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
+5376648	Lepidium virginicum L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 5376961	Lepidium draba L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 5377060	Lepidium didymum L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 5377303	Iberis umbellata L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 5377778	Aurinia saxatilis (L.) Desv.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 5384364	Amaranthus hybridus L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 5384396	Amaranthus deflexus L.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
-5384466	Gypsophila elegans M.Bieb.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
+5384466	Gypsophila elegans M.Bieb.	Plantae	2024	1	FALSE	FALSE	FALSE	TRUE
 5384741	Silene coronaria (L.) Clairv.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 5384931	Houttuynia cordata Thunb.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
-5384932	Saururus cernuus L.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
-5386938	Tragopogon porrifolius L.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
-5388595	Jacobaea maritima (L.) Pelser & Meijden	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-5389017	Solidago gigantea Aiton	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
+5384932	Saururus cernuus L.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
+5389017	Solidago gigantea Aiton	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 5389029	Solidago canadensis L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 5389173	Telekia speciosa (Schreb.) Baumg.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 5391480	Calendula officinalis L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
@@ -2087,135 +1550,105 @@ taxonKey	taxonName	kingdom	year	em_status	dr_1	dr_2	dr_3	dr_4
 5392683	Echinops exaltatus Schrad.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 5392859	Echinops bannaticus Rochel ex Schrad.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 5392883	Echinops sphaerocephalus L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-5401760	Ageratum houstonianum Mill.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
 5403272	Crepis pulchra L.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 5406789	Alcea rosea L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 5410151	Campanula poscharskyana Degen	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 5410411	Campanula portenschlagiana Schult.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 5414551	Vincetoxicum nigrum (L.) Moench	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-5415009	Linaria supina (L.) Chaz.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
+5415009	Linaria supina (L.) Chaz.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 5415012	Linaria purpurea (L.) Mill.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-5415016	Linaria maroccana Hook.fil.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 5415039	Syringa vulgaris L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-5415455	Acanthus mollis L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-5420978	Clarkia amoena (Lehm.) A.Nelson & J.F.Macbr.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
-5420991	Ludwigia peploides (Kunth) P.H.Raven	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 5421039	Ludwigia grandiflora (Michx.) Greuter & Burdet	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 5530881	Corydalis cava (L.) Schweigg. & Körte	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-5551241	Iberis sempervirens L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
+5551241	Iberis sempervirens L.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 5559837	Cymbalaria pallida (Ten.) Wettst.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-5561475	Chaenostoma cordatum Benth.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 5582033	Salix udensis (Wimm.) Trautv. & C.A.Mey.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
-5598598	Lonicera acuminata Wall.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
+5598598	Lonicera acuminata Wall.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 5598915	Lonicera pileata Oliv.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-5712981	Coccus hesperidum Linnaeus, 1758	Animalia	2024	1	FALSE	FALSE	FALSE	TRUE
-5774728	Eriophyes pyri (H.A.Pagenstecher, 1857)	Animalia	2024	3	FALSE	TRUE	FALSE	TRUE
-5806954	Tarsostenus carus (Newman, 1840)	Animalia	2024	1	FALSE	FALSE	FALSE	FALSE
-5851603	Leuciscus aspius (Linnaeus, 1758)	Animalia	2024	1	FALSE	FALSE	FALSE	FALSE
-6027089	Smyrnium perfoliatum L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
+6027089	Smyrnium perfoliatum L.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
 6063730	Senecio vernalis Waldst. & Kit.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 6096602	Lophocolea semiteres (Lehm.) Mitt.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 6098843	Ctenolepisma longicaudatum Escherich, 1905	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
 6109534	Amaranthus retroflexus L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 6109535	Trifolium hybridum L.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
-6109611	Amaranthus caudatus L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
+6109611	Amaranthus caudatus L.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
 6157026	Trachemys scripta elegans (Wied, 1838)	Animalia	2024	1	FALSE	FALSE	FALSE	FALSE
 6159223	Lacerta agilis Linnaeus, 1758	Animalia	2024	3	FALSE	TRUE	FALSE	TRUE
 6164210	Canis lupus familiaris Linnaeus, 1758	Animalia	2024	1	FALSE	FALSE	FALSE	FALSE
 6362904	Populus trichocarpa Torr. & A.Gray ex Hook.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-6376340	Thalictrum aquilegiifolium L.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
+6376340	Thalictrum aquilegiifolium L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 6411098	Lamium galeobdolon subsp. argentatum (Smejkal) J.Duvign.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-6443709	Tragopogon dubius Scop.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-7062200	Trachemys scripta scripta	Animalia	2024	1	FALSE	FALSE	FALSE	FALSE
+7062200	Trachemys scripta scripta	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
 7068379	Vicia sativa subsp. sativa	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
-7068845	Beta vulgaris subsp. vulgaris	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-7111792	Lotus corniculatus subsp. corniculatus	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
+7111792	Lotus corniculatus subsp. corniculatus	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 7127354	Cyclamen coum Mill.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 7127810	Cyclamen hederifolium Aiton	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 7135755	Rhododendron luteum Sweet	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
-7156971	Oxalis triangularis A.St.-Hil.	Plantae	2024	1	FALSE	FALSE	FALSE	TRUE
-7172720	Sedum dasyphyllum L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
+7156971	Oxalis triangularis A.St.-Hil.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 7225471	Vicia villosa subsp. villosa	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
-7226776	Setaria verticillata var. verticillata	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
+7226776	Setaria verticillata var. verticillata	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
 7230699	Pinus nigra subsp. nigra	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
 7266343	Salix purpurea subsp. purpurea	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
-7291264	Bistorta amplexicaulis (D.Don) Greene	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
+7291264	Bistorta amplexicaulis (D.Don) Greene	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 7313595	Asarum europaeum L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 7315063	Pseudofumaria alba (Mill.) Lidén	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 7315072	Papaver atlanticum (Ball) Coss.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
-7325877	Fraxinus angustifolia Vahl	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
 7327990	Rhododendron ponticum L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-7332415	Chaenorhinum origanifolium (L.) Fourr.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
-7334368	Umbilicus rupestris (Salisb.) Dandy	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 7346102	Erythranthe guttata (DC.) G.L.Nesom	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
-7400250	Platanus ×hispanica Mill. ex Münchh.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 7433196	Euonymus latifolius (L.) Mill.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
-7443846	Dipsacus strigosus Willd.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
-7466434	Pastinaca sativa subsp. urens (Req. ex Godr.) Celak.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
+7443846	Dipsacus strigosus Willd.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
+7466434	Pastinaca sativa subsp. urens (Req. ex Godr.) Celak.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 7540164	Arion vulgaris Moquin-Tandon, 1855	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
-7560711	Oxalis tetraphylla Cav.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
 7627205	Glebionis coronaria (L.) Tzvelev	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
-7671397	Phuopsis stylosa (Trin.) G.Nicholson	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
+7671397	Phuopsis stylosa (Trin.) G.Nicholson	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 7678610	Raphanus sativus L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 7747216	Aira caryophyllea L.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
 7749287	Petasites albus (L.) Gaertn.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 7753992	Helix lucorum Linnaeus, 1758	Animalia	2024	3	FALSE	TRUE	FALSE	TRUE
-7763534	Lauritrioza alacris (Flor, 1861)	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
 7795888	Triticum aestivum L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-7802465	Nymphaea ×marliacea Lat.-Marl.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
+7802465	Nymphaea ×marliacea Lat.-Marl.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 7810918	Scrophularia vernalis L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 7844167	Colutea arborescens L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-7889822	Spiraea ×billardii Hérincq	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 7903057	Brassica rapa L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 7915783	Oenothera ×fallax Renner	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 7978544	Hydrocotyle ranunculoides L.fil.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-7989836	Symphytum caucasicum M.Bieb.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 8002952	Ambrosia artemisiifolia L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 8012439	Symphoricarpos albus (L.) K.Koch	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 8014163	Ambigolimax valentianus (A.Férussac, 1821)	Animalia	2024	3	FALSE	TRUE	FALSE	TRUE
 8042568	Artemisia abrotanum L.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
 8080743	Scilla siberica Andrews	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-8091998	Gypsophila vaccaria (L.) Sm.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
-8116963	Acanthus hungaricus (Borbás) Baen.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
-8149049	Wisteria sinensis (Sims) DC.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
+8091998	Gypsophila vaccaria (L.) Sm.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 8149923	Prunus persica (L.) Stokes	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-8168344	Hedera hibernica Poit.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-8170635	Spiraea japonica L.fil.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-8190077	Populus ×canadensis Moench	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
+8170635	Spiraea japonica L.fil.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 8190231	Corbicula fluminea (O.F.Müller, 1774)	Animalia	2024	3	FALSE	TRUE	FALSE	TRUE
 8193111	Melilotus officinalis (L.) Lam.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 8200663	Cymbalaria muralis G.Gaertn., B.Mey. & Scherb.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
-8287616	Linaria simplex (Willd.) DC.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 8288647	Pterocarya fraxinifolia (Poir.) Spach	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 8288930	Pilosella piloselloides (Vill.) Soják	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 8298495	Galinsoga quadriradiata Ruiz & Pav.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 8313153	Quercus palustris Münchh.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-8362005	Sasa palmata (Burb.) E.G.Camus	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 8373355	Artemisia annua L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 8427624	Oxalis corniculata L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 8584304	Guizotia abyssinica (L.fil.) Cass.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 8599762	Aproceros leucopoda Takeuchi, 1939	Animalia	2024	1	FALSE	FALSE	FALSE	FALSE
-8699607	Mycosarcoma maydis (DC.) Bref.	Fungi	2024	2	FALSE	TRUE	FALSE	FALSE
-8701771	Obama nungara Carbayo, Alvarez-Presas, Jones & Riutort, 2016	Animalia	2024	3	FALSE	TRUE	FALSE	TRUE
+8699607	Mycosarcoma maydis (DC.) Bref.	Fungi	2024	3	FALSE	TRUE	FALSE	TRUE
 8740315	Marionfyfea adventor Jones & Sluys, 2016	Animalia	2024	3	FALSE	TRUE	FALSE	TRUE
 8741260	Macrosaccus robiniella (Clemens, 1859)	Animalia	2024	3	FALSE	TRUE	FALSE	TRUE
 8745918	Deroceras invadens Reise, Hutchinson, Schunack & Schlitt, 2011	Animalia	2024	3	FALSE	TRUE	FALSE	TRUE
 8848208	Koenigia polystachya (Wall. ex Meisn.) T.M.Schust. & Reveal	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 8909595	Faxonius limosus (Rafinesque, 1817)	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
 8911082	Amaranthus blitum L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-8946295	Pontastacus leptodactylus (Eschscholtz, 1823)	Animalia	2024	1	FALSE	FALSE	FALSE	FALSE
+8946295	Pontastacus leptodactylus (Eschscholtz, 1823)	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
 8994150	Oenothera parviflora L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 9018536	Koenigia campanulata (Hook.fil.) T.M.Schust. & Reveal	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
 9148577	Alnus incana (L.) Moench	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 9151957	Medicago sativa L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-9182765	Calendula arvensis L.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
+9182765	Calendula arvensis L.	Plantae	2024	1	FALSE	FALSE	FALSE	TRUE
 9188840	Epilobium ciliatum Raf.	Plantae	2024	1	FALSE	FALSE	FALSE	FALSE
 9202318	Symphyotrichum lanceolatum (Willd.) G.L.Nesom	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
 9206251	Helianthus annuus L.	Plantae	2024	2	FALSE	TRUE	FALSE	FALSE
-9326020	Gallus gallus (Linnaeus, 1758)	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
 9350124	Natrix helvetica (Lacépède, 1789)	Animalia	2024	3	FALSE	TRUE	FALSE	TRUE
-9376410	Delosperma cooperi (Hook.fil.) L.Bolus	Plantae	2024	1	FALSE	FALSE	FALSE	TRUE
-9451184	Pavo cristatus Linnaeus, 1758	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
+9451184	Pavo cristatus Linnaeus, 1758	Animalia	2024	1	FALSE	FALSE	FALSE	FALSE
 9752149	Phasianus colchicus Linnaeus, 1758	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE
 9823072	Oxalis stricta L.	Plantae	2024	3	FALSE	TRUE	FALSE	TRUE
 9890104	Xeroplexa intersecta (Poiret, 1801)	Animalia	2024	2	FALSE	TRUE	FALSE	FALSE

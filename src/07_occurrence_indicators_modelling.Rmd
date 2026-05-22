@@ -535,7 +535,7 @@ apply_gam_for_eval_years <- function(df,
           df_title = region,
           dir_name = dir_name,
           y_label = y_label,
-          saveplot = TRUE,
+          saveplot = FALSE,
           width = w,
           height = h
         )
@@ -630,6 +630,51 @@ purrr::map(gam_occupancy, function(x) {
 
 # Save results
 
+## Add taxonomic information
+
+We add species name and kingdom to the outputs. To do so, we read taxonomic information from the checklist taxon core:
+
+```{r read_taxon_core}
+taxon_core <- readr::read_tsv(
+  here::here("data", "input", "griis_taxon_core.tsv"),
+  na = ""
+) %>%
+  dplyr::distinct(taxonKey = acceptedKey, taxonName = acceptedName, kingdom = acceptedKingdom)
+```
+
+### Decision rules
+
+Add taxonomic information to the decision rules outputs for observations:
+
+```{r add_taxon_info_dr_occs}
+em_decision_rules_occs <- purrr::map(
+  em_decision_rules_occs,
+  function(df) {
+    df %>%
+      dplyr::left_join(taxon_core, dplyr::join_by(taxonKey)) %>%
+      dplyr::relocate(taxonName, kingdom, .after = taxonKey)
+  }
+)
+```
+
+Do the same for occupancy:
+
+```{r add_taxon_info_dr_occupancy}
+em_decision_rules_occupancy <- purrr::map(
+  em_decision_rules_occupancy,
+  function(df) {
+    df %>%
+      dplyr::left_join(taxon_core, dplyr::join_by(taxonKey)) %>%
+      dplyr::relocate(taxonName, kingdom, .after = taxonKey
+      )
+  }
+)
+```
+
+### GAM models
+
+Class and kingdom information are already in the GAM extended outputs (slot `output`), so we don't add this info to the GAM outputs at this stage.
+
 ## Decision rules
 
 Save emerging status based on decision rules:
@@ -638,7 +683,7 @@ Save emerging status based on decision rules:
 # Define function to save the results for Belgium, its regions and protected
 # areas
 save_decision_rules_output <- function(df, region, indicator) {
-  # Remove "is" from "isBrussels", "isFlanders", "isWallonia" for a better filename
+  # Remove "is" from "isBrussels", "isFlanders", "isWallonia", etc. for a better filename
   region <- stringr::str_remove(region, "^is")
   readr::write_tsv(x = df,
     file = here::here(
@@ -660,7 +705,6 @@ purrr::iwalk(em_decision_rules_occupancy, function(df, region) {
   save_decision_rules_output(df, region, indicator = "occupancy")
 })
 ```
-
 
 ## GAM models
 
@@ -740,4 +784,3 @@ setwd(old_wd)
 file.rename(file.path(folder_path, "GAM_plots.zip"),
             here::here("data", "output", "GAM_outputs", "GAM_plots.zip"))
 ```
-
